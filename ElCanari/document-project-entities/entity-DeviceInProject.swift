@@ -86,7 +86,7 @@ protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
 //    Entity: DeviceInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceInProject : EBManagedObject,
+final class DeviceInProject : EBManagedObject,
          DeviceInProject_mDeviceName,
          DeviceInProject_mPrefix,
          DeviceInProject_mDeviceVersion,

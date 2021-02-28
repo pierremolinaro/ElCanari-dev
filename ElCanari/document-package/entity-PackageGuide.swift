@@ -74,7 +74,7 @@ protocol PackageGuide_issues : AnyObject {
 //    Entity: PackageGuide
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageGuide : PackageObject,
+final class PackageGuide : PackageObject,
          PackageGuide_y1,
          PackageGuide_x2,
          PackageGuide_y2,

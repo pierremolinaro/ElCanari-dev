@@ -56,7 +56,7 @@ protocol SymbolSolidRect_issues : AnyObject {
 //    Entity: SymbolSolidRect
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolSolidRect : SymbolObject,
+final class SymbolSolidRect : SymbolObject,
          SymbolSolidRect_y,
          SymbolSolidRect_width,
          SymbolSolidRect_height,

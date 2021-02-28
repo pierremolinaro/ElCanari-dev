@@ -40,11 +40,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTypeName_property_selection : EBSelection <String?> {
+  final var mTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mTypeName_property_selection) {
       case .empty :
@@ -110,11 +110,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mVersion = EBWeakEventSet ()
+  private final var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  var mVersion_property_selection : EBSelection <Int?> {
+  final var mVersion_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mVersion_property_selection) {
       case .empty :
@@ -180,11 +180,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data?> {
+  final var mFileData_property_selection : EBSelection <Data?> {
     if let model = self.propval {
       switch (model.mFileData_property_selection) {
       case .empty :
@@ -250,11 +250,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.mStrokeBezierPath_property_selection) {
       case .empty :
@@ -320,11 +320,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.mFilledBezierPath_property_selection) {
       case .empty :
@@ -390,11 +390,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String?> {
+  final var versionString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.versionString_property_selection) {
       case .empty :
@@ -459,11 +459,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  private var mObserversOf_instanceCount = EBWeakEventSet ()
+  private final var mObserversOf_instanceCount = EBWeakEventSet ()
 
   //····················································································································
 
-  var instanceCount_property_selection : EBSelection <Int?> {
+  final var instanceCount_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.instanceCount_property_selection) {
       case .empty :
@@ -528,11 +528,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'documentSizeString' transient property
   //····················································································································
 
-  private var mObserversOf_documentSizeString = EBWeakEventSet ()
+  private final var mObserversOf_documentSizeString = EBWeakEventSet ()
 
   //····················································································································
 
-  var documentSizeString_property_selection : EBSelection <String?> {
+  final var documentSizeString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.documentSizeString_property_selection) {
       case .empty :
@@ -597,11 +597,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'pinNameShape' transient property
   //····················································································································
 
-  private var mObserversOf_pinNameShape = EBWeakEventSet ()
+  private final var mObserversOf_pinNameShape = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinNameShape_property_selection : EBSelection <EBShape?> {
+  final var pinNameShape_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.pinNameShape_property_selection) {
       case .empty :
@@ -666,11 +666,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observable toMany property: mInstances
   //····················································································································
 
-  private var mObserversOf_mInstances = EBWeakEventSet ()
+  private final var mObserversOf_mInstances = EBWeakEventSet ()
 
   //····················································································································
 
-  var mInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
+  final var mInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
     if let model = self.propval {
       switch (model.mInstances_property_selection) {
       case .empty :
@@ -707,11 +707,11 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observable toMany property: mPinTypes
   //····················································································································
 
-  private var mObserversOf_mPinTypes = EBWeakEventSet ()
+  private final var mObserversOf_mPinTypes = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinTypes_property_selection : EBSelection <[SymbolPinTypeInDevice]> {
+  final var mPinTypes_property_selection : EBSelection <[SymbolPinTypeInDevice]> {
     if let model = self.propval {
       switch (model.mPinTypes_property_selection) {
       case .empty :
@@ -932,7 +932,7 @@ final class StoredObject_SymbolTypeInDevice : ReadWriteObject_SymbolTypeInDevice
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

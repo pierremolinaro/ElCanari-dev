@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'mInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'symbolQualifiedName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolQualifiedName = EBWeakEventSet ()
+  private final var mObserversOf_symbolQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_symbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
-  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+  private final var mObserversOf_unconnectedPins = EBWeakEventSet ()
 
   //····················································································································
 
@@ -433,7 +433,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -806,7 +806,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -814,32 +814,32 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolInstanceInDevice) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -882,7 +882,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolInstanceInDevice>, addedSet inAddedSet : Set <SymbolInstanceInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolInstanceInDevice>, addedSet inAddedSet : Set <SymbolInstanceInDevice>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -902,7 +902,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -910,11 +910,11 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
 
   //····················································································································
 
-  override var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
+  override final var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolInstanceInDevice) {
+  final func remove (_ object : SymbolInstanceInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -922,7 +922,7 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   
   //····················································································································
 
-  func add (_ object : SymbolInstanceInDevice) {
+  final func add (_ object : SymbolInstanceInDevice) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -932,11 +932,11 @@ class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDe
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

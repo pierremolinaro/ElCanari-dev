@@ -38,11 +38,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstX = EBWeakEventSet ()
+  private final var mObserversOf_mFirstX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFirstX_property_selection : EBSelection <Int?> {
+  final var mFirstX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mFirstX_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstY' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstY = EBWeakEventSet ()
+  private final var mObserversOf_mFirstY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFirstY_property_selection : EBSelection <Int?> {
+  final var mFirstY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mFirstY_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstColor = EBWeakEventSet ()
+  private final var mObserversOf_mFirstColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFirstColor_property_selection : EBSelection <NSColor?> {
+  final var mFirstColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.mFirstColor_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondDx' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondDx = EBWeakEventSet ()
+  private final var mObserversOf_mSecondDx = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSecondDx_property_selection : EBSelection <Int?> {
+  final var mSecondDx_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSecondDx_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondDy = EBWeakEventSet ()
+  private final var mObserversOf_mSecondDy = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSecondDy_property_selection : EBSelection <Int?> {
+  final var mSecondDy_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSecondDy_property_selection) {
       case .empty :
@@ -388,11 +388,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondColor' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondColor = EBWeakEventSet ()
+  private final var mObserversOf_mSecondColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSecondColor_property_selection : EBSelection <NSColor?> {
+  final var mSecondColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.mSecondColor_property_selection) {
       case .empty :
@@ -458,11 +458,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -527,11 +527,11 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -780,7 +780,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -110,7 +110,7 @@ protocol PackageDimension_issues : AnyObject {
 //    Entity: PackageDimension
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageDimension : PackageObject,
+final class PackageDimension : PackageObject,
          PackageDimension_y1,
          PackageDimension_x2,
          PackageDimension_y2,

@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -815,32 +815,32 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolSolidRect) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolSolidRect) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolSolidRect) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolSolidRect) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -883,7 +883,7 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolSolidRect>, addedSet inAddedSet : Set <SymbolSolidRect>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolSolidRect>, addedSet inAddedSet : Set <SymbolSolidRect>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -903,7 +903,7 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolSolidRect] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolSolidRect] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -911,11 +911,11 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
 
   //····················································································································
 
-  override var propval : [SymbolSolidRect] { return self.mInternalArrayValue }
+  override final var propval : [SymbolSolidRect] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolSolidRect) {
+  final func remove (_ object : SymbolSolidRect) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -923,7 +923,7 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
   
   //····················································································································
 
-  func add (_ object : SymbolSolidRect) {
+  final func add (_ object : SymbolSolidRect) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -933,11 +933,11 @@ class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignat
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

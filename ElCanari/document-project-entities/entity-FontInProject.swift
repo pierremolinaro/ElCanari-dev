@@ -56,7 +56,7 @@ protocol FontInProject_canRemoveFont : AnyObject {
 //    Entity: FontInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class FontInProject : EBManagedObject,
+final class FontInProject : EBManagedObject,
          FontInProject_mNominalSize,
          FontInProject_mFontName,
          FontInProject_mFontVersion,

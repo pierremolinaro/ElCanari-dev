@@ -32,11 +32,11 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-  private var mObserversOf_mPath = EBWeakEventSet ()
+  private final var mObserversOf_mPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPath_property_selection : EBSelection <String?> {
+  final var mPath_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPath_property_selection) {
       case .empty :
@@ -102,11 +102,11 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mUses' stored property
   //····················································································································
 
-  private var mObserversOf_mUses = EBWeakEventSet ()
+  private final var mObserversOf_mUses = EBWeakEventSet ()
 
   //····················································································································
 
-  var mUses_property_selection : EBSelection <Bool?> {
+  final var mUses_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mUses_property_selection) {
       case .empty :
@@ -172,11 +172,11 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-  private var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
+  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLibraryRepositoryURL_property_selection : EBSelection <String?> {
+  final var mLibraryRepositoryURL_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mLibraryRepositoryURL_property_selection) {
       case .empty :
@@ -242,11 +242,11 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-  private var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
+  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
 
   //····················································································································
 
-  var mUserAndPasswordTag_property_selection : EBSelection <String?> {
+  final var mUserAndPasswordTag_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mUserAndPasswordTag_property_selection) {
       case .empty :
@@ -312,11 +312,11 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_mStatusImage = EBWeakEventSet ()
+  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage?> {
+  final var mStatusImage_property_selection : EBSelection <NSImage?> {
     if let model = self.propval {
       switch (model.mStatusImage_property_selection) {
       case .empty :
@@ -565,7 +565,7 @@ final class StoredObject_CanariLibraryEntry : ReadWriteObject_CanariLibraryEntry
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

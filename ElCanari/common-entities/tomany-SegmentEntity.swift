@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -634,7 +634,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -642,32 +642,32 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SegmentEntity) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SegmentEntity) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SegmentEntity) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SegmentEntity) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -710,7 +710,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SegmentEntity>, addedSet inAddedSet : Set <SegmentEntity>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SegmentEntity>, addedSet inAddedSet : Set <SegmentEntity>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -730,7 +730,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [SegmentEntity] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SegmentEntity] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -738,11 +738,11 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 
   //····················································································································
 
-  override var propval : [SegmentEntity] { return self.mInternalArrayValue }
+  override final var propval : [SegmentEntity] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SegmentEntity) {
+  final func remove (_ object : SegmentEntity) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -750,7 +750,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : SegmentEntity) {
+  final func add (_ object : SegmentEntity) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -760,11 +760,11 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

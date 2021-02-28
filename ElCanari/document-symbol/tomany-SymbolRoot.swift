@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_gridStyle = EBWeakEventSet ()
+  private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -331,7 +331,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'gridDisplay' stored property
   //····················································································································
 
-  private var mObserversOf_gridDisplay = EBWeakEventSet ()
+  private final var mObserversOf_gridDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -616,7 +616,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   //   Observers of 'noIssue' transient property
   //····················································································································
 
-  private var mObserversOf_noIssue = EBWeakEventSet ()
+  private final var mObserversOf_noIssue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1045,7 +1045,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1053,32 +1053,32 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolRoot) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolRoot) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolRoot) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolRoot) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1121,7 +1121,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolRoot>, addedSet inAddedSet : Set <SymbolRoot>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolRoot>, addedSet inAddedSet : Set <SymbolRoot>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1141,7 +1141,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1149,11 +1149,11 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [SymbolRoot] { return self.mInternalArrayValue }
+  override final var propval : [SymbolRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolRoot) {
+  final func remove (_ object : SymbolRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1161,7 +1161,7 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : SymbolRoot) {
+  final func add (_ object : SymbolRoot) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1171,11 +1171,11 @@ class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

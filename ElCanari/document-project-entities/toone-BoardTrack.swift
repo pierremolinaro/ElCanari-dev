@@ -88,11 +88,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private var mObserversOf_mSide = EBWeakEventSet ()
+  private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSide_property_selection : EBSelection <TrackSide?> {
+  final var mSide_property_selection : EBSelection <TrackSide?> {
     if let model = self.propval {
       switch (model.mSide_property_selection) {
       case .empty :
@@ -158,11 +158,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int?> {
+  final var mDefaultTrackWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mDefaultTrackWidthUnit_property_selection) {
       case .empty :
@@ -228,11 +228,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomTrackWidth_property_selection : EBSelection <Int?> {
+  final var mCustomTrackWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomTrackWidth_property_selection) {
       case .empty :
@@ -298,11 +298,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomTrackWidthUnit_property_selection : EBSelection <Int?> {
+  final var mCustomTrackWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomTrackWidthUnit_property_selection) {
       case .empty :
@@ -368,11 +368,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mUsesCustomTrackWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool?> {
+  final var mUsesCustomTrackWidth_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mUsesCustomTrackWidth_property_selection) {
       case .empty :
@@ -438,11 +438,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
 
-  private var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
+  private final var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool?> {
+  final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mIsPreservedByAutoRouter_property_selection) {
       case .empty :
@@ -508,11 +508,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP1XUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP1XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1XUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mP1XUnit_property_selection : EBSelection <Int?> {
+  final var mP1XUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mP1XUnit_property_selection) {
       case .empty :
@@ -578,11 +578,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP1YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1YUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mP1YUnit_property_selection : EBSelection <Int?> {
+  final var mP1YUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mP1YUnit_property_selection) {
       case .empty :
@@ -648,11 +648,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP2XUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP2XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2XUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mP2XUnit_property_selection : EBSelection <Int?> {
+  final var mP2XUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mP2XUnit_property_selection) {
       case .empty :
@@ -718,11 +718,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP2YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2YUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mP2YUnit_property_selection : EBSelection <Int?> {
+  final var mP2YUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mP2YUnit_property_selection) {
       case .empty :
@@ -788,11 +788,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mManualLockP1' stored property
   //····················································································································
 
-  private var mObserversOf_mManualLockP1 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mManualLockP1_property_selection : EBSelection <Bool?> {
+  final var mManualLockP1_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mManualLockP1_property_selection) {
       case .empty :
@@ -858,11 +858,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
-  private var mObserversOf_mManualLockP2 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mManualLockP2_property_selection : EBSelection <Bool?> {
+  final var mManualLockP2_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mManualLockP2_property_selection) {
       case .empty :
@@ -928,11 +928,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
 
-  private var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
+  private final var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection?> {
+  final var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection?> {
     if let model = self.propval {
       switch (model.mDirectionLockOnKnobDragging_property_selection) {
       case .empty :
@@ -998,11 +998,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'actualTrackWidth' transient property
   //····················································································································
 
-  private var mObserversOf_actualTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_actualTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var actualTrackWidth_property_selection : EBSelection <Int?> {
+  final var actualTrackWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.actualTrackWidth_property_selection) {
       case .empty :
@@ -1067,11 +1067,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String?> {
+  final var netName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netName_property_selection) {
       case .empty :
@@ -1136,11 +1136,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String?> {
+  final var netClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
@@ -1205,11 +1205,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassTrackWidth_property_selection : EBSelection <Int?> {
+  final var netClassTrackWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassTrackWidth_property_selection) {
       case .empty :
@@ -1274,11 +1274,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
+  final var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassViaHoleDiameter_property_selection) {
       case .empty :
@@ -1343,11 +1343,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
+  final var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassViaPadDiameter_property_selection) {
       case .empty :
@@ -1412,11 +1412,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackLengthInCanariUnit_property_selection : EBSelection <Double?> {
+  final var trackLengthInCanariUnit_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.trackLengthInCanariUnit_property_selection) {
       case .empty :
@@ -1481,11 +1481,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -1550,11 +1550,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'p1ConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_p1ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p1ConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
-  var p1ConnectedToSomePad_property_selection : EBSelection <Bool?> {
+  final var p1ConnectedToSomePad_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.p1ConnectedToSomePad_property_selection) {
       case .empty :
@@ -1619,11 +1619,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'p2ConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_p2ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p2ConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
-  var p2ConnectedToSomePad_property_selection : EBSelection <Bool?> {
+  final var p2ConnectedToSomePad_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.p2ConnectedToSomePad_property_selection) {
       case .empty :
@@ -1688,11 +1688,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -1757,11 +1757,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'p1CanMove' transient property
   //····················································································································
 
-  private var mObserversOf_p1CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p1CanMove = EBWeakEventSet ()
 
   //····················································································································
 
-  var p1CanMove_property_selection : EBSelection <Bool?> {
+  final var p1CanMove_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.p1CanMove_property_selection) {
       case .empty :
@@ -1826,11 +1826,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'p2CanMove' transient property
   //····················································································································
 
-  private var mObserversOf_p2CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p2CanMove = EBWeakEventSet ()
 
   //····················································································································
 
-  var p2CanMove_property_selection : EBSelection <Bool?> {
+  final var p2CanMove_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.p2CanMove_property_selection) {
       case .empty :
@@ -1895,11 +1895,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'trackCanRotate' transient property
   //····················································································································
 
-  private var mObserversOf_trackCanRotate = EBWeakEventSet ()
+  private final var mObserversOf_trackCanRotate = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackCanRotate_property_selection : EBSelection <Bool?> {
+  final var trackCanRotate_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.trackCanRotate_property_selection) {
       case .empty :
@@ -1964,11 +1964,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -2033,11 +2033,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'trackDirectionInDegrees' computed property
   //····················································································································
 
-  private var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
+  private final var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackDirectionInDegrees_property_selection : EBSelection <Int?> {
+  final var trackDirectionInDegrees_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.trackDirectionInDegrees_property_selection) {
       case .empty :
@@ -2102,11 +2102,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'computedP1X' computed property
   //····················································································································
 
-  private var mObserversOf_computedP1X = EBWeakEventSet ()
+  private final var mObserversOf_computedP1X = EBWeakEventSet ()
 
   //····················································································································
 
-  var computedP1X_property_selection : EBSelection <Int?> {
+  final var computedP1X_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.computedP1X_property_selection) {
       case .empty :
@@ -2171,11 +2171,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'computedP1Y' computed property
   //····················································································································
 
-  private var mObserversOf_computedP1Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP1Y = EBWeakEventSet ()
 
   //····················································································································
 
-  var computedP1Y_property_selection : EBSelection <Int?> {
+  final var computedP1Y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.computedP1Y_property_selection) {
       case .empty :
@@ -2240,11 +2240,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'computedP2X' computed property
   //····················································································································
 
-  private var mObserversOf_computedP2X = EBWeakEventSet ()
+  private final var mObserversOf_computedP2X = EBWeakEventSet ()
 
   //····················································································································
 
-  var computedP2X_property_selection : EBSelection <Int?> {
+  final var computedP2X_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.computedP2X_property_selection) {
       case .empty :
@@ -2309,11 +2309,11 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'computedP2Y' computed property
   //····················································································································
 
-  private var mObserversOf_computedP2Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP2Y = EBWeakEventSet ()
 
   //····················································································································
 
-  var computedP2Y_property_selection : EBSelection <Int?> {
+  final var computedP2Y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.computedP2Y_property_selection) {
       case .empty :
@@ -2562,7 +2562,7 @@ final class StoredObject_BoardTrack : ReadWriteObject_BoardTrack, EBSignatureObs
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

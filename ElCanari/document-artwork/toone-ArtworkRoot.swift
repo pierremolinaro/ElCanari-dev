@@ -46,11 +46,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-  private var mObserversOf_selectedTab = EBWeakEventSet ()
+  private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int?> {
+  final var selectedTab_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedTab_property_selection) {
       case .empty :
@@ -116,11 +116,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String?> {
+  final var comments_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.comments_property_selection) {
       case .empty :
@@ -186,11 +186,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> {
+  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minPPTPTTTWdisplayUnit_property_selection) {
       case .empty :
@@ -256,11 +256,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
-  var minPPTPTTTW_property_selection : EBSelection <Int?> {
+  final var minPPTPTTTW_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minPPTPTTTW_property_selection) {
       case .empty :
@@ -326,11 +326,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
+  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForOARdisplayUnit_property_selection) {
       case .empty :
@@ -396,11 +396,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
+  final var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForOARinEBUnit_property_selection) {
       case .empty :
@@ -466,11 +466,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
+  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForPHDdisplayUnit_property_selection) {
       case .empty :
@@ -536,11 +536,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
+  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForPHDinEBUnit_property_selection) {
       case .empty :
@@ -606,11 +606,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> {
+  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForBoardLimitWidthDisplayUnit_property_selection) {
       case .empty :
@@ -676,11 +676,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> {
+  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.minValueForBoardLimitWidth_property_selection) {
       case .empty :
@@ -746,11 +746,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
-  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
-  var drillDataFileExtension_property_selection : EBSelection <String?> {
+  final var drillDataFileExtension_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.drillDataFileExtension_property_selection) {
       case .empty :
@@ -816,11 +816,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -885,11 +885,11 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observable toMany property: fileGenerationParameterArray
   //····················································································································
 
-  private var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+  private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
+  final var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
     if let model = self.propval {
       switch (model.fileGenerationParameterArray_property_selection) {
       case .empty :
@@ -1110,7 +1110,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

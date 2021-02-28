@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mComponentPadName = EBWeakEventSet ()
+  private final var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mPadIndex = EBWeakEventSet ()
+  private final var mObserversOf_mPadIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -650,7 +650,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -707,7 +707,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -764,7 +764,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'isConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
@@ -820,7 +820,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_location = EBWeakEventSet ()
+  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
@@ -876,7 +876,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameFromComponentPad' transient property
   //····················································································································
 
-  private var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
+  private final var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
 
   //····················································································································
 
@@ -932,7 +932,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -988,7 +988,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'side' transient property
   //····················································································································
 
-  private var mObserversOf_side = EBWeakEventSet ()
+  private final var mObserversOf_side = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1044,7 +1044,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private var mObserversOf_isVia = EBWeakEventSet ()
+  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1100,7 +1100,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1156,7 +1156,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'viaDefaultHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1212,7 +1212,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'viaDefaultPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1268,7 +1268,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netNameFromTracks' transient property
   //····················································································································
 
-  private var mObserversOf_netNameFromTracks = EBWeakEventSet ()
+  private final var mObserversOf_netNameFromTracks = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1324,7 +1324,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1380,7 +1380,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'connectedToComponent' transient property
   //····················································································································
 
-  private var mObserversOf_connectedToComponent = EBWeakEventSet ()
+  private final var mObserversOf_connectedToComponent = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1436,7 +1436,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'actualHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1492,7 +1492,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'actualPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_actualPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_actualPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1548,7 +1548,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1604,7 +1604,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1660,7 +1660,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2033,7 +2033,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -2041,32 +2041,32 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardConnector) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardConnector) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardConnector) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardConnector) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardConnector) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardConnector) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardConnector) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardConnector) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -2109,7 +2109,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardConnector>, addedSet inAddedSet : Set <BoardConnector>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardConnector>, addedSet inAddedSet : Set <BoardConnector>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -2129,7 +2129,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardConnector] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardConnector] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -2137,11 +2137,11 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
 
   //····················································································································
 
-  override var propval : [BoardConnector] { return self.mInternalArrayValue }
+  override final var propval : [BoardConnector] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardConnector) {
+  final func remove (_ object : BoardConnector) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2149,7 +2149,7 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   
   //····················································································································
 
-  func add (_ object : BoardConnector) {
+  final func add (_ object : BoardConnector) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2159,11 +2159,11 @@ class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

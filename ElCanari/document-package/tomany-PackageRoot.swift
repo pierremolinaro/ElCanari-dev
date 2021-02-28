@@ -134,7 +134,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -191,7 +191,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
@@ -248,7 +248,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -305,7 +305,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'program' stored property
   //····················································································································
 
-  private var mObserversOf_program = EBWeakEventSet ()
+  private final var mObserversOf_program = EBWeakEventSet ()
 
   //····················································································································
 
@@ -362,7 +362,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -419,7 +419,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -476,7 +476,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_gridStyle = EBWeakEventSet ()
+  private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -533,7 +533,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'gridStep' stored property
   //····················································································································
 
-  private var mObserversOf_gridStep = EBWeakEventSet ()
+  private final var mObserversOf_gridStep = EBWeakEventSet ()
 
   //····················································································································
 
@@ -590,7 +590,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'gridStepUnit' stored property
   //····················································································································
 
-  private var mObserversOf_gridStepUnit = EBWeakEventSet ()
+  private final var mObserversOf_gridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -647,7 +647,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'gridDisplayFactor' stored property
   //····················································································································
 
-  private var mObserversOf_gridDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_gridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -704,7 +704,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -761,7 +761,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageOpacity' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageOpacity = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageOpacity = EBWeakEventSet ()
 
   //····················································································································
 
@@ -818,7 +818,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -875,7 +875,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -932,7 +932,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageGridStyle = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -989,7 +989,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStep' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageGridStep = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageGridStep = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1046,7 +1046,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStepUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageGridStepUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1103,7 +1103,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridDisplayFactor' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageGridDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1160,7 +1160,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageZoom = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageZoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1217,7 +1217,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageXPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageXPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageXPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1274,7 +1274,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePageYPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePageYPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePageYPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1331,7 +1331,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageSecondPointXUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageSecondPointXUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageSecondPointXUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1388,7 +1388,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePSecondointYUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePSecondointYUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePSecondointYUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1445,7 +1445,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointXOnLock' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageFirstPointXOnLock = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageFirstPointXOnLock = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1502,7 +1502,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointYOnLock' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageFirstPointYOnLock = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageFirstPointYOnLock = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1559,7 +1559,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePointsDxOnLock' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePointsDxOnLock = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePointsDxOnLock = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1616,7 +1616,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImagePointsDyOnLock' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImagePointsDyOnLock = EBWeakEventSet ()
+  private final var mObserversOf_mModelImagePointsDyOnLock = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1673,7 +1673,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageScale' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageScale = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageScale = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1730,7 +1730,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageRotationInRadians' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageRotationInRadians = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageRotationInRadians = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1787,7 +1787,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitFirstModelPointX' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitFirstModelPointX = EBWeakEventSet ()
+  private final var mObserversOf_mDimensionUnitFirstModelPointX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1844,7 +1844,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitFirstModelPointY' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitFirstModelPointY = EBWeakEventSet ()
+  private final var mObserversOf_mDimensionUnitFirstModelPointY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1901,7 +1901,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitSecondModelPointDx' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitSecondModelPointDx = EBWeakEventSet ()
+  private final var mObserversOf_mDimensionUnitSecondModelPointDx = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1958,7 +1958,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitSecondModelPointDy' stored property
   //····················································································································
 
-  private var mObserversOf_mDimensionUnitSecondModelPointDy = EBWeakEventSet ()
+  private final var mObserversOf_mDimensionUnitSecondModelPointDy = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2015,7 +2015,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelPointsCircleRadius' stored property
   //····················································································································
 
-  private var mObserversOf_mModelPointsCircleRadius = EBWeakEventSet ()
+  private final var mObserversOf_mModelPointsCircleRadius = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2072,7 +2072,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mPointsAreLocked' stored property
   //····················································································································
 
-  private var mObserversOf_mPointsAreLocked = EBWeakEventSet ()
+  private final var mObserversOf_mPointsAreLocked = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2129,7 +2129,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'knobSizeMultpliedByTen' stored property
   //····················································································································
 
-  private var mObserversOf_knobSizeMultpliedByTen = EBWeakEventSet ()
+  private final var mObserversOf_knobSizeMultpliedByTen = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2186,7 +2186,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'padNumbering' stored property
   //····················································································································
 
-  private var mObserversOf_padNumbering = EBWeakEventSet ()
+  private final var mObserversOf_padNumbering = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2243,7 +2243,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'counterClockNumberingStartAngle' stored property
   //····················································································································
 
-  private var mObserversOf_counterClockNumberingStartAngle = EBWeakEventSet ()
+  private final var mObserversOf_counterClockNumberingStartAngle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2300,7 +2300,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2357,7 +2357,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2414,7 +2414,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageData' stored property
   //····················································································································
 
-  private var mObserversOf_mModelImageData = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageData = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2471,7 +2471,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointX' proxy property
   //····················································································································
 
-  private var mObserversOf_mModelImageFirstPointX = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageFirstPointX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2528,7 +2528,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointY' proxy property
   //····················································································································
 
-  private var mObserversOf_mModelImageFirstPointY = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageFirstPointY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2585,7 +2585,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageSecondPointDx' proxy property
   //····················································································································
 
-  private var mObserversOf_mModelImageSecondPointDx = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageSecondPointDx = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2642,7 +2642,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'mModelImageSecondPointDy' proxy property
   //····················································································································
 
-  private var mObserversOf_mModelImageSecondPointDy = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageSecondPointDy = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2699,7 +2699,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'freePadNumbering' transient property
   //····················································································································
 
-  private var mObserversOf_freePadNumbering = EBWeakEventSet ()
+  private final var mObserversOf_freePadNumbering = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2755,7 +2755,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'counterClockNumbering' transient property
   //····················································································································
 
-  private var mObserversOf_counterClockNumbering = EBWeakEventSet ()
+  private final var mObserversOf_counterClockNumbering = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2811,7 +2811,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'gridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  private var mObserversOf_gridStepMultipliedByDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_gridStepMultipliedByDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2867,7 +2867,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'secondPointX' transient property
   //····················································································································
 
-  private var mObserversOf_secondPointX = EBWeakEventSet ()
+  private final var mObserversOf_secondPointX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2923,7 +2923,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'secondPointY' transient property
   //····················································································································
 
-  private var mObserversOf_secondPointY = EBWeakEventSet ()
+  private final var mObserversOf_secondPointY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2979,7 +2979,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'lockImageView' transient property
   //····················································································································
 
-  private var mObserversOf_lockImageView = EBWeakEventSet ()
+  private final var mObserversOf_lockImageView = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3035,7 +3035,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3091,7 +3091,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'backgroundImagePageBackgroundDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_backgroundImagePageBackgroundDisplay = EBWeakEventSet ()
+  private final var mObserversOf_backgroundImagePageBackgroundDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3147,7 +3147,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'modelImageSizeString' transient property
   //····················································································································
 
-  private var mObserversOf_modelImageSizeString = EBWeakEventSet ()
+  private final var mObserversOf_modelImageSizeString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3203,7 +3203,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'hasModelImage' transient property
   //····················································································································
 
-  private var mObserversOf_hasModelImage = EBWeakEventSet ()
+  private final var mObserversOf_hasModelImage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3259,7 +3259,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'masterPadObjectIndexArray' transient property
   //····················································································································
 
-  private var mObserversOf_masterPadObjectIndexArray = EBWeakEventSet ()
+  private final var mObserversOf_masterPadObjectIndexArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3315,7 +3315,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3371,7 +3371,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'noIssue' transient property
   //····················································································································
 
-  private var mObserversOf_noIssue = EBWeakEventSet ()
+  private final var mObserversOf_noIssue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3427,7 +3427,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'segmentedControlSegmentIssueImage' transient property
   //····················································································································
 
-  private var mObserversOf_segmentedControlSegmentIssueImage = EBWeakEventSet ()
+  private final var mObserversOf_segmentedControlSegmentIssueImage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3483,7 +3483,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   //   Observers of 'segmentedControlSegmentIssueString' transient property
   //····················································································································
 
-  private var mObserversOf_segmentedControlSegmentIssueString = EBWeakEventSet ()
+  private final var mObserversOf_segmentedControlSegmentIssueString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3856,7 +3856,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -3864,32 +3864,32 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageRoot) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageRoot) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageRoot) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageRoot) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageRoot) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -3932,7 +3932,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageRoot>, addedSet inAddedSet : Set <PackageRoot>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageRoot>, addedSet inAddedSet : Set <PackageRoot>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -3952,7 +3952,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -3960,11 +3960,11 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
 
   //····················································································································
 
-  override var propval : [PackageRoot] { return self.mInternalArrayValue }
+  override final var propval : [PackageRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageRoot) {
+  final func remove (_ object : PackageRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -3972,7 +3972,7 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
   
   //····················································································································
 
-  func add (_ object : PackageRoot) {
+  final func add (_ object : PackageRoot) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -3982,11 +3982,11 @@ class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObser
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

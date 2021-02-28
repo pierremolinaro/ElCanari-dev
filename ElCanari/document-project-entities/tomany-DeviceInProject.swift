@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-  private var mObserversOf_mDeviceName = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  private var mObserversOf_mPrefix = EBWeakEventSet ()
+  private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
   //····················································································································
 
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mDeviceVersion = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceVersion = EBWeakEventSet ()
 
   //····················································································································
 
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
 
-  private var mObserversOf_mDeviceFileData = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceFileData = EBWeakEventSet ()
 
   //····················································································································
 
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -332,7 +332,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private var mObserversOf_sizeString = EBWeakEventSet ()
+  private final var mObserversOf_sizeString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'canExport' transient property
   //····················································································································
 
-  private var mObserversOf_canExport = EBWeakEventSet ()
+  private final var mObserversOf_canExport = EBWeakEventSet ()
 
   //····················································································································
 
@@ -444,7 +444,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'packageNames' transient property
   //····················································································································
 
-  private var mObserversOf_packageNames = EBWeakEventSet ()
+  private final var mObserversOf_packageNames = EBWeakEventSet ()
 
   //····················································································································
 
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'deviceComponentCountString' transient property
   //····················································································································
 
-  private var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
+  private final var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -556,7 +556,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  private var mObserversOf_canRemove = EBWeakEventSet ()
+  private final var mObserversOf_canRemove = EBWeakEventSet ()
 
   //····················································································································
 
@@ -612,7 +612,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  private var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
+  private final var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
 
   //····················································································································
 
@@ -668,7 +668,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -724,7 +724,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1097,7 +1097,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1105,32 +1105,32 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DeviceInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DeviceInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1173,7 +1173,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceInProject>, addedSet inAddedSet : Set <DeviceInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DeviceInProject>, addedSet inAddedSet : Set <DeviceInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1193,7 +1193,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
  
   //····················································································································
 
-  override var selection : EBSelection < [DeviceInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DeviceInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1201,11 +1201,11 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
 
   //····················································································································
 
-  override var propval : [DeviceInProject] { return self.mInternalArrayValue }
+  override final var propval : [DeviceInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DeviceInProject) {
+  final func remove (_ object : DeviceInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1213,7 +1213,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   
   //····················································································································
 
-  func add (_ object : DeviceInProject) {
+  final func add (_ object : DeviceInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1223,11 +1223,11 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -26,7 +26,7 @@ protocol NCInSchematic_selectionDisplay : AnyObject {
 //    Entity: NCInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class NCInSchematic : SchematicObject,
+final class NCInSchematic : SchematicObject,
          NCInSchematic_mOrientation,
          NCInSchematic_objectDisplay,
          NCInSchematic_selectionDisplay {

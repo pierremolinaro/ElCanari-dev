@@ -46,11 +46,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String?> {
+  final var comments_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.comments_property_selection) {
       case .empty :
@@ -116,11 +116,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'nominalSize' stored property
   //····················································································································
 
-  private var mObserversOf_nominalSize = EBWeakEventSet ()
+  private final var mObserversOf_nominalSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var nominalSize_property_selection : EBSelection <Int?> {
+  final var nominalSize_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.nominalSize_property_selection) {
       case .empty :
@@ -186,11 +186,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-  private var mObserversOf_selectedTab = EBWeakEventSet ()
+  private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedTab_property_selection : EBSelection <Int?> {
+  final var selectedTab_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedTab_property_selection) {
       case .empty :
@@ -256,11 +256,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int?> {
+  final var selectedInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedInspector_property_selection) {
       case .empty :
@@ -326,11 +326,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
 
-  private var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
+  private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 
   //····················································································································
 
-  var currentCharacterCodePoint_property_selection : EBSelection <Int?> {
+  final var currentCharacterCodePoint_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.currentCharacterCodePoint_property_selection) {
       case .empty :
@@ -396,11 +396,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'currentCharacterCodePointString' transient property
   //····················································································································
 
-  private var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
+  private final var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
 
   //····················································································································
 
-  var currentCharacterCodePointString_property_selection : EBSelection <String?> {
+  final var currentCharacterCodePointString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.currentCharacterCodePointString_property_selection) {
       case .empty :
@@ -465,11 +465,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'sampleStringBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_sampleStringBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_sampleStringBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.sampleStringBezierPath_property_selection) {
       case .empty :
@@ -534,11 +534,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'sampleStringBezierPathWidth' transient property
   //····················································································································
 
-  private var mObserversOf_sampleStringBezierPathWidth = EBWeakEventSet ()
+  private final var mObserversOf_sampleStringBezierPathWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var sampleStringBezierPathWidth_property_selection : EBSelection <String?> {
+  final var sampleStringBezierPathWidth_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.sampleStringBezierPathWidth_property_selection) {
       case .empty :
@@ -603,11 +603,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'sampleStringBezierPathAscent' transient property
   //····················································································································
 
-  private var mObserversOf_sampleStringBezierPathAscent = EBWeakEventSet ()
+  private final var mObserversOf_sampleStringBezierPathAscent = EBWeakEventSet ()
 
   //····················································································································
 
-  var sampleStringBezierPathAscent_property_selection : EBSelection <String?> {
+  final var sampleStringBezierPathAscent_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.sampleStringBezierPathAscent_property_selection) {
       case .empty :
@@ -672,11 +672,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'sampleStringBezierPathDescent' transient property
   //····················································································································
 
-  private var mObserversOf_sampleStringBezierPathDescent = EBWeakEventSet ()
+  private final var mObserversOf_sampleStringBezierPathDescent = EBWeakEventSet ()
 
   //····················································································································
 
-  var sampleStringBezierPathDescent_property_selection : EBSelection <String?> {
+  final var sampleStringBezierPathDescent_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.sampleStringBezierPathDescent_property_selection) {
       case .empty :
@@ -741,11 +741,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'definedCharacters' transient property
   //····················································································································
 
-  private var mObserversOf_definedCharacters = EBWeakEventSet ()
+  private final var mObserversOf_definedCharacters = EBWeakEventSet ()
 
   //····················································································································
 
-  var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice?> {
+  final var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice?> {
     if let model = self.propval {
       switch (model.definedCharacters_property_selection) {
       case .empty :
@@ -810,11 +810,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -879,11 +879,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observable toMany property: characters
   //····················································································································
 
-  private var mObserversOf_characters = EBWeakEventSet ()
+  private final var mObserversOf_characters = EBWeakEventSet ()
 
   //····················································································································
 
-  var characters_property_selection : EBSelection <[FontCharacter]> {
+  final var characters_property_selection : EBSelection <[FontCharacter]> {
     if let model = self.propval {
       switch (model.characters_property_selection) {
       case .empty :
@@ -1104,7 +1104,7 @@ final class StoredObject_FontRoot : ReadWriteObject_FontRoot, EBSignatureObserve
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

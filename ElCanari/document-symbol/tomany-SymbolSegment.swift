@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegme
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -815,32 +815,32 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolSegment) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolSegment) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolSegment) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolSegment) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -883,7 +883,7 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolSegment>, addedSet inAddedSet : Set <SymbolSegment>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolSegment>, addedSet inAddedSet : Set <SymbolSegment>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -903,7 +903,7 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolSegment] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolSegment] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -911,11 +911,11 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
 
   //····················································································································
 
-  override var propval : [SymbolSegment] { return self.mInternalArrayValue }
+  override final var propval : [SymbolSegment] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolSegment) {
+  final func remove (_ object : SymbolSegment) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -923,7 +923,7 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : SymbolSegment) {
+  final func add (_ object : SymbolSegment) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -933,11 +933,11 @@ class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

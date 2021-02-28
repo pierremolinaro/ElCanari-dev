@@ -28,7 +28,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-  private var mObserversOf_mFileName = EBWeakEventSet ()
+  private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private var mObserversOf_fileSize = EBWeakEventSet ()
+  private final var mObserversOf_fileSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -515,7 +515,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -523,32 +523,32 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceDocumentation) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DeviceDocumentation) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceDocumentation) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DeviceDocumentation) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -591,7 +591,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceDocumentation>, addedSet inAddedSet : Set <DeviceDocumentation>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DeviceDocumentation>, addedSet inAddedSet : Set <DeviceDocumentation>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -611,7 +611,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
  
   //····················································································································
 
-  override var selection : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DeviceDocumentation] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -619,11 +619,11 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
 
   //····················································································································
 
-  override var propval : [DeviceDocumentation] { return self.mInternalArrayValue }
+  override final var propval : [DeviceDocumentation] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DeviceDocumentation) {
+  final func remove (_ object : DeviceDocumentation) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -631,7 +631,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   
   //····················································································································
 
-  func add (_ object : DeviceDocumentation) {
+  final func add (_ object : DeviceDocumentation) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -641,11 +641,11 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

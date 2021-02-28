@@ -764,7 +764,7 @@ protocol ProjectRoot_schematicStatusImage : AnyObject {
 //    Entity: ProjectRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class ProjectRoot : EBManagedObject,
+final class ProjectRoot : EBManagedObject,
          ProjectRoot_mArtworkName,
          ProjectRoot_mArtworkVersion,
          ProjectRoot_mPDFBoardBackgroundColor,

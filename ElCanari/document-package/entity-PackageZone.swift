@@ -134,7 +134,7 @@ protocol PackageZone_emptyForbiddenPadArray : AnyObject {
 //    Entity: PackageZone
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageZone : PackageObject,
+final class PackageZone : PackageObject,
          PackageZone_x,
          PackageZone_y,
          PackageZone_width,

@@ -11,7 +11,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedDeviceDocument) class CustomizedDeviceDocument : DeviceDocument {
+@objc(CustomizedDeviceDocument) final class CustomizedDeviceDocument : DeviceDocument {
 
   //····················································································································
 

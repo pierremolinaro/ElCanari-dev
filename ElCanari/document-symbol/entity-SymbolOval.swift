@@ -56,7 +56,7 @@ protocol SymbolOval_issues : AnyObject {
 //    Entity: SymbolOval
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolOval : SymbolObject,
+final class SymbolOval : SymbolObject,
          SymbolOval_y,
          SymbolOval_width,
          SymbolOval_height,

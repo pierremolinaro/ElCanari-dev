@@ -15,7 +15,7 @@ let PMFontComment = "PMFontComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedFontDocument) class CustomizedFontDocument : FontDocument {
+@objc(CustomizedFontDocument) final class CustomizedFontDocument : FontDocument {
 
   //····················································································································
   //    init

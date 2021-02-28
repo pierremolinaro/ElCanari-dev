@@ -34,7 +34,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -90,7 +90,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -258,7 +258,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -314,7 +314,7 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
   //   Observers of 'isPlacedInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
@@ -687,7 +687,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -695,32 +695,32 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SchematicObject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SchematicObject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SchematicObject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SchematicObject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SchematicObject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SchematicObject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SchematicObject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SchematicObject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -763,7 +763,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SchematicObject>, addedSet inAddedSet : Set <SchematicObject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SchematicObject>, addedSet inAddedSet : Set <SchematicObject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -783,7 +783,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
  
   //····················································································································
 
-  override var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SchematicObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -791,11 +791,11 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
 
   //····················································································································
 
-  override var propval : [SchematicObject] { return self.mInternalArrayValue }
+  override final var propval : [SchematicObject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SchematicObject) {
+  final func remove (_ object : SchematicObject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -803,7 +803,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   
   //····················································································································
 
-  func add (_ object : SchematicObject) {
+  final func add (_ object : SchematicObject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -813,11 +813,11 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

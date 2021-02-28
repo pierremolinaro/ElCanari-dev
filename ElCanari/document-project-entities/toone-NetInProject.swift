@@ -38,11 +38,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-  private var mObserversOf_mNetName = EBWeakEventSet ()
+  private final var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNetName_property_selection : EBSelection <String?> {
+  final var mNetName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mNetName_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String?> {
+  final var netClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
@@ -177,11 +177,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassTrackWidth_property_selection : EBSelection <Int?> {
+  final var netClassTrackWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassTrackWidth_property_selection) {
       case .empty :
@@ -246,11 +246,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
+  final var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassViaHoleDiameter_property_selection) {
       case .empty :
@@ -315,11 +315,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
+  final var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netClassViaPadDiameter_property_selection) {
       case .empty :
@@ -384,11 +384,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private var mObserversOf_wireColor = EBWeakEventSet ()
+  private final var mObserversOf_wireColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var wireColor_property_selection : EBSelection <NSColor?> {
+  final var wireColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.wireColor_property_selection) {
       case .empty :
@@ -453,11 +453,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  private var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
+  private final var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
 
   //····················································································································
 
-  var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray?> {
+  final var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray?> {
     if let model = self.propval {
       switch (model.netSchematicPointsInfo_property_selection) {
       case .empty :
@@ -522,11 +522,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'trackCount' transient property
   //····················································································································
 
-  private var mObserversOf_trackCount = EBWeakEventSet ()
+  private final var mObserversOf_trackCount = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackCount_property_selection : EBSelection <Int?> {
+  final var trackCount_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.trackCount_property_selection) {
       case .empty :
@@ -591,11 +591,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private var mObserversOf_mPoints = EBWeakEventSet ()
+  private final var mObserversOf_mPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection <[PointInSchematic]> {
+  final var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
       switch (model.mPoints_property_selection) {
       case .empty :
@@ -632,11 +632,11 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observable toMany property: mTracks
   //····················································································································
 
-  private var mObserversOf_mTracks = EBWeakEventSet ()
+  private final var mObserversOf_mTracks = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTracks_property_selection : EBSelection <[BoardTrack]> {
+  final var mTracks_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
       switch (model.mTracks_property_selection) {
       case .empty :
@@ -857,7 +857,7 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

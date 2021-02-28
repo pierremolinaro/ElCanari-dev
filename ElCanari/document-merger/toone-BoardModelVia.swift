@@ -28,11 +28,11 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -98,11 +98,11 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_padDiameter = EBWeakEventSet ()
+  private final var mObserversOf_padDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var padDiameter_property_selection : EBSelection <Int?> {
+  final var padDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.padDiameter_property_selection) {
       case .empty :
@@ -168,11 +168,11 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -422,7 +422,7 @@ final class StoredObject_BoardModelVia : ReadWriteObject_BoardModelVia, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

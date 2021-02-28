@@ -377,158 +377,158 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  weak var mPackageGraphicView : AutoLayoutGraphicView? = nil
-  weak var mPackageIssueTableView : AutoLayoutCanariIssueTableView? = nil
-  weak var mProgramErrorTextField : AutoLayoutLabel? = nil
-  weak var mProgramTextView : AutoLayoutTextView? = nil
+  weak final var mPackageGraphicView : AutoLayoutGraphicView? = nil
+  weak final var mPackageIssueTableView : AutoLayoutCanariIssueTableView? = nil
+  weak final var mProgramErrorTextField : AutoLayoutLabel? = nil
+  weak final var mProgramTextView : AutoLayoutTextView? = nil
 
   //····················································································································
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet var mAddZoneForbiddenPadNumberDialog : NSPanel? = nil
-  @IBOutlet var mAddZoneForbiddenPadNumberErrorTextField : NSTextField? = nil
-  @IBOutlet var mAddZoneForbiddenPadNumberOkButton : EBButton? = nil
-  @IBOutlet var mAddZoneForbiddenPadNumberTitle : NSTextField? = nil
-  @IBOutlet var mAddZoneForbiddenPadNumberValueTextField : NSTextField? = nil
-  @IBOutlet var mArcAngle : CanariAngleTextField? = nil
-  @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArcInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mArcPathIsClosedSwitch : EBSwitch? = nil
-  @IBOutlet var mArcRadiusTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArcRadiusUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArcStartAngleSlider : CanariAngleSlider? = nil
-  @IBOutlet var mArcStartAngleTextField : CanariAngleTextField? = nil
-  @IBOutlet var mArcStartTangentTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArcStartTangentUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArcXCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArcXCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArcYCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArcYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveCPX1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveCPX1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveCPX2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveCPX2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveCPY1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveCPY1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveCPY2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveCPY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveX1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveX1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveX2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveX2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveY1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveY1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBezierInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mDimensionX1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionX1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionX2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionX2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionXLabelTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionXLabelUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionY1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionY1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionY2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDimensionYLabelTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mDisplayZoneNameSwitch : EBSwitch? = nil
-  @IBOutlet var mGuideInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mGuideX1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mGuideX1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mGuideX2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mGuideX2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mGuideY1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mGuideY1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mGuideY2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOvalHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOvalInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mOvalWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mOvalWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOvalXTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mOvalXUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOvalYTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mOvalYUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPackagePadShapePopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mPackagePadStylePopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mPackageSlavePadShapePopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mPackageSlavePadStylePopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mPadAnnularRingTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mPadAnnularRingUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadHoleHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadHoleHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadHoleWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mPadNumberTextField : EBIntObserverField? = nil
-  @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil
-  @IBOutlet var mPadSlaveCountTextField : EBIntObserverField? = nil
-  @IBOutlet var mPadStyleView : NSView? = nil
-  @IBOutlet var mPadWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadXCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadXCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadYCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPadZoneNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mSegmentLengthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSegmentX1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSegmentX1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSegmentX2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSegmentX2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSegmentY1TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSegmentY1UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSegmentY2TextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSetDimensionTextOriginAtMidX : EBButton? = nil
-  @IBOutlet var mSetDimensionTextOriginAtMidY : EBButton? = nil
-  @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil
-  @IBOutlet var mSlavePadHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadHoleHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadHoleWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSlavePadStyleView : NSView? = nil
-  @IBOutlet var mSlavePadWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadXCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadXCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSlavePadYCenterTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
-  @IBOutlet var mZoneHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mZoneNameTextField : EBTextField? = nil
-  @IBOutlet var mZoneNumberingPopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mZoneWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneXLabelTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneXLabelUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneXTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneXUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneYLabelTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneYLabelUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mZoneYTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mZoneYUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberButton : EBButton? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberDialog : NSPanel? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberErrorTextField : NSTextField? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberOkButton : EBButton? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberTitle : NSTextField? = nil
+  @IBOutlet final var mAddZoneForbiddenPadNumberValueTextField : NSTextField? = nil
+  @IBOutlet final var mArcAngle : CanariAngleTextField? = nil
+  @IBOutlet final var mArcEndTangentTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArcEndTangentUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mArcInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mArcPathIsClosedSwitch : EBSwitch? = nil
+  @IBOutlet final var mArcRadiusTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArcRadiusUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mArcStartAngleSlider : CanariAngleSlider? = nil
+  @IBOutlet final var mArcStartAngleTextField : CanariAngleTextField? = nil
+  @IBOutlet final var mArcStartTangentTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArcStartTangentUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mArcXCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArcXCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mArcYCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArcYCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveCPX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveCPX1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveCPX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveCPX2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveCPY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveCPY1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveCPY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveCPY2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveX1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveX2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveY1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierCurveY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBezierInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mDimensionX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionX1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionX2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionXLabelTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionXLabelUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionY1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionY2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDimensionYLabelTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mDisplayZoneNameSwitch : EBSwitch? = nil
+  @IBOutlet final var mGuideInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mGuideX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mGuideX1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mGuideX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mGuideX2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mGuideY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mGuideY1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mGuideY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mGuideY2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOvalHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mOvalHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOvalInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mOvalWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mOvalWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOvalXTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mOvalXUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOvalYTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mOvalYUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPackagePadShapePopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mPackagePadStylePopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mPackageSlavePadShapePopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mPackageSlavePadStylePopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mPadAnnularRingTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mPadAnnularRingUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadHoleHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadHoleHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadHoleWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mPadNumberTextField : EBIntObserverField? = nil
+  @IBOutlet final var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil
+  @IBOutlet final var mPadSlaveCountTextField : EBIntObserverField? = nil
+  @IBOutlet final var mPadStyleView : NSView? = nil
+  @IBOutlet final var mPadWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadXCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadXCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadYCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadYCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPadZoneNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
+  @IBOutlet final var mSegmentInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mSegmentLengthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSegmentX1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSegmentX1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSegmentX2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSegmentX2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSegmentY1TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSegmentY1UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSegmentY2TextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSegmentY2UnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSetDimensionTextOriginAtMidX : EBButton? = nil
+  @IBOutlet final var mSetDimensionTextOriginAtMidY : EBButton? = nil
+  @IBOutlet final var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mSlavePadAnnularRingUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton? = nil
+  @IBOutlet final var mSlavePadHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadHoleHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadHoleWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSlavePadStyleView : NSView? = nil
+  @IBOutlet final var mSlavePadWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadXCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadXCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSlavePadYCenterTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSlavePadYCenterUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
+  @IBOutlet final var mZoneHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mZoneNameTextField : EBTextField? = nil
+  @IBOutlet final var mZoneNumberingPopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mZoneWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneXLabelTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneXLabelUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneXTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneXUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneYLabelTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneYLabelUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mZoneYTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mZoneYUnitPopUp : EBPopUpButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
@@ -544,7 +544,7 @@ import Cocoa
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -556,7 +556,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -599,7 +599,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "PackageRoot"
   }
 
@@ -607,7 +607,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : PackageRoot { return self.mRootObject as! PackageRoot }
+  final var rootObject : PackageRoot { return self.mRootObject as! PackageRoot }
 
   //····················································································································
   //    VIEW mPageMasterView
@@ -1781,21 +1781,21 @@ import Cocoa
   //    Toolbar
   //····················································································································
   
-  func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return self.toolbarDefaultItemIdentifiers (toolbar)
   }
 
   //····················································································································
 
-  func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2"), .flexibleSpace, NSToolbarItem.Identifier ("4")]
   }
 
   //····················································································································
 
-  func toolbar(_ toolbar: NSToolbar,
-               itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-               willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+  final func toolbar (_ toolbar: NSToolbar,
+                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
     switch itemIdentifier.rawValue {
     case "0" :
       let itemId = NSToolbarItem.Identifier ("0")

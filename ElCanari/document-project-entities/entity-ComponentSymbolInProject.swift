@@ -122,7 +122,7 @@ protocol ComponentSymbolInProject_symbolInSchematic : AnyObject {
 //    Entity: ComponentSymbolInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class ComponentSymbolInProject : SchematicObject,
+final class ComponentSymbolInProject : SchematicObject,
          ComponentSymbolInProject_mCenterX,
          ComponentSymbolInProject_mCenterY,
          ComponentSymbolInProject_mRotation,

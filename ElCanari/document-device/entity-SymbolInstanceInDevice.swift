@@ -56,7 +56,7 @@ protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
 //    Entity: SymbolInstanceInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolInstanceInDevice : EBGraphicManagedObject,
+final class SymbolInstanceInDevice : EBGraphicManagedObject,
          SymbolInstanceInDevice_mInstanceName,
          SymbolInstanceInDevice_mX,
          SymbolInstanceInDevice_mY,

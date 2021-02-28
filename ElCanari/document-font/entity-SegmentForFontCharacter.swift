@@ -44,7 +44,7 @@ protocol SegmentForFontCharacter_objectDisplay : AnyObject {
 //    Entity: SegmentForFontCharacter
 //----------------------------------------------------------------------------------------------------------------------
 
-class SegmentForFontCharacter : EBGraphicManagedObject,
+final class SegmentForFontCharacter : EBGraphicManagedObject,
          SegmentForFontCharacter_x1,
          SegmentForFontCharacter_y1,
          SegmentForFontCharacter_x2,

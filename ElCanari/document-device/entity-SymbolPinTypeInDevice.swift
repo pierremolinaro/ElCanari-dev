@@ -74,7 +74,7 @@ protocol SymbolPinTypeInDevice_nameShape : AnyObject {
 //    Entity: SymbolPinTypeInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolPinTypeInDevice : EBManagedObject,
+final class SymbolPinTypeInDevice : EBManagedObject,
          SymbolPinTypeInDevice_mPinX,
          SymbolPinTypeInDevice_mPinY,
          SymbolPinTypeInDevice_mXName,

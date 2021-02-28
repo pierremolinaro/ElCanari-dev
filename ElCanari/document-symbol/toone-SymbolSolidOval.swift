@@ -38,11 +38,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int?> {
+  final var height_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.height_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.filledBezierPath_property_selection) {
       case .empty :
@@ -387,11 +387,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -525,11 +525,11 @@ class ReadOnlyObject_SymbolSolidOval : ReadOnlyAbstractObjectProperty <SymbolSol
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -778,7 +778,7 @@ final class StoredObject_SymbolSolidOval : ReadWriteObject_SymbolSolidOval, EBSi
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

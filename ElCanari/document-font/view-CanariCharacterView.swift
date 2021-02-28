@@ -47,7 +47,7 @@ private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
 //   CanariCharacterView
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariCharacterView : NSView, EBUserClassNameProtocol {
+final class CanariCharacterView : NSView, EBUserClassNameProtocol {
   @IBOutlet weak var mFontDocument : CustomizedFontDocument? =  nil
 
   private var mSelectionRectangle : NSRect? = nil

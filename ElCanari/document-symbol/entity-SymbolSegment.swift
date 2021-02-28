@@ -56,7 +56,7 @@ protocol SymbolSegment_issues : AnyObject {
 //    Entity: SymbolSegment
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolSegment : SymbolObject,
+final class SymbolSegment : SymbolObject,
          SymbolSegment_y1,
          SymbolSegment_x2,
          SymbolSegment_y2,

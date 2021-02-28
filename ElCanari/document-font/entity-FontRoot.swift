@@ -80,7 +80,7 @@ protocol FontRoot_issues : AnyObject {
 //    Entity: FontRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class FontRoot : EBManagedObject,
+final class FontRoot : EBManagedObject,
          FontRoot_comments,
          FontRoot_nominalSize,
          FontRoot_selectedTab,

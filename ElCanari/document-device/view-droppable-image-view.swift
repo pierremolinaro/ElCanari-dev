@@ -26,7 +26,7 @@ fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
 // https://stackoverflow.com/questions/44537356/swift-4-nsfilenamespboardtype-not-available-what-to-use-instead-for-registerfo
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
+final class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
   // MARK: -

@@ -38,7 +38,7 @@ protocol PadProxyInDevice_symbolName : AnyObject {
 //    Entity: PadProxyInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class PadProxyInDevice : EBManagedObject,
+final class PadProxyInDevice : EBManagedObject,
          PadProxyInDevice_mPinInstanceName,
          PadProxyInDevice_mPadName,
          PadProxyInDevice_mIsNC,

@@ -80,7 +80,7 @@ protocol SymbolBezierCurve_issues : AnyObject {
 //    Entity: SymbolBezierCurve
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolBezierCurve : SymbolObject,
+final class SymbolBezierCurve : SymbolObject,
          SymbolBezierCurve_y1,
          SymbolBezierCurve_x2,
          SymbolBezierCurve_y2,

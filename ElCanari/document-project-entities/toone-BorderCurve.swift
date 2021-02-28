@@ -48,11 +48,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -118,11 +118,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -188,11 +188,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
-  private var mObserversOf_mCPX1 = EBWeakEventSet ()
+  private final var mObserversOf_mCPX1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCPX1_property_selection : EBSelection <Int?> {
+  final var mCPX1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCPX1_property_selection) {
       case .empty :
@@ -258,11 +258,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPY1' stored property
   //····················································································································
 
-  private var mObserversOf_mCPY1 = EBWeakEventSet ()
+  private final var mObserversOf_mCPY1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCPY1_property_selection : EBSelection <Int?> {
+  final var mCPY1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCPY1_property_selection) {
       case .empty :
@@ -328,11 +328,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
-  private var mObserversOf_mCPX2 = EBWeakEventSet ()
+  private final var mObserversOf_mCPX2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCPX2_property_selection : EBSelection <Int?> {
+  final var mCPX2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCPX2_property_selection) {
       case .empty :
@@ -398,11 +398,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
-  private var mObserversOf_mCPY2 = EBWeakEventSet ()
+  private final var mObserversOf_mCPY2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCPY2_property_selection : EBSelection <Int?> {
+  final var mCPY2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCPY2_property_selection) {
       case .empty :
@@ -468,11 +468,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  private var mObserversOf_mShape = EBWeakEventSet ()
+  private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
 
-  var mShape_property_selection : EBSelection <BorderCurveShape?> {
+  final var mShape_property_selection : EBSelection <BorderCurveShape?> {
     if let model = self.propval {
       switch (model.mShape_property_selection) {
       case .empty :
@@ -538,7 +538,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mNextX' proxy property
   //····················································································································
 
-/*  private var mObserversOf_mNextX = EBWeakEventSet ()
+/*  private final var mObserversOf_mNextX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -608,7 +608,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mNextY' proxy property
   //····················································································································
 
-/*  private var mObserversOf_mNextY = EBWeakEventSet ()
+/*  private final var mObserversOf_mNextY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -678,11 +678,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'p2Xstring' transient property
   //····················································································································
 
-  private var mObserversOf_p2Xstring = EBWeakEventSet ()
+  private final var mObserversOf_p2Xstring = EBWeakEventSet ()
 
   //····················································································································
 
-  var p2Xstring_property_selection : EBSelection <String?> {
+  final var p2Xstring_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.p2Xstring_property_selection) {
       case .empty :
@@ -747,11 +747,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'p2Ystring' transient property
   //····················································································································
 
-  private var mObserversOf_p2Ystring = EBWeakEventSet ()
+  private final var mObserversOf_p2Ystring = EBWeakEventSet ()
 
   //····················································································································
 
-  var p2Ystring_property_selection : EBSelection <String?> {
+  final var p2Ystring_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.p2Ystring_property_selection) {
       case .empty :
@@ -816,11 +816,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <BorderCurveDescriptor?> {
+  final var descriptor_property_selection : EBSelection <BorderCurveDescriptor?> {
     if let model = self.propval {
       switch (model.descriptor_property_selection) {
       case .empty :
@@ -885,11 +885,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -954,11 +954,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'isLine' transient property
   //····················································································································
 
-  private var mObserversOf_isLine = EBWeakEventSet ()
+  private final var mObserversOf_isLine = EBWeakEventSet ()
 
   //····················································································································
 
-  var isLine_property_selection : EBSelection <Bool?> {
+  final var isLine_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isLine_property_selection) {
       case .empty :
@@ -1023,11 +1023,11 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -1276,7 +1276,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

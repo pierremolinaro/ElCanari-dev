@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    CanariCharacterGerberCodeTableView
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CanariCharacterGerberCodeTableView) class CanariCharacterGerberCodeTableView : NSTableView, EBUserClassNameProtocol {
+@objc(CanariCharacterGerberCodeTableView) final class CanariCharacterGerberCodeTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 

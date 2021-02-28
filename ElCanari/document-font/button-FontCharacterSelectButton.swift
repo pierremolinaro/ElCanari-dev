@@ -2,7 +2,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
+final class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   private var mCharacterSelectionPopover : NSPopover? = nil
   private var mSelectionView : FontCharacterSelectView? = nil
   private var mDefinedCharacterSet = Set <Int> ()

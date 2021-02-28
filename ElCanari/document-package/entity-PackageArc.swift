@@ -110,7 +110,7 @@ protocol PackageArc_issues : AnyObject {
 //    Entity: PackageArc
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageArc : PackageObject,
+final class PackageArc : PackageObject,
          PackageArc_yCenter,
          PackageArc_radius,
          PackageArc_startAngle,

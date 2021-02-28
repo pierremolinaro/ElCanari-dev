@@ -46,11 +46,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int?> {
+  final var selectedInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedInspector_property_selection) {
       case .empty :
@@ -116,11 +116,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String?> {
+  final var comments_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.comments_property_selection) {
       case .empty :
@@ -186,11 +186,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool?> {
+  final var horizontalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.horizontalFlip_property_selection) {
       case .empty :
@@ -256,11 +256,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool?> {
+  final var verticalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.verticalFlip_property_selection) {
       case .empty :
@@ -326,11 +326,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_gridStyle = EBWeakEventSet ()
+  private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle?> {
+  final var gridStyle_property_selection : EBSelection <GridStyle?> {
     if let model = self.propval {
       switch (model.gridStyle_property_selection) {
       case .empty :
@@ -396,11 +396,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'gridDisplay' stored property
   //····················································································································
 
-  private var mObserversOf_gridDisplay = EBWeakEventSet ()
+  private final var mObserversOf_gridDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var gridDisplay_property_selection : EBSelection <Int?> {
+  final var gridDisplay_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.gridDisplay_property_selection) {
       case .empty :
@@ -466,11 +466,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int?> {
+  final var zoom_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.zoom_property_selection) {
       case .empty :
@@ -536,11 +536,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int?> {
+  final var xPlacardUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xPlacardUnit_property_selection) {
       case .empty :
@@ -606,11 +606,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yPlacardUnit = EBWeakEventSet ()
+  private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int?> {
+  final var yPlacardUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yPlacardUnit_property_selection) {
       case .empty :
@@ -676,11 +676,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int?> {
+  final var selectedPageIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedPageIndex_property_selection) {
       case .empty :
@@ -746,11 +746,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -815,11 +815,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'noIssue' transient property
   //····················································································································
 
-  private var mObserversOf_noIssue = EBWeakEventSet ()
+  private final var mObserversOf_noIssue = EBWeakEventSet ()
 
   //····················································································································
 
-  var noIssue_property_selection : EBSelection <Bool?> {
+  final var noIssue_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.noIssue_property_selection) {
       case .empty :
@@ -884,11 +884,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observable toMany property: symbolObjects
   //····················································································································
 
-  private var mObserversOf_symbolObjects = EBWeakEventSet ()
+  private final var mObserversOf_symbolObjects = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolObjects_property_selection : EBSelection <[SymbolObject]> {
+  final var symbolObjects_property_selection : EBSelection <[SymbolObject]> {
     if let model = self.propval {
       switch (model.symbolObjects_property_selection) {
       case .empty :
@@ -925,11 +925,11 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observable toMany property: symbolPins
   //····················································································································
 
-  private var mObserversOf_symbolPins = EBWeakEventSet ()
+  private final var mObserversOf_symbolPins = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolPins_property_selection : EBSelection <[SymbolPin]> {
+  final var symbolPins_property_selection : EBSelection <[SymbolPin]> {
     if let model = self.propval {
       switch (model.symbolPins_property_selection) {
       case .empty :
@@ -1150,7 +1150,7 @@ final class StoredObject_SymbolRoot : ReadWriteObject_SymbolRoot, EBSignatureObs
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

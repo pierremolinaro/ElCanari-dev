@@ -218,7 +218,7 @@ protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
 //    Entity: MergerRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class MergerRoot : EBManagedObject,
+final class MergerRoot : EBManagedObject,
          MergerRoot_selectedPageIndex,
          MergerRoot_zoom,
          MergerRoot_automaticBoardSize,

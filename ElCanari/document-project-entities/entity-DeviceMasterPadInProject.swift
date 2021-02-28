@@ -68,7 +68,7 @@ protocol DeviceMasterPadInProject_descriptor : AnyObject {
 //    Entity: DeviceMasterPadInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceMasterPadInProject : EBManagedObject,
+final class DeviceMasterPadInProject : EBManagedObject,
          DeviceMasterPadInProject_mCenterX,
          DeviceMasterPadInProject_mCenterY,
          DeviceMasterPadInProject_mWidth,

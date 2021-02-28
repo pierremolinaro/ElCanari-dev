@@ -38,7 +38,7 @@ protocol CanariLibraryEntry_mStatusImage : AnyObject {
 //    Entity: CanariLibraryEntry
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariLibraryEntry : EBManagedObject,
+final class CanariLibraryEntry : EBManagedObject,
          CanariLibraryEntry_mPath,
          CanariLibraryEntry_mUses,
          CanariLibraryEntry_mLibraryRepositoryURL,

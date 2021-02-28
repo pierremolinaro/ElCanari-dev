@@ -13,12 +13,15 @@ private var gEasyBindingsObjectIndex = 0
 //······················································································································
 
 class EBObject : NSObject, EBUserClassNameProtocol {
-  let ebObjectIndex : Int
+
+  //····················································································································
+
+  final let ebObjectIndex : Int
 
   //····················································································································
 
   override init () {
-    ebObjectIndex = gEasyBindingsObjectIndex
+    self.ebObjectIndex = gEasyBindingsObjectIndex
     gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)

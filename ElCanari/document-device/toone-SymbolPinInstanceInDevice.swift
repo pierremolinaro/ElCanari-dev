@@ -32,11 +32,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'pinName' transient property
   //····················································································································
 
-  private var mObserversOf_pinName = EBWeakEventSet ()
+  private final var mObserversOf_pinName = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinName_property_selection : EBSelection <String?> {
+  final var pinName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.pinName_property_selection) {
       case .empty :
@@ -101,11 +101,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolName = EBWeakEventSet ()
+  private final var mObserversOf_symbolName = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolName_property_selection : EBSelection <String?> {
+  final var symbolName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.symbolName_property_selection) {
       case .empty :
@@ -170,11 +170,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private var mObserversOf_pinQualifiedName = EBWeakEventSet ()
+  private final var mObserversOf_pinQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
+  final var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
     if let model = self.propval {
       switch (model.pinQualifiedName_property_selection) {
       case .empty :
@@ -239,11 +239,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
-  var isConnected_property_selection : EBSelection <Bool?> {
+  final var isConnected_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isConnected_property_selection) {
       case .empty :
@@ -308,11 +308,11 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //   Observers of 'numberShape' transient property
   //····················································································································
 
-  private var mObserversOf_numberShape = EBWeakEventSet ()
+  private final var mObserversOf_numberShape = EBWeakEventSet ()
 
   //····················································································································
 
-  var numberShape_property_selection : EBSelection <EBShape?> {
+  final var numberShape_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.numberShape_property_selection) {
       case .empty :
@@ -561,7 +561,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

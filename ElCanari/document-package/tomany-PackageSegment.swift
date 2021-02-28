@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'x1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_x1Unit = EBWeakEventSet ()
+  private final var mObserversOf_x1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'y1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_y1Unit = EBWeakEventSet ()
+  private final var mObserversOf_y1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'x2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_x2Unit = EBWeakEventSet ()
+  private final var mObserversOf_x2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'y2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_y2Unit = EBWeakEventSet ()
+  private final var mObserversOf_y2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'lengthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_lengthUnit = EBWeakEventSet ()
+  private final var mObserversOf_lengthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -563,7 +563,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -619,7 +619,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -675,7 +675,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -787,7 +787,7 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   //   Observers of 'lengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_lengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_lengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1160,7 +1160,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1168,32 +1168,32 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSegment) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSegment) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageSegment) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSegment) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageSegment) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1236,7 +1236,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageSegment>, addedSet inAddedSet : Set <PackageSegment>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageSegment>, addedSet inAddedSet : Set <PackageSegment>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1256,7 +1256,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageSegment] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1264,11 +1264,11 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
 
   //····················································································································
 
-  override var propval : [PackageSegment] { return self.mInternalArrayValue }
+  override final var propval : [PackageSegment] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageSegment) {
+  final func remove (_ object : PackageSegment) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1276,7 +1276,7 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   
   //····················································································································
 
-  func add (_ object : PackageSegment) {
+  final func add (_ object : PackageSegment) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1286,11 +1286,11 @@ class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

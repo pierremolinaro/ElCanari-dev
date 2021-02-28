@@ -13,7 +13,6 @@ import Cocoa
 
 private let NAME_IN_PREFS = "CanariSelectedPreferences"
 
-
 let MERGER_PREFS_INDEX = 8
 
 //----------------------------------------------------------------------------------------------------------------------

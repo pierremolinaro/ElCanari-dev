@@ -182,7 +182,7 @@ protocol PackagePad_padNumberDisplay : AnyObject {
 //    Entity: PackagePad
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackagePad : PackageObject,
+final class PackagePad : PackageObject,
          PackagePad_xCenter,
          PackagePad_yCenter,
          PackagePad_width,

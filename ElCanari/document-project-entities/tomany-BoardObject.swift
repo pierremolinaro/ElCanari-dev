@@ -42,7 +42,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'isPlacedInBoard' transient property
   //····················································································································
 
-  private var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
+  private final var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private var mObserversOf_isVia = EBWeakEventSet ()
+  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private var mObserversOf_componentName = EBWeakEventSet ()
+  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -490,7 +490,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -546,7 +546,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'errorOrWarningIssueSize' transient property
   //····················································································································
 
-  private var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
+  private final var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -919,7 +919,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -927,32 +927,32 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardObject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardObject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardObject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardObject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardObject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -995,7 +995,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardObject>, addedSet inAddedSet : Set <BoardObject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardObject>, addedSet inAddedSet : Set <BoardObject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1015,7 +1015,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardObject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1023,11 +1023,11 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
 
   //····················································································································
 
-  override var propval : [BoardObject] { return self.mInternalArrayValue }
+  override final var propval : [BoardObject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardObject) {
+  final func remove (_ object : BoardObject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1035,7 +1035,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   
   //····················································································································
 
-  func add (_ object : BoardObject) {
+  final func add (_ object : BoardObject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1045,11 +1045,11 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

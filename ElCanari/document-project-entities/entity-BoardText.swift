@@ -92,7 +92,7 @@ protocol BoardText_signatureForERCChecking : AnyObject {
 //    Entity: BoardText
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardText : BoardObject,
+final class BoardText : BoardObject,
          BoardText_mX,
          BoardText_mY,
          BoardText_mFontSize,

@@ -72,11 +72,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int?> {
+  final var selectedPageIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedPageIndex_property_selection) {
       case .empty :
@@ -142,11 +142,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int?> {
+  final var zoom_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.zoom_property_selection) {
       case .empty :
@@ -212,11 +212,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'automaticBoardSize' stored property
   //····················································································································
 
-  private var mObserversOf_automaticBoardSize = EBWeakEventSet ()
+  private final var mObserversOf_automaticBoardSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var automaticBoardSize_property_selection : EBSelection <Bool?> {
+  final var automaticBoardSize_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.automaticBoardSize_property_selection) {
       case .empty :
@@ -282,11 +282,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardManualWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardManualWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardManualWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardManualWidth_property_selection : EBSelection <Int?> {
+  final var boardManualWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardManualWidth_property_selection) {
       case .empty :
@@ -352,11 +352,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardManualHeight' stored property
   //····················································································································
 
-  private var mObserversOf_boardManualHeight = EBWeakEventSet ()
+  private final var mObserversOf_boardManualHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardManualHeight_property_selection : EBSelection <Int?> {
+  final var boardManualHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardManualHeight_property_selection) {
       case .empty :
@@ -422,11 +422,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardWidthUnit_property_selection : EBSelection <Int?> {
+  final var boardWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardWidthUnit_property_selection) {
       case .empty :
@@ -492,11 +492,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardHeightUnit_property_selection : EBSelection <Int?> {
+  final var boardHeightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardHeightUnit_property_selection) {
       case .empty :
@@ -562,11 +562,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'overlapingArrangment' stored property
   //····················································································································
 
-  private var mObserversOf_overlapingArrangment = EBWeakEventSet ()
+  private final var mObserversOf_overlapingArrangment = EBWeakEventSet ()
 
   //····················································································································
 
-  var overlapingArrangment_property_selection : EBSelection <Bool?> {
+  final var overlapingArrangment_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.overlapingArrangment_property_selection) {
       case .empty :
@@ -632,11 +632,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedBoardXUnit' stored property
   //····················································································································
 
-  private var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
+  private final var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedBoardXUnit_property_selection : EBSelection <Int?> {
+  final var selectedBoardXUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedBoardXUnit_property_selection) {
       case .empty :
@@ -702,11 +702,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedBoardYUnit' stored property
   //····················································································································
 
-  private var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
+  private final var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedBoardYUnit_property_selection : EBSelection <Int?> {
+  final var selectedBoardYUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.selectedBoardYUnit_property_selection) {
       case .empty :
@@ -772,11 +772,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitWidth_property_selection : EBSelection <Int?> {
+  final var boardLimitWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardLimitWidth_property_selection) {
       case .empty :
@@ -842,11 +842,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardLimitWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
+  final var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardLimitWidthUnit_property_selection) {
       case .empty :
@@ -912,11 +912,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'arrowMagnitude' stored property
   //····················································································································
 
-  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+  private final var mObserversOf_arrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
-  var arrowMagnitude_property_selection : EBSelection <Int?> {
+  final var arrowMagnitude_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.arrowMagnitude_property_selection) {
       case .empty :
@@ -982,11 +982,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'arrowMagnitudeUnit' stored property
   //····················································································································
 
-  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+  private final var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+  final var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.arrowMagnitudeUnit_property_selection) {
       case .empty :
@@ -1052,11 +1052,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitude' stored property
   //····················································································································
 
-  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+  private final var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
-  var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
+  final var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.shiftArrowMagnitude_property_selection) {
       case .empty :
@@ -1122,11 +1122,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitudeUnit' stored property
   //····················································································································
 
-  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+  private final var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+  final var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.shiftArrowMagnitudeUnit_property_selection) {
       case .empty :
@@ -1192,11 +1192,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
+  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.mPDFBoardBackgroundColor_property_selection) {
       case .empty :
@@ -1262,11 +1262,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mArtworkName_property_selection : EBSelection <String?> {
+  final var mArtworkName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mArtworkName_property_selection) {
       case .empty :
@@ -1332,11 +1332,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkVersion = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  var mArtworkVersion_property_selection : EBSelection <Int?> {
+  final var mArtworkVersion_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mArtworkVersion_property_selection) {
       case .empty :
@@ -1402,7 +1402,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1472,7 +1472,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minPPTPTTTW' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+/*  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1542,7 +1542,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForOARdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1612,7 +1612,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForOARinEBUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1682,7 +1682,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForPHDdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1752,7 +1752,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForPHDinEBUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1822,7 +1822,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForBoardLimitWidth' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1892,7 +1892,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1962,7 +1962,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'drillDataFileExtension' proxy property
   //····················································································································
 
-/*  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+/*  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2032,7 +2032,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'comments' proxy property
   //····················································································································
 
-/*  private var mObserversOf_comments = EBWeakEventSet ()
+/*  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2102,11 +2102,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'modelNames' transient property
   //····················································································································
 
-  private var mObserversOf_modelNames = EBWeakEventSet ()
+  private final var mObserversOf_modelNames = EBWeakEventSet ()
 
   //····················································································································
 
-  var modelNames_property_selection : EBSelection <StringTagArray?> {
+  final var modelNames_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.modelNames_property_selection) {
       case .empty :
@@ -2171,11 +2171,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardRect' transient property
   //····················································································································
 
-  private var mObserversOf_boardRect = EBWeakEventSet ()
+  private final var mObserversOf_boardRect = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardRect_property_selection : EBSelection <CanariRect?> {
+  final var boardRect_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.boardRect_property_selection) {
       case .empty :
@@ -2240,11 +2240,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardDisplayRect' transient property
   //····················································································································
 
-  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
+  private final var mObserversOf_boardDisplayRect = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardDisplayRect_property_selection : EBSelection <CanariRect?> {
+  final var boardDisplayRect_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.boardDisplayRect_property_selection) {
       case .empty :
@@ -2309,11 +2309,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardWidth' transient property
   //····················································································································
 
-  private var mObserversOf_boardWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardWidth_property_selection : EBSelection <Int?> {
+  final var boardWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardWidth_property_selection) {
       case .empty :
@@ -2378,11 +2378,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardHeight' transient property
   //····················································································································
 
-  private var mObserversOf_boardHeight = EBWeakEventSet ()
+  private final var mObserversOf_boardHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardHeight_property_selection : EBSelection <Int?> {
+  final var boardHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardHeight_property_selection) {
       case .empty :
@@ -2447,11 +2447,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardOutlineRectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_boardOutlineRectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_boardOutlineRectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardOutlineRectDisplay_property_selection : EBSelection <EBShape?> {
+  final var boardOutlineRectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.boardOutlineRectDisplay_property_selection) {
       case .empty :
@@ -2516,11 +2516,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardModels
   //····················································································································
 
-  private var mObserversOf_boardModels = EBWeakEventSet ()
+  private final var mObserversOf_boardModels = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardModels_property_selection : EBSelection <[BoardModel]> {
+  final var boardModels_property_selection : EBSelection <[BoardModel]> {
     if let model = self.propval {
       switch (model.boardModels_property_selection) {
       case .empty :
@@ -2557,11 +2557,11 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardInstances
   //····················································································································
 
-  private var mObserversOf_boardInstances = EBWeakEventSet ()
+  private final var mObserversOf_boardInstances = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardInstances_property_selection : EBSelection <[MergerBoardInstance]> {
+  final var boardInstances_property_selection : EBSelection <[MergerBoardInstance]> {
     if let model = self.propval {
       switch (model.boardInstances_property_selection) {
       case .empty :
@@ -2782,7 +2782,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -10,11 +10,13 @@ import Cocoa
 
 class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBGenericReadOnlyProperty <T>, EBReadObservableEnumProtocol where T : Equatable {
 
+  //····················································································································
+
   func setFrom (rawValue : Int) {}  // Abstract method
 
   //····················································································································
 
-  func rawValue () -> Int? {
+  final func rawValue () -> Int? {
     switch self.selection {
     case .empty, .multiple :
       return nil

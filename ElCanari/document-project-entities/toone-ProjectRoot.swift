@@ -252,11 +252,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mArtworkName_property_selection : EBSelection <String?> {
+  final var mArtworkName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mArtworkName_property_selection) {
       case .empty :
@@ -322,11 +322,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkVersion = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  var mArtworkVersion_property_selection : EBSelection <Int?> {
+  final var mArtworkVersion_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mArtworkVersion_property_selection) {
       case .empty :
@@ -392,11 +392,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
+  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.mPDFBoardBackgroundColor_property_selection) {
       case .empty :
@@ -462,11 +462,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
 
-  private var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
+  private final var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool?> {
+  final var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mCheckClearanceBetweenPadsOfSameNet_property_selection) {
       case .empty :
@@ -532,11 +532,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
 
-  private var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
+  private final var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool?> {
+  final var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mLastERCCheckingIsSuccess_property_selection) {
       case .empty :
@@ -602,11 +602,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingSignature' stored property
   //····················································································································
 
-  private var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
+  private final var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLastERCCheckingSignature_property_selection : EBSelection <UInt32?> {
+  final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.mLastERCCheckingSignature_property_selection) {
       case .empty :
@@ -672,11 +672,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewTrack' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
+  private final var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide?> {
+  final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide?> {
     if let model = self.propval {
       switch (model.mBoardSideForNewTrack_property_selection) {
       case .empty :
@@ -742,11 +742,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDirectionForNewTrack' stored property
   //····················································································································
 
-  private var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
+  private final var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDirectionForNewTrack_property_selection : EBSelection <TrackCreationDirection?> {
+  final var mDirectionForNewTrack_property_selection : EBSelection <TrackCreationDirection?> {
     if let model = self.propval {
       switch (model.mDirectionForNewTrack_property_selection) {
       case .empty :
@@ -812,11 +812,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewText' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLayerForNewText_property_selection : EBSelection <BoardTextLayer?> {
+  final var mBoardLayerForNewText_property_selection : EBSelection <BoardTextLayer?> {
     if let model = self.propval {
       switch (model.mBoardLayerForNewText_property_selection) {
       case .empty :
@@ -882,11 +882,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewLine' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLayerForNewLine_property_selection : EBSelection <BoardLineLayer?> {
+  final var mBoardLayerForNewLine_property_selection : EBSelection <BoardLineLayer?> {
     if let model = self.propval {
       switch (model.mBoardLayerForNewLine_property_selection) {
       case .empty :
@@ -952,11 +952,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
+  private final var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardSideForNewRestrictRectangle_property_selection : EBSelection <RestrictRectangleLayer?> {
+  final var mBoardSideForNewRestrictRectangle_property_selection : EBSelection <RestrictRectangleLayer?> {
     if let model = self.propval {
       switch (model.mBoardSideForNewRestrictRectangle_property_selection) {
       case .empty :
@@ -1022,11 +1022,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutoRouterPreferredDirections' stored property
   //····················································································································
 
-  private var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
+  private final var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
 
   //····················································································································
 
-  var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections?> {
+  final var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections?> {
     if let model = self.propval {
       switch (model.mAutoRouterPreferredDirections_property_selection) {
       case .empty :
@@ -1092,11 +1092,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterSnapAngle' stored property
   //····················································································································
 
-  private var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
+  private final var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle?> {
+  final var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle?> {
     if let model = self.propval {
       switch (model.mAutorouterSnapAngle_property_selection) {
       case .empty :
@@ -1162,11 +1162,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteDirection' stored property
   //····················································································································
 
-  private var mObserversOf_mRouteDirection = EBWeakEventSet ()
+  private final var mObserversOf_mRouteDirection = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRouteDirection_property_selection : EBSelection <RouteDirection?> {
+  final var mRouteDirection_property_selection : EBSelection <RouteDirection?> {
     if let model = self.propval {
       switch (model.mRouteDirection_property_selection) {
       case .empty :
@@ -1232,11 +1232,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteOrigin' stored property
   //····················································································································
 
-  private var mObserversOf_mRouteOrigin = EBWeakEventSet ()
+  private final var mObserversOf_mRouteOrigin = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRouteOrigin_property_selection : EBSelection <RouteOrigin?> {
+  final var mRouteOrigin_property_selection : EBSelection <RouteOrigin?> {
     if let model = self.propval {
       switch (model.mRouteOrigin_property_selection) {
       case .empty :
@@ -1302,11 +1302,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterInterfaceMode' stored property
   //····················································································································
 
-  private var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
+  private final var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
 
   //····················································································································
 
-  var mAutorouterInterfaceMode_property_selection : EBSelection <Int?> {
+  final var mAutorouterInterfaceMode_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mAutorouterInterfaceMode_property_selection) {
       case .empty :
@@ -1372,11 +1372,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mExportExistingTracksAndVias' stored property
   //····················································································································
 
-  private var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
+  private final var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
 
   //····················································································································
 
-  var mExportExistingTracksAndVias_property_selection : EBSelection <Bool?> {
+  final var mExportExistingTracksAndVias_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mExportExistingTracksAndVias_property_selection) {
       case .empty :
@@ -1442,11 +1442,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mTrackLengthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTrackLengthUnit_property_selection : EBSelection <Int?> {
+  final var mTrackLengthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mTrackLengthUnit_property_selection) {
       case .empty :
@@ -1512,11 +1512,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearance' stored property
   //····················································································································
 
-  private var mObserversOf_mLayoutClearance = EBWeakEventSet ()
+  private final var mObserversOf_mLayoutClearance = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLayoutClearance_property_selection : EBSelection <Int?> {
+  final var mLayoutClearance_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mLayoutClearance_property_selection) {
       case .empty :
@@ -1582,11 +1582,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearanceUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
+  private final var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLayoutClearanceUnit_property_selection : EBSelection <Int?> {
+  final var mLayoutClearanceUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mLayoutClearanceUnit_property_selection) {
       case .empty :
@@ -1652,11 +1652,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardSelectedInspector_property_selection : EBSelection <Int?> {
+  final var mBoardSelectedInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardSelectedInspector_property_selection) {
       case .empty :
@@ -1722,11 +1722,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardHorizontalFlip_property_selection : EBSelection <Bool?> {
+  final var mBoardHorizontalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mBoardHorizontalFlip_property_selection) {
       case .empty :
@@ -1792,11 +1792,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardVerticalFlip_property_selection : EBSelection <Bool?> {
+  final var mBoardVerticalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mBoardVerticalFlip_property_selection) {
       case .empty :
@@ -1862,11 +1862,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
+  private final var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardGridStyle_property_selection : EBSelection <GridStyle?> {
+  final var mBoardGridStyle_property_selection : EBSelection <GridStyle?> {
     if let model = self.propval {
       switch (model.mBoardGridStyle_property_selection) {
       case .empty :
@@ -1932,11 +1932,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridDisplayFactor' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardGridDisplayFactor_property_selection : EBSelection <Int?> {
+  final var mBoardGridDisplayFactor_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardGridDisplayFactor_property_selection) {
       case .empty :
@@ -2002,11 +2002,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardZoom = EBWeakEventSet ()
+  private final var mObserversOf_mBoardZoom = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardZoom_property_selection : EBSelection <Int?> {
+  final var mBoardZoom_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardZoom_property_selection) {
       case .empty :
@@ -2072,11 +2072,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStep' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardGridStep = EBWeakEventSet ()
+  private final var mObserversOf_mBoardGridStep = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardGridStep_property_selection : EBSelection <Int?> {
+  final var mBoardGridStep_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardGridStep_property_selection) {
       case .empty :
@@ -2142,11 +2142,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStepUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardGridStepUnit_property_selection : EBSelection <Int?> {
+  final var mBoardGridStepUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardGridStepUnit_property_selection) {
       case .empty :
@@ -2212,11 +2212,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mErrorOrWarningIssueSize' stored property
   //····················································································································
 
-  private var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
+  private final var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mErrorOrWarningIssueSize_property_selection : EBSelection <Double?> {
+  final var mErrorOrWarningIssueSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mErrorOrWarningIssueSize_property_selection) {
       case .empty :
@@ -2282,11 +2282,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mControlKeyHiliteDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mControlKeyHiliteDiameter_property_selection : EBSelection <Double?> {
+  final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mControlKeyHiliteDiameter_property_selection) {
       case .empty :
@@ -2352,11 +2352,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDSNFileProposedName' stored property
   //····················································································································
 
-  private var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
+  private final var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDSNFileProposedName_property_selection : EBSelection <String?> {
+  final var mDSNFileProposedName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mDSNFileProposedName_property_selection) {
       case .empty :
@@ -2422,11 +2422,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsWidth_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsWidth_property_selection) {
       case .empty :
@@ -2492,11 +2492,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsWidthUnit_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsWidthUnit_property_selection) {
       case .empty :
@@ -2562,11 +2562,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearance' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardClearance = EBWeakEventSet ()
+  private final var mObserversOf_mBoardClearance = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardClearance_property_selection : EBSelection <Int?> {
+  final var mBoardClearance_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardClearance_property_selection) {
       case .empty :
@@ -2632,11 +2632,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearanceUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardClearanceUnit_property_selection : EBSelection <Int?> {
+  final var mBoardClearanceUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardClearanceUnit_property_selection) {
       case .empty :
@@ -2702,11 +2702,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsSelectedInspector_property_selection) {
       case .empty :
@@ -2772,11 +2772,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool?> {
+  final var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mBoardLimitsHorizontalFlip_property_selection) {
       case .empty :
@@ -2842,11 +2842,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool?> {
+  final var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mBoardLimitsVerticalFlip_property_selection) {
       case .empty :
@@ -2912,11 +2912,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle?> {
+  final var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle?> {
     if let model = self.propval {
       switch (model.mBoardLimitsGridStyle_property_selection) {
       case .empty :
@@ -2982,11 +2982,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridDisplayFactor' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsGridDisplayFactor_property_selection) {
       case .empty :
@@ -3052,11 +3052,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsZoom_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsZoom_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsZoom_property_selection) {
       case .empty :
@@ -3122,11 +3122,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStep' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsGridStep_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsGridStep_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsGridStep_property_selection) {
       case .empty :
@@ -3192,11 +3192,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsGridStepUnit_property_selection) {
       case .empty :
@@ -3262,11 +3262,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int?> {
+  final var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitsBoundingBoxUnit_property_selection) {
       case .empty :
@@ -3332,11 +3332,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int?> {
+  final var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardPointsBoundingBoxUnit_property_selection) {
       case .empty :
@@ -3402,11 +3402,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int?> {
+  final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardSelectedCurveDisplayUnit_property_selection) {
       case .empty :
@@ -3472,11 +3472,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int?> {
+  final var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mBoardLimitControlPointsDisplayUnit_property_selection) {
       case .empty :
@@ -3542,11 +3542,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardShape' stored property
   //····················································································································
 
-  private var mObserversOf_mBoardShape = EBWeakEventSet ()
+  private final var mObserversOf_mBoardShape = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardShape_property_selection : EBSelection <BoardShape?> {
+  final var mBoardShape_property_selection : EBSelection <BoardShape?> {
     if let model = self.propval {
       switch (model.mBoardShape_property_selection) {
       case .empty :
@@ -3612,11 +3612,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
+  private final var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRectangularBoardWidth_property_selection : EBSelection <Int?> {
+  final var mRectangularBoardWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRectangularBoardWidth_property_selection) {
       case .empty :
@@ -3682,11 +3682,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRectangularBoardWidthUnit_property_selection : EBSelection <Int?> {
+  final var mRectangularBoardWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRectangularBoardWidthUnit_property_selection) {
       case .empty :
@@ -3752,11 +3752,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeight' stored property
   //····················································································································
 
-  private var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
+  private final var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRectangularBoardHeight_property_selection : EBSelection <Int?> {
+  final var mRectangularBoardHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRectangularBoardHeight_property_selection) {
       case .empty :
@@ -3822,11 +3822,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRectangularBoardHeightUnit_property_selection : EBSelection <Int?> {
+  final var mRectangularBoardHeightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRectangularBoardHeightUnit_property_selection) {
       case .empty :
@@ -3892,11 +3892,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDefaultNetClassName_property_selection : EBSelection <String?> {
+  final var mDefaultNetClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mDefaultNetClassName_property_selection) {
       case .empty :
@@ -3962,11 +3962,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int?> {
+  final var mSelectedPageIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSelectedPageIndex_property_selection) {
       case .empty :
@@ -4032,11 +4032,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
+  private final var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSelectedSchematicInspector_property_selection : EBSelection <Int?> {
+  final var mSelectedSchematicInspector_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSelectedSchematicInspector_property_selection) {
       case .empty :
@@ -4102,11 +4102,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicTitle' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicTitle = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicTitle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicTitle_property_selection : EBSelection <String?> {
+  final var mSchematicTitle_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSchematicTitle_property_selection) {
       case .empty :
@@ -4172,11 +4172,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicVersion = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicVersion_property_selection : EBSelection <String?> {
+  final var mSchematicVersion_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSchematicVersion_property_selection) {
       case .empty :
@@ -4242,11 +4242,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicDate' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicDate = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicDate = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicDate_property_selection : EBSelection <Date?> {
+  final var mSchematicDate_property_selection : EBSelection <Date?> {
     if let model = self.propval {
       switch (model.mSchematicDate_property_selection) {
       case .empty :
@@ -4312,11 +4312,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicHorizontalFlip_property_selection : EBSelection <Bool?> {
+  final var mSchematicHorizontalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mSchematicHorizontalFlip_property_selection) {
       case .empty :
@@ -4382,11 +4382,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicVerticalFlip_property_selection : EBSelection <Bool?> {
+  final var mSchematicVerticalFlip_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mSchematicVerticalFlip_property_selection) {
       case .empty :
@@ -4452,11 +4452,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicZoom = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicZoom = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicZoom_property_selection : EBSelection <Int?> {
+  final var mSchematicZoom_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicZoom_property_selection) {
       case .empty :
@@ -4522,11 +4522,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridStyle' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicGridStyle_property_selection : EBSelection <GridStyle?> {
+  final var mSchematicGridStyle_property_selection : EBSelection <GridStyle?> {
     if let model = self.propval {
       switch (model.mSchematicGridStyle_property_selection) {
       case .empty :
@@ -4592,11 +4592,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridDisplayFactor' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicGridDisplayFactor_property_selection : EBSelection <Int?> {
+  final var mSchematicGridDisplayFactor_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicGridDisplayFactor_property_selection) {
       case .empty :
@@ -4662,11 +4662,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicCustomWidth_property_selection : EBSelection <Int?> {
+  final var mSchematicCustomWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicCustomWidth_property_selection) {
       case .empty :
@@ -4732,11 +4732,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicCustomWidthUnit_property_selection : EBSelection <Int?> {
+  final var mSchematicCustomWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicCustomWidthUnit_property_selection) {
       case .empty :
@@ -4802,11 +4802,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeight' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicCustomHeight_property_selection : EBSelection <Int?> {
+  final var mSchematicCustomHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicCustomHeight_property_selection) {
       case .empty :
@@ -4872,11 +4872,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicCustomHeightUnit_property_selection : EBSelection <Int?> {
+  final var mSchematicCustomHeightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mSchematicCustomHeightUnit_property_selection) {
       case .empty :
@@ -4942,11 +4942,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicSheetOrientation' stored property
   //····················································································································
 
-  private var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
+  private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation?> {
+  final var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation?> {
     if let model = self.propval {
       switch (model.mSchematicSheetOrientation_property_selection) {
       case .empty :
@@ -5012,11 +5012,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
 
-  private var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
+  private final var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay?> {
+  final var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay?> {
     if let model = self.propval {
       switch (model.mRastnetDisplay_property_selection) {
       case .empty :
@@ -5082,11 +5082,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedNetName' stored property
   //····················································································································
 
-  private var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
+  private final var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRastnetDisplayedNetName_property_selection : EBSelection <String?> {
+  final var mRastnetDisplayedNetName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mRastnetDisplayedNetName_property_selection) {
       case .empty :
@@ -5152,11 +5152,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedComponentName' stored property
   //····················································································································
 
-  private var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
+  private final var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRastnetDisplayedComponentName_property_selection : EBSelection <String?> {
+  final var mRastnetDisplayedComponentName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mRastnetDisplayedComponentName_property_selection) {
       case .empty :
@@ -5222,7 +5222,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5292,7 +5292,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minPPTPTTTW' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+/*  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5362,7 +5362,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForOARdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5432,7 +5432,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForOARinEBUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5502,7 +5502,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForPHDdisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5572,7 +5572,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForPHDinEBUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5642,7 +5642,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForBoardLimitWidth' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5712,7 +5712,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' proxy property
   //····················································································································
 
-/*  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+/*  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5782,7 +5782,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'drillDataFileExtension' proxy property
   //····················································································································
 
-/*  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+/*  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5852,7 +5852,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'comments' proxy property
   //····················································································································
 
-/*  private var mObserversOf_comments = EBWeakEventSet ()
+/*  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5922,7 +5922,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'selectedSheetTitle' proxy property
   //····················································································································
 
-/*  private var mObserversOf_selectedSheetTitle = EBWeakEventSet ()
+/*  private final var mObserversOf_selectedSheetTitle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -5992,11 +5992,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  private var mObserversOf_boardGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_boardGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
+  final var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardGridStepMultipliedByDisplayFactor_property_selection) {
       case .empty :
@@ -6061,11 +6061,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitsGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
+  final var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardLimitsGridStepMultipliedByDisplayFactor_property_selection) {
       case .empty :
@@ -6130,11 +6130,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardShapeIsRectangular' transient property
   //····················································································································
 
-  private var mObserversOf_boardShapeIsRectangular = EBWeakEventSet ()
+  private final var mObserversOf_boardShapeIsRectangular = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardShapeIsRectangular_property_selection : EBSelection <Bool?> {
+  final var boardShapeIsRectangular_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.boardShapeIsRectangular_property_selection) {
       case .empty :
@@ -6199,11 +6199,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'selectedSheetIssues' transient property
   //····················································································································
 
-  private var mObserversOf_selectedSheetIssues = EBWeakEventSet ()
+  private final var mObserversOf_selectedSheetIssues = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray?> {
+  final var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.selectedSheetIssues_property_selection) {
       case .empty :
@@ -6268,11 +6268,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <EBShape?> {
+  final var connectedPoints_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.connectedPoints_property_selection) {
       case .empty :
@@ -6337,11 +6337,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connexionWarningString' transient property
   //····················································································································
 
-  private var mObserversOf_connexionWarningString = EBWeakEventSet ()
+  private final var mObserversOf_connexionWarningString = EBWeakEventSet ()
 
   //····················································································································
 
-  var connexionWarningString_property_selection : EBSelection <String?> {
+  final var connexionWarningString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.connexionWarningString_property_selection) {
       case .empty :
@@ -6406,11 +6406,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connexionErrorString' transient property
   //····················································································································
 
-  private var mObserversOf_connexionErrorString = EBWeakEventSet ()
+  private final var mObserversOf_connexionErrorString = EBWeakEventSet ()
 
   //····················································································································
 
-  var connexionErrorString_property_selection : EBSelection <String?> {
+  final var connexionErrorString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.connexionErrorString_property_selection) {
       case .empty :
@@ -6475,11 +6475,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'sheetIndexes' transient property
   //····················································································································
 
-  private var mObserversOf_sheetIndexes = EBWeakEventSet ()
+  private final var mObserversOf_sheetIndexes = EBWeakEventSet ()
 
   //····················································································································
 
-  var sheetIndexes_property_selection : EBSelection <IntArray?> {
+  final var sheetIndexes_property_selection : EBSelection <IntArray?> {
     if let model = self.propval {
       switch (model.sheetIndexes_property_selection) {
       case .empty :
@@ -6544,11 +6544,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
-  private var mObserversOf_netsDescription = EBWeakEventSet ()
+  private final var mObserversOf_netsDescription = EBWeakEventSet ()
 
   //····················································································································
 
-  var netsDescription_property_selection : EBSelection <NetInfoArray?> {
+  final var netsDescription_property_selection : EBSelection <NetInfoArray?> {
     if let model = self.propval {
       switch (model.netsDescription_property_selection) {
       case .empty :
@@ -6613,11 +6613,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardIssues' transient property
   //····················································································································
 
-  private var mObserversOf_boardIssues = EBWeakEventSet ()
+  private final var mObserversOf_boardIssues = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardIssues_property_selection : EBSelection <CanariIssueArray?> {
+  final var boardIssues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.boardIssues_property_selection) {
       case .empty :
@@ -6682,11 +6682,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -6751,11 +6751,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'ercStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_ercStatusImage = EBWeakEventSet ()
+  private final var mObserversOf_ercStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
-  var ercStatusImage_property_selection : EBSelection <NSImage?> {
+  final var ercStatusImage_property_selection : EBSelection <NSImage?> {
     if let model = self.propval {
       switch (model.ercStatusImage_property_selection) {
       case .empty :
@@ -6820,11 +6820,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'ercStatusMessage' transient property
   //····················································································································
 
-  private var mObserversOf_ercStatusMessage = EBWeakEventSet ()
+  private final var mObserversOf_ercStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
-  var ercStatusMessage_property_selection : EBSelection <String?> {
+  final var ercStatusMessage_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.ercStatusMessage_property_selection) {
       case .empty :
@@ -6889,11 +6889,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'viaCountString' transient property
   //····················································································································
 
-  private var mObserversOf_viaCountString = EBWeakEventSet ()
+  private final var mObserversOf_viaCountString = EBWeakEventSet ()
 
   //····················································································································
 
-  var viaCountString_property_selection : EBSelection <String?> {
+  final var viaCountString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.viaCountString_property_selection) {
       case .empty :
@@ -6958,11 +6958,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'trackCountString' transient property
   //····················································································································
 
-  private var mObserversOf_trackCountString = EBWeakEventSet ()
+  private final var mObserversOf_trackCountString = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackCountString_property_selection : EBSelection <String?> {
+  final var trackCountString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.trackCountString_property_selection) {
       case .empty :
@@ -7027,11 +7027,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'trackLengthString' transient property
   //····················································································································
 
-  private var mObserversOf_trackLengthString = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthString = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackLengthString_property_selection : EBSelection <String?> {
+  final var trackLengthString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.trackLengthString_property_selection) {
       case .empty :
@@ -7096,11 +7096,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_boardStatusImage = EBWeakEventSet ()
+  private final var mObserversOf_boardStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardStatusImage_property_selection : EBSelection <NSImage?> {
+  final var boardStatusImage_property_selection : EBSelection <NSImage?> {
     if let model = self.propval {
       switch (model.boardStatusImage_property_selection) {
       case .empty :
@@ -7165,11 +7165,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardStatusMessage' transient property
   //····················································································································
 
-  private var mObserversOf_boardStatusMessage = EBWeakEventSet ()
+  private final var mObserversOf_boardStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardStatusMessage_property_selection : EBSelection <String?> {
+  final var boardStatusMessage_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardStatusMessage_property_selection) {
       case .empty :
@@ -7234,11 +7234,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'interiorBoundBox' transient property
   //····················································································································
 
-  private var mObserversOf_interiorBoundBox = EBWeakEventSet ()
+  private final var mObserversOf_interiorBoundBox = EBWeakEventSet ()
 
   //····················································································································
 
-  var interiorBoundBox_property_selection : EBSelection <CanariRect?> {
+  final var interiorBoundBox_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.interiorBoundBox_property_selection) {
       case .empty :
@@ -7303,11 +7303,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardBoundBox' transient property
   //····················································································································
 
-  private var mObserversOf_boardBoundBox = EBWeakEventSet ()
+  private final var mObserversOf_boardBoundBox = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardBoundBox_property_selection : EBSelection <CanariRect?> {
+  final var boardBoundBox_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.boardBoundBox_property_selection) {
       case .empty :
@@ -7372,11 +7372,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorTop' transient property
   //····················································································································
 
-  private var mObserversOf_boardInteriorTop = EBWeakEventSet ()
+  private final var mObserversOf_boardInteriorTop = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardInteriorTop_property_selection : EBSelection <String?> {
+  final var boardInteriorTop_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardInteriorTop_property_selection) {
       case .empty :
@@ -7441,11 +7441,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorBottom' transient property
   //····················································································································
 
-  private var mObserversOf_boardInteriorBottom = EBWeakEventSet ()
+  private final var mObserversOf_boardInteriorBottom = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardInteriorBottom_property_selection : EBSelection <String?> {
+  final var boardInteriorBottom_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardInteriorBottom_property_selection) {
       case .empty :
@@ -7510,11 +7510,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorLeft' transient property
   //····················································································································
 
-  private var mObserversOf_boardInteriorLeft = EBWeakEventSet ()
+  private final var mObserversOf_boardInteriorLeft = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardInteriorLeft_property_selection : EBSelection <String?> {
+  final var boardInteriorLeft_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardInteriorLeft_property_selection) {
       case .empty :
@@ -7579,11 +7579,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorRight' transient property
   //····················································································································
 
-  private var mObserversOf_boardInteriorRight = EBWeakEventSet ()
+  private final var mObserversOf_boardInteriorRight = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardInteriorRight_property_selection : EBSelection <String?> {
+  final var boardInteriorRight_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardInteriorRight_property_selection) {
       case .empty :
@@ -7648,11 +7648,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderTop' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitBorderTop = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitBorderTop = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitBorderTop_property_selection : EBSelection <String?> {
+  final var boardLimitBorderTop_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardLimitBorderTop_property_selection) {
       case .empty :
@@ -7717,11 +7717,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderBottom' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitBorderBottom = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitBorderBottom = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitBorderBottom_property_selection : EBSelection <String?> {
+  final var boardLimitBorderBottom_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardLimitBorderBottom_property_selection) {
       case .empty :
@@ -7786,11 +7786,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderLeft' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitBorderLeft = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitBorderLeft = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitBorderLeft_property_selection : EBSelection <String?> {
+  final var boardLimitBorderLeft_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardLimitBorderLeft_property_selection) {
       case .empty :
@@ -7855,11 +7855,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderRight' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitBorderRight = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitBorderRight = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitBorderRight_property_selection : EBSelection <String?> {
+  final var boardLimitBorderRight_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.boardLimitBorderRight_property_selection) {
       case .empty :
@@ -7924,11 +7924,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderElementCountString' transient property
   //····················································································································
 
-  private var mObserversOf_borderElementCountString = EBWeakEventSet ()
+  private final var mObserversOf_borderElementCountString = EBWeakEventSet ()
 
   //····················································································································
 
-  var borderElementCountString_property_selection : EBSelection <String?> {
+  final var borderElementCountString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.borderElementCountString_property_selection) {
       case .empty :
@@ -7993,11 +7993,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderOutlineBackground' transient property
   //····················································································································
 
-  private var mObserversOf_borderOutlineBackground = EBWeakEventSet ()
+  private final var mObserversOf_borderOutlineBackground = EBWeakEventSet ()
 
   //····················································································································
 
-  var borderOutlineBackground_property_selection : EBSelection <EBShape?> {
+  final var borderOutlineBackground_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.borderOutlineBackground_property_selection) {
       case .empty :
@@ -8062,11 +8062,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderViewBackground' transient property
   //····················································································································
 
-  private var mObserversOf_borderViewBackground = EBWeakEventSet ()
+  private final var mObserversOf_borderViewBackground = EBWeakEventSet ()
 
   //····················································································································
 
-  var borderViewBackground_property_selection : EBSelection <EBShape?> {
+  final var borderViewBackground_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.borderViewBackground_property_selection) {
       case .empty :
@@ -8131,11 +8131,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'deviceNames' transient property
   //····················································································································
 
-  private var mObserversOf_deviceNames = EBWeakEventSet ()
+  private final var mObserversOf_deviceNames = EBWeakEventSet ()
 
   //····················································································································
 
-  var deviceNames_property_selection : EBSelection <StringArray?> {
+  final var deviceNames_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.deviceNames_property_selection) {
       case .empty :
@@ -8200,11 +8200,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'allClassNames' transient property
   //····················································································································
 
-  private var mObserversOf_allClassNames = EBWeakEventSet ()
+  private final var mObserversOf_allClassNames = EBWeakEventSet ()
 
   //····················································································································
 
-  var allClassNames_property_selection : EBSelection <StringArray?> {
+  final var allClassNames_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.allClassNames_property_selection) {
       case .empty :
@@ -8269,11 +8269,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'sheetGeometry' transient property
   //····················································································································
 
-  private var mObserversOf_sheetGeometry = EBWeakEventSet ()
+  private final var mObserversOf_sheetGeometry = EBWeakEventSet ()
 
   //····················································································································
 
-  var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry?> {
+  final var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry?> {
     if let model = self.propval {
       switch (model.sheetGeometry_property_selection) {
       case .empty :
@@ -8338,11 +8338,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicBackgroundDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
+  private final var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicBackgroundDisplay_property_selection : EBSelection <EBShape?> {
+  final var schematicBackgroundDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.schematicBackgroundDisplay_property_selection) {
       case .empty :
@@ -8407,11 +8407,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
-  private var mObserversOf_netWarningCount = EBWeakEventSet ()
+  private final var mObserversOf_netWarningCount = EBWeakEventSet ()
 
   //····················································································································
 
-  var netWarningCount_property_selection : EBSelection <Int?> {
+  final var netWarningCount_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.netWarningCount_property_selection) {
       case .empty :
@@ -8476,11 +8476,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netNamesArray' transient property
   //····················································································································
 
-  private var mObserversOf_netNamesArray = EBWeakEventSet ()
+  private final var mObserversOf_netNamesArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var netNamesArray_property_selection : EBSelection <StringArray?> {
+  final var netNamesArray_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.netNamesArray_property_selection) {
       case .empty :
@@ -8545,11 +8545,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+  private final var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
+  final var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.unplacedSymbols_property_selection) {
       case .empty :
@@ -8614,11 +8614,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'unplacedPackages' transient property
   //····················································································································
 
-  private var mObserversOf_unplacedPackages = EBWeakEventSet ()
+  private final var mObserversOf_unplacedPackages = EBWeakEventSet ()
 
   //····················································································································
 
-  var unplacedPackages_property_selection : EBSelection <StringTagArray?> {
+  final var unplacedPackages_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.unplacedPackages_property_selection) {
       case .empty :
@@ -8683,11 +8683,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'componentsPlacedInBoard' transient property
   //····················································································································
 
-  private var mObserversOf_componentsPlacedInBoard = EBWeakEventSet ()
+  private final var mObserversOf_componentsPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray?> {
+  final var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.componentsPlacedInBoard_property_selection) {
       case .empty :
@@ -8752,11 +8752,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'placedComponentNameArray' transient property
   //····················································································································
 
-  private var mObserversOf_placedComponentNameArray = EBWeakEventSet ()
+  private final var mObserversOf_placedComponentNameArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var placedComponentNameArray_property_selection : EBSelection <StringArray?> {
+  final var placedComponentNameArray_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.placedComponentNameArray_property_selection) {
       case .empty :
@@ -8821,11 +8821,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicHasErrorOrWarning' transient property
   //····················································································································
 
-  private var mObserversOf_schematicHasErrorOrWarning = EBWeakEventSet ()
+  private final var mObserversOf_schematicHasErrorOrWarning = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicHasErrorOrWarning_property_selection : EBSelection <Bool?> {
+  final var schematicHasErrorOrWarning_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.schematicHasErrorOrWarning_property_selection) {
       case .empty :
@@ -8890,11 +8890,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicStatusMessage' transient property
   //····················································································································
 
-  private var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
+  private final var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicStatusMessage_property_selection : EBSelection <String?> {
+  final var schematicStatusMessage_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.schematicStatusMessage_property_selection) {
       case .empty :
@@ -8959,11 +8959,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_schematicStatusImage = EBWeakEventSet ()
+  private final var mObserversOf_schematicStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
-  var schematicStatusImage_property_selection : EBSelection <NSImage?> {
+  final var schematicStatusImage_property_selection : EBSelection <NSImage?> {
     if let model = self.propval {
       switch (model.schematicStatusImage_property_selection) {
       case .empty :
@@ -9028,11 +9028,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mSheets
   //····················································································································
 
-  private var mObserversOf_mSheets = EBWeakEventSet ()
+  private final var mObserversOf_mSheets = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSheets_property_selection : EBSelection <[SheetInProject]> {
+  final var mSheets_property_selection : EBSelection <[SheetInProject]> {
     if let model = self.propval {
       switch (model.mSheets_property_selection) {
       case .empty :
@@ -9069,11 +9069,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mNetClasses
   //····················································································································
 
-  private var mObserversOf_mNetClasses = EBWeakEventSet ()
+  private final var mObserversOf_mNetClasses = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNetClasses_property_selection : EBSelection <[NetClassInProject]> {
+  final var mNetClasses_property_selection : EBSelection <[NetClassInProject]> {
     if let model = self.propval {
       switch (model.mNetClasses_property_selection) {
       case .empty :
@@ -9110,11 +9110,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mFonts
   //····················································································································
 
-  private var mObserversOf_mFonts = EBWeakEventSet ()
+  private final var mObserversOf_mFonts = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFonts_property_selection : EBSelection <[FontInProject]> {
+  final var mFonts_property_selection : EBSelection <[FontInProject]> {
     if let model = self.propval {
       switch (model.mFonts_property_selection) {
       case .empty :
@@ -9151,11 +9151,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mDevices
   //····················································································································
 
-  private var mObserversOf_mDevices = EBWeakEventSet ()
+  private final var mObserversOf_mDevices = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDevices_property_selection : EBSelection <[DeviceInProject]> {
+  final var mDevices_property_selection : EBSelection <[DeviceInProject]> {
     if let model = self.propval {
       switch (model.mDevices_property_selection) {
       case .empty :
@@ -9192,11 +9192,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mBorderCurves
   //····················································································································
 
-  private var mObserversOf_mBorderCurves = EBWeakEventSet ()
+  private final var mObserversOf_mBorderCurves = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBorderCurves_property_selection : EBSelection <[BorderCurve]> {
+  final var mBorderCurves_property_selection : EBSelection <[BorderCurve]> {
     if let model = self.propval {
       switch (model.mBorderCurves_property_selection) {
       case .empty :
@@ -9233,11 +9233,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mBoardObjects
   //····················································································································
 
-  private var mObserversOf_mBoardObjects = EBWeakEventSet ()
+  private final var mObserversOf_mBoardObjects = EBWeakEventSet ()
 
   //····················································································································
 
-  var mBoardObjects_property_selection : EBSelection <[BoardObject]> {
+  final var mBoardObjects_property_selection : EBSelection <[BoardObject]> {
     if let model = self.propval {
       switch (model.mBoardObjects_property_selection) {
       case .empty :
@@ -9274,11 +9274,11 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observable toMany property: mComponents
   //····················································································································
 
-  private var mObserversOf_mComponents = EBWeakEventSet ()
+  private final var mObserversOf_mComponents = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComponents_property_selection : EBSelection <[ComponentInProject]> {
+  final var mComponents_property_selection : EBSelection <[ComponentInProject]> {
     if let model = self.propval {
       switch (model.mComponents_property_selection) {
       case .empty :
@@ -9499,7 +9499,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

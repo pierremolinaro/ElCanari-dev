@@ -12,7 +12,7 @@ import Cocoa
 // NOTE: AssignedPadProxysInDeviceTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
@@ -29,22 +29,6 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, N
   func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mDataSource.count
   }
-
-  //····················································································································
-
-//  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
-//    var result : Any? = nil
-//    if let columnIdentifier = inTableColumn?.identifier.rawValue {
-//      if columnIdentifier == "pad" {
-//        result = self.mDataSource [row].padName
-//      }else if columnIdentifier == "symbol" {
-//        result = self.mDataSource [row].symbolInstanceName
-//      }else if columnIdentifier == "pin" {
-//        result = self.mDataSource [row].pinName
-//      }
-//    }
-//    return result
-//  }
 
   //····················································································································
 

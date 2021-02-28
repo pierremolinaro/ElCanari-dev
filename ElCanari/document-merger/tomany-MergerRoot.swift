@@ -74,7 +74,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -131,7 +131,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -188,7 +188,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'automaticBoardSize' stored property
   //····················································································································
 
-  private var mObserversOf_automaticBoardSize = EBWeakEventSet ()
+  private final var mObserversOf_automaticBoardSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -245,7 +245,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardManualWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardManualWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardManualWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -302,7 +302,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardManualHeight' stored property
   //····················································································································
 
-  private var mObserversOf_boardManualHeight = EBWeakEventSet ()
+  private final var mObserversOf_boardManualHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -473,7 +473,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'overlapingArrangment' stored property
   //····················································································································
 
-  private var mObserversOf_overlapingArrangment = EBWeakEventSet ()
+  private final var mObserversOf_overlapingArrangment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -530,7 +530,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'selectedBoardXUnit' stored property
   //····················································································································
 
-  private var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
+  private final var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -587,7 +587,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'selectedBoardYUnit' stored property
   //····················································································································
 
-  private var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
+  private final var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -644,7 +644,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -701,7 +701,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardLimitWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -758,7 +758,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'arrowMagnitude' stored property
   //····················································································································
 
-  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+  private final var mObserversOf_arrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
@@ -815,7 +815,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'arrowMagnitudeUnit' stored property
   //····················································································································
 
-  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+  private final var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -872,7 +872,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitude' stored property
   //····················································································································
 
-  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+  private final var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
@@ -929,7 +929,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitudeUnit' stored property
   //····················································································································
 
-  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+  private final var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -986,7 +986,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
+  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1043,7 +1043,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkName = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1100,7 +1100,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mArtworkVersion = EBWeakEventSet ()
+  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1157,7 +1157,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'fileGenerationParameterArray' toMany proxy
   //····················································································································
 
-  private var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+  private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1214,7 +1214,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1271,7 +1271,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minPPTPTTTW' proxy property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1328,7 +1328,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForOARdisplayUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1385,7 +1385,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForOARinEBUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1442,7 +1442,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForPHDdisplayUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1499,7 +1499,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForPHDinEBUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1556,7 +1556,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForBoardLimitWidth' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1613,7 +1613,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' proxy property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1670,7 +1670,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'drillDataFileExtension' proxy property
   //····················································································································
 
-  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1727,7 +1727,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'comments' proxy property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1784,7 +1784,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'modelNames' transient property
   //····················································································································
 
-  private var mObserversOf_modelNames = EBWeakEventSet ()
+  private final var mObserversOf_modelNames = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1840,7 +1840,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardRect' transient property
   //····················································································································
 
-  private var mObserversOf_boardRect = EBWeakEventSet ()
+  private final var mObserversOf_boardRect = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1896,7 +1896,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardDisplayRect' transient property
   //····················································································································
 
-  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
+  private final var mObserversOf_boardDisplayRect = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1952,7 +1952,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardWidth' transient property
   //····················································································································
 
-  private var mObserversOf_boardWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2008,7 +2008,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardHeight' transient property
   //····················································································································
 
-  private var mObserversOf_boardHeight = EBWeakEventSet ()
+  private final var mObserversOf_boardHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2064,7 +2064,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   //   Observers of 'boardOutlineRectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_boardOutlineRectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_boardOutlineRectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2437,7 +2437,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -2445,32 +2445,32 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerRoot) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerRoot) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : MergerRoot) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerRoot) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : MergerRoot) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -2513,7 +2513,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <MergerRoot>, addedSet inAddedSet : Set <MergerRoot>) {
+  override func updateObservers (removedSet inRemovedSet : Set <MergerRoot>, addedSet inAddedSet : Set <MergerRoot>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -2533,7 +2533,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [MergerRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [MergerRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -2541,11 +2541,11 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [MergerRoot] { return self.mInternalArrayValue }
+  override final var propval : [MergerRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : MergerRoot) {
+  final func remove (_ object : MergerRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2553,7 +2553,7 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : MergerRoot) {
+  final func add (_ object : MergerRoot) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2563,11 +2563,11 @@ class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

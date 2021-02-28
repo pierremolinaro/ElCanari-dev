@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-  private var mObserversOf_mCenterX = EBWeakEventSet ()
+  private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
-  private var mObserversOf_mCenterY = EBWeakEventSet ()
+  private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mMirror' stored property
   //····················································································································
 
-  private var mObserversOf_mMirror = EBWeakEventSet ()
+  private final var mObserversOf_mMirror = EBWeakEventSet ()
 
   //····················································································································
 
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mDisplayComponentNameOffsetX' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -457,7 +457,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mDisplayComponentNameOffsetY' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mDisplayComponentValue' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -571,7 +571,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mDisplayComponentValueOffsetX' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'mDisplayComponentValueOffsetY' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -685,7 +685,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'componentValueProxy' proxy property
   //····················································································································
 
-  private var mObserversOf_componentValueProxy = EBWeakEventSet ()
+  private final var mObserversOf_componentValueProxy = EBWeakEventSet ()
 
   //····················································································································
 
@@ -742,7 +742,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private var mObserversOf_componentName = EBWeakEventSet ()
+  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -798,7 +798,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  private var mObserversOf_deviceName = EBWeakEventSet ()
+  private final var mObserversOf_deviceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -854,7 +854,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'symbolInfo' transient property
   //····················································································································
 
-  private var mObserversOf_symbolInfo = EBWeakEventSet ()
+  private final var mObserversOf_symbolInfo = EBWeakEventSet ()
 
   //····················································································································
 
@@ -910,7 +910,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -966,7 +966,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1022,7 +1022,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1078,7 +1078,7 @@ class ReadOnlyArrayOf_ComponentSymbolInProject : ReadOnlyAbstractArrayProperty <
   //   Observers of 'symbolInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_symbolInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_symbolInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1451,7 +1451,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1459,32 +1459,32 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentSymbolInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ComponentSymbolInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1527,7 +1527,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <ComponentSymbolInProject>, addedSet inAddedSet : Set <ComponentSymbolInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1547,7 +1547,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
  
   //····················································································································
 
-  override var selection : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [ComponentSymbolInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1555,11 +1555,11 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
 
   //····················································································································
 
-  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
+  override final var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : ComponentSymbolInProject) {
+  final func remove (_ object : ComponentSymbolInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1567,7 +1567,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   
   //····················································································································
 
-  func add (_ object : ComponentSymbolInProject) {
+  final func add (_ object : ComponentSymbolInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1577,11 +1577,11 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

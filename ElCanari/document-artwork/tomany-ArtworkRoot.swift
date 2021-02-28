@@ -46,7 +46,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-  private var mObserversOf_selectedTab = EBWeakEventSet ()
+  private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
-  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
@@ -274,7 +274,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -331,7 +331,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -445,7 +445,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -616,7 +616,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
-  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -673,7 +673,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1046,7 +1046,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1054,32 +1054,32 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkRoot) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ArtworkRoot) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkRoot) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ArtworkRoot) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1122,7 +1122,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
+  override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1142,7 +1142,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
  
   //····················································································································
 
-  override var selection : EBSelection < [ArtworkRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [ArtworkRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1150,11 +1150,11 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
 
   //····················································································································
 
-  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
+  override final var propval : [ArtworkRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : ArtworkRoot) {
+  final func remove (_ object : ArtworkRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1162,7 +1162,7 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   
   //····················································································································
 
-  func add (_ object : ArtworkRoot) {
+  final func add (_ object : ArtworkRoot) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1172,11 +1172,11 @@ class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObser
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

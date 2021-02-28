@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mPinName' stored property
   //····················································································································
 
-  private var mObserversOf_mPinName = EBWeakEventSet ()
+  private final var mObserversOf_mPinName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  private var mObserversOf_mPinX = EBWeakEventSet ()
+  private final var mObserversOf_mPinX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  private var mObserversOf_mPinY = EBWeakEventSet ()
+  private final var mObserversOf_mPinY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mXName = EBWeakEventSet ()
+  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mYName = EBWeakEventSet ()
+  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mPinNameIsDisplayedInSchematic' stored property
   //····················································································································
 
-  private var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
@@ -563,7 +563,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mXNumber = EBWeakEventSet ()
+  private final var mObserversOf_mXNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mYNumber = EBWeakEventSet ()
+  private final var mObserversOf_mYNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -677,7 +677,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -734,7 +734,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private var mObserversOf_pinQualifiedName = EBWeakEventSet ()
+  private final var mObserversOf_pinQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_DevicePinInProject : ReadOnlyAbstractArrayProperty <Device
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1163,7 +1163,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1171,32 +1171,32 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePinInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DevicePinInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1239,7 +1239,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePinInProject>, addedSet inAddedSet : Set <DevicePinInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DevicePinInProject>, addedSet inAddedSet : Set <DevicePinInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1259,7 +1259,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
  
   //····················································································································
 
-  override var selection : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DevicePinInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1267,11 +1267,11 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
 
   //····················································································································
 
-  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+  override final var propval : [DevicePinInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DevicePinInProject) {
+  final func remove (_ object : DevicePinInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1279,7 +1279,7 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   
   //····················································································································
 
-  func add (_ object : DevicePinInProject) {
+  final func add (_ object : DevicePinInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1289,11 +1289,11 @@ class StoredArrayOf_DevicePinInProject : ReadWriteArrayOf_DevicePinInProject, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

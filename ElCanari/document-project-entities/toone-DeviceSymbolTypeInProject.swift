@@ -28,11 +28,11 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbolTypeName_property_selection : EBSelection <String?> {
+  final var mSymbolTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSymbolTypeName_property_selection) {
       case .empty :
@@ -98,11 +98,11 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.mStrokeBezierPath_property_selection) {
       case .empty :
@@ -168,11 +168,11 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.mFilledBezierPath_property_selection) {
       case .empty :
@@ -422,7 +422,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

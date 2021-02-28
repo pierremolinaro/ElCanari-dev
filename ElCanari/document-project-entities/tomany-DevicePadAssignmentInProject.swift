@@ -28,7 +28,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignment = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -514,7 +514,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -522,32 +522,32 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePadAssignmentInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePadAssignmentInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePadAssignmentInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePadAssignmentInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePadAssignmentInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DevicePadAssignmentInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePadAssignmentInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DevicePadAssignmentInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -590,7 +590,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DevicePadAssignmentInProject>, addedSet inAddedSet : Set <DevicePadAssignmentInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DevicePadAssignmentInProject>, addedSet inAddedSet : Set <DevicePadAssignmentInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -610,7 +610,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
  
   //····················································································································
 
-  override var selection : EBSelection < [DevicePadAssignmentInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DevicePadAssignmentInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -618,11 +618,11 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
 
   //····················································································································
 
-  override var propval : [DevicePadAssignmentInProject] { return self.mInternalArrayValue }
+  override final var propval : [DevicePadAssignmentInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DevicePadAssignmentInProject) {
+  final func remove (_ object : DevicePadAssignmentInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -630,7 +630,7 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   
   //····················································································································
 
-  func add (_ object : DevicePadAssignmentInProject) {
+  final func add (_ object : DevicePadAssignmentInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -640,11 +640,11 @@ class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAss
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

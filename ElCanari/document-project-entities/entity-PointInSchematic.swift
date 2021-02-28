@@ -98,7 +98,7 @@ protocol PointInSchematic_netInfoForPoint : AnyObject {
 //    Entity: PointInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class PointInSchematic : EBManagedObject,
+final class PointInSchematic : EBManagedObject,
          PointInSchematic_mSymbolPinName,
          PointInSchematic_mX,
          PointInSchematic_mY,

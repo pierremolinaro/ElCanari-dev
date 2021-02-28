@@ -22,11 +22,11 @@ private let LINE_COUNT = 0x100 - 2
 //   CanariCharacterView
 //----------------------------------------------------------------------------------------------------------------------
 
-class NewCharacterView : NSView, EBUserClassNameProtocol {
+final class NewCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override init(frame frameRect: NSRect) {
+  override init (frame frameRect : NSRect) {
     super.init (frame: frameRect)
     noteObjectAllocation (self)
     let width = ADDRESS_COLUMN_WIDTH + 16.0 * PLACEMENT_GRID

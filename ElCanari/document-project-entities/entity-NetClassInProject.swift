@@ -122,7 +122,7 @@ protocol NetClassInProject_netWarningCount : AnyObject {
 //    Entity: NetClassInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class NetClassInProject : EBManagedObject,
+final class NetClassInProject : EBManagedObject,
          NetClassInProject_mNetClassName,
          NetClassInProject_mNetClassColor,
          NetClassInProject_mTrackWidth,

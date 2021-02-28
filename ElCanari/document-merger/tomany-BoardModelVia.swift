@@ -28,7 +28,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_padDiameter = EBWeakEventSet ()
+  private final var mObserversOf_padDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -142,7 +142,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
@@ -516,7 +516,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -524,32 +524,32 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelVia) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardModelVia) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelVia) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardModelVia) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -592,7 +592,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModelVia>, addedSet inAddedSet : Set <BoardModelVia>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardModelVia>, addedSet inAddedSet : Set <BoardModelVia>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -612,7 +612,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -620,11 +620,11 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 
   //····················································································································
 
-  override var propval : [BoardModelVia] { return self.mInternalArrayValue }
+  override final var propval : [BoardModelVia] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardModelVia) {
+  final func remove (_ object : BoardModelVia) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -632,7 +632,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : BoardModelVia) {
+  final func add (_ object : BoardModelVia) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -642,11 +642,11 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

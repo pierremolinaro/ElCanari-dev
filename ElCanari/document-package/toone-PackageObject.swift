@@ -30,11 +30,11 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -99,11 +99,11 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -168,11 +168,11 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -237,11 +237,11 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   //   Observers of 'knobSize' transient property
   //····················································································································
 
-  private var mObserversOf_knobSize = EBWeakEventSet ()
+  private final var mObserversOf_knobSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var knobSize_property_selection : EBSelection <Double?> {
+  final var knobSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.knobSize_property_selection) {
       case .empty :
@@ -490,7 +490,7 @@ final class StoredObject_PackageObject : ReadWriteObject_PackageObject, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

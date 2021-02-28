@@ -48,7 +48,7 @@ class EBButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate var mTitleController : EBReadOnlyPropertyController? = nil
+  fileprivate final var mTitleController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 

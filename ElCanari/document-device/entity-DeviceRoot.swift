@@ -158,7 +158,7 @@ protocol DeviceRoot_issues : AnyObject {
 //    Entity: DeviceRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceRoot : EBGraphicManagedObject,
+final class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mSelectedPageIndex,
          DeviceRoot_mTitle,
          DeviceRoot_mImageData,

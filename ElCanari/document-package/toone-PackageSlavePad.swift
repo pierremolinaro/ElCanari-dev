@@ -70,11 +70,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-  private var mObserversOf_xCenter = EBWeakEventSet ()
+  private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
 
-  var xCenter_property_selection : EBSelection <Int?> {
+  final var xCenter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xCenter_property_selection) {
       case .empty :
@@ -140,11 +140,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'yCenter' stored property
   //····················································································································
 
-  private var mObserversOf_yCenter = EBWeakEventSet ()
+  private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
 
-  var yCenter_property_selection : EBSelection <Int?> {
+  final var yCenter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yCenter_property_selection) {
       case .empty :
@@ -210,11 +210,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -280,11 +280,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int?> {
+  final var height_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.height_property_selection) {
       case .empty :
@@ -350,11 +350,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeWidth' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidth = EBWeakEventSet ()
+  private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var holeWidth_property_selection : EBSelection <Int?> {
+  final var holeWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.holeWidth_property_selection) {
       case .empty :
@@ -420,11 +420,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeHeight' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeight = EBWeakEventSet ()
+  private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var holeHeight_property_selection : EBSelection <Int?> {
+  final var holeHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.holeHeight_property_selection) {
       case .empty :
@@ -490,11 +490,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padShape' stored property
   //····················································································································
 
-  private var mObserversOf_padShape = EBWeakEventSet ()
+  private final var mObserversOf_padShape = EBWeakEventSet ()
 
   //····················································································································
 
-  var padShape_property_selection : EBSelection <PadShape?> {
+  final var padShape_property_selection : EBSelection <PadShape?> {
     if let model = self.propval {
       switch (model.padShape_property_selection) {
       case .empty :
@@ -560,11 +560,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padStyle' stored property
   //····················································································································
 
-  private var mObserversOf_padStyle = EBWeakEventSet ()
+  private final var mObserversOf_padStyle = EBWeakEventSet ()
 
   //····················································································································
 
-  var padStyle_property_selection : EBSelection <SlavePadStyle?> {
+  final var padStyle_property_selection : EBSelection <SlavePadStyle?> {
     if let model = self.propval {
       switch (model.padStyle_property_selection) {
       case .empty :
@@ -630,11 +630,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var xCenterUnit_property_selection : EBSelection <Int?> {
+  final var xCenterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xCenterUnit_property_selection) {
       case .empty :
@@ -700,11 +700,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var yCenterUnit_property_selection : EBSelection <Int?> {
+  final var yCenterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yCenterUnit_property_selection) {
       case .empty :
@@ -770,11 +770,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int?> {
+  final var widthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.widthUnit_property_selection) {
       case .empty :
@@ -840,11 +840,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int?> {
+  final var heightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.heightUnit_property_selection) {
       case .empty :
@@ -910,11 +910,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var holeWidthUnit_property_selection : EBSelection <Int?> {
+  final var holeWidthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.holeWidthUnit_property_selection) {
       case .empty :
@@ -980,11 +980,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var holeHeightUnit_property_selection : EBSelection <Int?> {
+  final var holeHeightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.holeHeightUnit_property_selection) {
       case .empty :
@@ -1050,11 +1050,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
 
-  private var mObserversOf_annularRingUnit = EBWeakEventSet ()
+  private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var annularRingUnit_property_selection : EBSelection <Int?> {
+  final var annularRingUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.annularRingUnit_property_selection) {
       case .empty :
@@ -1120,11 +1120,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -1189,11 +1189,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1258,11 +1258,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padIsTraversing' transient property
   //····················································································································
 
-  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
+  private final var mObserversOf_padIsTraversing = EBWeakEventSet ()
 
   //····················································································································
 
-  var padIsTraversing_property_selection : EBSelection <Bool?> {
+  final var padIsTraversing_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.padIsTraversing_property_selection) {
       case .empty :
@@ -1327,11 +1327,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'annularRing' transient property
   //····················································································································
 
-  private var mObserversOf_annularRing = EBWeakEventSet ()
+  private final var mObserversOf_annularRing = EBWeakEventSet ()
 
   //····················································································································
 
-  var annularRing_property_selection : EBSelection <Int?> {
+  final var annularRing_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.annularRing_property_selection) {
       case .empty :
@@ -1396,11 +1396,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padNameWithZoneName' transient property
   //····················································································································
 
-  private var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
+  private final var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
 
   //····················································································································
 
-  var padNameWithZoneName_property_selection : EBSelection <String?> {
+  final var padNameWithZoneName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.padNameWithZoneName_property_selection) {
       case .empty :
@@ -1465,11 +1465,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'masterPadNameWithZoneName' transient property
   //····················································································································
 
-  private var mObserversOf_masterPadNameWithZoneName = EBWeakEventSet ()
+  private final var mObserversOf_masterPadNameWithZoneName = EBWeakEventSet ()
 
   //····················································································································
 
-  var masterPadNameWithZoneName_property_selection : EBSelection <String?> {
+  final var masterPadNameWithZoneName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.masterPadNameWithZoneName_property_selection) {
       case .empty :
@@ -1534,11 +1534,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padNameForDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNameForDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNameForDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var padNameForDisplay_property_selection : EBSelection <String?> {
+  final var padNameForDisplay_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.padNameForDisplay_property_selection) {
       case .empty :
@@ -1603,11 +1603,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var padNumberDisplay_property_selection : EBSelection <EBShape?> {
+  final var padNumberDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.padNumberDisplay_property_selection) {
       case .empty :
@@ -1672,11 +1672,11 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -1925,7 +1925,7 @@ final class StoredObject_PackageSlavePad : ReadWriteObject_PackageSlavePad, EBSi
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -117,69 +117,69 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddGenerationFileButton : EBButton? = nil
-  @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mDataPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mDataTableView : EBTableView? = nil
-  @IBOutlet var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mDrawBoardInternalLimitsSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawBoardLimitsSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawComponentNamesBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawComponentNamesTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawComponentValuesBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawComponentValuesTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawPackageLegendBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawPackageLegendTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawPadHolesInPDFSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawPadsBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawPadsTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawTextsLayoutBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawTextsLayoutTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawTextsLegendBottomSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawTextsLegendTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawTracksBottomSidSwitche : EBSwitch? = nil
-  @IBOutlet var mDrawTracksTopSideSwitch : EBSwitch? = nil
-  @IBOutlet var mDrawViasSwitch : EBSwitch? = nil
-  @IBOutlet var mDrillDataFileExtensionTextField : EBTextField? = nil
-  @IBOutlet var mDrillPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mExtensionTextField : EBTextField? = nil
-  @IBOutlet var mGeneratedFileCountTextField : EBTextObserverField? = nil
-  @IBOutlet var mHorizontalMirrorSwitch : EBSwitch? = nil
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton? = nil
-  @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mMinimaPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mOARUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOARValueTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mOtherSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet var mPHDUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPHDValueTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mPadHoleDefinitionView : NSView? = nil
-  @IBOutlet var mRemoveGenerationFileButton : EBButton? = nil
-  @IBOutlet var mSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet var mVersionField : CanariVersionField? = nil
-  @IBOutlet var mVersionFieldInToolbar : CanariVersionField? = nil
-  @IBOutlet var minValueForBoardLimitTextField : CanariDimensionTextField? = nil
-  @IBOutlet var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var resetVersionAndSignatureButton : EBButton? = nil
+  @IBOutlet final var mAddGenerationFileButton : EBButton? = nil
+  @IBOutlet final var mCommentTextView : EBTextView? = nil
+  @IBOutlet final var mDataPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mDataTableView : EBTableView? = nil
+  @IBOutlet final var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mDrawBoardInternalLimitsSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawBoardLimitsSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawComponentNamesBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawComponentNamesTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawComponentValuesBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawComponentValuesTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawPackageLegendBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawPackageLegendTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawPadHolesInPDFSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawPadsBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawPadsTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawTextsLayoutBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawTextsLayoutTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawTextsLegendBottomSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawTextsLegendTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawTracksBottomSidSwitche : EBSwitch? = nil
+  @IBOutlet final var mDrawTracksTopSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawViasSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrillDataFileExtensionTextField : EBTextField? = nil
+  @IBOutlet final var mDrillPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mExtensionTextField : EBTextField? = nil
+  @IBOutlet final var mGeneratedFileCountTextField : EBTextObserverField? = nil
+  @IBOutlet final var mHorizontalMirrorSwitch : EBSwitch? = nil
+  @IBOutlet final var mInfosPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mMasterView : NSView? = nil
+  @IBOutlet final var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mMinimaPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mOARUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOARValueTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mOtherSignatureTextField : CanariSignatureField? = nil
+  @IBOutlet final var mPHDUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPHDValueTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mPadHoleDefinitionView : NSView? = nil
+  @IBOutlet final var mRemoveGenerationFileButton : EBButton? = nil
+  @IBOutlet final var mSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mSignatureTextField : CanariSignatureField? = nil
+  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
+  @IBOutlet final var mVersionField : CanariVersionField? = nil
+  @IBOutlet final var mVersionFieldInToolbar : CanariVersionField? = nil
+  @IBOutlet final var minValueForBoardLimitTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var resetVersionAndSignatureButton : EBButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mPadHoleDefinitionView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mPadHoleDefinitionView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -191,7 +191,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -216,7 +216,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name? {
+  override final var windowNibName : NSNib.Name? {
     return NSNib.Name ("ArtworkDocument")
   }
   
@@ -224,7 +224,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "ArtworkRoot"
   }
 
@@ -232,7 +232,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : ArtworkRoot { return self.mRootObject as! ArtworkRoot }
+  final var rootObject : ArtworkRoot { return self.mRootObject as! ArtworkRoot }
 
   //····················································································································
   //    check outlet connections

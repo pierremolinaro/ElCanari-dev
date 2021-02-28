@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mX1' stored property
   //····················································································································
 
-  private var mObserversOf_mX1 = EBWeakEventSet ()
+  private final var mObserversOf_mX1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mX1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_mX1Unit = EBWeakEventSet ()
+  private final var mObserversOf_mX1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mY1' stored property
   //····················································································································
 
-  private var mObserversOf_mY1 = EBWeakEventSet ()
+  private final var mObserversOf_mY1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mY1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_mY1Unit = EBWeakEventSet ()
+  private final var mObserversOf_mY1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mX2' stored property
   //····················································································································
 
-  private var mObserversOf_mX2 = EBWeakEventSet ()
+  private final var mObserversOf_mX2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -390,7 +390,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mX2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_mX2Unit = EBWeakEventSet ()
+  private final var mObserversOf_mX2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mY2' stored property
   //····················································································································
 
-  private var mObserversOf_mY2 = EBWeakEventSet ()
+  private final var mObserversOf_mY2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -504,7 +504,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mY2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_mY2Unit = EBWeakEventSet ()
+  private final var mObserversOf_mY2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mLayer = EBWeakEventSet ()
+  private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
 
@@ -618,7 +618,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mWidth = EBWeakEventSet ()
+  private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -675,7 +675,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1104,7 +1104,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1112,32 +1112,32 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardLine) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardLine) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardLine) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardLine) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardLine) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardLine) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardLine) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardLine) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1180,7 +1180,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardLine>, addedSet inAddedSet : Set <BoardLine>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardLine>, addedSet inAddedSet : Set <BoardLine>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1200,7 +1200,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardLine] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardLine] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1208,11 +1208,11 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
 
   //····················································································································
 
-  override var propval : [BoardLine] { return self.mInternalArrayValue }
+  override final var propval : [BoardLine] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardLine) {
+  final func remove (_ object : BoardLine) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1220,7 +1220,7 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   
   //····················································································································
 
-  func add (_ object : BoardLine) {
+  final func add (_ object : BoardLine) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1230,11 +1230,11 @@ class StoredArrayOf_BoardLine : ReadWriteArrayOf_BoardLine, EBSignatureObserverP
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

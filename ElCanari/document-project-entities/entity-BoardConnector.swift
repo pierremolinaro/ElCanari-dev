@@ -182,7 +182,7 @@ protocol BoardConnector_signatureForERCChecking : AnyObject {
 //    Entity: BoardConnector
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardConnector : BoardObject,
+final class BoardConnector : BoardObject,
          BoardConnector_mComponentPadName,
          BoardConnector_mPadIndex,
          BoardConnector_mX,

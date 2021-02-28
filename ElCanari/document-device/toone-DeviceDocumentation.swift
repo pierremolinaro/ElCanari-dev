@@ -28,11 +28,11 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-  private var mObserversOf_mFileName = EBWeakEventSet ()
+  private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFileName_property_selection : EBSelection <String?> {
+  final var mFileName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mFileName_property_selection) {
       case .empty :
@@ -98,11 +98,11 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFileData_property_selection : EBSelection <Data?> {
+  final var mFileData_property_selection : EBSelection <Data?> {
     if let model = self.propval {
       switch (model.mFileData_property_selection) {
       case .empty :
@@ -168,11 +168,11 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private var mObserversOf_fileSize = EBWeakEventSet ()
+  private final var mObserversOf_fileSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var fileSize_property_selection : EBSelection <Int?> {
+  final var fileSize_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.fileSize_property_selection) {
       case .empty :
@@ -421,7 +421,7 @@ final class StoredObject_DeviceDocumentation : ReadWriteObject_DeviceDocumentati
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

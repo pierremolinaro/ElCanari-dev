@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
+  private final var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -145,7 +145,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_symbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -257,7 +257,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -630,7 +630,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -638,32 +638,32 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DeviceSymbolInstanceInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -706,7 +706,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolInstanceInProject>, addedSet inAddedSet : Set <DeviceSymbolInstanceInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DeviceSymbolInstanceInProject>, addedSet inAddedSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -726,7 +726,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
  
   //····················································································································
 
-  override var selection : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DeviceSymbolInstanceInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -734,11 +734,11 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 
   //····················································································································
 
-  override var propval : [DeviceSymbolInstanceInProject] { return self.mInternalArrayValue }
+  override final var propval : [DeviceSymbolInstanceInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DeviceSymbolInstanceInProject) {
+  final func remove (_ object : DeviceSymbolInstanceInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -746,7 +746,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   
   //····················································································································
 
-  func add (_ object : DeviceSymbolInstanceInProject) {
+  final func add (_ object : DeviceSymbolInstanceInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -756,11 +756,11 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -64,7 +64,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -178,7 +178,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -235,7 +235,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'xUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xUnit = EBWeakEventSet ()
+  private final var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -349,7 +349,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yUnit = EBWeakEventSet ()
+  private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -406,7 +406,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -463,7 +463,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -520,7 +520,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'zoneName' stored property
   //····················································································································
 
-  private var mObserversOf_zoneName = EBWeakEventSet ()
+  private final var mObserversOf_zoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -577,7 +577,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'displayZoneName' stored property
   //····················································································································
 
-  private var mObserversOf_displayZoneName = EBWeakEventSet ()
+  private final var mObserversOf_displayZoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -634,7 +634,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_xName = EBWeakEventSet ()
+  private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -691,7 +691,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_yName = EBWeakEventSet ()
+  private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -748,7 +748,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'xNameUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xNameUnit = EBWeakEventSet ()
+  private final var mObserversOf_xNameUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -805,7 +805,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'yNameUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yNameUnit = EBWeakEventSet ()
+  private final var mObserversOf_yNameUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -862,7 +862,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
-  private var mObserversOf_zoneNumbering = EBWeakEventSet ()
+  private final var mObserversOf_zoneNumbering = EBWeakEventSet ()
 
   //····················································································································
 
@@ -919,7 +919,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -975,7 +975,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1031,7 +1031,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'rect' transient property
   //····················································································································
 
-  private var mObserversOf_rect = EBWeakEventSet ()
+  private final var mObserversOf_rect = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1087,7 +1087,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1143,7 +1143,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'forbiddenPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_forbiddenPadArray = EBWeakEventSet ()
+  private final var mObserversOf_forbiddenPadArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1199,7 +1199,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   //   Observers of 'emptyForbiddenPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_emptyForbiddenPadArray = EBWeakEventSet ()
+  private final var mObserversOf_emptyForbiddenPadArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1572,7 +1572,7 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1580,32 +1580,32 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageZone) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageZone) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageZone) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageZone) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1648,7 +1648,7 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageZone>, addedSet inAddedSet : Set <PackageZone>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageZone>, addedSet inAddedSet : Set <PackageZone>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1668,7 +1668,7 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageZone] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageZone] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1676,11 +1676,11 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
 
   //····················································································································
 
-  override var propval : [PackageZone] { return self.mInternalArrayValue }
+  override final var propval : [PackageZone] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageZone) {
+  final func remove (_ object : PackageZone) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1688,7 +1688,7 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   
   //····················································································································
 
-  func add (_ object : PackageZone) {
+  final func add (_ object : PackageZone) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1698,11 +1698,11 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

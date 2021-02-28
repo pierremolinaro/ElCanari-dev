@@ -32,11 +32,11 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -101,11 +101,11 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -170,11 +170,11 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String?> {
+  final var netName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netName_property_selection) {
       case .empty :
@@ -239,11 +239,11 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String?> {
+  final var netClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
@@ -308,11 +308,11 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private var mObserversOf_hasNet = EBWeakEventSet ()
+  private final var mObserversOf_hasNet = EBWeakEventSet ()
 
   //····················································································································
 
-  var hasNet_property_selection : EBSelection <Bool?> {
+  final var hasNet_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.hasNet_property_selection) {
       case .empty :
@@ -561,7 +561,7 @@ final class StoredObject_WireInSchematic : ReadWriteObject_WireInSchematic, EBSi
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

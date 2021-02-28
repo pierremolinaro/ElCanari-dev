@@ -38,7 +38,7 @@ protocol WireInSchematic_hasNet : AnyObject {
 //    Entity: WireInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class WireInSchematic : SchematicObject,
+final class WireInSchematic : SchematicObject,
          WireInSchematic_objectDisplay,
          WireInSchematic_selectionDisplay,
          WireInSchematic_netName,

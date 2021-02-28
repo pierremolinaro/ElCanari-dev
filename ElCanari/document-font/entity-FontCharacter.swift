@@ -56,7 +56,7 @@ protocol FontCharacter_issues : AnyObject {
 //    Entity: FontCharacter
 //----------------------------------------------------------------------------------------------------------------------
 
-class FontCharacter : EBManagedObject,
+final class FontCharacter : EBManagedObject,
          FontCharacter_codePoint,
          FontCharacter_advance,
          FontCharacter_mWarnsWhenNoSegment,

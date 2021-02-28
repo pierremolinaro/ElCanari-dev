@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolPinName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_location = EBWeakEventSet ()
+  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -391,7 +391,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private var mObserversOf_hasNet = EBWeakEventSet ()
+  private final var mObserversOf_hasNet = EBWeakEventSet ()
 
   //····················································································································
 
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'canMove' transient property
   //····················································································································
 
-  private var mObserversOf_canMove = EBWeakEventSet ()
+  private final var mObserversOf_canMove = EBWeakEventSet ()
 
   //····················································································································
 
@@ -503,7 +503,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private var mObserversOf_wireColor = EBWeakEventSet ()
+  private final var mObserversOf_wireColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
-  private var mObserversOf_symbolRotation = EBWeakEventSet ()
+  private final var mObserversOf_symbolRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -615,7 +615,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolNameNetName = EBWeakEventSet ()
+  private final var mObserversOf_symbolNameNetName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -671,7 +671,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'status' transient property
   //····················································································································
 
-  private var mObserversOf_status = EBWeakEventSet ()
+  private final var mObserversOf_status = EBWeakEventSet ()
 
   //····················································································································
 
@@ -783,7 +783,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
@@ -839,7 +839,7 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
-  private var mObserversOf_netInfoForPoint = EBWeakEventSet ()
+  private final var mObserversOf_netInfoForPoint = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1212,7 +1212,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1220,32 +1220,32 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PointInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematic) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PointInSchematic) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PointInSchematic) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PointInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1288,7 +1288,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PointInSchematic>, addedSet inAddedSet : Set <PointInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PointInSchematic>, addedSet inAddedSet : Set <PointInSchematic>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1308,7 +1308,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
  
   //····················································································································
 
-  override var selection : EBSelection < [PointInSchematic] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PointInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1316,11 +1316,11 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
 
   //····················································································································
 
-  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
+  override final var propval : [PointInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PointInSchematic) {
+  final func remove (_ object : PointInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1328,7 +1328,7 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   
   //····················································································································
 
-  func add (_ object : PointInSchematic) {
+  final func add (_ object : PointInSchematic) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1338,11 +1338,11 @@ class StoredArrayOf_PointInSchematic : ReadWriteArrayOf_PointInSchematic, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

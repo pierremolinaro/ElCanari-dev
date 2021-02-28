@@ -80,7 +80,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-  private var mObserversOf_xCenter = EBWeakEventSet ()
+  private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'yCenter' stored property
   //····················································································································
 
-  private var mObserversOf_yCenter = EBWeakEventSet ()
+  private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -251,7 +251,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'holeWidth' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidth = EBWeakEventSet ()
+  private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'holeHeight' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeight = EBWeakEventSet ()
+  private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padShape' stored property
   //····················································································································
 
-  private var mObserversOf_padShape = EBWeakEventSet ()
+  private final var mObserversOf_padShape = EBWeakEventSet ()
 
   //····················································································································
 
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padStyle' stored property
   //····················································································································
 
-  private var mObserversOf_padStyle = EBWeakEventSet ()
+  private final var mObserversOf_padStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-  private var mObserversOf_padNumber = EBWeakEventSet ()
+  private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -650,7 +650,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -707,7 +707,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -764,7 +764,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -821,7 +821,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -878,7 +878,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -935,7 +935,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
 
-  private var mObserversOf_annularRingUnit = EBWeakEventSet ()
+  private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -992,7 +992,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1048,7 +1048,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padNameForDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNameForDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNameForDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1104,7 +1104,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1160,7 +1160,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padIsTraversing' transient property
   //····················································································································
 
-  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
+  private final var mObserversOf_padIsTraversing = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1216,7 +1216,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'annularRing' transient property
   //····················································································································
 
-  private var mObserversOf_annularRing = EBWeakEventSet ()
+  private final var mObserversOf_annularRing = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1272,7 +1272,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padNameWithZoneName' transient property
   //····················································································································
 
-  private var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
+  private final var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1328,7 +1328,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'zoneName' transient property
   //····················································································································
 
-  private var mObserversOf_zoneName = EBWeakEventSet ()
+  private final var mObserversOf_zoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1384,7 +1384,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'noZone' transient property
   //····················································································································
 
-  private var mObserversOf_noZone = EBWeakEventSet ()
+  private final var mObserversOf_noZone = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1440,7 +1440,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'zoneAllowsManualRenumbering' transient property
   //····················································································································
 
-  private var mObserversOf_zoneAllowsManualRenumbering = EBWeakEventSet ()
+  private final var mObserversOf_zoneAllowsManualRenumbering = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1496,7 +1496,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'slavePadCount' transient property
   //····················································································································
 
-  private var mObserversOf_slavePadCount = EBWeakEventSet ()
+  private final var mObserversOf_slavePadCount = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1552,7 +1552,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'masterPadObjectIndex' transient property
   //····················································································································
 
-  private var mObserversOf_masterPadObjectIndex = EBWeakEventSet ()
+  private final var mObserversOf_masterPadObjectIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1608,7 +1608,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1664,7 +1664,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2037,7 +2037,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -2045,32 +2045,32 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackagePad) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackagePad) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackagePad) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackagePad) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackagePad) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -2113,7 +2113,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackagePad>, addedSet inAddedSet : Set <PackagePad>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackagePad>, addedSet inAddedSet : Set <PackagePad>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -2133,7 +2133,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [PackagePad] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackagePad] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -2141,11 +2141,11 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [PackagePad] { return self.mInternalArrayValue }
+  override final var propval : [PackagePad] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackagePad) {
+  final func remove (_ object : PackagePad) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2153,7 +2153,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : PackagePad) {
+  final func add (_ object : PackagePad) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2163,11 +2163,11 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

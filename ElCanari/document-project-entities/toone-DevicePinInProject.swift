@@ -50,11 +50,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinName' stored property
   //····················································································································
 
-  private var mObserversOf_mPinName = EBWeakEventSet ()
+  private final var mObserversOf_mPinName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinName_property_selection : EBSelection <String?> {
+  final var mPinName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPinName_property_selection) {
       case .empty :
@@ -120,11 +120,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbolInstanceName_property_selection : EBSelection <String?> {
+  final var mSymbolInstanceName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSymbolInstanceName_property_selection) {
       case .empty :
@@ -190,11 +190,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbolTypeName_property_selection : EBSelection <String?> {
+  final var mSymbolTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSymbolTypeName_property_selection) {
       case .empty :
@@ -260,11 +260,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  private var mObserversOf_mPinX = EBWeakEventSet ()
+  private final var mObserversOf_mPinX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinX_property_selection : EBSelection <Int?> {
+  final var mPinX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mPinX_property_selection) {
       case .empty :
@@ -330,11 +330,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  private var mObserversOf_mPinY = EBWeakEventSet ()
+  private final var mObserversOf_mPinY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinY_property_selection : EBSelection <Int?> {
+  final var mPinY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mPinY_property_selection) {
       case .empty :
@@ -400,11 +400,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mXName = EBWeakEventSet ()
+  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mXName_property_selection : EBSelection <Int?> {
+  final var mXName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mXName_property_selection) {
       case .empty :
@@ -470,11 +470,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mYName = EBWeakEventSet ()
+  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mYName_property_selection : EBSelection <Int?> {
+  final var mYName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mYName_property_selection) {
       case .empty :
@@ -540,11 +540,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.mNameHorizontalAlignment_property_selection) {
       case .empty :
@@ -610,11 +610,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinNameIsDisplayedInSchematic' stored property
   //····················································································································
 
-  private var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool?> {
+  final var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mPinNameIsDisplayedInSchematic_property_selection) {
       case .empty :
@@ -680,11 +680,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mXNumber = EBWeakEventSet ()
+  private final var mObserversOf_mXNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  var mXNumber_property_selection : EBSelection <Int?> {
+  final var mXNumber_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mXNumber_property_selection) {
       case .empty :
@@ -750,11 +750,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mYNumber = EBWeakEventSet ()
+  private final var mObserversOf_mYNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  var mYNumber_property_selection : EBSelection <Int?> {
+  final var mYNumber_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mYNumber_property_selection) {
       case .empty :
@@ -820,11 +820,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.mNumberHorizontalAlignment_property_selection) {
       case .empty :
@@ -890,11 +890,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private var mObserversOf_pinQualifiedName = EBWeakEventSet ()
+  private final var mObserversOf_pinQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
+  final var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
     if let model = self.propval {
       switch (model.pinQualifiedName_property_selection) {
       case .empty :
@@ -959,11 +959,11 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <PinInProjectDescriptor?> {
+  final var descriptor_property_selection : EBSelection <PinInProjectDescriptor?> {
     if let model = self.propval {
       switch (model.descriptor_property_selection) {
       case .empty :
@@ -1212,7 +1212,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

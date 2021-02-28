@@ -13,7 +13,7 @@ import Foundation
 //  Class GeometricRect
 //----------------------------------------------------------------------------------------------------------------------
 
-class GeometricRect {
+final class GeometricRect {
   let p1 : NSPoint
   let p2 : NSPoint
   let width : CGFloat

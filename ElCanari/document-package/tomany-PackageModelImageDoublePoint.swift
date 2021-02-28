@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstX = EBWeakEventSet ()
+  private final var mObserversOf_mFirstX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstY' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstY = EBWeakEventSet ()
+  private final var mObserversOf_mFirstY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-  private var mObserversOf_mFirstColor = EBWeakEventSet ()
+  private final var mObserversOf_mFirstColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondDx' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondDx = EBWeakEventSet ()
+  private final var mObserversOf_mSecondDx = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondDy = EBWeakEventSet ()
+  private final var mObserversOf_mSecondDy = EBWeakEventSet ()
 
   //····················································································································
 
@@ -323,7 +323,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'mSecondColor' stored property
   //····················································································································
 
-  private var mObserversOf_mSecondColor = EBWeakEventSet ()
+  private final var mObserversOf_mSecondColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -809,7 +809,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -817,32 +817,32 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageModelImageDoublePoint) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageModelImageDoublePoint) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -885,7 +885,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageModelImageDoublePoint>, addedSet inAddedSet : Set <PackageModelImageDoublePoint>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageModelImageDoublePoint>, addedSet inAddedSet : Set <PackageModelImageDoublePoint>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -905,7 +905,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageModelImageDoublePoint] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -913,11 +913,11 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
 
   //····················································································································
 
-  override var propval : [PackageModelImageDoublePoint] { return self.mInternalArrayValue }
+  override final var propval : [PackageModelImageDoublePoint] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageModelImageDoublePoint) {
+  final func remove (_ object : PackageModelImageDoublePoint) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -925,7 +925,7 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   
   //····················································································································
 
-  func add (_ object : PackageModelImageDoublePoint) {
+  final func add (_ object : PackageModelImageDoublePoint) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -935,11 +935,11 @@ class StoredArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_PackageModel
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

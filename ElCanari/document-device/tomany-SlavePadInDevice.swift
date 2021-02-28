@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-  private var mObserversOf_mCenterX = EBWeakEventSet ()
+  private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
-  private var mObserversOf_mCenterY = EBWeakEventSet ()
+  private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mWidth = EBWeakEventSet ()
+  private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  private var mObserversOf_mHeight = EBWeakEventSet ()
+  private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mHoleWidth = EBWeakEventSet ()
+  private final var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
 
-  private var mObserversOf_mHoleHeight = EBWeakEventSet ()
+  private final var mObserversOf_mHoleHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -386,7 +386,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  private var mObserversOf_mShape = EBWeakEventSet ()
+  private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
 
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'mStyle' stored property
   //····················································································································
 
-  private var mObserversOf_mStyle = EBWeakEventSet ()
+  private final var mObserversOf_mStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'frontSideFilledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_frontSideFilledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_frontSideFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -556,7 +556,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'backSideFilledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_backSideFilledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_backSideFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -612,7 +612,7 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -985,7 +985,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -993,32 +993,32 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SlavePadInDevice) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SlavePadInDevice) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1061,7 +1061,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SlavePadInDevice>, addedSet inAddedSet : Set <SlavePadInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SlavePadInDevice>, addedSet inAddedSet : Set <SlavePadInDevice>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1081,7 +1081,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
  
   //····················································································································
 
-  override var selection : EBSelection < [SlavePadInDevice] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SlavePadInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1089,11 +1089,11 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
 
   //····················································································································
 
-  override var propval : [SlavePadInDevice] { return self.mInternalArrayValue }
+  override final var propval : [SlavePadInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SlavePadInDevice) {
+  final func remove (_ object : SlavePadInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1101,7 +1101,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   
   //····················································································································
 
-  func add (_ object : SlavePadInDevice) {
+  final func add (_ object : SlavePadInDevice) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1111,11 +1111,11 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

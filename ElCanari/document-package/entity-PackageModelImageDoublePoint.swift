@@ -56,7 +56,7 @@ protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
 //    Entity: PackageModelImageDoublePoint
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageModelImageDoublePoint : EBGraphicManagedObject,
+final class PackageModelImageDoublePoint : EBGraphicManagedObject,
          PackageModelImageDoublePoint_mFirstX,
          PackageModelImageDoublePoint_mFirstY,
          PackageModelImageDoublePoint_mFirstColor,

@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'xDimension' stored property
   //····················································································································
 
-  private var mObserversOf_xDimension = EBWeakEventSet ()
+  private final var mObserversOf_xDimension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'yDimension' stored property
   //····················································································································
 
-  private var mObserversOf_yDimension = EBWeakEventSet ()
+  private final var mObserversOf_yDimension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'x1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_x1Unit = EBWeakEventSet ()
+  private final var mObserversOf_x1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'y1Unit' stored property
   //····················································································································
 
-  private var mObserversOf_y1Unit = EBWeakEventSet ()
+  private final var mObserversOf_y1Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'x2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_x2Unit = EBWeakEventSet ()
+  private final var mObserversOf_x2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'y2Unit' stored property
   //····················································································································
 
-  private var mObserversOf_y2Unit = EBWeakEventSet ()
+  private final var mObserversOf_y2Unit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'xDimensionUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xDimensionUnit = EBWeakEventSet ()
+  private final var mObserversOf_xDimensionUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'yDimensionUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yDimensionUnit = EBWeakEventSet ()
+  private final var mObserversOf_yDimensionUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'distanceUnit' stored property
   //····················································································································
 
-  private var mObserversOf_distanceUnit = EBWeakEventSet ()
+  private final var mObserversOf_distanceUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -740,7 +740,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'distanceInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -853,7 +853,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -909,7 +909,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -965,7 +965,7 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1338,7 +1338,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1346,32 +1346,32 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageDimension) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageDimension) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageDimension) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageDimension) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageDimension) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1414,7 +1414,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageDimension>, addedSet inAddedSet : Set <PackageDimension>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageDimension>, addedSet inAddedSet : Set <PackageDimension>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1434,7 +1434,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageDimension] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageDimension] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1442,11 +1442,11 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
 
   //····················································································································
 
-  override var propval : [PackageDimension] { return self.mInternalArrayValue }
+  override final var propval : [PackageDimension] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageDimension) {
+  final func remove (_ object : PackageDimension) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1454,7 +1454,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   
   //····················································································································
 
-  func add (_ object : PackageDimension) {
+  final func add (_ object : PackageDimension) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1464,11 +1464,11 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -52,11 +52,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yPin' stored property
   //····················································································································
 
-  private var mObserversOf_yPin = EBWeakEventSet ()
+  private final var mObserversOf_yPin = EBWeakEventSet ()
 
   //····················································································································
 
-  var yPin_property_selection : EBSelection <Int?> {
+  final var yPin_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yPin_property_selection) {
       case .empty :
@@ -122,11 +122,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_xName = EBWeakEventSet ()
+  private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
-  var xName_property_selection : EBSelection <Int?> {
+  final var xName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xName_property_selection) {
       case .empty :
@@ -192,11 +192,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_yName = EBWeakEventSet ()
+  private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
-  var yName_property_selection : EBSelection <Int?> {
+  final var yName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yName_property_selection) {
       case .empty :
@@ -262,11 +262,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xNumber' stored property
   //····················································································································
 
-  private var mObserversOf_xNumber = EBWeakEventSet ()
+  private final var mObserversOf_xNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  var xNumber_property_selection : EBSelection <Int?> {
+  final var xNumber_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xNumber_property_selection) {
       case .empty :
@@ -332,11 +332,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yNumber' stored property
   //····················································································································
 
-  private var mObserversOf_yNumber = EBWeakEventSet ()
+  private final var mObserversOf_yNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  var yNumber_property_selection : EBSelection <Int?> {
+  final var yNumber_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yNumber_property_selection) {
       case .empty :
@@ -402,11 +402,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_name = EBWeakEventSet ()
+  private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String?> {
+  final var name_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.name_property_selection) {
       case .empty :
@@ -472,11 +472,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'nameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.nameHorizontalAlignment_property_selection) {
       case .empty :
@@ -542,11 +542,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'numberHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_numberHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_numberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.numberHorizontalAlignment_property_selection) {
       case .empty :
@@ -612,11 +612,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'pinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-  private var mObserversOf_pinNameIsDisplayedInSchematics = EBWeakEventSet ()
+  private final var mObserversOf_pinNameIsDisplayedInSchematics = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool?> {
+  final var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.pinNameIsDisplayedInSchematics_property_selection) {
       case .empty :
@@ -682,11 +682,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xPin' stored property
   //····················································································································
 
-  private var mObserversOf_xPin = EBWeakEventSet ()
+  private final var mObserversOf_xPin = EBWeakEventSet ()
 
   //····················································································································
 
-  var xPin_property_selection : EBSelection <Int?> {
+  final var xPin_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xPin_property_selection) {
       case .empty :
@@ -752,11 +752,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.filledBezierPath_property_selection) {
       case .empty :
@@ -821,11 +821,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -890,11 +890,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -959,11 +959,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1028,11 +1028,11 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'nameRect' transient property
   //····················································································································
 
-  private var mObserversOf_nameRect = EBWeakEventSet ()
+  private final var mObserversOf_nameRect = EBWeakEventSet ()
 
   //····················································································································
 
-  var nameRect_property_selection : EBSelection <NSRect?> {
+  final var nameRect_property_selection : EBSelection <NSRect?> {
     if let model = self.propval {
       switch (model.nameRect_property_selection) {
       case .empty :
@@ -1281,7 +1281,7 @@ final class StoredObject_SymbolPin : ReadWriteObject_SymbolPin, EBSignatureObser
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

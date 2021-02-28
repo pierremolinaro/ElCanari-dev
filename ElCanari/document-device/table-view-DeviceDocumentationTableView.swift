@@ -16,7 +16,7 @@ private let myFileURL =  NSPasteboard.PasteboardType (kUTTypeFileURL as String)
 //----------------------------------------------------------------------------------------------------------------------
 //  https://stackoverflow.com/questions/38840942/drag-and-dropping-on-a-string-images-nstableview-swift
 
-class DeviceDocumentationTableView : EBTableView {
+final class DeviceDocumentationTableView : EBTableView {
 
   //····················································································································
   // MARK: -

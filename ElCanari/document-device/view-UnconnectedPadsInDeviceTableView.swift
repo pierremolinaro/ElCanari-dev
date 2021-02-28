@@ -12,7 +12,7 @@ import Cocoa
 // NOTE: UnconnectedPadsInDeviceTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

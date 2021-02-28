@@ -34,7 +34,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'shape' stored property
   //····················································································································
 
-  private var mObserversOf_shape = EBWeakEventSet ()
+  private final var mObserversOf_shape = EBWeakEventSet ()
 
   //····················································································································
 
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'rotation' stored property
   //····················································································································
 
-  private var mObserversOf_rotation = EBWeakEventSet ()
+  private final var mObserversOf_rotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -319,7 +319,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
@@ -693,7 +693,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -701,32 +701,32 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelPad) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardModelPad) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelPad) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardModelPad) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -769,7 +769,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModelPad>, addedSet inAddedSet : Set <BoardModelPad>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardModelPad>, addedSet inAddedSet : Set <BoardModelPad>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -789,7 +789,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardModelPad] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -797,11 +797,11 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
 
   //····················································································································
 
-  override var propval : [BoardModelPad] { return self.mInternalArrayValue }
+  override final var propval : [BoardModelPad] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardModelPad) {
+  final func remove (_ object : BoardModelPad) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -809,7 +809,7 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : BoardModelPad) {
+  final func add (_ object : BoardModelPad) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -819,11 +819,11 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

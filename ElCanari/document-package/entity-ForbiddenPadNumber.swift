@@ -14,7 +14,7 @@ protocol ForbiddenPadNumber_padNumber : AnyObject {
 //    Entity: ForbiddenPadNumber
 //----------------------------------------------------------------------------------------------------------------------
 
-class ForbiddenPadNumber : EBManagedObject,
+final class ForbiddenPadNumber : EBManagedObject,
          ForbiddenPadNumber_padNumber {
 
   //····················································································································

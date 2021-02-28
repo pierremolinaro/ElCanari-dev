@@ -34,7 +34,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  private var mObserversOf_mOrientation = EBWeakEventSet ()
+  private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_location = EBWeakEventSet ()
+  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
@@ -147,7 +147,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -315,7 +315,7 @@ class ReadOnlyArrayOf_LabelInSchematic : ReadOnlyAbstractArrayProperty <LabelInS
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -688,7 +688,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -696,32 +696,32 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : LabelInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : LabelInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -764,7 +764,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <LabelInSchematic>, addedSet inAddedSet : Set <LabelInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : Set <LabelInSchematic>, addedSet inAddedSet : Set <LabelInSchematic>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -784,7 +784,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
  
   //····················································································································
 
-  override var selection : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -792,11 +792,11 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
 
   //····················································································································
 
-  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
+  override final var propval : [LabelInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : LabelInSchematic) {
+  final func remove (_ object : LabelInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -804,7 +804,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   
   //····················································································································
 
-  func add (_ object : LabelInSchematic) {
+  final func add (_ object : LabelInSchematic) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -814,11 +814,11 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

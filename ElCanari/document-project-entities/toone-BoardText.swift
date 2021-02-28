@@ -50,11 +50,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -120,11 +120,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -190,11 +190,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mFontSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFontSize_property_selection : EBSelection <Double?> {
+  final var mFontSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mFontSize_property_selection) {
       case .empty :
@@ -260,11 +260,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mLayer = EBWeakEventSet ()
+  private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLayer_property_selection : EBSelection <BoardTextLayer?> {
+  final var mLayer_property_selection : EBSelection <BoardTextLayer?> {
     if let model = self.propval {
       switch (model.mLayer_property_selection) {
       case .empty :
@@ -330,11 +330,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mText' stored property
   //····················································································································
 
-  private var mObserversOf_mText = EBWeakEventSet ()
+  private final var mObserversOf_mText = EBWeakEventSet ()
 
   //····················································································································
 
-  var mText_property_selection : EBSelection <String?> {
+  final var mText_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mText_property_selection) {
       case .empty :
@@ -400,11 +400,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.mHorizontalAlignment_property_selection) {
       case .empty :
@@ -470,11 +470,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment?> {
+  final var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment?> {
     if let model = self.propval {
       switch (model.mVerticalAlignment_property_selection) {
       case .empty :
@@ -540,11 +540,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <Int?> {
+  final var mRotation_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRotation_property_selection) {
       case .empty :
@@ -610,11 +610,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mWeight' stored property
   //····················································································································
 
-  private var mObserversOf_mWeight = EBWeakEventSet ()
+  private final var mObserversOf_mWeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWeight_property_selection : EBSelection <Double?> {
+  final var mWeight_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mWeight_property_selection) {
       case .empty :
@@ -680,11 +680,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mOblique' stored property
   //····················································································································
 
-  private var mObserversOf_mOblique = EBWeakEventSet ()
+  private final var mObserversOf_mOblique = EBWeakEventSet ()
 
   //····················································································································
 
-  var mOblique_property_selection : EBSelection <Bool?> {
+  final var mOblique_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mOblique_property_selection) {
       case .empty :
@@ -750,11 +750,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -819,11 +819,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -888,11 +888,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'fontName' transient property
   //····················································································································
 
-  private var mObserversOf_fontName = EBWeakEventSet ()
+  private final var mObserversOf_fontName = EBWeakEventSet ()
 
   //····················································································································
 
-  var fontName_property_selection : EBSelection <String?> {
+  final var fontName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.fontName_property_selection) {
       case .empty :
@@ -957,11 +957,11 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -1210,7 +1210,7 @@ final class StoredObject_BoardText : ReadWriteObject_BoardText, EBSignatureObser
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -50,7 +50,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -107,7 +107,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mFontSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mLayer = EBWeakEventSet ()
+  private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
 
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mText' stored property
   //····················································································································
 
-  private var mObserversOf_mText = EBWeakEventSet ()
+  private final var mObserversOf_mText = EBWeakEventSet ()
 
   //····················································································································
 
@@ -335,7 +335,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -449,7 +449,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mWeight' stored property
   //····················································································································
 
-  private var mObserversOf_mWeight = EBWeakEventSet ()
+  private final var mObserversOf_mWeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -563,7 +563,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'mOblique' stored property
   //····················································································································
 
-  private var mObserversOf_mOblique = EBWeakEventSet ()
+  private final var mObserversOf_mOblique = EBWeakEventSet ()
 
   //····················································································································
 
@@ -620,7 +620,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -676,7 +676,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -732,7 +732,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'fontName' transient property
   //····················································································································
 
-  private var mObserversOf_fontName = EBWeakEventSet ()
+  private final var mObserversOf_fontName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -788,7 +788,7 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1161,7 +1161,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1169,32 +1169,32 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardText) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardText) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardText) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardText) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardText) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1237,7 +1237,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardText>, addedSet inAddedSet : Set <BoardText>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardText>, addedSet inAddedSet : Set <BoardText>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1257,7 +1257,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardText] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardText] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1265,11 +1265,11 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
 
   //····················································································································
 
-  override var propval : [BoardText] { return self.mInternalArrayValue }
+  override final var propval : [BoardText] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardText) {
+  final func remove (_ object : BoardText) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1277,7 +1277,7 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   
   //····················································································································
 
-  func add (_ object : BoardText) {
+  final func add (_ object : BoardText) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1287,11 +1287,11 @@ class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverP
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

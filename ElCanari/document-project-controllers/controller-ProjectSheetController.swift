@@ -12,7 +12,7 @@ import Cocoa
 //   ProjectSheetController
 //----------------------------------------------------------------------------------------------------------------------
 
-class ProjectSheetController : EBOutletEvent {
+final class ProjectSheetController : EBOutletEvent {
 
   //····················································································································
   // Properties

@@ -123,66 +123,66 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddBezierButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddOvalButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddPinButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddSegmentButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddSolidOvalButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddSolidRectButton : CanariDragSourceButton? = nil
-  @IBOutlet var mAddTextButton : CanariDragSourceButton? = nil
-  @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedSymbolView : EBEnclosingGraphicView? = nil
-  @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
-  @IBOutlet var mDeselectIssueButton : EBButton? = nil
-  @IBOutlet var mGridDisplayFactorPopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mGridStyle : EBPopUpButton? = nil
-  @IBOutlet var mHorizontalFlip : EBSwitch? = nil
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mIssueScrollView : NSScrollView? = nil
-  @IBOutlet var mIssueTableView : IssueTableView? = nil
-  @IBOutlet var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
-  @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mPinInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mPinNameFontButton : EBFontButton? = nil
-  @IBOutlet var mResetVersionButton : EBButton? = nil
-  @IBOutlet var mSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet var mSymbolBackgroundColorColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolBaseInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSymbolColorColorWell : EBColorWell? = nil
-  @IBOutlet var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
-  @IBOutlet var mSymbolIssueInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSymbolPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSymbolPinLabelHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet var mSymbolPinLabelNameTextField : EBTextField? = nil
-  @IBOutlet var mSymbolPinNumberHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch? = nil
-  @IBOutlet var mSymbolRootInspectorView : NSView? = nil
-  @IBOutlet var mSymbolTextHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet var mSymbolTextValueTextField : EBTextField? = nil
-  @IBOutlet var mSymbolZoomFlipInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mTextInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mVersionField : CanariVersionField? = nil
-  @IBOutlet var mVerticalFlip : EBSwitch? = nil
-  @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
-  @IBOutlet var mYPlacardUnitPopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mAddBezierButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddOvalButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddPinButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddSegmentButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddSolidOvalButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddSolidRectButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mAddTextButton : CanariDragSourceButton? = nil
+  @IBOutlet final var mCommentTextView : EBTextView? = nil
+  @IBOutlet final var mComposedSymbolView : EBEnclosingGraphicView? = nil
+  @IBOutlet final var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
+  @IBOutlet final var mDeselectIssueButton : EBButton? = nil
+  @IBOutlet final var mGridDisplayFactorPopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mGridStyle : EBPopUpButton? = nil
+  @IBOutlet final var mHorizontalFlip : EBSwitch? = nil
+  @IBOutlet final var mInfosPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mInspectorSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mIssueScrollView : NSScrollView? = nil
+  @IBOutlet final var mIssueTableView : IssueTableView? = nil
+  @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
+  @IBOutlet final var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
+  @IBOutlet final var mMasterView : NSView? = nil
+  @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mPinInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mPinNameFontButton : EBFontButton? = nil
+  @IBOutlet final var mResetVersionButton : EBButton? = nil
+  @IBOutlet final var mSignatureTextField : CanariSignatureField? = nil
+  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
+  @IBOutlet final var mSymbolBackgroundColorColorWell : EBColorWell? = nil
+  @IBOutlet final var mSymbolBaseInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSymbolColorColorWell : EBColorWell? = nil
+  @IBOutlet final var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
+  @IBOutlet final var mSymbolIssueInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSymbolPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSymbolPinLabelHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
+  @IBOutlet final var mSymbolPinLabelNameTextField : EBTextField? = nil
+  @IBOutlet final var mSymbolPinNumberHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
+  @IBOutlet final var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch? = nil
+  @IBOutlet final var mSymbolRootInspectorView : NSView? = nil
+  @IBOutlet final var mSymbolTextHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
+  @IBOutlet final var mSymbolTextValueTextField : EBTextField? = nil
+  @IBOutlet final var mSymbolZoomFlipInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mTextInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mVersionField : CanariVersionField? = nil
+  @IBOutlet final var mVerticalFlip : EBSwitch? = nil
+  @IBOutlet final var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
+  @IBOutlet final var mYPlacardUnitPopUpButton : EBPopUpButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
-  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -194,7 +194,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -221,7 +221,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name? {
+  override final var windowNibName : NSNib.Name? {
     return NSNib.Name ("SymbolDocument")
   }
   
@@ -229,7 +229,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "SymbolRoot"
   }
 
@@ -237,7 +237,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : SymbolRoot { return self.mRootObject as! SymbolRoot }
+  final var rootObject : SymbolRoot { return self.mRootObject as! SymbolRoot }
 
   //····················································································································
   //    check outlet connections

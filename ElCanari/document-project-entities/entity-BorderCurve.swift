@@ -98,7 +98,7 @@ protocol BorderCurve_selectionDisplay : AnyObject {
 //    Entity: BorderCurve
 //----------------------------------------------------------------------------------------------------------------------
 
-class BorderCurve : EBGraphicManagedObject,
+final class BorderCurve : EBGraphicManagedObject,
          BorderCurve_mX,
          BorderCurve_mY,
          BorderCurve_mCPX1,

@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
-  private var mObserversOf_drawBoardLimits = EBWeakEventSet ()
+  private final var mObserversOf_drawBoardLimits = EBWeakEventSet ()
 
   //····················································································································
 
@@ -125,7 +125,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
 
-  private var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
+  private final var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
 
   //····················································································································
 
@@ -182,7 +182,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentNamesTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -296,7 +296,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentValuesTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -353,7 +353,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -410,7 +410,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPackageLegendTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -467,7 +467,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -524,7 +524,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadHolesInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
+  private final var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
 
   //····················································································································
 
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -638,7 +638,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawPadsBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -695,7 +695,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -752,7 +752,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLayoutBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -809,7 +809,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -866,7 +866,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTextsLegendBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -923,7 +923,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -980,7 +980,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawTracksBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1037,7 +1037,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'drawVias' stored property
   //····················································································································
 
-  private var mObserversOf_drawVias = EBWeakEventSet ()
+  private final var mObserversOf_drawVias = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1094,7 +1094,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'fileExtension' stored property
   //····················································································································
 
-  private var mObserversOf_fileExtension = EBWeakEventSet ()
+  private final var mObserversOf_fileExtension = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1151,7 +1151,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalMirror = EBWeakEventSet ()
+  private final var mObserversOf_horizontalMirror = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1208,7 +1208,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_name = EBWeakEventSet ()
+  private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1265,7 +1265,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
+  private final var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1322,7 +1322,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
+  private final var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1696,7 +1696,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1704,32 +1704,32 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ArtworkFileGenerationParameters) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1772,7 +1772,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkFileGenerationParameters>, addedSet inAddedSet : Set <ArtworkFileGenerationParameters>) {
+  override func updateObservers (removedSet inRemovedSet : Set <ArtworkFileGenerationParameters>, addedSet inAddedSet : Set <ArtworkFileGenerationParameters>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1792,7 +1792,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
  
   //····················································································································
 
-  override var selection : EBSelection < [ArtworkFileGenerationParameters] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [ArtworkFileGenerationParameters] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1800,11 +1800,11 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
 
   //····················································································································
 
-  override var propval : [ArtworkFileGenerationParameters] { return self.mInternalArrayValue }
+  override final var propval : [ArtworkFileGenerationParameters] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : ArtworkFileGenerationParameters) {
+  final func remove (_ object : ArtworkFileGenerationParameters) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1812,7 +1812,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   
   //····················································································································
 
-  func add (_ object : ArtworkFileGenerationParameters) {
+  final func add (_ object : ArtworkFileGenerationParameters) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1822,11 +1822,11 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -34,7 +34,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  private var mObserversOf_mSheetTitle = EBWeakEventSet ()
+  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -147,7 +147,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  private var mObserversOf_connexionWarnings = EBWeakEventSet ()
+  private final var mObserversOf_connexionWarnings = EBWeakEventSet ()
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  private var mObserversOf_connexionErrors = EBWeakEventSet ()
+  private final var mObserversOf_connexionErrors = EBWeakEventSet ()
 
   //····················································································································
 
@@ -315,7 +315,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -688,7 +688,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -696,32 +696,32 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SheetInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SheetInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SheetInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SheetInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SheetInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -764,7 +764,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SheetInProject>, addedSet inAddedSet : Set <SheetInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SheetInProject>, addedSet inAddedSet : Set <SheetInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -784,7 +784,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
  
   //····················································································································
 
-  override var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SheetInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -792,11 +792,11 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
 
   //····················································································································
 
-  override var propval : [SheetInProject] { return self.mInternalArrayValue }
+  override final var propval : [SheetInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SheetInProject) {
+  final func remove (_ object : SheetInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -804,7 +804,7 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   
   //····················································································································
 
-  func add (_ object : SheetInProject) {
+  final func add (_ object : SheetInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -814,11 +814,11 @@ class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

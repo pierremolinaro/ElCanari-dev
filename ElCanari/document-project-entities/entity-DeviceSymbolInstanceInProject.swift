@@ -38,7 +38,7 @@ protocol DeviceSymbolInstanceInProject_strokeBezierPath : AnyObject {
 //    Entity: DeviceSymbolInstanceInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceSymbolInstanceInProject : EBManagedObject,
+final class DeviceSymbolInstanceInProject : EBManagedObject,
          DeviceSymbolInstanceInProject_mSymbolInstanceName,
          DeviceSymbolInstanceInProject_symbolAndTypeName,
          DeviceSymbolInstanceInProject_symbolTypeName,

@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericComputedProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBGenericComputedProperty <T : EBPropertyProtocol> : EBGenericReadWriteProperty <T> {
+final class EBGenericComputedProperty <T : EBPropertyProtocol> : EBGenericReadWriteProperty <T> {
 
   //····················································································································
 

@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'instanceRotation' stored property
   //····················································································································
 
-  private var mObserversOf_instanceRotation = EBWeakEventSet ()
+  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'instanceRect' transient property
   //····················································································································
 
-  private var mObserversOf_instanceRect = EBWeakEventSet ()
+  private final var mObserversOf_instanceRect = EBWeakEventSet ()
 
   //····················································································································
 
@@ -265,7 +265,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'modelName' transient property
   //····················································································································
 
-  private var mObserversOf_modelName = EBWeakEventSet ()
+  private final var mObserversOf_modelName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'boardLimitWidth' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -433,7 +433,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -806,7 +806,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -814,32 +814,32 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : MergerBoardInstance) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -882,7 +882,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <MergerBoardInstance>, addedSet inAddedSet : Set <MergerBoardInstance>) {
+  override func updateObservers (removedSet inRemovedSet : Set <MergerBoardInstance>, addedSet inAddedSet : Set <MergerBoardInstance>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -902,7 +902,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
  
   //····················································································································
 
-  override var selection : EBSelection < [MergerBoardInstance] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [MergerBoardInstance] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -910,11 +910,11 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 
   //····················································································································
 
-  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
+  override final var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : MergerBoardInstance) {
+  final func remove (_ object : MergerBoardInstance) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -922,7 +922,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   
   //····················································································································
 
-  func add (_ object : MergerBoardInstance) {
+  final func add (_ object : MergerBoardInstance) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -932,11 +932,11 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

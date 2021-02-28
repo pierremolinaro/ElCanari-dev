@@ -239,114 +239,114 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddPackageFromLibraryButton : EBButton? = nil
-  @IBOutlet var mAddSymbolFromLibraryButton : EBButton? = nil
-  @IBOutlet var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton? = nil
-  @IBOutlet var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
-  @IBOutlet var mAssignmentPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mAssignmentSplitView : NSSplitView? = nil
-  @IBOutlet var mBindButton : EBButton? = nil
-  @IBOutlet var mCommentTextView : EBTextView? = nil
-  @IBOutlet var mComposedPackageView : EBEnclosingGraphicView? = nil
-  @IBOutlet var mComposedSymbolView : EBEnclosingGraphicView? = nil
-  @IBOutlet var mCopyImageButton : EBButton? = nil
-  @IBOutlet var mDescriptionPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView? = nil
-  @IBOutlet var mEditSelectedPackagesButton : EBButton? = nil
-  @IBOutlet var mEditSelectedSymbolsButton : EBButton? = nil
-  @IBOutlet var mExportSelectedPackagesButton : EBButton? = nil
-  @IBOutlet var mExportSelectedSymbolsButton : EBButton? = nil
-  @IBOutlet var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? = nil
-  @IBOutlet var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? = nil
-  @IBOutlet var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
-  @IBOutlet var mInconsistentSymbolNameMessageScrollView : NSScrollView? = nil
-  @IBOutlet var mInconsistentSymbolNameMessageTextView : EBTextObserverView? = nil
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mIssueTextView : EBTextObserverView? = nil
-  @IBOutlet var mLibraryPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mNCButton : EBButton? = nil
-  @IBOutlet var mPackageBackPadsColorWell : EBColorWell? = nil
-  @IBOutlet var mPackageDisplayHorizontalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mPackageDisplayVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mPackageFrontPadsColorWell : EBColorWell? = nil
-  @IBOutlet var mPackageNumbersColorWell : EBColorWell? = nil
-  @IBOutlet var mPackagePageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mPackageTableView : EBTableView? = nil
-  @IBOutlet var mPackagesColorWell : EBColorWell? = nil
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mPasteImageButton : EBButton? = nil
-  @IBOutlet var mPrefixTextField : EBTextField? = nil
-  @IBOutlet var mRemoveImageButton : EBButton? = nil
-  @IBOutlet var mRemoveSelectedDocButton : EBButton? = nil
-  @IBOutlet var mRemoveUselessSymbolTypeButton : EBButton? = nil
-  @IBOutlet var mRepresentationImageView : DeviceDroppableImageView? = nil
-  @IBOutlet var mResetSelectedPackageVersionButton : EBButton? = nil
-  @IBOutlet var mResetSelectedSymbolVersionButton : EBButton? = nil
-  @IBOutlet var mResetSymbolAndPackagesVersionButton : EBButton? = nil
-  @IBOutlet var mResetVersionButton : EBButton? = nil
-  @IBOutlet var mSaveDocButton : EBButton? = nil
-  @IBOutlet var mShowDocButton : EBButton? = nil
-  @IBOutlet var mShowPackageBackPadsSwitch : EBSwitch? = nil
-  @IBOutlet var mShowPackageFrontPadsSwitch : EBSwitch? = nil
-  @IBOutlet var mShowPackagePadNumbersSwitch : EBSwitch? = nil
-  @IBOutlet var mShowPackagesSwitch : EBSwitch? = nil
-  @IBOutlet var mSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mSymbolDisplayVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet var mSymbolErrorMessageTitleTextField : NSTextField? = nil
-  @IBOutlet var mSymbolNameTextField : EBTextField? = nil
-  @IBOutlet var mSymbolPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSymbolTableView : EBTableView? = nil
-  @IBOutlet var mSymbolTypeTextField : EBTextObserverField? = nil
-  @IBOutlet var mTitleTextField : EBTextField? = nil
-  @IBOutlet var mUnbindAllButton : EBButton? = nil
-  @IBOutlet var mUnbindButton : EBButton? = nil
-  @IBOutlet var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? = nil
-  @IBOutlet var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView? = nil
-  @IBOutlet var mUpdateSelectedPackagesButton : EBButton? = nil
-  @IBOutlet var mUpdateSelectedSymbolsButton : EBButton? = nil
-  @IBOutlet var mUpdateSymbolAndPackagesButton : EBButton? = nil
-  @IBOutlet var mVersionField : CanariVersionField? = nil
+  @IBOutlet final var mAddPackageFromLibraryButton : EBButton? = nil
+  @IBOutlet final var mAddSymbolFromLibraryButton : EBButton? = nil
+  @IBOutlet final var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton? = nil
+  @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
+  @IBOutlet final var mAssignmentPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
+  @IBOutlet final var mBindButton : EBButton? = nil
+  @IBOutlet final var mCommentTextView : EBTextView? = nil
+  @IBOutlet final var mComposedPackageView : EBEnclosingGraphicView? = nil
+  @IBOutlet final var mComposedSymbolView : EBEnclosingGraphicView? = nil
+  @IBOutlet final var mCopyImageButton : EBButton? = nil
+  @IBOutlet final var mDescriptionPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mDocumentationTableView : DeviceDocumentationTableView? = nil
+  @IBOutlet final var mEditSelectedPackagesButton : EBButton? = nil
+  @IBOutlet final var mEditSelectedSymbolsButton : EBButton? = nil
+  @IBOutlet final var mExportSelectedPackagesButton : EBButton? = nil
+  @IBOutlet final var mExportSelectedSymbolsButton : EBButton? = nil
+  @IBOutlet final var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? = nil
+  @IBOutlet final var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? = nil
+  @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInconsistentSymbolNameMessageScrollView : NSScrollView? = nil
+  @IBOutlet final var mInconsistentSymbolNameMessageTextView : EBTextObserverView? = nil
+  @IBOutlet final var mInfosPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mIssueTextView : EBTextObserverView? = nil
+  @IBOutlet final var mLibraryPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mMasterView : NSView? = nil
+  @IBOutlet final var mNCButton : EBButton? = nil
+  @IBOutlet final var mPackageBackPadsColorWell : EBColorWell? = nil
+  @IBOutlet final var mPackageDisplayHorizontalFlipSwitch : EBSwitch? = nil
+  @IBOutlet final var mPackageDisplayVerticalFlipSwitch : EBSwitch? = nil
+  @IBOutlet final var mPackageFrontPadsColorWell : EBColorWell? = nil
+  @IBOutlet final var mPackageNumbersColorWell : EBColorWell? = nil
+  @IBOutlet final var mPackagePageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mPackageTableView : EBTableView? = nil
+  @IBOutlet final var mPackagesColorWell : EBColorWell? = nil
+  @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mPasteImageButton : EBButton? = nil
+  @IBOutlet final var mPrefixTextField : EBTextField? = nil
+  @IBOutlet final var mRemoveImageButton : EBButton? = nil
+  @IBOutlet final var mRemoveSelectedDocButton : EBButton? = nil
+  @IBOutlet final var mRemoveUselessSymbolTypeButton : EBButton? = nil
+  @IBOutlet final var mRepresentationImageView : DeviceDroppableImageView? = nil
+  @IBOutlet final var mResetSelectedPackageVersionButton : EBButton? = nil
+  @IBOutlet final var mResetSelectedSymbolVersionButton : EBButton? = nil
+  @IBOutlet final var mResetSymbolAndPackagesVersionButton : EBButton? = nil
+  @IBOutlet final var mResetVersionButton : EBButton? = nil
+  @IBOutlet final var mSaveDocButton : EBButton? = nil
+  @IBOutlet final var mShowDocButton : EBButton? = nil
+  @IBOutlet final var mShowPackageBackPadsSwitch : EBSwitch? = nil
+  @IBOutlet final var mShowPackageFrontPadsSwitch : EBSwitch? = nil
+  @IBOutlet final var mShowPackagePadNumbersSwitch : EBSwitch? = nil
+  @IBOutlet final var mShowPackagesSwitch : EBSwitch? = nil
+  @IBOutlet final var mSignatureTextField : CanariSignatureField? = nil
+  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
+  @IBOutlet final var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? = nil
+  @IBOutlet final var mSymbolDisplayVerticalFlipSwitch : EBSwitch? = nil
+  @IBOutlet final var mSymbolErrorMessageTitleTextField : NSTextField? = nil
+  @IBOutlet final var mSymbolNameTextField : EBTextField? = nil
+  @IBOutlet final var mSymbolPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSymbolTableView : EBTableView? = nil
+  @IBOutlet final var mSymbolTypeTextField : EBTextObserverField? = nil
+  @IBOutlet final var mTitleTextField : EBTextField? = nil
+  @IBOutlet final var mUnbindAllButton : EBButton? = nil
+  @IBOutlet final var mUnbindButton : EBButton? = nil
+  @IBOutlet final var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? = nil
+  @IBOutlet final var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView? = nil
+  @IBOutlet final var mUpdateSelectedPackagesButton : EBButton? = nil
+  @IBOutlet final var mUpdateSelectedSymbolsButton : EBButton? = nil
+  @IBOutlet final var mUpdateSymbolAndPackagesButton : EBButton? = nil
+  @IBOutlet final var mVersionField : CanariVersionField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
-  var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mResetSymbolAndPackagesVersionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mUpdateSymbolAndPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mRemoveUselessSymbolTypeButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
-  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mResetSymbolAndPackagesVersionButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mUpdateSymbolAndPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mRemoveUselessSymbolTypeButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -358,7 +358,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -393,7 +393,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name? {
+  override final var windowNibName : NSNib.Name? {
     return NSNib.Name ("DeviceDocument")
   }
   
@@ -401,7 +401,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "DeviceRoot"
   }
 
@@ -409,7 +409,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : DeviceRoot { return self.mRootObject as! DeviceRoot }
+  final var rootObject : DeviceRoot { return self.mRootObject as! DeviceRoot }
 
   //····················································································································
   //    check outlet connections

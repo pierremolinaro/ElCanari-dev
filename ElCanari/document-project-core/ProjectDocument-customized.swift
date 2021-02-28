@@ -22,7 +22,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedProjectDocument) class CustomizedProjectDocument : ProjectDocument {
+@objc(CustomizedProjectDocument) final class CustomizedProjectDocument : ProjectDocument {
 
   //····················································································································
   //    init

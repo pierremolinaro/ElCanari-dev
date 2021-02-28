@@ -368,7 +368,7 @@ protocol PackageRoot_segmentedControlSegmentIssueString : AnyObject {
 //    Entity: PackageRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageRoot : EBGraphicManagedObject,
+final class PackageRoot : EBGraphicManagedObject,
          PackageRoot_selectedPageIndex,
          PackageRoot_selectedInspector,
          PackageRoot_comments,

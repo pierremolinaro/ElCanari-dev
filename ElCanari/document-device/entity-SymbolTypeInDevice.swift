@@ -62,7 +62,7 @@ protocol SymbolTypeInDevice_pinNameShape : AnyObject {
 //    Entity: SymbolTypeInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolTypeInDevice : EBManagedObject,
+final class SymbolTypeInDevice : EBManagedObject,
          SymbolTypeInDevice_mTypeName,
          SymbolTypeInDevice_mVersion,
          SymbolTypeInDevice_mFileData,

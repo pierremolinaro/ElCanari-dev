@@ -38,11 +38,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int?> {
+  final var y1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y1_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int?> {
+  final var x2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x2_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int?> {
+  final var y2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y2_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int?> {
+  final var x1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x1_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :
@@ -387,11 +387,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -525,11 +525,11 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -778,7 +778,7 @@ final class StoredObject_SymbolSegment : ReadWriteObject_SymbolSegment, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

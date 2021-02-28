@@ -56,7 +56,7 @@ protocol NetInProject_trackCount : AnyObject {
 //    Entity: NetInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class NetInProject : EBManagedObject,
+final class NetInProject : EBManagedObject,
          NetInProject_mNetName,
          NetInProject_netClassName,
          NetInProject_netClassTrackWidth,

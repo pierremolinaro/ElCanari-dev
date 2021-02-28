@@ -98,7 +98,7 @@ protocol SymbolPin_nameRect : AnyObject {
 //    Entity: SymbolPin
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolPin : SymbolObject,
+final class SymbolPin : SymbolObject,
          SymbolPin_yPin,
          SymbolPin_xName,
          SymbolPin_yName,

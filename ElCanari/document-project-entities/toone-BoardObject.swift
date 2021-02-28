@@ -42,11 +42,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'isPlacedInBoard' transient property
   //····················································································································
 
-  private var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
+  private final var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
-  var isPlacedInBoard_property_selection : EBSelection <Bool?> {
+  final var isPlacedInBoard_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isPlacedInBoard_property_selection) {
       case .empty :
@@ -111,11 +111,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -180,11 +180,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private var mObserversOf_isVia = EBWeakEventSet ()
+  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
-  var isVia_property_selection : EBSelection <Bool?> {
+  final var isVia_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isVia_property_selection) {
       case .empty :
@@ -249,11 +249,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var trackLengthInCanariUnit_property_selection : EBSelection <Double?> {
+  final var trackLengthInCanariUnit_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.trackLengthInCanariUnit_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -387,11 +387,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
+  final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
     if let model = self.propval {
       switch (model.netNameAndPadLocation_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private var mObserversOf_componentName = EBWeakEventSet ()
+  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentName_property_selection : EBSelection <String?> {
+  final var componentName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.componentName_property_selection) {
       case .empty :
@@ -525,11 +525,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -594,11 +594,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -663,11 +663,11 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'errorOrWarningIssueSize' transient property
   //····················································································································
 
-  private var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
+  private final var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var errorOrWarningIssueSize_property_selection : EBSelection <Double?> {
+  final var errorOrWarningIssueSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.errorOrWarningIssueSize_property_selection) {
       case .empty :
@@ -916,7 +916,7 @@ final class StoredObject_BoardObject : ReadWriteObject_BoardObject, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

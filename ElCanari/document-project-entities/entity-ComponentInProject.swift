@@ -260,7 +260,7 @@ protocol ComponentInProject_objectDisplay : AnyObject {
 //    Entity: ComponentInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class ComponentInProject : BoardObject,
+final class ComponentInProject : BoardObject,
          ComponentInProject_mSlavePadsShouldBeRouted,
          ComponentInProject_mX,
          ComponentInProject_mY,

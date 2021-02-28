@@ -106,11 +106,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-  private var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
+  private final var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool?> {
+  final var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mSlavePadsShouldBeRouted_property_selection) {
       case .empty :
@@ -176,11 +176,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -246,11 +246,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -316,11 +316,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mRotation_property_selection : EBSelection <Int?> {
+  final var mRotation_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mRotation_property_selection) {
       case .empty :
@@ -386,11 +386,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private var mObserversOf_mSide = EBWeakEventSet ()
+  private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSide_property_selection : EBSelection <ComponentSide?> {
+  final var mSide_property_selection : EBSelection <ComponentSide?> {
     if let model = self.propval {
       switch (model.mSide_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayLegend = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayLegend = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDisplayLegend_property_selection : EBSelection <Bool?> {
+  final var mDisplayLegend_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mDisplayLegend_property_selection) {
       case .empty :
@@ -526,11 +526,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-  private var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
+  private final var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNameIsVisibleInBoard_property_selection : EBSelection <Bool?> {
+  final var mNameIsVisibleInBoard_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mNameIsVisibleInBoard_property_selection) {
       case .empty :
@@ -596,11 +596,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mXName = EBWeakEventSet ()
+  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mXName_property_selection : EBSelection <Int?> {
+  final var mXName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mXName_property_selection) {
       case .empty :
@@ -666,11 +666,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mYName = EBWeakEventSet ()
+  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mYName_property_selection : EBSelection <Int?> {
+  final var mYName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mYName_property_selection) {
       case .empty :
@@ -736,11 +736,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mNameFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mNameFontSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNameFontSize_property_selection : EBSelection <Double?> {
+  final var mNameFontSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mNameFontSize_property_selection) {
       case .empty :
@@ -806,11 +806,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mNameRotation = EBWeakEventSet ()
+  private final var mObserversOf_mNameRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNameRotation_property_selection : EBSelection <Int?> {
+  final var mNameRotation_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mNameRotation_property_selection) {
       case .empty :
@@ -876,11 +876,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
 
-  private var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
+  private final var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
-  var mValueIsVisibleInBoard_property_selection : EBSelection <Bool?> {
+  final var mValueIsVisibleInBoard_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mValueIsVisibleInBoard_property_selection) {
       case .empty :
@@ -946,11 +946,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-  private var mObserversOf_mXValue = EBWeakEventSet ()
+  private final var mObserversOf_mXValue = EBWeakEventSet ()
 
   //····················································································································
 
-  var mXValue_property_selection : EBSelection <Int?> {
+  final var mXValue_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mXValue_property_selection) {
       case .empty :
@@ -1016,11 +1016,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYValue' stored property
   //····················································································································
 
-  private var mObserversOf_mYValue = EBWeakEventSet ()
+  private final var mObserversOf_mYValue = EBWeakEventSet ()
 
   //····················································································································
 
-  var mYValue_property_selection : EBSelection <Int?> {
+  final var mYValue_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mYValue_property_selection) {
       case .empty :
@@ -1086,11 +1086,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mValueFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mValueFontSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mValueFontSize_property_selection : EBSelection <Double?> {
+  final var mValueFontSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mValueFontSize_property_selection) {
       case .empty :
@@ -1156,11 +1156,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mValueRotation = EBWeakEventSet ()
+  private final var mObserversOf_mValueRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var mValueRotation_property_selection : EBSelection <Int?> {
+  final var mValueRotation_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mValueRotation_property_selection) {
       case .empty :
@@ -1226,11 +1226,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  private var mObserversOf_mComponentValue = EBWeakEventSet ()
+  private final var mObserversOf_mComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComponentValue_property_selection : EBSelection <String?> {
+  final var mComponentValue_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mComponentValue_property_selection) {
       case .empty :
@@ -1296,11 +1296,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
 
-  private var mObserversOf_mNamePrefix = EBWeakEventSet ()
+  private final var mObserversOf_mNamePrefix = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNamePrefix_property_selection : EBSelection <String?> {
+  final var mNamePrefix_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mNamePrefix_property_selection) {
       case .empty :
@@ -1366,11 +1366,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mNameIndex = EBWeakEventSet ()
+  private final var mObserversOf_mNameIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNameIndex_property_selection : EBSelection <Int?> {
+  final var mNameIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mNameIndex_property_selection) {
       case .empty :
@@ -1436,11 +1436,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mXUnit = EBWeakEventSet ()
+  private final var mObserversOf_mXUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mXUnit_property_selection : EBSelection <Int?> {
+  final var mXUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mXUnit_property_selection) {
       case .empty :
@@ -1506,11 +1506,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mYUnit = EBWeakEventSet ()
+  private final var mObserversOf_mYUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mYUnit_property_selection : EBSelection <Int?> {
+  final var mYUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mYUnit_property_selection) {
       case .empty :
@@ -1576,11 +1576,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  private var mObserversOf_deviceName = EBWeakEventSet ()
+  private final var mObserversOf_deviceName = EBWeakEventSet ()
 
   //····················································································································
 
-  var deviceName_property_selection : EBSelection <String?> {
+  final var deviceName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.deviceName_property_selection) {
       case .empty :
@@ -1645,11 +1645,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -1714,11 +1714,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
-  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
+  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
     if let model = self.propval {
       switch (model.packagePadDictionary_property_selection) {
       case .empty :
@@ -1783,11 +1783,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'selectedPackageName' transient property
   //····················································································································
 
-  private var mObserversOf_selectedPackageName = EBWeakEventSet ()
+  private final var mObserversOf_selectedPackageName = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectedPackageName_property_selection : EBSelection <String?> {
+  final var selectedPackageName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.selectedPackageName_property_selection) {
       case .empty :
@@ -1852,11 +1852,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'availablePackages' transient property
   //····················································································································
 
-  private var mObserversOf_availablePackages = EBWeakEventSet ()
+  private final var mObserversOf_availablePackages = EBWeakEventSet ()
 
   //····················································································································
 
-  var availablePackages_property_selection : EBSelection <StringArray?> {
+  final var availablePackages_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.availablePackages_property_selection) {
       case .empty :
@@ -1921,11 +1921,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1990,11 +1990,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentIsPlacedInBoard' transient property
   //····················································································································
 
-  private var mObserversOf_componentIsPlacedInBoard = EBWeakEventSet ()
+  private final var mObserversOf_componentIsPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentIsPlacedInBoard_property_selection : EBSelection <Bool?> {
+  final var componentIsPlacedInBoard_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.componentIsPlacedInBoard_property_selection) {
       case .empty :
@@ -2059,11 +2059,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentIsPlacedInBoardString' transient property
   //····················································································································
 
-  private var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
+  private final var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentIsPlacedInBoardString_property_selection : EBSelection <String?> {
+  final var componentIsPlacedInBoardString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.componentIsPlacedInBoardString_property_selection) {
       case .empty :
@@ -2128,11 +2128,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <EBBezierPath?> {
+  final var strokeBezierPath_property_selection : EBSelection <EBBezierPath?> {
     if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :
@@ -2197,11 +2197,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
+  final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
     if let model = self.propval {
       switch (model.pinPadAssignments_property_selection) {
       case .empty :
@@ -2266,11 +2266,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'hasSlavePads' transient property
   //····················································································································
 
-  private var mObserversOf_hasSlavePads = EBWeakEventSet ()
+  private final var mObserversOf_hasSlavePads = EBWeakEventSet ()
 
   //····················································································································
 
-  var hasSlavePads_property_selection : EBSelection <Bool?> {
+  final var hasSlavePads_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.hasSlavePads_property_selection) {
       case .empty :
@@ -2335,11 +2335,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_placementInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_placementInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  var placementInSchematic_property_selection : EBSelection <String?> {
+  final var placementInSchematic_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.placementInSchematic_property_selection) {
       case .empty :
@@ -2404,11 +2404,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
 
   //····················································································································
 
-  var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
+  final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
     if let model = self.propval {
       switch (model.deviceSymbolDictionary_property_selection) {
       case .empty :
@@ -2473,11 +2473,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentNameFontName' transient property
   //····················································································································
 
-  private var mObserversOf_componentNameFontName = EBWeakEventSet ()
+  private final var mObserversOf_componentNameFontName = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentNameFontName_property_selection : EBSelection <String?> {
+  final var componentNameFontName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.componentNameFontName_property_selection) {
       case .empty :
@@ -2542,11 +2542,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentValueFontName' transient property
   //····················································································································
 
-  private var mObserversOf_componentValueFontName = EBWeakEventSet ()
+  private final var mObserversOf_componentValueFontName = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentValueFontName_property_selection : EBSelection <String?> {
+  final var componentValueFontName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.componentValueFontName_property_selection) {
       case .empty :
@@ -2611,11 +2611,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentPadDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_componentPadDictionary = EBWeakEventSet ()
+  private final var mObserversOf_componentPadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary?> {
+  final var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary?> {
     if let model = self.propval {
       switch (model.componentPadDictionary_property_selection) {
       case .empty :
@@ -2680,11 +2680,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'padNetDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_padNetDictionary = EBWeakEventSet ()
+  private final var mObserversOf_padNetDictionary = EBWeakEventSet ()
 
   //····················································································································
 
-  var padNetDictionary_property_selection : EBSelection <PadNetDictionary?> {
+  final var padNetDictionary_property_selection : EBSelection <PadNetDictionary?> {
     if let model = self.propval {
       switch (model.padNetDictionary_property_selection) {
       case .empty :
@@ -2749,11 +2749,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private var mObserversOf_componentName = EBWeakEventSet ()
+  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
-  var componentName_property_selection : EBSelection <String?> {
+  final var componentName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.componentName_property_selection) {
       case .empty :
@@ -2818,11 +2818,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -2887,11 +2887,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+  private final var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
-  var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
+  final var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     if let model = self.propval {
       switch (model.unplacedSymbols_property_selection) {
       case .empty :
@@ -2956,11 +2956,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -3025,11 +3025,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observable toMany property: mConnectors
   //····················································································································
 
-  private var mObserversOf_mConnectors = EBWeakEventSet ()
+  private final var mObserversOf_mConnectors = EBWeakEventSet ()
 
   //····················································································································
 
-  var mConnectors_property_selection : EBSelection <[BoardConnector]> {
+  final var mConnectors_property_selection : EBSelection <[BoardConnector]> {
     if let model = self.propval {
       switch (model.mConnectors_property_selection) {
       case .empty :
@@ -3066,11 +3066,11 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observable toMany property: mSymbols
   //····················································································································
 
-  private var mObserversOf_mSymbols = EBWeakEventSet ()
+  private final var mObserversOf_mSymbols = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbols_property_selection : EBSelection <[ComponentSymbolInProject]> {
+  final var mSymbols_property_selection : EBSelection <[ComponentSymbolInProject]> {
     if let model = self.propval {
       switch (model.mSymbols_property_selection) {
       case .empty :
@@ -3291,7 +3291,7 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

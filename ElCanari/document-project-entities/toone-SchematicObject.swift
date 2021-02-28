@@ -34,11 +34,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -103,11 +103,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
+  final var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
     if let model = self.propval {
       switch (model.connectedPoints_property_selection) {
       case .empty :
@@ -172,11 +172,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
+  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
     if let model = self.propval {
       switch (model.sheetDescriptor_property_selection) {
       case .empty :
@@ -241,11 +241,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -310,11 +310,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -379,11 +379,11 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //   Observers of 'isPlacedInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
-  var isPlacedInSchematic_property_selection : EBSelection <Bool?> {
+  final var isPlacedInSchematic_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isPlacedInSchematic_property_selection) {
       case .empty :
@@ -632,7 +632,7 @@ final class StoredObject_SchematicObject : ReadWriteObject_SchematicObject, EBSi
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -40,11 +40,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mColor' stored property
   //····················································································································
 
-  private var mObserversOf_mColor = EBWeakEventSet ()
+  private final var mObserversOf_mColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var mColor_property_selection : EBSelection <NSColor?> {
+  final var mColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.mColor_property_selection) {
       case .empty :
@@ -110,11 +110,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mSize' stored property
   //····················································································································
 
-  private var mObserversOf_mSize = EBWeakEventSet ()
+  private final var mObserversOf_mSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSize_property_selection : EBSelection <Double?> {
+  final var mSize_property_selection : EBSelection <Double?> {
     if let model = self.propval {
       switch (model.mSize_property_selection) {
       case .empty :
@@ -180,11 +180,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
+  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> {
     if let model = self.propval {
       switch (model.mHorizontalAlignment_property_selection) {
       case .empty :
@@ -250,11 +250,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment?> {
+  final var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment?> {
     if let model = self.propval {
       switch (model.mVerticalAlignment_property_selection) {
       case .empty :
@@ -320,11 +320,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -390,11 +390,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -460,11 +460,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mComment' stored property
   //····················································································································
 
-  private var mObserversOf_mComment = EBWeakEventSet ()
+  private final var mObserversOf_mComment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComment_property_selection : EBSelection <String?> {
+  final var mComment_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mComment_property_selection) {
       case .empty :
@@ -530,11 +530,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -599,11 +599,11 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -852,7 +852,7 @@ final class StoredObject_CommentInSchematic : ReadWriteObject_CommentInSchematic
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

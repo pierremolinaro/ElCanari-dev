@@ -52,11 +52,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolPinName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbolPinName_property_selection : EBSelection <String?> {
+  final var mSymbolPinName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSymbolPinName_property_selection) {
       case .empty :
@@ -122,11 +122,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -192,11 +192,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -262,11 +262,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_location = EBWeakEventSet ()
+  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
-  var location_property_selection : EBSelection <CanariPoint?> {
+  final var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :
@@ -331,11 +331,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netName_property_selection : EBSelection <String?> {
+  final var netName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netName_property_selection) {
       case .empty :
@@ -400,11 +400,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String?> {
+  final var netClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
@@ -469,11 +469,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private var mObserversOf_hasNet = EBWeakEventSet ()
+  private final var mObserversOf_hasNet = EBWeakEventSet ()
 
   //····················································································································
 
-  var hasNet_property_selection : EBSelection <Bool?> {
+  final var hasNet_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.hasNet_property_selection) {
       case .empty :
@@ -538,11 +538,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'canMove' transient property
   //····················································································································
 
-  private var mObserversOf_canMove = EBWeakEventSet ()
+  private final var mObserversOf_canMove = EBWeakEventSet ()
 
   //····················································································································
 
-  var canMove_property_selection : EBSelection <Bool?> {
+  final var canMove_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.canMove_property_selection) {
       case .empty :
@@ -607,11 +607,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private var mObserversOf_wireColor = EBWeakEventSet ()
+  private final var mObserversOf_wireColor = EBWeakEventSet ()
 
   //····················································································································
 
-  var wireColor_property_selection : EBSelection <NSColor?> {
+  final var wireColor_property_selection : EBSelection <NSColor?> {
     if let model = self.propval {
       switch (model.wireColor_property_selection) {
       case .empty :
@@ -676,11 +676,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
-  private var mObserversOf_symbolRotation = EBWeakEventSet ()
+  private final var mObserversOf_symbolRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolRotation_property_selection : EBSelection <QuadrantRotation?> {
+  final var symbolRotation_property_selection : EBSelection <QuadrantRotation?> {
     if let model = self.propval {
       switch (model.symbolRotation_property_selection) {
       case .empty :
@@ -745,11 +745,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolNameNetName = EBWeakEventSet ()
+  private final var mObserversOf_symbolNameNetName = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolNameNetName_property_selection : EBSelection <TwoStrings?> {
+  final var symbolNameNetName_property_selection : EBSelection <TwoStrings?> {
     if let model = self.propval {
       switch (model.symbolNameNetName_property_selection) {
       case .empty :
@@ -814,11 +814,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
-  var isConnected_property_selection : EBSelection <Bool?> {
+  final var isConnected_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isConnected_property_selection) {
       case .empty :
@@ -883,11 +883,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'status' transient property
   //····················································································································
 
-  private var mObserversOf_status = EBWeakEventSet ()
+  private final var mObserversOf_status = EBWeakEventSet ()
 
   //····················································································································
 
-  var status_property_selection : EBSelection <SchematicPointStatus?> {
+  final var status_property_selection : EBSelection <SchematicPointStatus?> {
     if let model = self.propval {
       switch (model.status_property_selection) {
       case .empty :
@@ -952,11 +952,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
+  final var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
     if let model = self.propval {
       switch (model.connectedPoints_property_selection) {
       case .empty :
@@ -1021,11 +1021,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
-  private var mObserversOf_netInfoForPoint = EBWeakEventSet ()
+  private final var mObserversOf_netInfoForPoint = EBWeakEventSet ()
 
   //····················································································································
 
-  var netInfoForPoint_property_selection : EBSelection <NetInfoPoint?> {
+  final var netInfoForPoint_property_selection : EBSelection <NetInfoPoint?> {
     if let model = self.propval {
       switch (model.netInfoForPoint_property_selection) {
       case .empty :
@@ -1090,11 +1090,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mLabels
   //····················································································································
 
-  private var mObserversOf_mLabels = EBWeakEventSet ()
+  private final var mObserversOf_mLabels = EBWeakEventSet ()
 
   //····················································································································
 
-  var mLabels_property_selection : EBSelection <[LabelInSchematic]> {
+  final var mLabels_property_selection : EBSelection <[LabelInSchematic]> {
     if let model = self.propval {
       switch (model.mLabels_property_selection) {
       case .empty :
@@ -1131,11 +1131,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mWiresP2s
   //····················································································································
 
-  private var mObserversOf_mWiresP2s = EBWeakEventSet ()
+  private final var mObserversOf_mWiresP2s = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWiresP2s_property_selection : EBSelection <[WireInSchematic]> {
+  final var mWiresP2s_property_selection : EBSelection <[WireInSchematic]> {
     if let model = self.propval {
       switch (model.mWiresP2s_property_selection) {
       case .empty :
@@ -1172,11 +1172,11 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mWiresP1s
   //····················································································································
 
-  private var mObserversOf_mWiresP1s = EBWeakEventSet ()
+  private final var mObserversOf_mWiresP1s = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWiresP1s_property_selection : EBSelection <[WireInSchematic]> {
+  final var mWiresP1s_property_selection : EBSelection <[WireInSchematic]> {
     if let model = self.propval {
       switch (model.mWiresP1s_property_selection) {
       case .empty :
@@ -1397,7 +1397,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

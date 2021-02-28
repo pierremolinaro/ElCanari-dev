@@ -13,7 +13,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument {
+@objc(CustomizedPackageDocument) final class CustomizedPackageDocument : PackageDocument {
 
   //····················································································································
 

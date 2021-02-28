@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-  private var mObserversOf_mPath = EBWeakEventSet ()
+  private final var mObserversOf_mPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mUses' stored property
   //····················································································································
 
-  private var mObserversOf_mUses = EBWeakEventSet ()
+  private final var mObserversOf_mUses = EBWeakEventSet ()
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-  private var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
+  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-  private var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
+  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
 
   //····················································································································
 
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private var mObserversOf_mStatusImage = EBWeakEventSet ()
+  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -633,7 +633,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -641,32 +641,32 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : CanariLibraryEntry) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -709,7 +709,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <CanariLibraryEntry>, addedSet inAddedSet : Set <CanariLibraryEntry>) {
+  override func updateObservers (removedSet inRemovedSet : Set <CanariLibraryEntry>, addedSet inAddedSet : Set <CanariLibraryEntry>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -729,7 +729,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
  
   //····················································································································
 
-  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -737,11 +737,11 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+  override final var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : CanariLibraryEntry) {
+  final func remove (_ object : CanariLibraryEntry) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -749,7 +749,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   
   //····················································································································
 
-  func add (_ object : CanariLibraryEntry) {
+  final func add (_ object : CanariLibraryEntry) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -759,11 +759,11 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -32,11 +32,11 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSymbolInstanceName_property_selection : EBSelection <String?> {
+  final var mSymbolInstanceName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSymbolInstanceName_property_selection) {
       case .empty :
@@ -102,11 +102,11 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
+  private final var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolAndTypeName_property_selection : EBSelection <SymbolInProjectIdentifier?> {
+  final var symbolAndTypeName_property_selection : EBSelection <SymbolInProjectIdentifier?> {
     if let model = self.propval {
       switch (model.symbolAndTypeName_property_selection) {
       case .empty :
@@ -171,11 +171,11 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolTypeName = EBWeakEventSet ()
+  private final var mObserversOf_symbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolTypeName_property_selection : EBSelection <String?> {
+  final var symbolTypeName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.symbolTypeName_property_selection) {
       case .empty :
@@ -240,11 +240,11 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.filledBezierPath_property_selection) {
       case .empty :
@@ -309,11 +309,11 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :
@@ -562,7 +562,7 @@ final class StoredObject_DeviceSymbolInstanceInProject : ReadWriteObject_DeviceS
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

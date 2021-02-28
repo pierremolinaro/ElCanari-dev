@@ -80,7 +80,7 @@ protocol PackageOval_issues : AnyObject {
 //    Entity: PackageOval
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageOval : PackageObject,
+final class PackageOval : PackageObject,
          PackageOval_y,
          PackageOval_width,
          PackageOval_height,

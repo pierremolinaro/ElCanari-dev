@@ -92,7 +92,7 @@ protocol DevicePinInProject_descriptor : AnyObject {
 //    Entity: DevicePinInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DevicePinInProject : EBManagedObject,
+final class DevicePinInProject : EBManagedObject,
          DevicePinInProject_mPinName,
          DevicePinInProject_mSymbolInstanceName,
          DevicePinInProject_mSymbolTypeName,

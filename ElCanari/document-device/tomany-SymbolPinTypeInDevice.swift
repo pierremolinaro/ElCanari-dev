@@ -44,7 +44,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  private var mObserversOf_mPinX = EBWeakEventSet ()
+  private final var mObserversOf_mPinX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  private var mObserversOf_mPinY = EBWeakEventSet ()
+  private final var mObserversOf_mPinY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mXName = EBWeakEventSet ()
+  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mYName = EBWeakEventSet ()
+  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -272,7 +272,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mName' stored property
   //····················································································································
 
-  private var mObserversOf_mName = EBWeakEventSet ()
+  private final var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -386,7 +386,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mPinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-  private var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
+  private final var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
 
   //····················································································································
 
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mXNumber = EBWeakEventSet ()
+  private final var mObserversOf_mXNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  private var mObserversOf_mYNumber = EBWeakEventSet ()
+  private final var mObserversOf_mYNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -557,7 +557,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -614,7 +614,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   //   Observers of 'nameShape' transient property
   //····················································································································
 
-  private var mObserversOf_nameShape = EBWeakEventSet ()
+  private final var mObserversOf_nameShape = EBWeakEventSet ()
 
   //····················································································································
 
@@ -987,7 +987,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -995,32 +995,32 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPinTypeInDevice) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolPinTypeInDevice) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1063,7 +1063,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPinTypeInDevice>, addedSet inAddedSet : Set <SymbolPinTypeInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolPinTypeInDevice>, addedSet inAddedSet : Set <SymbolPinTypeInDevice>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1083,7 +1083,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolPinTypeInDevice] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolPinTypeInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1091,11 +1091,11 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
 
   //····················································································································
 
-  override var propval : [SymbolPinTypeInDevice] { return self.mInternalArrayValue }
+  override final var propval : [SymbolPinTypeInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolPinTypeInDevice) {
+  final func remove (_ object : SymbolPinTypeInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1103,7 +1103,7 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
   
   //····················································································································
 
-  func add (_ object : SymbolPinTypeInDevice) {
+  final func add (_ object : SymbolPinTypeInDevice) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1113,11 +1113,11 @@ class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinTypeInDevi
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

@@ -44,7 +44,7 @@ protocol LabelInSchematic_objectDisplay : AnyObject {
 //    Entity: LabelInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class LabelInSchematic : SchematicObject,
+final class LabelInSchematic : SchematicObject,
          LabelInSchematic_mOrientation,
          LabelInSchematic_location,
          LabelInSchematic_netName,

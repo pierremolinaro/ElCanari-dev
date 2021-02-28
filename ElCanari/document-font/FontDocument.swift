@@ -163,62 +163,62 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var advancementSlider : EBSlider? = nil
-  @IBOutlet var advancementTextField : EBIntField? = nil
-  @IBOutlet var commentTextView : EBTextView? = nil
-  @IBOutlet var currentCharacterStepper : EBStepper? = nil
-  @IBOutlet var currentCharacterView : CanariCharacterView? = nil
-  @IBOutlet var gerberCodeInstructionCountMessageTextField : EBTextObserverField? = nil
-  @IBOutlet var mAddCharacterButton : EBButton? = nil
-  @IBOutlet var mAddSegmentButton : EBButton? = nil
-  @IBOutlet var mCharacterIssuesInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mCurrentCharacterTextField : EBTextObserverField? = nil
-  @IBOutlet var mDeleteCurrentCharacterButton : EBButton? = nil
-  @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton? = nil
-  @IBOutlet var mFontNominalSizeTextField : EBIntField? = nil
-  @IBOutlet var mFontPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mFontSampleStringView : CanariFontSampleStringView? = nil
-  @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView? = nil
-  @IBOutlet var mInfosPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mIssueTableView : IssueTableView? = nil
-  @IBOutlet var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet var mMasterFontPageView : NSView? = nil
-  @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mNewCharacterPanel : NSPanel? = nil
-  @IBOutlet var mNewCharacterView : NewCharacterView? = nil
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mSampleStringAscentTextField : EBTextObserverField? = nil
-  @IBOutlet var mSampleStringDescentTextField : EBTextObserverField? = nil
-  @IBOutlet var mSampleStringField : EBTextField? = nil
-  @IBOutlet var mSampleStringInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSampleStringSizeField : EBDoubleField? = nil
-  @IBOutlet var mSampleStringWidthTextField : EBTextObserverField? = nil
-  @IBOutlet var mSelectedCharacterInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
-  @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
-  @IBOutlet var mSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet var mVersionField : CanariVersionField? = nil
-  @IBOutlet var mWarnsWhenAdvanceIsZeroCheckbox : EBSwitch? = nil
-  @IBOutlet var mWarnsWhenNoSegmentCheckbox : EBSwitch? = nil
-  @IBOutlet var resetVersionAndSignatureButton : EBButton? = nil
-  @IBOutlet var transparencySlider : EBSlider? = nil
-  @IBOutlet var transparencyTextField : EBDoubleField? = nil
+  @IBOutlet final var advancementSlider : EBSlider? = nil
+  @IBOutlet final var advancementTextField : EBIntField? = nil
+  @IBOutlet final var commentTextView : EBTextView? = nil
+  @IBOutlet final var currentCharacterStepper : EBStepper? = nil
+  @IBOutlet final var currentCharacterView : CanariCharacterView? = nil
+  @IBOutlet final var gerberCodeInstructionCountMessageTextField : EBTextObserverField? = nil
+  @IBOutlet final var mAddCharacterButton : EBButton? = nil
+  @IBOutlet final var mAddSegmentButton : EBButton? = nil
+  @IBOutlet final var mCharacterIssuesInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mCurrentCharacterTextField : EBTextObserverField? = nil
+  @IBOutlet final var mDeleteCurrentCharacterButton : EBButton? = nil
+  @IBOutlet final var mFontCharacterSelectButton : FontCharacterSelectButton? = nil
+  @IBOutlet final var mFontNominalSizeTextField : EBIntField? = nil
+  @IBOutlet final var mFontPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mFontSampleStringView : CanariFontSampleStringView? = nil
+  @IBOutlet final var mGerberCodeTableView : CanariCharacterGerberCodeTableView? = nil
+  @IBOutlet final var mInfosPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mInspectorSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mIssueTableView : IssueTableView? = nil
+  @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
+  @IBOutlet final var mMasterFontPageView : NSView? = nil
+  @IBOutlet final var mMasterView : NSView? = nil
+  @IBOutlet final var mNewCharacterPanel : NSPanel? = nil
+  @IBOutlet final var mNewCharacterView : NewCharacterView? = nil
+  @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mSampleStringAscentTextField : EBTextObserverField? = nil
+  @IBOutlet final var mSampleStringDescentTextField : EBTextObserverField? = nil
+  @IBOutlet final var mSampleStringField : EBTextField? = nil
+  @IBOutlet final var mSampleStringInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSampleStringSizeField : EBDoubleField? = nil
+  @IBOutlet final var mSampleStringWidthTextField : EBTextObserverField? = nil
+  @IBOutlet final var mSelectedCharacterInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
+  @IBOutlet final var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mSignatureTextField : CanariSignatureField? = nil
+  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
+  @IBOutlet final var mVersionField : CanariVersionField? = nil
+  @IBOutlet final var mWarnsWhenAdvanceIsZeroCheckbox : EBSwitch? = nil
+  @IBOutlet final var mWarnsWhenNoSegmentCheckbox : EBSwitch? = nil
+  @IBOutlet final var resetVersionAndSignatureButton : EBButton? = nil
+  @IBOutlet final var transparencySlider : EBSlider? = nil
+  @IBOutlet final var transparencyTextField : EBDoubleField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_mDeleteCurrentCharacterButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mIssueTableView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mDeleteCurrentCharacterButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mIssueTableView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -230,7 +230,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -255,7 +255,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name? {
+  override final var windowNibName : NSNib.Name? {
     return NSNib.Name ("FontDocument")
   }
   
@@ -263,7 +263,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "FontRoot"
   }
 
@@ -271,7 +271,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : FontRoot { return self.mRootObject as! FontRoot }
+  final var rootObject : FontRoot { return self.mRootObject as! FontRoot }
 
   //····················································································································
   //    check outlet connections

@@ -18,8 +18,8 @@ class EBOutletEvent : EBEvent {
   //   Properties
   //····················································································································
 
-  var mEventCallBack : Optional < () -> Void > = nil
-  fileprivate var mEventIsPosted = false
+  final var mEventCallBack : Optional < () -> Void > = nil
+  fileprivate final var mEventIsPosted = false
 
   //····················································································································
   //   postEvent
@@ -59,11 +59,6 @@ class EBOutletEvent : EBEvent {
   func unregister () {
     self.mEventCallBack = nil
   }
-
-  //····················································································································
-
-//  func computeAsynchronously (_ inOperationQueue : OperationQueue) {
-//  }
 
   //····················································································································
 

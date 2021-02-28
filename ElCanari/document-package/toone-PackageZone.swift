@@ -64,11 +64,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -134,11 +134,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -204,11 +204,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -274,11 +274,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int?> {
+  final var height_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.height_property_selection) {
       case .empty :
@@ -344,11 +344,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xUnit = EBWeakEventSet ()
+  private final var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var xUnit_property_selection : EBSelection <Int?> {
+  final var xUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xUnit_property_selection) {
       case .empty :
@@ -414,11 +414,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yUnit = EBWeakEventSet ()
+  private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var yUnit_property_selection : EBSelection <Int?> {
+  final var yUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yUnit_property_selection) {
       case .empty :
@@ -484,11 +484,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int?> {
+  final var widthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.widthUnit_property_selection) {
       case .empty :
@@ -554,11 +554,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int?> {
+  final var heightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.heightUnit_property_selection) {
       case .empty :
@@ -624,11 +624,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'zoneName' stored property
   //····················································································································
 
-  private var mObserversOf_zoneName = EBWeakEventSet ()
+  private final var mObserversOf_zoneName = EBWeakEventSet ()
 
   //····················································································································
 
-  var zoneName_property_selection : EBSelection <String?> {
+  final var zoneName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.zoneName_property_selection) {
       case .empty :
@@ -694,11 +694,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'displayZoneName' stored property
   //····················································································································
 
-  private var mObserversOf_displayZoneName = EBWeakEventSet ()
+  private final var mObserversOf_displayZoneName = EBWeakEventSet ()
 
   //····················································································································
 
-  var displayZoneName_property_selection : EBSelection <Bool?> {
+  final var displayZoneName_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.displayZoneName_property_selection) {
       case .empty :
@@ -764,11 +764,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_xName = EBWeakEventSet ()
+  private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
-  var xName_property_selection : EBSelection <Int?> {
+  final var xName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xName_property_selection) {
       case .empty :
@@ -834,11 +834,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_yName = EBWeakEventSet ()
+  private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
-  var yName_property_selection : EBSelection <Int?> {
+  final var yName_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yName_property_selection) {
       case .empty :
@@ -904,11 +904,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xNameUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xNameUnit = EBWeakEventSet ()
+  private final var mObserversOf_xNameUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var xNameUnit_property_selection : EBSelection <Int?> {
+  final var xNameUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xNameUnit_property_selection) {
       case .empty :
@@ -974,11 +974,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yNameUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yNameUnit = EBWeakEventSet ()
+  private final var mObserversOf_yNameUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var yNameUnit_property_selection : EBSelection <Int?> {
+  final var yNameUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yNameUnit_property_selection) {
       case .empty :
@@ -1044,11 +1044,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
-  private var mObserversOf_zoneNumbering = EBWeakEventSet ()
+  private final var mObserversOf_zoneNumbering = EBWeakEventSet ()
 
   //····················································································································
 
-  var zoneNumbering_property_selection : EBSelection <PadNumbering?> {
+  final var zoneNumbering_property_selection : EBSelection <PadNumbering?> {
     if let model = self.propval {
       switch (model.zoneNumbering_property_selection) {
       case .empty :
@@ -1114,11 +1114,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -1183,11 +1183,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1252,11 +1252,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'rect' transient property
   //····················································································································
 
-  private var mObserversOf_rect = EBWeakEventSet ()
+  private final var mObserversOf_rect = EBWeakEventSet ()
 
   //····················································································································
 
-  var rect_property_selection : EBSelection <CanariRect?> {
+  final var rect_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.rect_property_selection) {
       case .empty :
@@ -1321,11 +1321,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -1390,11 +1390,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'forbiddenPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_forbiddenPadArray = EBWeakEventSet ()
+  private final var mObserversOf_forbiddenPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var forbiddenPadArray_property_selection : EBSelection <StringArray?> {
+  final var forbiddenPadArray_property_selection : EBSelection <StringArray?> {
     if let model = self.propval {
       switch (model.forbiddenPadArray_property_selection) {
       case .empty :
@@ -1459,11 +1459,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'emptyForbiddenPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_emptyForbiddenPadArray = EBWeakEventSet ()
+  private final var mObserversOf_emptyForbiddenPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var emptyForbiddenPadArray_property_selection : EBSelection <Bool?> {
+  final var emptyForbiddenPadArray_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.emptyForbiddenPadArray_property_selection) {
       case .empty :
@@ -1528,11 +1528,11 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observable toMany property: forbiddenPadNumbers
   //····················································································································
 
-  private var mObserversOf_forbiddenPadNumbers = EBWeakEventSet ()
+  private final var mObserversOf_forbiddenPadNumbers = EBWeakEventSet ()
 
   //····················································································································
 
-  var forbiddenPadNumbers_property_selection : EBSelection <[ForbiddenPadNumber]> {
+  final var forbiddenPadNumbers_property_selection : EBSelection <[ForbiddenPadNumber]> {
     if let model = self.propval {
       switch (model.forbiddenPadNumbers_property_selection) {
       case .empty :
@@ -1753,7 +1753,7 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -86,7 +86,7 @@ protocol PackageInDevice_padNameSet : AnyObject {
 //    Entity: PackageInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageInDevice : EBGraphicManagedObject,
+final class PackageInDevice : EBGraphicManagedObject,
          PackageInDevice_mFileData,
          PackageInDevice_mName,
          PackageInDevice_mVersion,

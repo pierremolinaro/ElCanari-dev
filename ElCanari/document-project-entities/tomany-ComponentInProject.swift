@@ -108,7 +108,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-  private var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
+  private final var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
 
   //····················································································································
 
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -336,7 +336,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private var mObserversOf_mSide = EBWeakEventSet ()
+  private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -393,7 +393,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
 
-  private var mObserversOf_mDisplayLegend = EBWeakEventSet ()
+  private final var mObserversOf_mDisplayLegend = EBWeakEventSet ()
 
   //····················································································································
 
@@ -450,7 +450,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-  private var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
+  private final var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mXName = EBWeakEventSet ()
+  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -564,7 +564,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mYName = EBWeakEventSet ()
+  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -621,7 +621,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mNameFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mNameFontSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -678,7 +678,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mNameRotation = EBWeakEventSet ()
+  private final var mObserversOf_mNameRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -735,7 +735,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
 
-  private var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
+  private final var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
@@ -792,7 +792,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-  private var mObserversOf_mXValue = EBWeakEventSet ()
+  private final var mObserversOf_mXValue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -849,7 +849,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mYValue' stored property
   //····················································································································
 
-  private var mObserversOf_mYValue = EBWeakEventSet ()
+  private final var mObserversOf_mYValue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -906,7 +906,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-  private var mObserversOf_mValueFontSize = EBWeakEventSet ()
+  private final var mObserversOf_mValueFontSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -963,7 +963,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mValueRotation' stored property
   //····················································································································
 
-  private var mObserversOf_mValueRotation = EBWeakEventSet ()
+  private final var mObserversOf_mValueRotation = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1020,7 +1020,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  private var mObserversOf_mComponentValue = EBWeakEventSet ()
+  private final var mObserversOf_mComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1077,7 +1077,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
 
-  private var mObserversOf_mNamePrefix = EBWeakEventSet ()
+  private final var mObserversOf_mNamePrefix = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1134,7 +1134,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mNameIndex = EBWeakEventSet ()
+  private final var mObserversOf_mNameIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1191,7 +1191,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mXUnit = EBWeakEventSet ()
+  private final var mObserversOf_mXUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1248,7 +1248,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mYUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mYUnit = EBWeakEventSet ()
+  private final var mObserversOf_mYUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1305,7 +1305,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'mPackages' toMany proxy
   //····················································································································
 
-  private var mObserversOf_mPackages = EBWeakEventSet ()
+  private final var mObserversOf_mPackages = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1362,7 +1362,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  private var mObserversOf_deviceName = EBWeakEventSet ()
+  private final var mObserversOf_deviceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1418,7 +1418,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1474,7 +1474,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1530,7 +1530,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'selectedPackageName' transient property
   //····················································································································
 
-  private var mObserversOf_selectedPackageName = EBWeakEventSet ()
+  private final var mObserversOf_selectedPackageName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1586,7 +1586,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'availablePackages' transient property
   //····················································································································
 
-  private var mObserversOf_availablePackages = EBWeakEventSet ()
+  private final var mObserversOf_availablePackages = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1642,7 +1642,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1698,7 +1698,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentIsPlacedInBoard' transient property
   //····················································································································
 
-  private var mObserversOf_componentIsPlacedInBoard = EBWeakEventSet ()
+  private final var mObserversOf_componentIsPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1754,7 +1754,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentIsPlacedInBoardString' transient property
   //····················································································································
 
-  private var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
+  private final var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1810,7 +1810,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1866,7 +1866,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1922,7 +1922,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'hasSlavePads' transient property
   //····················································································································
 
-  private var mObserversOf_hasSlavePads = EBWeakEventSet ()
+  private final var mObserversOf_hasSlavePads = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1978,7 +1978,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  private var mObserversOf_placementInSchematic = EBWeakEventSet ()
+  private final var mObserversOf_placementInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2034,7 +2034,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2090,7 +2090,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentNameFontName' transient property
   //····················································································································
 
-  private var mObserversOf_componentNameFontName = EBWeakEventSet ()
+  private final var mObserversOf_componentNameFontName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2146,7 +2146,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentValueFontName' transient property
   //····················································································································
 
-  private var mObserversOf_componentValueFontName = EBWeakEventSet ()
+  private final var mObserversOf_componentValueFontName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2202,7 +2202,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentPadDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_componentPadDictionary = EBWeakEventSet ()
+  private final var mObserversOf_componentPadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2258,7 +2258,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'padNetDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_padNetDictionary = EBWeakEventSet ()
+  private final var mObserversOf_padNetDictionary = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2314,7 +2314,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private var mObserversOf_componentName = EBWeakEventSet ()
+  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2370,7 +2370,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2426,7 +2426,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private var mObserversOf_unplacedSymbols = EBWeakEventSet ()
+  private final var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2482,7 +2482,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2855,7 +2855,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -2863,32 +2863,32 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ComponentInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ComponentInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ComponentInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -2931,7 +2931,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ComponentInProject>, addedSet inAddedSet : Set <ComponentInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <ComponentInProject>, addedSet inAddedSet : Set <ComponentInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -2951,7 +2951,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
  
   //····················································································································
 
-  override var selection : EBSelection < [ComponentInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [ComponentInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -2959,11 +2959,11 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
 
   //····················································································································
 
-  override var propval : [ComponentInProject] { return self.mInternalArrayValue }
+  override final var propval : [ComponentInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : ComponentInProject) {
+  final func remove (_ object : ComponentInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2971,7 +2971,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   
   //····················································································································
 
-  func add (_ object : ComponentInProject) {
+  final func add (_ object : ComponentInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2981,11 +2981,11 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

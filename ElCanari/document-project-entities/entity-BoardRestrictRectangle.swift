@@ -62,7 +62,7 @@ protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
 //    Entity: BoardRestrictRectangle
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardRestrictRectangle : BoardObject,
+final class BoardRestrictRectangle : BoardObject,
          BoardRestrictRectangle_mY,
          BoardRestrictRectangle_mWidth,
          BoardRestrictRectangle_mHeight,

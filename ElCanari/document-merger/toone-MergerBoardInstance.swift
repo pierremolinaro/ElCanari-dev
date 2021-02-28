@@ -38,11 +38,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'instanceRotation' stored property
   //····················································································································
 
-  private var mObserversOf_instanceRotation = EBWeakEventSet ()
+  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var instanceRotation_property_selection : EBSelection <QuadrantRotation?> {
+  final var instanceRotation_property_selection : EBSelection <QuadrantRotation?> {
     if let model = self.propval {
       switch (model.instanceRotation_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'instanceRect' transient property
   //····················································································································
 
-  private var mObserversOf_instanceRect = EBWeakEventSet ()
+  private final var mObserversOf_instanceRect = EBWeakEventSet ()
 
   //····················································································································
 
-  var instanceRect_property_selection : EBSelection <CanariRect?> {
+  final var instanceRect_property_selection : EBSelection <CanariRect?> {
     if let model = self.propval {
       switch (model.instanceRect_property_selection) {
       case .empty :
@@ -317,11 +317,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'modelName' transient property
   //····················································································································
 
-  private var mObserversOf_modelName = EBWeakEventSet ()
+  private final var mObserversOf_modelName = EBWeakEventSet ()
 
   //····················································································································
 
-  var modelName_property_selection : EBSelection <String?> {
+  final var modelName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.modelName_property_selection) {
       case .empty :
@@ -386,11 +386,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'boardLimitWidth' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var boardLimitWidth_property_selection : EBSelection <Int?> {
+  final var boardLimitWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.boardLimitWidth_property_selection) {
       case .empty :
@@ -455,11 +455,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -524,11 +524,11 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -777,7 +777,7 @@ final class StoredObject_MergerBoardInstance : ReadWriteObject_MergerBoardInstan
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -40,11 +40,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -110,11 +110,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mWidth = EBWeakEventSet ()
+  private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWidth_property_selection : EBSelection <Int?> {
+  final var mWidth_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mWidth_property_selection) {
       case .empty :
@@ -180,11 +180,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  private var mObserversOf_mHeight = EBWeakEventSet ()
+  private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  var mHeight_property_selection : EBSelection <Int?> {
+  final var mHeight_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mHeight_property_selection) {
       case .empty :
@@ -250,11 +250,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
 
   //····················································································································
 
-  var mIsInFrontLayer_property_selection : EBSelection <Bool?> {
+  final var mIsInFrontLayer_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mIsInFrontLayer_property_selection) {
       case .empty :
@@ -320,11 +320,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
 
-  private var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
 
   //····················································································································
 
-  var mIsInBackLayer_property_selection : EBSelection <Bool?> {
+  final var mIsInBackLayer_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mIsInBackLayer_property_selection) {
       case .empty :
@@ -390,11 +390,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -460,11 +460,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -529,11 +529,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -598,11 +598,11 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -851,7 +851,7 @@ final class StoredObject_BoardRestrictRectangle : ReadWriteObject_BoardRestrictR
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

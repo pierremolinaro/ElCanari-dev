@@ -80,7 +80,7 @@ protocol SymbolRoot_noIssue : AnyObject {
 //    Entity: SymbolRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolRoot : EBManagedObject,
+final class SymbolRoot : EBManagedObject,
          SymbolRoot_selectedInspector,
          SymbolRoot_comments,
          SymbolRoot_horizontalFlip,

@@ -60,7 +60,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mNetClassName' stored property
   //····················································································································
 
-  private var mObserversOf_mNetClassName = EBWeakEventSet ()
+  private final var mObserversOf_mNetClassName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -117,7 +117,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mNetClassColor' stored property
   //····················································································································
 
-  private var mObserversOf_mNetClassColor = EBWeakEventSet ()
+  private final var mObserversOf_mNetClassColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -174,7 +174,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mTrackWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mViaHoleDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mViaHoleDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -402,7 +402,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mViaPadDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -459,7 +459,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mViaPadDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -516,7 +516,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mAllowTracksOnFrontSide' stored property
   //····················································································································
 
-  private var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
+  private final var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -573,7 +573,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'mAllowTracksOnBackSide' stored property
   //····················································································································
 
-  private var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
+  private final var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -630,7 +630,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'trackWidthString' transient property
   //····················································································································
 
-  private var mObserversOf_trackWidthString = EBWeakEventSet ()
+  private final var mObserversOf_trackWidthString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -686,7 +686,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'viaHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -742,7 +742,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'viaPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -798,7 +798,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'allowTracksOnFrontSideString' transient property
   //····················································································································
 
-  private var mObserversOf_allowTracksOnFrontSideString = EBWeakEventSet ()
+  private final var mObserversOf_allowTracksOnFrontSideString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -854,7 +854,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'allowTracksOnBackSideString' transient property
   //····················································································································
 
-  private var mObserversOf_allowTracksOnBackSideString = EBWeakEventSet ()
+  private final var mObserversOf_allowTracksOnBackSideString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -910,7 +910,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  private var mObserversOf_canRemove = EBWeakEventSet ()
+  private final var mObserversOf_canRemove = EBWeakEventSet ()
 
   //····················································································································
 
@@ -966,7 +966,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'netUsage' transient property
   //····················································································································
 
-  private var mObserversOf_netUsage = EBWeakEventSet ()
+  private final var mObserversOf_netUsage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1022,7 +1022,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
-  private var mObserversOf_netsDescription = EBWeakEventSet ()
+  private final var mObserversOf_netsDescription = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1078,7 +1078,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
-  private var mObserversOf_netWarningCount = EBWeakEventSet ()
+  private final var mObserversOf_netWarningCount = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1451,7 +1451,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1459,32 +1459,32 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : NetClassInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NetClassInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : NetClassInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : NetClassInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : NetClassInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1527,7 +1527,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <NetClassInProject>, addedSet inAddedSet : Set <NetClassInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1547,7 +1547,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
  
   //····················································································································
 
-  override var selection : EBSelection < [NetClassInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [NetClassInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1555,11 +1555,11 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
 
   //····················································································································
 
-  override var propval : [NetClassInProject] { return self.mInternalArrayValue }
+  override final var propval : [NetClassInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : NetClassInProject) {
+  final func remove (_ object : NetClassInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1567,7 +1567,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   
   //····················································································································
 
-  func add (_ object : NetClassInProject) {
+  final func add (_ object : NetClassInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1577,11 +1577,11 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

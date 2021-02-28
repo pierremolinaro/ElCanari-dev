@@ -68,11 +68,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
-  private var mObserversOf_drawBoardLimits = EBWeakEventSet ()
+  private final var mObserversOf_drawBoardLimits = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawBoardLimits_property_selection : EBSelection <Bool?> {
+  final var drawBoardLimits_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawBoardLimits_property_selection) {
       case .empty :
@@ -138,11 +138,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
 
-  private var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
+  private final var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawInternalBoardLimits_property_selection : EBSelection <Bool?> {
+  final var drawInternalBoardLimits_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawInternalBoardLimits_property_selection) {
       case .empty :
@@ -208,11 +208,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentNamesTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawComponentNamesTopSide_property_selection : EBSelection <Bool?> {
+  final var drawComponentNamesTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawComponentNamesTopSide_property_selection) {
       case .empty :
@@ -278,11 +278,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawComponentNamesBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawComponentNamesBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawComponentNamesBottomSide_property_selection) {
       case .empty :
@@ -348,11 +348,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentValuesTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawComponentValuesTopSide_property_selection : EBSelection <Bool?> {
+  final var drawComponentValuesTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawComponentValuesTopSide_property_selection) {
       case .empty :
@@ -418,11 +418,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawComponentValuesBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawComponentValuesBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawComponentValuesBottomSide_property_selection) {
       case .empty :
@@ -488,11 +488,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPackageLegendTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawPackageLegendTopSide_property_selection : EBSelection <Bool?> {
+  final var drawPackageLegendTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawPackageLegendTopSide_property_selection) {
       case .empty :
@@ -558,11 +558,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawPackageLegendBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawPackageLegendBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawPackageLegendBottomSide_property_selection) {
       case .empty :
@@ -628,11 +628,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadHolesInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
+  private final var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawPadHolesInPDF_property_selection : EBSelection <Bool?> {
+  final var drawPadHolesInPDF_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawPadHolesInPDF_property_selection) {
       case .empty :
@@ -698,11 +698,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawPadsTopSide_property_selection : EBSelection <Bool?> {
+  final var drawPadsTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawPadsTopSide_property_selection) {
       case .empty :
@@ -768,11 +768,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadsBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawPadsBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawPadsBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawPadsBottomSide_property_selection) {
       case .empty :
@@ -838,11 +838,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTextsLayoutTopSide_property_selection : EBSelection <Bool?> {
+  final var drawTextsLayoutTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTextsLayoutTopSide_property_selection) {
       case .empty :
@@ -908,11 +908,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLayoutBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTextsLayoutBottomSide_property_selection) {
       case .empty :
@@ -978,11 +978,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTextsLegendTopSide_property_selection : EBSelection <Bool?> {
+  final var drawTextsLegendTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTextsLegendTopSide_property_selection) {
       case .empty :
@@ -1048,11 +1048,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLegendBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTextsLegendBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawTextsLegendBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTextsLegendBottomSide_property_selection) {
       case .empty :
@@ -1118,11 +1118,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTracksTopSide_property_selection : EBSelection <Bool?> {
+  final var drawTracksTopSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTracksTopSide_property_selection) {
       case .empty :
@@ -1188,11 +1188,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTracksBottomSide' stored property
   //····················································································································
 
-  private var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
+  private final var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawTracksBottomSide_property_selection : EBSelection <Bool?> {
+  final var drawTracksBottomSide_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawTracksBottomSide_property_selection) {
       case .empty :
@@ -1258,11 +1258,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawVias' stored property
   //····················································································································
 
-  private var mObserversOf_drawVias = EBWeakEventSet ()
+  private final var mObserversOf_drawVias = EBWeakEventSet ()
 
   //····················································································································
 
-  var drawVias_property_selection : EBSelection <Bool?> {
+  final var drawVias_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.drawVias_property_selection) {
       case .empty :
@@ -1328,11 +1328,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'fileExtension' stored property
   //····················································································································
 
-  private var mObserversOf_fileExtension = EBWeakEventSet ()
+  private final var mObserversOf_fileExtension = EBWeakEventSet ()
 
   //····················································································································
 
-  var fileExtension_property_selection : EBSelection <String?> {
+  final var fileExtension_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.fileExtension_property_selection) {
       case .empty :
@@ -1398,11 +1398,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalMirror = EBWeakEventSet ()
+  private final var mObserversOf_horizontalMirror = EBWeakEventSet ()
 
   //····················································································································
 
-  var horizontalMirror_property_selection : EBSelection <Bool?> {
+  final var horizontalMirror_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.horizontalMirror_property_selection) {
       case .empty :
@@ -1468,11 +1468,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_name = EBWeakEventSet ()
+  private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
-  var name_property_selection : EBSelection <String?> {
+  final var name_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.name_property_selection) {
       case .empty :
@@ -1538,11 +1538,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
+  private final var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
 
   //····················································································································
 
-  var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int?> {
+  final var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.measurementUnitForPadHoleInPDF_property_selection) {
       case .empty :
@@ -1608,11 +1608,11 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
 
-  private var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
+  private final var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
 
   //····················································································································
 
-  var padHoleDiameterInPDF_property_selection : EBSelection <Int?> {
+  final var padHoleDiameterInPDF_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.padHoleDiameterInPDF_property_selection) {
       case .empty :
@@ -1862,7 +1862,7 @@ final class StoredObject_ArtworkFileGenerationParameters : ReadWriteObject_Artwo
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

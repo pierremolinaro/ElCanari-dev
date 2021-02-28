@@ -152,7 +152,7 @@ protocol PackageSlavePad_objectDisplay : AnyObject {
 //    Entity: PackageSlavePad
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageSlavePad : PackageObject,
+final class PackageSlavePad : PackageObject,
          PackageSlavePad_xCenter,
          PackageSlavePad_yCenter,
          PackageSlavePad_width,

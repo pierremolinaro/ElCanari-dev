@@ -32,11 +32,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mPinInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPinInstanceName_property_selection : EBSelection <String?> {
+  final var mPinInstanceName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPinInstanceName_property_selection) {
       case .empty :
@@ -102,11 +102,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String?> {
+  final var mPadName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPadName_property_selection) {
       case .empty :
@@ -172,11 +172,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  private var mObserversOf_mIsNC = EBWeakEventSet ()
+  private final var mObserversOf_mIsNC = EBWeakEventSet ()
 
   //····················································································································
 
-  var mIsNC_property_selection : EBSelection <Bool?> {
+  final var mIsNC_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mIsNC_property_selection) {
       case .empty :
@@ -242,11 +242,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
-  var isConnected_property_selection : EBSelection <Bool?> {
+  final var isConnected_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isConnected_property_selection) {
       case .empty :
@@ -311,11 +311,11 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolName = EBWeakEventSet ()
+  private final var mObserversOf_symbolName = EBWeakEventSet ()
 
   //····················································································································
 
-  var symbolName_property_selection : EBSelection <String?> {
+  final var symbolName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.symbolName_property_selection) {
       case .empty :
@@ -564,7 +564,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

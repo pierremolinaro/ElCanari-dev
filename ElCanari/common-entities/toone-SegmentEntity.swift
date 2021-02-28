@@ -32,11 +32,11 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y1 = EBWeakEventSet ()
+  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var y1_property_selection : EBSelection <Int?> {
+  final var y1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y1_property_selection) {
       case .empty :
@@ -102,11 +102,11 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_x2 = EBWeakEventSet ()
+  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var x2_property_selection : EBSelection <Int?> {
+  final var x2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x2_property_selection) {
       case .empty :
@@ -172,11 +172,11 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_y2 = EBWeakEventSet ()
+  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var y2_property_selection : EBSelection <Int?> {
+  final var y2_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y2_property_selection) {
       case .empty :
@@ -242,11 +242,11 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -312,11 +312,11 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x1 = EBWeakEventSet ()
+  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var x1_property_selection : EBSelection <Int?> {
+  final var x1_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x1_property_selection) {
       case .empty :
@@ -566,7 +566,7 @@ final class StoredObject_SegmentEntity : ReadWriteObject_SegmentEntity, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

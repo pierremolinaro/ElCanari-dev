@@ -26,7 +26,7 @@ protocol BoardModelVia_x : AnyObject {
 //    Entity: BoardModelVia
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardModelVia : EBManagedObject,
+final class BoardModelVia : EBManagedObject,
          BoardModelVia_y,
          BoardModelVia_padDiameter,
          BoardModelVia_x {

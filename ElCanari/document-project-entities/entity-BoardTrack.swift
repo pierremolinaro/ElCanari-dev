@@ -176,7 +176,7 @@ protocol BoardTrack_selectionDisplay : AnyObject {
 //    Entity: BoardTrack
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardTrack : BoardObject,
+final class BoardTrack : BoardObject,
          BoardTrack_mSide,
          BoardTrack_mDefaultTrackWidthUnit,
          BoardTrack_mCustomTrackWidth,

@@ -12,7 +12,7 @@ import Cocoa
 // NOTE: UnconnectedSymbolPinsInDeviceTableView is view based
 //----------------------------------------------------------------------------------------------------------------------
 
-class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

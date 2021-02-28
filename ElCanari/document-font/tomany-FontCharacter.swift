@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-  private var mObserversOf_codePoint = EBWeakEventSet ()
+  private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'advance' stored property
   //····················································································································
 
-  private var mObserversOf_advance = EBWeakEventSet ()
+  private final var mObserversOf_advance = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-  private var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
+  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
-  private var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
+  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  private var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
+  private final var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
 
   //····················································································································
 
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCode = EBWeakEventSet ()
+  private final var mObserversOf_gerberCode = EBWeakEventSet ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'gerberCodeInstructionCountMessage' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
+  private final var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -815,32 +815,32 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontCharacter) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : FontCharacter) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontCharacter) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : FontCharacter) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -883,7 +883,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <FontCharacter>, addedSet inAddedSet : Set <FontCharacter>) {
+  override func updateObservers (removedSet inRemovedSet : Set <FontCharacter>, addedSet inAddedSet : Set <FontCharacter>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -903,7 +903,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [FontCharacter] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [FontCharacter] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -911,11 +911,11 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
 
   //····················································································································
 
-  override var propval : [FontCharacter] { return self.mInternalArrayValue }
+  override final var propval : [FontCharacter] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : FontCharacter) {
+  final func remove (_ object : FontCharacter) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -923,7 +923,7 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : FontCharacter) {
+  final func add (_ object : FontCharacter) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -933,11 +933,11 @@ class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

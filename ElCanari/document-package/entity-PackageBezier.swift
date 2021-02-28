@@ -128,7 +128,7 @@ protocol PackageBezier_issues : AnyObject {
 //    Entity: PackageBezier
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageBezier : PackageObject,
+final class PackageBezier : PackageObject,
          PackageBezier_y1,
          PackageBezier_x2,
          PackageBezier_y2,

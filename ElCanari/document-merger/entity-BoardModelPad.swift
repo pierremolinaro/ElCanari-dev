@@ -44,7 +44,7 @@ protocol BoardModelPad_x : AnyObject {
 //    Entity: BoardModelPad
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardModelPad : EBManagedObject,
+final class BoardModelPad : EBManagedObject,
          BoardModelPad_y,
          BoardModelPad_width,
          BoardModelPad_height,

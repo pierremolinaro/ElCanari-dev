@@ -13,7 +13,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutPackageDocumentSubClass) class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
+@objc(AutoLayoutPackageDocumentSubClass) final class AutoLayoutPackageDocumentSubClass : AutoLayoutPackageDocument {
 
   //····················································································································
 

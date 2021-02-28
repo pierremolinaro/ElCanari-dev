@@ -134,7 +134,7 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class LibraryRevisionDescriptor : EBObject {
+final class LibraryRevisionDescriptor : EBObject {
 
   //····················································································································
   //   Properties
@@ -177,7 +177,7 @@ class LibraryRevisionDescriptor : EBObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class LibraryCommitListController : EBObject {
+final class LibraryCommitListController : EBObject {
 
   //····················································································································
   //   Properties

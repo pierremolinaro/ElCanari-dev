@@ -52,7 +52,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yPin' stored property
   //····················································································································
 
-  private var mObserversOf_yPin = EBWeakEventSet ()
+  private final var mObserversOf_yPin = EBWeakEventSet ()
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_xName = EBWeakEventSet ()
+  private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -166,7 +166,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_yName = EBWeakEventSet ()
+  private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xNumber' stored property
   //····················································································································
 
-  private var mObserversOf_xNumber = EBWeakEventSet ()
+  private final var mObserversOf_xNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'yNumber' stored property
   //····················································································································
 
-  private var mObserversOf_yNumber = EBWeakEventSet ()
+  private final var mObserversOf_yNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_name = EBWeakEventSet ()
+  private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
@@ -394,7 +394,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'nameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'numberHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_numberHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_numberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -508,7 +508,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'pinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-  private var mObserversOf_pinNameIsDisplayedInSchematics = EBWeakEventSet ()
+  private final var mObserversOf_pinNameIsDisplayedInSchematics = EBWeakEventSet ()
 
   //····················································································································
 
@@ -565,7 +565,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'xPin' stored property
   //····················································································································
 
-  private var mObserversOf_xPin = EBWeakEventSet ()
+  private final var mObserversOf_xPin = EBWeakEventSet ()
 
   //····················································································································
 
@@ -622,7 +622,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -678,7 +678,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -734,7 +734,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -846,7 +846,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //   Observers of 'nameRect' transient property
   //····················································································································
 
-  private var mObserversOf_nameRect = EBWeakEventSet ()
+  private final var mObserversOf_nameRect = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1219,7 +1219,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1227,32 +1227,32 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPin) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : SymbolPin) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPin) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : SymbolPin) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1295,7 +1295,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <SymbolPin>, addedSet inAddedSet : Set <SymbolPin>) {
+  override func updateObservers (removedSet inRemovedSet : Set <SymbolPin>, addedSet inAddedSet : Set <SymbolPin>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1315,7 +1315,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
  
   //····················································································································
 
-  override var selection : EBSelection < [SymbolPin] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [SymbolPin] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1323,11 +1323,11 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
 
   //····················································································································
 
-  override var propval : [SymbolPin] { return self.mInternalArrayValue }
+  override final var propval : [SymbolPin] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : SymbolPin) {
+  final func remove (_ object : SymbolPin) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1335,7 +1335,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   
   //····················································································································
 
-  func add (_ object : SymbolPin) {
+  final func add (_ object : SymbolPin) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1345,11 +1345,11 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

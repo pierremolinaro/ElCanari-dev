@@ -62,7 +62,7 @@ protocol CommentInSchematic_selectionDisplay : AnyObject {
 //    Entity: CommentInSchematic
 //----------------------------------------------------------------------------------------------------------------------
 
-class CommentInSchematic : SchematicObject,
+final class CommentInSchematic : SchematicObject,
          CommentInSchematic_mColor,
          CommentInSchematic_mSize,
          CommentInSchematic_mHorizontalAlignment,

@@ -24,7 +24,7 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
   //  Internal value
   //····················································································································
 
-  internal var mInternalValue : T? = nil {
+  internal final var mInternalValue : T? = nil {
     didSet {
       if self.mInternalValue != oldValue {
         if (self.mInternalValue == nil) != (oldValue == nil) {

@@ -16,7 +16,7 @@ let PMArtworkComment = "PMArtworkComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedArtworkDocument) class CustomizedArtworkDocument : ArtworkDocument {
+@objc(CustomizedArtworkDocument) final class CustomizedArtworkDocument : ArtworkDocument {
 
   //····················································································································
 

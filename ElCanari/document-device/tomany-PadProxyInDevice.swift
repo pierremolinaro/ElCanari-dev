@@ -32,7 +32,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_mPinInstanceName = EBWeakEventSet ()
+  private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  private var mObserversOf_mIsNC = EBWeakEventSet ()
+  private final var mObserversOf_mIsNC = EBWeakEventSet ()
 
   //····················································································································
 
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private var mObserversOf_symbolName = EBWeakEventSet ()
+  private final var mObserversOf_symbolName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -632,7 +632,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -640,32 +640,32 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PadProxyInDevice) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PadProxyInDevice) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -708,7 +708,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PadProxyInDevice>, addedSet inAddedSet : Set <PadProxyInDevice>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PadProxyInDevice>, addedSet inAddedSet : Set <PadProxyInDevice>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -728,7 +728,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
  
   //····················································································································
 
-  override var selection : EBSelection < [PadProxyInDevice] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PadProxyInDevice] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -736,11 +736,11 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
 
   //····················································································································
 
-  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
+  override final var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PadProxyInDevice) {
+  final func remove (_ object : PadProxyInDevice) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -748,7 +748,7 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   
   //····················································································································
 
-  func add (_ object : PadProxyInDevice) {
+  final func add (_ object : PadProxyInDevice) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -758,11 +758,11 @@ class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

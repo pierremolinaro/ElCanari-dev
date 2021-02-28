@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private var mObserversOf_mSide = EBWeakEventSet ()
+  private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
 
@@ -145,7 +145,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -316,7 +316,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mUsesCustomTrackWidth' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
 
-  private var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
+  private final var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -430,7 +430,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP1XUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP1XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1XUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP1YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1YUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -544,7 +544,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP2XUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP2XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2XUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -601,7 +601,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mP2YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2YUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -658,7 +658,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mManualLockP1' stored property
   //····················································································································
 
-  private var mObserversOf_mManualLockP1 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP1 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -715,7 +715,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
-  private var mObserversOf_mManualLockP2 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP2 = EBWeakEventSet ()
 
   //····················································································································
 
@@ -772,7 +772,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
 
-  private var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
+  private final var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
 
   //····················································································································
 
@@ -829,7 +829,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'actualTrackWidth' transient property
   //····················································································································
 
-  private var mObserversOf_actualTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_actualTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -885,7 +885,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -941,7 +941,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -997,7 +997,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1053,7 +1053,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1109,7 +1109,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1165,7 +1165,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1221,7 +1221,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1277,7 +1277,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p1ConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_p1ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p1ConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1333,7 +1333,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p2ConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_p2ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p2ConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1389,7 +1389,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1445,7 +1445,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p1CanMove' transient property
   //····················································································································
 
-  private var mObserversOf_p1CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p1CanMove = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1501,7 +1501,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'p2CanMove' transient property
   //····················································································································
 
-  private var mObserversOf_p2CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p2CanMove = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1557,7 +1557,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackCanRotate' transient property
   //····················································································································
 
-  private var mObserversOf_trackCanRotate = EBWeakEventSet ()
+  private final var mObserversOf_trackCanRotate = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1613,7 +1613,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1669,7 +1669,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'trackDirectionInDegrees' computed property
   //····················································································································
 
-  private var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
+  private final var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1725,7 +1725,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP1X' computed property
   //····················································································································
 
-  private var mObserversOf_computedP1X = EBWeakEventSet ()
+  private final var mObserversOf_computedP1X = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1781,7 +1781,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP1Y' computed property
   //····················································································································
 
-  private var mObserversOf_computedP1Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP1Y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1837,7 +1837,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP2X' computed property
   //····················································································································
 
-  private var mObserversOf_computedP2X = EBWeakEventSet ()
+  private final var mObserversOf_computedP2X = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1893,7 +1893,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   //   Observers of 'computedP2Y' computed property
   //····················································································································
 
-  private var mObserversOf_computedP2Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP2Y = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2266,7 +2266,7 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -2274,32 +2274,32 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardTrack) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardTrack) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardTrack) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardTrack) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardTrack) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardTrack) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardTrack) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardTrack) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -2342,7 +2342,7 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardTrack>, addedSet inAddedSet : Set <BoardTrack>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardTrack>, addedSet inAddedSet : Set <BoardTrack>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -2362,7 +2362,7 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardTrack] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardTrack] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -2370,11 +2370,11 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [BoardTrack] { return self.mInternalArrayValue }
+  override final var propval : [BoardTrack] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardTrack) {
+  final func remove (_ object : BoardTrack) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -2382,7 +2382,7 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : BoardTrack) {
+  final func add (_ object : BoardTrack) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -2392,11 +2392,11 @@ class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

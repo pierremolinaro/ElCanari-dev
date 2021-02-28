@@ -34,11 +34,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  private var mObserversOf_mSheetTitle = EBWeakEventSet ()
+  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
 
-  var mSheetTitle_property_selection : EBSelection <String?> {
+  final var mSheetTitle_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mSheetTitle_property_selection) {
       case .empty :
@@ -104,11 +104,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -173,11 +173,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var connectedPoints_property_selection : EBSelection <EBShape?> {
+  final var connectedPoints_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.connectedPoints_property_selection) {
       case .empty :
@@ -242,11 +242,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  private var mObserversOf_connexionWarnings = EBWeakEventSet ()
+  private final var mObserversOf_connexionWarnings = EBWeakEventSet ()
 
   //····················································································································
 
-  var connexionWarnings_property_selection : EBSelection <Int?> {
+  final var connexionWarnings_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.connexionWarnings_property_selection) {
       case .empty :
@@ -311,11 +311,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  private var mObserversOf_connexionErrors = EBWeakEventSet ()
+  private final var mObserversOf_connexionErrors = EBWeakEventSet ()
 
   //····················································································································
 
-  var connexionErrors_property_selection : EBSelection <Int?> {
+  final var connexionErrors_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.connexionErrors_property_selection) {
       case .empty :
@@ -380,11 +380,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
+  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
     if let model = self.propval {
       switch (model.sheetDescriptor_property_selection) {
       case .empty :
@@ -449,11 +449,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mObjects
   //····················································································································
 
-  private var mObserversOf_mObjects = EBWeakEventSet ()
+  private final var mObserversOf_mObjects = EBWeakEventSet ()
 
   //····················································································································
 
-  var mObjects_property_selection : EBSelection <[SchematicObject]> {
+  final var mObjects_property_selection : EBSelection <[SchematicObject]> {
     if let model = self.propval {
       switch (model.mObjects_property_selection) {
       case .empty :
@@ -490,11 +490,11 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private var mObserversOf_mPoints = EBWeakEventSet ()
+  private final var mObserversOf_mPoints = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPoints_property_selection : EBSelection <[PointInSchematic]> {
+  final var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
       switch (model.mPoints_property_selection) {
       case .empty :
@@ -715,7 +715,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

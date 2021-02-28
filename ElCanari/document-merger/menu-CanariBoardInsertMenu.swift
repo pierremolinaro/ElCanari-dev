@@ -13,7 +13,7 @@ import Cocoa
 //   CanariBoardInsertMenu
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
+final class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
   // MARK: -
@@ -107,7 +107,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class InsertBoardMenuRepresentedObject : EBObject {
+final class InsertBoardMenuRepresentedObject : EBObject {
   let boardModelName : String
 
   init (boardModelName inName : String) {

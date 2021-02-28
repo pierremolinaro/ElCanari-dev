@@ -16,8 +16,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //   Properties
   //····················································································································
 
-  internal var mRootObject : EBManagedObject?
-  fileprivate var mUndoManager = EBUndoManager ()
+  internal final var mRootObject : EBManagedObject?
+  fileprivate final var mUndoManager = EBUndoManager ()
 
   //····················································································································
   //    init

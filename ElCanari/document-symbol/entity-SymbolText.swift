@@ -50,7 +50,7 @@ protocol SymbolText_issues : AnyObject {
 //    Entity: SymbolText
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolText : SymbolObject,
+final class SymbolText : SymbolObject,
          SymbolText_y,
          SymbolText_text,
          SymbolText_horizontalAlignment,

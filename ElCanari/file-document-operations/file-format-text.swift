@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class ParallelObjectSetupContext {
+final class ParallelObjectSetupContext {
   let mOperationQueue = OperationQueue ()
   var mToOneSetUpOperationList = [() -> Void] ()
   var mToManySetUpOperationList = [() -> Void] ()

@@ -46,11 +46,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -116,11 +116,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -186,11 +186,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int?> {
+  final var height_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.height_property_selection) {
       case .empty :
@@ -256,11 +256,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'xUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xUnit = EBWeakEventSet ()
+  private final var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var xUnit_property_selection : EBSelection <Int?> {
+  final var xUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.xUnit_property_selection) {
       case .empty :
@@ -326,11 +326,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yUnit = EBWeakEventSet ()
+  private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var yUnit_property_selection : EBSelection <Int?> {
+  final var yUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.yUnit_property_selection) {
       case .empty :
@@ -396,11 +396,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var widthUnit_property_selection : EBSelection <Int?> {
+  final var widthUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.widthUnit_property_selection) {
       case .empty :
@@ -466,11 +466,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var heightUnit_property_selection : EBSelection <Int?> {
+  final var heightUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.heightUnit_property_selection) {
       case .empty :
@@ -536,11 +536,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -606,11 +606,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :
@@ -675,11 +675,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -744,11 +744,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -813,11 +813,11 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1066,7 +1066,7 @@ final class StoredObject_PackageOval : ReadWriteObject_PackageOval, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

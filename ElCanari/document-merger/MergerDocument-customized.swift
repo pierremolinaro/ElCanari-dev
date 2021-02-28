@@ -14,7 +14,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedMergerDocument) class CustomizedMergerDocument : MergerDocument {
+@objc(CustomizedMergerDocument) final class CustomizedMergerDocument : MergerDocument {
 
   //····················································································································
   //    buildUserInterface: customization of interface

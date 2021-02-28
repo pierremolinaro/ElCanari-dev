@@ -14,7 +14,7 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBAbstractProperty {
   //  Data clients
   //····················································································································
 
-  private var mClients = Set <ReadOnlyAbstractGenericRelationshipProperty> ()
+  private final var mClients = Set <ReadOnlyAbstractGenericRelationshipProperty> ()
 
   //····················································································································
 

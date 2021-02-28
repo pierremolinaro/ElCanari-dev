@@ -14,15 +14,15 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
-  @IBOutlet private var mDialog : NSWindow? = nil
-  @IBOutlet private var mOpenButton : NSButton? = nil
-  @IBOutlet private var mCancelButton : NSButton? = nil
-  @IBOutlet private var mTableView : NSTableView? = nil
-  @IBOutlet private var mFullPathTextField : NSTextField? = nil
-  @IBOutlet private var mStatusTextField : NSTextField? = nil
-  @IBOutlet private var mPartImage : NSImageView? = nil
-  @IBOutlet private var mNoSelectedPartTextField : NSTextField? = nil
-  @IBOutlet private var mSearchField : NSSearchField? = nil
+  @IBOutlet private final var mDialog : NSWindow? = nil
+  @IBOutlet private final var mOpenButton : NSButton? = nil
+  @IBOutlet private final var mCancelButton : NSButton? = nil
+  @IBOutlet private final var mTableView : NSTableView? = nil
+  @IBOutlet private final var mFullPathTextField : NSTextField? = nil
+  @IBOutlet private final var mStatusTextField : NSTextField? = nil
+  @IBOutlet private final var mPartImage : NSImageView? = nil
+  @IBOutlet private final var mNoSelectedPartTextField : NSTextField? = nil
+  @IBOutlet private final var mSearchField : NSSearchField? = nil
 
   //····················································································································
 
@@ -52,10 +52,10 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   //   Load document, displayed as sheet
   //····················································································································
 
-  internal func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
-                                         alreadyLoadedDocuments inNames : Set <String>,
-                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
-                                         postAction : Optional <() -> Void>) {
+  internal final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
+                                               alreadyLoadedDocuments inNames : Set <String>,
+                                               callBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
+                                               postAction : Optional <() -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
     self.mOpenButton?.action = #selector (self.stopSheetAction)
@@ -100,7 +100,7 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
   //   Open document in library, displayed as dialog window
   //····················································································································
 
-  internal func openDocumentInLibrary (windowTitle inTitle : String) {
+  internal final func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure
     self.mDialog?.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
@@ -157,9 +157,9 @@ class OpenInLibrary : NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
-  internal func buildTableViewDataSource (extension inFileExtension : String,
-                                          alreadyLoadedDocuments inNames : Set <String>,
-                                          _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+  internal final func buildTableViewDataSource (extension inFileExtension : String,
+                                                alreadyLoadedDocuments inNames : Set <String>,
+                                                _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
     do{
       let fm = FileManager ()
     //--- Build part dictionary
@@ -351,7 +351,7 @@ fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogIt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate class OpenInLibraryDialogItem : EBObject {
+fileprivate final class OpenInLibraryDialogItem : EBObject {
 
   let mPartName : String
   let mIsDuplicated : Bool

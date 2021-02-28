@@ -38,7 +38,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-  private var mObserversOf_mNominalSize = EBWeakEventSet ()
+  private final var mObserversOf_mNominalSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mFontName' stored property
   //····················································································································
 
-  private var mObserversOf_mFontName = EBWeakEventSet ()
+  private final var mObserversOf_mFontName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mFontVersion = EBWeakEventSet ()
+  private final var mObserversOf_mFontVersion = EBWeakEventSet ()
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  private var mObserversOf_mDescriptiveString = EBWeakEventSet ()
+  private final var mObserversOf_mDescriptiveString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -322,7 +322,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private var mObserversOf_sizeString = EBWeakEventSet ()
+  private final var mObserversOf_sizeString = EBWeakEventSet ()
 
   //····················································································································
 
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -434,7 +434,7 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
-  private var mObserversOf_canRemoveFont = EBWeakEventSet ()
+  private final var mObserversOf_canRemoveFont = EBWeakEventSet ()
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -815,32 +815,32 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : FontInProject) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : FontInProject) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : FontInProject) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : FontInProject) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -883,7 +883,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
+  override func updateObservers (removedSet inRemovedSet : Set <FontInProject>, addedSet inAddedSet : Set <FontInProject>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -903,7 +903,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
  
   //····················································································································
 
-  override var selection : EBSelection < [FontInProject] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [FontInProject] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -911,11 +911,11 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
 
   //····················································································································
 
-  override var propval : [FontInProject] { return self.mInternalArrayValue }
+  override final var propval : [FontInProject] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : FontInProject) {
+  final func remove (_ object : FontInProject) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -923,7 +923,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : FontInProject) {
+  final func add (_ object : FontInProject) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -933,11 +933,11 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

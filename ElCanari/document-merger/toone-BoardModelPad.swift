@@ -34,11 +34,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int?> {
+  final var y_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
@@ -104,11 +104,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int?> {
+  final var width_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.width_property_selection) {
       case .empty :
@@ -174,11 +174,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int?> {
+  final var height_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.height_property_selection) {
       case .empty :
@@ -244,11 +244,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'shape' stored property
   //····················································································································
 
-  private var mObserversOf_shape = EBWeakEventSet ()
+  private final var mObserversOf_shape = EBWeakEventSet ()
 
   //····················································································································
 
-  var shape_property_selection : EBSelection <PadShape?> {
+  final var shape_property_selection : EBSelection <PadShape?> {
     if let model = self.propval {
       switch (model.shape_property_selection) {
       case .empty :
@@ -314,11 +314,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'rotation' stored property
   //····················································································································
 
-  private var mObserversOf_rotation = EBWeakEventSet ()
+  private final var mObserversOf_rotation = EBWeakEventSet ()
 
   //····················································································································
 
-  var rotation_property_selection : EBSelection <Int?> {
+  final var rotation_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.rotation_property_selection) {
       case .empty :
@@ -384,11 +384,11 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int?> {
+  final var x_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
@@ -638,7 +638,7 @@ final class StoredObject_BoardModelPad : ReadWriteObject_BoardModelPad, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

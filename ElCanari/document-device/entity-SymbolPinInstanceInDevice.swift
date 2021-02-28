@@ -38,7 +38,7 @@ protocol SymbolPinInstanceInDevice_numberShape : AnyObject {
 //    Entity: SymbolPinInstanceInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class SymbolPinInstanceInDevice : EBManagedObject,
+final class SymbolPinInstanceInDevice : EBManagedObject,
          SymbolPinInstanceInDevice_pinName,
          SymbolPinInstanceInDevice_symbolName,
          SymbolPinInstanceInDevice_pinQualifiedName,

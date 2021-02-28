@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+  private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
@@ -129,7 +129,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mTitle' stored property
   //····················································································································
 
-  private var mObserversOf_mTitle = EBWeakEventSet ()
+  private final var mObserversOf_mTitle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mImageData' stored property
   //····················································································································
 
-  private var mObserversOf_mImageData = EBWeakEventSet ()
+  private final var mObserversOf_mImageData = EBWeakEventSet ()
 
   //····················································································································
 
@@ -243,7 +243,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  private var mObserversOf_mPrefix = EBWeakEventSet ()
+  private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
   //····················································································································
 
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mComments' stored property
   //····················································································································
 
-  private var mObserversOf_mComments = EBWeakEventSet ()
+  private final var mObserversOf_mComments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
+  private final var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -414,7 +414,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mShowPackages' stored property
   //····················································································································
 
-  private var mObserversOf_mShowPackages = EBWeakEventSet ()
+  private final var mObserversOf_mShowPackages = EBWeakEventSet ()
 
   //····················································································································
 
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mShowPackagePadNumbers' stored property
   //····················································································································
 
-  private var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
+  private final var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
 
   //····················································································································
 
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mShowPackageFrontPads' stored property
   //····················································································································
 
-  private var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
+  private final var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
 
   //····················································································································
 
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mShowPackageBackPads' stored property
   //····················································································································
 
-  private var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
+  private final var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
 
   //····················································································································
 
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayZoom' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -813,7 +813,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -870,7 +870,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayVerticalFlip' stored property
   //····················································································································
 
-  private var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
+  private final var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
@@ -927,7 +927,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'imageIsValid' transient property
   //····················································································································
 
-  private var mObserversOf_imageIsValid = EBWeakEventSet ()
+  private final var mObserversOf_imageIsValid = EBWeakEventSet ()
 
   //····················································································································
 
@@ -983,7 +983,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
   //····················································································································
 
-  private var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
+  private final var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1039,7 +1039,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'inconsistentSymbolNameSetMessage' transient property
   //····················································································································
 
-  private var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
+  private final var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1095,7 +1095,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
-  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+  private final var mObserversOf_unconnectedPins = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1151,7 +1151,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
   //····················································································································
 
-  private var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
+  private final var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1207,7 +1207,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'symbolNameAreConsistent' transient property
   //····················································································································
 
-  private var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
+  private final var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1263,7 +1263,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'symbolTypeNames' transient property
   //····················································································································
 
-  private var mObserversOf_symbolTypeNames = EBWeakEventSet ()
+  private final var mObserversOf_symbolTypeNames = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1319,7 +1319,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'unconnectedPads' transient property
   //····················································································································
 
-  private var mObserversOf_unconnectedPads = EBWeakEventSet ()
+  private final var mObserversOf_unconnectedPads = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1375,7 +1375,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'assignedPadProxies' transient property
   //····················································································································
 
-  private var mObserversOf_assignedPadProxies = EBWeakEventSet ()
+  private final var mObserversOf_assignedPadProxies = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1431,7 +1431,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1804,7 +1804,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1812,32 +1812,32 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceRoot) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DeviceRoot) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DeviceRoot) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : DeviceRoot) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1880,7 +1880,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <DeviceRoot>, addedSet inAddedSet : Set <DeviceRoot>) {
+  override func updateObservers (removedSet inRemovedSet : Set <DeviceRoot>, addedSet inAddedSet : Set <DeviceRoot>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1900,7 +1900,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [DeviceRoot] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1908,11 +1908,11 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
+  override final var propval : [DeviceRoot] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : DeviceRoot) {
+  final func remove (_ object : DeviceRoot) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1920,7 +1920,7 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : DeviceRoot) {
+  final func add (_ object : DeviceRoot) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1930,11 +1930,11 @@ class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

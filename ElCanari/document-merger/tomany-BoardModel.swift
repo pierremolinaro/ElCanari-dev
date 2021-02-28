@@ -126,7 +126,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_name = EBWeakEventSet ()
+  private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelWidth' stored property
   //····················································································································
 
-  private var mObserversOf_modelWidth = EBWeakEventSet ()
+  private final var mObserversOf_modelWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -240,7 +240,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_modelWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_modelWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelHeight' stored property
   //····················································································································
 
-  private var mObserversOf_modelHeight = EBWeakEventSet ()
+  private final var mObserversOf_modelHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -354,7 +354,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_modelHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_modelHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
@@ -468,7 +468,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_modelLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_modelLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -525,7 +525,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -582,7 +582,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'artworkName' stored property
   //····················································································································
 
-  private var mObserversOf_artworkName = EBWeakEventSet ()
+  private final var mObserversOf_artworkName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -639,7 +639,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendLinesSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontLegendLinesSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontLegendLinesSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -695,7 +695,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendLinesSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backLegendLinesSegments = EBWeakEventSet ()
+  private final var mObserversOf_backLegendLinesSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -751,7 +751,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendLinesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backLegendLinesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backLegendLinesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -807,7 +807,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendTextsSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontLegendTextsSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontLegendTextsSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -863,7 +863,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendTextsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontLegendTextsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontLegendTextsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -919,7 +919,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLayoutTextsSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontLayoutTextsSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontLayoutTextsSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -975,7 +975,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontLayoutTextsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontLayoutTextsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1031,7 +1031,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendTextsSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backLegendTextsSegments = EBWeakEventSet ()
+  private final var mObserversOf_backLegendTextsSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1087,7 +1087,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLegendTextsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backLegendTextsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backLegendTextsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1143,7 +1143,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLayoutTextsSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backLayoutTextsSegments = EBWeakEventSet ()
+  private final var mObserversOf_backLayoutTextsSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1199,7 +1199,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backLayoutTextsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backLayoutTextsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backLayoutTextsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1255,7 +1255,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'internalBoardsLimitsSegments' transient property
   //····················································································································
 
-  private var mObserversOf_internalBoardsLimitsSegments = EBWeakEventSet ()
+  private final var mObserversOf_internalBoardsLimitsSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1311,7 +1311,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'internalBoardsLimitsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_internalBoardsLimitsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_internalBoardsLimitsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1367,7 +1367,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'drillSegments' transient property
   //····················································································································
 
-  private var mObserversOf_drillSegments = EBWeakEventSet ()
+  private final var mObserversOf_drillSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1423,7 +1423,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'holesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_holesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_holesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1479,7 +1479,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'viaShapes' transient property
   //····················································································································
 
-  private var mObserversOf_viaShapes = EBWeakEventSet ()
+  private final var mObserversOf_viaShapes = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1535,7 +1535,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'viasBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_viasBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_viasBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1591,7 +1591,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_frontPadArray = EBWeakEventSet ()
+  private final var mObserversOf_frontPadArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1647,7 +1647,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPadsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontPadsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontPadsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1703,7 +1703,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_backPadArray = EBWeakEventSet ()
+  private final var mObserversOf_backPadArray = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1759,7 +1759,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPadsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backPadsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backPadsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1815,7 +1815,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'boardLimits' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimits = EBWeakEventSet ()
+  private final var mObserversOf_boardLimits = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1871,7 +1871,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'boardLimitsBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_boardLimitsBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitsBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1927,7 +1927,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentNameSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backComponentNameSegments = EBWeakEventSet ()
+  private final var mObserversOf_backComponentNameSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1983,7 +1983,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentNamesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backComponentNamesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backComponentNamesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2039,7 +2039,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentNameSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontComponentNameSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontComponentNameSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2095,7 +2095,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentNamesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontComponentNamesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontComponentNamesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2151,7 +2151,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentValueSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontComponentValueSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontComponentValueSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2207,7 +2207,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontComponentValuesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontComponentValuesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontComponentValuesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2263,7 +2263,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentValueSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backComponentValueSegments = EBWeakEventSet ()
+  private final var mObserversOf_backComponentValueSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2319,7 +2319,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backComponentValuesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backComponentValuesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backComponentValuesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2375,7 +2375,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backTrackSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backTrackSegments = EBWeakEventSet ()
+  private final var mObserversOf_backTrackSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2431,7 +2431,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backTracksBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backTracksBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backTracksBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2487,7 +2487,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontTrackSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontTrackSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontTrackSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2543,7 +2543,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontTracksBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontTracksBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontTracksBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2599,7 +2599,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPackagesSegments' transient property
   //····················································································································
 
-  private var mObserversOf_frontPackagesSegments = EBWeakEventSet ()
+  private final var mObserversOf_frontPackagesSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2655,7 +2655,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontPackagesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontPackagesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontPackagesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2711,7 +2711,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPackagesSegments' transient property
   //····················································································································
 
-  private var mObserversOf_backPackagesSegments = EBWeakEventSet ()
+  private final var mObserversOf_backPackagesSegments = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2767,7 +2767,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'backPackagesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_backPackagesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_backPackagesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2823,7 +2823,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  private var mObserversOf_instanceCount = EBWeakEventSet ()
+  private final var mObserversOf_instanceCount = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2879,7 +2879,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'frontLegendLinesBezierPaths' transient property
   //····················································································································
 
-  private var mObserversOf_frontLegendLinesBezierPaths = EBWeakEventSet ()
+  private final var mObserversOf_frontLegendLinesBezierPaths = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2935,7 +2935,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'imageForModel' transient property
   //····················································································································
 
-  private var mObserversOf_imageForModel = EBWeakEventSet ()
+  private final var mObserversOf_imageForModel = EBWeakEventSet ()
 
   //····················································································································
 
@@ -2991,7 +2991,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //   Observers of 'imageForInstances' transient property
   //····················································································································
 
-  private var mObserversOf_imageForInstances = EBWeakEventSet ()
+  private final var mObserversOf_imageForInstances = EBWeakEventSet ()
 
   //····················································································································
 
@@ -3364,7 +3364,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -3372,32 +3372,32 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModel) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : BoardModel) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModel) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : BoardModel) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -3440,7 +3440,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <BoardModel>, addedSet inAddedSet : Set <BoardModel>) {
+  override func updateObservers (removedSet inRemovedSet : Set <BoardModel>, addedSet inAddedSet : Set <BoardModel>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -3460,7 +3460,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [BoardModel] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [BoardModel] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -3468,11 +3468,11 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [BoardModel] { return self.mInternalArrayValue }
+  override final var propval : [BoardModel] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : BoardModel) {
+  final func remove (_ object : BoardModel) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -3480,7 +3480,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : BoardModel) {
+  final func add (_ object : BoardModel) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -3490,11 +3490,11 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

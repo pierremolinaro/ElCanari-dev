@@ -26,7 +26,7 @@ protocol DeviceDocumentation_fileSize : AnyObject {
 //    Entity: DeviceDocumentation
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceDocumentation : EBManagedObject,
+final class DeviceDocumentation : EBManagedObject,
          DeviceDocumentation_mFileName,
          DeviceDocumentation_mFileData,
          DeviceDocumentation_fileSize {

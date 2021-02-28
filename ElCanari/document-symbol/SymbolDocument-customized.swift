@@ -4,8 +4,8 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat  = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (fromInt: 25)
+let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat = milsToCocoaUnit (25.0)
+let SYMBOL_GRID_IN_CANARI_UNIT : Int    = milsToCanariUnit (fromInt: 25)
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CustomizedSymbolDocument) class CustomizedSymbolDocument : SymbolDocument {
+@objc(CustomizedSymbolDocument) final class CustomizedSymbolDocument : SymbolDocument {
 
   //····················································································································
 

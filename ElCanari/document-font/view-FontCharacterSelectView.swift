@@ -9,7 +9,7 @@ private let SCROLL_TIMER_PERIOD = 0.1
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
+final class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
   private var mSelectedCharacterCode : Int = 0
   private var mDefinedCharacterSet = Set <Int> ()
   private var mMouseDownCharacterCode : Int = 0

@@ -92,7 +92,7 @@ protocol PackageSegment_lengthInCanariUnit : AnyObject {
 //    Entity: PackageSegment
 //----------------------------------------------------------------------------------------------------------------------
 
-class PackageSegment : PackageObject,
+final class PackageSegment : PackageObject,
          PackageSegment_y1,
          PackageSegment_x2,
          PackageSegment_y2,

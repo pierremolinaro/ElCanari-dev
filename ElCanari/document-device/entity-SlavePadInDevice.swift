@@ -74,7 +74,7 @@ protocol SlavePadInDevice_padNumberDisplay : AnyObject {
 //    Entity: SlavePadInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class SlavePadInDevice : EBManagedObject,
+final class SlavePadInDevice : EBManagedObject,
          SlavePadInDevice_mCenterX,
          SlavePadInDevice_mCenterY,
          SlavePadInDevice_mWidth,

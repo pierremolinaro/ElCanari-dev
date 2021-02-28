@@ -233,210 +233,210 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var addBoardModelButton : EBButton? = nil
-  @IBOutlet var boardHelpPanel : NSPanel? = nil
-  @IBOutlet var dismissPrefsForSettingMergerDisplayButton : EBButton? = nil
-  @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mArtworkNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mArtworkSettingsTabView : NSTabView? = nil
-  @IBOutlet var mArtworkVersionTextField : EBIntObserverField? = nil
-  @IBOutlet var mArtwortNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch? = nil
-  @IBOutlet var mAutomaticBoardSizeView : NSView? = nil
-  @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu? = nil
-  @IBOutlet var mBoardInspectorMasterView : NSView? = nil
-  @IBOutlet var mBoardInspectorSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mBoardModelTableView : EBTableView? = nil
-  @IBOutlet var mBoardModelView : EBEnclosingGraphicView? = nil
-  @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet var mBoardPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBackTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayBoardLimitsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayFrontTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayHolesCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewDisplayViasCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewHorizontalFlipCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch? = nil
-  @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mCommentTextView : EBTextObserverView? = nil
-  @IBOutlet var mComposedBoardView : EBEnclosingGraphicView? = nil
-  @IBOutlet var mDangerView : NSView? = nil
-  @IBOutlet var mDataTableView : EBTableView? = nil
-  @IBOutlet var mDeselectIssueButton : EBButton? = nil
-  @IBOutlet var mDisplaySettingView : NSView? = nil
-  @IBOutlet var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawComponentNamesBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawComponentNamesTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawComponentValuesBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawComponentValuesTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawPackageLegendBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawPackageLegendTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawPadsBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawPadsTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTextsLayoutBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTextsLayoutTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTextsLegendBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTextsLegendTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTracksBottomSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrawViasSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
-  @IBOutlet var mEmptyBoardMessage : EBTextField? = nil
-  @IBOutlet var mExtensionTextField : EBTextObserverField? = nil
-  @IBOutlet var mGenerateProductFilesActionButton : EBButton? = nil
-  @IBOutlet var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
-  @IBOutlet var mImportArtworkButton : EBButton? = nil
-  @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mInsertArrayOfBoardsOrientation : NSSegmentedControl? = nil
-  @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel? = nil
-  @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton? = nil
-  @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField? = nil
-  @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField? = nil
-  @IBOutlet var mInsertedInstanceDefaultOrientation : NSPopUpButton? = nil
-  @IBOutlet var mInstanceCountTextField : EBIntObserverField? = nil
-  @IBOutlet var mInstanceModelNameTextField : EBTextObserverField? = nil
-  @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl? = nil
-  @IBOutlet var mIssueTableView : IssueTableView? = nil
-  @IBOutlet var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet var mLogTextView : NSTextView? = nil
-  @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mManualBoardHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mManualBoardSizeView : NSView? = nil
-  @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mMasterView : NSView? = nil
-  @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mModelDragSourceTableView : CanariDragSourceTableView? = nil
-  @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mModelPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBackTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayBoardLimitsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayFrontTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayHolesCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewDisplayViasCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewHorizontalFlipCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelViewVerticalFlipCheckbox : EBSwitch? = nil
-  @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mMoveDownButton : EBButton? = nil
-  @IBOutlet var mMoveLeftButton : EBButton? = nil
-  @IBOutlet var mMoveRightButton : EBButton? = nil
-  @IBOutlet var mMoveUpButton : EBButton? = nil
-  @IBOutlet var mNoArtworkMessage : EBTextField? = nil
-  @IBOutlet var mNoModelMessage : EBTextField? = nil
-  @IBOutlet var mOARUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mOARValueTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mOverlapSwitch : EBSwitch? = nil
-  @IBOutlet var mPDFBoardBackgroundColorWell : EBColorWell? = nil
-  @IBOutlet var mPHDUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mPHDValueTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet var mProductGenerationTabView : NSTabView? = nil
-  @IBOutlet var mProductPageView : CanariViewWithKeyView? = nil
-  @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mSelectedBoardYTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mSelectedBoardYUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mShiftArrowMagnitudeTextField : CanariDimensionTextField? = nil
-  @IBOutlet var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewBackgroundColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackComponentValuesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackLayoutTextsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackLegendTextsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackPackagesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackPadsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBackTracksColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayBoardLimitsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontComponentNamesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontComponentValuesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontLayoutTextsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontLegendTextsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontPackagesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontPadsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayFrontTracksColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayHolesColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell? = nil
-  @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell? = nil
-  @IBOutlet var minValueForBoardLimitTextField : CanariDimensionObserverTextField? = nil
-  @IBOutlet var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet var removeBoardModelButton : EBButton? = nil
-  @IBOutlet var showBoardHelpButton : EBButton? = nil
-  @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton? = nil
-  @IBOutlet var updateBoardModelButton : EBButton? = nil
+  @IBOutlet final var addBoardModelButton : EBButton? = nil
+  @IBOutlet final var boardHelpPanel : NSPanel? = nil
+  @IBOutlet final var dismissPrefsForSettingMergerDisplayButton : EBButton? = nil
+  @IBOutlet final var mArrowMagnitudeTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mArtworkNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mArtworkSettingsTabView : NSTabView? = nil
+  @IBOutlet final var mArtworkVersionTextField : EBIntObserverField? = nil
+  @IBOutlet final var mArtwortNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mAutomaticBoardSizeSwitch : EBSwitch? = nil
+  @IBOutlet final var mAutomaticBoardSizeView : NSView? = nil
+  @IBOutlet final var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mBoardHeightTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mBoardHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBoardInsertMenu : CanariBoardInsertMenu? = nil
+  @IBOutlet final var mBoardInspectorMasterView : NSView? = nil
+  @IBOutlet final var mBoardInspectorSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mBoardIssueInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mBoardLimitWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mBoardModelTableView : EBTableView? = nil
+  @IBOutlet final var mBoardModelView : EBEnclosingGraphicView? = nil
+  @IBOutlet final var mBoardOperationInspectorView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mBoardPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackPadsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBackTracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayBoardLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontPadsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayFrontTracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayHolesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewDisplayViasCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewHorizontalFlipCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardViewVerticalFlipCheckbox : EBSwitch? = nil
+  @IBOutlet final var mBoardWidthTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mBoardWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mCommentTextView : EBTextObserverView? = nil
+  @IBOutlet final var mComposedBoardView : EBEnclosingGraphicView? = nil
+  @IBOutlet final var mDangerView : NSView? = nil
+  @IBOutlet final var mDataTableView : EBTableView? = nil
+  @IBOutlet final var mDeselectIssueButton : EBButton? = nil
+  @IBOutlet final var mDisplaySettingView : NSView? = nil
+  @IBOutlet final var mDrawBoardLimitsSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawComponentNamesBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawComponentNamesTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawComponentValuesBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawComponentValuesTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawPackageLegendBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawPackageLegendTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawPadsBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawPadsTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTextsLayoutBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTextsLayoutTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTextsLegendBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTextsLegendTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawViasSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
+  @IBOutlet final var mEmptyBoardMessage : EBTextField? = nil
+  @IBOutlet final var mExtensionTextField : EBTextObserverField? = nil
+  @IBOutlet final var mGenerateProductFilesActionButton : EBButton? = nil
+  @IBOutlet final var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mImportArtworkButton : EBButton? = nil
+  @IBOutlet final var mIncorrectDocumentNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInsertArrayOfBoardsOrientation : NSSegmentedControl? = nil
+  @IBOutlet final var mInsertArrayOfBoardsPanel : NSPanel? = nil
+  @IBOutlet final var mInsertArrayOfBoardsPopUpButton : NSPopUpButton? = nil
+  @IBOutlet final var mInsertArrayOfBoardsXCountField : NSTextField? = nil
+  @IBOutlet final var mInsertArrayOfBoardsYCountField : NSTextField? = nil
+  @IBOutlet final var mInsertedInstanceDefaultOrientation : NSPopUpButton? = nil
+  @IBOutlet final var mInstanceCountTextField : EBIntObserverField? = nil
+  @IBOutlet final var mInstanceModelNameTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInstanceRotation : CanariQuadrantSegmentedControl? = nil
+  @IBOutlet final var mIssueTableView : IssueTableView? = nil
+  @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
+  @IBOutlet final var mLogTextView : NSTextView? = nil
+  @IBOutlet final var mManualBoardHeightTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mManualBoardHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mManualBoardSizeView : NSView? = nil
+  @IBOutlet final var mManualBoardWidthTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mManualBoardWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mMasterView : NSView? = nil
+  @IBOutlet final var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mModelBoardLimitTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mModelDragSourceTableView : CanariDragSourceTableView? = nil
+  @IBOutlet final var mModelHeightTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mModelHeightUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mModelLimitWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mModelPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackLegendLinesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackLegendTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackPadsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBackTracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayBoardLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontLegendLinesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontPadsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayFrontTracksCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayHolesCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewDisplayViasCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewHorizontalFlipCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelViewVerticalFlipCheckbox : EBSwitch? = nil
+  @IBOutlet final var mModelWidthTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mModelWidthUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mMoveDownButton : EBButton? = nil
+  @IBOutlet final var mMoveLeftButton : EBButton? = nil
+  @IBOutlet final var mMoveRightButton : EBButton? = nil
+  @IBOutlet final var mMoveUpButton : EBButton? = nil
+  @IBOutlet final var mNoArtworkMessage : EBTextField? = nil
+  @IBOutlet final var mNoModelMessage : EBTextField? = nil
+  @IBOutlet final var mOARUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mOARValueTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mOverlapSwitch : EBSwitch? = nil
+  @IBOutlet final var mPDFBoardBackgroundColorWell : EBColorWell? = nil
+  @IBOutlet final var mPHDUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mPHDValueTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
+  @IBOutlet final var mProductGenerationTabView : NSTabView? = nil
+  @IBOutlet final var mProductPageView : CanariViewWithKeyView? = nil
+  @IBOutlet final var mSelectedBoardXTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSelectedBoardXUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mSelectedBoardYTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mSelectedBoardYUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mShiftArrowMagnitudeTextField : CanariDimensionTextField? = nil
+  @IBOutlet final var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
+  @IBOutlet final var mergerViewBackLegendLinesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewBackgroundColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackComponentNamesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackComponentValuesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackLayoutTextsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackLegendTextsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackPackagesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackPadsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBackTracksColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayBoardLimitsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontComponentNamesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontComponentValuesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontLayoutTextsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontLegendTextsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontPackagesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontPadsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayFrontTracksColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayHolesColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewDisplayViasColorWell : EBColorWell? = nil
+  @IBOutlet final var mergerViewFrontLegendLinesColorWell : EBColorWell? = nil
+  @IBOutlet final var minValueForBoardLimitTextField : CanariDimensionObserverTextField? = nil
+  @IBOutlet final var minValueForBoardLimitUnitPopUp : EBPopUpButton? = nil
+  @IBOutlet final var removeBoardModelButton : EBButton? = nil
+  @IBOutlet final var showBoardHelpButton : EBButton? = nil
+  @IBOutlet final var showPrefsForSettingMergerDisplayButton : EBButton? = nil
+  @IBOutlet final var updateBoardModelButton : EBButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
-  var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mAutomaticBoardSizeView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
-  var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
-  var mController_mMoveRightButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mMoveLeftButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mMoveUpButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mMoveDownButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
-  var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
-  var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_mArtworkSettingsTabView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
+  final var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mAutomaticBoardSizeView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mMoveRightButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mMoveLeftButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mMoveUpButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mMoveDownButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
+  final var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
+  final var mController_mArtworkSettingsTabView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
 
-  override var fileModificationDate : Date? {
+  override final var fileModificationDate : Date? {
     get {
       return super.fileModificationDate
     }
@@ -448,7 +448,7 @@ import Cocoa
 
   //····················································································································
 
-  func computeTransient_documentFilePath () -> String {
+  final func computeTransient_documentFilePath () -> String {
     var documentFilePath = ""
     if let url = self.fileURL {
       documentFilePath = url.path
@@ -481,7 +481,7 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName : NSNib.Name? {
+  override final var windowNibName : NSNib.Name? {
     return NSNib.Name ("MergerDocument")
   }
   
@@ -489,7 +489,7 @@ import Cocoa
   //    rootEntityClassName
   //····················································································································
 
-  override func rootEntityClassName () -> String {
+  override final func rootEntityClassName () -> String {
     return "MergerRoot"
   }
 
@@ -497,7 +497,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : MergerRoot { return self.mRootObject as! MergerRoot }
+  final var rootObject : MergerRoot { return self.mRootObject as! MergerRoot }
 
   //····················································································································
   //    check outlet connections

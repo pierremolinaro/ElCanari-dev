@@ -12,7 +12,7 @@ import Cocoa
 //  http://sparkle-project.org/documentation/preferences-ui/
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(CanariAppUpdaterSettings) class CanariAppUpdaterSettings : NSObject, EBUserClassNameProtocol {
+@objc(CanariAppUpdaterSettings) final class CanariAppUpdaterSettings : NSObject, EBUserClassNameProtocol {
 
   //····················································································································
   //   Outlets

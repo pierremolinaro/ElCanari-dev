@@ -80,7 +80,7 @@ protocol ArtworkRoot_signatureForERCChecking : AnyObject {
 //    Entity: ArtworkRoot
 //----------------------------------------------------------------------------------------------------------------------
 
-class ArtworkRoot : EBManagedObject,
+final class ArtworkRoot : EBManagedObject,
          ArtworkRoot_selectedTab,
          ArtworkRoot_comments,
          ArtworkRoot_minPPTPTTTWdisplayUnit,

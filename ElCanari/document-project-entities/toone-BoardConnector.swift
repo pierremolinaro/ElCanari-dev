@@ -80,11 +80,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mComponentPadName = EBWeakEventSet ()
+  private final var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComponentPadName_property_selection : EBSelection <String?> {
+  final var mComponentPadName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mComponentPadName_property_selection) {
       case .empty :
@@ -150,11 +150,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  private var mObserversOf_mPadIndex = EBWeakEventSet ()
+  private final var mObserversOf_mPadIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPadIndex_property_selection : EBSelection <Int?> {
+  final var mPadIndex_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mPadIndex_property_selection) {
       case .empty :
@@ -220,11 +220,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int?> {
+  final var mX_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
@@ -290,11 +290,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int?> {
+  final var mY_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
@@ -360,11 +360,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int?> {
+  final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mDefaultHoleDiameterUnit_property_selection) {
       case .empty :
@@ -430,11 +430,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomHoleDiameter_property_selection : EBSelection <Int?> {
+  final var mCustomHoleDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomHoleDiameter_property_selection) {
       case .empty :
@@ -500,11 +500,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int?> {
+  final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomHoleDiameterUnit_property_selection) {
       case .empty :
@@ -570,11 +570,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool?> {
+  final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mUsesCustomHoleDiameter_property_selection) {
       case .empty :
@@ -640,11 +640,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int?> {
+  final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mDefaultPadDiameterUnit_property_selection) {
       case .empty :
@@ -710,11 +710,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomPadDiameter_property_selection : EBSelection <Int?> {
+  final var mCustomPadDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomPadDiameter_property_selection) {
       case .empty :
@@ -780,11 +780,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  var mCustomPadDiameterUnit_property_selection : EBSelection <Int?> {
+  final var mCustomPadDiameterUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mCustomPadDiameterUnit_property_selection) {
       case .empty :
@@ -850,11 +850,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
 
-  private var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool?> {
+  final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mUsesCustomPadDiameter_property_selection) {
       case .empty :
@@ -920,11 +920,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'isConnectedToSomePad' transient property
   //····················································································································
 
-  private var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
-  var isConnectedToSomePad_property_selection : EBSelection <Bool?> {
+  final var isConnectedToSomePad_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isConnectedToSomePad_property_selection) {
       case .empty :
@@ -989,11 +989,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'location' transient property
   //····················································································································
 
-  private var mObserversOf_location = EBWeakEventSet ()
+  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
-  var location_property_selection : EBSelection <CanariPoint?> {
+  final var location_property_selection : EBSelection <CanariPoint?> {
     if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :
@@ -1058,11 +1058,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameFromComponentPad' transient property
   //····················································································································
 
-  private var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
+  private final var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
 
   //····················································································································
 
-  var netNameFromComponentPad_property_selection : EBSelection <String?> {
+  final var netNameFromComponentPad_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netNameFromComponentPad_property_selection) {
       case .empty :
@@ -1127,11 +1127,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
+  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
+  final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
     if let model = self.propval {
       switch (model.netNameAndPadLocation_property_selection) {
       case .empty :
@@ -1196,11 +1196,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'side' transient property
   //····················································································································
 
-  private var mObserversOf_side = EBWeakEventSet ()
+  private final var mObserversOf_side = EBWeakEventSet ()
 
   //····················································································································
 
-  var side_property_selection : EBSelection <ConnectorSide?> {
+  final var side_property_selection : EBSelection <ConnectorSide?> {
     if let model = self.propval {
       switch (model.side_property_selection) {
       case .empty :
@@ -1265,11 +1265,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private var mObserversOf_isVia = EBWeakEventSet ()
+  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
-  var isVia_property_selection : EBSelection <Bool?> {
+  final var isVia_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.isVia_property_selection) {
       case .empty :
@@ -1334,11 +1334,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -1403,11 +1403,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'viaDefaultHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var viaDefaultHoleDiameter_property_selection : EBSelection <Int?> {
+  final var viaDefaultHoleDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.viaDefaultHoleDiameter_property_selection) {
       case .empty :
@@ -1472,11 +1472,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'viaDefaultPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var viaDefaultPadDiameter_property_selection : EBSelection <Int?> {
+  final var viaDefaultPadDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.viaDefaultPadDiameter_property_selection) {
       case .empty :
@@ -1541,11 +1541,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameFromTracks' transient property
   //····················································································································
 
-  private var mObserversOf_netNameFromTracks = EBWeakEventSet ()
+  private final var mObserversOf_netNameFromTracks = EBWeakEventSet ()
 
   //····················································································································
 
-  var netNameFromTracks_property_selection : EBSelection <String?> {
+  final var netNameFromTracks_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netNameFromTracks_property_selection) {
       case .empty :
@@ -1610,11 +1610,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  var netClassName_property_selection : EBSelection <String?> {
+  final var netClassName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
@@ -1679,11 +1679,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'connectedToComponent' transient property
   //····················································································································
 
-  private var mObserversOf_connectedToComponent = EBWeakEventSet ()
+  private final var mObserversOf_connectedToComponent = EBWeakEventSet ()
 
   //····················································································································
 
-  var connectedToComponent_property_selection : EBSelection <Bool?> {
+  final var connectedToComponent_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.connectedToComponent_property_selection) {
       case .empty :
@@ -1748,11 +1748,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'actualHoleDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var actualHoleDiameter_property_selection : EBSelection <Int?> {
+  final var actualHoleDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.actualHoleDiameter_property_selection) {
       case .empty :
@@ -1817,11 +1817,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'actualPadDiameter' transient property
   //····················································································································
 
-  private var mObserversOf_actualPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_actualPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  var actualPadDiameter_property_selection : EBSelection <Int?> {
+  final var actualPadDiameter_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.actualPadDiameter_property_selection) {
       case .empty :
@@ -1886,11 +1886,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape?> {
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
@@ -1955,11 +1955,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
@@ -2024,11 +2024,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
+  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
@@ -2093,11 +2093,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observable toMany property: mTracksP2
   //····················································································································
 
-  private var mObserversOf_mTracksP2 = EBWeakEventSet ()
+  private final var mObserversOf_mTracksP2 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTracksP2_property_selection : EBSelection <[BoardTrack]> {
+  final var mTracksP2_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
       switch (model.mTracksP2_property_selection) {
       case .empty :
@@ -2134,11 +2134,11 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observable toMany property: mTracksP1
   //····················································································································
 
-  private var mObserversOf_mTracksP1 = EBWeakEventSet ()
+  private final var mObserversOf_mTracksP1 = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTracksP1_property_selection : EBSelection <[BoardTrack]> {
+  final var mTracksP1_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
       switch (model.mTracksP1_property_selection) {
       case .empty :
@@ -2359,7 +2359,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

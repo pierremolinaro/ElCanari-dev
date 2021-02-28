@@ -12,11 +12,11 @@ class EBGenericStoredProperty <T : EBPropertyProtocol> : EBGenericReadWritePrope
 
   //····················································································································
 
-  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak private final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
+  final var mValueExplorer : NSTextField? {
     didSet {
       self.mValueExplorer?.stringValue = "\(mValue)"
     }
@@ -32,7 +32,7 @@ class EBGenericStoredProperty <T : EBPropertyProtocol> : EBGenericReadWritePrope
 
   //····················································································································
 
-  private var mValue : T {
+  private final var mValue : T {
     didSet {
       if self.mValue != oldValue {
         self.mValueExplorer?.stringValue = "\(mValue)"
@@ -48,19 +48,19 @@ class EBGenericStoredProperty <T : EBPropertyProtocol> : EBGenericReadWritePrope
 
   //····················································································································
 
-  override var selection : EBSelection <T> { return .single (mValue) }
+  override final var selection : EBSelection <T> { return .single (mValue) }
 
   //····················································································································
 
-  var propval : T { return self.mValue }
+  final var propval : T { return self.mValue }
 
   //····················································································································
 
-  override func setProp (_ value : T) { self.mValue = value }
+  override final func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
 
-  var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
+  final var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
 
    //····················································································································
 

@@ -146,7 +146,7 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
 //    Entity: ArtworkFileGenerationParameters
 //----------------------------------------------------------------------------------------------------------------------
 
-class ArtworkFileGenerationParameters : EBManagedObject,
+final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_drawBoardLimits,
          ArtworkFileGenerationParameters_drawInternalBoardLimits,
          ArtworkFileGenerationParameters_drawComponentNamesTopSide,

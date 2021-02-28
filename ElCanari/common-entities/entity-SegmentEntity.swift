@@ -38,7 +38,7 @@ protocol SegmentEntity_x1 : AnyObject {
 //    Entity: SegmentEntity
 //----------------------------------------------------------------------------------------------------------------------
 
-class SegmentEntity : EBManagedObject,
+final class SegmentEntity : EBManagedObject,
          SegmentEntity_y1,
          SegmentEntity_x2,
          SegmentEntity_y2,

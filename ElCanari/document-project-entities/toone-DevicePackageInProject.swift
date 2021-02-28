@@ -28,11 +28,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
-  private var mObserversOf_mPackageName = EBWeakEventSet ()
+  private final var mObserversOf_mPackageName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPackageName_property_selection : EBSelection <String?> {
+  final var mPackageName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPackageName_property_selection) {
       case .empty :
@@ -98,11 +98,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     if let model = self.propval {
       switch (model.mStrokeBezierPath_property_selection) {
       case .empty :
@@ -168,11 +168,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
-  var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
+  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
     if let model = self.propval {
       switch (model.packagePadDictionary_property_selection) {
       case .empty :
@@ -237,11 +237,11 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observable toMany property: mMasterPads
   //····················································································································
 
-  private var mObserversOf_mMasterPads = EBWeakEventSet ()
+  private final var mObserversOf_mMasterPads = EBWeakEventSet ()
 
   //····················································································································
 
-  var mMasterPads_property_selection : EBSelection <[DeviceMasterPadInProject]> {
+  final var mMasterPads_property_selection : EBSelection <[DeviceMasterPadInProject]> {
     if let model = self.propval {
       switch (model.mMasterPads_property_selection) {
       case .empty :
@@ -462,7 +462,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

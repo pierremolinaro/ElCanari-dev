@@ -70,7 +70,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-  private var mObserversOf_xCenter = EBWeakEventSet ()
+  private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -127,7 +127,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'yCenter' stored property
   //····················································································································
 
-  private var mObserversOf_yCenter = EBWeakEventSet ()
+  private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -184,7 +184,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
@@ -241,7 +241,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'holeWidth' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidth = EBWeakEventSet ()
+  private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
 
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'holeHeight' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeight = EBWeakEventSet ()
+  private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
   //····················································································································
 
@@ -412,7 +412,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padShape' stored property
   //····················································································································
 
-  private var mObserversOf_padShape = EBWeakEventSet ()
+  private final var mObserversOf_padShape = EBWeakEventSet ()
 
   //····················································································································
 
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padStyle' stored property
   //····················································································································
 
-  private var mObserversOf_padStyle = EBWeakEventSet ()
+  private final var mObserversOf_padStyle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -526,7 +526,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -583,7 +583,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -640,7 +640,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_widthUnit = EBWeakEventSet ()
+  private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -697,7 +697,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_heightUnit = EBWeakEventSet ()
+  private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -754,7 +754,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -811,7 +811,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_holeHeightUnit = EBWeakEventSet ()
+  private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -868,7 +868,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
 
-  private var mObserversOf_annularRingUnit = EBWeakEventSet ()
+  private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -925,7 +925,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -981,7 +981,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1037,7 +1037,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padIsTraversing' transient property
   //····················································································································
 
-  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
+  private final var mObserversOf_padIsTraversing = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1093,7 +1093,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'annularRing' transient property
   //····················································································································
 
-  private var mObserversOf_annularRing = EBWeakEventSet ()
+  private final var mObserversOf_annularRing = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1149,7 +1149,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padNameWithZoneName' transient property
   //····················································································································
 
-  private var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
+  private final var mObserversOf_padNameWithZoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1205,7 +1205,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'masterPadNameWithZoneName' transient property
   //····················································································································
 
-  private var mObserversOf_masterPadNameWithZoneName = EBWeakEventSet ()
+  private final var mObserversOf_masterPadNameWithZoneName = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1261,7 +1261,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padNameForDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNameForDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNameForDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1317,7 +1317,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1373,7 +1373,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1746,7 +1746,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1754,32 +1754,32 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageSlavePad) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageSlavePad) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1822,7 +1822,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageSlavePad>, addedSet inAddedSet : Set <PackageSlavePad>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageSlavePad>, addedSet inAddedSet : Set <PackageSlavePad>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1842,7 +1842,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageSlavePad] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageSlavePad] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1850,11 +1850,11 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
 
   //····················································································································
 
-  override var propval : [PackageSlavePad] { return self.mInternalArrayValue }
+  override final var propval : [PackageSlavePad] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageSlavePad) {
+  final func remove (_ object : PackageSlavePad) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1862,7 +1862,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
   
   //····················································································································
 
-  func add (_ object : PackageSlavePad) {
+  final func add (_ object : PackageSlavePad) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1872,11 +1872,11 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

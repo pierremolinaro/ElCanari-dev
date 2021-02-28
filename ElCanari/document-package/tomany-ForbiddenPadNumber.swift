@@ -24,7 +24,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-  private var mObserversOf_padNumber = EBWeakEventSet ()
+  private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
 
@@ -398,7 +398,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -406,32 +406,32 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : ForbiddenPadNumber) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : ForbiddenPadNumber) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : ForbiddenPadNumber) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : ForbiddenPadNumber) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ForbiddenPadNumber) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : ForbiddenPadNumber) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : ForbiddenPadNumber) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : ForbiddenPadNumber) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -474,7 +474,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <ForbiddenPadNumber>, addedSet inAddedSet : Set <ForbiddenPadNumber>) {
+  override func updateObservers (removedSet inRemovedSet : Set <ForbiddenPadNumber>, addedSet inAddedSet : Set <ForbiddenPadNumber>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -494,7 +494,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
  
   //····················································································································
 
-  override var selection : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [ForbiddenPadNumber] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -502,11 +502,11 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
 
   //····················································································································
 
-  override var propval : [ForbiddenPadNumber] { return self.mInternalArrayValue }
+  override final var propval : [ForbiddenPadNumber] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : ForbiddenPadNumber) {
+  final func remove (_ object : ForbiddenPadNumber) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -514,7 +514,7 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   
   //····················································································································
 
-  func add (_ object : ForbiddenPadNumber) {
+  final func add (_ object : ForbiddenPadNumber) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -524,11 +524,11 @@ class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

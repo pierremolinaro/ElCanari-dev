@@ -26,7 +26,7 @@ protocol DevicePadAssignmentInProject_descriptor : AnyObject {
 //    Entity: DevicePadAssignmentInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DevicePadAssignmentInProject : EBManagedObject,
+final class DevicePadAssignmentInProject : EBManagedObject,
          DevicePadAssignmentInProject_mPadName,
          DevicePadAssignmentInProject_pinPadAssignment,
          DevicePadAssignmentInProject_descriptor {

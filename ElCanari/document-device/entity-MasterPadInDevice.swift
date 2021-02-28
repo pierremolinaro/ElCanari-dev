@@ -80,7 +80,7 @@ protocol MasterPadInDevice_backSideFilledBezierPathArray : AnyObject {
 //    Entity: MasterPadInDevice
 //----------------------------------------------------------------------------------------------------------------------
 
-class MasterPadInDevice : EBManagedObject,
+final class MasterPadInDevice : EBManagedObject,
          MasterPadInDevice_mCenterX,
          MasterPadInDevice_mCenterY,
          MasterPadInDevice_mWidth,

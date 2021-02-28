@@ -86,7 +86,7 @@ protocol BoardLine_selectionDisplay : AnyObject {
 //    Entity: BoardLine
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardLine : BoardObject,
+final class BoardLine : BoardObject,
          BoardLine_mWidthUnit,
          BoardLine_mX1,
          BoardLine_mX1Unit,

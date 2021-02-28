@@ -38,11 +38,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-  private var mObserversOf_mNominalSize = EBWeakEventSet ()
+  private final var mObserversOf_mNominalSize = EBWeakEventSet ()
 
   //····················································································································
 
-  var mNominalSize_property_selection : EBSelection <Int?> {
+  final var mNominalSize_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mNominalSize_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mFontName' stored property
   //····················································································································
 
-  private var mObserversOf_mFontName = EBWeakEventSet ()
+  private final var mObserversOf_mFontName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFontName_property_selection : EBSelection <String?> {
+  final var mFontName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mFontName_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  private var mObserversOf_mFontVersion = EBWeakEventSet ()
+  private final var mObserversOf_mFontVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  var mFontVersion_property_selection : EBSelection <Int?> {
+  final var mFontVersion_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.mFontVersion_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  private var mObserversOf_mDescriptiveString = EBWeakEventSet ()
+  private final var mObserversOf_mDescriptiveString = EBWeakEventSet ()
 
   //····················································································································
 
-  var mDescriptiveString_property_selection : EBSelection <String?> {
+  final var mDescriptiveString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mDescriptiveString_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
-  var versionString_property_selection : EBSelection <String?> {
+  final var versionString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.versionString_property_selection) {
       case .empty :
@@ -387,11 +387,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private var mObserversOf_sizeString = EBWeakEventSet ()
+  private final var mObserversOf_sizeString = EBWeakEventSet ()
 
   //····················································································································
 
-  var sizeString_property_selection : EBSelection <String?> {
+  final var sizeString_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.sizeString_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <BoardFontDescriptor?> {
+  final var descriptor_property_selection : EBSelection <BoardFontDescriptor?> {
     if let model = self.propval {
       switch (model.descriptor_property_selection) {
       case .empty :
@@ -525,11 +525,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
-  private var mObserversOf_canRemoveFont = EBWeakEventSet ()
+  private final var mObserversOf_canRemoveFont = EBWeakEventSet ()
 
   //····················································································································
 
-  var canRemoveFont_property_selection : EBSelection <Bool?> {
+  final var canRemoveFont_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.canRemoveFont_property_selection) {
       case .empty :
@@ -594,11 +594,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mTexts
   //····················································································································
 
-  private var mObserversOf_mTexts = EBWeakEventSet ()
+  private final var mObserversOf_mTexts = EBWeakEventSet ()
 
   //····················································································································
 
-  var mTexts_property_selection : EBSelection <[BoardText]> {
+  final var mTexts_property_selection : EBSelection <[BoardText]> {
     if let model = self.propval {
       switch (model.mTexts_property_selection) {
       case .empty :
@@ -635,11 +635,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mComponentNames
   //····················································································································
 
-  private var mObserversOf_mComponentNames = EBWeakEventSet ()
+  private final var mObserversOf_mComponentNames = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComponentNames_property_selection : EBSelection <[ComponentInProject]> {
+  final var mComponentNames_property_selection : EBSelection <[ComponentInProject]> {
     if let model = self.propval {
       switch (model.mComponentNames_property_selection) {
       case .empty :
@@ -676,11 +676,11 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mComponentValues
   //····················································································································
 
-  private var mObserversOf_mComponentValues = EBWeakEventSet ()
+  private final var mObserversOf_mComponentValues = EBWeakEventSet ()
 
   //····················································································································
 
-  var mComponentValues_property_selection : EBSelection <[ComponentInProject]> {
+  final var mComponentValues_property_selection : EBSelection <[ComponentInProject]> {
     if let model = self.propval {
       switch (model.mComponentValues_property_selection) {
       case .empty :
@@ -901,7 +901,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

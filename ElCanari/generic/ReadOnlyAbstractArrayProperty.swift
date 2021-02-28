@@ -28,11 +28,11 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
   //  Internal value
   //····················································································································
 
-  var internalSetValue : Set <T> { return self.mInternalSetValue }
+  final var internalSetValue : Set <T> { return self.mInternalSetValue }
 
-  private var mInternalSetValue = Set <T> () // Requires T to be hashable
+  private final var mInternalSetValue = Set <T> () // Requires T to be hashable
 
-  internal var mInternalArrayValue = [T] () {
+  internal final var mInternalArrayValue = [T] () {
     didSet {
       if self.mInternalArrayValue != oldValue {
         if self.mInternalArrayValue.count != oldValue.count {

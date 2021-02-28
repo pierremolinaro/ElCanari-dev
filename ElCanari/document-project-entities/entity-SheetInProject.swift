@@ -44,7 +44,7 @@ protocol SheetInProject_sheetDescriptor : AnyObject {
 //    Entity: SheetInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class SheetInProject : EBManagedObject,
+final class SheetInProject : EBManagedObject,
          SheetInProject_mSheetTitle,
          SheetInProject_issues,
          SheetInProject_connectedPoints,

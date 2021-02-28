@@ -24,11 +24,11 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-  private var mObserversOf_padNumber = EBWeakEventSet ()
+  private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  var padNumber_property_selection : EBSelection <Int?> {
+  final var padNumber_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.padNumber_property_selection) {
       case .empty :
@@ -278,7 +278,7 @@ final class StoredObject_ForbiddenPadNumber : ReadWriteObject_ForbiddenPadNumber
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

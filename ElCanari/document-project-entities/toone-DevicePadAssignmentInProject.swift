@@ -28,11 +28,11 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mPadName_property_selection : EBSelection <String?> {
+  final var mPadName_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.mPadName_property_selection) {
       case .empty :
@@ -98,11 +98,11 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
-  private var mObserversOf_pinPadAssignment = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignment = EBWeakEventSet ()
 
   //····················································································································
 
-  var pinPadAssignment_property_selection : EBSelection <ThreeStrings?> {
+  final var pinPadAssignment_property_selection : EBSelection <ThreeStrings?> {
     if let model = self.propval {
       switch (model.pinPadAssignment_property_selection) {
       case .empty :
@@ -167,11 +167,11 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
-  var descriptor_property_selection : EBSelection <PinPadAssignmentInProject?> {
+  final var descriptor_property_selection : EBSelection <PinPadAssignmentInProject?> {
     if let model = self.propval {
       switch (model.descriptor_property_selection) {
       case .empty :
@@ -420,7 +420,7 @@ final class StoredObject_DevicePadAssignmentInProject : ReadWriteObject_DevicePa
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

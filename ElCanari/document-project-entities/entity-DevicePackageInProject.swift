@@ -26,7 +26,7 @@ protocol DevicePackageInProject_packagePadDictionary : AnyObject {
 //    Entity: DevicePackageInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DevicePackageInProject : EBManagedObject,
+final class DevicePackageInProject : EBManagedObject,
          DevicePackageInProject_mPackageName,
          DevicePackageInProject_mStrokeBezierPath,
          DevicePackageInProject_packagePadDictionary {

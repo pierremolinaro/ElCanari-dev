@@ -206,7 +206,7 @@ extension EBBezierPath {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class PadGeometryForERC {
+final class PadGeometryForERC {
   let id : Int
   let circles : [GeometricCircle]
   let rectangles : [GeometricRect]

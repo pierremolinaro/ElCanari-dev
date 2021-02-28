@@ -38,11 +38,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-  private var mObserversOf_codePoint = EBWeakEventSet ()
+  private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
 
-  var codePoint_property_selection : EBSelection <Int?> {
+  final var codePoint_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.codePoint_property_selection) {
       case .empty :
@@ -108,11 +108,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'advance' stored property
   //····················································································································
 
-  private var mObserversOf_advance = EBWeakEventSet ()
+  private final var mObserversOf_advance = EBWeakEventSet ()
 
   //····················································································································
 
-  var advance_property_selection : EBSelection <Int?> {
+  final var advance_property_selection : EBSelection <Int?> {
     if let model = self.propval {
       switch (model.advance_property_selection) {
       case .empty :
@@ -178,11 +178,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-  private var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
+  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> {
+  final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mWarnsWhenNoSegment_property_selection) {
       case .empty :
@@ -248,11 +248,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
-  private var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
+  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> {
+  final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> {
     if let model = self.propval {
       switch (model.mWarnsWhenAdvanceIsZero_property_selection) {
       case .empty :
@@ -318,11 +318,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  private var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
+  private final var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
 
   //····················································································································
 
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass?> {
+  final var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass?> {
     if let model = self.propval {
       switch (model.segmentArrayForDrawing_property_selection) {
       case .empty :
@@ -387,11 +387,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCode = EBWeakEventSet ()
+  private final var mObserversOf_gerberCode = EBWeakEventSet ()
 
   //····················································································································
 
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass?> {
+  final var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass?> {
     if let model = self.propval {
       switch (model.gerberCode_property_selection) {
       case .empty :
@@ -456,11 +456,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'gerberCodeInstructionCountMessage' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
+  private final var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
 
   //····················································································································
 
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String?> {
+  final var gerberCodeInstructionCountMessage_property_selection : EBSelection <String?> {
     if let model = self.propval {
       switch (model.gerberCodeInstructionCountMessage_property_selection) {
       case .empty :
@@ -525,11 +525,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <CanariIssueArray?> {
+  final var issues_property_selection : EBSelection <CanariIssueArray?> {
     if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
@@ -594,11 +594,11 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observable toMany property: segments
   //····················································································································
 
-  private var mObserversOf_segments = EBWeakEventSet ()
+  private final var mObserversOf_segments = EBWeakEventSet ()
 
   //····················································································································
 
-  var segments_property_selection : EBSelection <[SegmentForFontCharacter]> {
+  final var segments_property_selection : EBSelection <[SegmentForFontCharacter]> {
     if let model = self.propval {
       switch (model.segments_property_selection) {
       case .empty :
@@ -819,7 +819,7 @@ final class StoredObject_FontCharacter : ReadWriteObject_FontCharacter, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
  //····················································································································
   //   Opposite relationship management

@@ -40,7 +40,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mColor' stored property
   //····················································································································
 
-  private var mObserversOf_mColor = EBWeakEventSet ()
+  private final var mObserversOf_mColor = EBWeakEventSet ()
 
   //····················································································································
 
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mSize' stored property
   //····················································································································
 
-  private var mObserversOf_mSize = EBWeakEventSet ()
+  private final var mObserversOf_mSize = EBWeakEventSet ()
 
   //····················································································································
 
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
+  private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
@@ -325,7 +325,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'mComment' stored property
   //····················································································································
 
-  private var mObserversOf_mComment = EBWeakEventSet ()
+  private final var mObserversOf_mComment = EBWeakEventSet ()
 
   //····················································································································
 
@@ -439,7 +439,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -495,7 +495,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -868,7 +868,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -876,32 +876,32 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -944,7 +944,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <CommentInSchematic>, addedSet inAddedSet : Set <CommentInSchematic>) {
+  override func updateObservers (removedSet inRemovedSet : Set <CommentInSchematic>, addedSet inAddedSet : Set <CommentInSchematic>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -964,7 +964,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
  
   //····················································································································
 
-  override var selection : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [CommentInSchematic] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -972,11 +972,11 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
 
   //····················································································································
 
-  override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
+  override final var propval : [CommentInSchematic] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : CommentInSchematic) {
+  final func remove (_ object : CommentInSchematic) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -984,7 +984,7 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   
   //····················································································································
 
-  func add (_ object : CommentInSchematic) {
+  final func add (_ object : CommentInSchematic) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -994,11 +994,11 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

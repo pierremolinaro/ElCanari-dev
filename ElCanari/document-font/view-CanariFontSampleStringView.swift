@@ -11,7 +11,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
+final class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 

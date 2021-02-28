@@ -56,7 +56,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'yCenter' stored property
   //····················································································································
 
-  private var mObserversOf_yCenter = EBWeakEventSet ()
+  private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -113,7 +113,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'radius' stored property
   //····················································································································
 
-  private var mObserversOf_radius = EBWeakEventSet ()
+  private final var mObserversOf_radius = EBWeakEventSet ()
 
   //····················································································································
 
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'startAngle' stored property
   //····················································································································
 
-  private var mObserversOf_startAngle = EBWeakEventSet ()
+  private final var mObserversOf_startAngle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -227,7 +227,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'arcAngle' stored property
   //····················································································································
 
-  private var mObserversOf_arcAngle = EBWeakEventSet ()
+  private final var mObserversOf_arcAngle = EBWeakEventSet ()
 
   //····················································································································
 
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'startTangent' stored property
   //····················································································································
 
-  private var mObserversOf_startTangent = EBWeakEventSet ()
+  private final var mObserversOf_startTangent = EBWeakEventSet ()
 
   //····················································································································
 
@@ -341,7 +341,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'endTangent' stored property
   //····················································································································
 
-  private var mObserversOf_endTangent = EBWeakEventSet ()
+  private final var mObserversOf_endTangent = EBWeakEventSet ()
 
   //····················································································································
 
@@ -398,7 +398,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'pathIsClosed' stored property
   //····················································································································
 
-  private var mObserversOf_pathIsClosed = EBWeakEventSet ()
+  private final var mObserversOf_pathIsClosed = EBWeakEventSet ()
 
   //····················································································································
 
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_xCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-  private var mObserversOf_yCenterUnit = EBWeakEventSet ()
+  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'radiusUnit' stored property
   //····················································································································
 
-  private var mObserversOf_radiusUnit = EBWeakEventSet ()
+  private final var mObserversOf_radiusUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'startTangentUnit' stored property
   //····················································································································
 
-  private var mObserversOf_startTangentUnit = EBWeakEventSet ()
+  private final var mObserversOf_startTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'endTangentUnit' stored property
   //····················································································································
 
-  private var mObserversOf_endTangentUnit = EBWeakEventSet ()
+  private final var mObserversOf_endTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
@@ -740,7 +740,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-  private var mObserversOf_xCenter = EBWeakEventSet ()
+  private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
 
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
@@ -853,7 +853,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -909,7 +909,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
@@ -965,7 +965,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
@@ -1338,7 +1338,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 
@@ -1346,32 +1346,32 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   //   Signature ?
   //····················································································································
 
-  private let mUsedForSignature : Bool
+  private final let mUsedForSignature : Bool
   
   //····················································································································
   //   Undo manager
   //····················································································································
 
-  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
   //····················································································································
 
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
+  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
+  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageArc) -> Void > = nil
 
   //····················································································································
 
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageArc) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : PackageArc) -> Void) {
+  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageArc) -> Void,
+                                               resetter inResetter : @escaping (_ inManagedObject : PackageArc) -> Void) {
     self.mSetOppositeRelationship = inSetter
     self.mResetOppositeRelationship = inResetter
   }
   
   //····················································································································
 
-  var mValueExplorer : NSPopUpButton? {
+  final var mValueExplorer : NSPopUpButton? {
     didSet {
       if let unwrappedExplorer = self.mValueExplorer {
         switch self.selection {
@@ -1414,7 +1414,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   // Update observers 
   //····················································································································
 
-  internal override func updateObservers (removedSet inRemovedSet : Set <PackageArc>, addedSet inAddedSet : Set <PackageArc>) {
+  override func updateObservers (removedSet inRemovedSet : Set <PackageArc>, addedSet inAddedSet : Set <PackageArc>) {
     for managedObject in inRemovedSet {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
@@ -1434,7 +1434,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
  
   //····················································································································
 
-  override var selection : EBSelection < [PackageArc] > { return .single (self.mInternalArrayValue) }
+  override final var selection : EBSelection < [PackageArc] > { return .single (self.mInternalArrayValue) }
 
   //····················································································································
 
@@ -1442,11 +1442,11 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
 
   //····················································································································
 
-  override var propval : [PackageArc] { return self.mInternalArrayValue }
+  override final var propval : [PackageArc] { return self.mInternalArrayValue }
 
   //····················································································································
 
-  func remove (_ object : PackageArc) {
+  final func remove (_ object : PackageArc) {
     if let idx = self.mInternalArrayValue.firstIndex (of: object) {
       self.mInternalArrayValue.remove (at: idx)
     }
@@ -1454,7 +1454,7 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : PackageArc) {
+  final func add (_ object : PackageArc) {
     if !self.internalSetValue.contains (object) {
       self.mInternalArrayValue.append (object)
     }
@@ -1464,11 +1464,11 @@ class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private weak final var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  private var mSignatureCache : UInt32? = nil
+  private final var mSignatureCache : UInt32? = nil
 
   //····················································································································
 

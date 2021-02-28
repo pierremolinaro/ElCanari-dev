@@ -42,10 +42,10 @@ protocol EBManagedObject_alloc_index_protocol : AnyObject {
 //----------------------------------------------------------------------------------------------------------------------
 
 class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
-  private weak var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
-  var savingIndex = 0
+  private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  final var savingIndex = 0
 
-  var mExplorerWindow : NSWindow? = nil
+  final var mExplorerWindow : NSWindow? = nil
 
   //····················································································································
   //  init
@@ -96,7 +96,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
 
   //····················································································································
 
-  var ebObjectIndex_selection : EBSelection <Int> { return .single (self.ebObjectIndex) }
+  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.ebObjectIndex) }
 
   //····················································································································
   //   showExplorerWindow
@@ -188,8 +188,8 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //    populateExplorerWindow
   //····················································································································
 
-  private var mSignatureObserverExplorer : NSPopUpButton? = nil
-  private var mSignatureValueExplorer : NSTextField? = nil {
+  private final var mSignatureObserverExplorer : NSPopUpButton? = nil
+  private final var mSignatureValueExplorer : NSTextField? = nil {
     didSet {
       if let s = self.mSignature {
         self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)

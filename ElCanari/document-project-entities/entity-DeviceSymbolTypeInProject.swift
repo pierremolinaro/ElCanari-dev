@@ -26,7 +26,7 @@ protocol DeviceSymbolTypeInProject_mFilledBezierPath : AnyObject {
 //    Entity: DeviceSymbolTypeInProject
 //----------------------------------------------------------------------------------------------------------------------
 
-class DeviceSymbolTypeInProject : EBManagedObject,
+final class DeviceSymbolTypeInProject : EBManagedObject,
          DeviceSymbolTypeInProject_mSymbolTypeName,
          DeviceSymbolTypeInProject_mStrokeBezierPath,
          DeviceSymbolTypeInProject_mFilledBezierPath {

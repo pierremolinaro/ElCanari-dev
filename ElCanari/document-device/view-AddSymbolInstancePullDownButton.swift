@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AddSymbolInstancePullDownButton : EBPopUpButton {
+final class AddSymbolInstancePullDownButton : EBPopUpButton {
 
   //····················································································································
 

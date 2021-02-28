@@ -15,7 +15,7 @@ fileprivate let DEBUG_PARSING = false
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class KicadItem {
+final class KicadItem {
   let key : String
   let items : [KicadItem]
 

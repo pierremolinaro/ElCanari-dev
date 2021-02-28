@@ -320,7 +320,7 @@ protocol BoardModel_imageForInstances : AnyObject {
 //    Entity: BoardModel
 //----------------------------------------------------------------------------------------------------------------------
 
-class BoardModel : EBManagedObject,
+final class BoardModel : EBManagedObject,
          BoardModel_name,
          BoardModel_modelWidth,
          BoardModel_modelWidthUnit,
