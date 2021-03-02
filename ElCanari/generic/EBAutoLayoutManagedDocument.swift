@@ -12,14 +12,14 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
 
   //····················································································································
 
-  private var mReadMetadataStatus : UInt8 = 0
-  private var mMetadataDictionary = [String : Any] ()
+  private final var mReadMetadataStatus : UInt8 = 0
+  private final var mMetadataDictionary = [String : Any] ()
 
   //····················································································································
   //    Document File Format
   //····················································································································
 
-  var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
+  final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
       if self.mManagedDocumentFileFormat != oldValue {
         self.ebUndoManager.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
@@ -278,11 +278,11 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //    populateExplorerWindow
   //····················································································································
 
-  var mDocumentExplorerWindow : NSWindow? = nil
+  final var mDocumentExplorerWindow : NSWindow? = nil
 
-  var mAccessibleObjectsExplorerPopUpButton : NSPopUpButton? = nil
+  final var mAccessibleObjectsExplorerPopUpButton : NSPopUpButton? = nil
 
-  var mRootObjectExplorerButton : NSButton? = nil {
+  final var mRootObjectExplorerButton : NSButton? = nil {
     didSet {
       if let valueExplorer = self.mRootObjectExplorerButton {
         updateManagedObjectToOneRelationshipDisplay (object: self.mRootObject, button: valueExplorer)

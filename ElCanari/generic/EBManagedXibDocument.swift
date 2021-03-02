@@ -14,14 +14,14 @@ class EBManagedXibDocument : EBManagedDocument {
   //   Properties
   //····················································································································
 
-  private var mReadMetadataStatus : UInt8 = 0
-  private var mMetadataDictionary = [String : Any] ()
+  private final var mReadMetadataStatus : UInt8 = 0
+  private final var mMetadataDictionary = [String : Any] ()
 
   //····················································································································
   //    Document File Format
   //····················································································································
 
-  var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
+  final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
       if self.mManagedDocumentFileFormat != oldValue {
         self.ebUndoManager.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
@@ -34,7 +34,7 @@ class EBManagedXibDocument : EBManagedDocument {
   //····················································································································
 
   func metadataStatusForSaving () -> UInt8 {
-    return 0 ;
+    return 0
   }
 
   //····················································································································
@@ -212,7 +212,7 @@ class EBManagedXibDocument : EBManagedDocument {
   //--- Set close button as 'remove window' button
     let closeButton = self.mDocumentExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(EBManagedXibDocument.deleteDocumentWindowAction(_:))
+    closeButton?.action = #selector(Self.deleteDocumentWindowAction(_:))
   //--- Set window title
     self.mDocumentExplorerWindow?.title = "Document " + className
   //--- Add Scroll view
@@ -248,11 +248,11 @@ class EBManagedXibDocument : EBManagedDocument {
   //    populateExplorerWindow
   //····················································································································
 
-  var mDocumentExplorerWindow : NSWindow? = nil
+  final var mDocumentExplorerWindow : NSWindow? = nil
 
-  var mAccessibleObjectsExplorerPopUpButton : NSPopUpButton? = nil
+  final var mAccessibleObjectsExplorerPopUpButton : NSPopUpButton? = nil
 
-  var mRootObjectExplorerButton : NSButton? = nil {
+  final var mRootObjectExplorerButton : NSButton? = nil {
     didSet {
       if let valueExplorer = self.mRootObjectExplorerButton {
         updateManagedObjectToOneRelationshipDisplay (object: self.mRootObject, button: valueExplorer)
@@ -307,7 +307,7 @@ class EBManagedXibDocument : EBManagedDocument {
       gDebugMenuItemsAdded = true
       let menuItem = NSMenuItem (
         title: "Explore document",
-        action: #selector (EBManagedXibDocument.showObjectExplorerWindow (_:)),
+        action: #selector (Self.showObjectExplorerWindow (_:)),
         keyEquivalent: ""
       )
       addItemToDebugMenu (menuItem)
@@ -417,12 +417,12 @@ class EBManagedXibDocument : EBManagedDocument {
   override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-    if action == #selector (EBManagedXibDocument.printDocument(_:)) {
+    if action == #selector (Self.printDocument(_:)) {
       validate = self.windowForSheet?.firstResponder is EBGraphicView
-    }else if action == #selector (EBManagedXibDocument.setBinaryFormatAction(_:)) {
+    }else if action == #selector (Self.setBinaryFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .binary) ? .on : .off
-    }else if action == #selector (EBManagedXibDocument.setTextualFormatAction(_:)) {
+    }else if action == #selector (Self.setTextualFormatAction(_:)) {
       validate = true
       inMenuItem.state = (self.mManagedDocumentFileFormat == .textual) ? .on : .off
     }else{

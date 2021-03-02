@@ -23,17 +23,17 @@ class EBGraphicManagedObject : EBManagedObject {
   //   Transient property: selectionDisplay
   //····················································································································
 
-  var selectionDisplay_property = EBTransientProperty_EBShape ()
+  final var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
+  final var selectionDisplay_property_selection : EBSelection <EBShape> {
     return self.selectionDisplay_property.selection
   }
 
   //····················································································································
 
-  var selectionDisplay : EBShape? {
+  final var selectionDisplay : EBShape? {
     switch self.selectionDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -46,17 +46,17 @@ class EBGraphicManagedObject : EBManagedObject {
   //   Transient property: objectDisplay
   //····················································································································
 
-  var objectDisplay_property = EBTransientProperty_EBShape ()
+  final var objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
+  final var objectDisplay_property_selection : EBSelection <EBShape> {
     return self.objectDisplay_property.selection
   }
 
   //····················································································································
 
-  var objectDisplay : EBShape? {
+  final var objectDisplay : EBShape? {
     switch self.objectDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -244,7 +244,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class ObjcCanariPoint : EBObject {
+@objc final class ObjcCanariPoint : EBObject {
 
   //····················································································································
 
@@ -306,7 +306,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class ObjcCanariPointSet : EBObject {
+@objc final class ObjcCanariPointSet : EBObject {
 
   //····················································································································
 
@@ -346,7 +346,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc class ObjcObjectSet : EBObject {
+@objc final class ObjcObjectSet : EBObject {
 
   //····················································································································
 
