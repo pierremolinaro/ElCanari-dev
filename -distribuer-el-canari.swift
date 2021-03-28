@@ -238,8 +238,16 @@ do{
   let jsonData = try encoder.encode (versionDescriptor)
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_CANARI + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
+//--- Vérififer l'existennce de certificats
+//  runCommand ("security", ["find-identity", "-p", "basic", "-v"])
 //--- Vérifier la signature
-  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/ElCanari-dev-master/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"])
+  let argumentsSignatureCode = [
+    "-dv",
+//    "--digest-algorithm=sha1,sha256",
+    "--verbose=4",
+    DISTRIBUTION_DIR + "/ElCanari-dev-master/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"
+  ]
+  runCommand ("/usr/bin/codesign", argumentsSignatureCode)
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/ElCanari-dev-master") {
