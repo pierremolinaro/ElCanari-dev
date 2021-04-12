@@ -334,6 +334,7 @@ extension MergerDocument {
           }
         }
         if product.drawPadsTopSide {
+          //Swift.print ("drawPadsTopSide")
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
             let modelWidth  : Int = myModel?.modelWidth  ?? 0
@@ -621,6 +622,7 @@ extension MergerDocument {
         }
       }
       if product.drawPadsTopSide {
+        // Swift.print ("drawPadsTopSide")
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
           let modelWidth  : Int = myModel?.modelWidth  ?? 0

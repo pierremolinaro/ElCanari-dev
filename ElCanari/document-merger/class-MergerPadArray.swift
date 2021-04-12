@@ -122,6 +122,7 @@ final class MergerPadArray : EBObject {
                 modelWidth inModelWidth : Int,
                 modelHeight inModelHeight : Int,
                 instanceRotation inInstanceRotation : QuadrantRotation) {
+   //  Swift.print ("PDF : \(self.padArray.count)")
     for pad in self.padArray {
       var x = inDx
       var y = inDy
@@ -217,6 +218,7 @@ final class MergerPadArray : EBObject {
                 modelWidth inModelWidth : Int,
                 modelHeight inModelHeight : Int,
                 instanceRotation inInstanceRotation : QuadrantRotation) {
+    // Swift.print ("GERBER: \(self.padArray.count)")
     for pad in self.padArray {
       let padRotationInRadians = canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000)
       var x = inDx
@@ -252,8 +254,8 @@ final class MergerPadArray : EBObject {
       case .rect :
         let cosa = cos (padRotationInRadians)
         let sina = sin (padRotationInRadians)
-        let hs = widthTenthMilF  / 2.0
-        let ws = heightTenthMilF / 2.0
+        let hs = widthTenthMilF  / 2.0 // Demie largeur du pad
+        let ws = heightTenthMilF / 2.0 // Demie-hauteur du pad
         let p1x = CGFloat (xmt) + ( hs * cosa - ws * sina)
         let p1y = CGFloat (ymt) + ( hs * sina + ws * cosa)
         let p2x = CGFloat (xmt) + (-hs * cosa - ws * sina)
@@ -270,9 +272,36 @@ final class MergerPadArray : EBObject {
         drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
         ioPolygons.append (drawings)
       case .octo :
+        // Swift.print ("OCTO \(xmt) \(ymt) \(widthInch) \(heightInch)")
+        var af = AffineTransform ()
+        af.translate (x: CGFloat (xmt), y: CGFloat (ymt))
+        af.rotate (byRadians: padRotationInRadians)
+        let r = NSRect (x:-widthTenthMilF / 2.0, y: -heightTenthMilF / 2.0, width: widthTenthMilF, height: heightTenthMilF)
+        let bp = EBBezierPath (octogonInRect: r).transformed (by: af)
+        var points = [NSPoint] (repeating: .zero, count: 3)
         var drawings = [String] ()
-        drawings.append ("Octogonal pad (\(#file):\(#line)")
+        var origin = NSPoint ()
+        for i in 0 ..< bp.nsBezierPath.elementCount {
+          let type = bp.nsBezierPath.element (at: i, associatedPoints: &points)
+          switch type {
+          case .moveTo:
+            origin = points[0]
+            drawings.append ("X\(Int (origin.x))Y\(Int (origin.y))D02") // Move to
+          case .lineTo:
+            drawings.append ("X\(Int (points[0].x))Y\(Int (points[0].y))D01") // Line to
+          case .curveTo:
+            ()
+          case .closePath:
+            drawings.append ("X\(Int (origin.x))Y\(Int (origin.y))D01") // Line to
+          @unknown default :
+            ()
+          }
+        }
         ioPolygons.append (drawings)
+
+//        var drawings = [String] ()
+//        drawings.append ("Octogonal pad (\(#file):\(#line)")
+//        ioPolygons.append (drawings)
       case .round :
         if pad.width < pad.height {
           let transform = NSAffineTransform ()

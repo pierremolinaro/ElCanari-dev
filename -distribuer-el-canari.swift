@@ -31,6 +31,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.3.7"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
+  "Fixed generation of octogonal pads in merger document"
 ]
 let CHANGES : [String] = [
   "Uses Sparkle 1.26.0"
