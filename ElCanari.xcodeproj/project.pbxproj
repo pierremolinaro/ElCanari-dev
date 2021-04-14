@@ -844,10 +844,8 @@
 		CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
 		CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
-		CF5C4C74219F04D600EAC52A /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
 		CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
-		CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727E1B3C4CD600F3CA82 /* canari_package.icns */; };
 		CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDA579C1BFA524A00EEF3CB /* FontDocument.xib */; };
 		CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172771B3C4CD600F3CA82 /* artwork.tif */; };
 		CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC5FBC01FDF06220014A257 /* Assets.xcassets */; };
@@ -856,7 +854,6 @@
 		CF5C4C83219F04D600EAC52A /* restrict-rect-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */; };
 		CF5C4C89219F04D600EAC52A /* sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172AB1B3C4CD600F3CA82 /* sheet.png */; };
 		CF5C4C8C219F04D600EAC52A /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
-		CF5C4C8F219F04D600EAC52A /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CF5C4C95219F04D600EAC52A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
 		CF5C4C96219F04D600EAC52A /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728A1B3C4CD600F3CA82 /* font.png */; };
 		CF5C4C97219F04D600EAC52A /* MergerDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5599501FDF364400ED5EE6 /* MergerDocument.xib */; };
@@ -870,14 +867,10 @@
 		CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */; };
 		CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
-		CF5C4CAA219F04D600EAC52A /* canari_device.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727C1B3C4CD600F3CA82 /* canari_device.icns */; };
 		CF5C4CAC219F04D600EAC52A /* unbind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B51B3C4CD600F3CA82 /* unbind.png */; };
 		CF5C4CAE219F04D600EAC52A /* bind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61727A1B3C4CD600F3CA82 /* bind.png */; };
 		CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
-		CF5C4CB2219F04D600EAC52A /* canari_font.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727D1B3C4CD600F3CA82 /* canari_font.icns */; };
 		CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
-		CF5C4CB8219F04D600EAC52A /* canari_symbol.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */; };
-		CF5C4CBA219F04D600EAC52A /* canari_project.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727F1B3C4CD600F3CA82 /* canari_project.icns */; };
 		CF5C4CBC219F04D600EAC52A /* display.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172881B3C4CD600F3CA82 /* display.pdf */; };
 		CF5C4CBD219F04D600EAC52A /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
 		CF5C4CC2219F04D600EAC52A /* transient-BoardModel-drillSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC80AA420E6390500C1A156 /* transient-BoardModel-drillSegments.swift */; };
@@ -1089,11 +1082,6 @@
 		CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172771B3C4CD600F3CA82 /* artwork.tif */; };
 		CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
 		CF6172C81B3C4CD600F3CA82 /* bind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61727A1B3C4CD600F3CA82 /* bind.png */; };
-		CF6172CA1B3C4CD600F3CA82 /* canari_device.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727C1B3C4CD600F3CA82 /* canari_device.icns */; };
-		CF6172CB1B3C4CD600F3CA82 /* canari_font.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727D1B3C4CD600F3CA82 /* canari_font.icns */; };
-		CF6172CC1B3C4CD600F3CA82 /* canari_package.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727E1B3C4CD600F3CA82 /* canari_package.icns */; };
-		CF6172CD1B3C4CD600F3CA82 /* canari_project.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727F1B3C4CD600F3CA82 /* canari_project.icns */; };
-		CF6172CE1B3C4CD600F3CA82 /* canari_symbol.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */; };
 		CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
 		CF6172D31B3C4CD600F3CA82 /* device.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172851B3C4CD600F3CA82 /* device.pdf */; };
 		CF6172D61B3C4CD600F3CA82 /* display.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172881B3C4CD600F3CA82 /* display.pdf */; };
@@ -1523,11 +1511,9 @@
 		CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BB1B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff */; };
 		CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */; };
 		CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */; };
-		CF9C605825CABE5C00A00D5C /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
 		CF9C605A25CABE5C00A00D5C /* alignmentLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC2685623524EB7007C47F6 /* alignmentLeft.png */; };
 		CF9C605B25CABE5C00A00D5C /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
-		CF9C605C25CABE5C00A00D5C /* canari_package.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727E1B3C4CD600F3CA82 /* canari_package.icns */; };
 		CF9C605D25CABE5C00A00D5C /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDA579C1BFA524A00EEF3CB /* FontDocument.xib */; };
 		CF9C605E25CABE5C00A00D5C /* artwork.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172771B3C4CD600F3CA82 /* artwork.tif */; };
 		CF9C605F25CABE5C00A00D5C /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
@@ -1544,7 +1530,6 @@
 		CF9C606A25CABE5C00A00D5C /* alignmentBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BD2353ABD100F4D2C7 /* alignmentBottom.png */; };
 		CF9C606B25CABE5C00A00D5C /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
 		CF9C606C25CABE5C00A00D5C /* upDownRightLeftCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6471FD24F2796500452009 /* upDownRightLeftCursor.png */; };
-		CF9C606D25CABE5C00A00D5C /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CF9C606E25CABE5C00A00D5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
 		CF9C606F25CABE5C00A00D5C /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728A1B3C4CD600F3CA82 /* font.png */; };
 		CF9C607125CABE5C00A00D5C /* nc.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172961B3C4CD600F3CA82 /* nc.png */; };
@@ -1563,18 +1548,14 @@
 		CF9C607F25CABE5C00A00D5C /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BF2353ABD100F4D2C7 /* alignmentBaseline.png */; };
 		CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
-		CF9C608225CABE5C00A00D5C /* canari_device.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727C1B3C4CD600F3CA82 /* canari_device.icns */; };
 		CF9C608325CABE5C00A00D5C /* unbind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B51B3C4CD600F3CA82 /* unbind.png */; };
 		CF9C608425CABE5C00A00D5C /* ElCanari-user-manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */; };
 		CF9C608525CABE5C00A00D5C /* bind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61727A1B3C4CD600F3CA82 /* bind.png */; };
 		CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
 		CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
-		CF9C608825CABE5C00A00D5C /* canari_font.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727D1B3C4CD600F3CA82 /* canari_font.icns */; };
 		CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
 		CF9C608A25CABE5C00A00D5C /* alignmentMiddle.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BE2353ABD100F4D2C7 /* alignmentMiddle.png */; };
 		CF9C608B25CABE5C00A00D5C /* ProjectDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4A66252257EFF2003A7A7A /* ProjectDocument.xib */; };
-		CF9C608C25CABE5C00A00D5C /* canari_symbol.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */; };
-		CF9C608D25CABE5C00A00D5C /* canari_project.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727F1B3C4CD600F3CA82 /* canari_project.icns */; };
 		CF9C608E25CABE5C00A00D5C /* PackageDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2B9CE121C2A8D100EE5683 /* PackageDocument.xib */; };
 		CF9C608F25CABE5C00A00D5C /* display.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172881B3C4CD600F3CA82 /* display.pdf */; };
 		CF9C609025CABE5C00A00D5C /* danger.png in Resources */ = {isa = PBXBuildFile; fileRef = CF1C8F4B2364DB4800A36E44 /* danger.png */; };
@@ -3987,8 +3968,6 @@
 		CFF63D1922B4117100032398 /* extension-BoardRestrictRectanglet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */; };
 		CFF6D6892427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */; };
 		CFF6D68A2427780C00BE9CC9 /* transient-PackageRoot-hasModelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */; };
-		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
-		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CFF83D4321ADAA310084BDA9 /* transient-SymbolDocument-statusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-statusImage.swift */; };
 		CFF83D4421ADAA310084BDA9 /* transient-SymbolDocument-statusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-statusImage.swift */; };
 		CFF83D4521ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
@@ -4441,11 +4420,6 @@
 		CF6172771B3C4CD600F3CA82 /* artwork.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = artwork.tif; sourceTree = "<group>"; };
 		CF6172781B3C4CD600F3CA82 /* autorouter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autorouter.png; sourceTree = "<group>"; };
 		CF61727A1B3C4CD600F3CA82 /* bind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bind.png; sourceTree = "<group>"; };
-		CF61727C1B3C4CD600F3CA82 /* canari_device.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_device.icns; sourceTree = "<group>"; };
-		CF61727D1B3C4CD600F3CA82 /* canari_font.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_font.icns; sourceTree = "<group>"; };
-		CF61727E1B3C4CD600F3CA82 /* canari_package.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_package.icns; sourceTree = "<group>"; };
-		CF61727F1B3C4CD600F3CA82 /* canari_project.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_project.icns; sourceTree = "<group>"; };
-		CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_symbol.icns; sourceTree = "<group>"; };
 		CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circuit-imprime.png"; sourceTree = "<group>"; };
 		CF6172851B3C4CD600F3CA82 /* device.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = device.pdf; sourceTree = "<group>"; };
 		CF6172881B3C4CD600F3CA82 /* display.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = display.pdf; sourceTree = "<group>"; };
@@ -5454,8 +5428,6 @@
 		CFF63D1422B40E4100032398 /* selectionController-ProjectDocument-restrictRectangleSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ProjectDocument-restrictRectangleSelectionController.swift"; sourceTree = "<group>"; };
 		CFF63D1722B4117100032398 /* extension-BoardRestrictRectanglet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-BoardRestrictRectanglet.swift"; sourceTree = "<group>"; };
 		CFF6D6882427780B00BE9CC9 /* transient-PackageRoot-hasModelImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-hasModelImage.swift"; sourceTree = "<group>"; };
-		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
-		CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_merger.icns; sourceTree = "<group>"; };
 		CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-statusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-statusImage.swift"; sourceTree = "<group>"; };
 		CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "utilities-symbol-issues.swift"; sourceTree = "<group>"; };
 		CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-statusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-statusMessage.swift"; sourceTree = "<group>"; };
@@ -6182,13 +6154,6 @@
 				CFC5FBC01FDF06220014A257 /* Assets.xcassets */,
 				CF6172781B3C4CD600F3CA82 /* autorouter.png */,
 				CF61727A1B3C4CD600F3CA82 /* bind.png */,
-				CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */,
-				CF61727C1B3C4CD600F3CA82 /* canari_device.icns */,
-				CF61727D1B3C4CD600F3CA82 /* canari_font.icns */,
-				CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */,
-				CF61727E1B3C4CD600F3CA82 /* canari_package.icns */,
-				CF61727F1B3C4CD600F3CA82 /* canari_project.icns */,
-				CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */,
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
 				CF1C8F4B2364DB4800A36E44 /* danger.png */,
 				CF6172851B3C4CD600F3CA82 /* device.pdf */,
@@ -7605,11 +7570,9 @@
 				CF6173091B3C4CD600F3CA82 /* ZoomInToolbarImage.tiff in Resources */,
 				CF6172BE1B3C4CD600F3CA82 /* A4vertical.pdf in Resources */,
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
-				CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
 				CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */,
 				CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */,
-				CF6172CC1B3C4CD600F3CA82 /* canari_package.icns in Resources */,
 				CFDA579F1BFA524A00EEF3CB /* FontDocument.xib in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
 				CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
@@ -7626,7 +7589,6 @@
 				CF7034C42353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF6172E01B3C4CD600F3CA82 /* library.png in Resources */,
 				CF6471FE24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
-				CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */,
 				CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */,
 				CF6172D81B3C4CD600F3CA82 /* font.png in Resources */,
 				CF5599531FDF364400ED5EE6 /* MergerDocument.xib in Resources */,
@@ -7647,19 +7609,15 @@
 				CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */,
 				CF7034C82353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */,
-				CF6172CA1B3C4CD600F3CA82 /* canari_device.icns in Resources */,
 				CF6173031B3C4CD600F3CA82 /* unbind.png in Resources */,
 				CF9BB56E23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF6172C81B3C4CD600F3CA82 /* bind.png in Resources */,
 				CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */,
-				CF6172CB1B3C4CD600F3CA82 /* canari_font.icns in Resources */,
 				CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */,
 				CF26AF7A25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF7034C62353ABD100F4D2C7 /* alignmentMiddle.png in Resources */,
 				CF4A662A2257EFF2003A7A7A /* ProjectDocument.xib in Resources */,
-				CF6172CE1B3C4CD600F3CA82 /* canari_symbol.icns in Resources */,
-				CF6172CD1B3C4CD600F3CA82 /* canari_project.icns in Resources */,
 				CF2B9CE621C2A8D100EE5683 /* PackageDocument.xib in Resources */,
 				CF6172D61B3C4CD600F3CA82 /* display.pdf in Resources */,
 				CF1C8F4C2364DB4800A36E44 /* danger.png in Resources */,
@@ -7675,10 +7633,8 @@
 				CF5C4C6E219F04D600EAC52A /* ZoomInToolbarImage.tiff in Resources */,
 				CF5C4C71219F04D600EAC52A /* A4vertical.pdf in Resources */,
 				CF5C4C73219F04D600EAC52A /* line-in-symbol.pdf in Resources */,
-				CF5C4C74219F04D600EAC52A /* canari_merger.icns in Resources */,
 				CF5C4C75219F04D600EAC52A /* freeRoutingLogo.png in Resources */,
 				CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */,
-				CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */,
 				CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
 				CFE25A9B23525888007232F7 /* alignmentRight.png in Resources */,
@@ -7695,7 +7651,6 @@
 				CF7034C52353ABD100F4D2C7 /* alignmentBottom.png in Resources */,
 				CF5C4C8C219F04D600EAC52A /* library.png in Resources */,
 				CF6471FF24F2796500452009 /* upDownRightLeftCursor.png in Resources */,
-				CF5C4C8F219F04D600EAC52A /* canari_artwork.icns in Resources */,
 				CF5C4C95219F04D600EAC52A /* MainMenu.xib in Resources */,
 				CF5C4C96219F04D600EAC52A /* font.png in Resources */,
 				CF5C4C97219F04D600EAC52A /* MergerDocument.xib in Resources */,
@@ -7716,19 +7671,15 @@
 				CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */,
 				CF7034C92353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */,
-				CF5C4CAA219F04D600EAC52A /* canari_device.icns in Resources */,
 				CF5C4CAC219F04D600EAC52A /* unbind.png in Resources */,
 				CF9BB56F23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF5C4CAE219F04D600EAC52A /* bind.png in Resources */,
 				CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */,
-				CF5C4CB2219F04D600EAC52A /* canari_font.icns in Resources */,
 				CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */,
 				CF26AF7B25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF7034C72353ABD100F4D2C7 /* alignmentMiddle.png in Resources */,
 				CF4A662B2257EFF2003A7A7A /* ProjectDocument.xib in Resources */,
-				CF5C4CB8219F04D600EAC52A /* canari_symbol.icns in Resources */,
-				CF5C4CBA219F04D600EAC52A /* canari_project.icns in Resources */,
 				CF2B9CE721C2A8D100EE5683 /* PackageDocument.xib in Resources */,
 				CF5C4CBC219F04D600EAC52A /* display.pdf in Resources */,
 				CF1C8F4D2364DB4800A36E44 /* danger.png in Resources */,
@@ -7744,11 +7695,9 @@
 				CF9C605525CABE5C00A00D5C /* ZoomInToolbarImage.tiff in Resources */,
 				CF9C605625CABE5C00A00D5C /* A4vertical.pdf in Resources */,
 				CF9C605725CABE5C00A00D5C /* line-in-symbol.pdf in Resources */,
-				CF9C605825CABE5C00A00D5C /* canari_merger.icns in Resources */,
 				CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */,
 				CF9C605A25CABE5C00A00D5C /* alignmentLeft.png in Resources */,
 				CF9C605B25CABE5C00A00D5C /* circuit-imprime.png in Resources */,
-				CF9C605C25CABE5C00A00D5C /* canari_package.icns in Resources */,
 				CF9C605D25CABE5C00A00D5C /* FontDocument.xib in Resources */,
 				CF49C15025D13A030082271E /* SymbolDocument.xib in Resources */,
 				CF9C605E25CABE5C00A00D5C /* artwork.tif in Resources */,
@@ -7766,7 +7715,6 @@
 				CF9C606A25CABE5C00A00D5C /* alignmentBottom.png in Resources */,
 				CF9C606B25CABE5C00A00D5C /* library.png in Resources */,
 				CF9C606C25CABE5C00A00D5C /* upDownRightLeftCursor.png in Resources */,
-				CF9C606D25CABE5C00A00D5C /* canari_artwork.icns in Resources */,
 				CF9C606E25CABE5C00A00D5C /* MainMenu.xib in Resources */,
 				CF9C606F25CABE5C00A00D5C /* font.png in Resources */,
 				CF9C607125CABE5C00A00D5C /* nc.png in Resources */,
@@ -7786,19 +7734,15 @@
 				CF9C607F25CABE5C00A00D5C /* symbolAnd.pdf in Resources */,
 				CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */,
 				CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */,
-				CF9C608225CABE5C00A00D5C /* canari_device.icns in Resources */,
 				CF9C608325CABE5C00A00D5C /* unbind.png in Resources */,
 				CF9C608425CABE5C00A00D5C /* ElCanari-user-manual.pdf in Resources */,
 				CF9C608525CABE5C00A00D5C /* bind.png in Resources */,
 				CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */,
 				CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */,
-				CF9C608825CABE5C00A00D5C /* canari_font.icns in Resources */,
 				CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */,
 				CF26AF7C25EAAF84000E3080 /* package-program-guide.rtf in Resources */,
 				CF9C608A25CABE5C00A00D5C /* alignmentMiddle.png in Resources */,
 				CF9C608B25CABE5C00A00D5C /* ProjectDocument.xib in Resources */,
-				CF9C608C25CABE5C00A00D5C /* canari_symbol.icns in Resources */,
-				CF9C608D25CABE5C00A00D5C /* canari_project.icns in Resources */,
 				CF9C608E25CABE5C00A00D5C /* PackageDocument.xib in Resources */,
 				CF9C608F25CABE5C00A00D5C /* display.pdf in Resources */,
 				CF9C609025CABE5C00A00D5C /* danger.png in Resources */,

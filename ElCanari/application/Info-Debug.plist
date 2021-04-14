@@ -12,7 +12,7 @@
 				<string>ElCanariArtwork</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_artwork</string>
+			<string>elCanariArtwork</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -20,7 +20,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -32,7 +32,7 @@
 				<string>ElCanariFont</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_font</string>
+			<string>elCanariFont</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -40,7 +40,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array/>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -52,7 +54,7 @@
 				<string>ElCanariMerger</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_merger</string>
+			<string>elCanariMerger</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -60,7 +62,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -72,7 +74,7 @@
 				<string>ElCanariSymbol</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_symbol</string>
+			<string>elCanariSymbol</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -80,7 +82,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -92,7 +94,7 @@
 				<string>ElCanariPackage</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_package</string>
+			<string>elCanariPackage</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -100,7 +102,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array/>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -112,7 +116,7 @@
 				<string>ElCanariDevice</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_device</string>
+			<string>elCanariDevice</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -120,7 +124,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -132,7 +136,7 @@
 				<string>ElCanariProject</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>canari_project</string>
+			<string>elCanariProject</string>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<integer>0</integer>
 			<key>CFBundleTypeName</key>
@@ -140,7 +144,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Owner</string>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
