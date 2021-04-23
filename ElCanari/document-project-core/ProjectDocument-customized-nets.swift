@@ -10,7 +10,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension CustomizedProjectDocument {
+extension CustomizedProjectDocument : NSTextFieldDelegate {
 
   //····················································································································
   //  User actions
@@ -208,6 +208,7 @@ extension CustomizedProjectDocument {
       self.mRenameNetTextField?.target = self
       self.mRenameNetTextField?.action = #selector (CustomizedProjectDocument.newNameDidChange (_:))
       self.mRenameNetTextField?.setSendContinously (true)
+      self.mRenameNetTextField?.delegate = self
       self.mRenameNetOkButton?.isEnabled = true
       self.mRenameNetOkButton?.title = "Rename as '\(inNet.mNetName)'"
     //--- Dialog
@@ -217,6 +218,14 @@ extension CustomizedProjectDocument {
           self.performRenameNet (inNet)
         }
       }
+    }
+  }
+
+  //····················································································································
+
+  func controlTextDidChange (_ inNotification : Notification) { // NSTextFieldDelegate
+    if let textField = self.mRenameNetTextField {
+      self.newNameDidChange (textField)
     }
   }
 

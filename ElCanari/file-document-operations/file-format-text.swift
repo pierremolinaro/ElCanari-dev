@@ -85,7 +85,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   parallelObjectSetupContext.mOperationQueue.waitUntilAllOperationsAreFinished ()
   // Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  for setupOperation in parallelObjectSetupContext.mToOneSetUpOperationList{
+  for setupOperation in parallelObjectSetupContext.mToOneSetUpOperationList {
     setupOperation ()
   }
   // Swift.print ("setup toOne \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
