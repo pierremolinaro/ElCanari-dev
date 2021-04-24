@@ -20,6 +20,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
+    self.wantsLayer = true
   }
 
   //····················································································································
@@ -27,6 +28,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   override init (frame inFrame : NSRect) {
     super.init (frame: inFrame)
     noteObjectAllocation (self)
+    self.wantsLayer = true
   }
 
   //····················································································································
@@ -41,14 +43,6 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
     self.configure ()
     super.awakeFromNib ()
   }
-
-  //····················································································································
-
-//  override func draw (_ inDirtyRect : NSRect) {
-//    NSColor.yellow.setFill ()
-//    NSBezierPath.fill (inDirtyRect)
-//    super.draw (inDirtyRect)
-//  }
 
   //····················································································································
   //   Properties
@@ -85,11 +79,9 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
     let scrollView = buildScrollView (focusRingView.bounds)
     self.addSubview (scrollView)
     self.mScrollView = scrollView
-
-
-
+  //---
     self.mGraphicView.mZoomDidChangeCallback = {
-      [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(inZoom) %"
+      [weak self] (_ inZoom : Int) in self?.mZoomPopUpButton?.menu?.item (at: 0)?.title = "\(inZoom) %"
     }
     self.mGraphicView.mHelperStringDidChangeCallback = {
       [weak self] (_ inString : String) in self?.mHelperTextField?.stringValue = inString
@@ -129,9 +121,6 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
     tf.autoresizingMask = [.minYMargin, .width]
     tf.isBezeled = false
     tf.isBordered = false
-//    tf.stringValue = "Hello"
-//    tf.backgroundColor = NSColor.white
-//    tf.drawsBackground = true
     tf.drawsBackground = false
     tf.textColor = .black
     tf.isEnabled = true

@@ -17,6 +17,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
+    self.wantsLayer = true
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
       self,

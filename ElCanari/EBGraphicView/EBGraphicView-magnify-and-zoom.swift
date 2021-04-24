@@ -21,7 +21,6 @@ extension EBGraphicView {
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
       }
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-//      self.mZoomPopUpButton?.menu?.item (at:0)?.title = "\(newZoom) %"
       self.mZoomDidChangeCallback? (newZoom)
     }
   }
@@ -41,7 +40,7 @@ extension EBGraphicView {
       let nc = NotificationCenter.default
       nc.addObserver (
         self,
-        selector: #selector(EBGraphicView.didEndLiveScroll (_:)),
+        selector: #selector (EBGraphicView.didEndLiveMagnification (_:)),
         name: NSScrollView.didEndLiveMagnifyNotification,
         object: scrollView
       )
@@ -50,7 +49,7 @@ extension EBGraphicView {
 
   //····················································································································
 
-  @objc final internal func didEndLiveScroll (_ inNotification : Notification) {
+  @objc final private func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
     _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
   }
@@ -65,8 +64,6 @@ extension EBGraphicView {
       if !box.isEmpty {
         scrollView.magnify (toFit: box)
       }
-//      let zoomTitle = "\(Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))) %"
-  //    self.mZoomPopUpButton?.menu?.item (at:0)?.title = zoomTitle
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
       self.mZoomDidChangeCallback? (newZoom)
     }

@@ -6,6 +6,10 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+private let UPDATE_TIMER_PERIOD : Double = 2.0
+
+//----------------------------------------------------------------------------------------------------------------------
+
 private let prefsEnableObjectAllocationDebugString        = "EBAllocationDebug:enableObjectAllocationDebug"
 private let prefsEnableObjectAllocationStatsWindowVisible = "EBAllocationDebug:allocationStatsWindowVisible"
 private let prefsEnableObjectAllocationStatsDisplayFilter = "EBAllocationDebug:allocationStatsDisplayFilter"
@@ -304,9 +308,9 @@ private var gDebugObject : EBAllocationDebug? = nil
     }
     if self.mRefreshTimer == nil {
       let timer = Timer (
-        timeInterval: 5.0,
+        timeInterval: UPDATE_TIMER_PERIOD,
         target: self,
-        selector: #selector (EBAllocationDebug.refreshDisplay(_:)),
+        selector: #selector (EBAllocationDebug.refreshDisplay (_:)),
         userInfo: nil,
         repeats: true
       )
@@ -349,7 +353,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    setAllocationStatsWindowVisibleAtLaunchAction:
   //····················································································································
 
-  @objc func setAllocationStatsWindowVisibleAtLaunchAction (_: Any?) {
+  @objc func setAllocationStatsWindowVisibleAtLaunchAction (_ : Any?) {
     self.mAllocationStatsWindowVisibleAtLaunch = self.mAllocationStatsWindowVisibleAtLaunchCheckbox?.state.rawValue != 0
   }
 
@@ -357,7 +361,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    setDisplayFilerAction:
   //····················································································································
 
-  @objc func setDisplayFilerAction (_: Any?) {
+  @objc func setDisplayFilerAction (_ : Any?) {
     if let displayFilterPopUpButton = self.mDisplayFilterPopUpButton {
       self.mDisplayFilter = displayFilterPopUpButton.indexOfSelectedItem
     }
@@ -377,23 +381,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    performSnapShotAction:
   //····················································································································
 
-//  func removeDeallocatedObjects () {
-//    var newList : EBWeakObject? = nil
-//    while let weakObject = gLiveObjectList {
-//      gLiveObjectList = weakObject.mNextObject
-//      if weakObject.mWeakReference != nil {
-//        weakObject.mNextObject = newList
-//        newList = weakObject
-//      }
-//    }
-//    gLiveObjectList = newList
-//  }
-
-  //····················································································································
-  //    performSnapShotAction:
-  //····················································································································
-
-  @IBAction func performSnapShotAction (_: AnyObject) {
+  @IBAction func performSnapShotAction (_ : AnyObject) {
     gSnapShotDictionary = gLiveObjectCountByClass
     gRefreshDisplay = true
   }
@@ -448,8 +436,8 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   func tableView (_ aTableView : NSTableView,
-                  objectValueFor objectValueForTableColumn: NSTableColumn?,
-                  row:Int) -> Any? {
+                  objectValueFor objectValueForTableColumn : NSTableColumn?,
+                  row : Int) -> Any? {
     if !Thread.isMainThread {
       presentErrorWindow (#file, #line, "not in main thread")
     }
@@ -459,7 +447,7 @@ private var gDebugObject : EBAllocationDebug? = nil
 
   //····················································································································
 
-  func numberOfRows (in _: NSTableView) -> Int {
+  func numberOfRows (in tableView : NSTableView) -> Int {
     if !Thread.isMainThread {
       presentErrorWindow (#file, #line, "not in main thread")
     }

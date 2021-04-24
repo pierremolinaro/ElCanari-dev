@@ -15,6 +15,7 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
+    self.wantsLayer = true
   }
 
   //····················································································································
@@ -22,6 +23,7 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   override init (frame : NSRect) {
     super.init (frame: frame)
     noteObjectAllocation (self)
+    self.wantsLayer = true
   }
 
   //····················································································································

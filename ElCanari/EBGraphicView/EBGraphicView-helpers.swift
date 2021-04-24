@@ -18,8 +18,17 @@ extension EBGraphicView {
   //····················································································································
 
   final func performZoomToFit () {
-    let actualZoom = 0 // Means zoom to fit
-    self.mZoomPropertyCache = actualZoom
+//    if let scrollView = self.enclosingScrollView {
+//      let box = self.objectsAndIssueBoundingBox
+//      if !box.isEmpty {
+//        scrollView.magnify (toFit: box)
+//        self.applyZoom ()
+//      }
+//    }
+//    let actualZoom = 0 // Means zoom to fit
+//    self.mZoomPropertyCache = actualZoom
+//    self.applyZoom ()
+    self.mZoomPropertyCache = 0 // Means zoom to fit
     self.applyZoom ()
   }
 
