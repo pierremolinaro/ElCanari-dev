@@ -28,13 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.7"
+let VERSION_CANARI = "1.3.8"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Fixed generation of octogonal pads in merger document"
+  "Minor bugs fixed"
 ]
 let CHANGES : [String] = [
-  "Uses Sparkle 1.26.0"
 ]
 let NEWS : [String] = [
 ]
