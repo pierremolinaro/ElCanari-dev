@@ -1219,7 +1219,7 @@ final class BorderCurve : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
@@ -1244,19 +1244,13 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
       }
       if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNext = inObjectArray [objectIndex] as? BorderCurve })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNext = inObjectArray [objectIndex] as? BorderCurve })
       }
       if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
       }
     //--- To many relationships
     }

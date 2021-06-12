@@ -1302,7 +1302,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawBoardLimits = value

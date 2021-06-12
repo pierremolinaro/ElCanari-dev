@@ -1970,7 +1970,7 @@ final class BoardConnector : BoardObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mComponentPadName = value
@@ -2010,9 +2010,7 @@ final class BoardConnector : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
       }
     //--- To many relationships
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
@@ -2021,9 +2019,7 @@ final class BoardConnector : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracksP2 = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracksP2 = relationshipArray })
       }
       if let range = inDictionary ["mTracksP1"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
@@ -2031,9 +2027,7 @@ final class BoardConnector : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracksP1 = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracksP1 = relationshipArray })
       }
     }
   //--- End of addOperation

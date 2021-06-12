@@ -292,7 +292,7 @@ final class DeviceDocumentation : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mFileName = value

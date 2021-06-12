@@ -704,7 +704,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x = value
@@ -717,14 +717,10 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.myModel = inObjectArray [objectIndex] as? BoardModel })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.myModel = inObjectArray [objectIndex] as? BoardModel })
       }
       if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.myRoot = inObjectArray [objectIndex] as? MergerRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.myRoot = inObjectArray [objectIndex] as? MergerRoot })
       }
     //--- To many relationships
     }

@@ -859,7 +859,7 @@ final class SymbolRoot : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedInspector = value
@@ -899,9 +899,7 @@ final class SymbolRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.symbolObjects = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.symbolObjects = relationshipArray })
       }
     }
   //--- End of addOperation

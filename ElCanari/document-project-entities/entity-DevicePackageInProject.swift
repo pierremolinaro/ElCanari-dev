@@ -363,7 +363,7 @@ final class DevicePackageInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPackageName = value
@@ -379,9 +379,7 @@ final class DevicePackageInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mMasterPads = relationshipArray })
       }
     }
   //--- End of addOperation

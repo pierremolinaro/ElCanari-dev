@@ -603,7 +603,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mFirstX = value
@@ -625,9 +625,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
       }
     //--- To many relationships
     }

@@ -6,18 +6,84 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+private let LOG_READ_DURATION = false
+
+//----------------------------------------------------------------------------------------------------------------------
+
 final class ParallelObjectSetupContext {
-  let mOperationQueue = OperationQueue ()
-  var mToOneSetUpOperationList = [() -> Void] ()
-  var mToManySetUpOperationList = [() -> Void] ()
-  let mMutex = DispatchSemaphore (value: 1)
+  private let mOperationQueue = OperationQueue ()
+  private var mToOneSetUpOperationList = [() -> Void] ()
+  private var mToManySetUpOperationList = [() -> Void] ()
+  private let mMutex = DispatchSemaphore (value: 1)
+  private var mOperationQueueCount = 0
+
+  //····················································································································
+
+  func addOperation (_ inOperation : @escaping () -> Void) {
+    self.mOperationQueueCount += 1
+    self.mOperationQueue.addOperation (inOperation)
+  }
+
+  //····················································································································
+
+  fileprivate var operationQueueCount : Int { return self.mOperationQueueCount }
+
+  //····················································································································
+
+  func addToOneSetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
+    self.mMutex.wait ()
+    self.mToOneSetUpOperationList.append (inDeferredOperation)
+    self.mMutex.signal ()
+  }
+
+  //····················································································································
+
+  func addToManySetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
+    self.mMutex.wait ()
+    self.mToManySetUpOperationList.append (inDeferredOperation)
+    self.mMutex.signal ()
+  }
+
+  //····················································································································
+
+  fileprivate func waitUntilAllOperationsAreFinished () {
+    self.mOperationQueue.waitUntilAllOperationsAreFinished ()
+  }
+
+  //····················································································································
+
+  fileprivate var toOneSetupOperationCount : Int { return self.mToOneSetUpOperationList.count }
+
+  //····················································································································
+
+  fileprivate func performToOneSetupOperations () {
+    for toOneSetupOperation in self.mToOneSetUpOperationList {
+      toOneSetupOperation ()
+    }
+  }
+
+  //····················································································································
+
+  fileprivate var toManySetupOperationCount : Int { return self.mToManySetUpOperationList.count }
+
+  //····················································································································
+
+  fileprivate func performToManySetupOperations () {
+    for toManySetupOperation in self.mToManySetUpOperationList {
+      toManySetupOperation ()
+    }
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
                               from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
-  // var startLoadFile = Date ()
+  var operationStartDate = Date ()
+  let startDate = operationStartDate
 //--- Check header ends with line feed
   ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
 //--- Read Status
@@ -46,13 +112,16 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     classDefinition.append ((className, propertyNameArray))
   }
-  // Swift.print ("Read classes \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  // startLoadFile = Date ()
+  if LOG_READ_DURATION {
+    Swift.print ("Read classes \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
+    operationStartDate = Date ()
+  }
 //--- Read objects
   var objectArray = [EBManagedObject] ()
   var propertyValueArray = [[String : NSRange]] ()
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
+    let propertyNameArray = classDefinition [classIndex].1
     // Swift.print ("CLASS INDEX: '\(classIndex)'")
     let managedObject = newInstanceOfEntityNamed (inUndoManager, classDefinition [classIndex].0)!
     objectArray.append (managedObject)
@@ -66,15 +135,17 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
         readPropertyValues = false
       }else{
         let propertyRange = ioDataScanner.getLineRange ()
-        valueDictionary [classDefinition [classIndex].1 [propertyIndex]] = propertyRange
+        valueDictionary [propertyNameArray [propertyIndex]] = propertyRange
         propertyIndex += 1
         // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
       }
     }
     propertyValueArray.append (valueDictionary)
   }
-//  Swift.print ("Read objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-//  startLoadFile = Date ()
+  if LOG_READ_DURATION {
+    Swift.print ("Read objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
+    operationStartDate = Date ()
+  }
 //--- Setup objects
   var idx = 0
   let parallelObjectSetupContext = ParallelObjectSetupContext ()
@@ -83,16 +154,21 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     idx += 1
     managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, parallelObjectSetupContext)
   }
-  parallelObjectSetupContext.mOperationQueue.waitUntilAllOperationsAreFinished ()
-  // Swift.print ("prepare objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  for setupOperation in parallelObjectSetupContext.mToOneSetUpOperationList {
-    setupOperation ()
+  parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
+  if LOG_READ_DURATION {
+    Swift.print ("Prepare objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
+    operationStartDate = Date ()
   }
-  // Swift.print ("setup toOne \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
-  for setupOperation in parallelObjectSetupContext.mToManySetUpOperationList {
-    setupOperation ()
+  parallelObjectSetupContext.performToOneSetupOperations ()
+  if LOG_READ_DURATION {
+    Swift.print ("Setup toOne \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
+    operationStartDate = Date ()
   }
-  // Swift.print ("setup objects \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms")
+  parallelObjectSetupContext.performToManySetupOperations ()
+  if LOG_READ_DURATION {
+    Swift.print ("Setup toMany \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
+    Swift.print ("Total duration \(Date ().timeIntervalSince (startDate) * 1000.0) ms")
+  }
 //--- Scanner error ?
   if !ioDataScanner.ok () {
     let dictionary = [

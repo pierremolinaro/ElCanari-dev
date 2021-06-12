@@ -896,7 +896,7 @@ final class FontRoot : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
         self.comments = value
@@ -921,9 +921,7 @@ final class FontRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.characters = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.characters = relationshipArray })
       }
     }
   //--- End of addOperation

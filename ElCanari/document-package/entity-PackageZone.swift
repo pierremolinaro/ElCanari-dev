@@ -1347,7 +1347,7 @@ final class PackageZone : PackageObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x = value
@@ -1402,9 +1402,7 @@ final class PackageZone : PackageObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.forbiddenPadNumbers = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.forbiddenPadNumbers = relationshipArray })
       }
     }
   //--- End of addOperation

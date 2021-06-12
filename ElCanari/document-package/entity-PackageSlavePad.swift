@@ -1526,7 +1526,7 @@ final class PackageSlavePad : PackageObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
@@ -1575,9 +1575,7 @@ final class PackageSlavePad : PackageObject,
       }
     //--- To one relationships
       if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.master = inObjectArray [objectIndex] as? PackagePad })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.master = inObjectArray [objectIndex] as? PackagePad })
       }
     //--- To many relationships
     }

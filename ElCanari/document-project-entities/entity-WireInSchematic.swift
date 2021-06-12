@@ -548,18 +548,14 @@ final class WireInSchematic : SchematicObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mP1 = inObjectArray [objectIndex] as? PointInSchematic })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mP1 = inObjectArray [objectIndex] as? PointInSchematic })
       }
       if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mP2 = inObjectArray [objectIndex] as? PointInSchematic })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mP2 = inObjectArray [objectIndex] as? PointInSchematic })
       }
     //--- To many relationships
     }

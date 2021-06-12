@@ -1272,7 +1272,7 @@ final class NetClassInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetClassName = value
@@ -1312,9 +1312,7 @@ final class NetClassInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mNets = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mNets = relationshipArray })
       }
     }
   //--- End of addOperation

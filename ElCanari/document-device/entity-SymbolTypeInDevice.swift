@@ -788,7 +788,7 @@ final class SymbolTypeInDevice : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mTypeName = value
@@ -813,9 +813,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mInstances = relationshipArray })
       }
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
         var relationshipArray = [SymbolPinTypeInDevice] ()
@@ -823,9 +821,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPinTypes = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPinTypes = relationshipArray })
       }
     }
   //--- End of addOperation

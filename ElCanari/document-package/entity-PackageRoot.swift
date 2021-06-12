@@ -3636,7 +3636,7 @@ final class PackageRoot : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedPageIndex = value
@@ -3763,9 +3763,7 @@ final class PackageRoot : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint })
       }
     //--- To many relationships
       if let range = inDictionary ["packageObjects"], range.length > 0 {
@@ -3774,9 +3772,7 @@ final class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageObject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.packageObjects = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.packageObjects = relationshipArray })
       }
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
         var relationshipArray = [PackageModelImageDoublePoint] ()
@@ -3784,9 +3780,7 @@ final class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mModelImageObjects = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mModelImageObjects = relationshipArray })
       }
     }
   //--- End of addOperation

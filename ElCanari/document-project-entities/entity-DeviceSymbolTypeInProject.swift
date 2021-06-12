@@ -276,7 +276,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSymbolTypeName = value

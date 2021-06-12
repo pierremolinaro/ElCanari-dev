@@ -1605,7 +1605,7 @@ final class PointInSchematic : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSymbolPinName = value
@@ -1618,24 +1618,16 @@ final class PointInSchematic : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
       }
       if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
       }
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
       }
     //--- To many relationships
       if let range = inDictionary ["mLabels"], range.length > 0 {
@@ -1644,9 +1636,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mLabels = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mLabels = relationshipArray })
       }
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
@@ -1654,9 +1644,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP2s = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mWiresP2s = relationshipArray })
       }
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
@@ -1664,9 +1652,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mWiresP1s = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mWiresP1s = relationshipArray })
       }
     }
   //--- End of addOperation

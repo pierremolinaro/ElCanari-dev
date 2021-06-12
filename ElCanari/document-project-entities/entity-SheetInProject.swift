@@ -724,16 +724,14 @@ final class SheetInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSheetTitle = value
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
       }
     //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
@@ -742,9 +740,7 @@ final class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mObjects = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mObjects = relationshipArray })
       }
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
@@ -752,9 +748,7 @@ final class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
       }
     }
   //--- End of addOperation

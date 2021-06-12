@@ -1913,7 +1913,7 @@ final class PackagePad : PackageObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
@@ -1965,9 +1965,7 @@ final class PackagePad : PackageObject,
       }
     //--- To one relationships
       if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.zone = inObjectArray [objectIndex] as? PackageZone })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.zone = inObjectArray [objectIndex] as? PackageZone })
       }
     //--- To many relationships
       if let range = inDictionary ["slaves"], range.length > 0 {
@@ -1976,9 +1974,7 @@ final class PackagePad : PackageObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.slaves = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.slaves = relationshipArray })
       }
     }
   //--- End of addOperation

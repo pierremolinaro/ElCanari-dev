@@ -802,7 +802,7 @@ final class SymbolBezierCurve : SymbolObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.y1 = value

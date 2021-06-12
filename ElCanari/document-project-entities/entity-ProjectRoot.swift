@@ -7887,7 +7887,7 @@ final class ProjectRoot : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
@@ -8104,14 +8104,10 @@ final class ProjectRoot : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSelectedSheet = inObjectArray [objectIndex] as? SheetInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSelectedSheet = inObjectArray [objectIndex] as? SheetInProject })
       }
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
       }
     //--- To many relationships
       if let range = inDictionary ["mSheets"], range.length > 0 {
@@ -8120,9 +8116,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SheetInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSheets = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSheets = relationshipArray })
       }
       if let range = inDictionary ["mNetClasses"], range.length > 0 {
         var relationshipArray = [NetClassInProject] ()
@@ -8130,9 +8124,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mNetClasses = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mNetClasses = relationshipArray })
       }
       if let range = inDictionary ["mFonts"], range.length > 0 {
         var relationshipArray = [FontInProject] ()
@@ -8140,9 +8132,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mFonts = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mFonts = relationshipArray })
       }
       if let range = inDictionary ["mDevices"], range.length > 0 {
         var relationshipArray = [DeviceInProject] ()
@@ -8150,9 +8140,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mDevices = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mDevices = relationshipArray })
       }
       if let range = inDictionary ["mBorderCurves"], range.length > 0 {
         var relationshipArray = [BorderCurve] ()
@@ -8160,9 +8148,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BorderCurve)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mBorderCurves = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mBorderCurves = relationshipArray })
       }
       if let range = inDictionary ["mBoardObjects"], range.length > 0 {
         var relationshipArray = [BoardObject] ()
@@ -8170,9 +8156,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardObject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mBoardObjects = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mBoardObjects = relationshipArray })
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
@@ -8180,9 +8164,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mComponents = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mComponents = relationshipArray })
       }
     }
   //--- End of addOperation

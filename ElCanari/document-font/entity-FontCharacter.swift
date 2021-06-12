@@ -675,7 +675,7 @@ final class FontCharacter : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.codePoint = value
@@ -697,9 +697,7 @@ final class FontCharacter : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.segments = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.segments = relationshipArray })
       }
     }
   //--- End of addOperation

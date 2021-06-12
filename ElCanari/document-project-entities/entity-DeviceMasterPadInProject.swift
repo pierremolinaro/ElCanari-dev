@@ -733,7 +733,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
@@ -770,9 +770,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSlavePadInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSlavePads = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSlavePads = relationshipArray })
       }
     }
   //--- End of addOperation

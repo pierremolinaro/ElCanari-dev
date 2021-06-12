@@ -798,7 +798,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mPinX = value
@@ -838,9 +838,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mInstances = relationshipArray })
       }
     }
   //--- End of addOperation

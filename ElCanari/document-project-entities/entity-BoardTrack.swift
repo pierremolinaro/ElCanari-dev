@@ -2103,7 +2103,7 @@ final class BoardTrack : BoardObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
         self.mSide = value
@@ -2146,19 +2146,13 @@ final class BoardTrack : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
       }
       if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
       }
     //--- To many relationships
     }

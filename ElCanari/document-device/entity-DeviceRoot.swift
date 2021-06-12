@@ -1920,7 +1920,7 @@ final class DeviceRoot : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSelectedPageIndex = value
@@ -1975,9 +1975,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mDocs = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mDocs = relationshipArray })
       }
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
         var relationshipArray = [SymbolInstanceInDevice] ()
@@ -1985,9 +1983,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSymbolInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbolInstances = relationshipArray })
       }
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = [PackageInDevice] ()
@@ -1995,9 +1991,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPackages = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPackages = relationshipArray })
       }
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
         var relationshipArray = [SymbolTypeInDevice] ()
@@ -2005,9 +1999,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSymbolTypes = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbolTypes = relationshipArray })
       }
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
         var relationshipArray = [PadProxyInDevice] ()
@@ -2015,9 +2007,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPadProxies = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPadProxies = relationshipArray })
       }
     }
   //--- End of addOperation

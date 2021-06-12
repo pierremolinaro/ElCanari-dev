@@ -842,16 +842,14 @@ final class NetInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetName = value
       }
     //--- To one relationships
       if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
@@ -860,9 +858,7 @@ final class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
       }
       if let range = inDictionary ["mTracks"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
@@ -870,9 +866,7 @@ final class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mTracks = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracks = relationshipArray })
       }
     }
   //--- End of addOperation

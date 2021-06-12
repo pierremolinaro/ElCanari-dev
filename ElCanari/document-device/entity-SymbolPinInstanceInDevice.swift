@@ -666,23 +666,17 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
       }
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
       }
       if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
       }
     //--- To many relationships
     }

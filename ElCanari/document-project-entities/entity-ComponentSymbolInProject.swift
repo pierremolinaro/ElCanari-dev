@@ -1342,7 +1342,7 @@ final class ComponentSymbolInProject : SchematicObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
@@ -1379,9 +1379,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
@@ -1390,9 +1388,7 @@ final class ComponentSymbolInProject : SchematicObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mPoints = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
       }
     }
   //--- End of addOperation

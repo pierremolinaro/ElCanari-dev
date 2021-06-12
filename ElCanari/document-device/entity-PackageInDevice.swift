@@ -1035,7 +1035,7 @@ final class PackageInDevice : EBGraphicManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mFileData = value
@@ -1057,9 +1057,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
       }
     //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
@@ -1068,9 +1066,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mMasterPads = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mMasterPads = relationshipArray })
       }
     }
   //--- End of addOperation

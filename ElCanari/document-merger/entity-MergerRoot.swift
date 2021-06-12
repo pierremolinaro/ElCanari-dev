@@ -2311,7 +2311,7 @@ final class MergerRoot : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedPageIndex = value
@@ -2372,9 +2372,7 @@ final class MergerRoot : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
       }
     //--- To many relationships
       if let range = inDictionary ["boardModels"], range.length > 0 {
@@ -2383,9 +2381,7 @@ final class MergerRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModel)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.boardModels = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.boardModels = relationshipArray })
       }
       if let range = inDictionary ["boardInstances"], range.length > 0 {
         var relationshipArray = [MergerBoardInstance] ()
@@ -2393,9 +2389,7 @@ final class MergerRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.boardInstances = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.boardInstances = relationshipArray })
       }
     }
   //--- End of addOperation

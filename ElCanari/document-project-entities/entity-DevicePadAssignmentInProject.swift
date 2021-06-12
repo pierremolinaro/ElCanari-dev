@@ -380,16 +380,14 @@ final class DevicePadAssignmentInProject : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPadName = value
       }
     //--- To one relationships
       if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mPin = inObjectArray [objectIndex] as? DevicePinInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPin = inObjectArray [objectIndex] as? DevicePinInProject })
       }
     //--- To many relationships
     }

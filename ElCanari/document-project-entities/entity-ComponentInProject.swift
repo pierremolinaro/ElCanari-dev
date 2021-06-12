@@ -3034,7 +3034,7 @@ final class ComponentInProject : BoardObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mSlavePadsShouldBeRouted = value
@@ -3101,24 +3101,16 @@ final class ComponentInProject : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mDevice = inObjectArray [objectIndex] as? DeviceInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mDevice = inObjectArray [objectIndex] as? DeviceInProject })
       }
       if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject })
       }
       if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mNameFont = inObjectArray [objectIndex] as? FontInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNameFont = inObjectArray [objectIndex] as? FontInProject })
       }
       if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mValueFont = inObjectArray [objectIndex] as? FontInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mValueFont = inObjectArray [objectIndex] as? FontInProject })
       }
     //--- To many relationships
       if let range = inDictionary ["mConnectors"], range.length > 0 {
@@ -3127,9 +3119,7 @@ final class ComponentInProject : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardConnector)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mConnectors = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mConnectors = relationshipArray })
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
         var relationshipArray = [ComponentSymbolInProject] ()
@@ -3137,9 +3127,7 @@ final class ComponentInProject : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.mSymbols = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbols = relationshipArray })
       }
     }
   //--- End of addOperation

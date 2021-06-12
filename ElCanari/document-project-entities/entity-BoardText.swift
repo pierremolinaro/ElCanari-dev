@@ -994,7 +994,7 @@ final class BoardText : BoardObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
@@ -1028,9 +1028,7 @@ final class BoardText : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToOneSetUpOperationList.append ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
       }
     //--- To many relationships
     }

@@ -827,7 +827,7 @@ final class ArtworkRoot : EBManagedObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedTab = value
@@ -870,9 +870,7 @@ final class ArtworkRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
         }
-        inParallelObjectSetupContext.mMutex.wait ()
-        inParallelObjectSetupContext.mToManySetUpOperationList.append ({ self.fileGenerationParameterArray = relationshipArray })
-        inParallelObjectSetupContext.mMutex.signal ()
+        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.fileGenerationParameterArray = relationshipArray })
       }
     }
   //--- End of addOperation

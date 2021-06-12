@@ -587,7 +587,7 @@ final class CommentInSchematic : SchematicObject,
                                          _ inData : Data,
                                          _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.mOperationQueue.addOperation {
+    inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
       if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
         self.mColor = value
