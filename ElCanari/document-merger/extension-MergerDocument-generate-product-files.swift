@@ -476,7 +476,8 @@ extension MergerDocument {
   fileprivate func writePDFDrillFile (atPath inFilePath : String) throws {
     if let cocoaBoardRect : NSRect = self.rootObject.boardRect?.cocoaRect {
       let boardWidth = self.rootObject.boardWidth ?? 0
-      let filePath = inFilePath + "." + (self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??") + ".pdf"
+      let drillDataFileExtension = self.rootObject.mArtwork_property.propval?.drillDataFileExtension ?? "??"
+      let filePath = inFilePath + "." + drillDataFileExtension + ".pdf"
       self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
       var drillBezierPaths = [EBBezierPath] ()
       for board in self.rootObject.boardInstances_property.propval {
