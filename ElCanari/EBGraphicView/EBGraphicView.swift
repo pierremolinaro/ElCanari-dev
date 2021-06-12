@@ -17,14 +17,15 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
-    self.wantsLayer = true
-    self.postsFrameChangedNotifications = true
-    NotificationCenter.default.addObserver (
-      self,
-      selector: #selector (self.ebFrameChanged (_:)),
-      name: NSView.frameDidChangeNotification,
-      object: self
-    )
+//    self.wantsLayer = true
+//    self.postsFrameChangedNotifications = true
+//    NotificationCenter.default.addObserver (
+//      self,
+//      selector: #selector (self.ebFrameChanged (_:)),
+//      name: NSView.frameDidChangeNotification,
+//      object: self
+//    )
+    DispatchQueue.main.async { self.configureGraphicView () }
   }
 
   //····················································································································
@@ -32,14 +33,15 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   override init (frame : NSRect) {
     super.init (frame: frame)
     noteObjectAllocation (self)
-    self.postsFrameChangedNotifications = true
-    NotificationCenter.default.addObserver (
-      self,
-      selector: #selector (self.ebFrameChanged (_:)),
-      name: NSView.frameDidChangeNotification,
-      object: self
-    )
-  }
+//    self.postsFrameChangedNotifications = true
+//    NotificationCenter.default.addObserver (
+//      self,
+//      selector: #selector (self.ebFrameChanged (_:)),
+//      name: NSView.frameDidChangeNotification,
+//      object: self
+//    )
+    DispatchQueue.main.async { self.configureGraphicView () }
+ }
 
   //····················································································································
 
@@ -49,8 +51,17 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  override func awakeFromNib () {
-    super.awakeFromNib ()
+  private func configureGraphicView () {
+ //   NSLog ("configureGraphicView \(self)")
+  //  super.awakeFromNib ()
+    self.wantsLayer = true
+    self.postsFrameChangedNotifications = true
+    NotificationCenter.default.addObserver (
+      self,
+      selector: #selector (self.ebFrameChanged (_:)),
+      name: NSView.frameDidChangeNotification,
+      object: self
+    )
     if !self.wantsLayer {
       presentErrorWindow (#file, #line, "EBGraphicView requires layer")
     }

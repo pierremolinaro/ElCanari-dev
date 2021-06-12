@@ -812,7 +812,7 @@ Cg
                     </segmentedCell>
                 </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="203" y="-51.5"/>
+            <point key="canvasLocation" x="-25" y="-17.5"/>
         </customView>
         <customView id="gB9-36-zn7" userLabel="Object inspector Base View" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>

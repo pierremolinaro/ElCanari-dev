@@ -36,6 +36,7 @@ extension EBGraphicView {
   //····················································································································
 
   final internal func addEndLiveMagnificationObserver () {
+ //   NSLog ("addEndLiveMagnificationObserver \(self.enclosingScrollView)")
     if let scrollView = self.enclosingScrollView {
       let nc = NotificationCenter.default
       nc.addObserver (
@@ -51,14 +52,17 @@ extension EBGraphicView {
 
   @objc final private func didEndLiveMagnification (_ inNotification : Notification) {
     let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
+//    NSLog ("didEndLiveMagnification \(newZoom)")
     _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
   }
 
   //····················································································································
   //  Live Resize
+  //  Appelé quand l'utilisateur redimensionne la vue graphique, via la fonction tile de la scrollView
   //····················································································································
 
   final internal func scrollViewIsLiveResizing () {
+//    NSLog ("scrollViewIsLiveResizing \(self.mZoomPropertyCache) \(self)")
     if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
       let box = self.objectsAndIssueBoundingBox
       if !box.isEmpty {
