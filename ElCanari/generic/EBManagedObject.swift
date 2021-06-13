@@ -52,7 +52,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_a
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
-    self.mEBUndoManager = ebUndoManager
+    mEBUndoManager = ebUndoManager
     super.init ()
   }
 

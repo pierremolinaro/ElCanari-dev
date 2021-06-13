@@ -2999,7 +2999,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(Preferences) final class Preferences : ObjcObject, NSWindowDelegate {
+@objc(Preferences) final class Preferences : EBObject, NSWindowDelegate {
 
   //····················································································································
   //    Outlets

@@ -322,7 +322,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
   func alignmentPointSetArray () -> [Set<CanariPoint>] {
     var result = [Set<CanariPoint>] ()
     for object in self.objectArray {
-      result.append (object.alignmentPoints ())
+      result.append (object.alignmentPoints ().points)
     }
     return result
   }
@@ -644,7 +644,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [SymbolObject] ()
-      var userSet = Set <EBObject> ()
+      let userSet = ObjcObjectSet ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -654,7 +654,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
           }
           idx += 1
           if errorMessage == "" {
-            object.translate (xBy: X, yBy: Y, userSet: &userSet)
+            object.translate (xBy: X, yBy: Y, userSet: userSet)
             newObjects.append (object)
           }
         }
@@ -944,7 +944,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
   //····················································································································
 
   var canRotate90_property = EBTransientProperty_Bool ()
-  private var mRotate90PointSet = Set <CanariPoint> ()
+  private var mRotate90PointSet = ObjcCanariPointSet ()
 
  //····················································································································
 
@@ -954,7 +954,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
       return false
     }else{
       for object in self.selectedArray {
-        if !object.canRotate90 (accumulatedPoints: &self.mRotate90PointSet) {
+        if !object.canRotate90 (accumulatedPoints: self.mRotate90PointSet) {
           return false
         }
       }
@@ -965,20 +965,20 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
   //····················································································································
 
   func rotate90Clockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = Set <EBObject> ()
+    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: r.center, userSet: &userSet)
+      object.rotate90Clockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
     }
   }
 
   //····················································································································
 
   func rotate90CounterClockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = Set <EBObject> ()
+    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
+    let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
+      object.rotate90CounterClockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
     }
   }
 

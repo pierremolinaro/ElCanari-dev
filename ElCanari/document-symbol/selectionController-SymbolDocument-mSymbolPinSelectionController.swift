@@ -275,7 +275,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
@@ -384,7 +383,6 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

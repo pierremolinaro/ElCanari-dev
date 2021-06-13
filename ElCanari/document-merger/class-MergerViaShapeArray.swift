@@ -28,11 +28,11 @@ final class MergerViaShapeArray : EBObject {
 
   //····················································································································
 
-//  override var description : String {
-//    get {
-//      return "MergerViaShapeArray " + String (viaShapeArray.count)
-//    }
-//  }
+  override var description : String {
+    get {
+      return "MergerViaShapeArray " + String (viaShapeArray.count)
+    }
+  }
 
   //····················································································································
 

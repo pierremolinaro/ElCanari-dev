@@ -67,53 +67,59 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
   //  Cursor
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
+  @objc dynamic func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
   //····················································································································
   //  Translation
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
+  @objc dynamic func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+    return ObjcCanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
 
-  func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  @objc dynamic func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
+  @objc dynamic func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
   //  Knob
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func canMove (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
-                shift inShift : Bool) -> CanariPoint {
+  @objc dynamic func canMove (knob inKnobIndex : Int,
+                              proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                              proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                              unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                              shift inShift : Bool) -> ObjcCanariPoint {
     return inProposedAlignedTranslation
   }
 
   //····················································································································
 
-  func move (knob inKnobIndex: Int,
-             proposedDx inDx: Int,
-             proposedDy inDy: Int,
-             unalignedMouseLocationX inUnlignedMouseLocationX : Int,
-             unalignedMouseLocationY inUnlignedMouseLocationY : Int,
-             alignedMouseLocationX inAlignedMouseLocationX : Int,
-             alignedMouseLocationY inAlignedMouseLocationY : Int,
-             shift inShift : Bool) {
+  @objc dynamic func move (knob inKnobIndex: Int,
+                           proposedDx inDx: Int,
+                           proposedDy inDy: Int,
+                           unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                           unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                           alignedMouseLocationX inAlignedMouseLocationX : Int,
+                           alignedMouseLocationY inAlignedMouseLocationY : Int,
+                           shift inShift : Bool) {
   }
 
   //····················································································································
@@ -122,100 +128,240 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func snapToGrid (_ inGrid : Int) {
+  @objc dynamic func snapToGrid (_ inGrid : Int) {
   }
 
   //····················································································································
 
-  func canSnapToGrid (_ inGrid : Int) -> Bool {
+  @objc dynamic func canSnapToGrid (_ inGrid : Int) -> Bool {
     return false
   }
 
   //····················································································································
   //  HORIZONTAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func flipHorizontally () {
+  @objc dynamic func flipHorizontally () {
   }
 
   //····················································································································
 
-  func canFlipHorizontally () -> Bool {
+  @objc dynamic func canFlipHorizontally () -> Bool {
     return false
   }
 
   //····················································································································
   //  VERTICAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func flipVertically () {
+  @objc dynamic func flipVertically () {
   }
 
   //····················································································································
 
-  func canFlipVertically () -> Bool {
+  @objc dynamic func canFlipVertically () -> Bool {
     return false
   }
 
   //····················································································································
   //  ROTATE 90
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  @objc dynamic func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
+  @objc dynamic func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
+  @objc dynamic func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
   //  Save into additional dictionary
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
+  @objc dynamic func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
   }
 
   //····················································································································
   //  COPY AND PASTE
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func canCopyAndPaste () -> Bool {
+  @objc dynamic func canCopyAndPaste () -> Bool {
     return false
   }
 
   //····················································································································
 
-  func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
-                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  @objc dynamic func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                            objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
   //····················································································································
   //  Alignment Points
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func alignmentPoints () -> Set <CanariPoint> {
-    return Set <CanariPoint> ()
+  @objc dynamic func alignmentPoints () -> ObjcCanariPointSet {
+    return ObjcCanariPointSet ()
   }
 
   //····················································································································
   //  Can be deleted
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  func canBeDeleted () -> Bool {
+  @objc dynamic func canBeDeleted () -> Bool {
     return true
   }
 
   //····················································································································
 
-  func operationBeforeRemoving () {
+  @objc dynamic func operationBeforeRemoving () {
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@objc final class ObjcCanariPoint : EBObject {
+
+  //····················································································································
+
+  let p : CanariPoint
+
+  //····················································································································
+
+  var x : Int { return self.p.x }
+  var y : Int { return self.p.y }
+
+  //····················································································································
+
+  override init () {
+    self.p = CanariPoint ()
+    super.init ()
+  }
+
+  //····················································································································
+
+  init (x inX : Int, y inY : Int) {
+    self.p = CanariPoint (x: inX, y: inY)
+    super.init ()
+  }
+
+  //····················································································································
+
+  init (canariPoint inPoint : CanariPoint) {
+    self.p = inPoint
+    super.init ()
+  }
+
+  //····················································································································
+
+  func rotated90Clockwise (x inX : Int, y inY : Int) -> CanariPoint {
+    return self.rotated90Clockwise (CanariPoint (x: inX, y: inY))
+  }
+
+  //····················································································································
+
+  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
+    return self.p.rotated90Clockwise (inP)
+  }
+
+  //····················································································································
+
+  func rotated90CounterClockwise (x inX : Int, y inY : Int) -> CanariPoint {
+    return self.rotated90CounterClockwise (CanariPoint (x: inX, y: inY))
+  }
+
+  //····················································································································
+
+  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
+    return self.p.rotated90CounterClockwise (inP)
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@objc final class ObjcCanariPointSet : EBObject {
+
+  //····················································································································
+
+  private var mPoints = Set <CanariPoint> ()
+
+  //····················································································································
+
+  var points : Set <CanariPoint> { return self.mPoints }
+
+  //····················································································································
+
+  func insert (_ inPoint : CanariPoint) {
+    self.mPoints.insert (inPoint)
+  }
+
+  //····················································································································
+
+  func insert (x inX : Int, y inY : Int) {
+    self.mPoints.insert (CanariPoint (x: inX, y: inY))
+  }
+
+  //····················································································································
+
+  func removeAll () {
+    self.mPoints.removeAll ()
+  }
+
+  //····················································································································
+
+  var isEmpty : Bool {
+    return self.mPoints.isEmpty
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@objc final class ObjcObjectSet : EBObject {
+
+  //····················································································································
+
+  private var mObjects = Set <EBObject> ()
+
+  //····················································································································
+
+  func insert (_ inObject : EBObject) {
+    self.mObjects.insert (inObject)
+  }
+
+  //····················································································································
+
+  func contains (_ inObject : EBObject) -> Bool {
+    return self.mObjects.contains (inObject)
   }
 
   //····················································································································

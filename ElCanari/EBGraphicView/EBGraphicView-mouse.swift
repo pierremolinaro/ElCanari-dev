@@ -95,9 +95,9 @@ extension EBGraphicView {
     if let knobIndex = inPossibleKnobIndex { // Mode knob
       let translation = objects [objectIndex].canMove (
         knob: knobIndex,
-        proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
-        proposedAlignedTranslation: inProposedAlignedTranslation,
-        unalignedMouseDraggedLocation: inUnalignedLastMouseDraggedLocation,
+        proposedUnalignedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedUnalignedTranslation),
+        proposedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedAlignedTranslation),
+        unalignedMouseDraggedLocation: ObjcCanariPoint (canariPoint: inUnalignedLastMouseDraggedLocation),
         shift: shift
       )
       if (translation.x != 0) || (translation.y != 0) {
@@ -132,9 +132,9 @@ extension EBGraphicView {
       dy = p.y
     }
     if (dx != 0) || (dy != 0) {
-      var userSet = Set <EBObject> ()
+      let userSet = ObjcObjectSet ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-        object.translate (xBy: dx, yBy: dy, userSet: &userSet)
+        object.translate (xBy: dx, yBy: dy, userSet: userSet)
       }
     }
   }

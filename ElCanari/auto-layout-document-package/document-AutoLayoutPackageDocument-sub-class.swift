@@ -204,7 +204,7 @@ import Cocoa
          let X = dataDictionary [X_KEY] as? Int,
          let Y = dataDictionary [Y_KEY] as? Int {
         var newObjectArray = [PackageObject] ()
-        var userSet = Set <EBObject> ()
+        let userSet = ObjcObjectSet ()
         var idx = 0
         var errorMessage = ""
         for dictionary in dictionaryArray {
@@ -217,7 +217,7 @@ import Cocoa
               newObject.translate (
                 xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
                 yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y,
-                userSet: &userSet
+                userSet: userSet
               )
               newObjectArray.append (newObject)
             }

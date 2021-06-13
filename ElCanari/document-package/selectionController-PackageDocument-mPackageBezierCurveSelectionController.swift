@@ -351,7 +351,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageBezierCurveSelectionController.showObjectWindowFromExplorerButton(_:))
@@ -508,7 +507,6 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageBezierCurveSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

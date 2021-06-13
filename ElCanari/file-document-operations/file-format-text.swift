@@ -113,7 +113,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     classDefinition.append ((className, propertyNameArray))
   }
   if LOG_READ_DURATION {
-    Swift.print ("Read classes \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
+    Swift.print ("Read classes \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
     operationStartDate = Date ()
   }
 //--- Read objects
@@ -143,7 +143,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     propertyValueArray.append (valueDictionary)
   }
   if LOG_READ_DURATION {
-    Swift.print ("Read objects \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
+    Swift.print ("Read objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
     operationStartDate = Date ()
   }
 //--- Setup objects
@@ -156,18 +156,18 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
   if LOG_READ_DURATION {
-    Swift.print ("Prepare objects \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
+    Swift.print ("Prepare objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
     operationStartDate = Date ()
   }
   parallelObjectSetupContext.performToOneSetupOperations ()
   if LOG_READ_DURATION {
-    Swift.print ("Setup toOne \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
+    Swift.print ("Setup toOne \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
     operationStartDate = Date ()
   }
   parallelObjectSetupContext.performToManySetupOperations ()
   if LOG_READ_DURATION {
-    Swift.print ("Setup toMany \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
-    Swift.print ("Total duration \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms")
+    Swift.print ("Setup toMany \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
+    Swift.print ("Total duration \(Date ().timeIntervalSince (startDate) * 1000.0) ms")
   }
 //--- Scanner error ?
   if !ioDataScanner.ok () {

@@ -174,7 +174,6 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_FontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
@@ -235,7 +234,6 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_FontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

@@ -10,6 +10,202 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
+let VERY_LARGE_PAD_NUMBER = 1_000_000
+
+//----------------------------------------------------------------------------------------------------------------------
+//   EXTENSION PackagePad
+//----------------------------------------------------------------------------------------------------------------------
+
+extension PackagePad {
+
+  //····················································································································
+
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+    self.xCenter += inDx
+    self.yCenter += inDy
+  }
+
+  //····················································································································
+  //  Knob
+  //····················································································································
+
+  override func canMove (knob inKnobIndex : Int,
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
+                         shift inShift : Bool) -> ObjcCanariPoint {
+    return inProposedAlignedTranslation
+ }
+
+  //····················································································································
+
+  override func move (knob inKnobIndex: Int,
+                      proposedDx inDx: Int,
+                      proposedDy inDy: Int,
+                      unalignedMouseLocationX inUnlignedMouseLocationX : Int,
+                      unalignedMouseLocationY inUnlignedMouseLocationY : Int,
+                      alignedMouseLocationX inAlignedMouseLocationX : Int,
+                      alignedMouseLocationY inAlignedMouseLocationY : Int,
+                      shift inShift : Bool) {
+  }
+
+  //····················································································································
+  //  Rotate 90°
+  //····················································································································
+
+  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+    accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+    let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
+    (self.width, self.height) = (self.height, self.width)
+    (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+    let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
+    self.xCenter = newCenter.x
+    self.yCenter = newCenter.y
+    (self.width, self.height) = (self.height, self.width)
+    (self.holeWidth, self.holeHeight) = (self.holeHeight, self.holeWidth)
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    self.padNumber += VERY_LARGE_PAD_NUMBER // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
+    return "" // Means ok
+  }
+
+  //····················································································································
+  //  SNAP TO GRID
+  //····················································································································
+
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    var result = (self.xCenter % inGrid) != 0
+    if !result {
+      result = (self.yCenter % inGrid) != 0
+    }
+    return result
+  }
+
+  //····················································································································
+
+  override func snapToGrid (_ inGrid : Int) {
+    self.xCenter = ((self.xCenter + inGrid / 2) / inGrid) * inGrid
+    self.yCenter = ((self.yCenter + inGrid / 2) / inGrid) * inGrid
+  }
+
+  //····················································································································
+
+  override func alignmentPoints () -> ObjcCanariPointSet {
+    let result = ObjcCanariPointSet ()
+    result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
+    return result
+  }
+
+  //····················································································································
+  //
+  //····················································································································
+
+  func angleInRadian (from inCanariPoint : CanariPoint, from inStartAngleInRadian : CGFloat) -> CGFloat {
+    let a = CanariPoint.angleInRadian (inCanariPoint, CanariPoint (x: self.xCenter, y: self.yCenter))
+    return (2.0 * CGFloat.pi + a - inStartAngleInRadian).truncatingRemainder (dividingBy: 2.0 * CGFloat.pi)
+  }
+
+  //····················································································································
+  //  Can be deleted
+  //····················································································································
+
+  override func canBeDeleted () -> Bool {
+    return self.slaves_property.propval.count == 0
+  }
+
+  //····················································································································
+
+  override func program () -> String {
+    var s = "pad "
+    s += stringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += " size "
+    s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += " shape "
+    s += self.padShape.descriptionForExplorer ()
+    s += " style "
+    s += self.padStyle.descriptionForExplorer ()
+    s += " hole "
+    s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.holeHeight, displayUnit : self.holeHeightUnit)
+    s += " number "
+    s += "\(self.padNumber)"
+    if self.slaves.count > 0 {
+      s += " id "
+      s += "\(self.ebObjectIndex)"
+    }
+    s += ";\n"
+    return s
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extension EBBezierPath {
+
+  //····················································································································
+
+  static func pad (centerX inCenterX : Int,
+                   centerY inCenterY : Int,
+                   width inWidth : Int,
+                   height inHeight : Int,
+                   shape inShape : PadShape) -> EBBezierPath {
+    let center = CanariPoint (x: inCenterX, y: inCenterY).cocoaPoint
+    let size = CanariSize (width: inWidth, height: inHeight).cocoaSize
+    let r = NSRect (center: center, size: size)
+    switch inShape {
+    case .rect :
+      return EBBezierPath (rect: r)
+    case .round :
+      return EBBezierPath (oblongInRect: r)
+    case .octo :
+      return EBBezierPath (octogonInRect: r)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 final class PadGeometryForERC {
   let id : Int
   let circles : [GeometricCircle]

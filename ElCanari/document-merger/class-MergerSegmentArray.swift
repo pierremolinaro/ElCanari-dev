@@ -50,9 +50,9 @@ final class MergerSegmentArray : EBObject {
 
   //····················································································································
 
-//  override var description : String {
-//    return "MergerSegmentArray " + String (self.segmentArray.count)
-//  }
+  override var description : String {
+    return "MergerSegmentArray " + String (self.segmentArray.count)
+  }
 
   //····················································································································
 

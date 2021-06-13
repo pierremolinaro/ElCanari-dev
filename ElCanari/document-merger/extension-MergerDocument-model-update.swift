@@ -150,7 +150,7 @@ fileprivate var gPanel : OpenPanelDelegateForUpdatingBoardModels? = nil
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate class OpenPanelDelegateForUpdatingBoardModels : ObjcObject, NSOpenSavePanelDelegate {
+fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES
