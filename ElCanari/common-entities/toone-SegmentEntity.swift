@@ -15,17 +15,21 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentEntity?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    if let oldValue = inOldValue {
+      oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+      oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    if let newValue = self.mInternalValue {
+      newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+      newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+    }
   }
 
   //····················································································································

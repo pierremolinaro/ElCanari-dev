@@ -96,17 +96,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_y1.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_y1.apply { (_ observer : EBEvent) in
+          managedObject.y1_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_y1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -153,17 +155,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_x2.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_x2.apply { (_ observer : EBEvent) in
+          managedObject.x2_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_x2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -210,17 +214,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_y2.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_y2.apply { (_ observer : EBEvent) in
+          managedObject.y2_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_y2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -267,17 +273,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-        managedObject.cpx1_property.addEBObserver (observer)
+  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpx1.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
+          managedObject.cpx1_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -324,17 +332,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-        managedObject.cpy1_property.addEBObserver (observer)
+  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpy1.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
+          managedObject.cpy1_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -381,17 +391,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-        managedObject.cpx2_property.addEBObserver (observer)
+  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpx2.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
+          managedObject.cpx2_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -438,17 +450,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-        managedObject.cpy2_property.addEBObserver (observer)
+  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpy2.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
+          managedObject.cpy2_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -495,17 +509,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
-        managedObject.x1Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_x1Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
+          managedObject.x1Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -552,17 +568,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
-        managedObject.y1Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_y1Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
+          managedObject.y1Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -609,17 +627,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
-        managedObject.x2Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_x2Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
+          managedObject.x2Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -666,17 +686,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
-        managedObject.y2Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_y2Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
+          managedObject.y2Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -723,17 +745,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx1Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpx1Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpx1Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpx1Unit.apply { (_ observer : EBEvent) in
+          managedObject.cpx1Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpx1Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -780,17 +804,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy1Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpy1Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpy1Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpy1Unit.apply { (_ observer : EBEvent) in
+          managedObject.cpy1Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpy1Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -837,17 +863,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx2Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpx2Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpx2Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpx2Unit.apply { (_ observer : EBEvent) in
+          managedObject.cpx2Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpx2Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -894,17 +922,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy2Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpy2Unit_property.addEBObserver (observer)
+  final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_cpy2Unit.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_cpy2Unit.apply { (_ observer : EBEvent) in
+          managedObject.cpy2Unit_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_cpy2Unit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -951,17 +981,19 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set <PackageBezier>) {
+    if !self.mObserversOf_x1.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_x1.apply { (_ observer : EBEvent) in
+          managedObject.x1_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     self.mObserversOf_x1.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -1008,7 +1040,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
@@ -1018,7 +1050,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)
@@ -1064,7 +1096,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -1074,7 +1106,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -1120,7 +1152,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -1130,7 +1162,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -1176,7 +1208,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
@@ -1186,7 +1218,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <PackageBezier>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)

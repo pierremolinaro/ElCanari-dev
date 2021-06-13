@@ -1402,7 +1402,7 @@ final class PackageZone : PackageObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.forbiddenPadNumbers = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.forbiddenPadNumbers = relationshipArray }
       }
     }
   //--- End of addOperation

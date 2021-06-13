@@ -15,31 +15,35 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageOval?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
-    inOldValue?.xUnit_property.removeEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
-    inOldValue?.yUnit_property.removeEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
-    inOldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    inOldValue?.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
-    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+      oldValue.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
+      oldValue.xUnit_property.removeEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
+      oldValue.yUnit_property.removeEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
+      oldValue.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      oldValue.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
-    self.mInternalValue?.xUnit_property.addEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
-    self.mInternalValue?.yUnit_property.addEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
-    self.mInternalValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    self.mInternalValue?.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
-    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+      newValue.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
+      newValue.xUnit_property.addEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
+      newValue.yUnit_property.addEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
+      newValue.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      newValue.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

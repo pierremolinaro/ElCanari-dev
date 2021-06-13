@@ -15,25 +15,29 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardRestrictRectangle?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    inOldValue?.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
-    inOldValue?.mIsInFrontLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
-    inOldValue?.mIsInBackLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      oldValue.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      oldValue.mIsInFrontLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
+      oldValue.mIsInBackLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    self.mInternalValue?.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
-    self.mInternalValue?.mIsInFrontLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
-    self.mInternalValue?.mIsInBackLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      newValue.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      newValue.mIsInFrontLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
+      newValue.mIsInBackLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   }
 
   //····················································································································

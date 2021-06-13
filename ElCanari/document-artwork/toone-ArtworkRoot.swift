@@ -15,31 +15,35 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-    inOldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    inOldValue?.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
-    inOldValue?.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
-    inOldValue?.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
-    inOldValue?.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
-    inOldValue?.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
-    inOldValue?.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
-    inOldValue?.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
-    inOldValue?.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
-    inOldValue?.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
-    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+      oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
+      oldValue.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
+      oldValue.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
+      oldValue.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
+      oldValue.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
+      oldValue.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
+      oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
+      oldValue.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
+      oldValue.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
+      oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-    self.mInternalValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    self.mInternalValue?.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
-    self.mInternalValue?.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
-    self.mInternalValue?.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
-    self.mInternalValue?.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
-    self.mInternalValue?.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
-    self.mInternalValue?.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
-    self.mInternalValue?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
-    self.mInternalValue?.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
-    self.mInternalValue?.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+      newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      newValue.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
+      newValue.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
+      newValue.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
+      newValue.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
+      newValue.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
+      newValue.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
+      newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
+      newValue.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
+      newValue.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
+      newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   }
 
   //····················································································································

@@ -72,17 +72,19 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : Set<NetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
-        managedObject.mNetName_property.addEBObserver (observer)
+  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : Set <NetInProject>) {
+    if !self.mObserversOf_mNetName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
+          managedObject.mNetName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -129,7 +131,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.addEBObserver (observer)
@@ -139,7 +141,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.removeEBObserver (observer)
@@ -185,7 +187,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
         managedObject.netClassTrackWidth_property.addEBObserver (observer)
@@ -195,7 +197,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassTrackWidth.apply { (_ observer : EBEvent) in
         managedObject.netClassTrackWidth_property.removeEBObserver (observer)
@@ -241,7 +243,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.netClassViaHoleDiameter_property.addEBObserver (observer)
@@ -251,7 +253,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassViaHoleDiameter.apply { (_ observer : EBEvent) in
         managedObject.netClassViaHoleDiameter_property.removeEBObserver (observer)
@@ -297,7 +299,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.netClassViaPadDiameter_property.addEBObserver (observer)
@@ -307,7 +309,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netClassViaPadDiameter.apply { (_ observer : EBEvent) in
         managedObject.netClassViaPadDiameter_property.removeEBObserver (observer)
@@ -353,7 +355,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.addEBObserver (observer)
@@ -363,7 +365,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
         managedObject.wireColor_property.removeEBObserver (observer)
@@ -409,7 +411,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
         managedObject.netSchematicPointsInfo_property.addEBObserver (observer)
@@ -419,7 +421,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_netSchematicPointsInfo.apply { (_ observer : EBEvent) in
         managedObject.netSchematicPointsInfo_property.removeEBObserver (observer)
@@ -465,7 +467,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
         managedObject.trackCount_property.addEBObserver (observer)
@@ -475,7 +477,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
 
   //····················································································································
 
-  final func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : Set<NetInProject>) {
+  final func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : Set <NetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_trackCount.apply { (_ observer : EBEvent) in
         managedObject.trackCount_property.removeEBObserver (observer)

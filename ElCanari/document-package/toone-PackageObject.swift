@@ -15,15 +15,19 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.knobSize_property.removeEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.knobSize_property.removeEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.knobSize_property.addEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.knobSize_property.addEBObserversFrom (&self.mObserversOf_knobSize) // Transient property
+    }
   }
 
   //····················································································································

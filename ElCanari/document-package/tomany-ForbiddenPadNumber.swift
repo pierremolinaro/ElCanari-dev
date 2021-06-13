@@ -58,17 +58,19 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-        managedObject.padNumber_property.addEBObserver (observer)
+  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set <ForbiddenPadNumber>) {
+    if !self.mObserversOf_padNumber.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
+          managedObject.padNumber_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
+  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set <ForbiddenPadNumber>) {
     self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {

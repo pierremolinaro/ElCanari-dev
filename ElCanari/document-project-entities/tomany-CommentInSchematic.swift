@@ -74,17 +74,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mColor_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-        managedObject.mColor_property.addEBObserver (observer)
+  final func addEBObserversOf_mColor_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mColor.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
+          managedObject.mColor_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -131,17 +133,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-        managedObject.mSize_property.addEBObserver (observer)
+  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mSize.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
+          managedObject.mSize_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -188,17 +192,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mHorizontalAlignment.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
+          managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -245,17 +251,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mVerticalAlignment_property.addEBObserver (observer)
+  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mVerticalAlignment.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
+          managedObject.mVerticalAlignment_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -302,17 +310,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mX.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+          managedObject.mX_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -359,17 +369,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mY.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+          managedObject.mY_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -416,17 +428,19 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-        managedObject.mComment_property.addEBObserver (observer)
+  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
+    if !self.mObserversOf_mComment.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
+          managedObject.mComment_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -473,7 +487,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -483,7 +497,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -529,7 +543,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -539,7 +553,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <CommentInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)

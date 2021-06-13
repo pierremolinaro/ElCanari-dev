@@ -62,17 +62,19 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
-        managedObject.mOrientation_property.addEBObserver (observer)
+  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set <NCInSchematic>) {
+    if !self.mObserversOf_mOrientation.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
+          managedObject.mOrientation_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set <NCInSchematic>) {
     self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -119,7 +121,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <NCInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -129,7 +131,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <NCInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -175,7 +177,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <NCInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -185,7 +187,7 @@ class ReadOnlyArrayOf_NCInSchematic : ReadOnlyAbstractArrayProperty <NCInSchemat
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <NCInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)

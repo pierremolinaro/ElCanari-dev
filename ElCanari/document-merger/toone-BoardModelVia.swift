@@ -15,13 +15,17 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardModelVia?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.padDiameter_property.removeEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+    if let oldValue = inOldValue {
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.padDiameter_property.removeEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.padDiameter_property.addEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+    if let newValue = self.mInternalValue {
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.padDiameter_property.addEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+    }
   }
 
   //····················································································································

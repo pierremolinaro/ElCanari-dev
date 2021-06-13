@@ -325,7 +325,7 @@ struct EBDataScanner {
 
   //····················································································································
 
-  mutating func getLineRange () -> NSRange {
+  mutating func getLineRangeAndAdvance () -> NSRange {
     let start = self.mReadIndex
     var loop = true
     while self.mReadOk, loop {

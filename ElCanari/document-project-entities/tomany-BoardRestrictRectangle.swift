@@ -74,17 +74,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mY.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mY.apply { (_ observer : EBEvent) in
+          managedObject.mY_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mY.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -131,17 +133,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-        managedObject.mWidth_property.addEBObserver (observer)
+  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mWidth.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
+          managedObject.mWidth_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -188,17 +192,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-        managedObject.mHeight_property.addEBObserver (observer)
+  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mHeight.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
+          managedObject.mHeight_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -245,17 +251,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
-        managedObject.mIsInFrontLayer_property.addEBObserver (observer)
+  final func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInFrontLayer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
+          managedObject.mIsInFrontLayer_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -302,17 +310,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
-        managedObject.mIsInBackLayer_property.addEBObserver (observer)
+  final func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mIsInBackLayer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
+          managedObject.mIsInBackLayer_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -359,17 +369,19 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
+    if !self.mObserversOf_mX.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mX.apply { (_ observer : EBEvent) in
+          managedObject.mX_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     self.mObserversOf_mX.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -416,7 +428,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -426,7 +438,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -472,7 +484,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -482,7 +494,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -528,7 +540,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.addEBObserver (observer)
@@ -538,7 +550,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
+  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set <BoardRestrictRectangle>) {
     for managedObject in inSet {
       self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
         managedObject.signatureForERCChecking_property.removeEBObserver (observer)

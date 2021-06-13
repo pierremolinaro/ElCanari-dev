@@ -432,7 +432,8 @@ class SchematicObject : EBGraphicManagedObject,
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        let object = inObjectArray [objectIndex] as! SheetInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSheet = object }
       }
     //--- To many relationships
     }

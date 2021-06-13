@@ -838,7 +838,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mInstances = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mInstances = relationshipArray }
       }
     }
   //--- End of addOperation

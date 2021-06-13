@@ -15,31 +15,35 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-    inOldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    inOldValue?.horizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
-    inOldValue?.verticalFlip_property.removeEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
-    inOldValue?.gridStyle_property.removeEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
-    inOldValue?.gridDisplay_property.removeEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
-    inOldValue?.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
-    inOldValue?.xPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
-    inOldValue?.yPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
-    inOldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+      oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      oldValue.horizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
+      oldValue.verticalFlip_property.removeEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
+      oldValue.gridStyle_property.removeEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
+      oldValue.gridDisplay_property.removeEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
+      oldValue.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+      oldValue.xPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
+      oldValue.yPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
+      oldValue.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-    self.mInternalValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    self.mInternalValue?.horizontalFlip_property.addEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
-    self.mInternalValue?.verticalFlip_property.addEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
-    self.mInternalValue?.gridStyle_property.addEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
-    self.mInternalValue?.gridDisplay_property.addEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
-    self.mInternalValue?.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
-    self.mInternalValue?.xPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
-    self.mInternalValue?.yPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
-    self.mInternalValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+      newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      newValue.horizontalFlip_property.addEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
+      newValue.verticalFlip_property.addEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
+      newValue.gridStyle_property.addEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
+      newValue.gridDisplay_property.addEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
+      newValue.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+      newValue.xPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
+      newValue.yPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
+      newValue.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
+    }
   }
 
   //····················································································································

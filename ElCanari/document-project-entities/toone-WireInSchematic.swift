@@ -15,17 +15,21 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    inOldValue?.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    self.mInternalValue?.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+    }
   }
 
   //····················································································································

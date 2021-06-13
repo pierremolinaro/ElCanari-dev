@@ -921,7 +921,7 @@ final class FontRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.characters = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.characters = relationshipArray }
       }
     }
   //--- End of addOperation

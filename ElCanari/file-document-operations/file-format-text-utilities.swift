@@ -406,15 +406,21 @@ extension Data {
   //····················································································································
 
   func base62EncodedInt (range inRange : NSRange) -> Int? {
-    var sign = 1
-    var idx = inRange.location
-    if inRange.length > 0, self [idx] == ASCII.minus.rawValue {
-      sign = -1
-      idx += 1
+    if inRange.length == 0 {
+      return nil
+    }else{
+      let sign : Int
+      var idx = inRange.location
+      if self [idx] == ASCII.minus.rawValue {
+        sign = -1
+        idx += 1
+      }else{
+        sign = 1
+      }
+      var r = 0
+      parseUnsigned (idx: &idx, result: &r)
+      return sign * r
     }
-    var r = 0
-    parseUnsigned (idx: &idx, result: &r)
-    return sign * r
   }
 
   //····················································································································

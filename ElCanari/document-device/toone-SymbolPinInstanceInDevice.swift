@@ -15,17 +15,21 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolPinInstanceInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.pinName_property.removeEBObserversFrom (&self.mObserversOf_pinName) // Transient property
-    inOldValue?.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
-    inOldValue?.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
-    inOldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    inOldValue?.numberShape_property.removeEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.pinName_property.removeEBObserversFrom (&self.mObserversOf_pinName) // Transient property
+      oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+      oldValue.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
+      oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      oldValue.numberShape_property.removeEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.pinName_property.addEBObserversFrom (&self.mObserversOf_pinName) // Transient property
-    self.mInternalValue?.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
-    self.mInternalValue?.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
-    self.mInternalValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    self.mInternalValue?.numberShape_property.addEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.pinName_property.addEBObserversFrom (&self.mObserversOf_pinName) // Transient property
+      newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+      newValue.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
+      newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      newValue.numberShape_property.addEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
+    }
   }
 
   //····················································································································

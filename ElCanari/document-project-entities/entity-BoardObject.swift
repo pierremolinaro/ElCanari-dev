@@ -584,7 +584,8 @@ class BoardObject : EBGraphicManagedObject,
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        let object = inObjectArray [objectIndex] as! ProjectRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
       }
     //--- To many relationships
     }

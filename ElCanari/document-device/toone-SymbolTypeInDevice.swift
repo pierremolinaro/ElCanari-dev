@@ -15,25 +15,29 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolTypeInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
-    inOldValue?.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-    inOldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    inOldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
-    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    inOldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
-    inOldValue?.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
-    inOldValue?.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+      oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      oldValue.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+      oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+      oldValue.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      oldValue.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
-    self.mInternalValue?.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-    self.mInternalValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    self.mInternalValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
-    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    self.mInternalValue?.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
-    self.mInternalValue?.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
-    self.mInternalValue?.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+      newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      newValue.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+      newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+      newValue.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      newValue.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+    }
   }
 
   //····················································································································

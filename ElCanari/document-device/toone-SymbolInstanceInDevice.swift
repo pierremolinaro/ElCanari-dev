@@ -15,23 +15,27 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolInstanceInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mInstanceName) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.symbolQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_symbolQualifiedName) // Transient property
-    inOldValue?.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mInstanceName) // Stored property
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.symbolQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_symbolQualifiedName) // Transient property
+      oldValue.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mInstanceName_property.addEBObserversFrom (&self.mObserversOf_mInstanceName) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.symbolQualifiedName_property.addEBObserversFrom (&self.mObserversOf_symbolQualifiedName) // Transient property
-    self.mInternalValue?.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mInstanceName_property.addEBObserversFrom (&self.mObserversOf_mInstanceName) // Stored property
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.symbolQualifiedName_property.addEBObserversFrom (&self.mObserversOf_symbolQualifiedName) // Transient property
+      newValue.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································

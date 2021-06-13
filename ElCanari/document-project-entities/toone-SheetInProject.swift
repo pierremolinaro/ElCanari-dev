@@ -15,19 +15,23 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SheetInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    inOldValue?.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
-    inOldValue?.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
-    inOldValue?.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      oldValue.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
+      oldValue.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+      oldValue.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    self.mInternalValue?.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
-    self.mInternalValue?.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
-    self.mInternalValue?.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      newValue.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
+      newValue.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+      newValue.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+    }
   }
 
   //····················································································································

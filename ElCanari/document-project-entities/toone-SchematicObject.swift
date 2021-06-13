@@ -15,19 +15,23 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SchematicObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    inOldValue?.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.isPlacedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      oldValue.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.isPlacedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    self.mInternalValue?.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.isPlacedInSchematic_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      newValue.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.isPlacedInSchematic_property.addEBObserversFrom (&self.mObserversOf_isPlacedInSchematic) // Transient property
+    }
   }
 
   //····················································································································

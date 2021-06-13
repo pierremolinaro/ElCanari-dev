@@ -15,17 +15,21 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : CanariLibraryEntry?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
-    inOldValue?.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
-    inOldValue?.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
-    inOldValue?.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
-    inOldValue?.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+      oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+      oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+      oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+      oldValue.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
-    self.mInternalValue?.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
-    self.mInternalValue?.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
-    self.mInternalValue?.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
-    self.mInternalValue?.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+      newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+      newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+      newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+      newValue.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+    }
   }
 
   //····················································································································

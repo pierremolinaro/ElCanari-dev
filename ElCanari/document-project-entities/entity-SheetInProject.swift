@@ -731,7 +731,8 @@ final class SheetInProject : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        let object = inObjectArray [objectIndex] as! ProjectRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mObjects"], range.length > 0 {
@@ -740,7 +741,7 @@ final class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mObjects = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mObjects = relationshipArray }
       }
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = [PointInSchematic] ()
@@ -748,7 +749,7 @@ final class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
       }
     }
   //--- End of addOperation

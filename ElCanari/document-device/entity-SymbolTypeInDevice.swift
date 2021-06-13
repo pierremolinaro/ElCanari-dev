@@ -813,7 +813,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mInstances = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mInstances = relationshipArray }
       }
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
         var relationshipArray = [SymbolPinTypeInDevice] ()
@@ -821,7 +821,7 @@ final class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPinTypes = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPinTypes = relationshipArray }
       }
     }
   //--- End of addOperation

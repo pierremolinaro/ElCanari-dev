@@ -15,13 +15,17 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePadAssignmentInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
-    inOldValue?.pinPadAssignment_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
-    inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      oldValue.pinPadAssignment_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
+      oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
-    self.mInternalValue?.pinPadAssignment_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
-    self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      newValue.pinPadAssignment_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
+      newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+    }
   }
 
   //····················································································································

@@ -15,19 +15,23 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
-    inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
-    inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+      oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
-    self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
-    self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+      newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································

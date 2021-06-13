@@ -15,49 +15,53 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageZone?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
-    inOldValue?.xUnit_property.removeEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
-    inOldValue?.yUnit_property.removeEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
-    inOldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    inOldValue?.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    inOldValue?.zoneName_property.removeEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
-    inOldValue?.displayZoneName_property.removeEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
-    inOldValue?.xName_property.removeEBObserversFrom (&self.mObserversOf_xName) // Stored property
-    inOldValue?.yName_property.removeEBObserversFrom (&self.mObserversOf_yName) // Stored property
-    inOldValue?.xNameUnit_property.removeEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
-    inOldValue?.yNameUnit_property.removeEBObserversFrom (&self.mObserversOf_yNameUnit) // Stored property
-    inOldValue?.zoneNumbering_property.removeEBObserversFrom (&self.mObserversOf_zoneNumbering) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.rect_property.removeEBObserversFrom (&self.mObserversOf_rect) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.forbiddenPadArray_property.removeEBObserversFrom (&self.mObserversOf_forbiddenPadArray) // Transient property
-    inOldValue?.emptyForbiddenPadArray_property.removeEBObserversFrom (&self.mObserversOf_emptyForbiddenPadArray) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+      oldValue.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
+      oldValue.xUnit_property.removeEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
+      oldValue.yUnit_property.removeEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
+      oldValue.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      oldValue.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      oldValue.zoneName_property.removeEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
+      oldValue.displayZoneName_property.removeEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
+      oldValue.xName_property.removeEBObserversFrom (&self.mObserversOf_xName) // Stored property
+      oldValue.yName_property.removeEBObserversFrom (&self.mObserversOf_yName) // Stored property
+      oldValue.xNameUnit_property.removeEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
+      oldValue.yNameUnit_property.removeEBObserversFrom (&self.mObserversOf_yNameUnit) // Stored property
+      oldValue.zoneNumbering_property.removeEBObserversFrom (&self.mObserversOf_zoneNumbering) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.rect_property.removeEBObserversFrom (&self.mObserversOf_rect) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.forbiddenPadArray_property.removeEBObserversFrom (&self.mObserversOf_forbiddenPadArray) // Transient property
+      oldValue.emptyForbiddenPadArray_property.removeEBObserversFrom (&self.mObserversOf_emptyForbiddenPadArray) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
-    self.mInternalValue?.xUnit_property.addEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
-    self.mInternalValue?.yUnit_property.addEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
-    self.mInternalValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    self.mInternalValue?.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    self.mInternalValue?.zoneName_property.addEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
-    self.mInternalValue?.displayZoneName_property.addEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
-    self.mInternalValue?.xName_property.addEBObserversFrom (&self.mObserversOf_xName) // Stored property
-    self.mInternalValue?.yName_property.addEBObserversFrom (&self.mObserversOf_yName) // Stored property
-    self.mInternalValue?.xNameUnit_property.addEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
-    self.mInternalValue?.yNameUnit_property.addEBObserversFrom (&self.mObserversOf_yNameUnit) // Stored property
-    self.mInternalValue?.zoneNumbering_property.addEBObserversFrom (&self.mObserversOf_zoneNumbering) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.rect_property.addEBObserversFrom (&self.mObserversOf_rect) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.forbiddenPadArray_property.addEBObserversFrom (&self.mObserversOf_forbiddenPadArray) // Transient property
-    self.mInternalValue?.emptyForbiddenPadArray_property.addEBObserversFrom (&self.mObserversOf_emptyForbiddenPadArray) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+      newValue.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
+      newValue.xUnit_property.addEBObserversFrom (&self.mObserversOf_xUnit) // Stored property
+      newValue.yUnit_property.addEBObserversFrom (&self.mObserversOf_yUnit) // Stored property
+      newValue.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      newValue.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      newValue.zoneName_property.addEBObserversFrom (&self.mObserversOf_zoneName) // Stored property
+      newValue.displayZoneName_property.addEBObserversFrom (&self.mObserversOf_displayZoneName) // Stored property
+      newValue.xName_property.addEBObserversFrom (&self.mObserversOf_xName) // Stored property
+      newValue.yName_property.addEBObserversFrom (&self.mObserversOf_yName) // Stored property
+      newValue.xNameUnit_property.addEBObserversFrom (&self.mObserversOf_xNameUnit) // Stored property
+      newValue.yNameUnit_property.addEBObserversFrom (&self.mObserversOf_yNameUnit) // Stored property
+      newValue.zoneNumbering_property.addEBObserversFrom (&self.mObserversOf_zoneNumbering) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.rect_property.addEBObserversFrom (&self.mObserversOf_rect) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.forbiddenPadArray_property.addEBObserversFrom (&self.mObserversOf_forbiddenPadArray) // Transient property
+      newValue.emptyForbiddenPadArray_property.addEBObserversFrom (&self.mObserversOf_emptyForbiddenPadArray) // Transient property
+    }
   }
 
   //····················································································································

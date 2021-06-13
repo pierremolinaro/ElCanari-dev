@@ -15,19 +15,23 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardModelPad?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
-    inOldValue?.shape_property.removeEBObserversFrom (&self.mObserversOf_shape) // Stored property
-    inOldValue?.rotation_property.removeEBObserversFrom (&self.mObserversOf_rotation) // Stored property
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+    if let oldValue = inOldValue {
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+      oldValue.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
+      oldValue.shape_property.removeEBObserversFrom (&self.mObserversOf_shape) // Stored property
+      oldValue.rotation_property.removeEBObserversFrom (&self.mObserversOf_rotation) // Stored property
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
-    self.mInternalValue?.shape_property.addEBObserversFrom (&self.mObserversOf_shape) // Stored property
-    self.mInternalValue?.rotation_property.addEBObserversFrom (&self.mObserversOf_rotation) // Stored property
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+    if let newValue = self.mInternalValue {
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+      newValue.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
+      newValue.shape_property.addEBObserversFrom (&self.mObserversOf_shape) // Stored property
+      newValue.rotation_property.addEBObserversFrom (&self.mObserversOf_rotation) // Stored property
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+    }
   }
 
   //····················································································································

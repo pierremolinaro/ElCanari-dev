@@ -15,19 +15,23 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SegmentForFontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································

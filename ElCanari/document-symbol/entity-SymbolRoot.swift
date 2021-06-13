@@ -899,7 +899,7 @@ final class SymbolRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolObject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.symbolObjects = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.symbolObjects = relationshipArray }
       }
     }
   //--- End of addOperation

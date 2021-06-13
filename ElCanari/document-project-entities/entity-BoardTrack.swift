@@ -2146,13 +2146,16 @@ final class BoardTrack : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mConnectorP1 = inObjectArray [objectIndex] as? BoardConnector })
+        let object = inObjectArray [objectIndex] as! BoardConnector
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mConnectorP1 = object }
       }
       if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mConnectorP2 = inObjectArray [objectIndex] as? BoardConnector })
+        let object = inObjectArray [objectIndex] as! BoardConnector
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mConnectorP2 = object }
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        let object = inObjectArray [objectIndex] as! NetInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNet = object }
       }
     //--- To many relationships
     }

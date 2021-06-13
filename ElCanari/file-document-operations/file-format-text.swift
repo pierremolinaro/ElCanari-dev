@@ -13,8 +13,9 @@ private let LOG_READ_DURATION = true
 final class ParallelObjectSetupContext {
   private let mOperationQueue = OperationQueue ()
   private var mToOneSetUpOperationList = [() -> Void] ()
+  private let mMutexToOne = DispatchSemaphore (value: 1)
   private var mToManySetUpOperationList = [() -> Void] ()
-  private let mMutex = DispatchSemaphore (value: 1)
+  private let mMutexToMany = DispatchSemaphore (value: 1)
   private var mOperationQueueCount = 0
 
   //····················································································································
@@ -31,17 +32,17 @@ final class ParallelObjectSetupContext {
   //····················································································································
 
   func addToOneSetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
-    self.mMutex.wait ()
+    self.mMutexToOne.wait ()
     self.mToOneSetUpOperationList.append (inDeferredOperation)
-    self.mMutex.signal ()
+    self.mMutexToOne.signal ()
   }
 
   //····················································································································
 
   func addToManySetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
-    self.mMutex.wait ()
+    self.mMutexToMany.wait ()
     self.mToManySetUpOperationList.append (inDeferredOperation)
-    self.mMutex.signal ()
+    self.mMutexToMany.signal ()
   }
 
   //····················································································································
@@ -96,7 +97,6 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   var classDefinition = [(String, [String])] ()
   while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
     let className = try ioDataScanner.parseString ()
-    // Swift.print ("CLASS NAME: '\(className)', class index \(classDefinition.count)")
     var readPropertyNames = true
     var propertyNameArray = [String] ()
     while readPropertyNames, ioDataScanner.ok () {
@@ -107,13 +107,12 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
       }else{
         let propertyName = try ioDataScanner.parseString ()
         propertyNameArray.append (propertyName)
-//        Swift.print ("  PROPERTY NAME: '\(propertyName)'")
       }
     }
     classDefinition.append ((className, propertyNameArray))
   }
   if LOG_READ_DURATION {
-    Swift.print ("Read classes \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
+    Swift.print ("Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
     operationStartDate = Date ()
   }
 //--- Read objects
@@ -122,8 +121,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
     let propertyNameArray = classDefinition [classIndex].1
-    // Swift.print ("CLASS INDEX: '\(classIndex)'")
-    let managedObject = newInstanceOfEntityNamed (inUndoManager, classDefinition [classIndex].0)!
+    let className = classDefinition [classIndex].0
+    let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
     objectArray.append (managedObject)
     var readPropertyValues = true
     var valueDictionary = [String : NSRange] ()
@@ -134,7 +133,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
       }else if ioDataScanner.eof () {
         readPropertyValues = false
       }else{
-        let propertyRange = ioDataScanner.getLineRange ()
+        let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         valueDictionary [propertyNameArray [propertyIndex]] = propertyRange
         propertyIndex += 1
         // Swift.print ("  PROPERTY VALUE: '\(propertyValue)'")
@@ -143,10 +142,10 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     propertyValueArray.append (valueDictionary)
   }
   if LOG_READ_DURATION {
-    Swift.print ("Read objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms")
+    Swift.print ("Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
     operationStartDate = Date ()
   }
-//--- Setup objects
+//--- Prepare objects
   var idx = 0
   let parallelObjectSetupContext = ParallelObjectSetupContext ()
   for managedObject in objectArray {
@@ -156,18 +155,20 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
   if LOG_READ_DURATION {
-    Swift.print ("Prepare objects \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
+    Swift.print ("Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
     operationStartDate = Date ()
   }
+//--- Setup toOne
   parallelObjectSetupContext.performToOneSetupOperations ()
   if LOG_READ_DURATION {
-    Swift.print ("Setup toOne \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
+    Swift.print ("Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
     operationStartDate = Date ()
   }
+//--- Setup toMany
   parallelObjectSetupContext.performToManySetupOperations ()
   if LOG_READ_DURATION {
-    Swift.print ("Setup toMany \(Date ().timeIntervalSince (operationStartDate) * 1000.0) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
-    Swift.print ("Total duration \(Date ().timeIntervalSince (startDate) * 1000.0) ms")
+    Swift.print ("Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
+    Swift.print ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms")
   }
 //--- Scanner error ?
   if !ioDataScanner.ok () {

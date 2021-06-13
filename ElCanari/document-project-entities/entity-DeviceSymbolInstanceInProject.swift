@@ -506,7 +506,8 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSymbolType = inObjectArray [objectIndex] as? DeviceSymbolTypeInProject })
+        let object = inObjectArray [objectIndex] as! DeviceSymbolTypeInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSymbolType = object }
       }
     //--- To many relationships
     }

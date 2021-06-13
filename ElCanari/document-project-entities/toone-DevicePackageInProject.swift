@@ -15,13 +15,17 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePackageInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
-    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    inOldValue?.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
+      oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      oldValue.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
-    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    self.mInternalValue?.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
+      newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      newValue.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+    }
   }
 
   //····················································································································

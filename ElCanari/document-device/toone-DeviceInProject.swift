@@ -15,33 +15,37 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
-    inOldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
-    inOldValue?.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
-    inOldValue?.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
-    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    inOldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    inOldValue?.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    inOldValue?.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
-    inOldValue?.deviceComponentCountString_property.removeEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
-    inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    inOldValue?.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
-    inOldValue?.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
-    inOldValue?.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
+      oldValue.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      oldValue.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
+      oldValue.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
+      oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      oldValue.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
+      oldValue.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+      oldValue.deviceComponentCountString_property.removeEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
+      oldValue.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      oldValue.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
+      oldValue.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      oldValue.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
-    self.mInternalValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
-    self.mInternalValue?.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
-    self.mInternalValue?.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
-    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    self.mInternalValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    self.mInternalValue?.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
-    self.mInternalValue?.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
-    self.mInternalValue?.deviceComponentCountString_property.addEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
-    self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    self.mInternalValue?.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
-    self.mInternalValue?.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
-    self.mInternalValue?.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
+      newValue.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      newValue.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
+      newValue.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
+      newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      newValue.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
+      newValue.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+      newValue.deviceComponentCountString_property.addEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
+      newValue.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      newValue.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
+      newValue.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      newValue.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+    }
   }
 
   //····················································································································

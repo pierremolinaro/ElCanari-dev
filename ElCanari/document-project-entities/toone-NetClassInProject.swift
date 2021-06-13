@@ -15,45 +15,49 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : NetClassInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
-    inOldValue?.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
-    inOldValue?.mTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
-    inOldValue?.mTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
-    inOldValue?.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
-    inOldValue?.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
-    inOldValue?.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
-    inOldValue?.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
-    inOldValue?.mAllowTracksOnFrontSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
-    inOldValue?.mAllowTracksOnBackSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
-    inOldValue?.trackWidthString_property.removeEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
-    inOldValue?.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
-    inOldValue?.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
-    inOldValue?.allowTracksOnFrontSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
-    inOldValue?.allowTracksOnBackSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
-    inOldValue?.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    inOldValue?.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
-    inOldValue?.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
-    inOldValue?.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
+      oldValue.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
+      oldValue.mTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
+      oldValue.mTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
+      oldValue.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
+      oldValue.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
+      oldValue.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
+      oldValue.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
+      oldValue.mAllowTracksOnFrontSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
+      oldValue.mAllowTracksOnBackSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
+      oldValue.trackWidthString_property.removeEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
+      oldValue.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
+      oldValue.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
+      oldValue.allowTracksOnFrontSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
+      oldValue.allowTracksOnBackSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
+      oldValue.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      oldValue.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
+      oldValue.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+      oldValue.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
-    self.mInternalValue?.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
-    self.mInternalValue?.mTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
-    self.mInternalValue?.mTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
-    self.mInternalValue?.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
-    self.mInternalValue?.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
-    self.mInternalValue?.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
-    self.mInternalValue?.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
-    self.mInternalValue?.mAllowTracksOnFrontSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
-    self.mInternalValue?.mAllowTracksOnBackSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
-    self.mInternalValue?.trackWidthString_property.addEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
-    self.mInternalValue?.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
-    self.mInternalValue?.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
-    self.mInternalValue?.allowTracksOnFrontSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
-    self.mInternalValue?.allowTracksOnBackSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
-    self.mInternalValue?.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
-    self.mInternalValue?.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
-    self.mInternalValue?.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
-    self.mInternalValue?.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
+      newValue.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
+      newValue.mTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
+      newValue.mTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
+      newValue.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
+      newValue.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
+      newValue.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
+      newValue.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
+      newValue.mAllowTracksOnFrontSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
+      newValue.mAllowTracksOnBackSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
+      newValue.trackWidthString_property.addEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
+      newValue.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
+      newValue.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
+      newValue.allowTracksOnFrontSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
+      newValue.allowTracksOnBackSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
+      newValue.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      newValue.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
+      newValue.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+      newValue.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+    }
   }
 
   //····················································································································

@@ -15,47 +15,51 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageBezier?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    inOldValue?.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    inOldValue?.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    inOldValue?.cpx1_property.removeEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
-    inOldValue?.cpy1_property.removeEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
-    inOldValue?.cpx2_property.removeEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
-    inOldValue?.cpy2_property.removeEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
-    inOldValue?.x1Unit_property.removeEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
-    inOldValue?.y1Unit_property.removeEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
-    inOldValue?.x2Unit_property.removeEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
-    inOldValue?.y2Unit_property.removeEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
-    inOldValue?.cpx1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
-    inOldValue?.cpy1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
-    inOldValue?.cpx2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
-    inOldValue?.cpy2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
-    inOldValue?.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      oldValue.cpx1_property.removeEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
+      oldValue.cpy1_property.removeEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
+      oldValue.cpx2_property.removeEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
+      oldValue.cpy2_property.removeEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
+      oldValue.x1Unit_property.removeEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+      oldValue.y1Unit_property.removeEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+      oldValue.x2Unit_property.removeEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+      oldValue.y2Unit_property.removeEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+      oldValue.cpx1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
+      oldValue.cpy1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
+      oldValue.cpx2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
+      oldValue.cpy2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
+      oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
-    self.mInternalValue?.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
-    self.mInternalValue?.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
-    self.mInternalValue?.cpx1_property.addEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
-    self.mInternalValue?.cpy1_property.addEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
-    self.mInternalValue?.cpx2_property.addEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
-    self.mInternalValue?.cpy2_property.addEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
-    self.mInternalValue?.x1Unit_property.addEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
-    self.mInternalValue?.y1Unit_property.addEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
-    self.mInternalValue?.x2Unit_property.addEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
-    self.mInternalValue?.y2Unit_property.addEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
-    self.mInternalValue?.cpx1Unit_property.addEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
-    self.mInternalValue?.cpy1Unit_property.addEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
-    self.mInternalValue?.cpx2Unit_property.addEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
-    self.mInternalValue?.cpy2Unit_property.addEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
-    self.mInternalValue?.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
-    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      newValue.cpx1_property.addEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
+      newValue.cpy1_property.addEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
+      newValue.cpx2_property.addEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
+      newValue.cpy2_property.addEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
+      newValue.x1Unit_property.addEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+      newValue.y1Unit_property.addEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+      newValue.x2Unit_property.addEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+      newValue.y2Unit_property.addEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+      newValue.cpx1Unit_property.addEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
+      newValue.cpy1Unit_property.addEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
+      newValue.cpx2Unit_property.addEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
+      newValue.cpy2Unit_property.addEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
+      newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

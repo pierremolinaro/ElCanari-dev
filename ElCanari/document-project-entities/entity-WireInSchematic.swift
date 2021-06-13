@@ -552,10 +552,12 @@ final class WireInSchematic : SchematicObject,
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mP1 = inObjectArray [objectIndex] as? PointInSchematic })
+        let object = inObjectArray [objectIndex] as! PointInSchematic
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mP1 = object }
       }
       if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mP2 = inObjectArray [objectIndex] as? PointInSchematic })
+        let object = inObjectArray [objectIndex] as! PointInSchematic
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mP2 = object }
       }
     //--- To many relationships
     }

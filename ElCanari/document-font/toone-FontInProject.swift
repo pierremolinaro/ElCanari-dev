@@ -15,23 +15,27 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mNominalSize_property.removeEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
-    inOldValue?.mFontName_property.removeEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
-    inOldValue?.mFontVersion_property.removeEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
-    inOldValue?.mDescriptiveString_property.removeEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
-    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    inOldValue?.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
-    inOldValue?.canRemoveFont_property.removeEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mNominalSize_property.removeEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
+      oldValue.mFontName_property.removeEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
+      oldValue.mFontVersion_property.removeEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
+      oldValue.mDescriptiveString_property.removeEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
+      oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      oldValue.canRemoveFont_property.removeEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mNominalSize_property.addEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
-    self.mInternalValue?.mFontName_property.addEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
-    self.mInternalValue?.mFontVersion_property.addEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
-    self.mInternalValue?.mDescriptiveString_property.addEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
-    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    self.mInternalValue?.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
-    self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
-    self.mInternalValue?.canRemoveFont_property.addEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mNominalSize_property.addEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
+      newValue.mFontName_property.addEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
+      newValue.mFontVersion_property.addEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
+      newValue.mDescriptiveString_property.addEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
+      newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      newValue.canRemoveFont_property.addEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
+    }
   }
 
   //····················································································································

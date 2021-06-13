@@ -15,17 +15,21 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
-    inOldValue?.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
-    inOldValue?.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
-    inOldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    inOldValue?.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mPinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
+      oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      oldValue.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
+      oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mPinInstanceName_property.addEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
-    self.mInternalValue?.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
-    self.mInternalValue?.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
-    self.mInternalValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    self.mInternalValue?.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mPinInstanceName_property.addEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
+      newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      newValue.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
+      newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+    }
   }
 
   //····················································································································

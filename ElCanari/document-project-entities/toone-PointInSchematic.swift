@@ -15,37 +15,41 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
-    inOldValue?.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    inOldValue?.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
-    inOldValue?.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove) // Transient property
-    inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    inOldValue?.symbolRotation_property.removeEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
-    inOldValue?.symbolNameNetName_property.removeEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
-    inOldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    inOldValue?.status_property.removeEBObserversFrom (&self.mObserversOf_status) // Transient property
-    inOldValue?.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    inOldValue?.netInfoForPoint_property.removeEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+      oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+      oldValue.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove) // Transient property
+      oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      oldValue.symbolRotation_property.removeEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
+      oldValue.symbolNameNetName_property.removeEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
+      oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      oldValue.status_property.removeEBObserversFrom (&self.mObserversOf_status) // Transient property
+      oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      oldValue.netInfoForPoint_property.removeEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
-    self.mInternalValue?.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
-    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    self.mInternalValue?.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
-    self.mInternalValue?.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove) // Transient property
-    self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    self.mInternalValue?.symbolRotation_property.addEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
-    self.mInternalValue?.symbolNameNetName_property.addEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
-    self.mInternalValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-    self.mInternalValue?.status_property.addEBObserversFrom (&self.mObserversOf_status) // Transient property
-    self.mInternalValue?.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-    self.mInternalValue?.netInfoForPoint_property.addEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+      newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+      newValue.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove) // Transient property
+      newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      newValue.symbolRotation_property.addEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
+      newValue.symbolNameNetName_property.addEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
+      newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      newValue.status_property.addEBObserversFrom (&self.mObserversOf_status) // Transient property
+      newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      newValue.netInfoForPoint_property.addEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
+    }
   }
 
   //····················································································································

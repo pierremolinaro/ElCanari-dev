@@ -15,55 +15,59 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageSlavePad?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-    inOldValue?.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-    inOldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
-    inOldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
-    inOldValue?.holeWidth_property.removeEBObserversFrom (&self.mObserversOf_holeWidth) // Stored property
-    inOldValue?.holeHeight_property.removeEBObserversFrom (&self.mObserversOf_holeHeight) // Stored property
-    inOldValue?.padShape_property.removeEBObserversFrom (&self.mObserversOf_padShape) // Stored property
-    inOldValue?.padStyle_property.removeEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
-    inOldValue?.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-    inOldValue?.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-    inOldValue?.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    inOldValue?.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    inOldValue?.holeWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
-    inOldValue?.holeHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
-    inOldValue?.annularRingUnit_property.removeEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.padIsTraversing_property.removeEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
-    inOldValue?.annularRing_property.removeEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
-    inOldValue?.padNameWithZoneName_property.removeEBObserversFrom (&self.mObserversOf_padNameWithZoneName) // Transient property
-    inOldValue?.masterPadNameWithZoneName_property.removeEBObserversFrom (&self.mObserversOf_masterPadNameWithZoneName) // Transient property
-    inOldValue?.padNameForDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
-    inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+      oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+      oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
+      oldValue.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
+      oldValue.holeWidth_property.removeEBObserversFrom (&self.mObserversOf_holeWidth) // Stored property
+      oldValue.holeHeight_property.removeEBObserversFrom (&self.mObserversOf_holeHeight) // Stored property
+      oldValue.padShape_property.removeEBObserversFrom (&self.mObserversOf_padShape) // Stored property
+      oldValue.padStyle_property.removeEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
+      oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+      oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+      oldValue.widthUnit_property.removeEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      oldValue.heightUnit_property.removeEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      oldValue.holeWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
+      oldValue.holeHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
+      oldValue.annularRingUnit_property.removeEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.padIsTraversing_property.removeEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
+      oldValue.annularRing_property.removeEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
+      oldValue.padNameWithZoneName_property.removeEBObserversFrom (&self.mObserversOf_padNameWithZoneName) // Transient property
+      oldValue.masterPadNameWithZoneName_property.removeEBObserversFrom (&self.mObserversOf_masterPadNameWithZoneName) // Transient property
+      oldValue.padNameForDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
+      oldValue.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-    self.mInternalValue?.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-    self.mInternalValue?.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
-    self.mInternalValue?.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
-    self.mInternalValue?.holeWidth_property.addEBObserversFrom (&self.mObserversOf_holeWidth) // Stored property
-    self.mInternalValue?.holeHeight_property.addEBObserversFrom (&self.mObserversOf_holeHeight) // Stored property
-    self.mInternalValue?.padShape_property.addEBObserversFrom (&self.mObserversOf_padShape) // Stored property
-    self.mInternalValue?.padStyle_property.addEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
-    self.mInternalValue?.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-    self.mInternalValue?.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-    self.mInternalValue?.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
-    self.mInternalValue?.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
-    self.mInternalValue?.holeWidthUnit_property.addEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
-    self.mInternalValue?.holeHeightUnit_property.addEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
-    self.mInternalValue?.annularRingUnit_property.addEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.padIsTraversing_property.addEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
-    self.mInternalValue?.annularRing_property.addEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
-    self.mInternalValue?.padNameWithZoneName_property.addEBObserversFrom (&self.mObserversOf_padNameWithZoneName) // Transient property
-    self.mInternalValue?.masterPadNameWithZoneName_property.addEBObserversFrom (&self.mObserversOf_masterPadNameWithZoneName) // Transient property
-    self.mInternalValue?.padNameForDisplay_property.addEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
-    self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+      newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+      newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
+      newValue.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
+      newValue.holeWidth_property.addEBObserversFrom (&self.mObserversOf_holeWidth) // Stored property
+      newValue.holeHeight_property.addEBObserversFrom (&self.mObserversOf_holeHeight) // Stored property
+      newValue.padShape_property.addEBObserversFrom (&self.mObserversOf_padShape) // Stored property
+      newValue.padStyle_property.addEBObserversFrom (&self.mObserversOf_padStyle) // Stored property
+      newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+      newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+      newValue.widthUnit_property.addEBObserversFrom (&self.mObserversOf_widthUnit) // Stored property
+      newValue.heightUnit_property.addEBObserversFrom (&self.mObserversOf_heightUnit) // Stored property
+      newValue.holeWidthUnit_property.addEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
+      newValue.holeHeightUnit_property.addEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
+      newValue.annularRingUnit_property.addEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.padIsTraversing_property.addEBObserversFrom (&self.mObserversOf_padIsTraversing) // Transient property
+      newValue.annularRing_property.addEBObserversFrom (&self.mObserversOf_annularRing) // Transient property
+      newValue.padNameWithZoneName_property.addEBObserversFrom (&self.mObserversOf_padNameWithZoneName) // Transient property
+      newValue.masterPadNameWithZoneName_property.addEBObserversFrom (&self.mObserversOf_masterPadNameWithZoneName) // Transient property
+      newValue.padNameForDisplay_property.addEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
+      newValue.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································

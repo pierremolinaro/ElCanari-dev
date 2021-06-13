@@ -1213,7 +1213,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPackages = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
         var relationshipArray = [DeviceSymbolInstanceInProject] ()
@@ -1221,7 +1221,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbols = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbols = relationshipArray }
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
@@ -1229,7 +1229,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mComponents = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponents = relationshipArray }
       }
       if let range = inDictionary ["mPadAssignments"], range.length > 0 {
         var relationshipArray = [DevicePadAssignmentInProject] ()
@@ -1237,7 +1237,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPadAssignments = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPadAssignments = relationshipArray }
       }
     }
   //--- End of addOperation

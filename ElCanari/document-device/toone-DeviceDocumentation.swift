@@ -15,13 +15,17 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceDocumentation?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
-    inOldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    inOldValue?.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+      oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      oldValue.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
-    self.mInternalValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    self.mInternalValue?.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+      newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      newValue.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+    }
   }
 
   //····················································································································

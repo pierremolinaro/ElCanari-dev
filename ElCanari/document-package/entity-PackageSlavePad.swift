@@ -1575,7 +1575,8 @@ final class PackageSlavePad : PackageObject,
       }
     //--- To one relationships
       if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.master = inObjectArray [objectIndex] as? PackagePad })
+        let object = inObjectArray [objectIndex] as! PackagePad
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.master = object }
       }
     //--- To many relationships
     }

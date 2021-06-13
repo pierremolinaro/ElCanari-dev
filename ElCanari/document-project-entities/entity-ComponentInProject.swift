@@ -3101,16 +3101,20 @@ final class ComponentInProject : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mDevice = inObjectArray [objectIndex] as? DeviceInProject })
+        let object = inObjectArray [objectIndex] as! DeviceInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mDevice = object }
       }
       if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSelectedPackage = inObjectArray [objectIndex] as? DevicePackageInProject })
+        let object = inObjectArray [objectIndex] as! DevicePackageInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSelectedPackage = object }
       }
       if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNameFont = inObjectArray [objectIndex] as? FontInProject })
+        let object = inObjectArray [objectIndex] as! FontInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNameFont = object }
       }
       if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mValueFont = inObjectArray [objectIndex] as? FontInProject })
+        let object = inObjectArray [objectIndex] as! FontInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mValueFont = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mConnectors"], range.length > 0 {
@@ -3119,7 +3123,7 @@ final class ComponentInProject : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardConnector)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mConnectors = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mConnectors = relationshipArray }
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
         var relationshipArray = [ComponentSymbolInProject] ()
@@ -3127,7 +3131,7 @@ final class ComponentInProject : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbols = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbols = relationshipArray }
       }
     }
   //--- End of addOperation

@@ -15,23 +15,27 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : MergerBoardInstance?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
-    inOldValue?.instanceRect_property.removeEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
-    inOldValue?.modelName_property.removeEBObserversFrom (&self.mObserversOf_modelName) // Transient property
-    inOldValue?.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+      oldValue.instanceRect_property.removeEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
+      oldValue.modelName_property.removeEBObserversFrom (&self.mObserversOf_modelName) // Transient property
+      oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
-    self.mInternalValue?.instanceRect_property.addEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
-    self.mInternalValue?.modelName_property.addEBObserversFrom (&self.mObserversOf_modelName) // Transient property
-    self.mInternalValue?.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+      newValue.instanceRect_property.addEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
+      newValue.modelName_property.addEBObserversFrom (&self.mObserversOf_modelName) // Transient property
+      newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································

@@ -24,8 +24,8 @@ final class EBModelNotifierEvent : EBEvent {
   init (_ inClient : ReadOnlyAbstractGenericRelationshipProperty,
         addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
         removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
-    mClient = inClient
-    mRemoveSortObserversCallback = inRemoveSortObserversCallback
+    self.mClient = inClient
+    self.mRemoveSortObserversCallback = inRemoveSortObserversCallback
     super.init ()
     inAddSortObserversCallback (self)
   }

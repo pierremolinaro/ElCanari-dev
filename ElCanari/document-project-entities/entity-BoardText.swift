@@ -1028,7 +1028,8 @@ final class BoardText : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mFont = inObjectArray [objectIndex] as? FontInProject })
+        let object = inObjectArray [objectIndex] as! FontInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mFont = object }
       }
     //--- To many relationships
     }

@@ -1965,7 +1965,8 @@ final class PackagePad : PackageObject,
       }
     //--- To one relationships
       if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.zone = inObjectArray [objectIndex] as? PackageZone })
+        let object = inObjectArray [objectIndex] as! PackageZone
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.zone = object }
       }
     //--- To many relationships
       if let range = inDictionary ["slaves"], range.length > 0 {
@@ -1974,7 +1975,7 @@ final class PackagePad : PackageObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.slaves = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.slaves = relationshipArray }
       }
     }
   //--- End of addOperation

@@ -15,23 +15,27 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : NetInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
-    inOldValue?.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    inOldValue?.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
-    inOldValue?.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
-    inOldValue?.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
-    inOldValue?.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    inOldValue?.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
-    inOldValue?.trackCount_property.removeEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+      oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+      oldValue.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      oldValue.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
+      oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      oldValue.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+      oldValue.trackCount_property.removeEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
-    self.mInternalValue?.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-    self.mInternalValue?.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
-    self.mInternalValue?.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
-    self.mInternalValue?.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
-    self.mInternalValue?.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-    self.mInternalValue?.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
-    self.mInternalValue?.trackCount_property.addEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+      newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+      newValue.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      newValue.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
+      newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      newValue.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+      newValue.trackCount_property.addEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+    }
   }
 
   //····················································································································

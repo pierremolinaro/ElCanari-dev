@@ -2010,7 +2010,8 @@ final class BoardConnector : BoardObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
+        let object = inObjectArray [objectIndex] as! ComponentInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mComponent = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
@@ -2019,7 +2020,7 @@ final class BoardConnector : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracksP2 = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTracksP2 = relationshipArray }
       }
       if let range = inDictionary ["mTracksP1"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
@@ -2027,7 +2028,7 @@ final class BoardConnector : BoardObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracksP1 = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTracksP1 = relationshipArray }
       }
     }
   //--- End of addOperation

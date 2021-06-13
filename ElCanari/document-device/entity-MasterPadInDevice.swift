@@ -953,7 +953,7 @@ final class MasterPadInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SlavePadInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSlavePads = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSlavePads = relationshipArray }
       }
     }
   //--- End of addOperation

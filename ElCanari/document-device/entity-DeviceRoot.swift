@@ -1975,7 +1975,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mDocs = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDocs = relationshipArray }
       }
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
         var relationshipArray = [SymbolInstanceInDevice] ()
@@ -1983,7 +1983,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbolInstances = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolInstances = relationshipArray }
       }
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = [PackageInDevice] ()
@@ -1991,7 +1991,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPackages = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
       }
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
         var relationshipArray = [SymbolTypeInDevice] ()
@@ -1999,7 +1999,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mSymbolTypes = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolTypes = relationshipArray }
       }
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
         var relationshipArray = [PadProxyInDevice] ()
@@ -2007,7 +2007,7 @@ final class DeviceRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPadProxies = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPadProxies = relationshipArray }
       }
     }
   //--- End of addOperation

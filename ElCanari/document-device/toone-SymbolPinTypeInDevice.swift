@@ -15,29 +15,33 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolPinTypeInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
-    inOldValue?.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
-    inOldValue?.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
-    inOldValue?.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
-    inOldValue?.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
-    inOldValue?.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
-    inOldValue?.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
-    inOldValue?.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
-    inOldValue?.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
-    inOldValue?.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
-    inOldValue?.nameShape_property.removeEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
+      oldValue.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
+      oldValue.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      oldValue.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      oldValue.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
+      oldValue.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
+      oldValue.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
+      oldValue.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
+      oldValue.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
+      oldValue.nameShape_property.removeEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
-    self.mInternalValue?.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
-    self.mInternalValue?.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
-    self.mInternalValue?.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
-    self.mInternalValue?.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
-    self.mInternalValue?.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
-    self.mInternalValue?.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
-    self.mInternalValue?.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
-    self.mInternalValue?.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
-    self.mInternalValue?.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
-    self.mInternalValue?.nameShape_property.addEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
+      newValue.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
+      newValue.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      newValue.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      newValue.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
+      newValue.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
+      newValue.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
+      newValue.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
+      newValue.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
+      newValue.nameShape_property.addEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
+    }
   }
 
   //····················································································································

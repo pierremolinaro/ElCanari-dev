@@ -15,31 +15,35 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    inOldValue?.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
-    inOldValue?.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-    inOldValue?.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-    inOldValue?.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
-    inOldValue?.currentCharacterCodePointString_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
-    inOldValue?.sampleStringBezierPath_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
-    inOldValue?.sampleStringBezierPathWidth_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
-    inOldValue?.sampleStringBezierPathAscent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
-    inOldValue?.sampleStringBezierPathDescent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
-    inOldValue?.definedCharacters_property.removeEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      oldValue.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
+      oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+      oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+      oldValue.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
+      oldValue.currentCharacterCodePointString_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
+      oldValue.sampleStringBezierPath_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
+      oldValue.sampleStringBezierPathWidth_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
+      oldValue.sampleStringBezierPathAscent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
+      oldValue.sampleStringBezierPathDescent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
+      oldValue.definedCharacters_property.removeEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
-    self.mInternalValue?.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
-    self.mInternalValue?.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-    self.mInternalValue?.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-    self.mInternalValue?.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
-    self.mInternalValue?.currentCharacterCodePointString_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
-    self.mInternalValue?.sampleStringBezierPath_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
-    self.mInternalValue?.sampleStringBezierPathWidth_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
-    self.mInternalValue?.sampleStringBezierPathAscent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
-    self.mInternalValue?.sampleStringBezierPathDescent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
-    self.mInternalValue?.definedCharacters_property.addEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
+      newValue.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
+      newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+      newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+      newValue.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
+      newValue.currentCharacterCodePointString_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
+      newValue.sampleStringBezierPath_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
+      newValue.sampleStringBezierPathWidth_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
+      newValue.sampleStringBezierPathAscent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
+      newValue.sampleStringBezierPathDescent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
+      newValue.definedCharacters_property.addEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

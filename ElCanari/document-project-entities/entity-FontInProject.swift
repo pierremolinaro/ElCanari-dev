@@ -846,7 +846,7 @@ final class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardText)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTexts = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTexts = relationshipArray }
       }
       if let range = inDictionary ["mComponentNames"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
@@ -854,7 +854,7 @@ final class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mComponentNames = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponentNames = relationshipArray }
       }
       if let range = inDictionary ["mComponentValues"], range.length > 0 {
         var relationshipArray = [ComponentInProject] ()
@@ -862,7 +862,7 @@ final class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mComponentValues = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponentValues = relationshipArray }
       }
     }
   //--- End of addOperation

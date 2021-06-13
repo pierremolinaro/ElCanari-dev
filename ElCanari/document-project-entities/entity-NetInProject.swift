@@ -849,7 +849,8 @@ final class NetInProject : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNetClass = inObjectArray [objectIndex] as? NetClassInProject })
+        let object = inObjectArray [objectIndex] as! NetClassInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNetClass = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
@@ -858,7 +859,7 @@ final class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
       }
       if let range = inDictionary ["mTracks"], range.length > 0 {
         var relationshipArray = [BoardTrack] ()
@@ -866,7 +867,7 @@ final class NetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardTrack)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mTracks = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTracks = relationshipArray }
       }
     }
   //--- End of addOperation

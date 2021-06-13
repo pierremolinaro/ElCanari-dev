@@ -1057,7 +1057,8 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? DeviceRoot })
+        let object = inObjectArray [objectIndex] as! DeviceRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
@@ -1066,7 +1067,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mMasterPads = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mMasterPads = relationshipArray }
       }
     }
   //--- End of addOperation

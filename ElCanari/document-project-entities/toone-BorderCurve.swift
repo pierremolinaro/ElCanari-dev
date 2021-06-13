@@ -15,33 +15,37 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BorderCurve?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mCPX1_property.removeEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
-    inOldValue?.mCPY1_property.removeEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
-    inOldValue?.mCPX2_property.removeEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
-    inOldValue?.mCPY2_property.removeEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
-    inOldValue?.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
-    inOldValue?.p2Xstring_property.removeEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
-    inOldValue?.p2Ystring_property.removeEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
-    inOldValue?.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.isLine_property.removeEBObserversFrom (&self.mObserversOf_isLine) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mCPX1_property.removeEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
+      oldValue.mCPY1_property.removeEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
+      oldValue.mCPX2_property.removeEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
+      oldValue.mCPY2_property.removeEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
+      oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      oldValue.p2Xstring_property.removeEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
+      oldValue.p2Ystring_property.removeEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
+      oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.isLine_property.removeEBObserversFrom (&self.mObserversOf_isLine) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mCPX1_property.addEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
-    self.mInternalValue?.mCPY1_property.addEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
-    self.mInternalValue?.mCPX2_property.addEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
-    self.mInternalValue?.mCPY2_property.addEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
-    self.mInternalValue?.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
-    self.mInternalValue?.p2Xstring_property.addEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
-    self.mInternalValue?.p2Ystring_property.addEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
-    self.mInternalValue?.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.isLine_property.addEBObserversFrom (&self.mObserversOf_isLine) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mCPX1_property.addEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
+      newValue.mCPY1_property.addEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
+      newValue.mCPX2_property.addEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
+      newValue.mCPY2_property.addEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
+      newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      newValue.p2Xstring_property.addEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
+      newValue.p2Ystring_property.addEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
+      newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.isLine_property.addEBObserversFrom (&self.mObserversOf_isLine) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································

@@ -717,10 +717,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.myModel = inObjectArray [objectIndex] as? BoardModel })
+        let object = inObjectArray [objectIndex] as! BoardModel
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.myModel = object }
       }
       if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.myRoot = inObjectArray [objectIndex] as? MergerRoot })
+        let object = inObjectArray [objectIndex] as! MergerRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.myRoot = object }
       }
     //--- To many relationships
     }

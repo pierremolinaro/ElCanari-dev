@@ -2372,7 +2372,8 @@ final class MergerRoot : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mArtwork = inObjectArray [objectIndex] as? ArtworkRoot })
+        let object = inObjectArray [objectIndex] as! ArtworkRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mArtwork = object }
       }
     //--- To many relationships
       if let range = inDictionary ["boardModels"], range.length > 0 {
@@ -2381,7 +2382,7 @@ final class MergerRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModel)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.boardModels = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.boardModels = relationshipArray }
       }
       if let range = inDictionary ["boardInstances"], range.length > 0 {
         var relationshipArray = [MergerBoardInstance] ()
@@ -2389,7 +2390,7 @@ final class MergerRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.boardInstances = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.boardInstances = relationshipArray }
       }
     }
   //--- End of addOperation

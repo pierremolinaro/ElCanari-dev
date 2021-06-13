@@ -495,7 +495,8 @@ final class PadProxyInDevice : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPinInstance = inObjectArray [objectIndex] as? SymbolPinInstanceInDevice })
+        let object = inObjectArray [objectIndex] as! SymbolPinInstanceInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPinInstance = object }
       }
     //--- To many relationships
     }

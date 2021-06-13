@@ -66,17 +66,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserversOf_mPinInstanceName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
-        managedObject.mPinInstanceName_property.addEBObserver (observer)
+  final func addEBObserversOf_mPinInstanceName_toElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
+    if !self.mObserversOf_mPinInstanceName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
+          managedObject.mPinInstanceName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPinInstanceName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func removeEBObserversOf_mPinInstanceName_fromElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -123,17 +125,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-        managedObject.mPadName_property.addEBObserver (observer)
+  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
+    if !self.mObserversOf_mPadName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
+          managedObject.mPadName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -180,17 +184,19 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserversOf_mIsNC_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
-        managedObject.mIsNC_property.addEBObserver (observer)
+  final func addEBObserversOf_mIsNC_toElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
+    if !self.mObserversOf_mIsNC.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
+          managedObject.mIsNC_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -237,7 +243,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.addEBObserver (observer)
@@ -247,7 +253,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
         managedObject.isConnected_property.removeEBObserver (observer)
@@ -293,7 +299,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
         managedObject.symbolName_property.addEBObserver (observer)
@@ -303,7 +309,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set <PadProxyInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
         managedObject.symbolName_property.removeEBObserver (observer)

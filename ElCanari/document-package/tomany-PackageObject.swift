@@ -64,7 +64,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
@@ -74,7 +74,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -130,7 +130,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -176,7 +176,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func addEBObserversOf_knobSize_toElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func addEBObserversOf_knobSize_toElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_knobSize.apply { (_ observer : EBEvent) in
         managedObject.knobSize_property.addEBObserver (observer)
@@ -242,7 +242,7 @@ class ReadOnlyArrayOf_PackageObject : ReadOnlyAbstractArrayProperty <PackageObje
 
   //····················································································································
 
-  final func removeEBObserversOf_knobSize_fromElementsOfSet (_ inSet : Set<PackageObject>) {
+  final func removeEBObserversOf_knobSize_fromElementsOfSet (_ inSet : Set <PackageObject>) {
     for managedObject in inSet {
       self.mObserversOf_knobSize.apply { (_ observer : EBEvent) in
         managedObject.knobSize_property.removeEBObserver (observer)

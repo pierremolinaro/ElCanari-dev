@@ -670,13 +670,16 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSymbolInstance = inObjectArray [objectIndex] as? SymbolInstanceInDevice })
+        let object = inObjectArray [objectIndex] as! SymbolInstanceInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSymbolInstance = object }
       }
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mType = inObjectArray [objectIndex] as? SymbolPinTypeInDevice })
+        let object = inObjectArray [objectIndex] as! SymbolPinTypeInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mType = object }
       }
       if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPadProxy = inObjectArray [objectIndex] as? PadProxyInDevice })
+        let object = inObjectArray [objectIndex] as! PadProxyInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPadProxy = object }
       }
     //--- To many relationships
     }

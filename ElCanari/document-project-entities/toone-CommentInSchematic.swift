@@ -15,25 +15,29 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : CommentInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
-    inOldValue?.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
-    inOldValue?.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    inOldValue?.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+      oldValue.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
+      oldValue.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+      oldValue.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
-    self.mInternalValue?.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
-    self.mInternalValue?.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    self.mInternalValue?.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
+      newValue.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
+      newValue.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+      newValue.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································

@@ -697,7 +697,7 @@ final class FontCharacter : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.segments = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.segments = relationshipArray }
       }
     }
   //--- End of addOperation

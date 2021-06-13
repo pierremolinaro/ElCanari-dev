@@ -1379,7 +1379,8 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mComponent = inObjectArray [objectIndex] as? ComponentInProject })
+        let object = inObjectArray [objectIndex] as! ComponentInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mComponent = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mPoints"], range.length > 0 {
@@ -1388,7 +1389,7 @@ final class ComponentSymbolInProject : SchematicObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPoints = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
       }
     }
   //--- End of addOperation

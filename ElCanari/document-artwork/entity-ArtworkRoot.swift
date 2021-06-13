@@ -870,7 +870,7 @@ final class ArtworkRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.fileGenerationParameterArray = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.fileGenerationParameterArray = relationshipArray }
       }
     }
   //--- End of addOperation

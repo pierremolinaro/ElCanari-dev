@@ -387,7 +387,8 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPin = inObjectArray [objectIndex] as? DevicePinInProject })
+        let object = inObjectArray [objectIndex] as! DevicePinInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPin = object }
       }
     //--- To many relationships
     }

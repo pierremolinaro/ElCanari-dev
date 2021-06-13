@@ -15,23 +15,27 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mFirstX_property.removeEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
-    inOldValue?.mFirstY_property.removeEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
-    inOldValue?.mFirstColor_property.removeEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
-    inOldValue?.mSecondDx_property.removeEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
-    inOldValue?.mSecondDy_property.removeEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
-    inOldValue?.mSecondColor_property.removeEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mFirstX_property.removeEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
+      oldValue.mFirstY_property.removeEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
+      oldValue.mFirstColor_property.removeEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
+      oldValue.mSecondDx_property.removeEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
+      oldValue.mSecondDy_property.removeEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
+      oldValue.mSecondColor_property.removeEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mFirstX_property.addEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
-    self.mInternalValue?.mFirstY_property.addEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
-    self.mInternalValue?.mFirstColor_property.addEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
-    self.mInternalValue?.mSecondDx_property.addEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
-    self.mInternalValue?.mSecondDy_property.addEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
-    self.mInternalValue?.mSecondColor_property.addEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mFirstX_property.addEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
+      newValue.mFirstY_property.addEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
+      newValue.mFirstColor_property.addEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
+      newValue.mSecondDx_property.addEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
+      newValue.mSecondDy_property.addEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
+      newValue.mSecondColor_property.addEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································

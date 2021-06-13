@@ -1312,7 +1312,7 @@ final class NetClassInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mNets = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mNets = relationshipArray }
       }
     }
   //--- End of addOperation

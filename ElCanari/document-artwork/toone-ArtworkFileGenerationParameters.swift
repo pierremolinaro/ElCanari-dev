@@ -15,53 +15,57 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkFileGenerationParameters?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.drawBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
-    inOldValue?.drawInternalBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
-    inOldValue?.drawComponentNamesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
-    inOldValue?.drawComponentNamesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
-    inOldValue?.drawComponentValuesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
-    inOldValue?.drawComponentValuesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
-    inOldValue?.drawPackageLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
-    inOldValue?.drawPackageLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
-    inOldValue?.drawPadHolesInPDF_property.removeEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
-    inOldValue?.drawPadsTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
-    inOldValue?.drawPadsBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
-    inOldValue?.drawTextsLayoutTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
-    inOldValue?.drawTextsLayoutBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
-    inOldValue?.drawTextsLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
-    inOldValue?.drawTextsLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
-    inOldValue?.drawTracksTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
-    inOldValue?.drawTracksBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
-    inOldValue?.drawVias_property.removeEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
-    inOldValue?.fileExtension_property.removeEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
-    inOldValue?.horizontalMirror_property.removeEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
-    inOldValue?.name_property.removeEBObserversFrom (&self.mObserversOf_name) // Stored property
-    inOldValue?.measurementUnitForPadHoleInPDF_property.removeEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
-    inOldValue?.padHoleDiameterInPDF_property.removeEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+    if let oldValue = inOldValue {
+      oldValue.drawBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
+      oldValue.drawInternalBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
+      oldValue.drawComponentNamesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
+      oldValue.drawComponentNamesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
+      oldValue.drawComponentValuesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
+      oldValue.drawComponentValuesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
+      oldValue.drawPackageLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
+      oldValue.drawPackageLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
+      oldValue.drawPadHolesInPDF_property.removeEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
+      oldValue.drawPadsTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
+      oldValue.drawPadsBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
+      oldValue.drawTextsLayoutTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
+      oldValue.drawTextsLayoutBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
+      oldValue.drawTextsLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
+      oldValue.drawTextsLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
+      oldValue.drawTracksTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
+      oldValue.drawTracksBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
+      oldValue.drawVias_property.removeEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
+      oldValue.fileExtension_property.removeEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
+      oldValue.horizontalMirror_property.removeEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
+      oldValue.name_property.removeEBObserversFrom (&self.mObserversOf_name) // Stored property
+      oldValue.measurementUnitForPadHoleInPDF_property.removeEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
+      oldValue.padHoleDiameterInPDF_property.removeEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.drawBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
-    self.mInternalValue?.drawInternalBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
-    self.mInternalValue?.drawComponentNamesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
-    self.mInternalValue?.drawComponentNamesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
-    self.mInternalValue?.drawComponentValuesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
-    self.mInternalValue?.drawComponentValuesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
-    self.mInternalValue?.drawPackageLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
-    self.mInternalValue?.drawPackageLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
-    self.mInternalValue?.drawPadHolesInPDF_property.addEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
-    self.mInternalValue?.drawPadsTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
-    self.mInternalValue?.drawPadsBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
-    self.mInternalValue?.drawTextsLayoutTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
-    self.mInternalValue?.drawTextsLayoutBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
-    self.mInternalValue?.drawTextsLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
-    self.mInternalValue?.drawTextsLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
-    self.mInternalValue?.drawTracksTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
-    self.mInternalValue?.drawTracksBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
-    self.mInternalValue?.drawVias_property.addEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
-    self.mInternalValue?.fileExtension_property.addEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
-    self.mInternalValue?.horizontalMirror_property.addEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
-    self.mInternalValue?.name_property.addEBObserversFrom (&self.mObserversOf_name) // Stored property
-    self.mInternalValue?.measurementUnitForPadHoleInPDF_property.addEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
-    self.mInternalValue?.padHoleDiameterInPDF_property.addEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+    if let newValue = self.mInternalValue {
+      newValue.drawBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
+      newValue.drawInternalBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
+      newValue.drawComponentNamesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
+      newValue.drawComponentNamesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
+      newValue.drawComponentValuesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
+      newValue.drawComponentValuesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
+      newValue.drawPackageLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
+      newValue.drawPackageLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
+      newValue.drawPadHolesInPDF_property.addEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
+      newValue.drawPadsTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
+      newValue.drawPadsBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
+      newValue.drawTextsLayoutTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
+      newValue.drawTextsLayoutBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
+      newValue.drawTextsLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
+      newValue.drawTextsLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
+      newValue.drawTracksTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
+      newValue.drawTracksBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
+      newValue.drawVias_property.addEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
+      newValue.fileExtension_property.addEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
+      newValue.horizontalMirror_property.addEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
+      newValue.name_property.addEBObserversFrom (&self.mObserversOf_name) // Stored property
+      newValue.measurementUnitForPadHoleInPDF_property.addEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
+      newValue.padHoleDiameterInPDF_property.addEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
+    }
   }
 
   //····················································································································

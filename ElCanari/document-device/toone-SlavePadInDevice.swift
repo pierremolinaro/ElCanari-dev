@@ -15,29 +15,33 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SlavePadInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
-    inOldValue?.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
-    inOldValue?.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    inOldValue?.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
-    inOldValue?.mHoleWidth_property.removeEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
-    inOldValue?.mHoleHeight_property.removeEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
-    inOldValue?.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
-    inOldValue?.mStyle_property.removeEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
-    inOldValue?.frontSideFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPath) // Transient property
-    inOldValue?.backSideFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_backSideFilledBezierPath) // Transient property
-    inOldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+      oldValue.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+      oldValue.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      oldValue.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      oldValue.mHoleWidth_property.removeEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
+      oldValue.mHoleHeight_property.removeEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
+      oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      oldValue.mStyle_property.removeEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
+      oldValue.frontSideFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPath) // Transient property
+      oldValue.backSideFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_backSideFilledBezierPath) // Transient property
+      oldValue.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
-    self.mInternalValue?.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
-    self.mInternalValue?.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
-    self.mInternalValue?.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
-    self.mInternalValue?.mHoleWidth_property.addEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
-    self.mInternalValue?.mHoleHeight_property.addEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
-    self.mInternalValue?.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
-    self.mInternalValue?.mStyle_property.addEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
-    self.mInternalValue?.frontSideFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPath) // Transient property
-    self.mInternalValue?.backSideFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_backSideFilledBezierPath) // Transient property
-    self.mInternalValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+      newValue.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+      newValue.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      newValue.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      newValue.mHoleWidth_property.addEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
+      newValue.mHoleHeight_property.addEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
+      newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      newValue.mStyle_property.addEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
+      newValue.frontSideFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPath) // Transient property
+      newValue.backSideFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_backSideFilledBezierPath) // Transient property
+      newValue.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+    }
   }
 
   //····················································································································

@@ -66,17 +66,19 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
-        managedObject.mSymbolInstanceName_property.addEBObserver (observer)
+  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
+    if !self.mObserversOf_mSymbolInstanceName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
+          managedObject.mSymbolInstanceName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -123,7 +125,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolAndTypeName_property.addEBObserver (observer)
@@ -133,7 +135,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolAndTypeName_property.removeEBObserver (observer)
@@ -179,7 +181,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.addEBObserver (observer)
@@ -189,7 +191,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
         managedObject.symbolTypeName_property.removeEBObserver (observer)
@@ -235,7 +237,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.filledBezierPath_property.addEBObserver (observer)
@@ -245,7 +247,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
         managedObject.filledBezierPath_property.removeEBObserver (observer)
@@ -291,7 +293,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.addEBObserver (observer)
@@ -301,7 +303,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
         managedObject.strokeBezierPath_property.removeEBObserver (observer)

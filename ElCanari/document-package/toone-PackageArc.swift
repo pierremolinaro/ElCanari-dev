@@ -15,41 +15,45 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageArc?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-    inOldValue?.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
-    inOldValue?.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
-    inOldValue?.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
-    inOldValue?.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
-    inOldValue?.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
-    inOldValue?.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
-    inOldValue?.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-    inOldValue?.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-    inOldValue?.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
-    inOldValue?.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
-    inOldValue?.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
-    inOldValue?.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+      oldValue.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
+      oldValue.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
+      oldValue.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
+      oldValue.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
+      oldValue.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
+      oldValue.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
+      oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+      oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+      oldValue.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
+      oldValue.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
+      oldValue.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
+      oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+      oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-    self.mInternalValue?.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
-    self.mInternalValue?.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
-    self.mInternalValue?.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
-    self.mInternalValue?.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
-    self.mInternalValue?.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
-    self.mInternalValue?.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
-    self.mInternalValue?.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-    self.mInternalValue?.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-    self.mInternalValue?.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
-    self.mInternalValue?.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
-    self.mInternalValue?.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
-    self.mInternalValue?.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+      newValue.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
+      newValue.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
+      newValue.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
+      newValue.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
+      newValue.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
+      newValue.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
+      newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+      newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+      newValue.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
+      newValue.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
+      newValue.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
+      newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+      newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

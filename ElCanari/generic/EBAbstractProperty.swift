@@ -22,12 +22,14 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final func addEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply { (_ observer : EBEvent) in
-      self.mObservers.insert (observer)
-      observer.postEvent ()
+  final func addEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
+    if !ioObserverSet.isEmpty {
+      ioObserverSet.apply { (_ observer : EBEvent) in
+        self.mObservers.insert (observer)
+        observer.postEvent ()
+      }
+      self.updateObserverExplorer ()
     }
-    self.updateObserverExplorer ()
   }
 
   //····················································································································
@@ -39,11 +41,13 @@ class EBAbstractProperty : EBEvent {
 
   //····················································································································
 
-  final func removeEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
-    inObserverSet.apply {(_ observer : EBEvent) in
-      self.mObservers.remove (observer)
+  final func removeEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
+    if !ioObserverSet.isEmpty {
+      ioObserverSet.apply {(_ observer : EBEvent) in
+        self.mObservers.remove (observer)
+      }
+      self.updateObserverExplorer ()
     }
-    self.updateObserverExplorer ()
   }
 
   //····················································································································
@@ -65,7 +69,7 @@ class EBAbstractProperty : EBEvent {
   final func updateObserverExplorer () {
     if let observerExplorer = self.mObserverExplorer {
       observerExplorer.removeAllItems ()
-      let observerCount = self.mObservers.count
+      let observerCount = self.mObservers.nonNilEntryCount
       observerExplorer.addItem (withTitle: String (observerCount))
       observerExplorer.isEnabled = observerCount > 0
       self.mObservers.apply ( {(_ observer : EBEvent) in

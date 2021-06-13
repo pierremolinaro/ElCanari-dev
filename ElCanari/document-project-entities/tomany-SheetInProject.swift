@@ -68,17 +68,19 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-        managedObject.mSheetTitle_property.addEBObserver (observer)
+  final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : Set <SheetInProject>) {
+    if !self.mObserversOf_mSheetTitle.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
+          managedObject.mSheetTitle_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -125,7 +127,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
@@ -135,7 +137,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_issues.apply { (_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
@@ -181,7 +183,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.addEBObserver (observer)
@@ -191,7 +193,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
         managedObject.connectedPoints_property.removeEBObserver (observer)
@@ -237,7 +239,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
         managedObject.connexionWarnings_property.addEBObserver (observer)
@@ -247,7 +249,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
         managedObject.connexionWarnings_property.removeEBObserver (observer)
@@ -293,7 +295,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
         managedObject.connexionErrors_property.addEBObserver (observer)
@@ -303,7 +305,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
         managedObject.connexionErrors_property.removeEBObserver (observer)
@@ -349,7 +351,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
         managedObject.sheetDescriptor_property.addEBObserver (observer)
@@ -359,7 +361,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
+  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set <SheetInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
         managedObject.sheetDescriptor_property.removeEBObserver (observer)

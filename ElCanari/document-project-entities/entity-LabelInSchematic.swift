@@ -539,7 +539,8 @@ final class LabelInSchematic : SchematicObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPoint = inObjectArray [objectIndex] as? PointInSchematic })
+        let object = inObjectArray [objectIndex] as! PointInSchematic
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPoint = object }
       }
     //--- To many relationships
     }

@@ -15,23 +15,27 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-    inOldValue?.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
-    inOldValue?.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-    inOldValue?.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
-    inOldValue?.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
-    inOldValue?.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
-    inOldValue?.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+      oldValue.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
+      oldValue.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+      oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+      oldValue.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
+      oldValue.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
+      oldValue.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-    self.mInternalValue?.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
-    self.mInternalValue?.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-    self.mInternalValue?.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
-    self.mInternalValue?.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
-    self.mInternalValue?.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
-    self.mInternalValue?.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+      newValue.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
+      newValue.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+      newValue.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+      newValue.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
+      newValue.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
+      newValue.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

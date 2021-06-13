@@ -15,27 +15,31 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.isPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    inOldValue?.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
-    inOldValue?.trackLengthInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
-    inOldValue?.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
-    inOldValue?.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.isPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      oldValue.trackLengthInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      oldValue.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.isPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    self.mInternalValue?.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
-    self.mInternalValue?.trackLengthInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
-    self.mInternalValue?.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
-    self.mInternalValue?.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.isPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      newValue.trackLengthInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      newValue.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+    }
   }
 
   //····················································································································

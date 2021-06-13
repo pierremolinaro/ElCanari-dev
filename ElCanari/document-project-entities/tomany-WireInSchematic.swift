@@ -66,7 +66,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -76,7 +76,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -122,7 +122,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -132,7 +132,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -178,7 +178,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.addEBObserver (observer)
@@ -188,7 +188,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netName.apply { (_ observer : EBEvent) in
         managedObject.netName_property.removeEBObserver (observer)
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.addEBObserver (observer)
@@ -244,7 +244,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
         managedObject.netClassName_property.removeEBObserver (observer)
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserversOf_hasNet_toElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func addEBObserversOf_hasNet_toElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_hasNet.apply { (_ observer : EBEvent) in
         managedObject.hasNet_property.addEBObserver (observer)
@@ -300,7 +300,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
 
   //····················································································································
 
-  final func removeEBObserversOf_hasNet_fromElementsOfSet (_ inSet : Set<WireInSchematic>) {
+  final func removeEBObserversOf_hasNet_fromElementsOfSet (_ inSet : Set <WireInSchematic>) {
     for managedObject in inSet {
       self.mObserversOf_hasNet.apply { (_ observer : EBEvent) in
         managedObject.hasNet_property.removeEBObserver (observer)

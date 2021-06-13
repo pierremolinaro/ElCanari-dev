@@ -3763,7 +3763,8 @@ final class PackageRoot : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mModelImageDoublePoint = inObjectArray [objectIndex] as? PackageModelImageDoublePoint })
+        let object = inObjectArray [objectIndex] as! PackageModelImageDoublePoint
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mModelImageDoublePoint = object }
       }
     //--- To many relationships
       if let range = inDictionary ["packageObjects"], range.length > 0 {
@@ -3772,7 +3773,7 @@ final class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageObject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.packageObjects = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.packageObjects = relationshipArray }
       }
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
         var relationshipArray = [PackageModelImageDoublePoint] ()
@@ -3780,7 +3781,7 @@ final class PackageRoot : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mModelImageObjects = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mModelImageObjects = relationshipArray }
       }
     }
   //--- End of addOperation

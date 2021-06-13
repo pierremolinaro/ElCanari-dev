@@ -333,7 +333,8 @@ class PackageObject : EBGraphicManagedObject,
     //--- Atomic properties
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? PackageRoot })
+        let object = inObjectArray [objectIndex] as! PackageRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
       }
     //--- To many relationships
     }

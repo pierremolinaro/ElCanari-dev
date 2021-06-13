@@ -1618,16 +1618,20 @@ final class PointInSchematic : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSymbol = inObjectArray [objectIndex] as? ComponentSymbolInProject })
+        let object = inObjectArray [objectIndex] as! ComponentSymbolInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSymbol = object }
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNet = inObjectArray [objectIndex] as? NetInProject })
+        let object = inObjectArray [objectIndex] as! NetInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNet = object }
       }
       if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNC = inObjectArray [objectIndex] as? NCInSchematic })
+        let object = inObjectArray [objectIndex] as! NCInSchematic
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNC = object }
       }
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mSheet = inObjectArray [objectIndex] as? SheetInProject })
+        let object = inObjectArray [objectIndex] as! SheetInProject
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSheet = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mLabels"], range.length > 0 {
@@ -1636,7 +1640,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mLabels = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mLabels = relationshipArray }
       }
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
@@ -1644,7 +1648,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mWiresP2s = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP2s = relationshipArray }
       }
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
         var relationshipArray = [WireInSchematic] ()
@@ -1652,7 +1656,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mWiresP1s = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP1s = relationshipArray }
       }
     }
   //--- End of addOperation

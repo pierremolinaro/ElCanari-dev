@@ -15,21 +15,25 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolText?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-    inOldValue?.text_property.removeEBObserversFrom (&self.mObserversOf_text) // Stored property
-    inOldValue?.horizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
-    inOldValue?.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.text_property.removeEBObserversFrom (&self.mObserversOf_text) // Stored property
+      oldValue.horizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
+      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-    self.mInternalValue?.text_property.addEBObserversFrom (&self.mObserversOf_text) // Stored property
-    self.mInternalValue?.horizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
-    self.mInternalValue?.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.text_property.addEBObserversFrom (&self.mObserversOf_text) // Stored property
+      newValue.horizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
+      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+    }
   }
 
   //····················································································································

@@ -15,33 +15,37 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    inOldValue?.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
-    inOldValue?.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-    inOldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    inOldValue?.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
-    inOldValue?.frontSidePadFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
-    inOldValue?.backSidePadFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_backSidePadFilledBezierPathArray) // Transient property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.padNameSet_property.removeEBObserversFrom (&self.mObserversOf_padNameSet) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      oldValue.frontSidePadFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
+      oldValue.backSidePadFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_backSidePadFilledBezierPathArray) // Transient property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.padNameSet_property.removeEBObserversFrom (&self.mObserversOf_padNameSet) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-    self.mInternalValue?.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
-    self.mInternalValue?.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-    self.mInternalValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
-    self.mInternalValue?.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
-    self.mInternalValue?.frontSidePadFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
-    self.mInternalValue?.backSidePadFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_backSidePadFilledBezierPathArray) // Transient property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.padNameSet_property.addEBObserversFrom (&self.mObserversOf_padNameSet) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      newValue.frontSidePadFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
+      newValue.backSidePadFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_backSidePadFilledBezierPathArray) // Transient property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.padNameSet_property.addEBObserversFrom (&self.mObserversOf_padNameSet) // Transient property
+    }
   }
 
   //····················································································································

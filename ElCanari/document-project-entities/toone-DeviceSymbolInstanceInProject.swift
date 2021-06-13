@@ -15,17 +15,21 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolInstanceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
-    inOldValue?.symbolAndTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
-    inOldValue?.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
-    inOldValue?.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
-    inOldValue?.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      oldValue.symbolAndTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
+      oldValue.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      oldValue.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
+      oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
-    self.mInternalValue?.symbolAndTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
-    self.mInternalValue?.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
-    self.mInternalValue?.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
-    self.mInternalValue?.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      newValue.symbolAndTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
+      newValue.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      newValue.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
+      newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+    }
   }
 
   //····················································································································

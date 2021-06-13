@@ -15,35 +15,39 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardText?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    inOldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    inOldValue?.mFontSize_property.removeEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
-    inOldValue?.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
-    inOldValue?.mText_property.removeEBObserversFrom (&self.mObserversOf_mText) // Stored property
-    inOldValue?.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    inOldValue?.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    inOldValue?.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
-    inOldValue?.mWeight_property.removeEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
-    inOldValue?.mOblique_property.removeEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    inOldValue?.fontName_property.removeEBObserversFrom (&self.mObserversOf_fontName) // Transient property
-    inOldValue?.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mFontSize_property.removeEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
+      oldValue.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
+      oldValue.mText_property.removeEBObserversFrom (&self.mObserversOf_mText) // Stored property
+      oldValue.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+      oldValue.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+      oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+      oldValue.mWeight_property.removeEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
+      oldValue.mOblique_property.removeEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.fontName_property.removeEBObserversFrom (&self.mObserversOf_fontName) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-    self.mInternalValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-    self.mInternalValue?.mFontSize_property.addEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
-    self.mInternalValue?.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
-    self.mInternalValue?.mText_property.addEBObserversFrom (&self.mObserversOf_mText) // Stored property
-    self.mInternalValue?.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
-    self.mInternalValue?.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
-    self.mInternalValue?.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
-    self.mInternalValue?.mWeight_property.addEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
-    self.mInternalValue?.mOblique_property.addEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-    self.mInternalValue?.fontName_property.addEBObserversFrom (&self.mObserversOf_fontName) // Transient property
-    self.mInternalValue?.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mFontSize_property.addEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
+      newValue.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
+      newValue.mText_property.addEBObserversFrom (&self.mObserversOf_mText) // Stored property
+      newValue.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
+      newValue.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
+      newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+      newValue.mWeight_property.addEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
+      newValue.mOblique_property.addEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.fontName_property.addEBObserversFrom (&self.mObserversOf_fontName) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   }
 
   //····················································································································

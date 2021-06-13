@@ -15,13 +15,17 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : NCInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    inOldValue?.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
-    inOldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    inOldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let oldValue = inOldValue {
+      oldValue.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   //--- Add observers to added objects
-    self.mInternalValue?.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
-    self.mInternalValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-    self.mInternalValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    if let newValue = self.mInternalValue {
+      newValue.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································

@@ -873,7 +873,8 @@ final class SlavePadInDevice : EBManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mMasterPad"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mMasterPad = inObjectArray [objectIndex] as? MasterPadInDevice })
+        let object = inObjectArray [objectIndex] as! MasterPadInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mMasterPad = object }
       }
     //--- To many relationships
     }

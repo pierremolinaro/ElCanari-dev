@@ -760,7 +760,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mType = inObjectArray [objectIndex] as? SymbolTypeInDevice })
+        let object = inObjectArray [objectIndex] as! SymbolTypeInDevice
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mType = object }
       }
     //--- To many relationships
       if let range = inDictionary ["mPinInstances"], range.length > 0 {
@@ -769,7 +770,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation ({ self.mPinInstances = relationshipArray })
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPinInstances = relationshipArray }
       }
     }
   //--- End of addOperation

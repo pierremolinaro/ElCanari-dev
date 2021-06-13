@@ -1244,13 +1244,16 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     //--- To one relationships
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mRoot = inObjectArray [objectIndex] as? ProjectRoot })
+        let object = inObjectArray [objectIndex] as! ProjectRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
       }
       if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mNext = inObjectArray [objectIndex] as? BorderCurve })
+        let object = inObjectArray [objectIndex] as! BorderCurve
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNext = object }
       }
       if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation ({ self.mPrevious = inObjectArray [objectIndex] as? BorderCurve })
+        let object = inObjectArray [objectIndex] as! BorderCurve
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPrevious = object }
       }
     //--- To many relationships
     }

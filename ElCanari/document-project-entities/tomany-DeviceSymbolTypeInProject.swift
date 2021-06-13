@@ -62,17 +62,19 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
-        managedObject.mSymbolTypeName_property.addEBObserver (observer)
+  final func addEBObserversOf_mSymbolTypeName_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+    if !self.mObserversOf_mSymbolTypeName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
+          managedObject.mSymbolTypeName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mSymbolTypeName_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mSymbolTypeName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -119,17 +121,19 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+    if !self.mObserversOf_mStrokeBezierPath.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
+          managedObject.mStrokeBezierPath_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -176,17 +180,19 @@ class ReadOnlyArrayOf_DeviceSymbolTypeInProject : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mFilledBezierPath_property.addEBObserver (observer)
+  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
+    if !self.mObserversOf_mFilledBezierPath.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
+          managedObject.mFilledBezierPath_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolTypeInProject>) {
+  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : Set <DeviceSymbolTypeInProject>) {
     self.mObserversOf_mFilledBezierPath.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {

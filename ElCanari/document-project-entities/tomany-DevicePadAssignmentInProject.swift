@@ -62,17 +62,19 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-        managedObject.mPadName_property.addEBObserver (observer)
+  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
+    if !self.mObserversOf_mPadName.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
+          managedObject.mPadName_property.addEBObserver (observer)
+        }
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
     self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -119,7 +121,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+  final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
     for managedObject in inSet {
       self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
         managedObject.pinPadAssignment_property.addEBObserver (observer)
@@ -129,7 +131,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+  final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
     for managedObject in inSet {
       self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
         managedObject.pinPadAssignment_property.removeEBObserver (observer)
@@ -175,7 +177,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
     for managedObject in inSet {
       self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
         managedObject.descriptor_property.addEBObserver (observer)
@@ -185,7 +187,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
+  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set <DevicePadAssignmentInProject>) {
     for managedObject in inSet {
       self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
         managedObject.descriptor_property.removeEBObserver (observer)
