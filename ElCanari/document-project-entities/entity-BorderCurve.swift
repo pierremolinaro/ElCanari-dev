@@ -1374,36 +1374,36 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     if let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       if inKnobIndex == BOARD_LIMIT_P1_KNOB, let next = self.mNext {
         let dx = max (inProposedAlignedTranslation.x, -self.mX)
         let dy = max (inProposedAlignedTranslation.y, -self.mY)
         if ((self.mX + dx) == next.mX) && ((self.mY + dy) == next.mY) {
-          return ObjcCanariPoint (x: 0, y: 0)
+          return CanariPoint (x: 0, y: 0)
         }else{
-          return ObjcCanariPoint (x: dx, y: dy)
+          return CanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_P2_KNOB, let next = self.mNext {
         let dx = max (inProposedAlignedTranslation.x, -next.mX)
         let dy = max (inProposedAlignedTranslation.y, -next.mY)
         if ((next.mX + dx) == self.mX) && ((next.mY + dy) == self.mY) {
-          return ObjcCanariPoint (x: 0, y: 0)
+          return CanariPoint (x: 0, y: 0)
         }else{
-          return ObjcCanariPoint (x: dx, y: dy)
+          return CanariPoint (x: dx, y: dy)
         }
       }else if inKnobIndex == BOARD_LIMIT_CP1_KNOB {
         return inProposedAlignedTranslation
       }else if inKnobIndex == BOARD_LIMIT_CP2_KNOB {
         return inProposedAlignedTranslation
       }else{
-        return ObjcCanariPoint (x: 0, y: 0)
+        return CanariPoint (x: 0, y: 0)
       }
     }else{
-      return ObjcCanariPoint (x: 0, y: 0)
+      return CanariPoint (x: 0, y: 0)
     }
   }
 

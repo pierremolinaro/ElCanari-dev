@@ -778,7 +778,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     var acceptedX = inDx
     let newX = self.x + acceptedX
     if newX < 0 {
@@ -789,7 +789,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     if newY < 0 {
       acceptedY = -self.y
     }
-    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
+    return CanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································

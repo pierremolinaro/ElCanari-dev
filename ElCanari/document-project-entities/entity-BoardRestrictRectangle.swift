@@ -673,7 +673,7 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
     var acceptedX = inDx
     let newX = self.mX + acceptedX
     if newX < 0 {
@@ -684,7 +684,7 @@ final class BoardRestrictRectangle : BoardObject,
     if newY < 0 {
       acceptedY = -self.mY
     }
-    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
+    return CanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -707,10 +707,10 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == BOARD_RESTRICT_RECT_LEFT {
@@ -736,7 +736,7 @@ final class BoardRestrictRectangle : BoardObject,
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.mHeight)
       }
     }
-    return ObjcCanariPoint (x: dx, y: dy)
+    return CanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -817,7 +817,7 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -827,7 +827,7 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

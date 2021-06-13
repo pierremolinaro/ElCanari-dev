@@ -968,7 +968,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
     let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
+      object.rotate90Clockwise (from: r.center, userSet: userSet)
     }
   }
 
@@ -978,7 +978,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
     let userSet = ObjcObjectSet ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: ObjcCanariPoint (canariPoint: r.center), userSet: userSet)
+      object.rotate90CounterClockwise (from: r.center, userSet: userSet)
     }
   }
 

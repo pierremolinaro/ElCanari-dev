@@ -2112,14 +2112,14 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     if (inKnobIndex == BOARD_CONNECTOR_KNOB) && !(self.connectedToComponent ?? true) {
       return inProposedAlignedTranslation
     }else{
-      return ObjcCanariPoint (x: 0, y: 0)
+      return CanariPoint (x: 0, y: 0)
     }
   }
 

@@ -77,8 +77,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Translation
   //····················································································································
 
-  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
-    return ObjcCanariPoint (x: inDx, y: inDy)
+  func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
@@ -97,10 +97,10 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   func canMove (knob inKnobIndex : Int,
-                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                shift inShift : Bool) -> ObjcCanariPoint {
+                proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                shift inShift : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
   }
 
@@ -167,12 +167,12 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
   }
 
   //····················································································································
@@ -216,68 +216,6 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   func operationBeforeRemoving () {
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-final class ObjcCanariPoint : ObjcObject {
-
-  //····················································································································
-
-  let p : CanariPoint
-
-  //····················································································································
-
-  var x : Int { return self.p.x }
-  var y : Int { return self.p.y }
-
-  //····················································································································
-
-  override init () {
-    self.p = CanariPoint ()
-    super.init ()
-  }
-
-  //····················································································································
-
-  init (x inX : Int, y inY : Int) {
-    self.p = CanariPoint (x: inX, y: inY)
-    super.init ()
-  }
-
-  //····················································································································
-
-  init (canariPoint inPoint : CanariPoint) {
-    self.p = inPoint
-    super.init ()
-  }
-
-  //····················································································································
-
-  func rotated90Clockwise (x inX : Int, y inY : Int) -> CanariPoint {
-    return self.rotated90Clockwise (CanariPoint (x: inX, y: inY))
-  }
-
-  //····················································································································
-
-  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
-    return self.p.rotated90Clockwise (inP)
-  }
-
-  //····················································································································
-
-  func rotated90CounterClockwise (x inX : Int, y inY : Int) -> CanariPoint {
-    return self.rotated90CounterClockwise (CanariPoint (x: inX, y: inY))
-  }
-
-  //····················································································································
-
-  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
-    return self.p.rotated90CounterClockwise (inP)
   }
 
   //····················································································································

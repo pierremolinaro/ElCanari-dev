@@ -2248,10 +2248,10 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     return inProposedUnalignedTranslation
 //    if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
 //      if inKnobIndex == BOARD_TRACK_P1 {
@@ -2260,7 +2260,7 @@ final class BoardTrack : BoardObject,
 //        }else{
 //          var p = inUnalignedMouseDraggedLocation.p
 //          p.quadrantAligned (from: p2)
-//          return ObjcCanariPoint (x: p.x - p1.x, y: p.y - p1.y)
+//          return CanariPoint (x: p.x - p1.x, y: p.y - p1.y)
 //        }
 //      }else if inKnobIndex == BOARD_TRACK_P2 {
 //        if inShift {
@@ -2268,13 +2268,13 @@ final class BoardTrack : BoardObject,
 //        }else{
 //          var p = inUnalignedMouseDraggedLocation.p
 //          p.quadrantAligned (from: p1)
-//          return ObjcCanariPoint (x: p.x - p2.x, y: p.y - p2.y)
+//          return CanariPoint (x: p.x - p2.x, y: p.y - p2.y)
 //        }
 //      }else{
-//        return ObjcCanariPoint ()
+//        return CanariPoint ()
 //      }
 //    }else{
-//      return ObjcCanariPoint ()
+//      return CanariPoint ()
 //    }
   }
 
@@ -2372,7 +2372,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
@@ -2391,7 +2391,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)

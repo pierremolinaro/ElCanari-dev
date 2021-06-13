@@ -624,7 +624,7 @@ final class SymbolSegment : SymbolObject,
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx
 //    do{
 //      let newX = self.x1 + acceptedX
@@ -651,7 +651,7 @@ final class SymbolSegment : SymbolObject,
 //        acceptedY = -self.y2
 //      }
 //    }
-//    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
+//    return CanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
   //····················································································································
@@ -679,10 +679,10 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     return inProposedAlignedTranslation
  }
 

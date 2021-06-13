@@ -3256,10 +3256,10 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     if inKnobIndex == COMPONENT_PACKAGE_CENTER_KNOB {
       return inProposedAlignedTranslation
     }else if inKnobIndex == COMPONENT_PACKAGE_ROTATION_KNOB {
@@ -3269,7 +3269,7 @@ final class ComponentInProject : BoardObject,
     }else if inKnobIndex == COMPONENT_PACKAGE_VALUE_KNOB {
       return inProposedAlignedTranslation
     }else{
-      return ObjcCanariPoint (x: 0, y: 0)
+      return CanariPoint (x: 0, y: 0)
     }
   }
 
@@ -3334,7 +3334,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -3344,7 +3344,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : ObjcCanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

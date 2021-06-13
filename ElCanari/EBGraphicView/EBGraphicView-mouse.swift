@@ -95,9 +95,9 @@ extension EBGraphicView {
     if let knobIndex = inPossibleKnobIndex { // Mode knob
       let translation = objects [objectIndex].canMove (
         knob: knobIndex,
-        proposedUnalignedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedUnalignedTranslation),
-        proposedAlignedTranslation: ObjcCanariPoint (canariPoint: inProposedAlignedTranslation),
-        unalignedMouseDraggedLocation: ObjcCanariPoint (canariPoint: inUnalignedLastMouseDraggedLocation),
+        proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
+        proposedAlignedTranslation: inProposedAlignedTranslation,
+        unalignedMouseDraggedLocation: inUnalignedLastMouseDraggedLocation,
         shift: shift
       )
       if (translation.x != 0) || (translation.y != 0) {

@@ -627,7 +627,7 @@ final class SymbolSolidOval : SymbolObject,
 
   //····················································································································
 
-//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> ObjcCanariPoint {
+//  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
 //    var acceptedX = inDx
 //    let newX = self.x + acceptedX
 //    if newX < 0 {
@@ -638,7 +638,7 @@ final class SymbolSolidOval : SymbolObject,
 //    if newY < 0 {
 //      acceptedY = -self.y
 //    }
-//    return ObjcCanariPoint (x: acceptedX, y: acceptedY)
+//    return CanariPoint (x: acceptedX, y: acceptedY)
 //  }
 
   //····················································································································
@@ -662,10 +662,10 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int,
-                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : ObjcCanariPoint,
-                         proposedAlignedTranslation inProposedAlignedTranslation : ObjcCanariPoint,
-                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : ObjcCanariPoint,
-                         shift inShift : Bool) -> ObjcCanariPoint {
+                         proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
+                         proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
+                         unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
+                         shift inShift : Bool) -> CanariPoint {
     var dx = inProposedAlignedTranslation.x
     var dy = inProposedAlignedTranslation.y
     if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {
@@ -691,7 +691,7 @@ final class SymbolSolidOval : SymbolObject,
         dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
       }
     }
-    return ObjcCanariPoint (x: dx, y: dy)
+    return CanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
