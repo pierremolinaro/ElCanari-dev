@@ -322,7 +322,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   func alignmentPointSetArray () -> [Set<CanariPoint>] {
     var result = [Set<CanariPoint>] ()
     for object in self.objectArray {
-      result.append (object.alignmentPoints ().points)
+      result.append (object.alignmentPoints ())
     }
     return result
   }
@@ -644,7 +644,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageObject] ()
-      let userSet = Set <ObjcObject> ()
+      var userSet = Set <ObjcObject> ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -654,7 +654,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
           }
           idx += 1
           if errorMessage == "" {
-            object.translate (xBy: X, yBy: Y, userSet: userSet)
+            object.translate (xBy: X, yBy: Y, userSet: &userSet)
             newObjects.append (object)
           }
         }
@@ -954,7 +954,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
       return false
     }else{
       for object in self.selectedArray {
-        if !object.canRotate90 (accumulatedPoints: self.mRotate90PointSet) {
+        if !object.canRotate90 (accumulatedPoints: &self.mRotate90PointSet) {
           return false
         }
       }
@@ -965,20 +965,20 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   //····················································································································
 
   func rotate90Clockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = Set <ObjcObject> ()
+    let r = CanariRect (points: Array (self.mRotate90PointSet))
+    var userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: CanariPoint (canariPoint: r.center), userSet: userSet)
+      object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
   }
 
   //····················································································································
 
   func rotate90CounterClockwise () {
-    let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = Set <ObjcObject> ()
+    let r = CanariRect (points: Array (self.mRotate90PointSet))
+    var userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: CanariPoint (canariPoint: r.center), userSet: userSet)
+      object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }
   }
 
