@@ -644,7 +644,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageObject] ()
-      let userSet = ObjcObjectSet ()
+      let userSet = Set <ObjcObject> ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -966,7 +966,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = ObjcObjectSet ()
+    let userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
       object.rotate90Clockwise (from: CanariPoint (canariPoint: r.center), userSet: userSet)
     }
@@ -976,7 +976,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet.points))
-    let userSet = ObjcObjectSet ()
+    let userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
       object.rotate90CounterClockwise (from: CanariPoint (canariPoint: r.center), userSet: userSet)
     }

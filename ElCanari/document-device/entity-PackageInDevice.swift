@@ -1143,7 +1143,7 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
     self.mX += inDx
     self.mY += inDy
   }

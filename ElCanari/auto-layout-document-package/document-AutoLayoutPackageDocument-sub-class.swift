@@ -204,7 +204,7 @@ import Cocoa
          let X = dataDictionary [X_KEY] as? Int,
          let Y = dataDictionary [Y_KEY] as? Int {
         var newObjectArray = [PackageObject] ()
-        let userSet = ObjcObjectSet ()
+        let userSet = Set <ObjcObject> ()
         var idx = 0
         var errorMessage = ""
         for dictionary in dictionaryArray {

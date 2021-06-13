@@ -644,7 +644,7 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageInDevice] ()
-      let userSet = ObjcObjectSet ()
+      var userSet = Set <ObjcObject> ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -654,7 +654,7 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
           }
           idx += 1
           if errorMessage == "" {
-            object.translate (xBy: X, yBy: Y, userSet: userSet)
+            object.translate (xBy: X, yBy: Y, userSet: &userSet)
             newObjects.append (object)
           }
         }
@@ -966,9 +966,9 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    let userSet = ObjcObjectSet ()
+    var userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
-      object.rotate90Clockwise (from: r.center, userSet: userSet)
+      object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
   }
 
@@ -976,9 +976,9 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    let userSet = ObjcObjectSet ()
+    var userSet = Set <ObjcObject> ()
     for object in self.selectedArray {
-      object.rotate90CounterClockwise (from: r.center, userSet: userSet)
+      object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }
   }
 

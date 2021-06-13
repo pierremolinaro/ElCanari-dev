@@ -783,7 +783,7 @@ final class PackageGuide : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -856,7 +856,7 @@ final class PackageGuide : PackageObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y
@@ -867,7 +867,7 @@ final class PackageGuide : PackageObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     self.x1 = p1.x
     self.y1 = p1.y

@@ -1498,7 +1498,7 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
     self.x += inDx
     self.y += inDy
     self.xName += inDx

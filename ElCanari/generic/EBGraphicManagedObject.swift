@@ -89,7 +89,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
   }
 
   //····················································································································
@@ -167,12 +167,12 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
   }
 
   //····················································································································
@@ -216,30 +216,6 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   func operationBeforeRemoving () {
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-final class ObjcObjectSet : ObjcObject {
-
-  //····················································································································
-
-  private var mObjects = Set <ObjcObject> ()
-
-  //····················································································································
-
-  func insert (_ inObject : ObjcObject) {
-    self.mObjects.insert (inObject)
-  }
-
-  //····················································································································
-
-  func contains (_ inObject : ObjcObject) -> Bool {
-    return self.mObjects.contains (inObject)
   }
 
   //····················································································································

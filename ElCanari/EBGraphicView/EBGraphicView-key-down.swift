@@ -51,9 +51,9 @@ extension EBGraphicView {
       }
     }
     if accepted {
-      let userSet = ObjcObjectSet ()
+      var userSet = Set <ObjcObject> ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-        object.translate (xBy: inDx, yBy:inDy, userSet: userSet)
+        object.translate (xBy: inDx, yBy:inDy, userSet: &userSet)
       }
     }
     return accepted

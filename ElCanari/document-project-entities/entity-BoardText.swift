@@ -1099,7 +1099,7 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout Set <ObjcObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -1186,7 +1186,7 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y
@@ -1196,7 +1196,7 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : ObjcObjectSet) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mX, y: self.mY)
     self.mX = p.x
     self.mY = p.y

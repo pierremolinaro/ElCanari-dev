@@ -1347,7 +1347,7 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : ObjcObjectSet) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
     if let next = self.mNext, let previous = self.mPrevious, let boardShape = self.mRoot?.mBoardShape, boardShape == .bezierPathes {
       let dx = max (inDx, -self.mX, -next.mX)
       let dy = max (inDy, -self.mY, -next.mY)
