@@ -21,7 +21,7 @@ var gDebugMenuItemsAdded = false
 //    EBEvent class
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBEvent : EBObject {
+class EBEvent : ObjcObject {
   func postEvent () {} // Abstract method
 }
 

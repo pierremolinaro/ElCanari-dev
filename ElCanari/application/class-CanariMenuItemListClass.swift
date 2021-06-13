@@ -11,7 +11,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc (CanariMenuItemListClass) final class CanariMenuItemListClass : EBObject {
+@objc (CanariMenuItemListClass) final class CanariMenuItemListClass : ObjcObject {
 
   //····················································································································
 

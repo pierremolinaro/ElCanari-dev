@@ -75,11 +75,11 @@ final class MergerPadArray : EBObject {
 
   //····················································································································
 
-  override var description : String {
-    get {
-      return "MergerPadArray " + String (padArray.count)
-    }
-  }
+//  override var description : String {
+//    get {
+//      return "MergerPadArray " + String (padArray.count)
+//    }
+//  }
 
   //····················································································································
 

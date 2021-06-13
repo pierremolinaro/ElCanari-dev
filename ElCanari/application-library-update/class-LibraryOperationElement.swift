@@ -26,7 +26,7 @@ enum LibraryOperation {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class LibraryOperationElement : EBObject {
+final class LibraryOperationElement : ObjcObject {
 
   //····················································································································
   //   Properties

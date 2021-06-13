@@ -306,6 +306,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
+    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageArcSelectionController.showObjectWindowFromExplorerButton(_:))
@@ -438,6 +439,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageArcSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
+    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

@@ -418,6 +418,7 @@ final class SelectionController_MergerDocument_mDataSelection : EBObject {
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
+    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_MergerDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
@@ -630,6 +631,7 @@ final class SelectionController_MergerDocument_mDataSelection : EBObject {
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_MergerDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
+    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

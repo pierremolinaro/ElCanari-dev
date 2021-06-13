@@ -41,11 +41,11 @@ final class MergerBoardLimits : EBObject {
 
   //····················································································································
 
-  override var description : String {
-    get {
-      return "MergerBoardLimits " + String (boardWidth) + " " + String (boardHeight) + " " + String (lineWidth)
-    }
-  }
+//  override var description : String {
+//    get {
+//      return "MergerBoardLimits " + String (boardWidth) + " " + String (boardHeight) + " " + String (lineWidth)
+//    }
+//  }
 
   //····················································································································
 

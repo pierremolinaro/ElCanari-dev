@@ -98,6 +98,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
+    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.showObjectWindowFromExplorerButton(_:))
@@ -134,6 +135,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_ProjectDocument_ncInSchematicSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
+    let className = String (describing: type (of: self))
     let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view

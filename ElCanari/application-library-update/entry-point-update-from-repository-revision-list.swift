@@ -177,7 +177,7 @@ final class LibraryRevisionDescriptor : EBObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class LibraryCommitListController : EBObject {
+final class LibraryCommitListController : ObjcObject {
 
   //····················································································································
   //   Properties

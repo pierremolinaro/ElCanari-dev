@@ -176,6 +176,7 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
+    let className = String (describing: type (of: self))
     valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_DeviceDocument_symbolInstanceSelection.showObjectWindowFromExplorerButton(_:))
@@ -228,7 +229,8 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_DeviceDocument_symbolInstanceSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
+   let className = String (describing: type (of: self))
+   let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
