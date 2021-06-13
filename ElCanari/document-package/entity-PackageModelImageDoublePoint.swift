@@ -729,8 +729,8 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.mFirstX, y: self.mFirstY))
     return result
   }

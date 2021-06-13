@@ -799,8 +799,8 @@ final class BoardRestrictRectangle : BoardObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.mX, y: self.mY))
     result.insert (CanariPoint (x: self.mX + self.mWidth, y: self.mY + self.mHeight))
     return result
@@ -810,7 +810,7 @@ final class BoardRestrictRectangle : BoardObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insert (CanariPoint (x: self.mX + self.mWidth / 2, y: self.mY + self.mHeight / 2))
     return true
   }

@@ -944,7 +944,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
   //····················································································································
 
   var canRotate90_property = EBTransientProperty_Bool ()
-  private var mRotate90PointSet = ObjcCanariPointSet ()
+  private var mRotate90PointSet = Set <CanariPoint> ()
 
  //····················································································································
 

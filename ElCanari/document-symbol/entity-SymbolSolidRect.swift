@@ -732,8 +732,8 @@ final class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.x, y: self.y))
     result.insert (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

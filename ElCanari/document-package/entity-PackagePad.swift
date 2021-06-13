@@ -2097,8 +2097,8 @@ final class PackagePad : PackageObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (x: self.xCenter, y: self.yCenter)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
     return true
   }
 
@@ -2158,8 +2158,8 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
   }

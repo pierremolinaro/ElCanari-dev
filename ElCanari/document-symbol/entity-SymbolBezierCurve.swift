@@ -1054,7 +1054,7 @@ final class SymbolBezierCurve : SymbolObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     let p1  = CanariPoint (x: self.x1, y: self.y1)
     let p2  = CanariPoint (x: self.x2, y: self.y2)
     let cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
@@ -1153,8 +1153,8 @@ final class SymbolBezierCurve : SymbolObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.x1, y: self.y1))
     result.insert (CanariPoint (x: self.x2, y: self.y2))
     result.insert (CanariPoint (x: self.cpx1, y: self.cpy1))

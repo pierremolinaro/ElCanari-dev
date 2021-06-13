@@ -3323,7 +3323,7 @@ final class ComponentInProject : BoardObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let padRect = self.selectedPackagePadsRect () {
       accumulatedPoints.insert (padRect.center.canariPoint)
       return true

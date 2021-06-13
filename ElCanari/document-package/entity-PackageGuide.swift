@@ -848,9 +848,9 @@ final class PackageGuide : PackageObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
-    accumulatedPoints.insert (x: self.x1, y: self.y1)
-    accumulatedPoints.insert (x: self.x2, y: self.y2)
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+    accumulatedPoints.insert (CanariPoint (x: self.x1, y: self.y1))
+    accumulatedPoints.insert (CanariPoint (x: self.x2, y: self.y2))
     return true
   }
 
@@ -913,8 +913,8 @@ final class PackageGuide : PackageObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.x1, y: self.y1))
     result.insert (CanariPoint (x: self.x2, y: self.y2))
     return result

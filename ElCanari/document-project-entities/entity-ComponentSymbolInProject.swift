@@ -1555,7 +1555,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //  ROTATE 90 CLOCKWISE
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     let p = CanariPoint (x: self.mCenterX, y: self.mCenterY)
     accumulatedPoints.insert (p)
     return true
@@ -1624,8 +1624,8 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     if let symbolInfo = self.symbolInfo {
       for pin in symbolInfo.pins {
         result.insert (pin.pinLocation)

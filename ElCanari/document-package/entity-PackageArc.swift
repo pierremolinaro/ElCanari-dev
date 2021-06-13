@@ -1251,8 +1251,8 @@ final class PackageArc : PackageObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    let result = Set <CanariPoint> ()
 //    result.points.append (CanariPoint (x: self.x, y: self.y))
 //    result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

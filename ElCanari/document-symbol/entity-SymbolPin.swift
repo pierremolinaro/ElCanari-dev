@@ -1163,8 +1163,8 @@ final class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  override func alignmentPoints () -> ObjcCanariPointSet {
-    let result = ObjcCanariPointSet ()
+  override func alignmentPoints () -> Set <CanariPoint> {
+    var result = Set <CanariPoint> ()
     result.insert (CanariPoint (x: self.xPin, y: self.yPin))
     result.insert (CanariPoint (x: self.xName, y: self.yName))
     result.insert (CanariPoint (x: self.xNumber, y: self.yNumber))

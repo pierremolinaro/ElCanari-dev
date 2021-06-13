@@ -919,7 +919,7 @@ final class BoardLine : BoardObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     accumulatedPoints.insert (CanariPoint (x: self.mX1, y: self.mY1))
     accumulatedPoints.insert (CanariPoint (x: self.mX2, y: self.mY2))
     return true

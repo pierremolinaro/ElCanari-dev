@@ -2360,7 +2360,7 @@ final class BoardTrack : BoardObject,
   //  Rotate 90°
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     if let p1 = self.mConnectorP1?.location, let p2 = self.mConnectorP2?.location {
       accumulatedPoints.insert (CanariPoint (x: p1.x, y: p1.y))
       accumulatedPoints.insert (CanariPoint (x: p2.x, y: p2.y))

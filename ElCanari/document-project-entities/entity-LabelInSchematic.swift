@@ -654,7 +654,7 @@ final class LabelInSchematic : SchematicObject,
   //  ROTATE 90
   //····················································································································
 
-  override func canRotate90 (accumulatedPoints : ObjcCanariPointSet) -> Bool {
+  override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     let p = CanariPoint (x: self.mPoint!.mX, y: self.mPoint!.mY)
     accumulatedPoints.insert (p)
     return true
