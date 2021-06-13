@@ -1469,7 +1469,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -1563,7 +1563,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -1576,7 +1576,7 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y

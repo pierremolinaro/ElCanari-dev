@@ -626,7 +626,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     if let p1 = self.mP1, !ioSet.contains (p1) {
       ioSet.insert (p1)
       p1.mX += inDx

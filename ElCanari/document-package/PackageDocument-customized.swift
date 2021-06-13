@@ -205,7 +205,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
            let X = dataDictionary [X_KEY] as? Int,
            let Y = dataDictionary [Y_KEY] as? Int {
           var newObjectArray = [PackageObject] ()
-          var userSet = Set <ObjcObject> ()
+          var userSet = Set <EBObject> ()
           var idx = 0
           var errorMessage = ""
           for dictionary in dictionaryArray {

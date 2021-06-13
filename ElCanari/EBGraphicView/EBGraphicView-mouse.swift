@@ -132,7 +132,7 @@ extension EBGraphicView {
       dy = p.y
     }
     if (dx != 0) || (dy != 0) {
-      var userSet = Set <ObjcObject> ()
+      var userSet = Set <EBObject> ()
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
         object.translate (xBy: dx, yBy: dy, userSet: &userSet)
       }

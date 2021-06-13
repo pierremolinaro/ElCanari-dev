@@ -657,7 +657,7 @@ final class CommentInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.mX += inDx
     self.mY += inDy
   }

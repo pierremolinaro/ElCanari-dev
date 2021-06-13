@@ -1322,7 +1322,7 @@ final class PackageBezier : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.x1 += inDx
     self.y1 += inDy
     self.x2 += inDx
@@ -1414,7 +1414,7 @@ final class PackageBezier : PackageObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let p1 = inRotationCenter.rotated90Clockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90Clockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90Clockwise (x: self.cpx1, y: self.cpy1)
@@ -1431,7 +1431,7 @@ final class PackageBezier : PackageObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let p1 = inRotationCenter.rotated90CounterClockwise (x: self.x1, y: self.y1)
     let p2 = inRotationCenter.rotated90CounterClockwise (x: self.x2, y: self.y2)
     let cp1 = inRotationCenter.rotated90CounterClockwise (x: self.cpx1, y: self.cpy1)

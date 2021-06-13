@@ -607,7 +607,7 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     if let point = self.mPoint, point.mSymbol == nil, !ioSet.contains (point) {
       ioSet.insert (point)
       point.mX += inDx
@@ -662,7 +662,7 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -677,7 +677,7 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90

@@ -683,7 +683,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.mFirstX += inDx
     self.mFirstY += inDy
   }

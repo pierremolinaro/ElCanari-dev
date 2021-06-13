@@ -2064,7 +2064,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -2104,7 +2104,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let newCenter = inRotationCenter.rotated90Clockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y
@@ -2114,7 +2114,7 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     let newCenter = inRotationCenter.rotated90CounterClockwise (x: self.xCenter, y: self.yCenter)
     self.xCenter = newCenter.x
     self.yCenter = newCenter.y

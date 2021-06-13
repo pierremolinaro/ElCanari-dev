@@ -2230,7 +2230,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout Set <EBObject>) {
     if let connectorP1 = self.mConnectorP1, !ioSet.contains (connectorP1) {
       ioSet.insert (connectorP1)
       connectorP1.mX += inDx
@@ -2372,7 +2372,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90Clockwise (x: connectorP1.mX, y: connectorP1.mY)
@@ -2391,7 +2391,7 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     if let connectorP1 = self.mConnectorP1, let connectorP2 = self.mConnectorP2 {
       if !ioSet.contains (connectorP1) {
         let p = inRotationCenter.rotated90CounterClockwise (x: connectorP1.mX, y: connectorP1.mY)

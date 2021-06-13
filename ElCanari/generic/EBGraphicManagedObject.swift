@@ -89,7 +89,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
   }
 
   //····················································································································
@@ -167,12 +167,12 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
   }
 
   //····················································································································

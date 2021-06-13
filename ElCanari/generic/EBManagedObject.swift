@@ -41,7 +41,7 @@ protocol EBManagedObject_alloc_index_protocol : AnyObject {
 //  EBManagedObject
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBManagedObject : ObjcObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
+class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
   private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   final var savingIndex = 0
 
@@ -52,7 +52,7 @@ class EBManagedObject : ObjcObject, EBSignatureObserverProtocol, EBManagedObject
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
-    mEBUndoManager = ebUndoManager
+    self.mEBUndoManager = ebUndoManager
     super.init ()
   }
 

@@ -636,7 +636,7 @@ final class SymbolSolidRect : SymbolObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <ObjcObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout Set <EBObject>) {
     self.x += inDx
     self.y += inDy
   }

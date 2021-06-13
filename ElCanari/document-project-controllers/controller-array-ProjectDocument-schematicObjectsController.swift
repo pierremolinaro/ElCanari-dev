@@ -644,7 +644,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
        let X = dataDictionary [X_KEY] as? Int,
        let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [SchematicObject] ()
-      var userSet = Set <ObjcObject> ()
+      var userSet = Set <EBObject> ()
       var idx = 0
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -966,7 +966,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = Set <ObjcObject> ()
+    var userSet = Set <EBObject> ()
     for object in self.selectedArray {
       object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
@@ -976,7 +976,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = Set <ObjcObject> ()
+    var userSet = Set <EBObject> ()
     for object in self.selectedArray {
       object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }

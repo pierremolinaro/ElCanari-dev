@@ -57,6 +57,10 @@ class EBObject : EBUserClassNameProtocol, Equatable, Hashable {
 
   //····················································································································
 
+  final var className : String { return String (describing: type (of: self)) }
+
+  //····················································································································
+
   deinit {
     noteObjectDeallocation (self)
   }

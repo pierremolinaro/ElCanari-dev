@@ -420,7 +420,7 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
     switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation270
@@ -435,7 +435,7 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <ObjcObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout Set <EBObject>) {
   switch self.mOrientation {
     case .rotation0 :
       self.mOrientation = .rotation90
