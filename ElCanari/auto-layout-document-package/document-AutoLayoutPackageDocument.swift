@@ -1768,7 +1768,6 @@ import Cocoa
     toolbar.delegate = self
     self.windowForSheet?.toolbar = toolbar
   //--- Build window content view
-    // showDebugBackground ()
     self.configureProperties ()
     let mainView = self.mPageMasterView
   //--- Call outlet linkers

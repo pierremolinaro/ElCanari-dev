@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17700" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17700"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +11,6 @@
                 <outlet property="mAllocationStatsWindow" destination="13" id="60"/>
                 <outlet property="mAllocationStatsWindowVisibleAtLaunchCheckbox" destination="138" id="152"/>
                 <outlet property="mCurrentlyAllocatedObjectCountTextField" destination="18" id="186"/>
-                <outlet property="mDebugMenu" destination="6" id="10"/>
                 <outlet property="mDisplayFilterPopUpButton" destination="16" id="153"/>
                 <outlet property="mEnableObjectAllocationDebug" destination="Hp6-Mx-RXI" id="Ogd-Av-IRf"/>
                 <outlet property="mPerformSnapShotButton" destination="207" id="209"/>
@@ -27,17 +26,6 @@
                 <outlet property="mTransientEventExplorerWindow" destination="215" id="223"/>
             </connections>
         </customObject>
-        <menu title="Debug" id="6">
-            <items>
-                <menuItem title="Show Allocation Stats" keyEquivalent="," id="7">
-                    <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
-                    <connections>
-                        <action selector="makeKeyAndOrderFront:" target="13" id="213"/>
-                    </connections>
-                </menuItem>
-            </items>
-            <point key="canvasLocation" x="134" y="-225"/>
-        </menu>
         <window title="Allocation Stats" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="EBAllocationStatsWindowLocation" animationBehavior="default" id="13" userLabel="AllocationStats Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

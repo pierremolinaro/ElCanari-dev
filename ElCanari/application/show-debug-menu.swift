@@ -6,11 +6,15 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+//   Public function
+//----------------------------------------------------------------------------------------------------------------------
 
 func instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification () {
   gDebugMenuVisibility = DebugMenuVisibility ()
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+//   Private entities
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate var gDebugMenuVisibility : DebugMenuVisibility? = nil
@@ -23,7 +27,7 @@ fileprivate final class DebugMenuVisibility : EBObject {
   //  Property
   //····················································································································
 
-  private var mDebugMenuItem = NSMenuItem (title: "My Debug", action: nil, keyEquivalent: "")
+  private var mDebugMenuItem = NSMenuItem (title: "Debug", action: nil, keyEquivalent: "")
   private var mShowMenuController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
@@ -32,12 +36,16 @@ fileprivate final class DebugMenuVisibility : EBObject {
 
   override init () {
     super.init ()
-    self.mDebugMenuItem.submenu = NSMenu ()
-    self.mDebugMenuItem.submenu?.title = "My Debug"
+    let menu = NSMenu (title: "Debug")
+    self.mDebugMenuItem.submenu = menu
     self.mShowMenuController = EBReadOnlyPropertyController (
       observedObjects: [preferences_showDebugMenu_property],
       callBack: { self.updateDebugMenuVisibility () }
     )
+    appendAllocationDebugMenuItems (menu)
+    appendShowTransientEventLogWindowMenuItem (menu)
+    appendShowExploreDocumentWindowMenuItem (menu)
+    appendShowDocumentFileOperationDurationWindowMenuItem (menu)
   }
 
   //····················································································································

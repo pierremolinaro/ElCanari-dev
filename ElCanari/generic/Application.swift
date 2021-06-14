@@ -15,7 +15,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-var gDebugMenuItemsAdded = false
+//var gDebugMenuItemsAdded = false
 
 //----------------------------------------------------------------------------------------------------------------------
 //    EBEvent class
@@ -35,21 +35,10 @@ class EBEvent : EBObject {
   @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil
  
   //····················································································································
-
-  override func awakeFromNib () {
-    let menuItem = NSMenuItem (
-      title: "Show Transient Event Log Window",
-      action: #selector (showTransientEventLogWindow (sender:)),
-      keyEquivalent: ""
-    )
-    addItemToDebugMenu (menuItem)
-  }
-
-  //····················································································································
  
-  @objc func showTransientEventLogWindow (sender : Any?) {
+  @objc func showTransientEventLogWindow (_ inSender : Any?) {
     self.mTransientEventExplorerTextView?.string = ""
-    self.mTransientEventExplorerWindow?.makeKeyAndOrderFront (sender)
+    self.mTransientEventExplorerWindow?.makeKeyAndOrderFront (inSender)
   }
   
   //····················································································································
@@ -91,6 +80,19 @@ class EBEvent : EBObject {
 
   //····················································································································
 
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
+  let item = NSMenuItem (
+    title: "Show Transient Event Log Window",
+    action: #selector (EBApplication.showTransientEventLogWindow (_:)),
+    keyEquivalent: ""
+  )
+  item.keyEquivalentModifierMask = [.command, .control]
+  item.target = NSApp
+  inMenu.addItem (item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------

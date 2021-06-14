@@ -15,7 +15,7 @@ extension DeviceDocument {
 
   internal func symbolTypeFromLoadSymbolDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
-    if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+    if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int,
        let symbolRoot = documentData.documentRootObject as? SymbolRoot {
       ok = true
@@ -77,7 +77,7 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
            let symbolRoot = documentData.documentRootObject as? SymbolRoot,
            let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {
@@ -145,7 +145,7 @@ extension DeviceDocument {
 
   internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
-    if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+    if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int,
        let packageRoot = documentData.documentRootObject as? PackageRoot {
       ok = true
@@ -199,7 +199,7 @@ extension DeviceDocument {
         ioErrorMessages.append ("No file in Library for package \(package.mName)")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-          let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+          let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
            let packageRoot = documentData.documentRootObject as? PackageRoot,
            let version = documentData.documentMetadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {

@@ -23,7 +23,7 @@ extension AutoLayoutPackageDocument {
       let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
       vStack.appendView (AutoLayoutFlexibleSpace ())
     //--- Text
-      let textView = EmbbeddedAutoLayoutTextView ()
+      let textView = EmbeddedAutoLayoutTextView ()
       textView.isEditable = false
       textView.isSelectable = true
       textView.isVerticallyResizable = true

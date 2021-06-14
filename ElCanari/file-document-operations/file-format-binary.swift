@@ -7,7 +7,11 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
+                                documentName inDocumentName : String,
                                 from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+  appendDocumentFileOperationInfo ("Read Binary Document file: \(inDocumentName)\n")
+  var operationStartDate = Date ()
+  let startDate = operationStartDate
 //--- Read Status
   let metadataStatus = ioDataScanner.parseByte ()
 //--- if ok, check byte is 1
@@ -15,12 +19,14 @@ func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
 //--- Read metadata dictionary
   let dictionaryData = ioDataScanner.parseAutosizedData ()
   let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
-    options:[],
-    format:nil
+    options: [],
+    format: nil
   ) as! [String : Any]
 //--- Read data
   let dataFormat = ioDataScanner.parseByte ()
   let fileData = ioDataScanner.parseAutosizedData ()
+  appendDocumentFileOperationInfo ("  Read file: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  operationStartDate = Date ()
 //--- if ok, check final byte (0)
   ioDataScanner.acceptRequired (byte: 0)
 //--- Scanner error ?
@@ -38,6 +44,8 @@ func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
   }else{
     try raiseInvalidDataFormatError (dataFormat: dataFormat)
   }
+  appendDocumentFileOperationInfo ("  Analyze read data: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  operationStartDate = Date ()
 //---
   if rootObject == nil {
     let dictionary = [
@@ -47,6 +55,7 @@ func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
     throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
   }
 //---
+  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
   return EBDocumentData (
     documentMetadataStatus: metadataStatus,
     documentMetadataDictionary: metadataDictionary,

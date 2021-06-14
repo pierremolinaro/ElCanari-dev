@@ -28,7 +28,7 @@ extension ProjectDocument {
 
   internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
-    if let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+    if let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
        let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
       let propertyDictionary = NSMutableDictionary ()
       documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
@@ -62,7 +62,7 @@ extension ProjectDocument {
       }else if pathes.count == 1 {
         var ok = false
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
            let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
           let propertyDictionary = NSMutableDictionary ()
           documentData.documentRootObject.saveIntoDictionary (propertyDictionary)

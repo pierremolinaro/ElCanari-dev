@@ -15,14 +15,16 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  private var mAction : ( () -> Void)? = nil
+
+  //····················································································································
+
   init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
-//    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
-//    self.font = NSFont.systemFont (ofSize: fontSize)
     self.bezelStyle = .roundRect
   }
 
@@ -43,6 +45,21 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
   final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
+  }
+
+  //····················································································································
+
+  final func setAction (_ inAction : @escaping () -> Void) -> Self {
+    self.mAction = inAction
+    self.target = self
+    self.action = #selector (AutoLayoutButton.performAction (_:))
+    return self
+  }
+
+  //····················································································································
+
+  @objc private func performAction (_ inSender : Any?) {
+   self.mAction? ()
   }
 
   //····················································································································

@@ -68,9 +68,16 @@ func reuseTableViewCells () -> Bool {
 //    addItemToDebugMenu
 //----------------------------------------------------------------------------------------------------------------------
 
-func addItemToDebugMenu (_ item : NSMenuItem) {
+func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
   buildDebugObject ()
-  gDebugObject?.mDebugMenu?.addItem (item)
+  let item = NSMenuItem (
+    title: "Show Allocation Stats",
+    action: #selector (EBAllocationDebug.showAllocationStatWindow (_:)),
+    keyEquivalent: ","
+  )
+  item.keyEquivalentModifierMask = [.command, .control]
+  item.target = gDebugObject
+  inMenu.addItem(item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -86,7 +93,6 @@ func buildDebugObject () {
     if !ok {
       presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
     }
-    debugObject.installDebugMenu ()
   }
 }
 
@@ -159,7 +165,6 @@ private var gDebugObject : EBAllocationDebug? = nil
   @IBOutlet var mPerformSnapShotButton : NSButton? = nil
   @IBOutlet var mAllocationStatsWindowVisibleAtLaunchCheckbox : NSButton? = nil
   @IBOutlet var mDisplayFilterPopUpButton : NSPopUpButton? = nil
-  @IBOutlet var mDebugMenu : NSMenu? = nil
   @IBOutlet var mAllocationStatsWindow : NSWindow? = nil
   @IBOutlet var mCurrentlyAllocatedObjectCountTextField : NSTextField? = nil
   @IBOutlet var mTotalAllocatedObjectCountTextField : NSTextField? = nil
@@ -170,7 +175,6 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   fileprivate var mTopLevelObjects : NSArray? = nil
-  private var mDebugMenuInstalled = false
 
   //····················································································································
 
@@ -225,25 +229,6 @@ private var gDebugObject : EBAllocationDebug? = nil
       object: nil
     )
     gDebugObject = self
-  }
-
-  //····················································································································
-  //    pmInstallDebugMenu
-  //····················································································································
-
-  fileprivate func installDebugMenu () {
-    if !self.mDebugMenuInstalled {
-      if let menu = NSApp.mainMenu {
-        let item = NSMenuItem (
-          title: "",
-          action: nil,
-          keyEquivalent: ""
-        )
-        item.submenu = self.mDebugMenu
-        menu.addItem (item)
-        self.mDebugMenuInstalled = true
-      }
-    }
   }
 
   //····················································································································
@@ -319,6 +304,12 @@ private var gDebugObject : EBAllocationDebug? = nil
       gRefreshDisplay = true
       self.displayAllocation ()
     }
+  }
+
+  //····················································································································
+
+  @objc func showAllocationStatWindow (_ inSender : Any?) {
+   self.mAllocationStatsWindow?.makeKeyAndOrderFront (inSender)
   }
 
   //····················································································································

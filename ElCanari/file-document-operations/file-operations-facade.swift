@@ -48,21 +48,23 @@ typealias EBDocumentRootObjectDictionary = [String : Any]
 
 func loadEasyBindingFile (fromURL inURL: URL) throws -> EBDocumentData {
   let data = try Data (contentsOf: inURL)
-  return try loadEasyBindingFile (fromData: data, undoManager: nil)
+  return try loadEasyBindingFile (fromData: data, documentName: inURL.lastPathComponent, undoManager: nil)
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //     loadEasyBindingFile
 //----------------------------------------------------------------------------------------------------------------------
 
-func loadEasyBindingFile (fromData inData: Data, undoManager inUndoManager : EBUndoManager?) throws -> EBDocumentData {
+func loadEasyBindingFile (fromData inData: Data,
+                          documentName inDocumentName : String,
+                          undoManager inUndoManager : EBUndoManager?) throws -> EBDocumentData {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data: inData)
 //--- Check Signature
   if dataScanner.testString (string: PM_BINARY_FORMAT_SIGNATURE) {
-    return try loadEasyBindingBinaryFile (inUndoManager, from: &dataScanner)
+    return try loadEasyBindingBinaryFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
   }else if dataScanner.testString (string: PM_TEXTUAL_FORMAT_SIGNATURE) {
-    return try loadEasyBindingTextFile (inUndoManager, from: &dataScanner)
+    return try loadEasyBindingTextFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
   }else{
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,

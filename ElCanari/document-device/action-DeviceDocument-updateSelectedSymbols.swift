@@ -22,7 +22,7 @@ extension DeviceDocument {
         messages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
-           let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
            let symbolRoot = documentData.documentRootObject as? SymbolRoot,
            let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {

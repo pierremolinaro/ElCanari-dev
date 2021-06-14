@@ -6,10 +6,6 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-private let LOG_READ_DURATION = true
-
-//----------------------------------------------------------------------------------------------------------------------
-
 final class ParallelObjectSetupContext {
   private let mOperationQueue = OperationQueue ()
   private var mToOneSetUpOperationList = [() -> Void] ()
@@ -82,7 +78,9 @@ final class ParallelObjectSetupContext {
 //----------------------------------------------------------------------------------------------------------------------
 
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
+                              documentName inDocumentName : String,
                               from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+  appendDocumentFileOperationInfo ("Read Text Document file: \(inDocumentName)\n")
   var operationStartDate = Date ()
   let startDate = operationStartDate
 //--- Check header ends with line feed
@@ -111,10 +109,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     classDefinition.append ((className, propertyNameArray))
   }
-  if LOG_READ_DURATION {
-    Swift.print ("Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
-    operationStartDate = Date ()
-  }
+  appendDocumentFileOperationInfo ("  Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  operationStartDate = Date ()
 //--- Read objects
   var objectArray = [EBManagedObject] ()
   var propertyValueArray = [[String : NSRange]] ()
@@ -141,10 +137,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     propertyValueArray.append (valueDictionary)
   }
-  if LOG_READ_DURATION {
-    Swift.print ("Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms")
-    operationStartDate = Date ()
-  }
+  appendDocumentFileOperationInfo ("  Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  operationStartDate = Date ()
 //--- Prepare objects
   var idx = 0
   let parallelObjectSetupContext = ParallelObjectSetupContext ()
@@ -154,22 +148,16 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, parallelObjectSetupContext)
   }
   parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
-  if LOG_READ_DURATION {
-    Swift.print ("Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)")
-    operationStartDate = Date ()
-  }
+  appendDocumentFileOperationInfo ("  Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)\n")
+  operationStartDate = Date ()
 //--- Setup toOne
   parallelObjectSetupContext.performToOneSetupOperations ()
-  if LOG_READ_DURATION {
-    Swift.print ("Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)")
-    operationStartDate = Date ()
-  }
+  appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)\n")
+  operationStartDate = Date ()
 //--- Setup toMany
   parallelObjectSetupContext.performToManySetupOperations ()
-  if LOG_READ_DURATION {
-    Swift.print ("Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)")
-    Swift.print ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms")
-  }
+  appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)\n")
+  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
 //--- Scanner error ?
   if !ioDataScanner.ok () {
     let dictionary = [

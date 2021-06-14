@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  EmbbeddedAutoLayoutTextView.swift
+//  EmbeddedAutoLayoutTextView.swift
 //
 //  Created by Pierre Molinaro on 28/02/2021.
 //
@@ -12,7 +12,7 @@ import Cocoa
 // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EmbbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
+final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 

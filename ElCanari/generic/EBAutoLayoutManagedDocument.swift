@@ -108,7 +108,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let startLoadFile = Date ()
-    let documentData = try loadEasyBindingFile (fromData: data, undoManager: self.ebUndoManager)
+    let documentData = try loadEasyBindingFile (fromData: data, documentName: self.displayName, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
     if LOG_OPERATION_DURATION {
       Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
@@ -146,16 +146,6 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //--- Version did change observer
     self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
     self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
-  //--- Add Debug menu items ?
-    if !gDebugMenuItemsAdded {
-      gDebugMenuItemsAdded = true
-      let menuItem = NSMenuItem (
-        title: "Explore document",
-        action: #selector (Self.showObjectExplorerWindow (_:)),
-        keyEquivalent: ""
-      )
-      addItemToDebugMenu (menuItem)
-    }
   //--- Create the window and set the content view.
     let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? 480.0
     let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? 300.0

@@ -13,7 +13,7 @@ extension ProjectDocument {
 
   internal func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
     var device : DeviceInProject? = nil
-    if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: nil),
+    if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
       let deviceRoot = documentData.documentRootObject as? DeviceRoot,
       let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
     //--- Create device
@@ -38,7 +38,7 @@ extension ProjectDocument {
         ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
       }else if pathes.count == 1 {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let documentData = try? loadEasyBindingFile (fromData: data, undoManager: nil),
+           let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
            let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
            let deviceRoot = documentData.documentRootObject as? DeviceRoot {
           if deviceInProject.mDeviceVersion < version {

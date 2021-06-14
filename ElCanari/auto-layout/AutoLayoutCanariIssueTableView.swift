@@ -23,8 +23,8 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
   //····················································································································
 
-  private var mScrollView = EmbbeddedAutoLayoutScrollView ()
-  private var mTableView = EmbbeddedAutoLayoutTableView ()
+  private var mScrollView = EmbeddedAutoLayoutScrollView ()
+  private var mTableView = EmbeddedAutoLayoutTableView ()
   private var mHideIssueButton : AutoLayoutButton
 
   //····················································································································
@@ -227,6 +227,60 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     case .multiple :
       self.mModelArray = []
     }
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+final fileprivate class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+final fileprivate class EmbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

@@ -8,7 +8,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate let mTextView = EmbbeddedAutoLayoutTextView ()
+  fileprivate let mTextView = EmbeddedAutoLayoutTextView ()
 
   //····················································································································
 
@@ -54,8 +54,17 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  var string : String { self.mTextView.string }
+  var string : String {
+    get { return self.mTextView.string }
+    set { self.mTextView.string = newValue }
+  }
+
   var textStorage : NSTextStorage? { self.mTextView.textStorage }
+
+  var isEditable : Bool {
+    get { return self.mTextView.isEditable }
+    set { self.mTextView.isEditable = newValue }
+  }
 
   //····················································································································
 

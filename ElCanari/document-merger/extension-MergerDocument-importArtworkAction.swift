@@ -22,7 +22,7 @@ extension MergerDocument {
         alreadyLoadedDocuments: [],
         callBack: { (_ inData : Data, _ inName : String) -> Bool in
           var ok = false
-          if let documentData = try? loadEasyBindingFile (fromData: inData, undoManager: self.ebUndoManager),
+          if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: self.ebUndoManager),
              let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
             ok = true
             self.rootObject.mArtwork = artworkRoot
