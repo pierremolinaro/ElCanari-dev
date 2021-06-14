@@ -783,7 +783,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       space
       HelpButton (small: yes) { $run programHelpAction }
     }
-    TextView [outlet mProgramTextView] { $value root.program }
+    TextView (editable: yes) [outlet mProgramTextView] { $value root.program }
   }
 
   action programHelpAction ;
@@ -802,7 +802,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
     hStack {
       vStack { StaticLabel (title: "Comments", bold: yes, small: no) space }
-      TextView { $value root.comments }
+      TextView (editable: yes) { $value root.comments }
     }
   }
 

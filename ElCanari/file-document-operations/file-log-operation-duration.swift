@@ -47,7 +47,7 @@ fileprivate class LogFileOperation : EBObject {
     defer: true
   )
 
-  private let mTextView = AutoLayoutTextView ()
+  private let mTextView = AutoLayoutTextView (editable: false)
 
   //····················································································································
   //  Init
@@ -58,8 +58,6 @@ fileprivate class LogFileOperation : EBObject {
   //--- Configure Window
     self.mWindow.title = "Document Operation Duration"
     self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-  //--- Configure textView
-    self.mTextView.isEditable = false
   //--- Build window contents
     let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
     vStack.appendView (self.mTextView)

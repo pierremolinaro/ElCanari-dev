@@ -925,7 +925,7 @@ import Cocoa
       view_0.appendView (view_0_5)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTextView ()
+    let view_1 = AutoLayoutTextView (editable: true)
       .bind_value (self.rootObject.program_property)
     self.mProgramTextView = view_1 // Outlet
     vStackView.appendView (view_1)
@@ -961,7 +961,7 @@ import Cocoa
         view_1_0.appendView (view_1_0_1)
       }
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutTextView ()
+      let view_1_1 = AutoLayoutTextView (editable: true)
         .bind_value (self.rootObject.comments_property)
       view_1.appendView (view_1_1)
     }

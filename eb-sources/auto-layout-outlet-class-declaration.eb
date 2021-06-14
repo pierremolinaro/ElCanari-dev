@@ -196,7 +196,7 @@ extern autolayout class CanariIssueTableView {
   $issues transient CanariIssueArray
 }
 
-extern autolayout class TextView {
+extern autolayout class TextView (editable: Bool) {
   $value property String
 }
 

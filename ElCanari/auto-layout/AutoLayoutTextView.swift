@@ -12,12 +12,12 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (editable inIsEditable : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.mTextView.isEditable = true
+    self.mTextView.isEditable = inIsEditable
     self.mTextView.isSelectable = true
     self.mTextView.isVerticallyResizable = true
     self.mTextView.isHorizontallyResizable = true
