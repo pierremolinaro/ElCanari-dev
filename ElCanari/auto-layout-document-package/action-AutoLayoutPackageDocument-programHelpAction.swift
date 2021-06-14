@@ -23,25 +23,11 @@ extension AutoLayoutPackageDocument {
       let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
       vStack.appendView (AutoLayoutFlexibleSpace ())
     //--- Text
-      let textView = EmbeddedAutoLayoutTextView ()
-      textView.isEditable = false
-      textView.isSelectable = true
-      textView.isVerticallyResizable = true
-      textView.isHorizontallyResizable = true
-      textView.isRichText = true
-      textView.importsGraphics = false
-      textView.allowsImageEditing = false
-      textView.isFieldEditor = false
-      if let path = Bundle.main.path (forResource: "package-program-guide", ofType: "rtf", inDirectory: nil) {
-        // Swift.print ("path \(path)")
-        let rtfData = try! Data (contentsOf: URL (fileURLWithPath: path))
-        textView.replaceCharacters (in: NSRange (), withRTF: rtfData)
+      let textView = AutoLayoutRTFTextView (editable: false)
+      if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {
+        _ = textView.populateWithContententsOf (url: url)
       }
-      let scrollView = NSScrollView (frame: NSRect ())
-      scrollView.documentView = textView
-      scrollView.hasHorizontalScroller = true
-      scrollView.hasVerticalScroller = true
-      vStack.appendView (scrollView)
+      vStack.appendView (textView)
     //--- Ok button
       let okButton = CanariOkButtonForSheet ()
       vStack.appendView (okButton)

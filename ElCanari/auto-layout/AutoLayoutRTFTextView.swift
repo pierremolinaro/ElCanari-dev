@@ -1,0 +1,121 @@
+//----------------------------------------------------------------------------------------------------------------------
+
+import Cocoa
+
+//----------------------------------------------------------------------------------------------------------------------
+
+final class AutoLayoutRTFTextView : NSScrollView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  fileprivate let mTextView = EmbeddedAutoLayoutTextView ()
+
+  //····················································································································
+
+  init (editable inIsEditable : Bool) {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.mTextView.isEditable = inIsEditable
+    self.mTextView.isSelectable = true
+    self.mTextView.isVerticallyResizable = true
+    self.mTextView.isHorizontallyResizable = true
+    self.mTextView.isRichText = true
+    self.mTextView.importsGraphics = false
+    self.mTextView.allowsImageEditing = false
+    self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
+
+    self.drawsBackground = false
+    self.documentView = self.mTextView
+    self.hasHorizontalScroller = true
+    self.hasVerticalScroller = true
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    self.mValueController?.unregister ()
+    self.mValueController = nil
+    super.ebCleanUp ()
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  func populateWithContententsOf (url inURL : URL)-> Self {
+    if let rtfData = try? Data (contentsOf: inURL) {
+      self.mTextView.replaceCharacters (in: NSRange (), withRTF: rtfData)
+    }
+    return self
+  }
+
+  //····················································································································
+
+  var string : String {
+    get { return self.mTextView.string }
+    set { self.mTextView.string = newValue }
+  }
+
+  var textStorage : NSTextStorage? { self.mTextView.textStorage }
+
+  var isEditable : Bool {
+    get { return self.mTextView.isEditable }
+    set { self.mTextView.isEditable = newValue }
+  }
+
+  //····················································································································
+
+  fileprivate func ebTextDidChange () {
+    _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
+  }
+
+  //····················································································································
+  //  value binding
+  //····················································································································
+
+  fileprivate func update (from inObject : EBReadOnlyProperty_String) {
+    switch inObject.selection {
+    case .empty, .multiple :
+      self.mTextView.string = ""
+      self.mTextView.isEditable = false
+      self.mTextView.invalidateIntrinsicContentSize ()
+    case .single (let propertyValue) :
+      let currentSelectedRangeValues = self.mTextView.selectedRanges
+      self.mTextView.string = propertyValue
+      self.mTextView.selectedRanges = currentSelectedRangeValues
+      self.mTextView.isEditable = true
+      self.mTextView.invalidateIntrinsicContentSize ()
+    }
+  }
+
+  //····················································································································
+
+  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
+
+  //····················································································································
+
+  final func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
+    self.mValueController = EBGenericReadWritePropertyController <String> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.update (from: inObject) }
+    )
+    return self
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
