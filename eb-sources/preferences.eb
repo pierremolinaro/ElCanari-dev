@@ -16,6 +16,8 @@ prefs {
   outlet EBColorWell mWarningMessageColorColorWell $color self.warningMessageColor (sendContinously:no) ;
   outlet EBColorWell mSuccessMessageColorColorWell $color self.successMessageColor (sendContinously:no) ;
 
+  property Bool showDebugMenu default no ;
+  outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
 
   outlet NSTextField mSULastCheckTimeTextField ;
 }

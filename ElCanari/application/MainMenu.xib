@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17700" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17700"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -624,11 +624,11 @@
             <point key="canvasLocation" x="681" y="25"/>
         </window>
         <customView id="5405" userLabel="Page : General Prefs">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="389"/>
+            <rect key="frame" x="0.0" y="0.0" width="452" height="467"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <box fixedFrame="YES" borderType="line" title="Selection Hilite" translatesAutoresizingMaskIntoConstraints="NO" id="5412">
-                    <rect key="frame" x="17" y="278" width="418" height="96"/>
+                    <rect key="frame" x="17" y="356" width="418" height="96"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="fqt-dy-MBC">
                         <rect key="frame" x="3" y="3" width="412" height="78"/>
@@ -683,7 +683,7 @@
                     </view>
                 </box>
                 <box fixedFrame="YES" title="Text Message Colors" translatesAutoresizingMaskIntoConstraints="NO" id="5406">
-                    <rect key="frame" x="17" y="132" width="418" height="142"/>
+                    <rect key="frame" x="17" y="210" width="418" height="142"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="FmO-vl-c0n">
                         <rect key="frame" x="3" y="3" width="412" height="124"/>
@@ -735,7 +735,7 @@
                     </view>
                 </box>
                 <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="ElCanari Application Update" translatesAutoresizingMaskIntoConstraints="NO" id="6117">
-                    <rect key="frame" x="17" y="16" width="418" height="112"/>
+                    <rect key="frame" x="17" y="94" width="418" height="112"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="E4G-cf-WCx">
                         <rect key="frame" x="3" y="3" width="412" height="94"/>
@@ -806,8 +806,26 @@
                         </subviews>
                     </view>
                 </box>
+                <box fixedFrame="YES" title="Debug Menu" translatesAutoresizingMaskIntoConstraints="NO" id="aQu-QG-afA">
+                    <rect key="frame" x="17" y="16" width="418" height="74"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="dDf-Wd-5h7">
+                        <rect key="frame" x="3" y="3" width="412" height="56"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" id="4L9-Xt-zv8" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
+                                <rect key="frame" x="18" y="20" width="186" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show Debug Menu" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="bFd-YO-mnj">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </box>
             </subviews>
-            <point key="canvasLocation" x="208" y="445"/>
+            <point key="canvasLocation" x="34" y="442.5"/>
         </customView>
         <customView id="5461" userLabel="Page : Symbol Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="210"/>
@@ -2236,7 +2254,7 @@ Gw
         <window title="Library Update" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PMPerformLibaryUpdateWindow" animationBehavior="default" id="6227" userLabel="Window : Update Dialog" customClass="EBWindow" customModule="ElCanari" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <rect key="contentRect" x="37" y="899" width="800" height="395"/>
-            <rect key="screenRect" x="-1004" y="900" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="900" width="1920" height="1057"/>
             <value key="minSize" type="size" width="667" height="200"/>
             <view key="contentView" id="6228">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="395"/>
@@ -2438,6 +2456,7 @@ Gw
                 <outlet property="mSelectionHiliteColorColorWell" destination="5416" id="BUK-am-HxO"/>
                 <outlet property="mSetLibraryRepositoryButton" destination="nId-KG-x1P" id="gQ6-bQ-a1Q"/>
                 <outlet property="mSetUserAndPasswordButton" destination="SyU-mo-jqJ" id="xgA-b3-zUP"/>
+                <outlet property="mShowDebugMenuSwitch" destination="4L9-Xt-zv8" id="5KV-gz-Nf8"/>
                 <outlet property="mShowGerberDrawingFlowCheckbox" destination="5709" id="wnD-7x-Oyv"/>
                 <outlet property="mShowGerberDrawingIndexesCheckbox" destination="5708" id="NOt-wD-d6M"/>
                 <outlet property="mSuccessMessageColorColorWell" destination="5454" id="bEv-Oo-jvH"/>

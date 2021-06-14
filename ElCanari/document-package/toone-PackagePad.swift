@@ -32,6 +32,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       oldValue.holeWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
       oldValue.holeHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
       oldValue.annularRingUnit_property.removeEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.padNameForDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
       oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
@@ -43,7 +44,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       oldValue.zoneAllowsManualRenumbering_property.removeEBObserversFrom (&self.mObserversOf_zoneAllowsManualRenumbering) // Transient property
       oldValue.slavePadCount_property.removeEBObserversFrom (&self.mObserversOf_slavePadCount) // Transient property
       oldValue.masterPadObjectIndex_property.removeEBObserversFrom (&self.mObserversOf_masterPadObjectIndex) // Transient property
-      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     }
   //--- Add observers to added objects
@@ -64,6 +64,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       newValue.holeWidthUnit_property.addEBObserversFrom (&self.mObserversOf_holeWidthUnit) // Stored property
       newValue.holeHeightUnit_property.addEBObserversFrom (&self.mObserversOf_holeHeightUnit) // Stored property
       newValue.annularRingUnit_property.addEBObserversFrom (&self.mObserversOf_annularRingUnit) // Stored property
+      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.padNameForDisplay_property.addEBObserversFrom (&self.mObserversOf_padNameForDisplay) // Transient property
       newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
@@ -75,7 +76,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       newValue.zoneAllowsManualRenumbering_property.addEBObserversFrom (&self.mObserversOf_zoneAllowsManualRenumbering) // Transient property
       newValue.slavePadCount_property.addEBObserversFrom (&self.mObserversOf_slavePadCount) // Transient property
       newValue.masterPadObjectIndex_property.addEBObserversFrom (&self.mObserversOf_masterPadObjectIndex) // Transient property
-      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
     }
   }
@@ -1201,6 +1201,75 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   }
 
   //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -1955,75 +2024,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     for managedObject in inSet {
       self.mObserversOf_masterPadObjectIndex.apply { (_ observer : EBEvent) in
         managedObject.masterPadObjectIndex_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'objectDisplay' transient property
-  //····················································································································
-
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }

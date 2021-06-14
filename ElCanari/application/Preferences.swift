@@ -13,6 +13,7 @@ var g_Preferences : Preferences? = nil
 let Preferences_warningMessageColor = "Preferences:warningMessageColor"
 let Preferences_successMessageColor = "Preferences:successMessageColor"
 let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
+let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_symbolColor = "Preferences:symbolColor"
 let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
 let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
@@ -23,6 +24,7 @@ let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
 let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
 let Preferences_packageColor = "Preferences:packageColor"
 let Preferences_frontSidePadColor = "Preferences:frontSidePadColor"
+let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
 let Preferences_backSidePadColor = "Preferences:backSidePadColor"
 let Preferences_displayPackageBackSidePads = "Preferences:displayPackageBackSidePads"
 let Preferences_padNumberColor = "Preferences:padNumberColor"
@@ -161,11 +163,10 @@ let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegen
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 let Preferences_errorMessageColor = "Preferences:errorMessageColor"
+let Preferences_showDebugMenu = "Preferences:showDebugMenu"
 let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
-let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
-let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
 let Preferences_mFreeRouterGuiDefaultFileContents = "Preferences:mFreeRouterGuiDefaultFileContents"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
@@ -220,6 +221,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_selectionHiliteColor_property_selection : EBSelection <NSColor> { return preferences_selectionHiliteColor_property.selection }
+
+//····················································································································
+//   Atomic property: usesUserLibrary
+//····················································································································
+
+  let preferences_usesUserLibrary_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_usesUserLibrary)
+
+//····················································································································
+
+  var preferences_usesUserLibrary : Bool {
+    get { return preferences_usesUserLibrary_property.propval }
+    set { preferences_usesUserLibrary_property.setProp (newValue) }
+  }
+
+//····················································································································
+
+  var preferences_usesUserLibrary_property_selection : EBSelection <Bool> { return preferences_usesUserLibrary_property.selection }
 
 //····················································································································
 //   Atomic property: symbolColor
@@ -390,6 +408,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_frontSidePadColor_property_selection : EBSelection <NSColor> { return preferences_frontSidePadColor_property.selection }
+
+//····················································································································
+//   Atomic property: displayPackageFrontSidePads
+//····················································································································
+
+  let preferences_displayPackageFrontSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
+
+//····················································································································
+
+  var preferences_displayPackageFrontSidePads : Bool {
+    get { return preferences_displayPackageFrontSidePads_property.propval }
+    set { preferences_displayPackageFrontSidePads_property.setProp (newValue) }
+  }
+
+//····················································································································
+
+  var preferences_displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return preferences_displayPackageFrontSidePads_property.selection }
 
 //····················································································································
 //   Atomic property: backSidePadColor
@@ -2738,6 +2773,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_errorMessageColor_property_selection : EBSelection <NSColor> { return preferences_errorMessageColor_property.selection }
 
 //····················································································································
+//   Atomic property: showDebugMenu
+//····················································································································
+
+  let preferences_showDebugMenu_property = EBPreferencesProperty_Bool (defaultValue: false, prefKey: Preferences_showDebugMenu)
+
+//····················································································································
+
+  var preferences_showDebugMenu : Bool {
+    get { return preferences_showDebugMenu_property.propval }
+    set { preferences_showDebugMenu_property.setProp (newValue) }
+  }
+
+//····················································································································
+
+  var preferences_showDebugMenu_property_selection : EBSelection <Bool> { return preferences_showDebugMenu_property.selection }
+
+//····················································································································
 //   Atomic property: hiliteWidthMultipliedByTen
 //····················································································································
 
@@ -2753,23 +2805,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> { return preferences_hiliteWidthMultipliedByTen_property.selection }
-
-//····················································································································
-//   Atomic property: usesUserLibrary
-//····················································································································
-
-  let preferences_usesUserLibrary_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_usesUserLibrary)
-
-//····················································································································
-
-  var preferences_usesUserLibrary : Bool {
-    get { return preferences_usesUserLibrary_property.propval }
-    set { preferences_usesUserLibrary_property.setProp (newValue) }
-  }
-
-//····················································································································
-
-  var preferences_usesUserLibrary_property_selection : EBSelection <Bool> { return preferences_usesUserLibrary_property.selection }
 
 //····················································································································
 //   To many property: additionnalLibraryArray
@@ -2806,23 +2841,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_pinNameFont_property_selection : EBSelection <NSFont> { return preferences_pinNameFont_property.selection }
-
-//····················································································································
-//   Atomic property: displayPackageFrontSidePads
-//····················································································································
-
-  let preferences_displayPackageFrontSidePads_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
-
-//····················································································································
-
-  var preferences_displayPackageFrontSidePads : Bool {
-    get { return preferences_displayPackageFrontSidePads_property.propval }
-    set { preferences_displayPackageFrontSidePads_property.setProp (newValue) }
-  }
-
-//····················································································································
-
-  var preferences_displayPackageFrontSidePads_property_selection : EBSelection <Bool> { return preferences_displayPackageFrontSidePads_property.selection }
 
 //····················································································································
 //   Atomic property: mFreeRouterGuiDefaultFileContents
@@ -3093,6 +3111,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mSelectionHiliteColorColorWell : EBColorWell? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
+  @IBOutlet var mShowDebugMenuSwitch : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
   @IBOutlet var mSuccessMessageColorColorWell : EBColorWell? = nil
@@ -3372,6 +3391,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mSelectionHiliteColorColorWell, "mSelectionHiliteColorColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
     checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mShowDebugMenuSwitch, "mShowDebugMenuSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mShowGerberDrawingFlowCheckbox, "mShowGerberDrawingFlowCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mShowGerberDrawingIndexesCheckbox, "mShowGerberDrawingIndexesCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSuccessMessageColorColorWell, "mSuccessMessageColorColorWell", EBColorWell.self, #file, #line)
@@ -3404,6 +3424,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mErrorMessageColorColorWell?.bind_color (preferences_errorMessageColor_property, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (preferences_warningMessageColor_property, sendContinously:false)
     mSuccessMessageColorColorWell?.bind_color (preferences_successMessageColor_property, sendContinously:false)
+    mShowDebugMenuSwitch?.bind_value (preferences_showDebugMenu_property)
     mSelectionHiliteColorColorWell?.bind_color (preferences_selectionHiliteColor_property, sendContinously:false)
     selectionHilitePopupButton?.bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)

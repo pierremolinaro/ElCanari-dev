@@ -31,7 +31,7 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.3.9"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Minor bugs fixed"
+  "Graphic views Magnification bug fixed"
 ]
 let CHANGES : [String] = [
 ]

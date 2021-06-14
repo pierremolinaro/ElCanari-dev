@@ -70,6 +70,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   func applicationDidFinishLaunching (_ notification : Notification) {
     self.mMaintenanceLogTextField?.stringValue = ""
     self.checkForLibraryUpdateAtLaunch ()
+    instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
   //--- Observe last update application last check time
     UserDefaults.standard.addObserver (
       self,

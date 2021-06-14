@@ -155,6 +155,16 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
   }
 
   //····················································································································
+  //   Selection observable property: objectDisplay
+  //····················································································································
+
+  let objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
@@ -265,16 +275,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
   }
 
   //····················································································································
-  //   Selection observable property: objectDisplay
-  //····················································································································
-
-  let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
-  //····················································································································
   //   Selection observable property: padNumberDisplay
   //····················································································································
 
@@ -316,6 +316,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
     self.bind_property_holeWidthUnit ()
     self.bind_property_holeHeightUnit ()
     self.bind_property_annularRingUnit ()
+    self.bind_property_objectDisplay ()
     self.bind_property_selectionDisplay ()
     self.bind_property_padNameForDisplay ()
     self.bind_property_issues ()
@@ -327,7 +328,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
     self.bind_property_zoneAllowsManualRenumbering ()
     self.bind_property_slavePadCount ()
     self.bind_property_masterPadObjectIndex ()
-    self.bind_property_objectDisplay ()
     self.bind_property_padNumberDisplay ()
   }
 
@@ -417,6 +417,9 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
     self.annularRingUnit_property.mWriteModelFunction = nil 
     self.annularRingUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_annularRingUnit (self.annularRingUnit_property)
+  //--- objectDisplay
+    self.objectDisplay_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
@@ -450,9 +453,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
   //--- masterPadObjectIndex
     self.masterPadObjectIndex_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndex_property)
-  //--- objectDisplay
-    self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
@@ -1780,6 +1780,45 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
   }
   //····················································································································
 
+  private final func bind_property_objectDisplay () {
+    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
   private final func bind_property_selectionDisplay () {
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -2184,45 +2223,6 @@ final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionCo
           var isMultipleSelection = false
           for object in v {
             switch object.masterPadObjectIndex_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-  //····················································································································
-
-  private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

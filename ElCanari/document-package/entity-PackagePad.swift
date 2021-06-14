@@ -102,6 +102,12 @@ protocol PackagePad_annularRingUnit : AnyObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol PackagePad_objectDisplay : AnyObject {
+  var objectDisplay : EBShape? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol PackagePad_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
@@ -168,12 +174,6 @@ protocol PackagePad_masterPadObjectIndex : AnyObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackagePad_objectDisplay : AnyObject {
-  var objectDisplay : EBShape? { get }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
 protocol PackagePad_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
@@ -199,6 +199,7 @@ final class PackagePad : PackageObject,
          PackagePad_holeWidthUnit,
          PackagePad_holeHeightUnit,
          PackagePad_annularRingUnit,
+         PackagePad_objectDisplay,
          PackagePad_selectionDisplay,
          PackagePad_padNameForDisplay,
          PackagePad_issues,
@@ -210,7 +211,6 @@ final class PackagePad : PackageObject,
          PackagePad_zoneAllowsManualRenumbering,
          PackagePad_slavePadCount,
          PackagePad_masterPadObjectIndex,
-         PackagePad_objectDisplay,
          PackagePad_padNumberDisplay {
 
   //····················································································································
@@ -898,6 +898,50 @@ final class PackagePad : PackageObject,
     )
   //--- To one property: zone
     self.zone_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.xCenter_property_selection.kind ()
+        kind &= unwSelf.yCenter_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.holeWidth_property_selection.kind ()
+        kind &= unwSelf.holeHeight_property_selection.kind ()
+        kind &= unwSelf.padShape_property_selection.kind ()
+        kind &= unwSelf.padStyle_property_selection.kind ()
+        kind &= preferences_frontSidePadColor_property_selection.kind ()
+        kind &= preferences_displayPackageFrontSidePads_property_selection.kind ()
+        kind &= preferences_backSidePadColor_property_selection.kind ()
+        kind &= preferences_displayPackageBackSidePads_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, preferences_frontSidePadColor_property_selection, preferences_displayPackageFrontSidePads_property_selection, preferences_backSidePadColor_property_selection, preferences_displayPackageBackSidePads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xCenter_property.addEBObserver (self.objectDisplay_property)
+    self.yCenter_property.addEBObserver (self.objectDisplay_property)
+    self.width_property.addEBObserver (self.objectDisplay_property)
+    self.height_property.addEBObserver (self.objectDisplay_property)
+    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
+    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
+    self.padShape_property.addEBObserver (self.objectDisplay_property)
+    self.padStyle_property.addEBObserver (self.objectDisplay_property)
+    preferences_frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
+    preferences_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1169,50 +1213,6 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.xCenter_property_selection.kind ()
-        kind &= unwSelf.yCenter_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.holeWidth_property_selection.kind ()
-        kind &= unwSelf.holeHeight_property_selection.kind ()
-        kind &= unwSelf.padShape_property_selection.kind ()
-        kind &= unwSelf.padStyle_property_selection.kind ()
-        kind &= preferences_frontSidePadColor_property_selection.kind ()
-        kind &= preferences_displayPackageFrontSidePads_property_selection.kind ()
-        kind &= preferences_backSidePadColor_property_selection.kind ()
-        kind &= preferences_displayPackageBackSidePads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, preferences_frontSidePadColor_property_selection, preferences_displayPackageFrontSidePads_property_selection, preferences_backSidePadColor_property_selection, preferences_displayPackageBackSidePads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
-            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.xCenter_property.addEBObserver (self.objectDisplay_property)
-    self.yCenter_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
-    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
-    self.padShape_property.addEBObserver (self.objectDisplay_property)
-    self.padStyle_property.addEBObserver (self.objectDisplay_property)
-    preferences_frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
-    preferences_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1273,6 +1273,18 @@ final class PackagePad : PackageObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    // self.xCenter_property.removeEBObserver (self.objectDisplay_property)
+    // self.yCenter_property.removeEBObserver (self.objectDisplay_property)
+    // self.width_property.removeEBObserver (self.objectDisplay_property)
+    // self.height_property.removeEBObserver (self.objectDisplay_property)
+    // self.holeWidth_property.removeEBObserver (self.objectDisplay_property)
+    // self.holeHeight_property.removeEBObserver (self.objectDisplay_property)
+    // self.padShape_property.removeEBObserver (self.objectDisplay_property)
+    // self.padStyle_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayPackageFrontSidePads_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayPackageBackSidePads_property.removeEBObserver (self.objectDisplay_property)
     // self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
     // self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
     // self.width_property.removeEBObserver (self.selectionDisplay_property)
@@ -1298,18 +1310,6 @@ final class PackagePad : PackageObject,
     // self.zone_property.removeEBObserver (self.noZone_property)
     // self.zone_property.zoneNumbering_property.removeEBObserver (self.zoneAllowsManualRenumbering_property)
     // self.slaves_property.removeEBObserver (self.slavePadCount_property)
-    // self.xCenter_property.removeEBObserver (self.objectDisplay_property)
-    // self.yCenter_property.removeEBObserver (self.objectDisplay_property)
-    // self.width_property.removeEBObserver (self.objectDisplay_property)
-    // self.height_property.removeEBObserver (self.objectDisplay_property)
-    // self.holeWidth_property.removeEBObserver (self.objectDisplay_property)
-    // self.holeHeight_property.removeEBObserver (self.objectDisplay_property)
-    // self.padShape_property.removeEBObserver (self.objectDisplay_property)
-    // self.padStyle_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayPackageFrontSidePads_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayPackageBackSidePads_property.removeEBObserver (self.objectDisplay_property)
     // self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     // self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
     // preferences_padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
@@ -1476,6 +1476,14 @@ final class PackagePad : PackageObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
+      "objectDisplay",
+      idx: self.objectDisplay_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
+      valueExplorer: &self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "selectionDisplay",
       idx: self.selectionDisplay_property.ebObjectIndex,
       y: &y,
@@ -1562,14 +1570,6 @@ final class PackagePad : PackageObject,
       view: view,
       observerExplorer: &self.masterPadObjectIndex_property.mObserverExplorer,
       valueExplorer: &self.masterPadObjectIndex_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "objectDisplay",
-      idx: self.objectDisplay_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-      valueExplorer: &self.objectDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
