@@ -57,6 +57,7 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_SymbolInstanceInDevice { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

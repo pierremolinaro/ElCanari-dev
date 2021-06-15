@@ -57,6 +57,7 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_BorderCurve { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

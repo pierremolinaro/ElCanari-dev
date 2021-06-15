@@ -278,15 +278,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 
   stackView mSelectedObjectsInspectorView vStack {
     ObjectInspectorView {
-      addObjectInspector (forEntity: "PackageSegment", pageView: stackView mSegmentInspectorView)
-      addObjectInspector (forEntity: "PackageBezier", pageView: stackView mBezierCurveInspectorView)
-      addObjectInspector (forEntity: "PackageOval", pageView: stackView mOvalInspectorView)
-      addObjectInspector (forEntity: "PackageArc", pageView: stackView mArcInspectorView)
-      addObjectInspector (forEntity: "PackageMasterPad", pageView: stackView mMasterPadInspectorView)
-      addObjectInspector (forEntity: "PackageSlavePad", pageView: stackView mSlavePadInspectorView)
-      addObjectInspector (forEntity: "PackageGuide", pageView: stackView mGuideInspectorView)
-      addObjectInspector (forEntity: "PackageDimension", pageView: stackView mDimensionInspectorView)
-      addObjectInspector (forEntity: "PackageZone", pageView: stackView mZoneInspectorView)
+      addObjectInspector (forEntity: entity PackageSegment, inspectorView: stackView mSegmentInspectorView)
+      addObjectInspector (forEntity: entity PackageBezier, inspectorView: stackView mBezierCurveInspectorView)
+      addObjectInspector (forEntity: entity PackageOval, inspectorView: stackView mOvalInspectorView)
+      addObjectInspector (forEntity: entity PackageArc, inspectorView: stackView mArcInspectorView)
+      addObjectInspector (forEntity: entity PackagePad, inspectorView: stackView mMasterPadInspectorView)
+      addObjectInspector (forEntity: entity PackageSlavePad, inspectorView: stackView mSlavePadInspectorView)
+      addObjectInspector (forEntity: entity PackageGuide, inspectorView: stackView mGuideInspectorView)
+      addObjectInspector (forEntity: entity PackageDimension, inspectorView: stackView mDimensionInspectorView)
+      addObjectInspector (forEntity: entity PackageZone, inspectorView: stackView mZoneInspectorView)
       $graphicController #mPackageObjectsController
     }
     space

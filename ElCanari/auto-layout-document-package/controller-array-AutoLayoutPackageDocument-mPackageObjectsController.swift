@@ -57,6 +57,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_PackageObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

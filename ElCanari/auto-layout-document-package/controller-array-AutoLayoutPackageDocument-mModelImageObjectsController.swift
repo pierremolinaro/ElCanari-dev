@@ -57,6 +57,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_PackageModelImageDoublePoint { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

@@ -57,6 +57,7 @@ final class Controller_SymbolDocument_mSymbolObjectsController : ReadOnlyAbstrac
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_SymbolObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

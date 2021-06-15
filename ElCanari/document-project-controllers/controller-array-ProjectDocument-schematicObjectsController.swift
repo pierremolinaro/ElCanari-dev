@@ -57,6 +57,7 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_SchematicObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

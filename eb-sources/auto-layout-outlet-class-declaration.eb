@@ -175,7 +175,7 @@ extern autolayout class TextView (editable: Bool) {
 }
 
 extern autolayout class ObjectInspectorView $graphicController {
-  func addObjectInspector (forEntity : String, pageView: view)
+  func addObjectInspector (forEntity: entity, inspectorView: view)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -57,6 +57,7 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
 
   //····················································································································
 
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
   var selectedArray_property : ReadOnlyArrayOf_PackageInDevice { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
