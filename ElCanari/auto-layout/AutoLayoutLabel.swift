@@ -47,7 +47,7 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    if DEBUG_AUTO_LAYOUT {
+    if debugAutoLayout () {
       DEBUG_FILL_COLOR.setFill ()
       NSBezierPath.fill (inDirtyRect)
       let bp = NSBezierPath (rect: self.bounds)

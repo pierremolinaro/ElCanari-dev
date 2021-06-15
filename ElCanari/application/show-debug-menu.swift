@@ -46,6 +46,7 @@ fileprivate final class DebugMenuVisibility : EBObject {
     appendShowTransientEventLogWindowMenuItem (menu)
     appendShowExploreDocumentWindowMenuItem (menu)
     appendShowDocumentFileOperationDurationWindowMenuItem (menu)
+    appendDebugAutoLayoutMenuItem (menu)
   }
 
   //····················································································································
@@ -63,8 +64,5 @@ fileprivate final class DebugMenuVisibility : EBObject {
   //····················································································································
 
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
 
 //----------------------------------------------------------------------------------------------------------------------

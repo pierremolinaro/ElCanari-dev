@@ -11,7 +11,7 @@ import Cocoa
 
 func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
   let menuItem = NSMenuItem (
-    title: "Document Operation Duration",
+    title: "Show Document File Operation Duration Window",
     action: #selector (LogFileOperation.makeKeyAndOrderFront (_:)),
     keyEquivalent: ""
   )
@@ -34,7 +34,7 @@ fileprivate var gLogFileOperations = LogFileOperation ()
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate class LogFileOperation : EBObject {
+fileprivate final class LogFileOperation : EBObject {
 
   //····················································································································
   //  Properties
