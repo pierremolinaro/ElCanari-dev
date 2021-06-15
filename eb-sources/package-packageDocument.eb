@@ -469,8 +469,6 @@ xibdocument PackageDocument root PackageRoot {
     $yPlacardUnit root.yPlacardUnit
   ;
 
-//  outlet EBScrollView mComposedPackageScrollView ;
-
 //--- Zoom and flip inspector
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
@@ -519,8 +517,6 @@ xibdocument PackageDocument root PackageRoot {
   outlet EBTextField mProgramErrorTextField ;
 
 //--------------- Model Image Tab
-//  outlet EBScrollView mModelImageScrollView ;
-
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
   outlet EBEnclosingGraphicView mModelImageView

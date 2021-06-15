@@ -4,15 +4,31 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
+final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   //····················································································································
-  //   INIT
+  // Properties
   //····················································································································
 
-  init () {
-    super.init (orientation: .vertical)
-    self.alignment = .width
+  private var mNoSelectedObjectView : AutoLayoutVerticalStackView
+  private var mGraphicController : EBGraphicViewControllerProtocol? = nil
+  
+  //····················································································································
+  // INIT
+  //····················································································································
+
+  override init () {
+  //--- Define "No Selected Object View"
+    self.mNoSelectedObjectView = AutoLayoutVerticalStackView ()
+    let hStack = AutoLayoutHorizontalStackView ()
+    hStack.appendView (AutoLayoutFlexibleSpace ())
+    hStack.appendView (AutoLayoutStaticLabel (title: "No Selected Object", bold: false, small: false))
+    hStack.appendView (AutoLayoutFlexibleSpace ())
+    self.mNoSelectedObjectView.appendView (hStack)
+  //---
+    super.init ()
+  //--- By Default, no selected object
+    self.appendView (self.mNoSelectedObjectView)
   }
 
   //····················································································································
@@ -22,46 +38,30 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
-  // SET WIDTH
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  // ADD INSPECTOR
   //····················································································································
 
-  private var mWidth = NSView.noIntrinsicMetric
-
-  //····················································································································
-
-  final func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    self.needsUpdateConstraints = true
+  final func addObjectInspector (forEntity inEntity : String, pageView inPageView : AutoLayoutAbstractStackView) -> Self {
+//    self.segmentCount += 1
+//    self.setLabel (inTitle, forSegment: self.segmentCount - 1)
+//    self.mPages.append (inPageView)
+//    self.frame.size = self.intrinsicContentSize
     return self
   }
 
   //····················································································································
-
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: self.mWidth, height: NSView.noIntrinsicMetric)
-  }
-
+  // Graphic Controller
   //····················································································································
 
-  private var mConstraints = [NSLayoutConstraint] ()
-
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
-    for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
-      }
-    }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .height, relatedBy: .equal, toItem: spaceView, attribute: .height, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
-    super.updateConstraints ()
+  final func bind_graphic_controller (_ inController : EBGraphicViewControllerProtocol) -> Self {
+    self.mGraphicController = inController
+    return self
   }
 
   //····················································································································

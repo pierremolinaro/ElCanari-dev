@@ -229,10 +229,10 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       }
       SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) [configurator packagePageSegmentedControl] {
         makeWidthExpandable ()
-        addPage (title: "0", pageView: stackView mSelectedObjectsInspectorView)
-        addPage (title: "1", pageView: stackView mGridZoomInspectorView)
-        addPage (title: "2", pageView: stackView mDisplayInspectorView)
-        addPage (title: "3", pageView: stackView mIssuesInspectorView)
+        addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
+        addPage (title: "", pageView: stackView mGridZoomInspectorView)
+        addPage (title: "", pageView: stackView mDisplayInspectorView)
+        addPage (title: "", pageView: stackView mIssuesInspectorView)
         $selectedPage root.selectedInspector
         $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
         $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
@@ -277,13 +277,30 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mSelectedObjectsInspectorView vStack {
-    hStack { space StaticLabel (title: "0", bold: no, small: yes) space }
+    ObjectInspectorView {
+      addObjectInspector (forEntity: "PackageSegment", pageView: stackView mSegmentInspectorView)
+      addObjectInspector (forEntity: "PackageBezier", pageView: stackView mBezierCurveInspectorView)
+      addObjectInspector (forEntity: "PackageOval", pageView: stackView mOvalInspectorView)
+      addObjectInspector (forEntity: "PackageArc", pageView: stackView mArcInspectorView)
+      addObjectInspector (forEntity: "PackageMasterPad", pageView: stackView mMasterPadInspectorView)
+      addObjectInspector (forEntity: "PackageSlavePad", pageView: stackView mSlavePadInspectorView)
+      addObjectInspector (forEntity: "PackageGuide", pageView: stackView mGuideInspectorView)
+      addObjectInspector (forEntity: "PackageDimension", pageView: stackView mDimensionInspectorView)
+      addObjectInspector (forEntity: "PackageZone", pageView: stackView mZoneInspectorView)
+      $graphicController #mPackageObjectsController
+    }
     space
   }
 
 //--- Segment inspector
+
+  stackView mSegmentInspectorView vStack {
+    hStack { space StaticLabel (title: "segment inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mSegmentInspectorView ;
+//  outlet CanariViewWithKeyView mSegmentInspectorView ;
 //--- x1
   outlet EBPopUpButton mSegmentX1UnitPopUp $selectedTag #mPackageSegmentSelectionController.x1Unit ;
   outlet CanariDimensionTextField mSegmentX1TextField
@@ -311,8 +328,13 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   ;
 
 //--- Bezier Curve inspector
+  stackView mBezierCurveInspectorView vStack {
+    hStack { space StaticLabel (title: "bezier curve inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageBezier #mPackageBezierCurveSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mBezierInspectorView ;
+//  outlet CanariViewWithKeyView mBezierInspectorView ;
 //--- x1
   outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.x1Unit ;
   outlet CanariDimensionTextField mBezierCurveX1TextField
@@ -354,10 +376,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
      $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
   ;
 
-
 //------- Oval inspector
+
+  stackView mOvalInspectorView vStack {
+    hStack { space StaticLabel (title: "oval inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageOval #mPackageOvalSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mOvalInspectorView ;
+//  outlet CanariViewWithKeyView mOvalInspectorView ;
 //--- x
   outlet EBPopUpButton mOvalXUnitPopUp $selectedTag #mPackageOvalSelectionController.xUnit ;
   outlet CanariDimensionTextField mOvalXTextField
@@ -379,10 +406,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
      $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
   ;
 
-
 //------- Arc inspector
+
+  stackView mArcInspectorView vStack {
+    hStack { space StaticLabel (title: "arc inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageArc #mPackageArcSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mArcInspectorView ;
+//  outlet CanariViewWithKeyView mArcInspectorView ;
 //--- xCenter
   outlet EBPopUpButton mArcRadiusUnitPopUp $selectedTag #mPackageArcSelectionController.radiusUnit ;
   outlet CanariDimensionTextField mArcRadiusTextField
@@ -418,11 +450,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //--- Arc angle
   outlet CanariAngleTextField mArcAngle $angle #mPackageArcSelectionController.arcAngle ;
 
-
-
 //------- Pad inspector
+
+  stackView mMasterPadInspectorView vStack {
+    hStack { space StaticLabel (title: "master pad inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mPadInspectorView ;
+//  outlet CanariViewWithKeyView mPadInspectorView ;
 //--- Pad shape
   outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex #mPackagePadSelectionController.padShape ;
 //--- Pad style
@@ -475,11 +511,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //--- Slave Pad count
   outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount (autoFormatter : yes);
 
-
-
 //------- Slave Pad inspector
+
+  stackView mSlavePadInspectorView vStack {
+    hStack { space StaticLabel (title: "slave pad inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageSlavePad #mPackageSlavePadSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mSlavePadInspectorView ;
+//  outlet CanariViewWithKeyView mSlavePadInspectorView ;
 //--- Pad shape
   outlet EBPopUpButton mPackageSlavePadShapePopUpButton $selectedIndex #mPackageSlavePadSelectionController.padShape ;
 //--- Pad style
@@ -526,10 +566,14 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     $masterPadObjectIndexArray root.masterPadObjectIndexArray
   ;
 
-
 //------- Guide inspector
+
+  stackView mGuideInspectorView vStack {
+    hStack { space StaticLabel (title: "guide inspector", bold: no, small: yes) space }
+    space
+  }
   selectionController PackageGuide #mPackageGuideSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mGuideInspectorView ;
+//  outlet CanariViewWithKeyView mGuideInspectorView ;
 
 //--- x1
   outlet EBPopUpButton mGuideX1UnitPopUp $selectedTag #mPackageGuideSelectionController.x1Unit ;
@@ -552,10 +596,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
      $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit
   ;
 
-
 //------- Dimension inspector
+
+  stackView mDimensionInspectorView vStack {
+    hStack { space StaticLabel (title: "dimension inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageDimension #mPackageDimensionSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mDimensionInspectorView ;
+//  outlet CanariViewWithKeyView mDimensionInspectorView ;
 
   action setDimensionTextOriginAtMidXAction ;
   outlet EBButton mSetDimensionTextOriginAtMidX $run setDimensionTextOriginAtMidXAction ;
@@ -598,12 +647,15 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet CanariDimensionTextField mDimensionYLabelTextField
      $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
   ;
-
-
-
 //------- Zone inspector
+
+  stackView mZoneInspectorView vStack {
+    hStack { space StaticLabel (title: "zone inspector", bold: no, small: yes) space }
+    space
+  }
+
   selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
-  outlet CanariViewWithKeyView mZoneInspectorView ;
+//  outlet CanariViewWithKeyView mZoneInspectorView ;
 //--- x
   outlet EBPopUpButton mZoneXUnitPopUp $selectedTag #mPackageZoneSelectionController.xUnit ;
   outlet CanariDimensionTextField mZoneXTextField
@@ -665,7 +717,9 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
   outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
 
-//--- Zoom and flip inspector
+//----------------------------------------------------------------------------------------------------------------------
+//   Zoom and flip inspector
+//----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
  //   space

@@ -2,32 +2,6 @@
 //   Canari Auto Layout classes
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//extern autolayout class AutoLayoutVerticalStackView {
-//  func set (margins: Int)
-//  func set (leftMargin: Int)
-//  func set (rightMargin: Int)
-//  func set (topMargin: Int)
-//  func set (bottomMargin: Int)
-//  func set (width: Int)
-//  func separator ()
-//  func separator (withTitle : String)
-//  func add (item : view)
-//  func flexibleSpace ()
-//}
-//
-//extern autolayout class AutoLayoutHorizontalStackView {
-//  func set (margins: Int)
-//  func set (leftMargin: Int)
-//  func set (rightMargin: Int)
-//  func set (topMargin: Int)
-//  func set (bottomMargin: Int)
-//  func set (height: Int)
-//  func separator ()
-//  func separator (withTitle : String)
-//  func add (item : view)
-//  func flexibleSpace ()
-//}
-
 vStack func set (spacing: Int) ;
 vStack func set (margins: Int) ;
 vStack func set (leftMargin: Int) ;
@@ -198,6 +172,10 @@ extern autolayout class CanariIssueTableView {
 
 extern autolayout class TextView (editable: Bool) {
   $value property String
+}
+
+extern autolayout class ObjectInspectorView $graphicController {
+  func addObjectInspector (forEntity : String, pageView: view)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

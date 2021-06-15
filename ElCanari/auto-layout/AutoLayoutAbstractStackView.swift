@@ -4,7 +4,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutStackView : NSStackView, EBUserClassNameProtocol {
+class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
   //   INIT

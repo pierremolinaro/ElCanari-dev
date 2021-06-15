@@ -395,7 +395,6 @@ import Cocoa
   @IBOutlet final var mArcAngle : CanariAngleTextField? = nil
   @IBOutlet final var mArcEndTangentTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mArcEndTangentUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mArcInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mArcPathIsClosedSwitch : EBSwitch? = nil
   @IBOutlet final var mArcRadiusTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mArcRadiusUnitPopUp : EBPopUpButton? = nil
@@ -423,10 +422,8 @@ import Cocoa
   @IBOutlet final var mBezierCurveY1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mBezierCurveY2TextField : CanariDimensionTextField? = nil
   @IBOutlet final var mBezierCurveY2UnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mBezierInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mDimensionDistanceTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mDimensionDistanceUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mDimensionInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mDimensionX1TextField : CanariDimensionTextField? = nil
   @IBOutlet final var mDimensionX1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mDimensionX2TextField : CanariDimensionTextField? = nil
@@ -440,7 +437,6 @@ import Cocoa
   @IBOutlet final var mDimensionYLabelTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mDimensionYLabelUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mDisplayZoneNameSwitch : EBSwitch? = nil
-  @IBOutlet final var mGuideInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mGuideX1TextField : CanariDimensionTextField? = nil
   @IBOutlet final var mGuideX1UnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mGuideX2TextField : CanariDimensionTextField? = nil
@@ -451,7 +447,6 @@ import Cocoa
   @IBOutlet final var mGuideY2UnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mOvalHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mOvalHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mOvalInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mOvalWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mOvalWidthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mOvalXTextField : CanariDimensionTextField? = nil
@@ -470,7 +465,6 @@ import Cocoa
   @IBOutlet final var mPadHoleHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mPadHoleWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mPadHoleWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mPadInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mPadNumberTextField : EBIntObserverField? = nil
   @IBOutlet final var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton? = nil
   @IBOutlet final var mPadSlaveCountTextField : EBIntObserverField? = nil
@@ -483,7 +477,6 @@ import Cocoa
   @IBOutlet final var mPadYCenterUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mPadZoneNameTextField : EBTextObserverField? = nil
   @IBOutlet final var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet final var mSegmentInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSegmentLengthTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mSegmentLengthUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mSegmentX1TextField : CanariDimensionTextField? = nil
@@ -505,7 +498,6 @@ import Cocoa
   @IBOutlet final var mSlavePadHoleHeightUnitPopUp : EBPopUpButton? = nil
   @IBOutlet final var mSlavePadHoleWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mSlavePadHoleWidthUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mSlavePadInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mSlavePadStyleView : NSView? = nil
   @IBOutlet final var mSlavePadWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mSlavePadWidthUnitPopUp : EBPopUpButton? = nil
@@ -516,7 +508,6 @@ import Cocoa
   @IBOutlet final var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
   @IBOutlet final var mZoneHeightTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mZoneHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mZoneInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mZoneNameTextField : EBTextField? = nil
   @IBOutlet final var mZoneNumberingPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mZoneWidthTextField : CanariDimensionTextField? = nil
@@ -613,7 +604,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  let mPageMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView ()
+  let mPageMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
 
   //····················································································································
   //    VIEW mModelImagePage
@@ -668,7 +659,7 @@ import Cocoa
   //    VIEW mPackagePageInspectorMasterView
   //····················································································································
 
-  let mPackagePageInspectorMasterView : AutoLayoutStackView = AutoLayoutVerticalStackView ()
+  let mPackagePageInspectorMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
 
   //····················································································································
   //    VIEW mPackagePage
@@ -750,10 +741,10 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true)
         .makeWidthExpandable ()
-        .addPage (title: "0", pageView: self.mSelectedObjectsInspectorView)
-        .addPage (title: "1", pageView: self.mGridZoomInspectorView)
-        .addPage (title: "2", pageView: self.mDisplayInspectorView)
-        .addPage (title: "3", pageView: self.mIssuesInspectorView)
+        .addPage (title: "", pageView: self.mSelectedObjectsInspectorView)
+        .addPage (title: "", pageView: self.mGridZoomInspectorView)
+        .addPage (title: "", pageView: self.mDisplayInspectorView)
+        .addPage (title: "", pageView: self.mIssuesInspectorView)
         .bind_selectedPage (self.rootObject.selectedInspector_property)
         .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
         .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
@@ -818,11 +809,202 @@ import Cocoa
 
   lazy var mSelectedObjectsInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutObjectInspectorView ()
+      .addObjectInspector (forEntity: "PackageSegment", pageView: self.mSegmentInspectorView)
+      .addObjectInspector (forEntity: "PackageBezier", pageView: self.mBezierCurveInspectorView)
+      .addObjectInspector (forEntity: "PackageOval", pageView: self.mOvalInspectorView)
+      .addObjectInspector (forEntity: "PackageArc", pageView: self.mArcInspectorView)
+      .addObjectInspector (forEntity: "PackageMasterPad", pageView: self.mMasterPadInspectorView)
+      .addObjectInspector (forEntity: "PackageSlavePad", pageView: self.mSlavePadInspectorView)
+      .addObjectInspector (forEntity: "PackageGuide", pageView: self.mGuideInspectorView)
+      .addObjectInspector (forEntity: "PackageDimension", pageView: self.mDimensionInspectorView)
+      .addObjectInspector (forEntity: "PackageZone", pageView: self.mZoneInspectorView)
+      .bind_graphic_controller (self.mPackageObjectsController)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSegmentInspectorView
+  //····················································································································
+
+  lazy var mSegmentInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "0", bold: false, small: true)
+      let view_0_1 = AutoLayoutStaticLabel (title: "segment inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mBezierCurveInspectorView
+  //····················································································································
+
+  lazy var mBezierCurveInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "bezier curve inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mOvalInspectorView
+  //····················································································································
+
+  lazy var mOvalInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "oval inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mArcInspectorView
+  //····················································································································
+
+  lazy var mArcInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "arc inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mMasterPadInspectorView
+  //····················································································································
+
+  lazy var mMasterPadInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "master pad inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSlavePadInspectorView
+  //····················································································································
+
+  lazy var mSlavePadInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "slave pad inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mGuideInspectorView
+  //····················································································································
+
+  lazy var mGuideInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "guide inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDimensionInspectorView
+  //····················································································································
+
+  lazy var mDimensionInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "dimension inspector", bold: false, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mZoneInspectorView
+  //····················································································································
+
+  lazy var mZoneInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "zone inspector", bold: false, small: true)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -1860,7 +2042,6 @@ import Cocoa
 //    checkOutletConnection (self.mArcAngle, "mArcAngle", CanariAngleTextField.self, #file, #line)
 //    checkOutletConnection (self.mArcEndTangentTextField, "mArcEndTangentTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mArcEndTangentUnitPopUp, "mArcEndTangentUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mArcInspectorView, "mArcInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mArcPathIsClosedSwitch, "mArcPathIsClosedSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mArcRadiusTextField, "mArcRadiusTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mArcRadiusUnitPopUp, "mArcRadiusUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1888,10 +2069,8 @@ import Cocoa
 //    checkOutletConnection (self.mBezierCurveY1UnitPopUp, "mBezierCurveY1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveY2TextField, "mBezierCurveY2TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mBezierCurveY2UnitPopUp, "mBezierCurveY2UnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mBezierInspectorView, "mBezierInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionDistanceUnitPopUp, "mDimensionDistanceUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mDimensionInspectorView, "mDimensionInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mDimensionX1TextField, "mDimensionX1TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionX1UnitPopUp, "mDimensionX1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mDimensionX2TextField, "mDimensionX2TextField", CanariDimensionTextField.self, #file, #line)
@@ -1905,7 +2084,6 @@ import Cocoa
 //    checkOutletConnection (self.mDimensionYLabelTextField, "mDimensionYLabelTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mDimensionYLabelUnitPopUp, "mDimensionYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mGuideInspectorView, "mGuideInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mGuideX1TextField, "mGuideX1TextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mGuideX1UnitPopUp, "mGuideX1UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mGuideX2TextField, "mGuideX2TextField", CanariDimensionTextField.self, #file, #line)
@@ -1916,7 +2094,6 @@ import Cocoa
 //    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mOvalWidthTextField, "mOvalWidthTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mOvalWidthUnitPopUp, "mOvalWidthUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mOvalXTextField, "mOvalXTextField", CanariDimensionTextField.self, #file, #line)
@@ -1935,7 +2112,6 @@ import Cocoa
 //    checkOutletConnection (self.mPadHoleHeightUnitPopUp, "mPadHoleHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadHoleWidthTextField, "mPadHoleWidthTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mPadHoleWidthUnitPopUp, "mPadHoleWidthUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mPadInspectorView, "mPadInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mPadNumberTextField, "mPadNumberTextField", EBIntObserverField.self, #file, #line)
 //    checkOutletConnection (self.mPadRenumberingPullDownButton, "mPadRenumberingPullDownButton", CanariPadRenumberingPullDownButton.self, #file, #line)
 //    checkOutletConnection (self.mPadSlaveCountTextField, "mPadSlaveCountTextField", EBIntObserverField.self, #file, #line)
@@ -1948,7 +2124,6 @@ import Cocoa
 //    checkOutletConnection (self.mPadYCenterUnitPopUp, "mPadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mPadZoneNameTextField, "mPadZoneNameTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mSegmentLengthTextField, "mSegmentLengthTextField", CanariDimensionObserverTextField.self, #file, #line)
 //    checkOutletConnection (self.mSegmentLengthUnitPopUp, "mSegmentLengthUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSegmentX1TextField, "mSegmentX1TextField", CanariDimensionTextField.self, #file, #line)
@@ -1970,7 +2145,6 @@ import Cocoa
 //    checkOutletConnection (self.mSlavePadHoleHeightUnitPopUp, "mSlavePadHoleHeightUnitPopUp", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadHoleWidthTextField, "mSlavePadHoleWidthTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadHoleWidthUnitPopUp, "mSlavePadHoleWidthUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mSlavePadInspectorView, "mSlavePadInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadStyleView, "mSlavePadStyleView", NSView.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadWidthTextField, "mSlavePadWidthTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mSlavePadWidthUnitPopUp, "mSlavePadWidthUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1981,7 +2155,6 @@ import Cocoa
 //    checkOutletConnection (self.mZoneForbiddenPadNumberTableView, "mZoneForbiddenPadNumberTableView", StringArrayTableView.self, #file, #line)
 //    checkOutletConnection (self.mZoneHeightTextField, "mZoneHeightTextField", CanariDimensionTextField.self, #file, #line)
 //    checkOutletConnection (self.mZoneHeightUnitPopUp, "mZoneHeightUnitPopUp", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mZoneInspectorView, "mZoneInspectorView", CanariViewWithKeyView.self, #file, #line)
 //    checkOutletConnection (self.mZoneNameTextField, "mZoneNameTextField", EBTextField.self, #file, #line)
 //    checkOutletConnection (self.mZoneNumberingPopUpButton, "mZoneNumberingPopUpButton", EBPopUpButton.self, #file, #line)
 //    checkOutletConnection (self.mZoneWidthTextField, "mZoneWidthTextField", CanariDimensionTextField.self, #file, #line)
@@ -2570,6 +2743,15 @@ import Cocoa
     self.mPackagePage.ebCleanUp ()
     self.mIssuesInspectorView.ebCleanUp ()
     self.mSelectedObjectsInspectorView.ebCleanUp ()
+    self.mSegmentInspectorView.ebCleanUp ()
+    self.mBezierCurveInspectorView.ebCleanUp ()
+    self.mOvalInspectorView.ebCleanUp ()
+    self.mArcInspectorView.ebCleanUp ()
+    self.mMasterPadInspectorView.ebCleanUp ()
+    self.mSlavePadInspectorView.ebCleanUp ()
+    self.mGuideInspectorView.ebCleanUp ()
+    self.mDimensionInspectorView.ebCleanUp ()
+    self.mZoneInspectorView.ebCleanUp ()
     self.mGridZoomInspectorView.ebCleanUp ()
     self.mDisplayInspectorView.ebCleanUp ()
     self.mProgramPage.ebCleanUp ()
@@ -2765,7 +2947,6 @@ import Cocoa
     self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
     self.mArcEndTangentUnitPopUp?.ebCleanUp ()
-    self.mArcInspectorView?.ebCleanUp ()
     self.mArcPathIsClosedSwitch?.ebCleanUp ()
     self.mArcRadiusTextField?.ebCleanUp ()
     self.mArcRadiusUnitPopUp?.ebCleanUp ()
@@ -2793,10 +2974,8 @@ import Cocoa
     self.mBezierCurveY1UnitPopUp?.ebCleanUp ()
     self.mBezierCurveY2TextField?.ebCleanUp ()
     self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
-    self.mBezierInspectorView?.ebCleanUp ()
     self.mDimensionDistanceTextField?.ebCleanUp ()
     self.mDimensionDistanceUnitPopUp?.ebCleanUp ()
-    self.mDimensionInspectorView?.ebCleanUp ()
     self.mDimensionX1TextField?.ebCleanUp ()
     self.mDimensionX1UnitPopUp?.ebCleanUp ()
     self.mDimensionX2TextField?.ebCleanUp ()
@@ -2810,7 +2989,6 @@ import Cocoa
     self.mDimensionYLabelTextField?.ebCleanUp ()
     self.mDimensionYLabelUnitPopUp?.ebCleanUp ()
     self.mDisplayZoneNameSwitch?.ebCleanUp ()
-    self.mGuideInspectorView?.ebCleanUp ()
     self.mGuideX1TextField?.ebCleanUp ()
     self.mGuideX1UnitPopUp?.ebCleanUp ()
     self.mGuideX2TextField?.ebCleanUp ()
@@ -2821,7 +2999,6 @@ import Cocoa
     self.mGuideY2UnitPopUp?.ebCleanUp ()
     self.mOvalHeightTextField?.ebCleanUp ()
     self.mOvalHeightUnitPopUp?.ebCleanUp ()
-    self.mOvalInspectorView?.ebCleanUp ()
     self.mOvalWidthTextField?.ebCleanUp ()
     self.mOvalWidthUnitPopUp?.ebCleanUp ()
     self.mOvalXTextField?.ebCleanUp ()
@@ -2840,7 +3017,6 @@ import Cocoa
     self.mPadHoleHeightUnitPopUp?.ebCleanUp ()
     self.mPadHoleWidthTextField?.ebCleanUp ()
     self.mPadHoleWidthUnitPopUp?.ebCleanUp ()
-    self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
     self.mPadSlaveCountTextField?.ebCleanUp ()
@@ -2853,7 +3029,6 @@ import Cocoa
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPadZoneNameTextField?.ebCleanUp ()
     self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
-    self.mSegmentInspectorView?.ebCleanUp ()
     self.mSegmentLengthTextField?.ebCleanUp ()
     self.mSegmentLengthUnitPopUp?.ebCleanUp ()
     self.mSegmentX1TextField?.ebCleanUp ()
@@ -2875,7 +3050,6 @@ import Cocoa
     self.mSlavePadHoleHeightUnitPopUp?.ebCleanUp ()
     self.mSlavePadHoleWidthTextField?.ebCleanUp ()
     self.mSlavePadHoleWidthUnitPopUp?.ebCleanUp ()
-    self.mSlavePadInspectorView?.ebCleanUp ()
     self.mSlavePadStyleView?.ebCleanUp ()
     self.mSlavePadWidthTextField?.ebCleanUp ()
     self.mSlavePadWidthUnitPopUp?.ebCleanUp ()
@@ -2886,7 +3060,6 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView?.ebCleanUp ()
     self.mZoneHeightTextField?.ebCleanUp ()
     self.mZoneHeightUnitPopUp?.ebCleanUp ()
-    self.mZoneInspectorView?.ebCleanUp ()
     self.mZoneNameTextField?.ebCleanUp ()
     self.mZoneNumberingPopUpButton?.ebCleanUp ()
     self.mZoneWidthTextField?.ebCleanUp ()
@@ -2909,7 +3082,6 @@ import Cocoa
     self.mArcAngle = nil
     self.mArcEndTangentTextField = nil
     self.mArcEndTangentUnitPopUp = nil
-    self.mArcInspectorView = nil
     self.mArcPathIsClosedSwitch = nil
     self.mArcRadiusTextField = nil
     self.mArcRadiusUnitPopUp = nil
@@ -2937,10 +3109,8 @@ import Cocoa
     self.mBezierCurveY1UnitPopUp = nil
     self.mBezierCurveY2TextField = nil
     self.mBezierCurveY2UnitPopUp = nil
-    self.mBezierInspectorView = nil
     self.mDimensionDistanceTextField = nil
     self.mDimensionDistanceUnitPopUp = nil
-    self.mDimensionInspectorView = nil
     self.mDimensionX1TextField = nil
     self.mDimensionX1UnitPopUp = nil
     self.mDimensionX2TextField = nil
@@ -2954,7 +3124,6 @@ import Cocoa
     self.mDimensionYLabelTextField = nil
     self.mDimensionYLabelUnitPopUp = nil
     self.mDisplayZoneNameSwitch = nil
-    self.mGuideInspectorView = nil
     self.mGuideX1TextField = nil
     self.mGuideX1UnitPopUp = nil
     self.mGuideX2TextField = nil
@@ -2965,7 +3134,6 @@ import Cocoa
     self.mGuideY2UnitPopUp = nil
     self.mOvalHeightTextField = nil
     self.mOvalHeightUnitPopUp = nil
-    self.mOvalInspectorView = nil
     self.mOvalWidthTextField = nil
     self.mOvalWidthUnitPopUp = nil
     self.mOvalXTextField = nil
@@ -2984,7 +3152,6 @@ import Cocoa
     self.mPadHoleHeightUnitPopUp = nil
     self.mPadHoleWidthTextField = nil
     self.mPadHoleWidthUnitPopUp = nil
-    self.mPadInspectorView = nil
     self.mPadNumberTextField = nil
     self.mPadRenumberingPullDownButton = nil
     self.mPadSlaveCountTextField = nil
@@ -2997,7 +3164,6 @@ import Cocoa
     self.mPadYCenterUnitPopUp = nil
     self.mPadZoneNameTextField = nil
     self.mRemoveZoneForbiddenPadNumberButton = nil
-    self.mSegmentInspectorView = nil
     self.mSegmentLengthTextField = nil
     self.mSegmentLengthUnitPopUp = nil
     self.mSegmentX1TextField = nil
@@ -3019,7 +3185,6 @@ import Cocoa
     self.mSlavePadHoleHeightUnitPopUp = nil
     self.mSlavePadHoleWidthTextField = nil
     self.mSlavePadHoleWidthUnitPopUp = nil
-    self.mSlavePadInspectorView = nil
     self.mSlavePadStyleView = nil
     self.mSlavePadWidthTextField = nil
     self.mSlavePadWidthUnitPopUp = nil
@@ -3030,7 +3195,6 @@ import Cocoa
     self.mZoneForbiddenPadNumberTableView = nil
     self.mZoneHeightTextField = nil
     self.mZoneHeightUnitPopUp = nil
-    self.mZoneInspectorView = nil
     self.mZoneNameTextField = nil
     self.mZoneNumberingPopUpButton = nil
     self.mZoneWidthTextField = nil

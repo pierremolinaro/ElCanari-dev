@@ -8,13 +8,13 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
 
   //····················································································································
 
-  private var mDocumentView : AutoLayoutStackView
-  private var mPages = [AutoLayoutStackView] ()
+  private var mDocumentView : AutoLayoutAbstractStackView
+  private var mPages = [AutoLayoutAbstractStackView] ()
   private let mEqualWidth : Bool
 
   //····················································································································
 
-  init (documentView inDocumentView : AutoLayoutStackView, equalWidth inEqualWidth : Bool) {
+  init (documentView inDocumentView : AutoLayoutAbstractStackView, equalWidth inEqualWidth : Bool) {
     self.mDocumentView = inDocumentView
     self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
@@ -55,7 +55,7 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
   // ADD PAGE
   //····················································································································
 
-  final func addPage (title inTitle : String, pageView inPageView : AutoLayoutStackView) -> Self {
+  final func addPage (title inTitle : String, pageView inPageView : AutoLayoutAbstractStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
     self.mPages.append (inPageView)
