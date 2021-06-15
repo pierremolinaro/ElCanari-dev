@@ -38,7 +38,7 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   //····················································································································
 
   static func popupTitles () -> [String] {
-    return ["Traversing", "Surface", "Opposite"]
+    return ["Traversing", "Component Side", "Opposite Side"]
   }
 
   //····················································································································

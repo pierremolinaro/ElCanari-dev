@@ -198,4 +198,14 @@ extern autolayout class CanariAngleFieldAndSlider {
   $angle property Int
 }
 
+extern autolayout class CanariPadRenumberPullDownButton $enabled {
+  $currentNumber transient Int
+  $currentZoneName transient String
+}
+
+extern autolayout class CanariSlavePadAssignPopUpButton {
+  $masterPadName transient String
+  $masterPadObjectIndexArray transient IntArray
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -23,6 +23,7 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
   }
 
   //····················································································································

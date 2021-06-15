@@ -29,8 +29,8 @@ enum SlavePadStyle {
 
 func enum SlavePadStyle.popupTitles {
   traversing : "Traversing" ;
-  componentSide : "Surface" ;
-  oppositeSide : "Opposite" ;
+  componentSide : "Component Side" ;
+  oppositeSide : "Opposite Side" ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

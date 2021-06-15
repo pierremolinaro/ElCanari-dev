@@ -710,125 +710,96 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         left: StaticLabel (title: "Slave Pads", bold: no, small: yes),
         right: IntObserverField (small: yes) { $observedValue #mPackagePadSelectionController.slavePadCount }
       )
+      add (
+        single : CanariPadRenumberPullDownButton [configurator configurePadRenumberPullDownButton] {
+          $currentNumber #mPackagePadSelectionController.padNumber
+          $currentZoneName #mPackagePadSelectionController.zoneName
+          $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
+        } 
+      )
     }
   }
 
 
-//--- Pad shape
-//  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex #mPackagePadSelectionController.padShape ;
-//--- Pad style
-//  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex #mPackagePadSelectionController.padStyle ;
-//  outlet NSView mPadStyleView $hidden !#mPackagePadSelectionController.padIsTraversing ;
-//--- xCenter
-//  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag #mPackagePadSelectionController.xCenterUnit ;
-//  outlet CanariDimensionTextField mPadXCenterTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
-//  ;
-////--- yCenter
-//  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag #mPackagePadSelectionController.yCenterUnit ;
-//  outlet CanariDimensionTextField mPadYCenterTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
-//  ;
-//--- Width
-//  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag #mPackagePadSelectionController.widthUnit ;
-//  outlet CanariDimensionTextField mPadWidthTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
-//  ;
-////--- Height
-//  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag #mPackagePadSelectionController.heightUnit ;
-//  outlet CanariDimensionTextField mPadHeightTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
-//  ;
-//--- Hole Width
-//  outlet EBPopUpButton mPadHoleWidthUnitPopUp $selectedTag #mPackagePadSelectionController.holeWidthUnit ;
-//  outlet CanariDimensionTextField mPadHoleWidthTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
-//  ;
-//--- Hole Height
-//  outlet EBPopUpButton mPadHoleHeightUnitPopUp $selectedTag #mPackagePadSelectionController.holeHeightUnit ;
-//  outlet CanariDimensionTextField mPadHoleHeightTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
-//  ;
-//--- Annular Ring
-//  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag #mPackagePadSelectionController.annularRingUnit ;
-//  outlet CanariDimensionObserverTextField mPadAnnularRingTextField
-//     $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
-//  ;
-//--- Pad zone
-//  outlet EBTextObserverField mPadZoneNameTextField $valueObserver #mPackagePadSelectionController.zoneName ;
-//--- Pad Number
-//  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber (autoFormatter : yes) ;
-  outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton
-    $currentNumber #mPackagePadSelectionController.padNumber
-    $currentZoneName #mPackagePadSelectionController.zoneName
-    $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
-  ;
-//--- Slave Pad count
-//  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount (autoFormatter : yes);
-
-
-
 //------- Slave Pad inspector
+  selectionController PackageSlavePad #mPackageSlavePadSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mSlavePadInspectorView vStack {
-    hStack { space StaticLabel (title: "slave pad inspector", bold: no, small: yes) space }
-    space
+    hStack { space StaticLabel (title: "Slave Pad Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Center", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.xCenter, #mPackageSlavePadSelectionController.xCenterUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Width", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Height", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Shape", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum PadShape.popupTitles) {
+          $selectedIndex #mPackageSlavePadSelectionController.padShape
+        }
+      )
+      add (
+        left: StaticLabel (title: "Style", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum SlavePadStyle.popupTitles) {
+          $selectedIndex #mPackageSlavePadSelectionController.padStyle
+        }
+      )
+      add (
+        left: StaticLabel (title: "Hole Width", bold: no, small: yes) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
+          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
+        }
+      )
+      add (
+        left: StaticLabel (title: "Hole Height", bold: no, small: yes) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
+          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
+        }
+      )
+      add (
+        left: StaticLabel (title: "Annular Ring", bold: no, small: yes) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        right: CanariObservedDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
+          $hidden !#mPackageSlavePadSelectionController.padIsTraversing
+        }
+      )
+      separator ()
+      add (
+        left: StaticLabel (title: "Linked to Pad", bold: no, small: yes),
+        right: CanariSlavePadAssignPopUpButton [configurator configureSlavePadAssignPopUpButton] {
+          $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
+          $masterPadObjectIndexArray root.masterPadObjectIndexArray
+        }
+      )
+    }
   }
-
-  selectionController PackageSlavePad #mPackageSlavePadSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mSlavePadInspectorView ;
-//--- Pad shape
-  outlet EBPopUpButton mPackageSlavePadShapePopUpButton $selectedIndex #mPackageSlavePadSelectionController.padShape ;
-//--- Pad style
-  outlet EBPopUpButton mPackageSlavePadStylePopUpButton $selectedIndex #mPackageSlavePadSelectionController.padStyle ;
-  outlet NSView mSlavePadStyleView $hidden !#mPackageSlavePadSelectionController.padIsTraversing ;
-//--- xCenter
-  outlet EBPopUpButton mSlavePadXCenterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.xCenterUnit ;
-  outlet CanariDimensionTextField mSlavePadXCenterTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.xCenter, #mPackageSlavePadSelectionController.xCenterUnit
-  ;
-//--- yCenter
-  outlet EBPopUpButton mSlavePadYCenterUnitPopUp $selectedTag #mPackageSlavePadSelectionController.yCenterUnit ;
-  outlet CanariDimensionTextField mSlavePadYCenterTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
-  ;
-//--- Width
-  outlet EBPopUpButton mSlavePadWidthUnitPopUp $selectedTag #mPackageSlavePadSelectionController.widthUnit ;
-  outlet CanariDimensionTextField mSlavePadWidthTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
-  ;
-//--- Height
-  outlet EBPopUpButton mSlavePadHeightUnitPopUp $selectedTag #mPackageSlavePadSelectionController.heightUnit ;
-  outlet CanariDimensionTextField mSlavePadHeightTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
-  ;
-//--- Hole Width
-  outlet EBPopUpButton mSlavePadHoleWidthUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeWidthUnit ;
-  outlet CanariDimensionTextField mSlavePadHoleWidthTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
-  ;
-//--- Hole Height
-  outlet EBPopUpButton mSlavePadHoleHeightUnitPopUp $selectedTag #mPackageSlavePadSelectionController.holeHeightUnit ;
-  outlet CanariDimensionTextField mSlavePadHoleHeightTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
-  ;
-//--- Annular Ring
-  outlet EBPopUpButton mSlavePadAnnularRingUnitPopUp $selectedTag #mPackageSlavePadSelectionController.annularRingUnit ;
-  outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
-     $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
-  ;
-//--- Master Pad pop up button
-  outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
-    $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
-    $masterPadObjectIndexArray root.masterPadObjectIndexArray
-  ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Zoom and flip inspector
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
- //   space
     TwoColumnsGridView {
       add (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),

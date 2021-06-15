@@ -1154,6 +1154,10 @@
 		CF670EC7267911240057FCDE /* AutoLayoutIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670EC6267911240057FCDE /* AutoLayoutIntObserverField.swift */; };
 		CF670EC8267911240057FCDE /* AutoLayoutIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670EC6267911240057FCDE /* AutoLayoutIntObserverField.swift */; };
 		CF670EC9267911240057FCDE /* AutoLayoutIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670EC6267911240057FCDE /* AutoLayoutIntObserverField.swift */; };
+		CF670ECD2679179F0057FCDE /* AutoLayoutCanariPadRenumberPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670ECA2679179F0057FCDE /* AutoLayoutCanariPadRenumberPullDownButton.swift */; };
+		CF670ED126791C010057FCDE /* configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670ECE26791C010057FCDE /* configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift */; };
+		CF670ED5267922A90057FCDE /* AutoLayoutCanariSlavePadAssignPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670ED2267922A90057FCDE /* AutoLayoutCanariSlavePadAssignPopUpButton.swift */; };
+		CF670ED92679243D0057FCDE /* configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF670ED62679243D0057FCDE /* configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift */; };
 		CF67AB8823E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
 		CF67AB8923E9B08B0099DE60 /* tomany-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */; };
 		CF67AB8A23E9B08B0099DE60 /* toone-ForbiddenPadNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */; };
@@ -4571,6 +4575,10 @@
 		CF670EBE2678FBDD0057FCDE /* AutoLayoutTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTextField.swift; sourceTree = "<group>"; };
 		CF670EC226790E000057FCDE /* AutoLayoutTextObserverField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTextObserverField.swift; sourceTree = "<group>"; };
 		CF670EC6267911240057FCDE /* AutoLayoutIntObserverField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutIntObserverField.swift; sourceTree = "<group>"; };
+		CF670ECA2679179F0057FCDE /* AutoLayoutCanariPadRenumberPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariPadRenumberPullDownButton.swift; sourceTree = "<group>"; };
+		CF670ECE26791C010057FCDE /* configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift"; sourceTree = "<group>"; };
+		CF670ED2267922A90057FCDE /* AutoLayoutCanariSlavePadAssignPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCanariSlavePadAssignPopUpButton.swift; sourceTree = "<group>"; };
+		CF670ED62679243D0057FCDE /* configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift"; sourceTree = "<group>"; };
 		CF67AB8523E9B08A0099DE60 /* tomany-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "tomany-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8623E9B08A0099DE60 /* toone-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
 		CF67AB8723E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ForbiddenPadNumber.swift"; sourceTree = "<group>"; };
@@ -6635,6 +6643,8 @@
 				CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */,
 				CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */,
 				CF339BCB25EBAD9700BA367A /* EmbeddedAutoLayoutTextView.swift */,
+				CF670ECA2679179F0057FCDE /* AutoLayoutCanariPadRenumberPullDownButton.swift */,
+				CF670ED2267922A90057FCDE /* AutoLayoutCanariSlavePadAssignPopUpButton.swift */,
 			);
 			name = "Auto Layout";
 			path = "ElCanari/auto-layout";
@@ -6643,6 +6653,8 @@
 		CF9C675025CAC80300A00D5C /* Document — Package (Auto Layout) */ = {
 			isa = PBXGroup;
 			children = (
+				CF670ED62679243D0057FCDE /* configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift */,
+				CF670ECE26791C010057FCDE /* configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift */,
 				CF9C675525CAC83600A00D5C /* action-AutoLayoutPackageDocument-addZoneForbiddenPadNumberAction.swift */,
 				CF9C676525CAC83700A00D5C /* action-AutoLayoutPackageDocument-clearProgramErrorAction.swift */,
 				CF9C676725CAC83800A00D5C /* action-AutoLayoutPackageDocument-loadDIL16ModelImageFromResourcesAction.swift */,
@@ -11543,6 +11555,7 @@
 				CF49C0B225D139F00082271E /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF49C15F25D13A030082271E /* transient-SymbolText-issues.swift in Sources */,
 				CF9C648325CABE5C00A00D5C /* transient-BoardConnector-objectDisplay.swift in Sources */,
+				CF670ED92679243D0057FCDE /* configurator-AutoLayoutPackageDocument-configureSlavePadAssignPopUpButton.swift in Sources */,
 				CF9C648425CABE5C00A00D5C /* toone-DeviceSymbolInstanceInProject.swift in Sources */,
 				CF9C648525CABE5C00A00D5C /* library-repository-get-current-commit.swift in Sources */,
 				CF49C12C25D13A030082271E /* transient-SymbolSegment-selectionDisplay.swift in Sources */,
@@ -11594,6 +11607,7 @@
 				CF9C64AE25CABE5C00A00D5C /* CanariSelectionPopUpButton.swift in Sources */,
 				CF9C64AF25CABE5C00A00D5C /* action-DeviceDocument-performBindAction.swift in Sources */,
 				CF9C64B025CABE5C00A00D5C /* action-ProjectDocument-updateDeviceAction.swift in Sources */,
+				CF670ED5267922A90057FCDE /* AutoLayoutCanariSlavePadAssignPopUpButton.swift in Sources */,
 				CF9C64B125CABE5C00A00D5C /* CanariBoolPopUpButton.swift in Sources */,
 				CF49C0C125D139F00082271E /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */,
 				CF9C64B225CABE5C00A00D5C /* transient-PackageArc-objectDisplay.swift in Sources */,
@@ -11604,6 +11618,7 @@
 				CF9C64B625CABE5C00A00D5C /* transient-PackageDocument-statusMessage.swift in Sources */,
 				CF9C64B725CABE5C00A00D5C /* action-ProjectDocument-importArtworkAction.swift in Sources */,
 				CF9C64B825CABE5C00A00D5C /* EBFontButton.swift in Sources */,
+				CF670ED126791C010057FCDE /* configurator-AutoLayoutPackageDocument-configurePadRenumberPullDownButton.swift in Sources */,
 				CF9C64B925CABE5C00A00D5C /* entity-ArtworkFileGenerationParameters.swift in Sources */,
 				CF9C64BA25CABE5C00A00D5C /* view-StringArrayTableView.swift in Sources */,
 				CF9C64BB25CABE5C00A00D5C /* transient-DeviceInProject-canExport.swift in Sources */,
@@ -11749,6 +11764,7 @@
 				CF9C653D25CABE5C00A00D5C /* transient-BoardTrack-p1ConnectedToSomePad.swift in Sources */,
 				CF9C653E25CABE5C00A00D5C /* toone-PackageBezier.swift in Sources */,
 				CF9C653F25CABE5C00A00D5C /* entity-FontRoot.swift in Sources */,
+				CF670ECD2679179F0057FCDE /* AutoLayoutCanariPadRenumberPullDownButton.swift in Sources */,
 				CF49C0BE25D139F00082271E /* action-MergerDocument-moveUpAction.swift in Sources */,
 				CF670EB12678A84A0057FCDE /* AutoLayoutObjectInspectorView.swift in Sources */,
 				CF9C654025CABE5C00A00D5C /* transient-PointInSchematic-canMove.swift in Sources */,
