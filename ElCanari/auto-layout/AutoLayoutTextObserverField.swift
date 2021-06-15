@@ -1,36 +1,38 @@
+//
+//  AutoLayoutTextObserverField.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 15/06/2021.
+//
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+//   AutoLayoutTextObserverField
+//----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
+final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
-  // INIT
-  //····················································································································
 
-  init (title inTitle : String, bold inBold : Bool, small inSmall : Bool) {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.stringValue = inTitle
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    self.alignment = .center
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
-    self.enable (fromValueBinding: true)
     self.isEditable = false
-    self.alignment = .right
-    self.controlSize = inSmall ? .small : .regular
-    let size = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
-    self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
-    self.frame.size = self.intrinsicContentSize
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -42,25 +44,50 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func draw (_ inDirtyRect : NSRect) {
-    if debugAutoLayout () {
-      DEBUG_FILL_COLOR.setFill ()
-      NSBezierPath.fill (inDirtyRect)
-      let bp = NSBezierPath (rect: self.bounds)
-      bp.lineWidth = 1.0
-      bp.lineJoinStyle = .round
-      DEBUG_STROKE_COLOR.setStroke ()
-      bp.stroke ()
-    }
-    super.draw (inDirtyRect)
+  override var intrinsicContentSize : NSSize {
+    return NSSize (width: 56.0, height: 19.0)
   }
 
   //····················································································································
-  // SET TEXT color
+
+  override func ebCleanUp () {
+    self.mValueController?.unregister ()
+    self.mValueController = nil
+    super.ebCleanUp ()
+  }
+
+  //····················································································································
+  //  value binding
   //····················································································································
 
-  final func setTextColor (_ inTextColor : NSColor) -> Self {
-    self.textColor = inTextColor
+  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
+    switch inModel.selection {
+    case .empty :
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
+      self.enable (fromValueBinding: false)
+    case .multiple :
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
+      self.enable (fromValueBinding: true)
+    case .single (let propertyValue) :
+      self.placeholderString = nil
+      self.stringValue = propertyValue
+      self.enable (fromValueBinding: true)
+    }
+  }
+
+  //····················································································································
+
+  private var mValueController : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  final func bind_observedValue (_ inModel : EBReadOnlyProperty_String) -> Self {
+    self.mValueController = EBReadOnlyPropertyController (
+      observedObjects: [inModel],
+      callBack: { [weak self] in self?.updateOutlet (inModel) }
+    )
     return self
   }
 
@@ -69,4 +96,3 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-

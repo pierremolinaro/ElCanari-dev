@@ -625,15 +625,16 @@ final class PackageZone : PackageObject,
         kind &= unwSelf.zoneName_property_selection.kind ()
         kind &= preferences_padZoneFont_property_selection.kind ()
         kind &= preferences_padZoneColor_property_selection.kind ()
+        kind &= unwSelf.displayZoneName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_padZoneColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_padZoneColor_property_selection, unwSelf.displayZoneName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -651,6 +652,7 @@ final class PackageZone : PackageObject,
     self.zoneName_property.addEBObserver (self.objectDisplay_property)
     preferences_padZoneFont_property.addEBObserver (self.objectDisplay_property)
     preferences_padZoneColor_property.addEBObserver (self.objectDisplay_property)
+    self.displayZoneName_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -727,15 +729,16 @@ final class PackageZone : PackageObject,
         kind &= preferences_packageBackgroundColor_property_selection.kind ()
         kind &= preferences_padZoneColor_property_selection.kind ()
         kind &= unwSelf.knobSize_property_selection.kind ()
+        kind &= unwSelf.displayZoneName_property_selection.kind ()
         switch kind {
         case .empty :
           return .empty
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_packageBackgroundColor_property_selection, preferences_padZoneColor_property_selection, unwSelf.knobSize_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_packageBackgroundColor_property_selection, preferences_padZoneColor_property_selection, unwSelf.knobSize_property_selection, unwSelf.displayZoneName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -755,6 +758,7 @@ final class PackageZone : PackageObject,
     preferences_packageBackgroundColor_property.addEBObserver (self.selectionDisplay_property)
     preferences_padZoneColor_property.addEBObserver (self.selectionDisplay_property)
     self.knobSize_property.addEBObserver (self.selectionDisplay_property)
+    self.displayZoneName_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: forbiddenPadArray
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -832,6 +836,7 @@ final class PackageZone : PackageObject,
     // self.zoneName_property.removeEBObserver (self.objectDisplay_property)
     // preferences_padZoneFont_property.removeEBObserver (self.objectDisplay_property)
     // preferences_padZoneColor_property.removeEBObserver (self.objectDisplay_property)
+    // self.displayZoneName_property.removeEBObserver (self.objectDisplay_property)
     // self.x_property.removeEBObserver (self.issues_property)
     // self.y_property.removeEBObserver (self.issues_property)
     // self.width_property.removeEBObserver (self.issues_property)
@@ -854,6 +859,7 @@ final class PackageZone : PackageObject,
     // preferences_packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
     // self.knobSize_property.removeEBObserver (self.selectionDisplay_property)
+    // self.displayZoneName_property.removeEBObserver (self.selectionDisplay_property)
     // self.forbiddenPadNumbers_property.removeEBObserverOf_padNumber (self.forbiddenPadArray_property)
     // self.forbiddenPadNumbers_property.removeEBObserver (self.emptyForbiddenPadArray_property)
   //--- Unregister properties for handling signature

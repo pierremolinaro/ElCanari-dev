@@ -25,14 +25,14 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     self.mNoSelectedObjectView = AutoLayoutVerticalStackView ()
     var hStack = AutoLayoutHorizontalStackView ()
     hStack.appendView (AutoLayoutFlexibleSpace ())
-    hStack.appendView (AutoLayoutStaticLabel (title: "No Selected Object", bold: false, small: false))
+    hStack.appendView (AutoLayoutStaticLabel (title: "No Selected Object", bold: true, small: true))
     hStack.appendView (AutoLayoutFlexibleSpace ())
     self.mNoSelectedObjectView.appendView (hStack)
   //--- Define "Multiple selection View"
     self.mMultipleSelectionView = AutoLayoutVerticalStackView ()
     hStack = AutoLayoutHorizontalStackView ()
     hStack.appendView (AutoLayoutFlexibleSpace ())
-    hStack.appendView (AutoLayoutStaticLabel (title: "Multiple Selection", bold: false, small: false))
+    hStack.appendView (AutoLayoutStaticLabel (title: "Multiple Selection", bold: true, small: true))
     hStack.appendView (AutoLayoutFlexibleSpace ())
     self.mMultipleSelectionView.appendView (hStack)
   //---

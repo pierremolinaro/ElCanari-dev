@@ -33,7 +33,6 @@ func enum PadNumbering.popupTitles {
   rightDown : "Right, Down" ;
   leftUp : "Left, Up" ;
   leftDown : "Left, Down" ;
-
 }
 
 //----------------------------------------------------------------------------*
@@ -503,7 +502,8 @@ graphic entity PackageZone : PackageObject {
 
   override transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
-     self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
+     self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor,
+     self.displayZoneName
   ;
 
   override transient EBShape selectionDisplay dependsFrom
@@ -511,7 +511,8 @@ graphic entity PackageZone : PackageObject {
      self.xName, self.yName, self.zoneName, prefs.padZoneFont,
      prefs.packageBackgroundColor,
      prefs.padZoneColor,
-     super.PackageObject.knobSize
+     super.PackageObject.knobSize,
+     self.displayZoneName
   ;
 
   override transient CanariIssueArray issues dependsFrom

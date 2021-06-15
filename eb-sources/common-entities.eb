@@ -16,16 +16,33 @@ enum PadStyle {
   traversing, surface
 }
 
+func enum PadStyle.popupTitles {
+  traversing : "Traversing" ;
+  surface : "Surface" ;
+}
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum SlavePadStyle {
   traversing, componentSide, oppositeSide
 }
 
+func enum SlavePadStyle.popupTitles {
+  traversing : "Traversing" ;
+  componentSide : "Surface" ;
+  oppositeSide : "Opposite" ;
+}
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum PadShape {
   rect, round, octo
+}
+
+func enum PadShape.popupTitles {
+  rect : "Rectangular" ;
+  round : "Round" ;
+  octo : "Octogonal" ;
 }
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

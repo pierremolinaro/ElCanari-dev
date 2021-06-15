@@ -22,7 +22,8 @@ func transient_PackageZone_objectDisplay (
        _ self_yName : Int,                
        _ self_zoneName : String,          
        _ prefs_padZoneFont : NSFont,      
-       _ prefs_padZoneColor : NSColor
+       _ prefs_padZoneColor : NSColor,    
+       _ self_displayZoneName : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let x = canariUnitToCocoa (self_x)
@@ -48,13 +49,15 @@ func transient_PackageZone_objectDisplay (
     var shape = EBShape ()
     shape.add (stroke: [bp], prefs_padZoneColor)
   //--- Name
-    let text = (self_zoneName == "") ? "?" : self_zoneName
-    let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : prefs_padZoneFont,
-      NSAttributedString.Key.foregroundColor : prefs_padZoneColor
-    ]
-    shape.add (text: text, p, textAttributes, .center, .center)
+    if self_displayZoneName {
+      let text = (self_zoneName == "") ? "?" : self_zoneName
+      let p = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : prefs_padZoneFont,
+        NSAttributedString.Key.foregroundColor : prefs_padZoneColor
+      ]
+      shape.add (text: text, p, textAttributes, .center, .center)
+    }
   //---
     return shape
 //--- END OF USER ZONE 2

@@ -18,13 +18,18 @@ final class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNam
 
   init () {
     super.init (frame: NSRect ())
-    self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
+//    self.delegate = self
     self.controlSize = .small
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     self.alignment = .center
     self.isEditable = false
+    self.drawsBackground = false
+    self.isBezeled = false
+    self.isBordered = false
+    self.usesSingleLineMode = false
   }
 
   //····················································································································

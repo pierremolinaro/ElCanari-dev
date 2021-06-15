@@ -1,49 +1,47 @@
 //----------------------------------------------------------------------------------------------------------------------
-//
-//  Created by Pierre Molinaro on 09/02/2021.
-//
-//----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   AutoLayoutIntField
-//----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
+  // Property
+  //····················································································································
 
-  private let mWidth : CGFloat
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
+  // INIT
+  //····················································································································
 
-  init (width inWidth : Int) {
-    self.mWidth = CGFloat (inWidth)
+  init () {
     super.init (frame: NSRect ())
-    self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.controlSize = .small
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     self.alignment = .center
-  //--- Target
+
+    self.delegate = self
     self.target = self
-    self.action = #selector (Self.valueDidChangeAction (_:))
+    self.action = #selector (Self.action (_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
     self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 0
-    self.mNumberFormatter.maximumFractionDigits = 0
+    self.mNumberFormatter.minimumFractionDigits = 3
+    self.mNumberFormatter.maximumFractionDigits = 3
     self.mNumberFormatter.isLenient = true
+    self.mNumberFormatter.positiveSuffix = "°"
     self.formatter = self.mNumberFormatter
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -55,37 +53,60 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: self.mWidth, height: 19.0)
-  }
-
-  //····················································································································
-
   override func ebCleanUp () {
-    self.mController?.unregister ()
-    self.mController = nil
+    self.mAngleController?.unregister ()
+    self.mAngleController = nil
     super.ebCleanUp ()
   }
 
   //····················································································································
 
-  final func set (min inMin : Int) -> Self {
-    self.mNumberFormatter.minimum = NSNumber (value: inMin)
+  override func draw (_ inDirtyRect : NSRect) {
+    if debugAutoLayout () {
+      DEBUG_FILL_COLOR.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
+    }
+    super.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  //  $angle binding
+  //····················································································································
+
+  private var mAngleController : EBGenericReadWritePropertyController <Int>? = nil
+
+  //····················································································································
+
+  final func bind_angle (_ model : EBReadWriteProperty_Int) -> Self {
+    self.mAngleController = EBGenericReadWritePropertyController <Int> (
+      observedObject: model,
+      callBack: { [weak self] in self?.update (from: model) }
+    )
     return self
   }
 
   //····················································································································
 
-  final func set (max inMax : Int) -> Self {
-    self.mNumberFormatter.maximum = NSNumber (value: inMax)
-    return self
-  }
-
-  //····················································································································
-
-  final func set (format inFormatString : String) -> Self {
-    self.mNumberFormatter.format = inFormatString
-    return self
+  private func update (from model : EBReadWriteProperty_Int) {
+    switch model.selection {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.placeholderString = "No Selection"
+      self.stringValue = ""
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.placeholderString = nil
+      self.doubleValue = Double (v) / 1000.0
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.placeholderString = "Multiple Selection"
+      self.stringValue = ""
+    }
   }
 
   //····················································································································
@@ -138,48 +159,12 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
-    __NSBeep ()
-    if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
-      let value = Int (outletValueNumber.doubleValue.rounded ())
-      _ = self.mController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
-    }
-  }
-
-  //····················································································································
-  //  value binding
-  //····················································································································
-
-  private var mController : EBGenericReadWritePropertyController <Int>? = nil
-
-  //····················································································································
-
-  final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
-    self.cell?.sendsActionOnEndEditing = false
-    self.isContinuous = sendContinously
-    self.mController = EBGenericReadWritePropertyController <Int> (
-      observedObject: inObject,
-      callBack:  { [weak self] in self?.update (from: inObject) }
-    )
-    return self
-  }
-
-  //····················································································································
-
-  private func update (from model : EBReadOnlyProperty_Int) {
-    switch model.selection {
-    case .empty :
-      self.enableFromValueBinding (false)
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-    case .single (let v) :
-      self.enableFromValueBinding (true)
-      self.placeholderString = nil
-      self.intValue = Int32 (v)
-    case .multiple :
-      self.enableFromValueBinding (false)
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
+  @objc func action (_ sender : Any?) {
+    if let outletValueNumber = self.mNumberFormatter.number (from: self.stringValue) {
+      let value = Int ((outletValueNumber.doubleValue * 1000.0).rounded ())
+      _ = self.mAngleController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+    }else{
+      NSSound.beep ()
     }
   }
 
@@ -188,3 +173,4 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+

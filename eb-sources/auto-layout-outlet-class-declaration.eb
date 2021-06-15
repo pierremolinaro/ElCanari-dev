@@ -40,7 +40,7 @@ extern autolayout class TwoColumnsGridView {
   func flexibleSpace ()
 }
 
-extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled {
+extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
 }
 
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) {
@@ -96,25 +96,33 @@ extern autolayout class CanariDimensionField {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariDimensionAndPopUp {
+extern autolayout class CanariDimensionAndPopUp $enabled $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariObservedDimensionAndPopUp {
+extern autolayout class CanariObservedDimensionAndPopUp $hidden {
   $dimensionAndUnit transient Int, property Int
 }
 
-extern autolayout class Switch (title: String) {
+extern autolayout class Switch (title: String, small: Bool) {
   $value property Bool
 }
 
-extern autolayout class Slider (min: Int, max: Int, ticks: Int) $enabled {
+extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled {
   $intValue property Int (sendContinously : Bool)
   $doubleValue property Double (sendContinously : Bool)
 }
 
 extern autolayout class Button (title: String, small: Bool) $enabled $run {
   func makeWidthExpandable ()
+}
+
+extern autolayout class TextField (small: Bool) $enabled {
+  $value property String (sendContinously : Bool)
+}
+
+extern autolayout class TextObserverField (small: Bool) $enabled {
+  $observedValue transient String
 }
 
 extern autolayout class HelpButton (small: Bool) $enabled $run {
@@ -158,6 +166,10 @@ extern autolayout class IntField (width: Int) $enabled {
   func set (format: String)
 }
 
+extern autolayout class IntObserverField (small: Bool) $enabled {
+  $observedValue transient Int
+}
+
 extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
@@ -176,6 +188,14 @@ extern autolayout class TextView (editable: Bool) {
 
 extern autolayout class ObjectInspectorView $graphicController {
   func addObjectInspector (forEntity: entity, inspectorView: view)
+}
+
+extern autolayout class CanariAngleField {
+  $angle property Int
+}
+
+extern autolayout class CanariAngleFieldAndSlider {
+  $angle property Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -18,6 +18,7 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.delegate = self
     self.controlSize = .small
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)

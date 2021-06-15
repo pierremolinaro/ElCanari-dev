@@ -44,6 +44,15 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
 
+  final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
+                           computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+    _ = self.mDimensionField.bind_enabled (observedObjects: inObjects, computeFunction: inFunction)
+    _ = self.mUnitPopUpButton.bind_enabled (observedObjects: inObjects, computeFunction: inFunction)
+    return self
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

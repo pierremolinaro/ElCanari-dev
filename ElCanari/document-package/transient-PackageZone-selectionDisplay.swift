@@ -24,7 +24,8 @@ func transient_PackageZone_selectionDisplay (
        _ prefs_padZoneFont : NSFont,         
        _ prefs_packageBackgroundColor : NSColor,
        _ prefs_padZoneColor : NSColor,       
-       _ self_PackageObject_knobSize : Double
+       _ self_PackageObject_knobSize : Double,
+       _ self_displayZoneName : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var shape = EBShape ()
@@ -55,20 +56,22 @@ func transient_PackageZone_selectionDisplay (
     shape.add (knobAt:  NSPoint (x: x, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_LEFT, .diamond, CGFloat (self_PackageObject_knobSize))
     shape.add (knobAt:  NSPoint (x: x + width / 2.0, y: y + height), knobIndex: PACKAGE_ZONE_TOP, .diamond, CGFloat (self_PackageObject_knobSize))
     shape.add (knobAt:  NSPoint (x: x + width, y: y + height / 2.0), knobIndex: PACKAGE_ZONE_RIGHT, .diamond, CGFloat (self_PackageObject_knobSize))
-  //--- Zone
-    let text = (self_zoneName == "") ? "?" : self_zoneName
-    let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
-    shape.add (
-      textKnob: text,
-      pText,
-      prefs_padZoneFont,
-      foreColor: prefs_padZoneColor,
-      backColor: prefs_packageBackgroundColor,
-      .center,
-      .center,
-      .circ,
-      knobIndex: PACKAGE_ZONE_NAME
-    )
+  //--- Zone Name
+    if self_displayZoneName {
+      let text = (self_zoneName == "") ? "?" : self_zoneName
+      let pText = CanariPoint (x: self_xName, y: self_yName).cocoaPoint
+      shape.add (
+        textKnob: text,
+        pText,
+        prefs_padZoneFont,
+        foreColor: prefs_padZoneColor,
+        backColor: prefs_packageBackgroundColor,
+        .center,
+        .center,
+        .circ,
+        knobIndex: PACKAGE_ZONE_NAME
+      )
+    }
   //---
     return shape
 //--- END OF USER ZONE 2

@@ -1,5 +1,5 @@
 //
-//  AutoLayoutSwitch.swift
+//  AutoLayoutLinearSlider.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/02/2021.
@@ -11,18 +11,23 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+//   AutoLayoutLinearSlider
+//----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, small inSmall : Bool) {
+  init (min inMin : Int, max inMax : Int, ticks inMarkCount : Int) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.setButtonType (.switch)
-    self.title = inTitle
-    self.controlSize = inSmall ? .small : .regular
+
+    self.minValue = Double (inMin)
+    self.maxValue = Double (inMax)
+    self.numberOfTickMarks = inMarkCount
+    self.controlSize = .small
+    self.sliderType = .linear
   }
 
   //····················································································································
@@ -40,53 +45,91 @@ final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
+    self.mDoubleValueController?.unregister ()
+    self.mDoubleValueController = nil
+    self.mIntValueController?.unregister ()
+    self.mIntValueController = nil
     super.ebCleanUp ()
   }
 
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.state == NSControl.StateValue.on, windowForSheet: self.window)
-    return super.sendAction (action, to: to)
+    _ = self.mDoubleValueController?.updateModel (
+      withCandidateValue: self.doubleValue,
+      windowForSheet: self.window
+    )
+    _ = self.mIntValueController?.updateModel (
+      withCandidateValue: Int (self.doubleValue.rounded ()),
+      windowForSheet: self.window
+    )
+    let r = super.sendAction (action, to: to)
+    flushOutletEvents ()
+    return r
   }
 
   //····················································································································
-  //  value binding
+  //  doubleValue binding
   //····················································································································
 
-  fileprivate func updateValue (from inObject : EBReadOnlyProperty_Bool) {
-    switch inObject.selection {
-    case .empty :
-      self.state = NSControl.StateValue.off
+  fileprivate func updateDoubleValue (_ object : EBReadOnlyProperty_Double) {
+    switch object.selection {
+    case .empty, .multiple :
+      self.stringValue = "-"
       self.enable (fromValueBinding: false)
-    case .multiple :
-      self.allowsMixedState = true
-      self.state = NSControl.StateValue.mixed
-      self.enable (fromValueBinding: true)
-    case .single (let v) :
-      self.allowsMixedState = false
-      self.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
+    case .single (let propertyValue) :
+      self.doubleValue = propertyValue
       self.enable (fromValueBinding: true)
     }
   }
 
   //····················································································································
 
-  fileprivate var mValueController : EBGenericReadWritePropertyController <Bool>? = nil
+  private var mDoubleValueController : EBGenericReadWritePropertyController <Double>? = nil
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBReadWriteProperty_Bool) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <Bool> (
+  final func bind_doubleValue (_ inObject : EBReadWriteProperty_Double, sendContinously : Bool) -> Self {
+    self.mDoubleValueController = EBGenericReadWritePropertyController <Double> (
       observedObject: inObject,
-      callBack: { [weak self] in self?.updateValue (from: inObject) }
+      callBack: { [weak self] in self?.updateDoubleValue (inObject) }
     )
+    self.isContinuous = sendContinously
     return self
   }
 
   //····················································································································
+  //  intValue binding
+  //····················································································································
+
+  fileprivate func updateIntValue (_ object : EBReadOnlyProperty_Int) {
+    switch object.selection {
+    case .empty, .multiple :
+      self.stringValue = "-"
+      self.enable (fromValueBinding: false)
+    case .single (let propertyValue) :
+      self.doubleValue = Double (propertyValue)
+      self.enable (fromValueBinding: true)
+    }
+  }
+
+  //····················································································································
+
+  private var mIntValueController : EBGenericReadWritePropertyController <Int>? = nil
+
+  //····················································································································
+
+  final func bind_intValue (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
+    self.mIntValueController = EBGenericReadWritePropertyController <Int> (
+      observedObject: inObject,
+      callBack: { [weak self] in self?.updateIntValue (inObject) }
+    )
+    self.isContinuous = sendContinously
+    return self
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

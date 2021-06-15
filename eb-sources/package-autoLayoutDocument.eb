@@ -78,11 +78,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       add (
         left: StaticLabel (title: "Flip", bold: no, small: yes),
-        right: Switch (title: "Horizontal") { $value root.mModelImagePageHorizontalFlip }
+        right: Switch (title: "Horizontal", small: yes) { $value root.mModelImagePageHorizontalFlip }
       )
       add (
         left: FlexibleSpace,
-        right: Switch (title: "Vertical") { $value root.mModelImagePageVerticalFlip }
+        right: Switch (title: "Vertical", small: yes) { $value root.mModelImagePageVerticalFlip }
       )
       add (
         left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
@@ -127,7 +127,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       add (
         left: StaticLabel (title: "PointSize", bold: no, small: yes),
-        right: Slider (min:1, max:61, ticks: 19) {
+        right: LinearSlider (min:1, max:61, ticks: 19) {
           $intValue root.mModelPointsCircleRadius (sendContinously : yes)
           $enabled root.hasModelImage
         }
@@ -204,7 +204,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       TwoColumnsGridView {
         add (
           left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
-          right: Slider (min:0, max:1, ticks: 11) {
+          right: LinearSlider (min:0, max:1, ticks: 11) {
             $doubleValue root.mModelImageOpacity (sendContinously:yes)
             $enabled root.hasModelImage
           }
@@ -293,223 +293,480 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   }
 
 //--- Segment inspector
+  selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mSegmentInspectorView vStack {
-    hStack { space StaticLabel (title: "segment inspector", bold: no, small: yes) space }
-    space
+    hStack { space StaticLabel (title: "Segment inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "First Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageSegmentSelectionController.x1, #mPackageSegmentSelectionController.x1Unit }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageSegmentSelectionController.y1, #mPackageSegmentSelectionController.y1Unit }
+      )
+      add (
+        left: StaticLabel (title: "Second Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageSegmentSelectionController.x2, #mPackageSegmentSelectionController.x2Unit }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageSegmentSelectionController.y2, #mPackageSegmentSelectionController.y2Unit }
+      )
+      add (
+        left: StaticLabel (title: "Length", bold: no, small: yes),
+        right: CanariObservedDimensionAndPopUp {
+          $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
+         }
+      )
+    }
   }
-
-  selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mSegmentInspectorView ;
-//--- x1
-  outlet EBPopUpButton mSegmentX1UnitPopUp $selectedTag #mPackageSegmentSelectionController.x1Unit ;
-  outlet CanariDimensionTextField mSegmentX1TextField
-     $dimensionAndUnit #mPackageSegmentSelectionController.x1, #mPackageSegmentSelectionController.x1Unit
-  ;
-//--- y1
-  outlet EBPopUpButton mSegmentY1UnitPopUp $selectedTag #mPackageSegmentSelectionController.y1Unit ;
-  outlet CanariDimensionTextField mSegmentY1TextField
-     $dimensionAndUnit #mPackageSegmentSelectionController.y1, #mPackageSegmentSelectionController.y1Unit
-  ;
-//--- x2
-  outlet EBPopUpButton mSegmentX2UnitPopUp $selectedTag #mPackageSegmentSelectionController.x2Unit ;
-  outlet CanariDimensionTextField mSegmentX2TextField
-     $dimensionAndUnit #mPackageSegmentSelectionController.x2, #mPackageSegmentSelectionController.x2Unit
-  ;
-//--- y2
-  outlet EBPopUpButton mSegmentY2UnitPopUp $selectedTag #mPackageSegmentSelectionController.y2Unit ;
-  outlet CanariDimensionTextField mSegmentY2TextField
-     $dimensionAndUnit #mPackageSegmentSelectionController.y2, #mPackageSegmentSelectionController.y2Unit
-  ;
-//--- length
-  outlet EBPopUpButton mSegmentLengthUnitPopUp $selectedTag #mPackageSegmentSelectionController.lengthUnit ;
-  outlet CanariDimensionObserverTextField mSegmentLengthTextField
-     $dimensionAndUnit #mPackageSegmentSelectionController.lengthInCanariUnit, #mPackageSegmentSelectionController.lengthUnit
-  ;
 
 //--- Bezier Curve inspector
-  stackView mBezierCurveInspectorView vStack {
-    hStack { space StaticLabel (title: "bezier curve inspector", bold: no, small: yes) space }
-    space
-  }
-
   selectionController PackageBezier #mPackageBezierCurveSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mBezierInspectorView ;
-//--- x1
-  outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.x1Unit ;
-  outlet CanariDimensionTextField mBezierCurveX1TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.x1, #mPackageBezierCurveSelectionController.x1Unit
-  ;
-//--- y1
-  outlet EBPopUpButton mBezierCurveY1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.y1Unit ;
-  outlet CanariDimensionTextField mBezierCurveY1TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.y1, #mPackageBezierCurveSelectionController.y1Unit
-  ;
-//--- x2
-  outlet EBPopUpButton mBezierCurveX2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.x2Unit ;
-  outlet CanariDimensionTextField mBezierCurveX2TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.x2, #mPackageBezierCurveSelectionController.x2Unit
-  ;
-//--- y2
-  outlet EBPopUpButton mBezierCurveY2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.y2Unit ;
-  outlet CanariDimensionTextField mBezierCurveY2TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.y2, #mPackageBezierCurveSelectionController.y2Unit
-  ;
-//--- cpx1
-  outlet EBPopUpButton mBezierCurveCPX1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpx1Unit ;
-  outlet CanariDimensionTextField mBezierCurveCPX1TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx1, #mPackageBezierCurveSelectionController.cpx1Unit
-  ;
-//--- cpy1
-  outlet EBPopUpButton mBezierCurveCPY1UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpy1Unit ;
-  outlet CanariDimensionTextField mBezierCurveCPY1TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy1, #mPackageBezierCurveSelectionController.cpy1Unit
-  ;
-//--- cpx2
-  outlet EBPopUpButton mBezierCurveCPX2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpx2Unit ;
-  outlet CanariDimensionTextField mBezierCurveCPX2TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx2, #mPackageBezierCurveSelectionController.cpx2Unit
-  ;
-//--- cpy2
-  outlet EBPopUpButton mBezierCurveCPY2UnitPopUp $selectedTag #mPackageBezierCurveSelectionController.cpy2Unit ;
-  outlet CanariDimensionTextField mBezierCurveCPY2TextField
-     $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
-  ;
+
+  stackView mBezierCurveInspectorView vStack {
+    hStack { space StaticLabel (title: "Bezier Curve Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "First End", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.x1, #mPackageBezierCurveSelectionController.x1Unit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.y1, #mPackageBezierCurveSelectionController.y1Unit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Second End", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.x2, #mPackageBezierCurveSelectionController.x2Unit
+         }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.y2, #mPackageBezierCurveSelectionController.y2Unit
+        }
+      )
+      add (
+        left: StaticLabel (title: "First Control", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx1, #mPackageBezierCurveSelectionController.cpx1Unit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy1, #mPackageBezierCurveSelectionController.cpy1Unit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Second Control", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpx2, #mPackageBezierCurveSelectionController.cpx2Unit
+         }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageBezierCurveSelectionController.cpy2, #mPackageBezierCurveSelectionController.cpy2Unit
+        }
+      )
+    }
+  }
 
 //------- Oval inspector
+  selectionController PackageOval #mPackageOvalSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mOvalInspectorView vStack {
-    hStack { space StaticLabel (title: "oval inspector", bold: no, small: yes) space }
-    space
+    hStack { space StaticLabel (title: "Oval Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Bottom Left", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageOvalSelectionController.x, #mPackageOvalSelectionController.xUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageOvalSelectionController.y, #mPackageOvalSelectionController.yUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Width", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageOvalSelectionController.width, #mPackageOvalSelectionController.widthUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Height", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
+        }
+      )
+    }
   }
-
-  selectionController PackageOval #mPackageOvalSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mOvalInspectorView ;
-//--- x
-  outlet EBPopUpButton mOvalXUnitPopUp $selectedTag #mPackageOvalSelectionController.xUnit ;
-  outlet CanariDimensionTextField mOvalXTextField
-     $dimensionAndUnit #mPackageOvalSelectionController.x, #mPackageOvalSelectionController.xUnit
-  ;
-//--- y
-  outlet EBPopUpButton mOvalYUnitPopUp $selectedTag #mPackageOvalSelectionController.yUnit ;
-  outlet CanariDimensionTextField mOvalYTextField
-     $dimensionAndUnit #mPackageOvalSelectionController.y, #mPackageOvalSelectionController.yUnit
-  ;
-//--- Width
-  outlet EBPopUpButton mOvalWidthUnitPopUp $selectedTag #mPackageOvalSelectionController.widthUnit ;
-  outlet CanariDimensionTextField mOvalWidthTextField
-     $dimensionAndUnit #mPackageOvalSelectionController.width, #mPackageOvalSelectionController.widthUnit
-  ;
-//--- Height
-  outlet EBPopUpButton mOvalHeightUnitPopUp $selectedTag #mPackageOvalSelectionController.heightUnit ;
-  outlet CanariDimensionTextField mOvalHeightTextField
-     $dimensionAndUnit #mPackageOvalSelectionController.height, #mPackageOvalSelectionController.heightUnit
-  ;
 
 //------- Arc inspector
+  selectionController PackageArc #mPackageArcSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mArcInspectorView vStack {
-    hStack { space StaticLabel (title: "arc inspector", bold: no, small: yes) space }
-    space
+    hStack { space StaticLabel (title: "Arc Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Center", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageArcSelectionController.xCenter, #mPackageArcSelectionController.xCenterUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageArcSelectionController.yCenter, #mPackageArcSelectionController.yCenterUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Radius", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageArcSelectionController.radius, #mPackageArcSelectionController.radiusUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Start Angle", bold: no, small: yes),
+        right: CanariAngleFieldAndSlider {
+          $angle #mPackageArcSelectionController.startAngle
+        }
+      )
+      add (
+        left: StaticLabel (title: "Angle", bold: no, small: yes),
+        right: CanariAngleField {
+          $angle #mPackageArcSelectionController.arcAngle
+        }
+      )
+      add (
+        left: StaticLabel (title: "Start Tangent", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageArcSelectionController.startTangent, #mPackageArcSelectionController.startTangentUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "End Tangent", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageArcSelectionController.endTangent, #mPackageArcSelectionController.endTangentUnit
+        }
+      )
+    }
+    hStack { Switch (title: "Path is Closed", small: yes) { $value #mPackageArcSelectionController.pathIsClosed } space }
   }
 
-  selectionController PackageArc #mPackageArcSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mArcInspectorView ;
-//--- xCenter
-  outlet EBPopUpButton mArcRadiusUnitPopUp $selectedTag #mPackageArcSelectionController.radiusUnit ;
-  outlet CanariDimensionTextField mArcRadiusTextField
-     $dimensionAndUnit #mPackageArcSelectionController.radius, #mPackageArcSelectionController.radiusUnit
-  ;
-//--- yCenter
-  outlet EBPopUpButton mArcXCenterUnitPopUp $selectedTag #mPackageArcSelectionController.xCenterUnit ;
-  outlet CanariDimensionTextField mArcXCenterTextField
-     $dimensionAndUnit #mPackageArcSelectionController.xCenter, #mPackageArcSelectionController.xCenterUnit
-  ;
-//--- yCenter
-  outlet EBPopUpButton mArcYCenterUnitPopUp $selectedTag #mPackageArcSelectionController.yCenterUnit ;
-  outlet CanariDimensionTextField mArcYCenterTextField
-     $dimensionAndUnit #mPackageArcSelectionController.yCenter, #mPackageArcSelectionController.yCenterUnit
-  ;
-//--- Start Tangent
-  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag #mPackageArcSelectionController.startTangentUnit ;
-  outlet CanariDimensionTextField mArcStartTangentTextField
-     $dimensionAndUnit #mPackageArcSelectionController.startTangent, #mPackageArcSelectionController.startTangentUnit
-  ;
-//--- End Tangent
-  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag #mPackageArcSelectionController.endTangentUnit ;
-  outlet CanariDimensionTextField mArcEndTangentTextField
-     $dimensionAndUnit #mPackageArcSelectionController.endTangent, #mPackageArcSelectionController.endTangentUnit
-  ;
-//--- Close path
-  outlet EBSwitch mArcPathIsClosedSwitch $value #mPackageArcSelectionController.pathIsClosed ;
 
-//--- Start angle
-  outlet CanariAngleTextField mArcStartAngleTextField $angle #mPackageArcSelectionController.startAngle ;
-  outlet CanariAngleSlider mArcStartAngleSlider $angle #mPackageArcSelectionController.startAngle ;
+//------- Guide inspector
+  selectionController PackageGuide #mPackageGuideSelectionController : #mPackageObjectsController.selectedArray ;
 
-//--- Arc angle
-  outlet CanariAngleTextField mArcAngle $angle #mPackageArcSelectionController.arcAngle ;
+  stackView mGuideInspectorView vStack {
+    hStack { space StaticLabel (title: "Guide Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "First Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageGuideSelectionController.x1, #mPackageGuideSelectionController.x1Unit }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageGuideSelectionController.y1, #mPackageGuideSelectionController.y1Unit }
+      )
+      add (
+        left: StaticLabel (title: "Second Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageGuideSelectionController.x2, #mPackageGuideSelectionController.x2Unit }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp { $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit }
+      )
+    }
+  }
+//------- Dimension inspector
+  selectionController PackageDimension #mPackageDimensionSelectionController : #mPackageObjectsController.selectedArray ;
+
+  stackView mDimensionInspectorView vStack {
+    hStack { space StaticLabel (title: "Dimension Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "First Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.x1, #mPackageDimensionSelectionController.x1Unit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Second Point", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.x2, #mPackageDimensionSelectionController.x2Unit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Distance", bold: no, small: yes),
+        right: CanariObservedDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Label", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.xDimension, #mPackageDimensionSelectionController.xDimensionUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
+        }
+      )
+    }
+    Button (title: "Set Label at Mid X", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidXAction }
+    Button (title: "Set Label at Mid Y", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidYAction }
+  }
+
+
+  action setDimensionTextOriginAtMidXAction ;
+  action setDimensionTextOriginAtMidYAction ;
+
+//------- Zone inspector
+  selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
+
+  stackView mZoneInspectorView vStack {
+    hStack { space StaticLabel (title: "Zone Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Bottom Left", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.x, #mPackageZoneSelectionController.xUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.y, #mPackageZoneSelectionController.yUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Width", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.width, #mPackageZoneSelectionController.widthUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Height", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Label", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.xName, #mPackageZoneSelectionController.xNameUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Name", bold: no, small: yes),
+        right: TextField (small: yes) {
+          $value #mPackageZoneSelectionController.zoneName (sendContinously: yes)
+        }
+      )
+      add (
+        single: hStack {
+          Switch (title: "Show Zone Name", small: yes) { $value #mPackageZoneSelectionController.displayZoneName }
+          space
+        }
+      )
+      add (
+        left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {
+          $selectedIndex #mPackageZoneSelectionController.zoneNumbering
+        }
+      )
+    }
+  }
+
+//--- Forbidden pad number table view
+  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
+    $array #mPackageZoneSelectionController.forbiddenPadArray
+  ;
+
+  action addZoneForbiddenPadNumberAction ;
+  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
+
+  action removeZoneForbiddenPadNumberAction ;
+  outlet EBButton mRemoveZoneForbiddenPadNumberButton
+    $run removeZoneForbiddenPadNumberAction
+    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
+  ;
+
+//--- Dialog for adding pad number table view
+  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
+  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
+  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
+  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
+  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
+
+
 
 //------- Pad inspector
+  selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mMasterPadInspectorView vStack {
-    hStack { space StaticLabel (title: "master pad inspector", bold: no, small: yes) space }
-    space
+    hStack { space StaticLabel (title: "Master Pad Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      add (
+        left: StaticLabel (title: "Center", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
+        }
+      )
+      add (
+        left: space,
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Width", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Height", bold: no, small: yes),
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
+        }
+      )
+      add (
+        left: StaticLabel (title: "Shape", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum PadShape.popupTitles) {
+          $selectedIndex #mPackagePadSelectionController.padShape
+        }
+      )
+      add (
+        left: StaticLabel (title: "Style", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum PadStyle.popupTitles) {
+          $selectedIndex #mPackagePadSelectionController.padStyle
+        }
+      )
+      add (
+        left: StaticLabel (title: "Hole Width", bold: no, small: yes) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
+          $hidden !#mPackagePadSelectionController.padIsTraversing
+        }
+      )
+      add (
+        left: StaticLabel (title: "Hole Height", bold: no, small: yes) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        right: CanariDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
+          $hidden !#mPackagePadSelectionController.padIsTraversing
+        }
+      )
+      add (
+        left: StaticLabel (title: "Annular Ring", bold: no, small: yes) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        right: CanariObservedDimensionAndPopUp {
+          $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
+          $hidden !#mPackagePadSelectionController.padIsTraversing
+        }
+      )
+      separator ()
+      add (
+        left: StaticLabel (title: "Zone", bold: no, small: yes),
+        right: TextObserverField (small: yes) { $observedValue #mPackagePadSelectionController.zoneName }
+      )
+      add (
+        left: StaticLabel (title: "Pad Number", bold: no, small: yes),
+        right: IntObserverField (small: yes) { $observedValue #mPackagePadSelectionController.padNumber }
+      )
+      separator ()
+      add (
+        left: StaticLabel (title: "Slave Pads", bold: no, small: yes),
+        right: IntObserverField (small: yes) { $observedValue #mPackagePadSelectionController.slavePadCount }
+      )
+    }
   }
 
-  selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mPadInspectorView ;
+
 //--- Pad shape
-  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex #mPackagePadSelectionController.padShape ;
+//  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex #mPackagePadSelectionController.padShape ;
 //--- Pad style
-  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex #mPackagePadSelectionController.padStyle ;
-  outlet NSView mPadStyleView $hidden !#mPackagePadSelectionController.padIsTraversing ;
+//  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex #mPackagePadSelectionController.padStyle ;
+//  outlet NSView mPadStyleView $hidden !#mPackagePadSelectionController.padIsTraversing ;
 //--- xCenter
-  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag #mPackagePadSelectionController.xCenterUnit ;
-  outlet CanariDimensionTextField mPadXCenterTextField
-     $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
-  ;
-//--- yCenter
-  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag #mPackagePadSelectionController.yCenterUnit ;
-  outlet CanariDimensionTextField mPadYCenterTextField
-     $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
-  ;
+//  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag #mPackagePadSelectionController.xCenterUnit ;
+//  outlet CanariDimensionTextField mPadXCenterTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.xCenter, #mPackagePadSelectionController.xCenterUnit
+//  ;
+////--- yCenter
+//  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag #mPackagePadSelectionController.yCenterUnit ;
+//  outlet CanariDimensionTextField mPadYCenterTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
+//  ;
 //--- Width
-  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag #mPackagePadSelectionController.widthUnit ;
-  outlet CanariDimensionTextField mPadWidthTextField
-     $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
-  ;
-//--- Height
-  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag #mPackagePadSelectionController.heightUnit ;
-  outlet CanariDimensionTextField mPadHeightTextField
-     $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
-  ;
+//  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag #mPackagePadSelectionController.widthUnit ;
+//  outlet CanariDimensionTextField mPadWidthTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
+//  ;
+////--- Height
+//  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag #mPackagePadSelectionController.heightUnit ;
+//  outlet CanariDimensionTextField mPadHeightTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
+//  ;
 //--- Hole Width
-  outlet EBPopUpButton mPadHoleWidthUnitPopUp $selectedTag #mPackagePadSelectionController.holeWidthUnit ;
-  outlet CanariDimensionTextField mPadHoleWidthTextField
-     $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
-  ;
+//  outlet EBPopUpButton mPadHoleWidthUnitPopUp $selectedTag #mPackagePadSelectionController.holeWidthUnit ;
+//  outlet CanariDimensionTextField mPadHoleWidthTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
+//  ;
 //--- Hole Height
-  outlet EBPopUpButton mPadHoleHeightUnitPopUp $selectedTag #mPackagePadSelectionController.holeHeightUnit ;
-  outlet CanariDimensionTextField mPadHoleHeightTextField
-     $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
-  ;
+//  outlet EBPopUpButton mPadHoleHeightUnitPopUp $selectedTag #mPackagePadSelectionController.holeHeightUnit ;
+//  outlet CanariDimensionTextField mPadHoleHeightTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
+//  ;
 //--- Annular Ring
-  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag #mPackagePadSelectionController.annularRingUnit ;
-  outlet CanariDimensionObserverTextField mPadAnnularRingTextField
-     $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
-  ;
+//  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag #mPackagePadSelectionController.annularRingUnit ;
+//  outlet CanariDimensionObserverTextField mPadAnnularRingTextField
+//     $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
+//  ;
 //--- Pad zone
-  outlet EBTextObserverField mPadZoneNameTextField $valueObserver #mPackagePadSelectionController.zoneName ;
+//  outlet EBTextObserverField mPadZoneNameTextField $valueObserver #mPackagePadSelectionController.zoneName ;
 //--- Pad Number
-  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber (autoFormatter : yes) ;
+//  outlet EBIntObserverField mPadNumberTextField $valueObserver #mPackagePadSelectionController.padNumber (autoFormatter : yes) ;
   outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton
     $currentNumber #mPackagePadSelectionController.padNumber
     $currentZoneName #mPackagePadSelectionController.zoneName
     $enabled (#mPackagePadSelectionController.noZone & root.freePadNumbering) | #mPackagePadSelectionController.zoneAllowsManualRenumbering
   ;
 //--- Slave Pad count
-  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount (autoFormatter : yes);
+//  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver #mPackagePadSelectionController.slavePadCount (autoFormatter : yes);
+
+
 
 //------- Slave Pad inspector
 
@@ -566,157 +823,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     $masterPadObjectIndexArray root.masterPadObjectIndexArray
   ;
 
-//------- Guide inspector
-
-  stackView mGuideInspectorView vStack {
-    hStack { space StaticLabel (title: "guide inspector", bold: no, small: yes) space }
-    space
-  }
-  selectionController PackageGuide #mPackageGuideSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mGuideInspectorView ;
-
-//--- x1
-  outlet EBPopUpButton mGuideX1UnitPopUp $selectedTag #mPackageGuideSelectionController.x1Unit ;
-  outlet CanariDimensionTextField mGuideX1TextField
-     $dimensionAndUnit #mPackageGuideSelectionController.x1, #mPackageGuideSelectionController.x1Unit
-  ;
-//--- y1
-  outlet EBPopUpButton mGuideY1UnitPopUp $selectedTag #mPackageGuideSelectionController.y1Unit ;
-  outlet CanariDimensionTextField mGuideY1TextField
-     $dimensionAndUnit #mPackageGuideSelectionController.y1, #mPackageGuideSelectionController.y1Unit
-  ;
-//--- x2
-  outlet EBPopUpButton mGuideX2UnitPopUp $selectedTag #mPackageGuideSelectionController.x2Unit ;
-  outlet CanariDimensionTextField mGuideX2TextField
-     $dimensionAndUnit #mPackageGuideSelectionController.x2, #mPackageGuideSelectionController.x2Unit
-  ;
-//--- y2
-  outlet EBPopUpButton mGuideY2UnitPopUp $selectedTag #mPackageGuideSelectionController.y2Unit ;
-  outlet CanariDimensionTextField mGuideY2TextField
-     $dimensionAndUnit #mPackageGuideSelectionController.y2, #mPackageGuideSelectionController.y2Unit
-  ;
-
-//------- Dimension inspector
-
-  stackView mDimensionInspectorView vStack {
-    hStack { space StaticLabel (title: "dimension inspector", bold: no, small: yes) space }
-    space
-  }
-
-  selectionController PackageDimension #mPackageDimensionSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mDimensionInspectorView ;
-
-  action setDimensionTextOriginAtMidXAction ;
-  outlet EBButton mSetDimensionTextOriginAtMidX $run setDimensionTextOriginAtMidXAction ;
-
-  action setDimensionTextOriginAtMidYAction ;
-  outlet EBButton mSetDimensionTextOriginAtMidY $run setDimensionTextOriginAtMidYAction ;
-
-//--- x1
-  outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag #mPackageDimensionSelectionController.x1Unit ;
-  outlet CanariDimensionTextField mDimensionX1TextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.x1, #mPackageDimensionSelectionController.x1Unit
-  ;
-//--- y1
-  outlet EBPopUpButton mDimensionY1UnitPopUp $selectedTag #mPackageDimensionSelectionController.y1Unit ;
-  outlet CanariDimensionTextField mDimensionY1TextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
-  ;
-//--- x2
-  outlet EBPopUpButton mDimensionX2UnitPopUp $selectedTag #mPackageDimensionSelectionController.x2Unit ;
-  outlet CanariDimensionTextField mDimensionX2TextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.x2, #mPackageDimensionSelectionController.x2Unit
-  ;
-//--- y2
-  outlet EBPopUpButton mDimensionY2UnitPopUp $selectedTag #mPackageDimensionSelectionController.y2Unit ;
-  outlet CanariDimensionTextField mDimensionY2TextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
-  ;
-//--- Distance
-  outlet EBPopUpButton mDimensionDistanceUnitPopUp $selectedTag #mPackageDimensionSelectionController.distanceUnit ;
-  outlet CanariDimensionObserverTextField mDimensionDistanceTextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
-  ;
-//--- xLabel
-  outlet EBPopUpButton mDimensionXLabelUnitPopUp $selectedTag #mPackageDimensionSelectionController.xDimensionUnit ;
-  outlet CanariDimensionTextField mDimensionXLabelTextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.xDimension, #mPackageDimensionSelectionController.xDimensionUnit
-  ;
-//--- yLabel
-  outlet EBPopUpButton mDimensionYLabelUnitPopUp $selectedTag #mPackageDimensionSelectionController.yDimensionUnit ;
-  outlet CanariDimensionTextField mDimensionYLabelTextField
-     $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
-  ;
-//------- Zone inspector
-
-  stackView mZoneInspectorView vStack {
-    hStack { space StaticLabel (title: "zone inspector", bold: no, small: yes) space }
-    space
-  }
-
-  selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
-//  outlet CanariViewWithKeyView mZoneInspectorView ;
-//--- x
-  outlet EBPopUpButton mZoneXUnitPopUp $selectedTag #mPackageZoneSelectionController.xUnit ;
-  outlet CanariDimensionTextField mZoneXTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.x, #mPackageZoneSelectionController.xUnit
-  ;
-//--- y
-  outlet EBPopUpButton mZoneYUnitPopUp $selectedTag #mPackageZoneSelectionController.yUnit ;
-  outlet CanariDimensionTextField mZoneYTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.y, #mPackageZoneSelectionController.yUnit
-  ;
-//--- Width
-  outlet EBPopUpButton mZoneWidthUnitPopUp $selectedTag #mPackageZoneSelectionController.widthUnit ;
-  outlet CanariDimensionTextField mZoneWidthTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.width, #mPackageZoneSelectionController.widthUnit
-  ;
-//--- Height
-  outlet EBPopUpButton mZoneHeightUnitPopUp $selectedTag #mPackageZoneSelectionController.heightUnit ;
-  outlet CanariDimensionTextField mZoneHeightTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.height, #mPackageZoneSelectionController.heightUnit
-  ;
-//--- Name
-  outlet EBTextField mZoneNameTextField $value #mPackageZoneSelectionController.zoneName (sendContinously : yes) ;
-
-//--- Display Zone Name
-  outlet EBSwitch mDisplayZoneNameSwitch $value #mPackageZoneSelectionController.displayZoneName ;
-
-//--- Zone numbering
-  outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex #mPackageZoneSelectionController.zoneNumbering ;
-  
-//--- xLabel
-  outlet EBPopUpButton mZoneXLabelUnitPopUp $selectedTag #mPackageZoneSelectionController.xNameUnit ;
-  outlet CanariDimensionTextField mZoneXLabelTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.xName, #mPackageZoneSelectionController.xNameUnit
-  ;
-//--- yLabel
-  outlet EBPopUpButton mZoneYLabelUnitPopUp $selectedTag #mPackageZoneSelectionController.yNameUnit ;
-  outlet CanariDimensionTextField mZoneYLabelTextField
-     $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
-  ;
-
-//--- Forbidden pad number table view
-  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
-    $array #mPackageZoneSelectionController.forbiddenPadArray
-  ;
-
-  action addZoneForbiddenPadNumberAction ;
-  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
-
-  action removeZoneForbiddenPadNumberAction ;
-  outlet EBButton mRemoveZoneForbiddenPadNumberButton
-    $run removeZoneForbiddenPadNumberAction
-    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
-  ;
-
-//--- Dialog for adding pad number table view
-  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
-  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
-  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
-  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
-  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
-
 //----------------------------------------------------------------------------------------------------------------------
 //   Zoom and flip inspector
 //----------------------------------------------------------------------------------------------------------------------
@@ -745,11 +851,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       add (
         left: StaticLabel (title: "Flip", bold: no, small: yes),
-        right: Switch (title: "Horizontal") { $value root.horizontalFlip }
+        right: Switch (title: "Horizontal", small: yes) { $value root.horizontalFlip }
       )
       add (
         left: FlexibleSpace,
-        right: Switch (title: "Vertical") { $value root.verticalFlip }
+        right: Switch (title: "Vertical", small: yes) { $value root.verticalFlip }
       )
       add (
         left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
@@ -761,7 +867,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       add (
         left: StaticLabel (title: "Knob Size", bold: no, small: yes),
-        right: Slider (min:7, max:41, ticks: 18) {
+        right: LinearSlider (min:7, max:41, ticks: 18) {
           $intValue root.knobSizeMultpliedByTen (sendContinously : yes)
         }
       )
@@ -803,7 +909,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           }
         )
         add (
-          left: Switch (title: "Pad Numbers") { $value prefs.showPadNumber },
+          left: Switch (title: "Pad Numbers", small: yes) { $value prefs.showPadNumber },
           right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
         )
         add (
@@ -811,11 +917,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           right: FontButton {$fontValue prefs.padNumberFont}
         )
         add (
-          left: Switch (title: "Top Side Pads") { $value prefs.displayPackageFrontSidePads },
+          left: Switch (title: "Top Side Pads", small: yes) { $value prefs.displayPackageFrontSidePads },
           right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
         )
         add (
-          left: Switch (title: "Back Side Pads") { $value prefs.displayPackageFrontSidePads },
+          left: Switch (title: "Back Side Pads", small: yes) { $value prefs.displayPackageFrontSidePads },
           right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
         )
       }
