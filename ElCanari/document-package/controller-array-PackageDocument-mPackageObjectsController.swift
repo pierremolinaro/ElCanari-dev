@@ -57,7 +57,7 @@ final class Controller_PackageDocument_mPackageObjectsController : ReadOnlyAbstr
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_PackageObject { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

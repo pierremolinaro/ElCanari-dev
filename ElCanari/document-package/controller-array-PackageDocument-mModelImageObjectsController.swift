@@ -57,7 +57,7 @@ final class Controller_PackageDocument_mModelImageObjectsController : ReadOnlyAb
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_PackageModelImageDoublePoint { return self.mInternalSelectedArrayProperty }
 
   //····················································································································

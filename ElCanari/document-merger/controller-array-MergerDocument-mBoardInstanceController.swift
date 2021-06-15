@@ -57,7 +57,7 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
 
   //····················································································································
 
-  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty }
+  var selectedArrayDidChange_property : EBAbstractProperty { return self.mInternalSelectedArrayProperty } // EBGraphicViewControllerProtocol
   var selectedArray_property : ReadOnlyArrayOf_MergerBoardInstance { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
