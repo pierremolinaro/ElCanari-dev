@@ -62,14 +62,24 @@ fileprivate final class DebugAutoLayout : EBObject {
   @objc func toggleDebugAutoLayout (_ inSender : Any?) {
     self.debugAutoLayout.toggle ()
     self.menuItem.state = self.debugAutoLayout ? .on : .off
+    for window in NSApp.windows {
+      if let mainView = window.contentView {
+        self.propagateNeedsDisplay (mainView)
+      }
+    }
   }
 
   //····················································································································
 
+  fileprivate final func propagateNeedsDisplay (_ inView : NSView) {
+    inView.needsDisplay = true
+    for view in inView.subviews {
+      self.propagateNeedsDisplay (view)
+    }
+  }
 
   //····················································································································
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------
