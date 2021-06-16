@@ -20,16 +20,23 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+  convenience init () {
+    let textStorage = NSTextStorage ()
+    let layoutManager = NSLayoutManager ()
+    textStorage.addLayoutManager (layoutManager)
+    let textContainer = NSTextContainer (size: NSSize (width: 300, height: 300))
+    layoutManager.addTextContainer (textContainer)
+
+    self.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
+//    Swift.print ("init () \(self)")
   }
 
   //····················································································································
 
   override init (frame : NSRect, textContainer : NSTextContainer?) { // Required, otherwise run time error
     super.init (frame: frame, textContainer: textContainer)
+    noteObjectAllocation (self)
+ //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
   }
 
   //····················································································································
@@ -47,6 +54,7 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
+//    Swift.print ("intrinsicContentSize \(self)")
     let textContainer = self.textContainer!
     let layoutManager = self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)
@@ -56,10 +64,10 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   override func didChangeText () {
+//    Swift.print ("didChangeText \(self)")
     super.didChangeText ()
     self.invalidateIntrinsicContentSize ()
     self.mTextDidChangeCallBack? ()
- //   _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
   }
 
   //····················································································································

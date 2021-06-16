@@ -13,7 +13,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
   //····················································································································
 
   init (editable inIsEditable : Bool) {
-    super.init (frame: NSRect ())
+    super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -25,11 +25,26 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
+//    self.mTextView.backgroundColor = .yellow
+//    self.mTextView.drawsBackground = true
+//    Swift.print ("min size \(self.mTextView.minSize)")
+//    Swift.print ("max size \(self.mTextView.maxSize)")
+    let contentSize = self.contentSize
+    self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
+    self.mTextView.maxSize = NSSize (width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+    self.mTextView.isVerticallyResizable = true
+    self.mTextView.isHorizontallyResizable = true
+    self.mTextView.textContainer?.containerSize = NSSize (width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
+    self.mTextView.textContainer?.widthTracksTextView = true
 
     self.drawsBackground = false
     self.documentView = self.mTextView
     self.hasHorizontalScroller = true
     self.hasVerticalScroller = true
+
+//    let c1 = NSLayoutConstraint (item: self.mTextView, attribute: .width, relatedBy: .equal, toItem: self.contentView, attribute: .width, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: self.mTextView, attribute: .height, relatedBy: .equal, toItem: self.contentView, attribute: .height, multiplier: 1.0, constant: 0.0)
+//    self.addConstraints ([c1, c2])
   }
 
   //····················································································································
@@ -88,6 +103,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
       self.mTextView.selectedRanges = currentSelectedRangeValues
       self.mTextView.isEditable = true
       self.mTextView.invalidateIntrinsicContentSize ()
+//      self.mTextView.sizeToFit ()
     }
   }
 
