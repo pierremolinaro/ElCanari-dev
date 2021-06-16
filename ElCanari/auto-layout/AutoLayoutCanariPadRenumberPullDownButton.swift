@@ -83,7 +83,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserCla
   private func update (fromPadNumber model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty, .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
     case .single (let v) :
       self.mCurrentPadNumber = v
       self.buildMenu ()
@@ -93,7 +93,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserCla
   //····················································································································
 
   private func buildMenu () {
-    self.enableFromValueBinding (self.mDocument != nil)
+    self.enable (fromValueBinding: self.mDocument != nil)
     self.removeAllItems ()
     self.autoenablesItems = false
     if let document = self.mDocument {

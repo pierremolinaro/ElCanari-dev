@@ -95,15 +95,15 @@ final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, N
   private func update (from model : EBReadWriteProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
       self.placeholderString = nil
       self.doubleValue = Double (v) / 1000.0
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

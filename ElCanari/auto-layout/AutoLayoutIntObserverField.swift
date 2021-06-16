@@ -171,15 +171,15 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
   private func update (from model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
       self.placeholderString = nil
       self.intValue = Int32 (v)
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

@@ -12,6 +12,7 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.isIndeterminate = true
     self.style = .spinning
     self.usesThreadedAnimation = true

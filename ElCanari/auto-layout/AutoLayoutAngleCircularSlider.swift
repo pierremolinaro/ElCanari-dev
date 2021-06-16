@@ -84,11 +84,11 @@ final class AutoLayoutAngleCircularSlider : NSSlider, EBUserClassNameProtocol {
   fileprivate func updateAngleValue (_ object : EBReadOnlyProperty_Int) {
     switch object.selection {
     case .empty, .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.doubleValue = 0.0
     case .single (let propertyValue) :
       self.doubleValue = Double ((90_000 + 360_000 - propertyValue) % 360_000) / 1000.0
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
     }
   }
 
