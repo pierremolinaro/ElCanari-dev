@@ -15,6 +15,11 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  private var mWidth : CGFloat? = nil
+  private var mHeight : CGFloat? = nil
+
+  //····················································································································
+
   init (title inTitle : String, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
@@ -42,6 +47,33 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
   final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
+  }
+
+  //····················································································································
+
+  final func set (width inWidth : Int) -> Self {
+    self.mWidth = CGFloat (inWidth)
+    return self
+  }
+
+  //····················································································································
+
+  final func set (height inHeight : Int) -> Self {
+    self.mHeight = CGFloat (inHeight)
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
+    if let h = self.mHeight {
+      s.height = h
+    }
+    return s
   }
 
   //····················································································································

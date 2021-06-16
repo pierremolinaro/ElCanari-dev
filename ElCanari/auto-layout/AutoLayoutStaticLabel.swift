@@ -19,7 +19,7 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
-    self.enable (fromValueBinding: true)
+ //   self.enable (fromValueBinding: true)
     self.isEditable = false
     self.alignment = .right
     self.controlSize = inSmall ? .small : .regular

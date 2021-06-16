@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  AutoLayout-extension-NSView.swift
+//  AutoLayout-extension-NSControl.swift
 //
 //  Created by Pierre Molinaro on 07/02/2021.
 //
@@ -9,40 +9,55 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   Hidden binding
+//   Enabled binding
 //----------------------------------------------------------------------------------------------------------------------
 
-private var gHiddenBindingDictionary = [NSView : EBReadOnlyPropertyController] ()
+private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
+private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
+private var gEnabledBindingControllerDictionary = [NSControl : EBReadOnlyPropertyController] ()
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension NSView {
+extension NSControl {
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.autoLayoutCleanUp ()
-    super.ebCleanUp ()
+  override func autoLayoutCleanUp () {
+    gEnabledFromValueBindingDictionary [self] = nil
+    gEnabledBindingValueDictionary [self] = nil
+    if let controller = gEnabledBindingControllerDictionary [self] {
+      controller.unregister ()
+      gEnabledBindingControllerDictionary [self] = nil
+    }
+    super.autoLayoutCleanUp ()
   }
 
   //····················································································································
-
-  @objc func autoLayoutCleanUp () {
-    gHiddenBindingDictionary [self] = nil
-  }
-
-  //····················································································································
-  //  $hidden binding
+  //  $enabled binding
   //····················································································································
 
-  final func bind_hidden (observedObjects inObjects : [EBObservableObjectProtocol],
+  final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
                            computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
     let controller = EBReadOnlyPropertyController (
       observedObjects: inObjects,
       callBack: { [weak self] in self?.update (from: inFunction ()) }
     )
-    gHiddenBindingDictionary [self] = controller
+    gEnabledBindingControllerDictionary [self] = controller
     return self
+  }
+
+  //····················································································································
+
+  func enable (fromValueBinding inValue : Bool) {
+    gEnabledFromValueBindingDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
+  }
+
+  //····················································································································
+
+  fileprivate func enable (fromEnableBinding inValue : Bool) {
+    gEnabledBindingValueDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
 
   //····················································································································
@@ -50,9 +65,9 @@ extension NSView {
   fileprivate func update (from inObject : EBSelection <Bool>) {
     switch inObject {
     case .empty, .multiple :
-      self.isHidden = true
+      self.enable (fromEnableBinding: false)
     case .single (let v) :
-      self.isHidden = v
+      self.enable (fromEnableBinding: v)
     }
   }
 

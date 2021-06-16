@@ -613,8 +613,9 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     }
     hStack {
       vStack {
-        Button (title: "+", small: yes) { $run addZoneForbiddenPadNumberAction }
+        Button (title: "+", small: yes) { set (width: 32) $run addZoneForbiddenPadNumberAction }
         Button (title: "-", small: yes) {
+          set (width: 32)
           $run removeZoneForbiddenPadNumberAction
           $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
         }
@@ -626,27 +627,6 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 
   action addZoneForbiddenPadNumberAction ;
   action removeZoneForbiddenPadNumberAction ;
-
-//--- Forbidden pad number table view
-//  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
-//    $array #mPackageZoneSelectionController.forbiddenPadArray
-//  ;
-//
-//  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
-//
-//  outlet EBButton mRemoveZoneForbiddenPadNumberButton
-//    $run removeZoneForbiddenPadNumberAction
-//    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
-//  ;
-
-//--- Dialog for adding pad number table view
-//  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
-//  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
-//  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
-//  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
-//  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
-
-
 
 //------- Pad inspector
   selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;

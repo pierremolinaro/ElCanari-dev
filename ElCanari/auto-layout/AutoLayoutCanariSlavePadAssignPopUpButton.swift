@@ -24,13 +24,22 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
     self.bezelStyle = .roundRect
     self.controlSize = .small
     self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
- //   self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
   }
 
   //····················································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func autoLayoutCleanUp () {
+    self.mSlavePadIndexController?.unregister ()
+    self.mSlavePadIndexController = nil
+    self.mMasterPadIndexArrayIndexController?.unregister ()
+    self.mMasterPadIndexArrayIndexController = nil
+    super.autoLayoutCleanUp ()
   }
 
   //····················································································································

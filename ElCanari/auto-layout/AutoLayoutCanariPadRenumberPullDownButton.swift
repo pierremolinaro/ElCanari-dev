@@ -35,6 +35,16 @@ final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserCla
 
   //····················································································································
 
+  override func autoLayoutCleanUp () {
+    self.mCurrentNumberController?.unregister ()
+    self.mCurrentNumberController = nil
+    self.mCurrentZoneController?.unregister ()
+    self.mCurrentZoneController = nil
+    super.autoLayoutCleanUp ()
+  }
+
+  //····················································································································
+
   deinit {
     noteObjectDeallocation (self)
   }

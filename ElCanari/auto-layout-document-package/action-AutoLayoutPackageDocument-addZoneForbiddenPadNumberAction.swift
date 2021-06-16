@@ -52,6 +52,9 @@ extension AutoLayoutPackageDocument {
     //-------------------------- Build Panel
       let panel = NSPanel ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", small: false, sheet: panel)
+      let intField = AutoLayoutIntField (width: 48)
+        .bind_value (newFordiddenPadNumber_property, sendContinously: true)
+        .set (min: 1)
    //-------------------------- Add Observer for new forbidden pad number
       let observer = EBReadOnlyPropertyController (
         observedObjects: [newFordiddenPadNumber_property],
@@ -82,9 +85,6 @@ extension AutoLayoutPackageDocument {
           let hStack = AutoLayoutHorizontalStackView ()
           let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, small: false)
           hStack.appendView (label)
-          let intField = AutoLayoutIntField (width: 48)
-            .bind_value (newFordiddenPadNumber_property, sendContinously: true)
-            .set (min: 1)
           panel.initialFirstResponder = intField
           hStack.appendView (intField)
           contentsVStack.appendView (hStack)
@@ -112,6 +112,7 @@ extension AutoLayoutPackageDocument {
    //-------------------------- Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         observer.unregister ()
+        intField.autoLayoutCleanUp ()
         if inResponse == .stop {
           let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
           let fpn = ForbiddenPadNumber (self.ebUndoManager)

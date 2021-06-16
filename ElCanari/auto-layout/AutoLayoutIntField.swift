@@ -25,6 +25,7 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
     self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.controlSize = .small
     self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     self.alignment = .center
@@ -61,10 +62,12 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  override func ebCleanUp () {
-    self.mController?.unregister ()
-    self.mController = nil
-    super.ebCleanUp ()
+  override func autoLayoutCleanUp () {
+    self.mValueController?.unregister ()
+    self.mValueController = nil
+    self.delegate = nil
+    self.formatter = nil
+    super.autoLayoutCleanUp ()
   }
 
   //····················································································································
@@ -141,7 +144,7 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
   @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = Int (outletValueNumber.doubleValue.rounded ())
-      _ = self.mController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
+      _ = self.mValueController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
     }
   }
 
@@ -149,14 +152,14 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //  value binding
   //····················································································································
 
-  private var mController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
 
   //····················································································································
 
   final func bind_value (_ inObject : EBReadWriteProperty_Int, sendContinously : Bool) -> Self {
     self.cell?.sendsActionOnEndEditing = false
     self.isContinuous = sendContinously
-    self.mController = EBGenericReadWritePropertyController <Int> (
+    self.mValueController = EBGenericReadWritePropertyController <Int> (
       observedObject: inObject,
       callBack:  { [weak self] in self?.update (from: inObject) }
     )
@@ -168,15 +171,15 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
   private func update (from model : EBReadOnlyProperty_Int) {
     switch model.selection {
     case .empty :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
-      self.enableFromValueBinding (true)
+      self.enable (fromValueBinding: true)
       self.placeholderString = nil
       self.intValue = Int32 (v)
     case .multiple :
-      self.enableFromValueBinding (false)
+      self.enable (fromValueBinding: false)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

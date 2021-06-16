@@ -908,12 +908,14 @@ import Cocoa
       let view_2_0 = AutoLayoutVerticalStackView ()
       do{
         let view_2_0_0 = AutoLayoutButton (title: "+", small: true)
+          .set (width: 32)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutPackageDocument.addZoneForbiddenPadNumberAction (_:))
           )
         view_2_0.appendView (view_2_0_0)
         let view_2_0_1 = AutoLayoutButton (title: "-", small: true)
+          .set (width: 32)
           .bind_enabled (
             observedObjects: [self.mPackageZoneSelectionController.emptyForbiddenPadArray_property],
             computeFunction: { return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection }

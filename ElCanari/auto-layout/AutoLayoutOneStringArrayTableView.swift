@@ -41,13 +41,13 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
     self.mTableView.dataSource = self // NSTableViewDataSource protocol
     self.mTableView.delegate = self // NSTableViewDelegate protocol
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
-  //  self.mTableView.
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
-//    self.mTableView.frame = self.bounds
+ //   self.mTableView.headerView = nil // For hiding table view header
     let column = NSTableColumn (identifier: COLUMN_IDENTIFIER)
     column.title = "Forbidden Pad Numbers"
     column.headerCell.alignment = .center
+//    column.headerCell.isBordered = true
     self.mTableView.addTableColumn (column)
 //--- Configure Scroll view
     self.documentView = self.mTableView

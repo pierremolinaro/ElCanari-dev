@@ -115,6 +115,8 @@ extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled {
 
 extern autolayout class Button (title: String, small: Bool) $enabled $run {
   func makeWidthExpandable ()
+  func set (width: Int)
+  func set (height: Int)
 }
 
 extern autolayout class TextField (small: Bool) $enabled {
