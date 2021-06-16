@@ -61,10 +61,17 @@ fileprivate final class LogFileOperation : EBObject {
   //--- Build window contents
     let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
     vStack.appendView (self.mTextView)
-    let button = AutoLayoutButton (title: "Clear", small: true).setAction { self.mTextView.string = "" }
+    let button = AutoLayoutButton (title: "Clear", small: true)
+      .bind_run (target: self, selector: #selector (Self.clearTextAction(_:)))
     vStack.appendView (button)
   //--- Assign main view to window
     self.mWindow.contentView = vStack
+  }
+
+  //····················································································································
+
+  @objc func clearTextAction (_ inSender : Any?) {
+    self.mTextView.string = ""
   }
 
   //····················································································································

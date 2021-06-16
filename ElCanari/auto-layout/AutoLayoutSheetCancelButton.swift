@@ -1,28 +1,32 @@
 //
-//  EBButton.swift
-//  essai-custom-stack-view
+//  AutoLayoutSheetCancelButton.swift
 //
-//  Created by Pierre Molinaro on 19/10/2019.
-//  Copyright © 2019 Pierre Molinaro. All rights reserved.
+//  Created by Pierre Molinaro on 16/06/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
+// Key equivalent should be "escape" ("\u{1b}" in Swift)
+//----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, small inSmall : Bool) {
+  init (title inTitle : String, small inSmall : Bool, sheet inPanel : NSPanel) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
+    self.setButtonType (.momentaryPushIn)
+    self.bezelStyle = .rounded
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
-    self.bezelStyle = .roundRect
+    self.target = self
+    self.action = #selector (Self.dismissSheetAction (_:))
+    self.keyEquivalent = "\u{1b}"
   }
 
   //····················································································································
@@ -39,10 +43,13 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func makeWidthExpandable () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    return self
+  @objc func dismissSheetAction (_ sender : Any?) {
+    if let mySheet = self.window, let parent = mySheet.sheetParent {
+      mySheet.endEditing (for: nil)
+      parent.endSheet (mySheet, returnCode: .cancel)
+    }
   }
+
 
   //····················································································································
 

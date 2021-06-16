@@ -208,4 +208,8 @@ extern autolayout class CanariSlavePadAssignPopUpButton {
   $masterPadObjectIndexArray transient IntArray
 }
 
+extern autolayout class OneStringArrayTableView {
+  $array transient StringArray
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

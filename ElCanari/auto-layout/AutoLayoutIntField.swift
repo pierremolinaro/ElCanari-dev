@@ -139,7 +139,6 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //····················································································································
 
   @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
-    __NSBeep ()
     if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
       let value = Int (outletValueNumber.doubleValue.rounded ())
       _ = self.mController?.updateModel (withCandidateValue: value, windowForSheet: self.window)

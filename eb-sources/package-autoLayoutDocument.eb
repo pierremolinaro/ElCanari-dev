@@ -589,6 +589,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
         }
       )
+      separator ()
       add (
         left: StaticLabel (title: "Name", bold: no, small: yes),
         right: TextField (small: yes) {
@@ -601,35 +602,49 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           space
         }
       )
+      separator ()
       add (
         left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
         right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {
           $selectedIndex #mPackageZoneSelectionController.zoneNumbering
         }
       )
+      separator ()
+    }
+    hStack {
+      vStack {
+        Button (title: "+", small: yes) { $run addZoneForbiddenPadNumberAction }
+        Button (title: "-", small: yes) {
+          $run removeZoneForbiddenPadNumberAction
+          $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
+        }
+        space
+      }
+      OneStringArrayTableView [outlet mZoneForbiddenPadNumberTableView] { $array #mPackageZoneSelectionController.forbiddenPadArray }
     }
   }
 
-//--- Forbidden pad number table view
-  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
-    $array #mPackageZoneSelectionController.forbiddenPadArray
-  ;
-
   action addZoneForbiddenPadNumberAction ;
-  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
-
   action removeZoneForbiddenPadNumberAction ;
-  outlet EBButton mRemoveZoneForbiddenPadNumberButton
-    $run removeZoneForbiddenPadNumberAction
-    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
-  ;
+
+//--- Forbidden pad number table view
+//  outlet StringArrayTableView mZoneForbiddenPadNumberTableView
+//    $array #mPackageZoneSelectionController.forbiddenPadArray
+//  ;
+//
+//  outlet EBButton mAddZoneForbiddenPadNumberButton $run addZoneForbiddenPadNumberAction ;
+//
+//  outlet EBButton mRemoveZoneForbiddenPadNumberButton
+//    $run removeZoneForbiddenPadNumberAction
+//    $enabled !#mPackageZoneSelectionController.emptyForbiddenPadArray
+//  ;
 
 //--- Dialog for adding pad number table view
-  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
-  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
-  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
-  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
-  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
+//  outlet NSPanel mAddZoneForbiddenPadNumberDialog ;
+//  outlet NSTextField mAddZoneForbiddenPadNumberTitle ;
+//  outlet NSTextField mAddZoneForbiddenPadNumberErrorTextField ;
+//  outlet NSTextField mAddZoneForbiddenPadNumberValueTextField ;
+//  outlet EBButton mAddZoneForbiddenPadNumberOkButton ;
 
 
 

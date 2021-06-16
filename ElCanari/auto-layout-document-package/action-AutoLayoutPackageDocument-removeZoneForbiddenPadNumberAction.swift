@@ -14,12 +14,32 @@ extension AutoLayoutPackageDocument {
   @objc func removeZoneForbiddenPadNumberAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if self.mPackageZoneSelectionController.selectedArray.count == 1,
-       let selecedItemTitle = self.mZoneForbiddenPadNumberTableView?.selectedItemTitle {
-      let selectedPadZone = self.mPackageZoneSelectionController.selectedArray [0]
-      for f in selectedPadZone.forbiddenPadNumbers {
-        if selecedItemTitle == "\(f.padNumber)" {
-          selectedPadZone.forbiddenPadNumbers_property.remove (f)
+           let selectedItemTitle = self.mZoneForbiddenPadNumberTableView?.selectedItemTitle {
+      let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
+      for f in selectedZone.forbiddenPadNumbers {
+        if selectedItemTitle == "\(f.padNumber)" {
+          selectedZone.forbiddenPadNumbers_property.remove (f)
         }
+      }
+    //---- Adjust pad number
+      var pads = [PackagePad] ()
+      for candidatePad in self.rootObject.packagePads {
+        if candidatePad.zone === selectedZone {
+          pads.append (candidatePad)
+        }
+      }
+      pads.sort { $0.padNumber < $1.padNumber }
+      var forbiddenPadNumberSet = Set <Int> ()
+      for forbiddenPadNumber in selectedZone.forbiddenPadNumbers {
+        forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
+      }
+      var newPadNumber = 1
+      for pad in pads {
+        while forbiddenPadNumberSet.contains (newPadNumber) {
+          newPadNumber += 1
+        }
+        pad.padNumber = newPadNumber
+        newPadNumber += 1
       }
     }
 //--- END OF USER ZONE 2

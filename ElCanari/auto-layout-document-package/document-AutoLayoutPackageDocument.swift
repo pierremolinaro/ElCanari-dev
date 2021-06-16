@@ -381,25 +381,17 @@ import Cocoa
   weak final var mPackageIssueTableView : AutoLayoutCanariIssueTableView? = nil
   weak final var mProgramErrorTextField : AutoLayoutLabel? = nil
   weak final var mProgramTextView : AutoLayoutTextView? = nil
+  weak final var mZoneForbiddenPadNumberTableView : AutoLayoutOneStringArrayTableView? = nil
 
   //····················································································································
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAddZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet final var mAddZoneForbiddenPadNumberDialog : NSPanel? = nil
-  @IBOutlet final var mAddZoneForbiddenPadNumberErrorTextField : NSTextField? = nil
-  @IBOutlet final var mAddZoneForbiddenPadNumberOkButton : EBButton? = nil
-  @IBOutlet final var mAddZoneForbiddenPadNumberTitle : NSTextField? = nil
-  @IBOutlet final var mAddZoneForbiddenPadNumberValueTextField : NSTextField? = nil
-  @IBOutlet final var mRemoveZoneForbiddenPadNumberButton : EBButton? = nil
-  @IBOutlet final var mZoneForbiddenPadNumberTableView : StringArrayTableView? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mRemoveZoneForbiddenPadNumberButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -904,10 +896,43 @@ import Cocoa
       .add (left: self.computeImplicitView_113 (), right: self.computeImplicitView_114 ())
       .add (left: self.computeImplicitView_115 (), right: self.computeImplicitView_116 ())
       .add (left: self.computeImplicitView_117 (), right: self.computeImplicitView_118 ())
+      .separator ()
       .add (left: self.computeImplicitView_119 (), right: self.computeImplicitView_120 ())
       .add (single: self.computeImplicitView_121 ())
+      .separator ()
       .add (left: self.computeImplicitView_122 (), right: self.computeImplicitView_123 ())
+      .separator ()
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_2_0_0 = AutoLayoutButton (title: "+", small: true)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutPackageDocument.addZoneForbiddenPadNumberAction (_:))
+          )
+        view_2_0.appendView (view_2_0_0)
+        let view_2_0_1 = AutoLayoutButton (title: "-", small: true)
+          .bind_enabled (
+            observedObjects: [self.mPackageZoneSelectionController.emptyForbiddenPadArray_property],
+            computeFunction: { return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection }
+          )
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutPackageDocument.removeZoneForbiddenPadNumberAction (_:))
+          )
+        view_2_0.appendView (view_2_0_1)
+        let view_2_0_2 = AutoLayoutFlexibleSpace ()
+        view_2_0.appendView (view_2_0_2)
+      }
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutOneStringArrayTableView ()
+        .bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property)
+      self.mZoneForbiddenPadNumberTableView = view_2_1 // Outlet
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -3314,14 +3339,6 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberButton, "mAddZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberDialog, "mAddZoneForbiddenPadNumberDialog", NSPanel.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberErrorTextField, "mAddZoneForbiddenPadNumberErrorTextField", NSTextField.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberOkButton, "mAddZoneForbiddenPadNumberOkButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberTitle, "mAddZoneForbiddenPadNumberTitle", NSTextField.self, #file, #line)
-//    checkOutletConnection (self.mAddZoneForbiddenPadNumberValueTextField, "mAddZoneForbiddenPadNumberValueTextField", NSTextField.self, #file, #line)
-//    checkOutletConnection (self.mRemoveZoneForbiddenPadNumberButton, "mRemoveZoneForbiddenPadNumberButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mZoneForbiddenPadNumberTableView, "mZoneForbiddenPadNumberTableView", StringArrayTableView.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
 //      Swift.print ("Check outlet connections \(durationMS) ms")
@@ -3692,18 +3709,7 @@ import Cocoa
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
-    self.mZoneForbiddenPadNumberTableView?.bind_array (self.mPackageZoneSelectionController.forbiddenPadArray_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection
-        },
-        outlet: self.mRemoveZoneForbiddenPadNumberButton
-      )
-      self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.addEBObserver (controller)
-      self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -3715,10 +3721,6 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
-    self.mAddZoneForbiddenPadNumberButton?.target = self
-    self.mAddZoneForbiddenPadNumberButton?.action = #selector (AutoLayoutPackageDocument.addZoneForbiddenPadNumberAction (_:))
-    self.mRemoveZoneForbiddenPadNumberButton?.target = self
-    self.mRemoveZoneForbiddenPadNumberButton?.action = #selector (AutoLayoutPackageDocument.removeZoneForbiddenPadNumberAction (_:))
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")
@@ -3756,10 +3758,7 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mZoneForbiddenPadNumberTableView?.unbind_array ()
   //--------------------------- Unbind multiple bindings
- //   self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.removeEBObserver (self.mController_mRemoveZoneForbiddenPadNumberButton_enabled!)
- //   self.mController_mRemoveZoneForbiddenPadNumberButton_enabled = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.unbind_model ()
@@ -3796,26 +3795,8 @@ import Cocoa
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
   //--------------------------- Remove targets / actions
-    self.mAddZoneForbiddenPadNumberButton?.target = nil
-    self.mRemoveZoneForbiddenPadNumberButton?.target = nil
   //--------------------------- Clean up outlets
-    self.mAddZoneForbiddenPadNumberButton?.ebCleanUp ()
-    self.mAddZoneForbiddenPadNumberDialog?.ebCleanUp ()
-    self.mAddZoneForbiddenPadNumberErrorTextField?.ebCleanUp ()
-    self.mAddZoneForbiddenPadNumberOkButton?.ebCleanUp ()
-    self.mAddZoneForbiddenPadNumberTitle?.ebCleanUp ()
-    self.mAddZoneForbiddenPadNumberValueTextField?.ebCleanUp ()
-    self.mRemoveZoneForbiddenPadNumberButton?.ebCleanUp ()
-    self.mZoneForbiddenPadNumberTableView?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAddZoneForbiddenPadNumberButton = nil
-    self.mAddZoneForbiddenPadNumberDialog = nil
-    self.mAddZoneForbiddenPadNumberErrorTextField = nil
-    self.mAddZoneForbiddenPadNumberOkButton = nil
-    self.mAddZoneForbiddenPadNumberTitle = nil
-    self.mAddZoneForbiddenPadNumberValueTextField = nil
-    self.mRemoveZoneForbiddenPadNumberButton = nil
-    self.mZoneForbiddenPadNumberTableView = nil
   }
 
   //····················································································································

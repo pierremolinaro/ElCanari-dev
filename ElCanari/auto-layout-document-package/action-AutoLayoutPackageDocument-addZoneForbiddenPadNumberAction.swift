@@ -2,29 +2,24 @@
 
 extension AutoLayoutPackageDocument : NSTextFieldDelegate {
 
-  @objc func controlTextDidChange (_ inNotification : Notification) {
-    if let s = self.mAddZoneForbiddenPadNumberValueTextField?.currentEditor()?.string,
-       let proposedValue = Int (s),
-       proposedValue > 0 {
-      let selectedPadZone = self.mPackageZoneSelectionController.selectedArray [0]
-    //--- Current forbidden pad numbers
-      var currentForbiddenPadNumberSet = Set <Int> ()
-      for f in selectedPadZone.forbiddenPadNumbers {
-        currentForbiddenPadNumberSet.insert (f.padNumber)
-      }
-      if currentForbiddenPadNumberSet.contains (proposedValue) {
-        self.mAddZoneForbiddenPadNumberErrorTextField?.stringValue = "Duplicate Pad Number"
-        self.mAddZoneForbiddenPadNumberOkButton?.isEnabled = false
-      }else{
-        self.mAddZoneForbiddenPadNumberErrorTextField?.stringValue = ""
-        self.mAddZoneForbiddenPadNumberOkButton?.isEnabled = true
-      }
+  func proposedPadNumberDidChange (_ padNumberProperty : EBGenericStoredProperty <Int>,
+                                   _ errorMessage_property : EBGenericStoredProperty <String>,
+                                   _ okButton : AutoLayoutSheetDefaultOkButton) {
+    let proposedValue = padNumberProperty.propval
+    let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
+  //--- Current forbidden pad numbers
+    var currentForbiddenPadNumberSet = Set <Int> ()
+    for f in selectedZone.forbiddenPadNumbers {
+      currentForbiddenPadNumberSet.insert (f.padNumber)
+    }
+    if currentForbiddenPadNumberSet.contains (proposedValue) {
+      errorMessage_property.setProp ("Duplicate Pad Number")
+      okButton.isEnabled = false
     }else{
-      self.mAddZoneForbiddenPadNumberErrorTextField?.stringValue = "Invalid Pad Number"
-      self.mAddZoneForbiddenPadNumberOkButton?.isEnabled = false
+      errorMessage_property.setProp ("")
+      okButton.isEnabled = true
     }
   }
-
 }
 
 //--- END OF USER ZONE 1
@@ -39,39 +34,109 @@ import Cocoa
 extension AutoLayoutPackageDocument {
   @objc func addZoneForbiddenPadNumberAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if self.mPackageZoneSelectionController.selectedArray.count == 1,
-       let window = self.windowForSheet,
-       let panel = self.mAddZoneForbiddenPadNumberDialog {
-      let selectedPadZone = self.mPackageZoneSelectionController.selectedArray [0]
-    //--- Current forbidden pad numbers
+    if self.mPackageZoneSelectionController.selectedArray.count == 1, let window = self.windowForSheet {
+      let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]
+    //-------------------------- Current forbidden pad numbers
       var currentForbiddenPadNumberSet = Set <Int> ()
-      for f in selectedPadZone.forbiddenPadNumbers {
+      for f in selectedZone.forbiddenPadNumbers {
         currentForbiddenPadNumberSet.insert (f.padNumber)
       }
-    //--- Title
-      let title = "Add a forbidden Pad Number to '\(selectedPadZone.zoneName)' Zone"
-      self.mAddZoneForbiddenPadNumberTitle?.stringValue = title
-    //--- Propose an initial value
-      if let s = self.mAddZoneForbiddenPadNumberValueTextField?.stringValue, let initialValue = Int (s), initialValue > 0 {
-        var proposedValue = initialValue
-        while currentForbiddenPadNumberSet.contains (proposedValue) {
-          proposedValue += 1
-        }
-        self.mAddZoneForbiddenPadNumberValueTextField?.integerValue = proposedValue
-      }else{
-        self.mAddZoneForbiddenPadNumberValueTextField?.integerValue = 1
+   //-------------------------- Propose an initial value for new forbidden pad number
+      var initialValue = 1
+      while currentForbiddenPadNumberSet.contains (initialValue) {
+        initialValue += 1
       }
-      self.mAddZoneForbiddenPadNumberErrorTextField?.stringValue = ""
-      self.mAddZoneForbiddenPadNumberOkButton?.isEnabled = true
-    //--- Configure Pad Number TextField
-      self.mAddZoneForbiddenPadNumberValueTextField?.isContinuous = true
-      self.mAddZoneForbiddenPadNumberValueTextField?.delegate = self
-    //--- Dialog
+    //-------------------------- Models
+      let newFordiddenPadNumber_property = EBGenericStoredProperty <Int> (defaultValue: initialValue, undoManager: nil)
+      let errorMessage_property = EBGenericStoredProperty <String> (defaultValue: "", undoManager: nil)
+    //-------------------------- Build Panel
+      let panel = NSPanel ()
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", small: false, sheet: panel)
+   //-------------------------- Add Observer for new forbidden pad number
+      let observer = EBReadOnlyPropertyController (
+        observedObjects: [newFordiddenPadNumber_property],
+        callBack: { [weak self] in
+          self?.proposedPadNumberDidChange (newFordiddenPadNumber_property, errorMessage_property, okButton)
+        }
+      )
+    //---
+      let mainVStack = AutoLayoutVerticalStackView ().set (margins: 20)
+    //--- Title
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendFlexibleSpace ()
+        let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, small: false)
+        hStack.appendView (label)
+        hStack.appendFlexibleSpace ()
+        mainVStack.appendView (hStack)
+      }
+    //--- Horizontal Stack, app image -- contents
+      do{
+        let hStack = AutoLayoutHorizontalStackView ()
+        hStack.appendView (AutoLayoutApplicationImage ())
+        let contentsVStack = AutoLayoutVerticalStackView () ;
+        hStack.appendView (contentsVStack)
+        mainVStack.appendView (hStack)
+      //--- Forbidden Pad Number
+        do {
+          let hStack = AutoLayoutHorizontalStackView ()
+          let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, small: false)
+          hStack.appendView (label)
+          let intField = AutoLayoutIntField (width: 48)
+            .bind_value (newFordiddenPadNumber_property, sendContinously: true)
+            .set (min: 1)
+          panel.initialFirstResponder = intField
+          hStack.appendView (intField)
+          contentsVStack.appendView (hStack)
+        }
+      //--- Error message
+        do{
+          let errorMessage = AutoLayoutLabel (small: false)
+            .bind_title (errorMessage_property)
+            .setRedTextColor ()
+          contentsVStack.appendView (errorMessage)
+        }
+        contentsVStack.appendFlexibleSpace()
+      //--- Buttons
+        do {
+          let hStack = AutoLayoutHorizontalStackView ()
+          hStack.appendFlexibleSpace()
+          let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", small: false, sheet: panel)
+          hStack.appendView (cancelButton)
+          hStack.appendView (okButton)
+          contentsVStack.appendView (hStack)
+        }
+      }
+      panel.setContentSize (mainVStack.fittingSize)
+      panel.contentView = mainVStack
+   //-------------------------- Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
-        if inResponse == .stop, let newPadNumber = self.mAddZoneForbiddenPadNumberValueTextField?.integerValue {
+        observer.unregister ()
+        if inResponse == .stop {
+          let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
           let fpn = ForbiddenPadNumber (self.ebUndoManager)
-          fpn.padNumber = newPadNumber
-          selectedPadZone.forbiddenPadNumbers.append (fpn)
+          fpn.padNumber = newForbiddenPadNumber
+          selectedZone.forbiddenPadNumbers.append (fpn)
+        //---- Adjust pad number
+          var pads = [PackagePad] ()
+          for candidatePad in self.rootObject.packagePads {
+            if candidatePad.zone === selectedZone {
+              pads.append (candidatePad)
+            }
+          }
+          pads.sort { $0.padNumber < $1.padNumber }
+          var forbiddenPadNumberSet = Set <Int> ()
+          for forbiddenPadNumber in selectedZone.forbiddenPadNumbers {
+            forbiddenPadNumberSet.insert (forbiddenPadNumber.padNumber)
+          }
+          var newPadNumber = 1
+          for pad in pads {
+            while forbiddenPadNumberSet.contains (newPadNumber) {
+              newPadNumber += 1
+            }
+            pad.padNumber = newPadNumber
+            newPadNumber += 1
+          }
         }
       }
     }
