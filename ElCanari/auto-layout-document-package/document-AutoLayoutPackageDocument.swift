@@ -2370,7 +2370,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_122 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, small: true)
+    let view = AutoLayoutStaticLabel (title: "Auto Numbers", bold: false, small: true)
     return view
   }
 

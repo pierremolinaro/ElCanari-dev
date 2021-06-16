@@ -604,7 +604,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       separator ()
       add (
-        left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
+        left: StaticLabel (title: "Auto Numbers", bold: no, small: yes),
         right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {
           $selectedIndex #mPackageZoneSelectionController.zoneNumbering
         }

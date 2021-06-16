@@ -23,6 +23,7 @@ final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
     self.setButtonType (.switch)
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
   }
 
   //····················································································································
