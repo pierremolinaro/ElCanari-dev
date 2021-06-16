@@ -54,7 +54,7 @@ final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProt
 
   override var intrinsicContentSize : NSSize {
     let s = super.intrinsicContentSize
-    return NSSize (width: 60.0, height: s.height)
+    return NSSize (width: 48.0, height: s.height)
   }
 
   //····················································································································
