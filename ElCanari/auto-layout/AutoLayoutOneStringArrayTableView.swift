@@ -34,8 +34,8 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
   init () {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.mTableView.translatesAutoresizingMaskIntoConstraints = false
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//    self.mTableView.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 
   //--- Configure table view
     self.mTableView.dataSource = self // NSTableViewDataSource protocol

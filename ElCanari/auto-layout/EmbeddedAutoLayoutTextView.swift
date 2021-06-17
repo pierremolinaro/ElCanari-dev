@@ -28,6 +28,7 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
     layoutManager.addTextContainer (textContainer)
 
     self.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
+ //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 //    Swift.print ("init () \(self)")
   }
 
