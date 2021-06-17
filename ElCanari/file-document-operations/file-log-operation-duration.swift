@@ -47,7 +47,7 @@ fileprivate final class LogFileOperation : EBObject {
     defer: true
   )
 
-  private let mTextView = AutoLayoutTextView (editable: true)
+  private let mTextView = AutoLayoutTextView (editable: false)
 
   //····················································································································
   //  Init
@@ -66,9 +66,6 @@ fileprivate final class LogFileOperation : EBObject {
     vStack.appendView (button)
   //--- Assign main view to window
     self.mWindow.contentView = vStack
-
-    self.mTextView.string = "Hello "
-    self.mTextView.string += "!"
   }
 
   //····················································································································

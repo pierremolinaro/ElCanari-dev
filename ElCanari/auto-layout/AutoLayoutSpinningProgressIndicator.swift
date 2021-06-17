@@ -33,6 +33,14 @@ final class AutoLayoutSpinningProgressIndicator : NSProgressIndicator, EBUserCla
 
   //····················································································································
 
+  override func ebCleanUp () {
+    self.stopAnimation (nil)
+    self.usesThreadedAnimation = false
+    super.ebCleanUp ()
+  }
+
+  //····················································································································
+
 }
 
 

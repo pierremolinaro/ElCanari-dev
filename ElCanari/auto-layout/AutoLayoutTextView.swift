@@ -15,7 +15,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
   init (editable inIsEditable : Bool) {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
+//    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 
     self.mTextView.isEditable = inIsEditable
     self.mTextView.isSelectable = true
@@ -25,8 +25,8 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
     self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
-    self.mTextView.backgroundColor = .yellow
-    self.mTextView.drawsBackground = true
+//    self.mTextView.backgroundColor = .yellow
+//    self.mTextView.drawsBackground = true
 
 //    Swift.print ("min size \(self.mTextView.minSize)")
 //    Swift.print ("max size \(self.mTextView.maxSize)")

@@ -3349,6 +3349,7 @@ import Cocoa
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mPackageIssueTableView, self.mPackageGraphicView)
   //--- Assign main view to window
+    self.windowForSheet?.contentView?.ebCleanUp ()
     self.windowForSheet?.contentView = mainView
   }
   
