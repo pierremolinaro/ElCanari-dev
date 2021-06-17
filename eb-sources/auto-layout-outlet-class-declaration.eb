@@ -57,7 +57,7 @@ extern autolayout class Label (small: Bool) {
   func setRedTextColor ()
 }
 
-extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool) {
+extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, small : Bool) {
   func makeWidthExpandable ()
   func addPage (title: String, pageView : view)
   $selectedPage property Int
@@ -164,7 +164,7 @@ extern autolayout class DragSourceButton (tooltip: String) $enabled {
   $image transient NSImage
 }
 
-extern autolayout class IntField (width: Int) $enabled {
+extern autolayout class IntField (width: Int) $enabled $hidden {
   $value property Int (sendContinously: Bool)
   func set (min: Int)
   func set (max: Int)

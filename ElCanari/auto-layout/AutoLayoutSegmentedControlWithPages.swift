@@ -14,15 +14,17 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
 
   //····················································································································
 
-  init (documentView inDocumentView : AutoLayoutAbstractStackView, equalWidth inEqualWidth : Bool) {
+  init (documentView inDocumentView : AutoLayoutAbstractStackView,
+        equalWidth inEqualWidth : Bool,
+        small inSmall : Bool) {
     self.mDocumentView = inDocumentView
     self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.controlSize = .small
-    self.segmentStyle = .roundRect
-    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    self.controlSize = inSmall ? .small : .regular
+    self.segmentStyle = SEGMENTED_CONTROL_STYLE
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
   }

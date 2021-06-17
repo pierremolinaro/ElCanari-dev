@@ -487,7 +487,7 @@ import Cocoa
       do{
         let view_0_0_0 = AutoLayoutVerticalStackView ()
         do{
-          let view_0_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false)
+          let view_0_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, small: false)
             .addPage (title: "Model Image", pageView: self.mModelImagePage)
             .addPage (title: "Package", pageView: self.mPackagePage)
             .addPage (title: "Program", pageView: self.mProgramPage)
@@ -570,7 +570,9 @@ import Cocoa
       .set (spacing: 0)
     let view_0 = AutoLayoutTwoColumnsGridView ()
       .set (width: 250)
-      .set (margins: 20)
+      .set (leftMargin: 20)
+      .set (rightMargin: 20)
+      .set (bottomMargin: 20)
       .add (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .add (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
       .add (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
@@ -625,7 +627,9 @@ import Cocoa
       .set (spacing: 0)
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (margins: 20)
+      .set (leftMargin: 20)
+      .set (rightMargin: 20)
+      .set (bottomMargin: 20)
       .set (spacing: 12)
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
@@ -694,7 +698,7 @@ import Cocoa
         .add (left: self.computeImplicitView_33 (), right: self.computeImplicitView_34 ())
         .add (left: self.computeImplicitView_35 (), right: self.computeImplicitView_36 ())
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true)
+      let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true, small: true)
         .makeWidthExpandable ()
         .addPage (title: "", pageView: self.mSelectedObjectsInspectorView)
         .addPage (title: "", pageView: self.mGridZoomInspectorView)
@@ -1155,7 +1159,9 @@ import Cocoa
 
   lazy var mProgramPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 20)
+      .set (leftMargin: 20)
+      .set (rightMargin: 20)
+      .set (bottomMargin: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Load from Design", small: true)
@@ -1203,7 +1209,9 @@ import Cocoa
 
   lazy var mInfosPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-      .set (margins: 20)
+      .set (leftMargin: 20)
+      .set (rightMargin: 20)
+      .set (bottomMargin: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Version and Signature", small: true)
@@ -1624,9 +1632,9 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "From", bold: false, small: true)
-        .bind_enabled (
+        .bind_hidden (
           observedObjects: [self.rootObject.counterClockNumbering_property],
-          computeFunction: { return self.rootObject.counterClockNumbering_property_selection }
+          computeFunction: { return !self.rootObject.counterClockNumbering_property_selection }
         )
       view.appendView (view_0)
       let view_1 = AutoLayoutIntField (width: 45)
@@ -1634,9 +1642,9 @@ import Cocoa
         .set (max: 360)
         .set (format: "##0°")
         .bind_value (self.rootObject.counterClockNumberingStartAngle_property, sendContinously:true)
-        .bind_enabled (
+        .bind_hidden (
           observedObjects: [self.rootObject.counterClockNumbering_property],
-          computeFunction: { return self.rootObject.counterClockNumbering_property_selection }
+          computeFunction: { return !self.rootObject.counterClockNumbering_property_selection }
         )
       view.appendView (view_1)
     }
@@ -3349,7 +3357,6 @@ import Cocoa
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mPackageIssueTableView, self.mPackageGraphicView)
   //--- Assign main view to window
-    self.windowForSheet?.contentView?.ebCleanUp ()
     self.windowForSheet?.contentView = mainView
   }
   

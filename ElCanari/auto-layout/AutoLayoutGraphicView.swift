@@ -118,7 +118,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     let button = NSButton (frame: NSRect ())
     button.title = "Zoom to Fit"
     button.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    button.bezelStyle = .roundRect
+    button.bezelStyle = BUTTON_STYLE
     button.target = self
     button.action = #selector (Self.setZoomToFitButton (_:))
     return button
@@ -130,7 +130,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     let zoomPopUpButton = NSPopUpButton (frame: NSRect (), pullsDown: true)
     zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     zoomPopUpButton.autoenablesItems = false
-    zoomPopUpButton.bezelStyle = .roundRect
+    zoomPopUpButton.bezelStyle = BUTTON_STYLE
     if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
       popUpButtonCell.arrowPosition = .arrowAtBottom
     }

@@ -21,7 +21,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserCla
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.bezelStyle = .roundRect
+    self.bezelStyle = BUTTON_STYLE
     self.controlSize = .small
     self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)

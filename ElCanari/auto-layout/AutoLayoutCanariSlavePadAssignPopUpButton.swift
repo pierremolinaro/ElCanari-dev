@@ -21,7 +21,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.bezelStyle = .roundRect
+    self.bezelStyle = BUTTON_STYLE
     self.controlSize = .small
     self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
   }

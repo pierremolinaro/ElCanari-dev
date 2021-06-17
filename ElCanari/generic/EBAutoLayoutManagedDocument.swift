@@ -191,7 +191,6 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     hStackView.appendView (AutoLayoutStaticLabel (title: "Undefined User Interface", bold: true, small: false))
     hStackView.appendView (AutoLayoutFlexibleSpace ())
     vStackView.appendView (AutoLayoutFlexibleSpace ())
-    self.windowForSheet?.contentView?.ebCleanUp ()
     self.windowForSheet?.contentView = vStackView
   }
   

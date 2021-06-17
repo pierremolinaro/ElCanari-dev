@@ -27,7 +27,8 @@ final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
 
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
-    self.bezelStyle = .roundRect
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.bezelStyle = BUTTON_STYLE
   }
 
   //····················································································································

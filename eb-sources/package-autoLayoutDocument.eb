@@ -34,7 +34,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
     vStack {
       hStack set (leftMargin: 8) set (topMargin: 8) set (rightMargin: 8) {
         vStack {
-          SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
+          SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
             addPage (title: "Model Image", pageView: stackView mModelImagePage)
             addPage (title: "Package", pageView: stackView mPackagePage)
             addPage (title: "Program", pageView: stackView mProgramPage)
@@ -80,7 +80,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   stackView mModelImagePage hStack set (spacing: 0) {
     TwoColumnsGridView {
       set (width: 250) 
-      set (margins: 20)
+      set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20)
       add (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
@@ -213,7 +213,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   stackView mPackagePageInspectorMasterView : vStack ;
   
   stackView mPackagePage hStack set (spacing: 0) {
-    vStack set (width: 250) set (margins: 20) set (spacing: 12) {
+    vStack set (width: 250) set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
       hStack set (spacing: 0) {
         DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
         space
@@ -248,18 +248,19 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         add (
           left: space,
           right: hStack {
-             StaticLabel (title: "From", bold: no, small: yes) {$enabled root.counterClockNumbering}
+             StaticLabel (title: "From", bold: no, small: yes) { $hidden !root.counterClockNumbering}
              IntField (width: 45) {
                set (min: 0)
                set (max: 360)
                set (format: "##0°")
                $value root.counterClockNumberingStartAngle (sendContinously : yes)
-               $enabled root.counterClockNumbering
+               $hidden !root.counterClockNumbering
              }
           }
         ) 
       }
-      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes) [configurator packagePageSegmentedControl] {
+      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
+        [configurator packagePageSegmentedControl] {
         makeWidthExpandable ()
         addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
         addPage (title: "", pageView: stackView mGridZoomInspectorView)
@@ -932,7 +933,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   PAGE   PROGRAM
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mProgramPage vStack set (margins: 20) {
+  stackView mProgramPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) {
     hStack {
       Button (title: "Load from Design", small: yes) { $run loadFromDesignAction }
       Button (title: "Run", small: yes) { $run runProgramAction }
@@ -953,7 +954,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mInfosPage vStack set (margins: 20) {
+  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) {
     hStack {
       Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
       space

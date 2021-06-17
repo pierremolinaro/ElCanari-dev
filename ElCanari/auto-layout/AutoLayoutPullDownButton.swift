@@ -19,7 +19,7 @@ final class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.controlSize = inSmall ? .small : .regular
-    self.bezelStyle = .roundRect
+    self.bezelStyle = BUTTON_STYLE
     self.autoenablesItems = false
     self.addItem (withTitle: inTitle)
     let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
