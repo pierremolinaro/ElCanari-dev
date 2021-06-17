@@ -20,8 +20,7 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.isEnabled = true
     self.isEditable = false
     self.controlSize = inSmall ? .small : .regular
-//    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
-//    self.font = NSFont.systemFont (ofSize: fontSize)
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
   }
 
   //····················································································································

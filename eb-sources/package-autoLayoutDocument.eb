@@ -118,12 +118,13 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
-        right: CanariUnitPopUpButton { $unit root.mModelImagePageXPlacardUnit }
+        right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageXPlacardUnit }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Y", bold: no, small: yes),
-        right: CanariUnitPopUpButton { $unit root.mModelImagePageYPlacardUnit }
+        right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageYPlacardUnit }
       )
+      separator ()
       addFirstBaseLineAligned (
         left: PullDownButton (title: "Action", small: yes) {
           add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
@@ -133,35 +134,42 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         },
         right: Label (small: yes) { $title root.modelImageSizeString }
       )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Green", right: "X", bold: no, small: yes),
-        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
+      add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $hidden !root.hasModelImage $setter6
+         root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
+         root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
+         root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
+        }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, small: yes),
-        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
+        left: StaticLabels (left: "Green", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆X", bold: no, small: yes),
-        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
+        left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆Y", bold: no, small: yes),
-        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
+        left: StaticLabel (title: "∆X", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
       )
       addFirstBaseLineAligned (
-        left: StaticLabels (left: "Brown", right: "X", bold: no, small: yes),
-        right: CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
+        left: StaticLabel (title: "∆Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, small: yes),
-        right: CanariObservedDimensionAndPopUp { $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit }
+        left: StaticLabels (left: "Brown", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "PointSize", bold: no, small: yes),
+        left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+        right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "PointSize", bold: no, small: yes) { $hidden !root.hasModelImage },
         right: LinearSlider (min:1, max:61, ticks: 19) {
           $intValue root.mModelPointsCircleRadius (sendContinously : yes)
-          $enabled root.hasModelImage
+          $hidden !root.hasModelImage
+//          $enabled root.hasModelImage
         }
       )
       add (single:
@@ -169,9 +177,10 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           Button (title: "Lock Points to Model Image", small: yes) {
             $enabled !root.mPointsAreLocked & root.hasModelImage
             $run lockImagePointsAction
+            $hidden !root.hasModelImage
           }
           space
-          ImageObserverView (small: yes) { $image root.lockImageView }
+          ImageObserverView (small: yes) { $hidden !root.hasModelImage $image root.lockImageView }
         }
       )
       flexibleSpace ()
@@ -914,11 +923,11 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
-        right: CanariUnitPopUpButton { $unit root.xPlacardUnit }
+        right: CanariUnitPopUpButton (small: yes) { $unit root.xPlacardUnit }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Y", bold: no, small: yes),
-        right: CanariUnitPopUpButton { $unit root.yPlacardUnit }
+        right: CanariUnitPopUpButton(small: yes) { $unit root.yPlacardUnit }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Knob Size", bold: no, small: yes),

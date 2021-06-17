@@ -51,7 +51,6 @@ final class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
   override func ebCleanUp () {
     for controller in self.mControlerArray {
       controller.unregister ()
-//    self.mSelectedTagController = nil
     }
     super.ebCleanUp ()
   }

@@ -15,6 +15,7 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.orientation = inOrientation
+    self.distribution = .fill
   }
 
   //····················································································································

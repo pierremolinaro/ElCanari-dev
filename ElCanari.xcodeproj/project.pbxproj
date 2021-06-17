@@ -4860,7 +4860,6 @@
 		CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutApplicationImage.swift; sourceTree = "<group>"; };
 		CF9DE33A2679F43B0064234B /* AutoLayoutSheetDefaultOkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetDefaultOkButton.swift; sourceTree = "<group>"; };
 		CF9DE33E2679F7EE0064234B /* AutoLayoutSheetCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSheetCancelButton.swift; sourceTree = "<group>"; };
-		CF9DE342267A2BE20064234B /* AutoLayout-unused-SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayout-unused-SideBarView.swift"; sourceTree = "<group>"; };
 		CF9DE346267A41DA0064234B /* AutoLayout-extension-NSControl-run-binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoLayout-extension-NSControl-run-binding.swift"; sourceTree = "<group>"; };
 		CFA085E921A17A6B00DFD00B /* Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
 		CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolRoot-noIssue.swift"; sourceTree = "<group>"; };
@@ -6626,7 +6625,6 @@
 				CF625BB925D003EF00072462 /* AutoLayout-extension-NSControl-enabled-binding.swift */,
 				CF9DE346267A41DA0064234B /* AutoLayout-extension-NSControl-run-binding.swift */,
 				CF625ACF25CFFF2700072462 /* AutoLayout-extension-NSView-hidden-binding.swift */,
-				CF9DE342267A2BE20064234B /* AutoLayout-unused-SideBarView.swift */,
 				CF9C602A25CAB4FA00A00D5C /* AutoLayoutAbstractStackView.swift */,
 				CF670EBA2678EF660057FCDE /* AutoLayoutAngleCircularSlider.swift */,
 				CF9DE3362679F0610064234B /* AutoLayoutApplicationImage.swift */,
@@ -6635,6 +6633,7 @@
 				CF670EB62678ED140057FCDE /* AutoLayoutCanariAngleFieldAndSlider.swift */,
 				CFDB1E8E25CF09FB0098C56C /* AutoLayoutCanariDimensionAndPopUp.swift */,
 				CFDB1BCC25CEC7DD0098C56C /* AutoLayoutCanariDimensionField.swift */,
+				CF13FDD5267BB28C00EFD0BB /* AutoLayoutCanariDimensionUnitSetterPullDownButton.swift */,
 				CFCEA59725E91775009E5284 /* AutoLayoutCanariIssueTableView.swift */,
 				CFDB1E9625CF0F700098C56C /* AutoLayoutCanariObservedDimensionAndPopUp.swift */,
 				CFDB1E9A25CF0FC70098C56C /* AutoLayoutCanariObservedDimensionField.swift */,
@@ -6676,7 +6675,6 @@
 				CF1AA7B725CC9CD800C1F9EE /* AutoLayoutVersionField.swift */,
 				CF9C602925CAB4FA00A00D5C /* AutoLayoutVerticalStackView.swift */,
 				CF339BCB25EBAD9700BA367A /* EmbeddedAutoLayoutTextView.swift */,
-				CF13FDD5267BB28C00EFD0BB /* AutoLayoutCanariDimensionUnitSetterPullDownButton.swift */,
 			);
 			name = "Auto Layout";
 			path = "ElCanari/auto-layout";

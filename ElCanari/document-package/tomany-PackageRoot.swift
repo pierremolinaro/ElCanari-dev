@@ -37,7 +37,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.removeEBObserversOf_mModelImagePageXPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePageYPlacardUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageSecondPointXUnit_fromElementsOfSet (inRemovedSet) // Stored property
-    self.removeEBObserversOf_mModelImagePSecondointYUnit_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mModelImageSecondPointYUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageFirstPointXOnLock_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImageFirstPointYOnLock_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mModelImagePointsDxOnLock_fromElementsOfSet (inRemovedSet) // Stored property
@@ -94,7 +94,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
     self.addEBObserversOf_mModelImagePageXPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePageYPlacardUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageSecondPointXUnit_toElementsOfSet (inAddedSet) // Stored property
-    self.addEBObserversOf_mModelImagePSecondointYUnit_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mModelImageSecondPointYUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageFirstPointXOnLock_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImageFirstPointYOnLock_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mModelImagePointsDxOnLock_toElementsOfSet (inAddedSet) // Stored property
@@ -1429,48 +1429,48 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mModelImagePSecondointYUnit' stored property
+  //   Observers of 'mModelImageSecondPointYUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mModelImagePSecondointYUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageSecondPointYUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mModelImagePSecondointYUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mModelImageSecondPointYUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mModelImagePSecondointYUnit.insert (inObserver)
+    self.mObserversOf_mModelImageSecondPointYUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mModelImagePSecondointYUnit_property.addEBObserver (inObserver)
+        managedObject.mModelImageSecondPointYUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mModelImagePSecondointYUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mModelImageSecondPointYUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mModelImagePSecondointYUnit.remove (inObserver)
+    self.mObserversOf_mModelImageSecondPointYUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mModelImagePSecondointYUnit_property.removeEBObserver (inObserver)
+        managedObject.mModelImageSecondPointYUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mModelImagePSecondointYUnit_toElementsOfSet (_ inSet : Set <PackageRoot>) {
-    if !self.mObserversOf_mModelImagePSecondointYUnit.isEmpty {
+  final func addEBObserversOf_mModelImageSecondPointYUnit_toElementsOfSet (_ inSet : Set <PackageRoot>) {
+    if !self.mObserversOf_mModelImageSecondPointYUnit.isEmpty {
       for managedObject in inSet {
-        self.mObserversOf_mModelImagePSecondointYUnit.apply { (_ observer : EBEvent) in
-          managedObject.mModelImagePSecondointYUnit_property.addEBObserver (observer)
+        self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
+          managedObject.mModelImageSecondPointYUnit_property.addEBObserver (observer)
         }
       }
     }
@@ -1478,11 +1478,11 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_mModelImagePSecondointYUnit_fromElementsOfSet (_ inSet : Set <PackageRoot>) {
-    self.mObserversOf_mModelImagePSecondointYUnit.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mModelImageSecondPointYUnit_fromElementsOfSet (_ inSet : Set <PackageRoot>) {
+    self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mModelImagePSecondointYUnit_property.removeEBObserver (observer)
+        managedObject.mModelImageSecondPointYUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -4208,7 +4208,7 @@ final class PreferencesArrayOf_PackageRoot : StoredArrayOf_PackageRoot {
     self.addEBObserverOf_mModelImagePageXPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePageYPlacardUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageSecondPointXUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mModelImagePSecondointYUnit (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mModelImageSecondPointYUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageFirstPointXOnLock (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImageFirstPointYOnLock (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mModelImagePointsDxOnLock (self.mObserverForWritingPreferences)

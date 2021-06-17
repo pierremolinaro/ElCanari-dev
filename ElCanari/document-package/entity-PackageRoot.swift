@@ -138,8 +138,8 @@ protocol PackageRoot_mModelImageSecondPointXUnit : AnyObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-protocol PackageRoot_mModelImagePSecondointYUnit : AnyObject {
-  var mModelImagePSecondointYUnit : Int { get }
+protocol PackageRoot_mModelImageSecondPointYUnit : AnyObject {
+  var mModelImageSecondPointYUnit : Int { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -391,7 +391,7 @@ final class PackageRoot : EBGraphicManagedObject,
          PackageRoot_mModelImagePageXPlacardUnit,
          PackageRoot_mModelImagePageYPlacardUnit,
          PackageRoot_mModelImageSecondPointXUnit,
-         PackageRoot_mModelImagePSecondointYUnit,
+         PackageRoot_mModelImageSecondPointYUnit,
          PackageRoot_mModelImageFirstPointXOnLock,
          PackageRoot_mModelImageFirstPointYOnLock,
          PackageRoot_mModelImagePointsDxOnLock,
@@ -937,27 +937,27 @@ final class PackageRoot : EBGraphicManagedObject,
   final var mModelImageSecondPointXUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointXUnit_property.selection }
 
   //····················································································································
-  //   Atomic property: mModelImagePSecondointYUnit
+  //   Atomic property: mModelImageSecondPointYUnit
   //····················································································································
 
-  final let mModelImagePSecondointYUnit_property : EBStoredProperty_Int
+  final let mModelImageSecondPointYUnit_property : EBStoredProperty_Int
 
   //····················································································································
 
-  final func reset_mModelImagePSecondointYUnit_toDefaultValue () {
-    self.mModelImagePSecondointYUnit = 2286
+  final func reset_mModelImageSecondPointYUnit_toDefaultValue () {
+    self.mModelImageSecondPointYUnit = 2286
   }
 
   //····················································································································
 
-  final var mModelImagePSecondointYUnit : Int {
-    get { return self.mModelImagePSecondointYUnit_property.propval }
-    set { self.mModelImagePSecondointYUnit_property.setProp (newValue) }
+  final var mModelImageSecondPointYUnit : Int {
+    get { return self.mModelImageSecondPointYUnit_property.propval }
+    set { self.mModelImageSecondPointYUnit_property.setProp (newValue) }
   }
 
   //····················································································································
 
-  final var mModelImagePSecondointYUnit_property_selection : EBSelection <Int> { return self.mModelImagePSecondointYUnit_property.selection }
+  final var mModelImageSecondPointYUnit_property_selection : EBSelection <Int> { return self.mModelImageSecondPointYUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mModelImageFirstPointXOnLock
@@ -1987,7 +1987,7 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageXPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImagePSecondointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
@@ -2711,12 +2711,12 @@ final class PackageRoot : EBGraphicManagedObject,
       valueExplorer: &self.mModelImageSecondPointXUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mModelImagePSecondointYUnit",
-      idx: self.mModelImagePSecondointYUnit_property.ebObjectIndex,
+      "mModelImageSecondPointYUnit",
+      idx: self.mModelImageSecondPointYUnit_property.ebObjectIndex,
       y: &y,
       view: view,
-      observerExplorer: &self.mModelImagePSecondointYUnit_property.mObserverExplorer,
-      valueExplorer: &self.mModelImagePSecondointYUnit_property.mValueExplorer
+      observerExplorer: &self.mModelImageSecondPointYUnit_property.mObserverExplorer,
+      valueExplorer: &self.mModelImageSecondPointYUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mModelImageFirstPointXOnLock",
@@ -3080,9 +3080,9 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: mModelImageSecondPointXUnit
     self.mModelImageSecondPointXUnit_property.mObserverExplorer = nil
     self.mModelImageSecondPointXUnit_property.mValueExplorer = nil
-  //--- Atomic property: mModelImagePSecondointYUnit
-    self.mModelImagePSecondointYUnit_property.mObserverExplorer = nil
-    self.mModelImagePSecondointYUnit_property.mValueExplorer = nil
+  //--- Atomic property: mModelImageSecondPointYUnit
+    self.mModelImageSecondPointYUnit_property.mObserverExplorer = nil
+    self.mModelImageSecondPointYUnit_property.mValueExplorer = nil
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.mObserverExplorer = nil
     self.mModelImageFirstPointXOnLock_property.mValueExplorer = nil
@@ -3231,8 +3231,8 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageYPlacardUnit")
   //--- Atomic property: mModelImageSecondPointXUnit
     self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointXUnit")
-  //--- Atomic property: mModelImagePSecondointYUnit
-    self.mModelImagePSecondointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePSecondointYUnit")
+  //--- Atomic property: mModelImageSecondPointYUnit
+    self.mModelImageSecondPointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
@@ -3369,8 +3369,8 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImagePageYPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePageYPlacardUnit")
   //--- Atomic property: mModelImageSecondPointXUnit
     self.mModelImageSecondPointXUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImageSecondPointXUnit")
-  //--- Atomic property: mModelImagePSecondointYUnit
-    self.mModelImagePSecondointYUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImagePSecondointYUnit")
+  //--- Atomic property: mModelImageSecondPointYUnit
+    self.mModelImageSecondPointYUnit_property.readFrom (dictionary: inDictionary, forKey: "mModelImageSecondPointYUnit")
   //--- Atomic property: mModelImageFirstPointXOnLock
     self.mModelImageFirstPointXOnLock_property.readFrom (dictionary: inDictionary, forKey: "mModelImageFirstPointXOnLock")
   //--- Atomic property: mModelImageFirstPointYOnLock
@@ -3439,7 +3439,7 @@ final class PackageRoot : EBGraphicManagedObject,
     ioString += "mModelImagePageXPlacardUnit\n"
     ioString += "mModelImagePageYPlacardUnit\n"
     ioString += "mModelImageSecondPointXUnit\n"
-    ioString += "mModelImagePSecondointYUnit\n"
+    ioString += "mModelImageSecondPointYUnit\n"
     ioString += "mModelImageFirstPointXOnLock\n"
     ioString += "mModelImageFirstPointYOnLock\n"
     ioString += "mModelImagePointsDxOnLock\n"
@@ -3519,7 +3519,7 @@ final class PackageRoot : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
     self.mModelImageSecondPointXUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
-    self.mModelImagePSecondointYUnit.appendPropertyValueTo (&ioData)
+    self.mModelImageSecondPointYUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mModelImageFirstPointXOnLock.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -3704,8 +3704,8 @@ final class PackageRoot : EBGraphicManagedObject,
       if let range = inDictionary ["mModelImageSecondPointXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mModelImageSecondPointXUnit = value
       }
-      if let range = inDictionary ["mModelImagePSecondointYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePSecondointYUnit = value
+      if let range = inDictionary ["mModelImageSecondPointYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+        self.mModelImageSecondPointYUnit = value
       }
       if let range = inDictionary ["mModelImageFirstPointXOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mModelImageFirstPointXOnLock = value

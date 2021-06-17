@@ -14,11 +14,13 @@ final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProt
 
   //····················································································································
 
-  init () {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect (), pullsDown: false)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.controlSize = .small
+
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.bezelStyle = BUTTON_STYLE
     self.add (title: "inch", withTag: 2_286_000)
     self.add (title: "mil", withTag: 2_286)
@@ -52,20 +54,8 @@ final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProt
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    let s = super.intrinsicContentSize
-    return NSSize (width: 48.0, height: s.height)
-  }
-
-  //····················································································································
-
   fileprivate func add (title inTitle : String, withTag inTag : Int) {
-    self.addItem (withTitle: "")
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-    self.lastItem?.attributedTitle = attributedTitle
+    self.addItem (withTitle: inTitle)
     self.lastItem?.tag = inTag
   }
 

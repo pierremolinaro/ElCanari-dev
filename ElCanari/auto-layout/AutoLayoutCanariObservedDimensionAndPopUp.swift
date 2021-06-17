@@ -17,7 +17,7 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
   //····················································································································
 
   fileprivate let mDimensionField = AutoLayoutCanariObservedDimensionField ()
-  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton ()
+  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: true)
 
   //····················································································································
 

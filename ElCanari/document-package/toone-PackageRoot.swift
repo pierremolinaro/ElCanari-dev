@@ -38,7 +38,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       oldValue.mModelImagePageXPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePageXPlacardUnit) // Stored property
       oldValue.mModelImagePageYPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePageYPlacardUnit) // Stored property
       oldValue.mModelImageSecondPointXUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImageSecondPointXUnit) // Stored property
-      oldValue.mModelImagePSecondointYUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePSecondointYUnit) // Stored property
+      oldValue.mModelImageSecondPointYUnit_property.removeEBObserversFrom (&self.mObserversOf_mModelImageSecondPointYUnit) // Stored property
       oldValue.mModelImageFirstPointXOnLock_property.removeEBObserversFrom (&self.mObserversOf_mModelImageFirstPointXOnLock) // Stored property
       oldValue.mModelImageFirstPointYOnLock_property.removeEBObserversFrom (&self.mObserversOf_mModelImageFirstPointYOnLock) // Stored property
       oldValue.mModelImagePointsDxOnLock_property.removeEBObserversFrom (&self.mObserversOf_mModelImagePointsDxOnLock) // Stored property
@@ -97,7 +97,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       newValue.mModelImagePageXPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePageXPlacardUnit) // Stored property
       newValue.mModelImagePageYPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePageYPlacardUnit) // Stored property
       newValue.mModelImageSecondPointXUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImageSecondPointXUnit) // Stored property
-      newValue.mModelImagePSecondointYUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImagePSecondointYUnit) // Stored property
+      newValue.mModelImageSecondPointYUnit_property.addEBObserversFrom (&self.mObserversOf_mModelImageSecondPointYUnit) // Stored property
       newValue.mModelImageFirstPointXOnLock_property.addEBObserversFrom (&self.mObserversOf_mModelImageFirstPointXOnLock) // Stored property
       newValue.mModelImageFirstPointYOnLock_property.addEBObserversFrom (&self.mObserversOf_mModelImageFirstPointYOnLock) // Stored property
       newValue.mModelImagePointsDxOnLock_property.addEBObserversFrom (&self.mObserversOf_mModelImagePointsDxOnLock) // Stored property
@@ -1675,16 +1675,16 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-  //   Observers of 'mModelImagePSecondointYUnit' stored property
+  //   Observers of 'mModelImageSecondPointYUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mModelImagePSecondointYUnit = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageSecondPointYUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mModelImagePSecondointYUnit_property_selection : EBSelection <Int?> {
+  final var mModelImageSecondPointYUnit_property_selection : EBSelection <Int?> {
     if let model = self.propval {
-      switch (model.mModelImagePSecondointYUnit_property_selection) {
+      switch (model.mModelImageSecondPointYUnit_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1699,47 +1699,47 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mModelImagePSecondointYUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mModelImageSecondPointYUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mModelImagePSecondointYUnit.insert (inObserver)
+    self.mObserversOf_mModelImageSecondPointYUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
-       v?.mModelImagePSecondointYUnit_property.addEBObserver (inObserver)
+       v?.mModelImageSecondPointYUnit_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mModelImagePSecondointYUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mModelImageSecondPointYUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mModelImagePSecondointYUnit.remove (inObserver)
+    self.mObserversOf_mModelImageSecondPointYUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
-      v?.mModelImagePSecondointYUnit_property.removeEBObserver (inObserver)
+      v?.mModelImageSecondPointYUnit_property.removeEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mModelImagePSecondointYUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_mModelImageSecondPointYUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_mModelImagePSecondointYUnit.apply { (_ observer : EBEvent) in
-        managedObject.mModelImagePSecondointYUnit_property.addEBObserver (observer)
+      self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
+        managedObject.mModelImageSecondPointYUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mModelImagePSecondointYUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    self.mObserversOf_mModelImagePSecondointYUnit.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_mModelImageSecondPointYUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    self.mObserversOf_mModelImageSecondPointYUnit.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mModelImagePSecondointYUnit_property.removeEBObserver (observer)
+        managedObject.mModelImageSecondPointYUnit_property.removeEBObserver (observer)
       }
     }
   }

@@ -78,7 +78,7 @@ graphic entity PackageRoot {
   property Int mModelImagePageXPlacardUnit default 2_286 ; // mils
   property Int mModelImagePageYPlacardUnit default 2_286 ; // mils
   property Int mModelImageSecondPointXUnit default 2_286 ; // mils
-  property Int mModelImagePSecondointYUnit default 2_286 ; // mils
+  property Int mModelImageSecondPointYUnit default 2_286 ; // mils
 
   property Data mModelImageData default empty ;
   property Int mModelImageFirstPointXOnLock default 0 ;

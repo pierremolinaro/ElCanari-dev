@@ -62,12 +62,12 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  override func autoLayoutCleanUp () {
+  override func ebCleanUp () {
     self.mValueController?.unregister ()
     self.mValueController = nil
     self.delegate = nil
     self.formatter = nil
-    super.autoLayoutCleanUp ()
+    super.ebCleanUp ()
   }
 
   //····················································································································
