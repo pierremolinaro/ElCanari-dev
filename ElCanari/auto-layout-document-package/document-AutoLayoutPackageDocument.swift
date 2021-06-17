@@ -467,7 +467,99 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  let mPageMasterView : AutoLayoutAbstractStackView = AutoLayoutVerticalStackView ()
+  lazy var mPageMasterView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDocumentMainView
+  //····················································································································
+
+  lazy var mDocumentMainView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+    do{
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+        .set (leftMargin: 8)
+        .set (topMargin: 8)
+        .set (rightMargin: 8)
+      do{
+        let view_0_0_0 = AutoLayoutVerticalStackView ()
+        do{
+          let view_0_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false)
+            .addPage (title: "Model Image", pageView: self.mModelImagePage)
+            .addPage (title: "Package", pageView: self.mPackagePage)
+            .addPage (title: "Program", pageView: self.mProgramPage)
+            .addPage (title: "Infos", pageView: self.mInfosPage)
+            .bind_selectedPage (self.rootObject.selectedPageIndex_property)
+          view_0_0_0.appendView (view_0_0_0_0)
+          let view_0_0_0_1 = AutoLayoutHorizontalStackView ()
+          do{
+            let view_0_0_0_1_0 = AutoLayoutFlexibleSpace ()
+            view_0_0_0_1.appendView (view_0_0_0_1_0)
+            let view_0_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, small: true)
+            view_0_0_0_1.appendView (view_0_0_0_1_1)
+            let view_0_0_0_1_2 = AutoLayoutFlexibleSpace ()
+            view_0_0_0_1.appendView (view_0_0_0_1_2)
+          }
+          view_0_0_0.appendView (view_0_0_0_1)
+        }
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutVerticalStackView ()
+        do{
+          let view_0_0_1_0 = AutoLayoutSignatureField ()
+            .bind_signature (self.signatureObserver_property)
+          view_0_0_1.appendView (view_0_0_1_0)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
+            .setCenterAlignment ()
+            .makeWidthExpandable ()
+          view_0_0_1.appendView (view_0_0_1_1)
+        }
+        view_0_0.appendView (view_0_0_1)
+        let view_0_0_2 = AutoLayoutVerticalStackView ()
+        do{
+          let view_0_0_2_0 = AutoLayoutVersionField ()
+            .bind_version (self.versionObserver_property)
+            .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+          view_0_0_2.appendView (view_0_0_2_0)
+          let view_0_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, small: true)
+            .setCenterAlignment ()
+            .makeWidthExpandable ()
+          view_0_0_2.appendView (view_0_0_2_1)
+        }
+        view_0_0.appendView (view_0_0_2)
+        let view_0_0_3 = AutoLayoutFlexibleSpace ()
+        view_0_0.appendView (view_0_0_3)
+        let view_0_0_4 = AutoLayoutVerticalStackView ()
+        do{
+          let view_0_0_4_0 = AutoLayoutHorizontalStackView ()
+          do{
+            let view_0_0_4_0_0 = AutoLayoutFlexibleSpace ()
+            view_0_0_4_0.appendView (view_0_0_4_0_0)
+            let view_0_0_4_0_1 = AutoLayoutImageObserverView (small: false)
+              .bind_image (self.statusImage_property)
+              .bind_tooltip (self.statusMessage_property)
+            view_0_0_4_0.appendView (view_0_0_4_0_1)
+            let view_0_0_4_0_2 = AutoLayoutFlexibleSpace ()
+            view_0_0_4_0.appendView (view_0_0_4_0_2)
+          }
+          view_0_0_4.appendView (view_0_0_4_0)
+          let view_0_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+            .setCenterAlignment ()
+          view_0_0_4.appendView (view_0_0_4_1)
+        }
+        view_0_0.appendView (view_0_0_4)
+      }
+      view_0.appendView (view_0_0)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = mPageMasterView
+    vStackView.appendView (view_2)
+    return vStackView
+  } ()
 
   //····················································································································
   //    VIEW mModelImagePage
@@ -3251,15 +3343,9 @@ import Cocoa
   //····················································································································
 
   override func ebBuildUserInterface () {
-  //--- Build tool bar
-    let toolbar = NSToolbar (identifier: NSToolbar.Identifier ("AutoLayoutPackageDocument"))
-    toolbar.allowsUserCustomization = false
-    toolbar.displayMode = .default
-    toolbar.delegate = self
-    self.windowForSheet?.toolbar = toolbar
   //--- Build window content view
     self.configureProperties ()
-    let mainView = self.mPageMasterView
+    let mainView = self.mDocumentMainView
   //--- Call outlet linkers
     self.linker_issueTableViewToGraphicView (self.mPackageIssueTableView, self.mPackageGraphicView)
   //--- Assign main view to window
@@ -3277,7 +3363,7 @@ import Cocoa
   //····················································································································
 
   final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return [NSToolbarItem.Identifier ("0"), NSToolbarItem.Identifier ("1"), NSToolbarItem.Identifier ("2"), .flexibleSpace, NSToolbarItem.Identifier ("4")]
+    return []
   }
 
   //····················································································································
@@ -3286,50 +3372,6 @@ import Cocoa
                       itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
                       willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
     switch itemIdentifier.rawValue {
-    case "0" :
-      let itemId = NSToolbarItem.Identifier ("0")
-      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
-      toolbarItem.label = "Page"
-      toolbarItem.isEnabled = true
-      let view = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false)
-        .addPage (title: "Model Image", pageView: self.mModelImagePage)
-        .addPage (title: "Package", pageView: self.mPackagePage)
-        .addPage (title: "Program", pageView: self.mProgramPage)
-        .addPage (title: "Infos", pageView: self.mInfosPage)
-        .bind_selectedPage (self.rootObject.selectedPageIndex_property)
-      toolbarItem.view = view
-      return toolbarItem
-    case "1" :
-      let itemId = NSToolbarItem.Identifier ("1")
-      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
-      toolbarItem.label = "Signature"
-      toolbarItem.isEnabled = true
-      let view = AutoLayoutSignatureField ()
-        .bind_signature (self.signatureObserver_property)
-      toolbarItem.view = view
-      return toolbarItem
-    case "2" :
-      let itemId = NSToolbarItem.Identifier ("2")
-      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
-      toolbarItem.label = "Version"
-      toolbarItem.isEnabled = true
-      let view = AutoLayoutVersionField ()
-        .bind_version (self.versionObserver_property)
-        .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-      toolbarItem.view = view
-      return toolbarItem
-    case NSToolbarItem.Identifier.flexibleSpace.rawValue :
-      return NSToolbarItem (itemIdentifier: .flexibleSpace)
-    case "4" :
-      let itemId = NSToolbarItem.Identifier ("4")
-      let toolbarItem = NSToolbarItem (itemIdentifier: itemId)
-      toolbarItem.label = "Status"
-      toolbarItem.isEnabled = true
-      let view = AutoLayoutImageObserverView (small: false)
-        .bind_image (self.statusImage_property)
-        .bind_tooltip (self.statusMessage_property)
-      toolbarItem.view = view
-      return toolbarItem
     default :
       return nil
     }
@@ -3737,6 +3779,7 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Clean up auto layout views
     self.mPageMasterView.ebCleanUp ()
+    self.mDocumentMainView.ebCleanUp ()
     self.mModelImagePage.ebCleanUp ()
     self.mPackagePageInspectorMasterView.ebCleanUp ()
     self.mPackagePage.ebCleanUp ()

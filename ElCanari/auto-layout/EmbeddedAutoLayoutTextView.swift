@@ -20,14 +20,14 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  convenience init () {
+  init () {
     let textStorage = NSTextStorage ()
     let layoutManager = NSLayoutManager ()
     textStorage.addLayoutManager (layoutManager)
     let textContainer = NSTextContainer (size: NSSize (width: 300, height: 300))
     layoutManager.addTextContainer (textContainer)
 
-    self.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
+    super.init (frame: NSRect (x: 0, y: 0, width: 50, height: 50), textContainer: textContainer)
  //   self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 //    Swift.print ("init () \(self)")
   }
@@ -55,7 +55,7 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-//    Swift.print ("intrinsicContentSize \(self)")
+    Swift.print ("intrinsicContentSize \(self)")
     let textContainer = self.textContainer!
     let layoutManager = self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)

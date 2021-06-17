@@ -111,28 +111,28 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func setTopMargin (_ inValue : CGFloat) -> Self {
+  final func set (topMargin inValue : CGFloat) -> Self {
     self.edgeInsets.top = inValue
     return self
   }
 
   //····················································································································
 
-  final func setBottomMargin (_ inValue : CGFloat) -> Self {
+  final func set (bottomMargin inValue : CGFloat) -> Self {
     self.edgeInsets.bottom = inValue
     return self
   }
 
   //····················································································································
 
-  final func setLeftMargin (_ inValue : CGFloat) -> Self {
+  final func set (leftMargin inValue : CGFloat) -> Self {
     self.edgeInsets.left = inValue
     return self
   }
 
   //····················································································································
 
-  final func setRightMargin (_ inValue : CGFloat) -> Self {
+  final func set (rightMargin inValue : CGFloat) -> Self {
     self.edgeInsets.right = inValue
     return self
   }

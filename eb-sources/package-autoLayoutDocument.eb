@@ -2,37 +2,69 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass root PackageRoot stackView mPageMasterView {
+autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass root PackageRoot stackView mDocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   TOOL BAR
 //----------------------------------------------------------------------------------------------------------------------
 
-  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
-    addPage (title: "Model Image", pageView: stackView mModelImagePage)
-    addPage (title: "Package", pageView: stackView mPackagePage)
-    addPage (title: "Program", pageView: stackView mProgramPage)
-    addPage (title: "Infos", pageView: stackView mInfosPage)
-    $selectedPage root.selectedPageIndex
-  }
-
-  toolbarItem "Signature" : SignatureField { $signature signature }
-  
-  toolbarItem "Version" : VersionField { $version version $versionShouldChange versionShouldChange }
-
-  toolbarItem space ;
- 
-  toolbarItem "Status" : ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage }
-
-  transient NSImage statusImage dependsFrom root.issues ;
-  transient String statusMessage dependsFrom root.issues ;
-  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+//  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
+//    addPage (title: "Model Image", pageView: stackView mModelImagePage)
+//    addPage (title: "Package", pageView: stackView mPackagePage)
+//    addPage (title: "Program", pageView: stackView mProgramPage)
+//    addPage (title: "Infos", pageView: stackView mInfosPage)
+//    $selectedPage root.selectedPageIndex
+//  }
+//
+//  toolbarItem "Signature" : SignatureField { $signature signature }
+//  
+//  toolbarItem "Version" : VersionField { $version version $versionShouldChange versionShouldChange }
+//
+//  toolbarItem space ;
+// 
+//  toolbarItem "Status" : ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage }
 
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
  
-  stackView mPageMasterView : vStack ;
+  stackView mPageMasterView vStack { }
+ 
+  stackView mDocumentMainView vStack {
+    vStack {
+      hStack set (leftMargin: 8) set (topMargin: 8) set (rightMargin: 8) {
+        vStack {
+          SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
+            addPage (title: "Model Image", pageView: stackView mModelImagePage)
+            addPage (title: "Package", pageView: stackView mPackagePage)
+            addPage (title: "Program", pageView: stackView mProgramPage)
+            addPage (title: "Infos", pageView: stackView mInfosPage)
+            $selectedPage root.selectedPageIndex
+          }
+          hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+        }
+        vStack {
+          SignatureField { $signature signature }
+          StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+        }
+        vStack {
+          VersionField { $version version $versionShouldChange versionShouldChange }
+          StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+        }
+        space
+        vStack {
+          hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
+          StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
+        }
+      }
+    }
+    Separator
+    stackViewRef mPageMasterView
+  }
+
+  transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusMessage dependsFrom root.issues ;
+  transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE

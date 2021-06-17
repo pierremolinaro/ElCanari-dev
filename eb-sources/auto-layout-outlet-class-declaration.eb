@@ -41,6 +41,9 @@ extern autolayout class TwoColumnsGridView {
 }
 
 extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
+  func setCenterAlignment ()
+  func setLeftAlignment ()
+  func makeWidthExpandable ()
 }
 
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) {
