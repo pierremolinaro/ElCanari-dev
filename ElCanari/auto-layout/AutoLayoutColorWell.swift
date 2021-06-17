@@ -27,8 +27,7 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   //····················································································································
 
   required init? (coder : NSCoder) {
-    super.init (coder:coder)
-    noteObjectAllocation (self)
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································

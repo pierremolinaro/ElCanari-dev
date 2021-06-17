@@ -31,7 +31,21 @@ final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  final func add (left inLeftView : NSView, right inRightView : NSView) -> Self {
+  final func addFirstBaseLineAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
+   return self.add (left: inLeftView, right: inRightView, alignment: .firstBaseline)
+  }
+
+  //····················································································································
+
+  final func addCenterYAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
+   return self.add (left: inLeftView, right: inRightView, alignment: .centerY)
+  }
+
+  //····················································································································
+
+  final private func add (left inLeftView : NSView,
+                          right inRightView : NSView,
+                          alignment inAlignement : NSLayoutConstraint.Attribute) -> Self {
     if let lastLeftView = self.mLastLeftView {
       let c = NSLayoutConstraint (
         item: inLeftView,
@@ -59,7 +73,7 @@ final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
     let hStack = AutoLayoutHorizontalStackView ()
     hStack.appendView (inLeftView)
     hStack.appendView (inRightView)
-    hStack.alignment = .firstBaseline
+    hStack.alignment = inAlignement
     self.appendView (hStack)
     self.mLastLeftView = inLeftView
     self.mLastRightView = inRightView

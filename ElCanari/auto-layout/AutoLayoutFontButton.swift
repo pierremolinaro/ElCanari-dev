@@ -19,10 +19,11 @@ final class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
-    self.controlSize = .small // inSmall ? .small : .regular
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.bezelStyle = BUTTON_STYLE
   }
 

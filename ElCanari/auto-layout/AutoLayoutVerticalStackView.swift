@@ -13,6 +13,7 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   init () {
     super.init (orientation: .vertical)
     self.alignment = .width
+    self.distribution = .fill
   }
 
   //····················································································································

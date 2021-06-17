@@ -35,7 +35,8 @@ extern autolayout class TwoColumnsGridView {
   func set (width: Int)
   func separator ()
   func separator (withTitle : String)
-  func add (left : view, right: view)
+  func addFirstBaseLineAligned (left : view, right: view)
+  func addCenterYAligned (left : view, right: view)
   func add (single : view)
   func flexibleSpace ()
 }
@@ -179,7 +180,7 @@ extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
 
-extern autolayout class FontButton {
+extern autolayout class FontButton (small: Bool) {
   $fontValue property NSFont
 }
 
@@ -215,6 +216,14 @@ extern autolayout class CanariSlavePadAssignPopUpButton {
 
 extern autolayout class OneStringArrayTableView {
   $array transient StringArray
+}
+
+extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) {
+  $setter4 property Int, property Int, property Int, property Int
+  $setter5 property Int, property Int, property Int, property Int, property Int
+  $setter6 property Int, property Int, property Int, property Int, property Int, property Int
+  $setter7 property Int, property Int, property Int, property Int, property Int, property Int, property Int
+  $setter8 property Int, property Int, property Int, property Int, property Int, property Int, property Int, property Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

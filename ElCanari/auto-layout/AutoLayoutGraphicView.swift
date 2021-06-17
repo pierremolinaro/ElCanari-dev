@@ -32,6 +32,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //---
     let MARGIN = Int (FOCUS_RING_MARGIN)
     let hStack = AutoLayoutHorizontalStackView ().set (margins: MARGIN)
+    hStack.alignment = .firstBaseline
     self.appendView (hStack)
   //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
@@ -70,14 +71,6 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  //····················································································································
-
-//  override func draw (_ inDirtyRect : NSRect) {
-//    NSColor.yellow.setFill ()
-//    NSBezierPath.fill (inDirtyRect)
-//    super.draw (inDirtyRect)
-//  }
 
   //····················································································································
 
