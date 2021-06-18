@@ -9,15 +9,17 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect (x: 0, y: 14, width: 42, height: 19))  // Required by ElCapitan
+//    super.init (frame: NSRect (x: 0, y: 14, width: 42, height: 19))  // Required by ElCapitan
+    super.init (frame: NSRect ())  // Required by ElCapitan
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.isEditable = false
     self.isEnabled = true
     self.drawsBackground = false
     self.isBordered = false
-    self.controlSize = .small
+ //   self.controlSize = .small
     self.alignment = .center
+    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize, weight: .semibold)
   }
 
   //····················································································································
@@ -93,20 +95,14 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
   // NSColor.systemBlue is not defined in 10.9
-  // We use 10.10 setting for getting systemBlue RGB components:
-  //      let c = NSColor.systemBlue.usingColorSpace (.sRGB)!
-  //      Swift.print ("RGB \(c.redComponent) \(c.greenComponent) \(c.blueComponent)")
+  //····················································································································
 
   private func updateVersionShouldChange (from inObject : EBReadOnlyProperty_Bool) {
     switch inObject.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
-      if v {
-        self.textColor = NSColor.systemBlue
-      }else{
-        self.textColor = NSColor.black
-      }
+      self.textColor = v ? .systemBlue : .black
     }
   }
 

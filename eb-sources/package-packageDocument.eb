@@ -584,9 +584,9 @@ xibdocument PackageDocument root PackageRoot {
   outlet CanariDimensionObserverTextField mModelImageSecondPointXTextField
      $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit
   ;
-  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointXUnit ;
+  outlet EBPopUpButton mModelImageSecondPointYDimensionUnitPopUp $selectedTag root.mModelImageSecondPointYUnit ;
   outlet CanariDimensionObserverTextField mModelImageSecondPointYTextField
-     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointXUnit
+     $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit
   ;
 
   action loadModelImageFromPasteboardAction ;

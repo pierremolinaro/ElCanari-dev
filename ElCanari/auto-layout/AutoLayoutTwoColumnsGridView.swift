@@ -89,7 +89,7 @@ final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  final func separator () -> Self {
+  final func addSeparator () -> Self {
     self.appendHorizontalSeparator ()
     return self
   }

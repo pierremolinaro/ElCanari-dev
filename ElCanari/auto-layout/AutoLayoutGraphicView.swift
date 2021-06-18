@@ -101,6 +101,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     tf.isEnabled = true
     tf.isEditable = false
     tf.alignment = .left
+    tf.controlSize = .small
     tf.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     return tf
   }
@@ -110,6 +111,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   fileprivate func buildZoomToFitButton () -> NSButton {
     let button = NSButton (frame: NSRect ())
     button.title = "Zoom to Fit"
+    button.controlSize = .small
     button.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     button.bezelStyle = BUTTON_STYLE
     button.target = self
@@ -121,6 +123,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> NSPopUpButton {
     let zoomPopUpButton = NSPopUpButton (frame: NSRect (), pullsDown: true)
+    zoomPopUpButton.controlSize = .small
     zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     zoomPopUpButton.autoenablesItems = false
     zoomPopUpButton.bezelStyle = BUTTON_STYLE

@@ -33,12 +33,11 @@ extern autolayout class TwoColumnsGridView {
   func set (topMargin: Int)
   func set (bottomMargin: Int)
   func set (width: Int)
-  func separator ()
-  func separator (withTitle : String)
   func addFirstBaseLineAligned (left : view, right: view)
   func addCenterYAligned (left : view, right: view)
   func add (single : view)
   func flexibleSpace ()
+  func addSeparator ()
 }
 
 extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
@@ -50,8 +49,8 @@ extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $e
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
 }
 
-extern autolayout class Separator {
-}
+//extern autolayout class Separator {
+//}
 
 extern autolayout class Label (small: Bool) {
   $title transient String

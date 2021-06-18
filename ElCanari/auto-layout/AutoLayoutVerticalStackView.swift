@@ -25,7 +25,7 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   //····················································································································
 
   final func appendHorizontalSeparator () {
-    let separator = AutoLayoutHorizontalSeparator ()
+    let separator = HorizontalSeparator ()
     self.appendView (separator)
   }
 
@@ -73,37 +73,29 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate final class AutoLayoutHorizontalSeparator : NSBox, EBUserClassNameProtocol {
-
+  // HorizontalSeparator internal class
   //····················································································································
 
-  init () {
-    super.init (frame: NSRect (origin: NSPoint (), size: NSSize ()))
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.boxType = .separator
-  }
+   final class HorizontalSeparator : NSBox, EBUserClassNameProtocol {
 
-  //····················································································································
+    init () {
+      let s = NSSize (width: 10, height: 0) // Zero size means horizontal separator
+      super.init (frame: NSRect (origin: NSPoint (), size: s))
+      noteObjectAllocation (self)
+      self.translatesAutoresizingMaskIntoConstraints = false
+      self.boxType = .separator
+    }
 
-  required init? (coder inCoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+    required init? (coder inCoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
 
-  //····················································································································
+    deinit { noteObjectDeallocation (self) }
 
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------

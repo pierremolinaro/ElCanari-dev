@@ -16,7 +16,8 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
-    self.font = NSFont.userFixedPitchFont (ofSize: NSFont.systemFontSize)
+ //   self.font = NSFont.userFixedPitchFont (ofSize: NSFont.systemFontSize)
+    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize, weight: .semibold)
     self.controlSize = .small
     self.alignment = .center
   }

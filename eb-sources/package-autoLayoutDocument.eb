@@ -30,35 +30,33 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
  
   stackView mPageMasterView vStack { }
  
-  stackView mDocumentMainView vStack {
-    vStack {
-      hStack set (leftMargin: 8) set (topMargin: 8) set (rightMargin: 8) {
-        vStack {
-          SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
-            addPage (title: "Model Image", pageView: stackView mModelImagePage)
-            addPage (title: "Package", pageView: stackView mPackagePage)
-            addPage (title: "Program", pageView: stackView mProgramPage)
-            addPage (title: "Infos", pageView: stackView mInfosPage)
-            $selectedPage root.selectedPageIndex
-          }
-          hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+  stackView mDocumentMainView vStack set (spacing: 0) {
+    hStack set (margins: 8) {
+      vStack {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
+          addPage (title: "Model Image", pageView: stackView mModelImagePage)
+          addPage (title: "Package", pageView: stackView mPackagePage)
+          addPage (title: "Program", pageView: stackView mProgramPage)
+          addPage (title: "Infos", pageView: stackView mInfosPage)
+          $selectedPage root.selectedPageIndex
         }
-        vStack {
-          SignatureField { $signature signature }
-          StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
-        }
-        vStack {
-          VersionField { $version version $versionShouldChange versionShouldChange }
-          StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
-        }
-        space
-        vStack {
-          hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
-          StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
-        }
+        hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+      }
+      vStack {
+        SignatureField { $signature signature }
+        StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+      }
+      vStack {
+        VersionField { $version version $versionShouldChange versionShouldChange }
+        StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+      }
+      space
+      vStack {
+        hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
+        StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
       }
     }
-    Separator
+    separator
     stackViewRef mPageMasterView
   }
 
@@ -78,113 +76,123 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
   stackView mModelImagePage hStack set (spacing: 0) {
-    TwoColumnsGridView {
-      set (width: 250) 
-      set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20)
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Style", bold: no, small: yes),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Display", bold: no, small: yes),
-        right:
-          TaggedPopUpButton {
-            add (title: "1 Step", withTag: 1)
-            add (title: "2 Steps", withTag: 2)
-            add (title: "5 Steps", withTag: 5)
-            add (title: "8 Steps", withTag: 8)
-            add (title: "10 Steps", withTag: 10)
-            add (title: "12 Steps", withTag: 12)
-            add (title: "15 Steps", withTag: 15)
-            add (title: "20 Steps", withTag: 20)
-            add (title: "25 Steps", withTag: 25)
-            add (title: "50 Steps", withTag: 50)
-            add (title: "100 Steps", withTag: 100)
-            add (title: "200 Steps", withTag: 200)
-            $selectedTag root.mModelImagePageGridDisplayFactor
+    vStack {
+      TwoColumnsGridView {
+        set (width: 250) 
+        set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Grid Style", bold: no, small: yes),
+          right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Grid Display", bold: no, small: yes),
+          right:
+            TaggedPopUpButton {
+              add (title: "1 Step", withTag: 1)
+              add (title: "2 Steps", withTag: 2)
+              add (title: "5 Steps", withTag: 5)
+              add (title: "8 Steps", withTag: 8)
+              add (title: "10 Steps", withTag: 10)
+              add (title: "12 Steps", withTag: 12)
+              add (title: "15 Steps", withTag: 15)
+              add (title: "20 Steps", withTag: 20)
+              add (title: "25 Steps", withTag: 25)
+              add (title: "50 Steps", withTag: 50)
+              add (title: "100 Steps", withTag: 100)
+              add (title: "200 Steps", withTag: 200)
+              $selectedTag root.mModelImagePageGridDisplayFactor
+            }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Grid Step", bold: no, small: yes),
+          right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Flip", bold: no, small: yes),
+          right: Switch (title: "Horizontal", small: yes) { $value root.mModelImagePageHorizontalFlip }
+        )
+        addFirstBaseLineAligned (
+          left: FlexibleSpace,
+          right: Switch (title: "Vertical", small: yes) { $value root.mModelImagePageVerticalFlip }
+        )
+      }
+      separator
+      TwoColumnsGridView {
+        set (leftMargin: 20) set (rightMargin: 20)
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
+          right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageXPlacardUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Y", bold: no, small: yes),
+          right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageYPlacardUnit }
+        )
+      }
+      separator
+      TwoColumnsGridView {
+        set (leftMargin: 20) set (rightMargin: 20)
+        addFirstBaseLineAligned (
+          left: PullDownButton (title: "Action", small: yes) {
+            add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
+            add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
+            add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
+            add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
+          },
+          right: Label (small: yes) { $title root.modelImageSizeString }
+        )
+        add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $hidden !root.hasModelImage $setter6
+           root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
+           root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
+           root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
           }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Step", bold: no, small: yes),
-        right: CanariDimensionAndPopUp { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, small: yes),
-        right: Switch (title: "Horizontal", small: yes) { $value root.mModelImagePageHorizontalFlip }
-      )
-      addFirstBaseLineAligned (
-        left: FlexibleSpace,
-        right: Switch (title: "Vertical", small: yes) { $value root.mModelImagePageVerticalFlip }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
-        right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageXPlacardUnit }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, small: yes),
-        right: CanariUnitPopUpButton (small: yes) { $unit root.mModelImagePageYPlacardUnit }
-      )
-      separator ()
-      addFirstBaseLineAligned (
-        left: PullDownButton (title: "Action", small: yes) {
-          add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
-          add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
-          add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
-          add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
-        },
-        right: Label (small: yes) { $title root.modelImageSizeString }
-      )
-      add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $hidden !root.hasModelImage $setter6
-         root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
-         root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
-         root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
-        }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Green", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆X", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆Y", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabels (left: "Brown", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit }
-      )
-      addFirstBaseLineAligned (
-        left: StaticLabel (title: "PointSize", bold: no, small: yes) { $hidden !root.hasModelImage },
-        right: LinearSlider (min:1, max:61, ticks: 19) {
-          $intValue root.mModelPointsCircleRadius (sendContinously : yes)
-          $hidden !root.hasModelImage
-//          $enabled root.hasModelImage
-        }
-      )
-      add (single:
-        hStack {
-          Button (title: "Lock Points to Model Image", small: yes) {
-            $enabled !root.mPointsAreLocked & root.hasModelImage
-            $run lockImagePointsAction
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Green", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "∆X", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "∆Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabels (left: "Brown", right: "X", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Y", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: CanariObservedDimensionAndPopUp { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "PointSize", bold: no, small: yes) { $hidden !root.hasModelImage },
+          right: LinearSlider (min:1, max:61, ticks: 19) {
+            $intValue root.mModelPointsCircleRadius (sendContinously : yes)
             $hidden !root.hasModelImage
+  //          $enabled root.hasModelImage
           }
-          space
-          ImageObserverView (small: yes) { $hidden !root.hasModelImage $image root.lockImageView }
-        }
-      )
-      flexibleSpace ()
+        )
+        add (single:
+          hStack {
+            Button (title: "Lock Points to Model Image", small: yes) {
+              $enabled !root.mPointsAreLocked & root.hasModelImage
+              $run lockImagePointsAction
+              $hidden !root.hasModelImage
+            }
+            space
+            ImageObserverView (small: yes) { $hidden !root.hasModelImage $image root.lockImageView }
+          }
+        )
+        flexibleSpace ()
+      }
     }
+    separator
     GraphicView (minZoom: 10, maxZoom: 4000) {
       $backgroundImageData root.mModelImageData
       $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
@@ -221,9 +229,9 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   transient NSImage addZoneButtonImage dependsFrom prefs.padZoneColor ;
   stackView mPackagePageInspectorMasterView : vStack ;
   
-  stackView mPackagePage hStack set (spacing: 0) {
+  stackView mPackagePage hStack set (margins: 0) set (spacing: 0) {
     vStack set (width: 250) {
-      vStack set (leftMargin: 20) set (rightMargin: 20) set (spacing: 12) {
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8) set (spacing: 12) {
         hStack set (spacing: 0) {
           DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
           space
@@ -270,7 +278,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           ) 
         }
       }
-      Separator ()
+      separator
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
        SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
           [configurator packagePageSegmentedControl] {
@@ -286,7 +294,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         view mPackagePageInspectorMasterView
       }
     }
-    Separator ()
+    separator
     GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
       $foregroundImageOpacity root.mModelImageOpacity
@@ -679,7 +687,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $dimensionAndUnit #mPackageZoneSelectionController.yName, #mPackageZoneSelectionController.yNameUnit
         }
       )
-      separator ()
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name", bold: no, small: yes),
         right: TextField (small: yes) {
@@ -692,14 +700,14 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           space
         }
       )
-      separator ()
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
         right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {
           $selectedIndex #mPackageZoneSelectionController.zoneNumbering
         }
       )
-      separator ()
+      addSeparator ()
     }
     hStack {
       vStack {
@@ -788,7 +796,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $hidden !#mPackagePadSelectionController.padIsTraversing
         }
       )
-      separator ()
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Zone", bold: no, small: yes),
         right: TextObserverField (small: yes) { $observedValue #mPackagePadSelectionController.zoneName }
@@ -797,7 +805,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         left: StaticLabel (title: "Pad Number", bold: no, small: yes),
         right: IntObserverField (small: yes) { $observedValue #mPackagePadSelectionController.padNumber }
       )
-      separator ()
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Slave Pads", bold: no, small: yes),
         right: IntObserverField (small: yes) { $observedValue #mPackagePadSelectionController.slavePadCount }
@@ -883,7 +891,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $hidden !#mPackageSlavePadSelectionController.padIsTraversing
         }
       )
-      separator ()
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Linked to Pad", bold: no, small: yes),
         right: CanariSlavePadAssignPopUpButton [configurator configureSlavePadAssignPopUpButton] {
@@ -1004,7 +1012,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   PAGE   PROGRAM
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mProgramPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) {
+  stackView mProgramPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
       Button (title: "Load from Design", small: yes) { $run loadFromDesignAction }
       Button (title: "Run", small: yes) { $run runProgramAction }
@@ -1025,7 +1033,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) {
+  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
       Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
       space

@@ -1132,8 +1132,8 @@ import Cocoa
     self.mModelImagePointDyTextField?.bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
     self.mModelImageSecondPointXDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property)
     self.mModelImageSecondPointXTextField?.bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
-    self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointXUnit_property)
-    self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointXUnit_property)
+    self.mModelImageSecondPointYDimensionUnitPopUp?.bind_selectedTag (self.rootObject.mModelImageSecondPointYUnit_property)
+    self.mModelImageSecondPointYTextField?.bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
     self.mLockImageView?.bind_image (self.rootObject.lockImageView_property)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property)
   //--------------------------- Install multiple bindings
