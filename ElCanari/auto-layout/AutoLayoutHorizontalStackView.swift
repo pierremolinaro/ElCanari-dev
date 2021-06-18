@@ -23,6 +23,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   //····················································································································
 
+  final func appendVerticalSeparator () {
+    let separator = AutoLayoutVerticalSeparator ()
+    self.appendView (separator)
+  }
+
+  //····················································································································
+
   private var mConstraints = [NSLayoutConstraint] ()
 
   override func updateConstraints () {
@@ -48,4 +55,34 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate final class AutoLayoutVerticalSeparator : NSBox, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect (origin: NSPoint (), size: NSSize (width: 0, height: 10)))
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+    self.boxType = .separator
+  }
+
+  //····················································································································
+
+  required init? (coder inCoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------

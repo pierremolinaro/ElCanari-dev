@@ -222,65 +222,71 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   stackView mPackagePageInspectorMasterView : vStack ;
   
   stackView mPackagePage hStack set (spacing: 0) {
-    vStack set (width: 250) set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-      hStack set (spacing: 0) {
-        DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
-        space
-        DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
-        space
-        DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
+    vStack set (width: 250) {
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (spacing: 12) {
+        hStack set (spacing: 0) {
+          DragSourceButton (tooltip: "Add Segment") [configurator addPackageSegment] { $image self.addSegmentButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Bezier") [configurator addPackageBezier] { $image self.addBezierButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Oval") [configurator addPackageOval] { $image self.addOvalButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Arc") [configurator addPackageArc] { $image self.addArcButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Master Pad") [configurator addPackageMasterPad] { $image self.addMasterPadButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Slave Pad") [configurator addPackageSlavePad] { $image self.addSlavePadButtonImage $enabled root.packagePads.count > 0 }
+          space
+          DragSourceButton (tooltip: "Add Zone") [configurator addPackageZone] { $image self.addZoneButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Guide") [configurator addPackageGuide] { $image self.addGuideButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Dimension") [configurator addPackageDimension] { $image self.addDimensionButtonImage }
+        }
+        TwoColumnsGridView {
+          addCenterYAligned (
+            left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
+            right: LinearSlider (min:0, max:1, ticks: 11) {
+              $doubleValue root.mModelImageOpacity (sendContinously:yes)
+              $enabled root.hasModelImage
+            }
+          )
+          addFirstBaseLineAligned (
+            left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
+            right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
+          ) 
+          addFirstBaseLineAligned (
+            left: space,
+            right: hStack {
+               StaticLabel (title: "From", bold: no, small: yes) { $hidden !root.counterClockNumbering}
+               IntField (width: 45) {
+                 set (min: 0)
+                 set (max: 360)
+                 set (format: "##0°")
+                 $value root.counterClockNumberingStartAngle (sendContinously : yes)
+                 $hidden !root.counterClockNumbering
+               }
+            }
+          ) 
+        }
       }
-      TwoColumnsGridView {
-        addCenterYAligned (
-          left: StaticLabel (title: "Model Image Opacity", bold: no, small: yes),
-          right: LinearSlider (min:0, max:1, ticks: 11) {
-            $doubleValue root.mModelImageOpacity (sendContinously:yes)
-            $enabled root.hasModelImage
-          }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Auto Numbering", bold: no, small: yes),
-          right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
-        ) 
-        addFirstBaseLineAligned (
-          left: space,
-          right: hStack {
-             StaticLabel (title: "From", bold: no, small: yes) { $hidden !root.counterClockNumbering}
-             IntField (width: 45) {
-               set (min: 0)
-               set (max: 360)
-               set (format: "##0°")
-               $value root.counterClockNumberingStartAngle (sendContinously : yes)
-               $hidden !root.counterClockNumbering
-             }
-          }
-        ) 
+      Separator ()
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+       SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
+          [configurator packagePageSegmentedControl] {
+          makeWidthExpandable ()
+          addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
+          addPage (title: "", pageView: stackView mGridZoomInspectorView)
+          addPage (title: "", pageView: stackView mDisplayInspectorView)
+          addPage (title: "", pageView: stackView mIssuesInspectorView)
+          $selectedPage root.selectedInspector
+          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
+          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
+        }
+        view mPackagePageInspectorMasterView
       }
-      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
-        [configurator packagePageSegmentedControl] {
-        makeWidthExpandable ()
-        addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
-        addPage (title: "", pageView: stackView mGridZoomInspectorView)
-        addPage (title: "", pageView: stackView mDisplayInspectorView)
-        addPage (title: "", pageView: stackView mIssuesInspectorView)
-        $selectedPage root.selectedInspector
-        $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
-        $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
-      }
-      view mPackagePageInspectorMasterView
     }
+    Separator ()
     GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
       $foregroundImageOpacity root.mModelImageOpacity

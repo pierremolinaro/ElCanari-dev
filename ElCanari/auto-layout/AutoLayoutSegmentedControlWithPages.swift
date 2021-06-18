@@ -27,6 +27,9 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
     self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
+    if #available (OSX 10.13, *), inEqualWidth {
+//      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
+    }
   }
 
   //····················································································································
@@ -77,10 +80,13 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
   override func resizeSubviews (withOldSize oldSize : NSSize) {
     super.resizeSubviews (withOldSize: oldSize)
     //Swift.print ("\(self.bounds)")
-    if self.mEqualWidth, self.segmentCount > 1 {
-      let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
-      for i in 0 ..< self.segmentCount {
-        self.setWidth (width, forSegment: i)
+    if #available (OSX 10.13, *) {
+    }else{
+      if self.mEqualWidth, self.segmentCount > 1 {
+        let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
+        for i in 0 ..< self.segmentCount {
+          self.setWidth (width, forSegment: i)
+        }
       }
     }
   }

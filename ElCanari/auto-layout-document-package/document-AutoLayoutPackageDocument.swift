@@ -554,8 +554,7 @@ import Cocoa
       view_0.appendView (view_0_0)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutSeparator ()
-    vStackView.appendView (view_1)
+    vStackView.appendHorizontalSeparator ()
     let view_2 = mPageMasterView
     vStackView.appendView (view_2)
     return vStackView
@@ -629,93 +628,106 @@ import Cocoa
       .set (spacing: 0)
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
-      .set (leftMargin: 20)
-      .set (rightMargin: 20)
-      .set (bottomMargin: 20)
-      .set (spacing: 12)
     do{
-      let view_0_0 = AutoLayoutHorizontalStackView ()
-        .set (spacing: 0)
+      let view_0_0 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (spacing: 12)
       do{
-        let view_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
-          .bind_image (self.addSegmentButtonImage_property)
-        self.configure_addPackageSegment (view_0_0_0) // Configurator
+        let view_0_0_0 = AutoLayoutHorizontalStackView ()
+          .set (spacing: 0)
+        do{
+          let view_0_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
+            .bind_image (self.addSegmentButtonImage_property)
+          self.configure_addPackageSegment (view_0_0_0_0) // Configurator
+          view_0_0_0.appendView (view_0_0_0_0)
+          let view_0_0_0_1 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_1)
+          let view_0_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
+            .bind_image (self.addBezierButtonImage_property)
+          self.configure_addPackageBezier (view_0_0_0_2) // Configurator
+          view_0_0_0.appendView (view_0_0_0_2)
+          let view_0_0_0_3 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_3)
+          let view_0_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
+            .bind_image (self.addOvalButtonImage_property)
+          self.configure_addPackageOval (view_0_0_0_4) // Configurator
+          view_0_0_0.appendView (view_0_0_0_4)
+          let view_0_0_0_5 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_5)
+          let view_0_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Arc")
+            .bind_image (self.addArcButtonImage_property)
+          self.configure_addPackageArc (view_0_0_0_6) // Configurator
+          view_0_0_0.appendView (view_0_0_0_6)
+          let view_0_0_0_7 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_7)
+          let view_0_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
+            .bind_image (self.addMasterPadButtonImage_property)
+          self.configure_addPackageMasterPad (view_0_0_0_8) // Configurator
+          view_0_0_0.appendView (view_0_0_0_8)
+          let view_0_0_0_9 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_9)
+          let view_0_0_0_10 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
+            .bind_image (self.addSlavePadButtonImage_property)
+            .bind_enabled (
+              observedObjects: [self.rootObject.packagePads_property.count_property],
+              computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
+            )
+          self.configure_addPackageSlavePad (view_0_0_0_10) // Configurator
+          view_0_0_0.appendView (view_0_0_0_10)
+          let view_0_0_0_11 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_11)
+          let view_0_0_0_12 = AutoLayoutDragSourceButton (tooltip: "Add Zone")
+            .bind_image (self.addZoneButtonImage_property)
+          self.configure_addPackageZone (view_0_0_0_12) // Configurator
+          view_0_0_0.appendView (view_0_0_0_12)
+          let view_0_0_0_13 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_13)
+          let view_0_0_0_14 = AutoLayoutDragSourceButton (tooltip: "Add Guide")
+            .bind_image (self.addGuideButtonImage_property)
+          self.configure_addPackageGuide (view_0_0_0_14) // Configurator
+          view_0_0_0.appendView (view_0_0_0_14)
+          let view_0_0_0_15 = AutoLayoutFlexibleSpace ()
+          view_0_0_0.appendView (view_0_0_0_15)
+          let view_0_0_0_16 = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
+            .bind_image (self.addDimensionButtonImage_property)
+          self.configure_addPackageDimension (view_0_0_0_16) // Configurator
+          view_0_0_0.appendView (view_0_0_0_16)
+        }
         view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutFlexibleSpace ()
+        let view_0_0_1 = AutoLayoutTwoColumnsGridView ()
+          .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+          .addFirstBaseLineAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
+          .addFirstBaseLineAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
         view_0_0.appendView (view_0_0_1)
-        let view_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
-          .bind_image (self.addBezierButtonImage_property)
-        self.configure_addPackageBezier (view_0_0_2) // Configurator
-        view_0_0.appendView (view_0_0_2)
-        let view_0_0_3 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_3)
-        let view_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
-          .bind_image (self.addOvalButtonImage_property)
-        self.configure_addPackageOval (view_0_0_4) // Configurator
-        view_0_0.appendView (view_0_0_4)
-        let view_0_0_5 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_5)
-        let view_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Arc")
-          .bind_image (self.addArcButtonImage_property)
-        self.configure_addPackageArc (view_0_0_6) // Configurator
-        view_0_0.appendView (view_0_0_6)
-        let view_0_0_7 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_7)
-        let view_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Master Pad")
-          .bind_image (self.addMasterPadButtonImage_property)
-        self.configure_addPackageMasterPad (view_0_0_8) // Configurator
-        view_0_0.appendView (view_0_0_8)
-        let view_0_0_9 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_9)
-        let view_0_0_10 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
-          .bind_image (self.addSlavePadButtonImage_property)
-          .bind_enabled (
-            observedObjects: [self.rootObject.packagePads_property.count_property],
-            computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
-          )
-        self.configure_addPackageSlavePad (view_0_0_10) // Configurator
-        view_0_0.appendView (view_0_0_10)
-        let view_0_0_11 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_11)
-        let view_0_0_12 = AutoLayoutDragSourceButton (tooltip: "Add Zone")
-          .bind_image (self.addZoneButtonImage_property)
-        self.configure_addPackageZone (view_0_0_12) // Configurator
-        view_0_0.appendView (view_0_0_12)
-        let view_0_0_13 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_13)
-        let view_0_0_14 = AutoLayoutDragSourceButton (tooltip: "Add Guide")
-          .bind_image (self.addGuideButtonImage_property)
-        self.configure_addPackageGuide (view_0_0_14) // Configurator
-        view_0_0.appendView (view_0_0_14)
-        let view_0_0_15 = AutoLayoutFlexibleSpace ()
-        view_0_0.appendView (view_0_0_15)
-        let view_0_0_16 = AutoLayoutDragSourceButton (tooltip: "Add Dimension")
-          .bind_image (self.addDimensionButtonImage_property)
-        self.configure_addPackageDimension (view_0_0_16) // Configurator
-        view_0_0.appendView (view_0_0_16)
       }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTwoColumnsGridView ()
-        .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true, small: true)
-        .makeWidthExpandable ()
-        .addPage (title: "", pageView: self.mSelectedObjectsInspectorView)
-        .addPage (title: "", pageView: self.mGridZoomInspectorView)
-        .addPage (title: "", pageView: self.mDisplayInspectorView)
-        .addPage (title: "", pageView: self.mIssuesInspectorView)
-        .bind_selectedPage (self.rootObject.selectedInspector_property)
-        .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
-        .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
-      self.configure_packagePageSegmentedControl (view_0_2) // Configurator
+      view_0.appendHorizontalSeparator ()
+      let view_0_2 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (bottomMargin: 20)
+        .set (spacing: 12)
+      do{
+        let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true, small: true)
+          .makeWidthExpandable ()
+          .addPage (title: "", pageView: self.mSelectedObjectsInspectorView)
+          .addPage (title: "", pageView: self.mGridZoomInspectorView)
+          .addPage (title: "", pageView: self.mDisplayInspectorView)
+          .addPage (title: "", pageView: self.mIssuesInspectorView)
+          .bind_selectedPage (self.rootObject.selectedInspector_property)
+          .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
+          .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
+        self.configure_packagePageSegmentedControl (view_0_2_0) // Configurator
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = self.mPackagePageInspectorMasterView
+        view_0_2.appendView (view_0_2_1)
+      }
       view_0.appendView (view_0_2)
-      let view_0_3 = self.mPackagePageInspectorMasterView
-      view_0.appendView (view_0_3)
     }
     hStackView.appendView (view_0)
-    let view_1 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+    hStackView.appendVerticalSeparator ()
+    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
       .bind_foregroundImageData (self.rootObject.mModelImageData_property)
       .bind_foregroundImageOpacity (self.rootObject.mModelImageOpacity_property)
       .bind_horizontalFlip (self.rootObject.horizontalFlip_property)
@@ -734,9 +746,9 @@ import Cocoa
       .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
       .bind_graphic_controller (self.mPackageObjectsController)
-    self.mPackageGraphicView = view_1 // Outlet
-    self.configure_packageGraphicView (view_1) // Configurator
-    hStackView.appendView (view_1)
+    self.mPackageGraphicView = view_2 // Outlet
+    self.configure_packageGraphicView (view_2) // Configurator
+    hStackView.appendView (view_2)
     return hStackView
   } ()
 

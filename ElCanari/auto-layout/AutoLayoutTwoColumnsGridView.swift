@@ -90,19 +90,19 @@ final class AutoLayoutTwoColumnsGridView : AutoLayoutVerticalStackView {
   //····················································································································
 
   final func separator () -> Self {
-    self.appendView (AutoLayoutSeparator ())
+    self.appendHorizontalSeparator ()
     return self
   }
 
   //····················································································································
 
-  final func separator (withTitle inTitle : String) -> Self {
-    let hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, small: true))
-    hStack.appendView (AutoLayoutSeparator ())
-    self.appendView (hStack)
-    return self
-  }
+//  final func separator (withTitle inTitle : String) -> Self {
+//    let hStack = AutoLayoutHorizontalStackView ()
+//    hStack.appendView (AutoLayoutStaticLabel (title: inTitle, bold: true, small: true))
+//    hStack.appendHorizontalSeparator ()
+//    self.appendView (hStack)
+//    return self
+//  }
 
   //····················································································································
 

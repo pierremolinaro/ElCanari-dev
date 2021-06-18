@@ -14,8 +14,13 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.orientation = inOrientation
     self.distribution = .fill
+    self.edgeInsets.left   = 0.0
+    self.edgeInsets.top    = 0.0
+    self.edgeInsets.right  = 0.0
+    self.edgeInsets.bottom = 0.0
   }
 
   //····················································································································
@@ -91,13 +96,13 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func noMargin () -> Self {
-    self.edgeInsets.left   = 0.0
-    self.edgeInsets.top    = 0.0
-    self.edgeInsets.right  = 0.0
-    self.edgeInsets.bottom = 0.0
-    return self
-  }
+//  final func noMargin () -> Self {
+//    self.edgeInsets.left   = 0.0
+//    self.edgeInsets.top    = 0.0
+//    self.edgeInsets.right  = 0.0
+//    self.edgeInsets.bottom = 0.0
+//    return self
+//  }
 
   //····················································································································
 
@@ -112,36 +117,36 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func set (topMargin inValue : CGFloat) -> Self {
-    self.edgeInsets.top = inValue
+  final func set (topMargin inValue : Int) -> Self {
+    self.edgeInsets.top = CGFloat (inValue)
     return self
   }
 
   //····················································································································
 
-  final func set (bottomMargin inValue : CGFloat) -> Self {
-    self.edgeInsets.bottom = inValue
+  final func set (bottomMargin inValue : Int) -> Self {
+    self.edgeInsets.bottom = CGFloat (inValue)
     return self
   }
 
   //····················································································································
 
-  final func set (leftMargin inValue : CGFloat) -> Self {
-    self.edgeInsets.left = inValue
+  final func set (leftMargin inValue : Int) -> Self {
+    self.edgeInsets.left = CGFloat (inValue)
     return self
   }
 
   //····················································································································
 
-  final func set (rightMargin inValue : CGFloat) -> Self {
-    self.edgeInsets.right = inValue
+  final func set (rightMargin inValue : Int) -> Self {
+    self.edgeInsets.right = CGFloat (inValue)
     return self
   }
 
   //····················································································································
 
-  final func setSpacing (_ inValue : CGFloat) -> Self {
-    self.spacing = inValue
+  final func setSpacing (_ inValue : Int) -> Self {
+    self.spacing = CGFloat (inValue)
     return self
   }
 
