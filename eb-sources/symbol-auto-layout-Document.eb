@@ -1,0 +1,258 @@
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass root SymbolRoot stackView mDocumentMainView {
+
+//xibdocument SymbolDocument root SymbolRoot {
+
+//----------------------------------------------------------------------------------------------------------------------
+//   MAIN VIEW
+//----------------------------------------------------------------------------------------------------------------------
+ 
+  stackView mPageMasterView vStack { }
+ 
+  stackView mDocumentMainView vStack set (spacing: 0) {
+    hStack set (margins: 8) {
+      vStack {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
+          addPage (title: "Symbol", pageView: stackView mSymbolPage)
+          addPage (title: "Infos", pageView: stackView mInfosPage)
+          $selectedPage root.selectedPageIndex
+        }
+        hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+      }
+      vStack {
+        SignatureField { $signature signature }
+        StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+      }
+      vStack {
+        VersionField { $version version $versionShouldChange versionShouldChange }
+        StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+      }
+      space
+      vStack {
+        hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
+        StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
+      }
+    }
+    separator
+    stackViewRef mPageMasterView
+  }
+
+  transient NSImage statusImage dependsFrom root.issues ;
+  transient String statusMessage dependsFrom root.issues ;
+  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+//--- Selected Page
+//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
+//  outlet NSView mMasterView ;
+//  outlet CanariViewWithKeyView mSymbolPageView ;
+//  outlet CanariViewWithKeyView mInfosPageView ;
+
+//--- Signature
+//  outlet CanariSignatureField mSignatureTextField $signature signature ;
+
+//--- Version
+//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   SYMBOL
+//----------------------------------------------------------------------------------------------------------------------
+
+  arrayController #mSymbolObjectsController : root.symbolObjects ;
+
+  transient NSImage addSegmentButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addBezierButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addOvalButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addSolidOvalButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addSolidRectButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addTextButtonImage dependsFrom prefs.symbolColor ;
+  transient NSImage addPinButtonImage dependsFrom prefs.symbolColor ;
+
+  stackView mSymbolPageInspectorMasterView : vStack ;
+
+  stackView mSymbolPage hStack set (margins: 0) set (spacing: 0) {
+    vStack set (width: 250) {
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8) set (spacing: 12) {
+        hStack set (spacing: 0) {
+          DragSourceButton (tooltip: "Add Segment") [configurator addSymbolSegment] { $image self.addSegmentButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Bezier") [configurator addSymbolBezier] { $image self.addBezierButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Solid Oval") [configurator addSymbolSolidOval] { $image self.addSolidOvalButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Oval") [configurator addSymbolOval] { $image self.addOvalButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Solid Rect") [configurator addSymbolSolidRect] { $image self.addSolidRectButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Text") [configurator addSymbolText] { $image self.addTextButtonImage }
+          space
+          DragSourceButton (tooltip: "Add Pin") [configurator addSymbolPin] { $image self.addPinButtonImage }
+          space
+        }
+     }
+     separator
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+       SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorMasterView, equalWidth: yes, small: yes)
+          [configurator packagePageSegmentedControl] {
+          makeWidthExpandable ()
+          addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
+          addPage (title: "", pageView: stackView mGridZoomInspectorView)
+          addPage (title: "", pageView: stackView mIssuesInspectorView)
+          $selectedPage root.selectedInspector
+        }
+        view mSymbolPageInspectorMasterView
+      }
+    }
+    separator
+    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
+      $horizontalFlip root.horizontalFlip
+      $verticalFlip root.verticalFlip
+      $graphicController #mSymbolObjectsController
+      $gridStyle root.gridStyle
+      $gridDisplayFactor root.gridDisplay
+      $gridLineColor prefs.lineColorOfSymbolGrid
+      $gridCrossColor prefs.crossColorOfSymbolGrid
+      $zoom root.zoom
+      $backColor prefs.symbolBackgroundColor
+      $xPlacardUnit root.xPlacardUnit
+      $yPlacardUnit root.yPlacardUnit
+    }
+  }
+  
+//----------------------------------------------------------------------------------------------------------------------
+//   Selected objects inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mSelectedObjectsInspectorView vStack { }
+
+
+  
+//--- Inspector segment control
+  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
+
+//--- Zoom and Flip Inspector
+  outlet CanariViewWithKeyView mSymbolZoomFlipInspectorView ;
+  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
+  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
+  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
+  outlet EBPopUpButton mGridDisplayFactorPopUpButton $selectedTag root.gridDisplay ;
+  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
+  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
+  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mLineColorOfSymbolGridColorWell $color prefs.lineColorOfSymbolGrid (sendContinously:no) ;
+  outlet EBColorWell mSymbolColorColorWell $color prefs.symbolColor (sendContinously:no) ;
+  outlet EBColorWell mSymbolBackgroundColorColorWell $color prefs.symbolBackgroundColor (sendContinously:no) ;
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.symbolDrawingWidthMultipliedByTen ;
+  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
+
+//--- Buttons for new elements
+  outlet CanariDragSourceButton mAddSegmentButton ;
+  outlet CanariDragSourceButton mAddBezierButton ;
+  outlet CanariDragSourceButton mAddSolidOvalButton ;
+  outlet CanariDragSourceButton mAddOvalButton ;
+  outlet CanariDragSourceButton mAddSolidRectButton ;
+  outlet CanariDragSourceButton mAddTextButton ;
+  outlet CanariDragSourceButton mAddPinButton ;
+
+//--- Symbol display
+
+  outlet EBEnclosingGraphicView mComposedSymbolView
+    $horizontalFlip root.horizontalFlip
+    $verticalFlip root.verticalFlip
+    $graphicController #mSymbolObjectsController
+    $gridStyle root.gridStyle
+    $gridDisplayFactor root.gridDisplay
+    $gridLineColor prefs.lineColorOfSymbolGrid
+    $gridCrossColor prefs.crossColorOfSymbolGrid
+    $zoom root.zoom
+    $backColor prefs.symbolBackgroundColor
+    $xPlacardUnit root.xPlacardUnit
+    $yPlacardUnit root.yPlacardUnit
+  ;
+
+//  outlet EBScrollView mComposedSymbolScrollView ;
+
+//--- Inspector views
+  outlet NSView mSymbolRootInspectorView ;
+
+  outlet CanariViewWithKeyView mSymbolBaseInspectorView ;
+
+  outlet CanariViewWithKeyView mTextInspectorView ;
+  selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
+  outlet EBTextField mSymbolTextValueTextField
+    $value #mSymbolTextSelectionController.text (sendContinously : yes)
+  ;
+  outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
+  ;
+
+  outlet CanariViewWithKeyView mPinInspectorView ;
+  selectionController SymbolPin #mSymbolPinSelectionController : #mSymbolObjectsController.selectedArray ;
+  outlet CanariEnumSegmentedControl mSymbolPinLabelHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolPinSelectionController.nameHorizontalAlignment
+  ;
+  outlet CanariEnumSegmentedControl mSymbolPinNumberHorizontalAlignmentSegmentedControl
+    $selectedSegment #mSymbolPinSelectionController.numberHorizontalAlignment
+  ;
+  outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
+    $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
+  ;
+  outlet EBTextField mSymbolPinLabelNameTextField
+    $value #mSymbolPinSelectionController.name (sendContinously : yes)
+  ;
+
+//--- Issues
+  outlet CanariViewWithKeyView mSymbolIssueInspectorView ;
+
+  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
+//  transient NSImage statusImage dependsFrom root.issues ;
+//  transient String statusMessage dependsFrom root.issues ;
+//  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+
+  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
+
+  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
+  outlet IssueTableView mIssueTableView $issues root.issues ;
+  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Zoom and flip inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mGridZoomInspectorView vStack { }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Issue inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mIssuesInspectorView vStack { }
+
+//----------------------------------------------------------------------------------------------------------------------
+//   PAGE   INFOS
+//----------------------------------------------------------------------------------------------------------------------
+
+ stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+    hStack {
+      Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
+      space
+    }
+    hStack {
+      vStack { StaticLabel (title: "Comments", bold: yes, small: no) space }
+      TextView (editable: yes) { $value root.comments }
+    }
+  }
+
+  action resetVersionAction ;
+
+}
+
+//----------------------------------------------------------------------------*
