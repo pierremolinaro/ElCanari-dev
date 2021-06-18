@@ -9,10 +9,10 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    super.init (frame: NSRect (x: 0, y: 14, width: 83, height: 19))  // Required by ElCapitan
-//    super.init (frame: NSRect ())
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false

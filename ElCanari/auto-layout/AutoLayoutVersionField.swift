@@ -9,15 +9,14 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-//    super.init (frame: NSRect (x: 0, y: 14, width: 42, height: 19))  // Required by ElCapitan
-    super.init (frame: NSRect ())  // Required by ElCapitan
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.isEditable = false
     self.isEnabled = true
     self.drawsBackground = false
     self.isBordered = false
- //   self.controlSize = .small
     self.alignment = .center
     self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize, weight: .semibold)
   }

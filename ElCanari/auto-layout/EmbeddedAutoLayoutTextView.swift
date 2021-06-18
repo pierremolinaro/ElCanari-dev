@@ -54,7 +54,6 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
     self.mTextStorage.removeLayoutManager (self.mLayoutManager)
     self.textContainer?.layoutManager = nil
     self.textContainer = nil
-//    self.layoutManager = nil
     super.ebCleanUp ()
   }
 
@@ -67,7 +66,6 @@ final class EmbeddedAutoLayoutTextView : NSTextView, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    Swift.print ("intrinsicContentSize \(self)")
     let textContainer = self.textContainer!
     let layoutManager = self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)
