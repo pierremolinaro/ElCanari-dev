@@ -722,8 +722,6 @@ import Cocoa
       let view_0_2 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
-        .set (bottomMargin: 20)
-        .set (spacing: 12)
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true, small: true)
           .makeWidthExpandable ()
@@ -736,10 +734,17 @@ import Cocoa
           .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
         self.configure_packagePageSegmentedControl (view_0_2_0) // Configurator
         view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = self.mPackagePageInspectorMasterView
-        view_0_2.appendView (view_0_2_1)
       }
       view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (spacing: 12)
+      do{
+        let view_0_3_0 = self.mPackagePageInspectorMasterView
+        view_0_3.appendView (view_0_3_0)
+      }
+      view_0.appendView (view_0_3)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -826,7 +831,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "Segment inspector", bold: true, small: true)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Segment Inspector", bold: true, small: true)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -2889,7 +2894,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_152 () -> NSView {
-    let view = AutoLayoutTextObserverField (small: true)
+    let view = AutoLayoutTextObserverField (bold: true, small: true)
       .bind_observedValue (self.mPackagePadSelectionController.zoneName_property)
     return view
   }

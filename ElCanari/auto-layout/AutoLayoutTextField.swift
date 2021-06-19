@@ -71,6 +71,13 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   }
 
   //····················································································································
+
+  final func makeWidthExpandable () -> Self {
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    return self
+  }
+
+  //····················································································································
   //  value binding
   //····················································································································
 

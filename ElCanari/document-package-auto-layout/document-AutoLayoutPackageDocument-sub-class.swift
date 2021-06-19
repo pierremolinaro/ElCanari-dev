@@ -42,11 +42,6 @@ import Cocoa
   //    buildUserInterface: customization of interface
   //····················································································································
 
-//  fileprivate var mPackageColorObserver = EBOutletEvent ()
-//  fileprivate var mPadColorObserver = EBOutletEvent ()
-
-  //····················································································································
-
   override func ebBuildUserInterface () {
   //--- Model image points
     self.setupImagePointsAndTheirObservers ()
@@ -298,8 +293,6 @@ import Cocoa
         by: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointXOnLock),
         yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
       )
-//      self.mModelImageView?.mBackgroundImageAffineTransform = af
-//      self.mComposedPackageView?.mForegroundImageAffineTransform = af
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
       self.mPackageObjectsController.setBackgroundImageAffineTransform (af)
     }

@@ -18,6 +18,9 @@ func transient_AutoLayoutSymbolDocument_addPinButtonImage (
 ) -> NSImage {
 //--- START OF USER ZONE 2
         let temporaryObject = SymbolPin (nil)
+        temporaryObject.xName = 2_286_00 / 2
+        temporaryObject.yName = 0
+        temporaryObject.yNumber = -2_286_00 / 2
         if let displayShape = temporaryObject.objectDisplay {
           let r = displayShape.boundingBox
           if !r.isEmpty {

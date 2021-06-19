@@ -124,9 +124,10 @@ extern autolayout class Button (title: String, small: Bool) $enabled $run $hidde
 
 extern autolayout class TextField (small: Bool) $enabled {
   $value property String (sendContinously : Bool)
+  func makeWidthExpandable ()
 }
 
-extern autolayout class TextObserverField (small: Bool) $enabled {
+extern autolayout class TextObserverField (bold: Bool, small: Bool) $enabled {
   $observedValue transient String
 }
 
@@ -223,6 +224,11 @@ extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $h
   $setter6 property Int, property Int, property Int, property Int, property Int, property Int
   $setter7 property Int, property Int, property Int, property Int, property Int, property Int, property Int
   $setter8 property Int, property Int, property Int, property Int, property Int, property Int, property Int, property Int
+}
+
+extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) {
+  func makeWidthExpandable ()
+  $alignment property HorizontalAlignment
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

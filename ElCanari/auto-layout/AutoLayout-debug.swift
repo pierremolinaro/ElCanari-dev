@@ -18,7 +18,7 @@ let SEGMENTED_CONTROL_STYLE = NSSegmentedControl.Style.rounded
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let DEBUG_FILL_COLOR = NSColor.gray.withAlphaComponent (0.05)
+let DEBUG_FILL_COLOR = NSColor.gray.withAlphaComponent (0.025)
 let DEBUG_STROKE_COLOR = NSColor.orange
 
 //----------------------------------------------------------------------------------------------------------------------

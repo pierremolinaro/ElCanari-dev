@@ -14,7 +14,7 @@ let PMSymbolComment = "PMSymbolComment"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.symbol")
+let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.symbol")
 
 //----------------------------------------------------------------------------------------------------------------------
 

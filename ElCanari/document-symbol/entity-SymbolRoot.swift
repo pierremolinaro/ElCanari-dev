@@ -77,6 +77,18 @@ protocol SymbolRoot_noIssue : AnyObject {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+protocol SymbolRoot_segmentedControlSegmentIssueImage : AnyObject {
+  var segmentedControlSegmentIssueImage : NSImage? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+protocol SymbolRoot_segmentedControlSegmentIssueString : AnyObject {
+  var segmentedControlSegmentIssueString : String? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //    Entity: SymbolRoot
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -92,7 +104,9 @@ final class SymbolRoot : EBManagedObject,
          SymbolRoot_yPlacardUnit,
          SymbolRoot_selectedPageIndex,
          SymbolRoot_issues,
-         SymbolRoot_noIssue {
+         SymbolRoot_noIssue,
+         SymbolRoot_segmentedControlSegmentIssueImage,
+         SymbolRoot_segmentedControlSegmentIssueString {
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -408,6 +422,52 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: segmentedControlSegmentIssueImage
+  //····················································································································
+
+  final let segmentedControlSegmentIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage_property_selection : EBSelection <NSImage> {
+    return self.segmentedControlSegmentIssueImage_property.selection
+  }
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage : NSImage? {
+    switch self.segmentedControlSegmentIssueImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueString
+  //····················································································································
+
+  final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString_property_selection : EBSelection <String> {
+    return self.segmentedControlSegmentIssueString_property.selection
+  }
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString : String? {
+    switch self.segmentedControlSegmentIssueString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -477,6 +537,50 @@ final class SymbolRoot : EBManagedObject,
       }
     }
     self.issues_property.addEBObserver (self.noIssue_property)
+  //--- Atomic property: segmentedControlSegmentIssueImage
+    self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolRoot_segmentedControlSegmentIssueImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
+  //--- Atomic property: segmentedControlSegmentIssueString
+    self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolRoot_segmentedControlSegmentIssueString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature
@@ -499,6 +603,8 @@ final class SymbolRoot : EBManagedObject,
     // self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
     // self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
     // self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
     self.symbolPins_property.setDataProvider (nil)
   //--- Unregister properties for handling signature
     self.comments_property.setSignatureObserver (observer: nil)
@@ -614,6 +720,22 @@ final class SymbolRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.noIssue_property.mObserverExplorer,
       valueExplorer: &self.noIssue_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentedControlSegmentIssueImage",
+      idx: self.segmentedControlSegmentIssueImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.segmentedControlSegmentIssueImage_property.mObserverExplorer,
+      valueExplorer: &self.segmentedControlSegmentIssueImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentedControlSegmentIssueString",
+      idx: self.segmentedControlSegmentIssueString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.segmentedControlSegmentIssueString_property.mObserverExplorer,
+      valueExplorer: &self.segmentedControlSegmentIssueString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (

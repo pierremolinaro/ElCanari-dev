@@ -18,9 +18,9 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 extension AutoLayoutSymbolDocument {
-  final func configure_packagePageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+  final func linker_issueTableViewToGraphicView (_ in_mSymbolIssueTableView : AutoLayoutCanariIssueTableView?, _ in_mSymbolGraphicView : AutoLayoutGraphicView?) {
 //--- START OF USER ZONE 2
-
+        in_mSymbolIssueTableView?.register (issueDisplayView: in_mSymbolGraphicView)
 //--- END OF USER ZONE 2
   }
 }

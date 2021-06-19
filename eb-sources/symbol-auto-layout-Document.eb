@@ -42,26 +42,6 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
   transient String statusMessage dependsFrom root.issues ;
   transient MetadataStatus metadataStatus dependsFrom root.issues ;
 
-
- 
- 
- 
- 
- 
- 
-  
-//--- Selected Page
-//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
-//  outlet NSView mMasterView ;
-//  outlet CanariViewWithKeyView mSymbolPageView ;
-//  outlet CanariViewWithKeyView mInfosPageView ;
-
-//--- Signature
-//  outlet CanariSignatureField mSignatureTextField $signature signature ;
-
-//--- Version
-//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
-
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   SYMBOL
 //----------------------------------------------------------------------------------------------------------------------
@@ -95,24 +75,27 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
           DragSourceButton (tooltip: "Add Text") [configurator addSymbolText] { $image self.addTextButtonImage }
           space
           DragSourceButton (tooltip: "Add Pin") [configurator addSymbolPin] { $image self.addPinButtonImage }
-          space
         }
      }
      separator
-      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+     vStack set (leftMargin: 20) set (rightMargin: 20) {
        SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorMasterView, equalWidth: yes, small: yes)
-          [configurator packagePageSegmentedControl] {
+          [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
           makeWidthExpandable ()
           addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", pageView: stackView mGridZoomInspectorView)
           addPage (title: "", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
-        }
+          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 2)
+          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 2)
+         }
+      }
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
         view mSymbolPageInspectorMasterView
       }
     }
     separator
-    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
+    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mSymbolGraphicView configurator symbolGraphicView] {
       $horizontalFlip root.horizontalFlip
       $verticalFlip root.verticalFlip
       $graphicController #mSymbolObjectsController
@@ -131,110 +114,174 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
 //   Selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedObjectsInspectorView vStack { }
+  stackView mSelectedObjectsInspectorView vStack {
+    ObjectInspectorView {
+      addObjectInspector (forEntity: entity SymbolText, inspectorView: stackView mSymbolTextInspectorView)
+      addObjectInspector (forEntity: entity SymbolPin, inspectorView: stackView mSymbolPinInspectorView)
+      $graphicController #mSymbolObjectsController
+    }
+    space
+  }
 
-
-  
-//--- Inspector segment control
-  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
-
-//--- Zoom and Flip Inspector
-  outlet CanariViewWithKeyView mSymbolZoomFlipInspectorView ;
-  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
-  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
-  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
-  outlet EBPopUpButton mGridDisplayFactorPopUpButton $selectedTag root.gridDisplay ;
-  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
-  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
-  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid (sendContinously:no) ;
-  outlet EBColorWell mLineColorOfSymbolGridColorWell $color prefs.lineColorOfSymbolGrid (sendContinously:no) ;
-  outlet EBColorWell mSymbolColorColorWell $color prefs.symbolColor (sendContinously:no) ;
-  outlet EBColorWell mSymbolBackgroundColorColorWell $color prefs.symbolBackgroundColor (sendContinously:no) ;
-  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.symbolDrawingWidthMultipliedByTen ;
-  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
-
-//--- Buttons for new elements
-  outlet CanariDragSourceButton mAddSegmentButton ;
-  outlet CanariDragSourceButton mAddBezierButton ;
-  outlet CanariDragSourceButton mAddSolidOvalButton ;
-  outlet CanariDragSourceButton mAddOvalButton ;
-  outlet CanariDragSourceButton mAddSolidRectButton ;
-  outlet CanariDragSourceButton mAddTextButton ;
-  outlet CanariDragSourceButton mAddPinButton ;
-
-//--- Symbol display
-
-  outlet EBEnclosingGraphicView mComposedSymbolView
-    $horizontalFlip root.horizontalFlip
-    $verticalFlip root.verticalFlip
-    $graphicController #mSymbolObjectsController
-    $gridStyle root.gridStyle
-    $gridDisplayFactor root.gridDisplay
-    $gridLineColor prefs.lineColorOfSymbolGrid
-    $gridCrossColor prefs.crossColorOfSymbolGrid
-    $zoom root.zoom
-    $backColor prefs.symbolBackgroundColor
-    $xPlacardUnit root.xPlacardUnit
-    $yPlacardUnit root.yPlacardUnit
-  ;
-
-//  outlet EBScrollView mComposedSymbolScrollView ;
-
-//--- Inspector views
-  outlet NSView mSymbolRootInspectorView ;
-
-  outlet CanariViewWithKeyView mSymbolBaseInspectorView ;
-
-  outlet CanariViewWithKeyView mTextInspectorView ;
+//--- Symbol Text inspector
   selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
-  outlet EBTextField mSymbolTextValueTextField
-    $value #mSymbolTextSelectionController.text (sendContinously : yes)
-  ;
-  outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
-    $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
-  ;
 
-  outlet CanariViewWithKeyView mPinInspectorView ;
+  stackView mSymbolTextInspectorView vStack {
+    hStack { space StaticLabel (title: "Text Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Pin Name", bold: no, small: yes),
+        right: TextField (small: yes) { makeWidthExpandable () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Alignment", bold: no, small: yes),
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolTextSelectionController.horizontalAlignment}
+      )
+    }
+  }
+
+
+//--- Symbol Pin inspector
   selectionController SymbolPin #mSymbolPinSelectionController : #mSymbolObjectsController.selectedArray ;
-  outlet CanariEnumSegmentedControl mSymbolPinLabelHorizontalAlignmentSegmentedControl
-    $selectedSegment #mSymbolPinSelectionController.nameHorizontalAlignment
-  ;
-  outlet CanariEnumSegmentedControl mSymbolPinNumberHorizontalAlignmentSegmentedControl
-    $selectedSegment #mSymbolPinSelectionController.numberHorizontalAlignment
-  ;
-  outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
-    $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
-  ;
-  outlet EBTextField mSymbolPinLabelNameTextField
-    $value #mSymbolPinSelectionController.name (sendContinously : yes)
-  ;
 
-//--- Issues
-  outlet CanariViewWithKeyView mSymbolIssueInspectorView ;
+  stackView mSymbolPinInspectorView vStack {
+    hStack { space StaticLabel (title: "Pin Inspector", bold: yes, small: yes) space }
+    TwoColumnsGridView {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Value", bold: no, small: yes),
+        right: TextField (small: yes) { makeWidthExpandable () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Name Alignment", bold: no, small: yes),
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolPinSelectionController.nameHorizontalAlignment}
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Number Alignment", bold: no, small: yes),
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment}
+      )
+      add (single: hStack {
+        Switch (title : "Pin is visible in schematics", small: yes) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}
+        space
+      })
+    }
+  }
+ 
+//--- Inspector views
+//  outlet NSView mSymbolRootInspectorView ;
 
-  outlet EBImageObserverView mStatusImageViewInToolbar $image self.statusImage $tooltip self.statusMessage ;
-//  transient NSImage statusImage dependsFrom root.issues ;
-//  transient String statusMessage dependsFrom root.issues ;
-//  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+//  outlet CanariViewWithKeyView mSymbolBaseInspectorView ;
 
-  outlet EBTextObserverField mIssueTextField $valueObserver self.statusMessage ;
+//  outlet CanariViewWithKeyView mTextInspectorView ;
+//  outlet EBTextField mSymbolTextValueTextField
+//    $value #mSymbolTextSelectionController.text (sendContinously : yes)
+//  ;
+//  outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
+//    $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
+//  ;
 
-  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
-  outlet IssueTableView mIssueTableView $issues root.issues ;
-  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
+//  outlet CanariViewWithKeyView mPinInspectorView ;
+//  outlet CanariEnumSegmentedControl mSymbolPinLabelHorizontalAlignmentSegmentedControl
+//    $selectedSegment #mSymbolPinSelectionController.nameHorizontalAlignment
+//  ;
+//  outlet CanariEnumSegmentedControl mSymbolPinNumberHorizontalAlignmentSegmentedControl
+//    $selectedSegment #mSymbolPinSelectionController.numberHorizontalAlignment
+//  ;
+//  outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
+//    $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
+//  ;
+//  outlet EBTextField mSymbolPinLabelNameTextField
+//    $value #mSymbolPinSelectionController.name (sendContinously : yes)
+//  ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Zoom and flip inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mGridZoomInspectorView vStack { }
-
+  stackView mGridZoomInspectorView vStack {
+    TwoColumnsGridView {
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Grid Style", bold: no, small: yes),
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.gridStyle}
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Grid Display", bold: no, small: yes),
+        right:  TaggedPopUpButton {
+          add (title: "1 Step", withTag: 1)
+          add (title: "2 Steps", withTag: 2)
+          add (title: "4 Steps", withTag: 4)
+          add (title: "5 Steps", withTag: 5)
+          add (title: "8 Steps", withTag: 8)
+          add (title: "10 Steps", withTag: 10)
+          $selectedTag root.gridDisplay
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Grid Step", bold: no, small: yes),
+        right: StaticLabel (title: "25 mils", bold: yes, small: yes) { setLeftAlignment () }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Flip", bold: no, small: yes),
+        right: Switch (title: "Horizontal", small: yes) { $value root.horizontalFlip }
+      )
+      addFirstBaseLineAligned (
+        left: FlexibleSpace,
+        right: Switch (title: "Vertical", small: yes) { $value root.verticalFlip }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabels (left: "Placard", right: "X", bold: no, small: yes),
+        right: CanariUnitPopUpButton (small: yes) { $unit root.xPlacardUnit }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Y", bold: no, small: yes),
+        right: CanariUnitPopUpButton(small: yes) { $unit root.yPlacardUnit }
+      )
+      addSeparator ()
+      add (single: hStack { StaticLabel (title: "Stored in Preferences", bold: no, small: yes) space } )
+      addCenterYAligned (
+        left: StaticLabel (title: "Symbol", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.symbolColor (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Background", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.symbolBackgroundColor (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Cross Grid", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.crossColorOfSymbolGrid (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Line Grid", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.lineColorOfSymbolGrid (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Line Width", bold: no, small: yes),
+        right: TaggedPopUpButton {
+          add (title: "0.5 Point", withTag: 5)
+          add (title: "1.0 Point", withTag: 10)
+          add (title: "1.5 Point", withTag: 15)
+          add (title: "2.0 Points", withTag: 20)
+          add (title: "2.5 Points", withTag: 25)
+          $selectedTag prefs.symbolDrawingWidthMultipliedByTen
+        }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Pin Font", bold: no, small: yes),
+        right: FontButton (small: yes) {$fontValue prefs.pinNameFont}
+      )
+    }
+    space
+  }
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Issue inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mIssuesInspectorView vStack { }
+  stackView mIssuesInspectorView vStack {
+   hStack { space TextObserverField (bold: no, small: yes) { $observedValue self.statusMessage } space }
+   CanariIssueTableView [outlet mSymbolIssueTableView] { $issues root.issues }
+  }
+
+  linker issueTableViewToGraphicView (mSymbolIssueTableView, mSymbolGraphicView)
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   INFOS

@@ -1,8 +1,8 @@
 //
-//  AutoLayoutEnumPopUpButton.swift
+//  AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 06/02/2021.
+//  Created by Pierre Molinaro on 19/06/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10,29 +10,32 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (titles inTitles : [String]) {
-    super.init (frame: NSRect (), pullsDown: false)
+  init (small inSmall : Bool) {
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
+
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.bezelStyle = BUTTON_STYLE
-    self.controlSize = .small
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-    for title in inTitles {
-      self.addItem (withTitle: "")
-      let attributedTitle = NSAttributedString (string: title, attributes: textAttributes)
-      self.lastItem?.attributedTitle = attributedTitle
+    self.controlSize = inSmall ? .small : .regular
+    self.segmentStyle = SEGMENTED_CONTROL_STYLE
+    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.target = self
+    self.action = #selector (Self.selectedSegmentDidChange (_:))
+    if #available (OSX 10.13, *) {
+      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
     }
+
+    self.addSegment (withImageNamed: "alignmentLeft")
+    self.addSegment (withImageNamed: "alignmentCenter")
+    self.addSegment (withImageNamed: "alignmentRight")
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -41,78 +44,88 @@ final class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-  
+
   //····················································································································
 
   override func ebCleanUp () {
-    self.mSelectedIndexController?.unregister ()
-    self.mSelectedIndexController = nil
+    self.mAlignmentController?.unregister ()
+    self.mAlignmentController = nil
     super.ebCleanUp ()
   }
 
+  //····················································································································
+  // ADD PAGE
+  //····················································································································
+
+  final func addSegment (withImageNamed inImageName : String) {
+    let idx = self.segmentCount
+    self.segmentCount += 1
+    if let image = NSImage (named: inImageName) {
+      self.setImage (image, forSegment: idx)
+      self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: idx)
+      self.setLabel ("", forSegment: idx)
+    }else{
+      self.setLabel ("?", forSegment: idx)
+    }
+ //   self.frame.size = self.intrinsicContentSize
+  }
 
   //····················································································································
 
-  func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
-    if let v = object.rawValue () {
-      self.enable (fromValueBinding: true)
-      self.selectItem (at: v)
-    }else{
-      self.enable (fromValueBinding: false)
+  final func makeWidthExpandable () -> Self {
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    return self
+  }
+
+  //····················································································································
+
+  override func resizeSubviews (withOldSize oldSize : NSSize) {
+    super.resizeSubviews (withOldSize: oldSize)
+    if #available (OSX 10.13, *) {
+    }else if self.segmentCount > 1 {
+      let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
+      for i in 0 ..< self.segmentCount {
+        self.setWidth (width, forSegment: i)
+      }
     }
   }
 
   //····················································································································
+  // SELECTED TAB DID CHANGE
+  //····················································································································
 
-  override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
-    return super.sendAction (action, to:to)
+  @objc func selectedSegmentDidChange (_ inSender : Any?) {
+    _ = self.mObject?.setFrom (rawValue: self.selectedSegment)
   }
 
   //····················································································································
-  //  $selectedIndex binding
+  //  $alignment binding
   //····················································································································
 
-  private var mSelectedIndexController : Controller_AutoLayoutEnumPopUpButton_Index? = nil
+  private var mAlignmentController : EBReadOnlyPropertyController? = nil
+  private var mObject : EBReadWriteObservableEnumProtocol? = nil
 
   //····················································································································
 
-  final func bind_selectedIndex (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
-    self.mSelectedIndexController = Controller_AutoLayoutEnumPopUpButton_Index (
-      object: inObject,
-      outlet: self
+  final func bind_alignment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
+    self.mObject = inObject
+    self.mAlignmentController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }
 
   //····················································································································
 
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Controller_EBPopUpButton_Index
-//----------------------------------------------------------------------------------------------------------------------
-
-fileprivate final class Controller_AutoLayoutEnumPopUpButton_Index : EBReadOnlyPropertyController {
-
-  //····················································································································
-
-  private let mObject : EBReadWriteObservableEnumProtocol
-
-  //····················································································································
-
-  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutEnumPopUpButton) {
-    self.mObject = object
-    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
+  fileprivate func update (from inObject : EBReadWriteObservableEnumProtocol) {
+    self.selectedSegment = inObject.rawValue () ?? 0
+    self.selectedSegmentDidChange (nil)
   }
 
-  //····················································································································
-
-  func updateModel (_ inValue : Int) {
-    self.mObject.setFrom (rawValue: inValue)
-  }
 
   //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -29,9 +29,9 @@ func transient_PackageRoot_segmentedControlSegmentIssueString (
     }
     var title = ""
     if errorCount > 0 {
-      title = "— \(errorCount)"
+      title = "\(errorCount)"
     }else if warningCount > 0 {
-      title = "— \(warningCount)"
+      title = "\(warningCount)"
     }
     return title
 //--- END OF USER ZONE 2

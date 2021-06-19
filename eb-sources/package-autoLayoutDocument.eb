@@ -279,7 +279,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
         }
       }
       separator
-      vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
+      vStack set (leftMargin: 20) set (rightMargin: 20) {
        SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
           [configurator packagePageSegmentedControl] {
           makeWidthExpandable ()
@@ -291,6 +291,8 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
           $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
         }
+      }
+      vStack set (leftMargin: 20) set (rightMargin: 20) set (spacing: 12) {
         view mPackagePageInspectorMasterView
       }
     }
@@ -352,7 +354,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
 
   stackView mSegmentInspectorView vStack {
-    hStack { space StaticLabel (title: "Segment inspector", bold: yes, small: yes) space }
+    hStack { space StaticLabel (title: "Segment Inspector", bold: yes, small: yes) space }
     TwoColumnsGridView {
       add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $setter5
          #mPackageSegmentSelectionController.x1Unit, #mPackageSegmentSelectionController.y1Unit,
@@ -799,7 +801,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Zone", bold: no, small: yes),
-        right: TextObserverField (small: yes) { $observedValue #mPackagePadSelectionController.zoneName }
+        right: TextObserverField (bold: yes, small: yes) { $observedValue #mPackagePadSelectionController.zoneName }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pad Number", bold: no, small: yes),

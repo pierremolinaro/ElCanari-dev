@@ -20,6 +20,11 @@ import Cocoa
 extension AutoLayoutSymbolDocument {
   final func configure_addSymbolSolidOval (_ inOutlet : AutoLayoutDragSourceButton) {
 //--- START OF USER ZONE 2
+    inOutlet.register (
+      draggedType: symbolPasteboardType,
+      draggedObjectFactory: { return (SymbolSolidOval (nil), NSDictionary ()) },
+      scaleProvider: self.mSymbolObjectsController
+    )
 
 //--- END OF USER ZONE 2
   }

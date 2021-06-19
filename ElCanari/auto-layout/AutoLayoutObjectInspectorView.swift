@@ -10,35 +10,29 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   // Properties
   //····················································································································
 
-  private var mNoSelectedObjectView : AutoLayoutVerticalStackView
-  private var mMultipleSelectionView : AutoLayoutVerticalStackView
+  private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
+  private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, small: true).makeWidthExpandable ().setCenterAlignment()
   private var mGraphicController : EBGraphicViewControllerProtocol? = nil
   private var mInspectors = [(EBManagedObject.Type, AutoLayoutAbstractStackView)] ()
-  private var mObserver = EBOutletEvent ()
+  private let mObserver = EBOutletEvent ()
 
   //····················································································································
   // INIT
   //····················································································································
 
   override init () {
-  //--- Define "No Selected Object View"
-    self.mNoSelectedObjectView = AutoLayoutVerticalStackView ()
-    var hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    hStack.appendView (AutoLayoutStaticLabel (title: "No Selected Object", bold: true, small: true))
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    self.mNoSelectedObjectView.appendView (hStack)
-  //--- Define "Multiple selection View"
-    self.mMultipleSelectionView = AutoLayoutVerticalStackView ()
-    hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    hStack.appendView (AutoLayoutStaticLabel (title: "Multiple Selection", bold: true, small: true))
-    hStack.appendView (AutoLayoutFlexibleSpace ())
-    self.mMultipleSelectionView.appendView (hStack)
+  //--- Define default View
+//    let hStack = AutoLayoutHorizontalStackView ()
+//    hStack.appendView (AutoLayoutFlexibleSpace ())
+//    hStack.appendView (mDefaultLabel)
+//    hStack.appendView (AutoLayoutFlexibleSpace ())
+    self.mDefaultInspectorView.appendView (mDefaultLabel)
+    self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
   //---
     super.init ()
   //--- By Default, no selected object
-    self.appendView (self.mNoSelectedObjectView)
+    self.mDefaultLabel.stringValue = "No Selected Object"
+    self.appendView (self.mDefaultLabel)
   //---
     self.mObserver.mEventCallBack = { [weak self] in self?.selectionDidChange () }
   }
@@ -83,22 +77,39 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
     }
     if let selectedObjectSet = self.mGraphicController?.selectedGraphicObjectSet {
       var selectedObjectsInspectorViewSet = Set <AutoLayoutAbstractStackView> ()
+      var someSelectedObjectsHasNoInspector = false
       for selectedObject in selectedObjectSet {
+        var objectHasInspector = false
         for (candidateType, candidateInspectorView) in self.mInspectors {
           if type (of: selectedObject) == candidateType {
             selectedObjectsInspectorViewSet.insert (candidateInspectorView)
+            objectHasInspector = true
           }
+        }
+        if !objectHasInspector {
+          someSelectedObjectsHasNoInspector = true
         }
       }
       if selectedObjectsInspectorViewSet.count > 1 {
-        self.appendView (self.mMultipleSelectionView)
+        self.mDefaultLabel.stringValue = "Multiple Selection"
+        self.appendView (self.mDefaultLabel)
       }else if let view = selectedObjectsInspectorViewSet.first {
-        self.appendView (view)
+        if someSelectedObjectsHasNoInspector {
+          self.mDefaultLabel.stringValue = "No Inspector"
+          self.appendView (self.mDefaultLabel)
+        }else{
+          self.appendView (view)
+        }
+      }else if someSelectedObjectsHasNoInspector {
+        self.mDefaultLabel.stringValue = "No Inspector"
+        self.appendView (self.mDefaultLabel)
       }else{
-        self.appendView (self.mNoSelectedObjectView)
+        self.mDefaultLabel.stringValue = "No Selected Object"
+        self.appendView (self.mDefaultLabel)
       }
     }else{
-      self.appendView (self.mNoSelectedObjectView)
+      self.mDefaultLabel.stringValue = "No Controller"
+      self.appendView (self.mDefaultLabel)
     }
   }
 

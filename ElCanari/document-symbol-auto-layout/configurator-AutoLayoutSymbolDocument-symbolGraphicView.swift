@@ -18,13 +18,15 @@ import Cocoa
 //----------------------------------------------------------------------------------------------------------------------
 
 extension AutoLayoutSymbolDocument {
-  final func configure_addSymbolSegment (_ inOutlet : AutoLayoutDragSourceButton) {
+  final func configure_symbolGraphicView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
-    inOutlet.register (
-      draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return (SymbolSegment (nil), NSDictionary ()) },
-      scaleProvider: self.mSymbolObjectsController
-    )
+          inOutlet.mScrollView?.register (document: self)
+          inOutlet.mGraphicView.set (arrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT)
+          inOutlet.mGraphicView.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT * 4)
+          inOutlet.mGraphicView.register (pasteboardType: symbolPasteboardType)
+//          let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
+//          inOutlet.mGraphicView.set (minimumRectangle: r)
+          inOutlet.mGraphicView.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
 //--- END OF USER ZONE 2
   }
 }

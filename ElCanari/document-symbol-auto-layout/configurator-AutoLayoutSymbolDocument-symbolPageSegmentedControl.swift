@@ -17,8 +17,8 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension AutoLayoutPackageDocument {
-  final func configure_packagePageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+extension AutoLayoutSymbolDocument {
+  final func configure_symbolPageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
 //--- START OF USER ZONE 2
          inOutlet.setImage (NSImage (named: "editorInspector"), forSegment: 0)
          inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 0)
@@ -28,16 +28,9 @@ extension AutoLayoutPackageDocument {
          inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
          inOutlet.setLabel ("", forSegment: 1)
 
-         //         inOutlet.setImage (NSImage (named: "magnifyingGlass"), forSegment: 1)
-//         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
-//         inOutlet.setLabel ("☌", forSegment: 1) // u260C
-//         inOutlet.setLabel ("⚲", forSegment: 1) // u26B2
-
-         inOutlet.setLabel ("⚙️", forSegment: 2)
-
-         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 3)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
-         inOutlet.setLabel ("", forSegment: 3)
+         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 2)
+         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 2)
+         inOutlet.setLabel ("", forSegment: 2)
 //--- END OF USER ZONE 2
   }
 }

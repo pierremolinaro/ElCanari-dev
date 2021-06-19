@@ -283,57 +283,19 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  weak final var mPackageGraphicView : AutoLayoutGraphicView? = nil
+  weak final var mSymbolGraphicView : AutoLayoutGraphicView? = nil
+  weak final var mSymbolInspectorSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
+  weak final var mSymbolIssueTableView : AutoLayoutCanariIssueTableView? = nil
 
   //····················································································································
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAddBezierButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddOvalButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddPinButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddSegmentButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddSolidOvalButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddSolidRectButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mAddTextButton : CanariDragSourceButton? = nil
-  @IBOutlet final var mComposedSymbolView : EBEnclosingGraphicView? = nil
-  @IBOutlet final var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
-  @IBOutlet final var mDeselectIssueButton : EBButton? = nil
-  @IBOutlet final var mGridDisplayFactorPopUpButton : EBPopUpButton? = nil
-  @IBOutlet final var mGridStyle : EBPopUpButton? = nil
-  @IBOutlet final var mHorizontalFlip : EBSwitch? = nil
-  @IBOutlet final var mInspectorSegmentedControl : CanariSegmentedControl? = nil
-  @IBOutlet final var mIssueScrollView : NSScrollView? = nil
-  @IBOutlet final var mIssueTableView : IssueTableView? = nil
-  @IBOutlet final var mIssueTextField : EBTextObserverField? = nil
-  @IBOutlet final var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
-  @IBOutlet final var mPinInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mPinNameFontButton : EBFontButton? = nil
-  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
-  @IBOutlet final var mSymbolBackgroundColorColorWell : EBColorWell? = nil
-  @IBOutlet final var mSymbolBaseInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mSymbolColorColorWell : EBColorWell? = nil
-  @IBOutlet final var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
-  @IBOutlet final var mSymbolIssueInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mSymbolPinLabelHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet final var mSymbolPinLabelNameTextField : EBTextField? = nil
-  @IBOutlet final var mSymbolPinNumberHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet final var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch? = nil
-  @IBOutlet final var mSymbolRootInspectorView : NSView? = nil
-  @IBOutlet final var mSymbolTextHorizontalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
-  @IBOutlet final var mSymbolTextValueTextField : EBTextField? = nil
-  @IBOutlet final var mSymbolZoomFlipInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mTextInspectorView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mVerticalFlip : EBSwitch? = nil
-  @IBOutlet final var mXPlacardUnitPopUpButton : EBPopUpButton? = nil
-  @IBOutlet final var mYPlacardUnitPopUpButton : EBPopUpButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -546,8 +508,6 @@ import Cocoa
             .bind_image (self.addPinButtonImage_property)
           self.configure_addSymbolPin (view_0_0_0_12) // Configurator
           view_0_0_0.appendView (view_0_0_0_12)
-          let view_0_0_0_13 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_13)
         }
         view_0_0.appendView (view_0_0_0)
       }
@@ -557,8 +517,6 @@ import Cocoa
       let view_0_2 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
-        .set (bottomMargin: 20)
-        .set (spacing: 12)
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSymbolPageInspectorMasterView, equalWidth: true, small: true)
           .makeWidthExpandable ()
@@ -566,12 +524,23 @@ import Cocoa
           .addPage (title: "", pageView: self.mGridZoomInspectorView)
           .addPage (title: "", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
-        self.configure_packagePageSegmentedControl (view_0_2_0) // Configurator
+          .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:2)
+          .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:2)
+        self.mSymbolInspectorSegmentedControl = view_0_2_0 // Outlet
+        self.configure_symbolPageSegmentedControl (view_0_2_0) // Configurator
         view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = self.mSymbolPageInspectorMasterView
-        view_0_2.appendView (view_0_2_1)
       }
       view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutVerticalStackView ()
+        .set (leftMargin: 20)
+        .set (rightMargin: 20)
+        .set (bottomMargin: 20)
+        .set (spacing: 12)
+      do{
+        let view_0_3_0 = self.mSymbolPageInspectorMasterView
+        view_0_3.appendView (view_0_3_0)
+      }
+      view_0.appendView (view_0_3)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -588,8 +557,8 @@ import Cocoa
       .bind_xPlacardUnit (self.rootObject.xPlacardUnit_property)
       .bind_yPlacardUnit (self.rootObject.yPlacardUnit_property)
       .bind_graphic_controller (self.mSymbolObjectsController)
-    self.mPackageGraphicView = view_2 // Outlet
-    self.configure_packageGraphicView (view_2) // Configurator
+    self.mSymbolGraphicView = view_2 // Outlet
+    self.configure_symbolGraphicView (view_2) // Configurator
     hStackView.appendView (view_2)
     return hStackView
   } ()
@@ -600,6 +569,61 @@ import Cocoa
 
   lazy var mSelectedObjectsInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutObjectInspectorView ()
+      .addObjectInspector (forEntity: SymbolText.self, inspectorView: self.mSymbolTextInspectorView)
+      .addObjectInspector (forEntity: SymbolPin.self, inspectorView: self.mSymbolPinInspectorView)
+      .bind_graphic_controller (self.mSymbolObjectsController)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolTextInspectorView
+  //····················································································································
+
+  lazy var mSymbolTextInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTwoColumnsGridView ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolPinInspectorView
+  //····················································································································
+
+  lazy var mSymbolPinInspectorView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Pin Inspector", bold: true, small: true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTwoColumnsGridView ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
+      .add (single: self.computeImplicitView_10 ())
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -609,6 +633,25 @@ import Cocoa
 
   lazy var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutTwoColumnsGridView ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_11 (), right: self.computeImplicitView_12 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_13 (), right: self.computeImplicitView_14 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_15 (), right: self.computeImplicitView_16 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_17 (), right: self.computeImplicitView_18 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_19 (), right: self.computeImplicitView_20 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_21 (), right: self.computeImplicitView_22 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_23 (), right: self.computeImplicitView_24 ())
+      .addSeparator ()
+      .add (single: self.computeImplicitView_25 ())
+      .addCenterYAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
+      .addCenterYAligned (left: self.computeImplicitView_28 (), right: self.computeImplicitView_29 ())
+      .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
+      .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -618,6 +661,21 @@ import Cocoa
 
   lazy var mIssuesInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutTextObserverField (bold: false, small: true)
+        .bind_observedValue (self.statusMessage_property)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutCanariIssueTableView ()
+      .bind_issues (self.rootObject.issues_property)
+    self.mSymbolIssueTableView = view_1 // Outlet
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -662,6 +720,419 @@ import Cocoa
   } ()
 
   //····················································································································
+  //    IMPLICIT VIEW 0
+  //····················································································································
+
+  fileprivate final func computeImplicitView_0 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pin Name", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 1
+  //····················································································································
+
+  fileprivate final func computeImplicitView_1 () -> NSView {
+    let view = AutoLayoutTextField (small: true)
+      .makeWidthExpandable ()
+      .bind_value (self.mSymbolTextSelectionController.text_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 2
+  //····················································································································
+
+  fileprivate final func computeImplicitView_2 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Alignment", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 3
+  //····················································································································
+
+  fileprivate final func computeImplicitView_3 () -> NSView {
+    let view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (small: true)
+      .makeWidthExpandable ()
+      .bind_alignment (self.mSymbolTextSelectionController.horizontalAlignment_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 4
+  //····················································································································
+
+  fileprivate final func computeImplicitView_4 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Value", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 5
+  //····················································································································
+
+  fileprivate final func computeImplicitView_5 () -> NSView {
+    let view = AutoLayoutTextField (small: true)
+      .makeWidthExpandable ()
+      .bind_value (self.mSymbolPinSelectionController.name_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 6
+  //····················································································································
+
+  fileprivate final func computeImplicitView_6 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Name Alignment", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 7
+  //····················································································································
+
+  fileprivate final func computeImplicitView_7 () -> NSView {
+    let view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (small: true)
+      .makeWidthExpandable ()
+      .bind_alignment (self.mSymbolPinSelectionController.nameHorizontalAlignment_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 8
+  //····················································································································
+
+  fileprivate final func computeImplicitView_8 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Number Alignment", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 9
+  //····················································································································
+
+  fileprivate final func computeImplicitView_9 () -> NSView {
+    let view = AutoLayoutCanariHorizontalAlignmentSegmentedControl (small: true)
+      .makeWidthExpandable ()
+      .bind_alignment (self.mSymbolPinSelectionController.numberHorizontalAlignment_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 10
+  //····················································································································
+
+  fileprivate final func computeImplicitView_10 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutSwitch (title: "Pin is visible in schematics", small: true)
+        .bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 11
+  //····················································································································
+
+  fileprivate final func computeImplicitView_11 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 12
+  //····················································································································
+
+  fileprivate final func computeImplicitView_12 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+      .bind_selectedIndex (self.rootObject.gridStyle_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 13
+  //····················································································································
+
+  fileprivate final func computeImplicitView_13 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 14
+  //····················································································································
+
+  fileprivate final func computeImplicitView_14 () -> NSView {
+    let view = AutoLayoutTaggedPopUpButton ()
+      .add (title: "1 Step", withTag: 1)
+      .add (title: "2 Steps", withTag: 2)
+      .add (title: "4 Steps", withTag: 4)
+      .add (title: "5 Steps", withTag: 5)
+      .add (title: "8 Steps", withTag: 8)
+      .add (title: "10 Steps", withTag: 10)
+      .bind_selectedTag (self.rootObject.gridDisplay_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 15
+  //····················································································································
+
+  fileprivate final func computeImplicitView_15 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 16
+  //····················································································································
+
+  fileprivate final func computeImplicitView_16 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "25 mils", bold: true, small: true)
+      .setLeftAlignment ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 17
+  //····················································································································
+
+  fileprivate final func computeImplicitView_17 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 18
+  //····················································································································
+
+  fileprivate final func computeImplicitView_18 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Horizontal", small: true)
+      .bind_value (self.rootObject.horizontalFlip_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 19
+  //····················································································································
+
+  fileprivate final func computeImplicitView_19 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 20
+  //····················································································································
+
+  fileprivate final func computeImplicitView_20 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Vertical", small: true)
+      .bind_value (self.rootObject.verticalFlip_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 21
+  //····················································································································
+
+  fileprivate final func computeImplicitView_21 () -> NSView {
+    let view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 22
+  //····················································································································
+
+  fileprivate final func computeImplicitView_22 () -> NSView {
+    let view = AutoLayoutCanariUnitPopUpButton (small: true)
+      .bind_unit (self.rootObject.xPlacardUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 23
+  //····················································································································
+
+  fileprivate final func computeImplicitView_23 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 24
+  //····················································································································
+
+  fileprivate final func computeImplicitView_24 () -> NSView {
+    let view = AutoLayoutCanariUnitPopUpButton (small: true)
+      .bind_unit (self.rootObject.yPlacardUnit_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 25
+  //····················································································································
+
+  fileprivate final func computeImplicitView_25 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutStaticLabel (title: "Stored in Preferences", bold: false, small: true)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 26
+  //····················································································································
+
+  fileprivate final func computeImplicitView_26 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Symbol", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 27
+  //····················································································································
+
+  fileprivate final func computeImplicitView_27 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_symbolColor_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 28
+  //····················································································································
+
+  fileprivate final func computeImplicitView_28 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 29
+  //····················································································································
+
+  fileprivate final func computeImplicitView_29 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_symbolBackgroundColor_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 30
+  //····················································································································
+
+  fileprivate final func computeImplicitView_30 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 31
+  //····················································································································
+
+  fileprivate final func computeImplicitView_31 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_crossColorOfSymbolGrid_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 32
+  //····················································································································
+
+  fileprivate final func computeImplicitView_32 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 33
+  //····················································································································
+
+  fileprivate final func computeImplicitView_33 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_lineColorOfSymbolGrid_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 34
+  //····················································································································
+
+  fileprivate final func computeImplicitView_34 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Line Width", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 35
+  //····················································································································
+
+  fileprivate final func computeImplicitView_35 () -> NSView {
+    let view = AutoLayoutTaggedPopUpButton ()
+      .add (title: "0.5 Point", withTag: 5)
+      .add (title: "1.0 Point", withTag: 10)
+      .add (title: "1.5 Point", withTag: 15)
+      .add (title: "2.0 Points", withTag: 20)
+      .add (title: "2.5 Points", withTag: 25)
+      .bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTen_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 36
+  //····················································································································
+
+  fileprivate final func computeImplicitView_36 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Pin Font", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 37
+  //····················································································································
+
+  fileprivate final func computeImplicitView_37 () -> NSView {
+    let view = AutoLayoutFontButton (small: true)
+      .bind_fontValue (preferences_pinNameFont_property)
+    return view
+  }
+
+  //····················································································································
   //    Build User Interface
   //····················································································································
 
@@ -670,6 +1141,7 @@ import Cocoa
     self.configureProperties ()
     let mainView = self.mDocumentMainView
   //--- Call outlet linkers
+    self.linker_issueTableViewToGraphicView (self.mSymbolIssueTableView, self.mSymbolGraphicView)
   //--- Assign main view to window
     self.windowForSheet?.contentView = mainView
   }
@@ -705,44 +1177,6 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAddBezierButton, "mAddBezierButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddOvalButton, "mAddOvalButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddPinButton, "mAddPinButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSolidOvalButton, "mAddSolidOvalButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSolidRectButton, "mAddSolidRectButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mAddTextButton, "mAddTextButton", CanariDragSourceButton.self, #file, #line)
-//    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
-//    checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mGridDisplayFactorPopUpButton, "mGridDisplayFactorPopUpButton", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mHorizontalFlip, "mHorizontalFlip", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
-//    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
-//    checkOutletConnection (self.mIssueTableView, "mIssueTableView", IssueTableView.self, #file, #line)
-//    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mLineColorOfSymbolGridColorWell, "mLineColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mPinInspectorView, "mPinInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mPinNameFontButton, "mPinNameFontButton", EBFontButton.self, #file, #line)
-//    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
-//    checkOutletConnection (self.mSymbolBackgroundColorColorWell, "mSymbolBackgroundColorColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mSymbolBaseInspectorView, "mSymbolBaseInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mSymbolColorColorWell, "mSymbolColorColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenPopupButton, "mSymbolDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mSymbolIssueInspectorView, "mSymbolIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mSymbolPinLabelHorizontalAlignmentSegmentedControl, "mSymbolPinLabelHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
-//    checkOutletConnection (self.mSymbolPinLabelNameTextField, "mSymbolPinLabelNameTextField", EBTextField.self, #file, #line)
-//    checkOutletConnection (self.mSymbolPinNumberHorizontalAlignmentSegmentedControl, "mSymbolPinNumberHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
-//    checkOutletConnection (self.mSymbolPinNumberIsVisibleInSchematicsSwitch, "mSymbolPinNumberIsVisibleInSchematicsSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mSymbolRootInspectorView, "mSymbolRootInspectorView", NSView.self, #file, #line)
-//    checkOutletConnection (self.mSymbolTextHorizontalAlignmentSegmentedControl, "mSymbolTextHorizontalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
-//    checkOutletConnection (self.mSymbolTextValueTextField, "mSymbolTextValueTextField", EBTextField.self, #file, #line)
-//    checkOutletConnection (self.mSymbolZoomFlipInspectorView, "mSymbolZoomFlipInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mTextInspectorView, "mTextInspectorView", CanariViewWithKeyView.self, #file, #line)
-//    checkOutletConnection (self.mVerticalFlip, "mVerticalFlip", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mXPlacardUnitPopUpButton, "mXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
-//    checkOutletConnection (self.mYPlacardUnitPopUpButton, "mYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
 //      Swift.print ("Check outlet connections \(durationMS) ms")
@@ -1020,62 +1454,8 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
-    self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
-    self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
-    self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
-    self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.gridDisplay_property, file: #file, line: #line)
-    self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
-    self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
-    self.mCrossColorOfSymbolGridColorWell?.bind_color (preferences_crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mLineColorOfSymbolGridColorWell?.bind_color (preferences_lineColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
-    self.mSymbolColorColorWell?.bind_color (preferences_symbolColor_property, file: #file, line: #line, sendContinously:false)
-    self.mSymbolBackgroundColorColorWell?.bind_color (preferences_symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
-    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (preferences_symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)
-    self.mPinNameFontButton?.bind_fontValue (preferences_pinNameFont_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_gridDisplayFactor (self.rootObject.gridDisplay_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_gridLineColor (preferences_lineColorOfSymbolGrid_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_gridCrossColor (preferences_crossColorOfSymbolGrid_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_backColor (preferences_symbolBackgroundColor_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_xPlacardUnit (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_yPlacardUnit (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
-    self.mSymbolTextValueTextField?.bind_value (self.mSymbolTextSelectionController.text_property, file: #file, line: #line, sendContinously:true)
-    self.mSymbolTextHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolTextSelectionController.horizontalAlignment_property, file: #file, line: #line)
-    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolPinSelectionController.nameHorizontalAlignment_property, file: #file, line: #line)
-    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.bind_selectedSegment (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
-    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property, file: #file, line: #line)
-    self.mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.name_property, file: #file, line: #line, sendContinously:true)
-    self.mStatusImageViewInToolbar?.bind_image (self.statusImage_property, file: #file, line: #line)
-    self.mStatusImageViewInToolbar?.bind_tooltip (self.statusMessage_property, file: #file, line: #line)
-    self.mIssueTextField?.bind_valueObserver (self.statusMessage_property, file: #file, line: #line)
-    self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
-        outlet: self.mDeselectIssueButton
-      )
-      self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mDeselectIssueButton_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
-        outlet: self.mIssueScrollView
-      )
-      self.rootObject.noIssue_property.addEBObserver (controller)
-      self.mController_mIssueScrollView_hidden = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -1105,6 +1485,8 @@ import Cocoa
     self.mSymbolPageInspectorMasterView.ebCleanUp ()
     self.mSymbolPage.ebCleanUp ()
     self.mSelectedObjectsInspectorView.ebCleanUp ()
+    self.mSymbolTextInspectorView.ebCleanUp ()
+    self.mSymbolPinInspectorView.ebCleanUp ()
     self.mGridZoomInspectorView.ebCleanUp ()
     self.mIssuesInspectorView.ebCleanUp ()
     self.mInfosPage.ebCleanUp ()
@@ -1113,46 +1495,8 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mInspectorSegmentedControl?.unbind_selectedPage ()
-    self.mHorizontalFlip?.unbind_value ()
-    self.mVerticalFlip?.unbind_value ()
-    self.mGridStyle?.unbind_selectedIndex ()
-    self.mGridDisplayFactorPopUpButton?.unbind_selectedTag ()
-    self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
-    self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
-    self.mCrossColorOfSymbolGridColorWell?.unbind_color ()
-    self.mLineColorOfSymbolGridColorWell?.unbind_color ()
-    self.mSymbolColorColorWell?.unbind_color ()
-    self.mSymbolBackgroundColorColorWell?.unbind_color ()
-    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
-    self.mPinNameFontButton?.unbind_fontValue ()
-    self.mComposedSymbolView?.unbind_horizontalFlip ()
-    self.mComposedSymbolView?.unbind_verticalFlip ()
-    self.mComposedSymbolView?.unbind_gridStyle ()
-    self.mComposedSymbolView?.unbind_gridDisplayFactor ()
-    self.mComposedSymbolView?.unbind_gridLineColor ()
-    self.mComposedSymbolView?.unbind_gridCrossColor ()
-    self.mComposedSymbolView?.unbind_zoom ()
-    self.mComposedSymbolView?.unbind_backColor ()
-    self.mComposedSymbolView?.unbind_xPlacardUnit ()
-    self.mComposedSymbolView?.unbind_yPlacardUnit ()
-    self.mSymbolTextValueTextField?.unbind_value ()
-    self.mSymbolTextHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
-    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
-    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.unbind_selectedSegment ()
-    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.unbind_value ()
-    self.mSymbolPinLabelNameTextField?.unbind_value ()
-    self.mStatusImageViewInToolbar?.unbind_image ()
-    self.mStatusImageViewInToolbar?.unbind_tooltip ()
-    self.mIssueTextField?.unbind_valueObserver ()
-    self.mIssueTableView?.unbind_issues ()
   //--------------------------- Unbind multiple bindings
- //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
- //   self.mController_mDeselectIssueButton_hidden = nil
- //   self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
- //   self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
-    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.unbind_model ()
   //--- Selection controller property: mSymbolTextSelectionController
@@ -1171,83 +1515,7 @@ import Cocoa
     // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
-    self.mAddBezierButton?.ebCleanUp ()
-    self.mAddOvalButton?.ebCleanUp ()
-    self.mAddPinButton?.ebCleanUp ()
-    self.mAddSegmentButton?.ebCleanUp ()
-    self.mAddSolidOvalButton?.ebCleanUp ()
-    self.mAddSolidRectButton?.ebCleanUp ()
-    self.mAddTextButton?.ebCleanUp ()
-    self.mComposedSymbolView?.ebCleanUp ()
-    self.mCrossColorOfSymbolGridColorWell?.ebCleanUp ()
-    self.mDeselectIssueButton?.ebCleanUp ()
-    self.mGridDisplayFactorPopUpButton?.ebCleanUp ()
-    self.mGridStyle?.ebCleanUp ()
-    self.mHorizontalFlip?.ebCleanUp ()
-    self.mInspectorSegmentedControl?.ebCleanUp ()
-    self.mIssueScrollView?.ebCleanUp ()
-    self.mIssueTableView?.ebCleanUp ()
-    self.mIssueTextField?.ebCleanUp ()
-    self.mLineColorOfSymbolGridColorWell?.ebCleanUp ()
-    self.mPinInspectorView?.ebCleanUp ()
-    self.mPinNameFontButton?.ebCleanUp ()
-    self.mStatusImageViewInToolbar?.ebCleanUp ()
-    self.mSymbolBackgroundColorColorWell?.ebCleanUp ()
-    self.mSymbolBaseInspectorView?.ebCleanUp ()
-    self.mSymbolColorColorWell?.ebCleanUp ()
-    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
-    self.mSymbolIssueInspectorView?.ebCleanUp ()
-    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl?.ebCleanUp ()
-    self.mSymbolPinLabelNameTextField?.ebCleanUp ()
-    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl?.ebCleanUp ()
-    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.ebCleanUp ()
-    self.mSymbolRootInspectorView?.ebCleanUp ()
-    self.mSymbolTextHorizontalAlignmentSegmentedControl?.ebCleanUp ()
-    self.mSymbolTextValueTextField?.ebCleanUp ()
-    self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
-    self.mTextInspectorView?.ebCleanUp ()
-    self.mVerticalFlip?.ebCleanUp ()
-    self.mXPlacardUnitPopUpButton?.ebCleanUp ()
-    self.mYPlacardUnitPopUpButton?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAddBezierButton = nil
-    self.mAddOvalButton = nil
-    self.mAddPinButton = nil
-    self.mAddSegmentButton = nil
-    self.mAddSolidOvalButton = nil
-    self.mAddSolidRectButton = nil
-    self.mAddTextButton = nil
-    self.mComposedSymbolView = nil
-    self.mCrossColorOfSymbolGridColorWell = nil
-    self.mDeselectIssueButton = nil
-    self.mGridDisplayFactorPopUpButton = nil
-    self.mGridStyle = nil
-    self.mHorizontalFlip = nil
-    self.mInspectorSegmentedControl = nil
-    self.mIssueScrollView = nil
-    self.mIssueTableView = nil
-    self.mIssueTextField = nil
-    self.mLineColorOfSymbolGridColorWell = nil
-    self.mPinInspectorView = nil
-    self.mPinNameFontButton = nil
-    self.mStatusImageViewInToolbar = nil
-    self.mSymbolBackgroundColorColorWell = nil
-    self.mSymbolBaseInspectorView = nil
-    self.mSymbolColorColorWell = nil
-    self.mSymbolDrawingWidthMultipliedByTenPopupButton = nil
-    self.mSymbolIssueInspectorView = nil
-    self.mSymbolPinLabelHorizontalAlignmentSegmentedControl = nil
-    self.mSymbolPinLabelNameTextField = nil
-    self.mSymbolPinNumberHorizontalAlignmentSegmentedControl = nil
-    self.mSymbolPinNumberIsVisibleInSchematicsSwitch = nil
-    self.mSymbolRootInspectorView = nil
-    self.mSymbolTextHorizontalAlignmentSegmentedControl = nil
-    self.mSymbolTextValueTextField = nil
-    self.mSymbolZoomFlipInspectorView = nil
-    self.mTextInspectorView = nil
-    self.mVerticalFlip = nil
-    self.mXPlacardUnitPopUpButton = nil
-    self.mYPlacardUnitPopUpButton = nil
   }
 
   //····················································································································

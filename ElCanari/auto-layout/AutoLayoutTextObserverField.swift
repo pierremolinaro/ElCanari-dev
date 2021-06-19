@@ -16,13 +16,14 @@ final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (small inSmall : Bool) {
+  init (bold inBold : Bool, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    let s = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+    self.font = inBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
     self.alignment = .center
     self.isBezeled = false
     self.isBordered = false
@@ -44,9 +45,9 @@ final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: 19.0)
-  }
+//  override var intrinsicContentSize : NSSize {
+//    return NSSize (width: 56.0, height: 19.0)
+//  }
 
   //····················································································································
 

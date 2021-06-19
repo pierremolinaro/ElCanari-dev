@@ -20,6 +20,11 @@ import Cocoa
 extension AutoLayoutSymbolDocument {
   final func configure_addSymbolText (_ inOutlet : AutoLayoutDragSourceButton) {
 //--- START OF USER ZONE 2
+    inOutlet.register (
+      draggedType: symbolPasteboardType,
+      draggedObjectFactory: { return (SymbolText (nil), NSDictionary ()) },
+      scaleProvider: self.mSymbolObjectsController
+    )
 
 //--- END OF USER ZONE 2
   }
