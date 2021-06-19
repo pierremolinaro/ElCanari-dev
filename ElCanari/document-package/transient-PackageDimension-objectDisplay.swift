@@ -53,7 +53,7 @@ func transient_PackageDimension_objectDisplay (
     bp.lineCapStyle = .butt
   }
   bp.lineCapStyle = .round
-  bp.lineWidth = 0.0
+  bp.lineWidth = 0.25
   shape.add (stroke: [bp], NSColor.orange)
   let rotationIfSmall : CGFloat = (length <= (4.0 * arrowSize)) ? .pi : 0.0 ;
 //------- Arrow at first point

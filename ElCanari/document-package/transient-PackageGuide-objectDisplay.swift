@@ -23,7 +23,7 @@ func transient_PackageGuide_objectDisplay (
   var bp = EBBezierPath ()
   bp.move (to: NSPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
   bp.line (to: NSPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
-  bp.lineWidth = 0.0
+  bp.lineWidth = 0.25
   bp.lineCapStyle = .round
   return EBShape (stroke: [bp], NSColor.yellow)
 //--- END OF USER ZONE 2

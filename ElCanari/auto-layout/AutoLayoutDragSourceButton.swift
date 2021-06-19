@@ -30,11 +30,12 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.toolTip = inToolTip
     self.bezelStyle = .regularSquare
     self.isBordered = false
     self.imagePosition = .imageOnly
-    self.image = NSImage (named: NSImage.cautionName)
+    self.image = NSImage (named: NSImage.cautionName) // Default image
     self.imageScaling = .scaleProportionallyUpOrDown
   }
 
@@ -50,6 +51,10 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
     noteObjectDeallocation (self)
   }
   
+  //····················································································································
+
+  override var isFlipped : Bool { return false } // REQUIRED for dragged image vertical position !!!
+
   //····················································································································
 
   override var fittingSize : NSSize {
@@ -150,9 +155,9 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
           let horizontalFlip : CGFloat = view.horizontalFlip ? -1.0 : 1.0
           let verticalFlip   : CGFloat = view.verticalFlip   ? -1.0 : 1.0
           transform.scale (x: scale * horizontalFlip, y: scale * verticalFlip)
-       }
+        }
         let displayShape = temporaryObject.objectDisplay!.transformed (by: transform)
-        let rect = displayShape.boundingBox
+        let rect : NSRect = displayShape.boundingBox
         let image = buildPDFimage (frame: rect, shape: displayShape)
       //--- Move image rect origin to mouse click location
         let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
@@ -247,8 +252,10 @@ final class AutoLayoutDragSourceButton : NSButton, EBUserClassNameProtocol, NSDr
         self.mMouseZone = .insideRightPullDown
       }else if self.mLeftContextualMenu != nil, self.pullDownLeftMenuRect ().contains (mouseDownLocation) {
         self.mMouseZone = .insideLeftPullDown
-      }else{
+      }else if self.bounds.contains (mouseDownLocation){
         self.mMouseZone = .insideDrag
+      }else{
+        self.mMouseZone = .outside
       }
     }
     super.mouseMoved (with: inEvent)

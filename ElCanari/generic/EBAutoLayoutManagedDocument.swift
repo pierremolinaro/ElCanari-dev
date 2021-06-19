@@ -136,6 +136,18 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   }
 
   //····················································································································
+
+  func windowDefaultSize () -> NSSize {
+    return NSSize (width: 480, height: 320)
+  }
+
+  //····················································································································
+
+  func windowStyleMask () -> NSWindow.StyleMask {
+    return [.titled, .closable, .miniaturizable, .resizable]
+  }
+
+  //····················································································································
   //   makeWindowControllers
   //····················································································································
 
@@ -146,12 +158,13 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //--- Version did change observer
     self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
     self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
-  //--- Create the window and set the content view.
-    let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? 480.0
-    let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? 300.0
+  //--- Create the window and set the content view
+    let s = self.windowDefaultSize ()
+    let windowWidth = (self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat) ?? s.width
+    let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat ?? s.height
     let window = NSWindow (
       contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
-      styleMask: [.titled, .closable, .miniaturizable, .resizable],
+      styleMask: self.windowStyleMask (),
       backing: .buffered,
       defer: false
     )
