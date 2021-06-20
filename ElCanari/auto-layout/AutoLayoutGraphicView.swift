@@ -18,8 +18,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   let mGraphicView = EBGraphicView (frame: NSRect ())
   var mScrollView : EBScrollView? = nil
-  fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
-  fileprivate var mZoomToFitButton : NSButton? = nil
+  fileprivate var mZoomPopUpButton : InternalAutoLayoutPopUpButton? = nil
+  fileprivate var mZoomToFitButton : InternalAutoLayoutButton? = nil
   fileprivate var mHelperTextField : NSTextField? = nil
   fileprivate var mFocusRing : AutoLayoutPrivateFocusRingView? = nil
 
@@ -108,12 +108,12 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomToFitButton () -> NSButton {
-    let button = NSButton (frame: NSRect ())
-    button.title = "Zoom to Fit"
-    button.controlSize = .small
-    button.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    button.bezelStyle = BUTTON_STYLE
+  fileprivate func buildZoomToFitButton () -> InternalAutoLayoutButton {
+    let button = InternalAutoLayoutButton (title: "Zoom to Fit", small: true)
+//    button.title = "Zoom to Fit"
+//    button.controlSize = .small
+//    button.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    button.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
     button.target = self
     button.action = #selector (Self.setZoomToFitButton (_:))
     return button
@@ -121,16 +121,16 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> NSPopUpButton {
-    let zoomPopUpButton = NSPopUpButton (frame: NSRect (), pullsDown: true)
-    zoomPopUpButton.controlSize = .small
-    zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    zoomPopUpButton.autoenablesItems = false
-    zoomPopUpButton.bezelStyle = BUTTON_STYLE
-    if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
-      popUpButtonCell.arrowPosition = .arrowAtBottom
-    }
-    zoomPopUpButton.isBordered = true
+  fileprivate func buildZoomPopUpButton (minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) -> InternalAutoLayoutPopUpButton {
+    let zoomPopUpButton = InternalAutoLayoutPopUpButton (pullsDown: true, small: true)
+//    zoomPopUpButton.controlSize = .small
+//    zoomPopUpButton.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    zoomPopUpButton.autoenablesItems = false
+//    zoomPopUpButton.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//    if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
+//      popUpButtonCell.arrowPosition = .arrowAtBottom
+//    }
+//    zoomPopUpButton.isBordered = true
     zoomPopUpButton.menu?.addItem (
       withTitle:"\(Int (self.mGraphicView.actualScale * 100.0)) %",
       action:nil,
@@ -167,7 +167,10 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
  //····················································································································
 
-  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inPopUp : NSPopUpButton, minZoom inMinZoom : Int, maxZoom inMaxZoom : Int) {
+  final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int,
+                                                    _ inPopUp : InternalAutoLayoutPopUpButton,
+                                                    minZoom inMinZoom : Int,
+                                                    maxZoom inMaxZoom : Int) {
     if (inZoom >= inMinZoom) && (inZoom <= inMaxZoom) {
       inPopUp.addItem (withTitle: "\(inZoom) %")
       inPopUp.lastItem?.target = self

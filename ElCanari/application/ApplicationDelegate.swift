@@ -71,6 +71,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
     self.mMaintenanceLogTextField?.stringValue = ""
     self.checkForLibraryUpdateAtLaunch ()
     instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
+    self.addAutoLayoutUserInterfaceStyleObserver ()
   //--- Observe last update application last check time
     UserDefaults.standard.addObserver (
       self,
@@ -166,6 +167,24 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   @objc func setTextualFormatAction (_ inSender : Any?) {
+  }
+
+  //····················································································································
+  //   AutoLayout user interface style
+  //····················································································································
+
+  fileprivate var mUserInterfaceStyleObserver : EBReadOnlyPropertyController? = nil
+
+  //····················································································································
+
+  fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
+    self.mUserInterfaceStyleObserver = EBReadOnlyPropertyController (
+      observedObjects: [preferences_mAutoLayoutStyle_property],
+      callBack: {
+         changeAutoLayoutUserInterfaceStyle (to: preferences_mAutoLayoutStyle)
+      }
+    )
+
   }
 
   //····················································································································

@@ -10,23 +10,24 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
   init (titles inTitles : [String]) {
-    super.init (frame: NSRect (), pullsDown: false)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.bezelStyle = BUTTON_STYLE
-    self.controlSize = .small
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
+    super.init (pullsDown: false, small: true)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//    if let cell = self.cell as? NSPopUpButtonCell {
+//      cell.arrowPosition = .arrowAtBottom
+//    }
+//    self.controlSize = .small
+//    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+
     for title in inTitles {
-      self.addItem (withTitle: "")
-      let attributedTitle = NSAttributedString (string: title, attributes: textAttributes)
-      self.lastItem?.attributedTitle = attributedTitle
+      self.addItem (withTitle: title)
     }
   }
 
@@ -38,9 +39,9 @@ final class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
   
   //····················································································································
 
@@ -50,6 +51,12 @@ final class AutoLayoutEnumPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
     super.ebCleanUp ()
   }
 
+  //····················································································································
+
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

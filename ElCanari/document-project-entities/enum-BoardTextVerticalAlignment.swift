@@ -110,5 +110,6 @@ typealias EBTransientProperty_BoardTextVerticalAlignment = EBTransientEnumProper
 typealias EBReadWriteProperty_BoardTextVerticalAlignment = EBReadWriteEnumProperty <BoardTextVerticalAlignment>
 typealias EBStoredProperty_BoardTextVerticalAlignment = EBStoredEnumProperty <BoardTextVerticalAlignment>
 typealias EBPropertyProxy_BoardTextVerticalAlignment = EBPropertyEnumProxy <BoardTextVerticalAlignment>
+typealias EBPreferencesProperty_BoardTextVerticalAlignment = EBStoredEnumProperty <BoardTextVerticalAlignment>
 
 //----------------------------------------------------------------------------------------------------------------------

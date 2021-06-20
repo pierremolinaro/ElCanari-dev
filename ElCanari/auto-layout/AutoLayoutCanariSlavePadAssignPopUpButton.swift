@@ -21,7 +21,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.bezelStyle = BUTTON_STYLE
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
     self.controlSize = .small
     self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
   }
@@ -46,6 +46,13 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  override func updateAutoLayoutUserInterfaceStyle () {
+    super.updateAutoLayoutUserInterfaceStyle ()
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································

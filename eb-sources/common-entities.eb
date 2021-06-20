@@ -1,5 +1,19 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum AutoLayoutUserInterfaceStyle {
+  roundedBezel, roundRect, texturedRounded, texturedSquare, shadowlessSquare
+}
+
+func enum AutoLayoutUserInterfaceStyle.popupTitles {
+  roundedBezel : "Rounded Bezel" ;
+  roundRect : "Round Rect" ;
+  texturedRounded : "Textured Rounded" ;
+  texturedSquare : "Textured Square" ;
+  shadowlessSquare : "Shadowless Square" ;
+}
+
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 enum MetadataStatus {
   unknown, ok, warning, error
 }

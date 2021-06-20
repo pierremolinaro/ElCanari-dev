@@ -19,6 +19,9 @@ prefs {
   property Bool showDebugMenu default no ;
   outlet EBSwitch mShowDebugMenuSwitch $value self.showDebugMenu ;
 
+  property AutoLayoutUserInterfaceStyle mAutoLayoutStyle default roundedBezel ;
+  outlet EBPopUpButton mAutoLayoutStylePopUpButton $selectedIndex self.mAutoLayoutStyle ;
+
   outlet NSTextField mSULastCheckTimeTextField ;
 }
 

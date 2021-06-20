@@ -110,5 +110,6 @@ typealias EBTransientProperty_TrackLockDirection = EBTransientEnumProperty <Trac
 typealias EBReadWriteProperty_TrackLockDirection = EBReadWriteEnumProperty <TrackLockDirection>
 typealias EBStoredProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
 typealias EBPropertyProxy_TrackLockDirection = EBPropertyEnumProxy <TrackLockDirection>
+typealias EBPreferencesProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
 
 //----------------------------------------------------------------------------------------------------------------------

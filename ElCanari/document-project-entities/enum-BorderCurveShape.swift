@@ -104,5 +104,6 @@ typealias EBTransientProperty_BorderCurveShape = EBTransientEnumProperty <Border
 typealias EBReadWriteProperty_BorderCurveShape = EBReadWriteEnumProperty <BorderCurveShape>
 typealias EBStoredProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
 typealias EBPropertyProxy_BorderCurveShape = EBPropertyEnumProxy <BorderCurveShape>
+typealias EBPreferencesProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
 
 //----------------------------------------------------------------------------------------------------------------------

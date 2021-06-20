@@ -6,21 +6,23 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case unknown = 0
-  case ok = 1
-  case warning = 2
-  case error = 3
+enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case roundedBezel = 0
+  case roundRect = 1
+  case texturedRounded = 2
+  case texturedSquare = 3
+  case shadowlessSquare = 4
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "unknown" : self = .unknown // 0
-      case "ok" : self = .ok // 1
-      case "warning" : self = .warning // 2
-      case "error" : self = .error // 3
+      case "roundedBezel" : self = .roundedBezel // 0
+      case "roundRect" : self = .roundRect // 1
+      case "texturedRounded" : self = .texturedRounded // 2
+      case "texturedSquare" : self = .texturedSquare // 3
+      case "shadowlessSquare" : self = .shadowlessSquare // 4
       case _ : return nil
     }
   }
@@ -29,19 +31,28 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .unknown : return "unknown" // 0
-      case .ok : return "ok" // 1
-      case .warning : return "warning" // 2
-      case .error : return "error" // 3
+      case .roundedBezel : return "roundedBezel" // 0
+      case .roundRect : return "roundRect" // 1
+      case .texturedRounded : return "texturedRounded" // 2
+      case .texturedSquare : return "texturedSquare" // 3
+      case .shadowlessSquare : return "shadowlessSquare" // 4
     }
+  }
+
+  //····················································································································
+  // Function popupTitles
+  //····················································································································
+
+  static func popupTitles () -> [String] {
+    return ["Rounded Bezel", "Round Rect", "Textured Rounded", "Textured Square", "Shadowless Square"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> MetadataStatus? {
-    if let v = MetadataStatus (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> AutoLayoutUserInterfaceStyle? {
+    if let v = AutoLayoutUserInterfaceStyle (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -50,9 +61,9 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> MetadataStatus {
+  func enumfromRawValue (rawValue : Int) -> AutoLayoutUserInterfaceStyle {
     var result = self
-    let v : MetadataStatus? = MetadataStatus (rawValue:rawValue) ;
+    let v : AutoLayoutUserInterfaceStyle? = AutoLayoutUserInterfaceStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -75,9 +86,9 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> MetadataStatus {
-    var result = MetadataStatus.unknown
-    if let number = object as? NSNumber, let v = MetadataStatus (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> AutoLayoutUserInterfaceStyle {
+    var result = AutoLayoutUserInterfaceStyle.roundedBezel
+    if let number = object as? NSNumber, let v = AutoLayoutUserInterfaceStyle (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -85,8 +96,8 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> MetadataStatus? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = MetadataStatus (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> AutoLayoutUserInterfaceStyle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = AutoLayoutUserInterfaceStyle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -105,11 +116,11 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typealias EBReadOnlyProperty_MetadataStatus = EBReadOnlyEnumProperty <MetadataStatus>
-typealias EBTransientProperty_MetadataStatus = EBTransientEnumProperty <MetadataStatus>
-typealias EBReadWriteProperty_MetadataStatus = EBReadWriteEnumProperty <MetadataStatus>
-typealias EBStoredProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
-typealias EBPropertyProxy_MetadataStatus = EBPropertyEnumProxy <MetadataStatus>
-typealias EBPreferencesProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
+typealias EBReadOnlyProperty_AutoLayoutUserInterfaceStyle = EBReadOnlyEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBTransientProperty_AutoLayoutUserInterfaceStyle = EBTransientEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBReadWriteProperty_AutoLayoutUserInterfaceStyle = EBReadWriteEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBStoredProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBPropertyProxy_AutoLayoutUserInterfaceStyle = EBPropertyEnumProxy <AutoLayoutUserInterfaceStyle>
+typealias EBPreferencesProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
 
 //----------------------------------------------------------------------------------------------------------------------

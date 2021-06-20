@@ -10,24 +10,32 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
   init (title inTitle : String, small inSmall : Bool) {
-    super.init (frame: NSRect (), pullsDown: true)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.controlSize = inSmall ? .small : .regular
-    self.bezelStyle = BUTTON_STYLE
-    self.autoenablesItems = false
+    super.init (pullsDown: true, small: inSmall)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.controlSize = inSmall ? .small : .regular
+//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+//
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//    if let cell = self.cell as? NSPopUpButtonCell {
+//      cell.arrowPosition = .arrowAtBottom
+//    }
+//
+//    self.autoenablesItems = false
+
     self.addItem (withTitle: inTitle)
-    let fontSize = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: fontSize)
-    ]
-    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-    self.lastItem?.attributedTitle = attributedTitle
+
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: fontSize)
+//    ]
+//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
+//    self.lastItem?.attributedTitle = attributedTitle
   }
 
   //····················································································································
@@ -38,9 +46,9 @@ final class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
   //····················································································································
 
@@ -54,6 +62,13 @@ final class AutoLayoutPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
     }
     super.ebCleanUp ()
   }
+
+  //····················································································································
+
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

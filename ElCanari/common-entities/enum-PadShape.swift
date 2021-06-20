@@ -115,5 +115,6 @@ typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
 typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>
 typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
 typealias EBPropertyProxy_PadShape = EBPropertyEnumProxy <PadShape>
+typealias EBPreferencesProperty_PadShape = EBStoredEnumProperty <PadShape>
 
 //----------------------------------------------------------------------------------------------------------------------

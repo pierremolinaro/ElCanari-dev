@@ -104,5 +104,6 @@ typealias EBTransientProperty_AutorouterPreferredDirections = EBTransientEnumPro
 typealias EBReadWriteProperty_AutorouterPreferredDirections = EBReadWriteEnumProperty <AutorouterPreferredDirections>
 typealias EBStoredProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
 typealias EBPropertyProxy_AutorouterPreferredDirections = EBPropertyEnumProxy <AutorouterPreferredDirections>
+typealias EBPreferencesProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
 
 //----------------------------------------------------------------------------------------------------------------------

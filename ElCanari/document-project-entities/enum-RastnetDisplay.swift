@@ -113,5 +113,6 @@ typealias EBTransientProperty_RastnetDisplay = EBTransientEnumProperty <RastnetD
 typealias EBReadWriteProperty_RastnetDisplay = EBReadWriteEnumProperty <RastnetDisplay>
 typealias EBStoredProperty_RastnetDisplay = EBStoredEnumProperty <RastnetDisplay>
 typealias EBPropertyProxy_RastnetDisplay = EBPropertyEnumProxy <RastnetDisplay>
+typealias EBPreferencesProperty_RastnetDisplay = EBStoredEnumProperty <RastnetDisplay>
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -624,11 +624,11 @@
             <point key="canvasLocation" x="681" y="25"/>
         </window>
         <customView id="5405" userLabel="Page : General Prefs">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="467"/>
+            <rect key="frame" x="0.0" y="0.0" width="452" height="488"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <box fixedFrame="YES" borderType="line" title="Selection Hilite" translatesAutoresizingMaskIntoConstraints="NO" id="5412">
-                    <rect key="frame" x="17" y="356" width="418" height="96"/>
+                    <rect key="frame" x="17" y="377" width="418" height="96"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="fqt-dy-MBC">
                         <rect key="frame" x="3" y="3" width="412" height="78"/>
@@ -683,7 +683,7 @@
                     </view>
                 </box>
                 <box fixedFrame="YES" title="Text Message Colors" translatesAutoresizingMaskIntoConstraints="NO" id="5406">
-                    <rect key="frame" x="17" y="210" width="418" height="142"/>
+                    <rect key="frame" x="17" y="231" width="418" height="142"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="FmO-vl-c0n">
                         <rect key="frame" x="3" y="3" width="412" height="124"/>
@@ -735,7 +735,7 @@
                     </view>
                 </box>
                 <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" title="ElCanari Application Update" translatesAutoresizingMaskIntoConstraints="NO" id="6117">
-                    <rect key="frame" x="17" y="94" width="418" height="112"/>
+                    <rect key="frame" x="17" y="115" width="418" height="112"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="E4G-cf-WCx">
                         <rect key="frame" x="3" y="3" width="412" height="94"/>
@@ -806,15 +806,41 @@
                         </subviews>
                     </view>
                 </box>
-                <box fixedFrame="YES" title="Debug Menu" translatesAutoresizingMaskIntoConstraints="NO" id="aQu-QG-afA">
-                    <rect key="frame" x="17" y="16" width="418" height="74"/>
+                <box fixedFrame="YES" title="Miscellaneous" translatesAutoresizingMaskIntoConstraints="NO" id="aQu-QG-afA">
+                    <rect key="frame" x="17" y="16" width="418" height="95"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="dDf-Wd-5h7">
-                        <rect key="frame" x="3" y="3" width="412" height="56"/>
+                        <rect key="frame" x="3" y="3" width="412" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qn8-FX-uEu" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                                <rect key="frame" x="139" y="40" width="134" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="roundRect" title="Rounded Bezel" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="aVl-kX-50T" id="pdL-Gs-qjJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <menu key="menu" id="iN9-b5-eJR">
+                                        <items>
+                                            <menuItem title="Rounded Bezel" state="on" id="aVl-kX-50T"/>
+                                            <menuItem title="Round Rect" id="Quq-Eg-TyG"/>
+                                            <menuItem title="Textured Rounded" id="Ft7-Ud-tgK"/>
+                                            <menuItem title="Textured Square" id="Ap7-Lc-LL0"/>
+                                            <menuItem title="Shadowless Square" id="YoR-YY-nLa"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwb-pR-jNV">
+                                <rect key="frame" x="18" y="42" width="109" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="User Interface Style" id="vh0-qS-GyK">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" id="4L9-Xt-zv8" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="18" y="20" width="186" height="18"/>
+                                <rect key="frame" x="17" y="18" width="132" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Show Debug Menu" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="bFd-YO-mnj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -825,7 +851,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="34" y="442.5"/>
+            <point key="canvasLocation" x="-89" y="433"/>
         </customView>
         <customView id="5461" userLabel="Page : Symbol Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="210"/>
@@ -2370,6 +2396,7 @@ Gw
             <connections>
                 <outlet property="mAddLibraryEntryButton" destination="5738" id="OU4-50-WER"/>
                 <outlet property="mAdditionnalLibraryArrayTableView" destination="5740" id="oGz-JM-e2p"/>
+                <outlet property="mAutoLayoutStylePopUpButton" destination="Qn8-FX-uEu" id="zne-SY-IfQ"/>
                 <outlet property="mBoardBackgroundColorWell" destination="5662" id="8tk-UT-axa"/>
                 <outlet property="mBoardBottomSideLayoutColorWell" destination="5652" id="aS9-GG-gvy"/>
                 <outlet property="mBoardBottomSideLegendColorWell" destination="5650" id="2pt-6Y-8dY"/>

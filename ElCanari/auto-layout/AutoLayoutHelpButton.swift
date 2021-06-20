@@ -18,6 +18,7 @@ final class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.controlSize = inSmall ? .small : .regular
     self.title = ""
     self.bezelStyle = .helpButton

@@ -12,18 +12,23 @@ import Cocoa
 //   AutoLayoutCanariPadRenumberPullDownButton
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpButton {
 
    //····················································································································
 
   init () {
-    super.init (frame: NSRect (), pullsDown: true)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (pullsDown: true, small: true)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//     if let cell = self.cell as? NSPopUpButtonCell {
+//      cell.arrowPosition = .arrowAtBottom
+//    }
+//
+//    self.controlSize = .small
+//    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
 
-    self.bezelStyle = BUTTON_STYLE
-    self.controlSize = .small
-    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
   }
 
@@ -45,10 +50,17 @@ final class AutoLayoutCanariPadRenumberPullDownButton : NSPopUpButton, EBUserCla
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
 
+  //····················································································································
+
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
+  
   //····················································································································
   // MARK: -
   //····················································································································

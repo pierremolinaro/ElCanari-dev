@@ -11,44 +11,12 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutButton : InternalAutoLayoutButton {
 
   //····················································································································
 
   private var mWidth : CGFloat? = nil
   private var mHeight : CGFloat? = nil
-
-  //····················································································································
-
-  init (title inTitle : String, small inSmall : Bool) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
-    self.title = inTitle
-    self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-    self.bezelStyle = BUTTON_STYLE
-  }
-
-  //····················································································································
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
-
-  //····················································································································
-
-  final func makeWidthExpandable () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    return self
-  }
 
   //····················································································································
 

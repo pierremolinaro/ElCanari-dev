@@ -104,5 +104,6 @@ typealias EBTransientProperty_RouteDirection = EBTransientEnumProperty <RouteDir
 typealias EBReadWriteProperty_RouteDirection = EBReadWriteEnumProperty <RouteDirection>
 typealias EBStoredProperty_RouteDirection = EBStoredEnumProperty <RouteDirection>
 typealias EBPropertyProxy_RouteDirection = EBPropertyEnumProxy <RouteDirection>
+typealias EBPreferencesProperty_RouteDirection = EBStoredEnumProperty <RouteDirection>
 
 //----------------------------------------------------------------------------------------------------------------------

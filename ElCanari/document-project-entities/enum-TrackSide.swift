@@ -104,5 +104,6 @@ typealias EBTransientProperty_TrackSide = EBTransientEnumProperty <TrackSide>
 typealias EBReadWriteProperty_TrackSide = EBReadWriteEnumProperty <TrackSide>
 typealias EBStoredProperty_TrackSide = EBStoredEnumProperty <TrackSide>
 typealias EBPropertyProxy_TrackSide = EBPropertyEnumProxy <TrackSide>
+typealias EBPreferencesProperty_TrackSide = EBStoredEnumProperty <TrackSide>
 
 //----------------------------------------------------------------------------------------------------------------------

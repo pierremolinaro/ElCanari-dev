@@ -10,23 +10,15 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : InternalAutoLayoutSegmentedControl {
 
   //····················································································································
 
   init (small inSmall : Bool) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
+    super.init (equalWidth: true, small: inSmall)
 
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.controlSize = inSmall ? .small : .regular
-    self.segmentStyle = SEGMENTED_CONTROL_STYLE
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
-    if #available (OSX 10.13, *) {
-      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
-    }
 
     self.addSegment (withImageNamed: "alignmentLeft")
     self.addSegment (withImageNamed: "alignmentCenter")
@@ -37,12 +29,6 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : NSSegmentedCon
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -66,27 +52,6 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : NSSegmentedCon
       self.setLabel ("", forSegment: idx)
     }else{
       self.setLabel ("?", forSegment: idx)
-    }
- //   self.frame.size = self.intrinsicContentSize
-  }
-
-  //····················································································································
-
-  final func makeWidthExpandable () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    return self
-  }
-
-  //····················································································································
-
-  override func resizeSubviews (withOldSize oldSize : NSSize) {
-    super.resizeSubviews (withOldSize: oldSize)
-    if #available (OSX 10.13, *) {
-    }else if self.segmentCount > 1 {
-      let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
-      for i in 0 ..< self.segmentCount {
-        self.setWidth (width, forSegment: i)
-      }
     }
   }
 

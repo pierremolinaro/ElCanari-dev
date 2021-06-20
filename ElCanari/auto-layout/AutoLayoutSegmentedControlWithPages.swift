@@ -4,13 +4,12 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClassNameProtocol {
+final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedControl {
 
   //····················································································································
 
   private var mDocumentView : AutoLayoutAbstractStackView
   private var mPages = [AutoLayoutAbstractStackView] ()
-  private let mEqualWidth : Bool
 
   //····················································································································
 
@@ -18,30 +17,16 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
         equalWidth inEqualWidth : Bool,
         small inSmall : Bool) {
     self.mDocumentView = inDocumentView
-    self.mEqualWidth = inEqualWidth
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-    self.controlSize = inSmall ? .small : .regular
-    self.segmentStyle = SEGMENTED_CONTROL_STYLE
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    super.init (equalWidth: inEqualWidth, small: inSmall)
+
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))
-    if #available (OSX 10.13, *), inEqualWidth {
-//      self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually
-    }
   }
 
   //····················································································································
 
   required init?(coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -66,29 +51,6 @@ final class AutoLayoutSegmentedControlWithPages : NSSegmentedControl, EBUserClas
     self.mPages.append (inPageView)
     self.frame.size = self.intrinsicContentSize
     return self
-  }
-
-  //····················································································································
-
-  final func makeWidthExpandable () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    return self
-  }
-
-  //····················································································································
-
-  override func resizeSubviews (withOldSize oldSize : NSSize) {
-    super.resizeSubviews (withOldSize: oldSize)
-    //Swift.print ("\(self.bounds)")
-    if #available (OSX 10.13, *) {
-    }else{
-      if self.mEqualWidth, self.segmentCount > 1 {
-        let width = self.bounds.size.width / CGFloat (self.segmentCount) - 3.0
-        for i in 0 ..< self.segmentCount {
-          self.setWidth (width, forSegment: i)
-        }
-      }
-    }
   }
 
   //····················································································································

@@ -110,5 +110,6 @@ typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <Quadra
 typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation>
 typealias EBStoredProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 typealias EBPropertyProxy_QuadrantRotation = EBPropertyEnumProxy <QuadrantRotation>
+typealias EBPreferencesProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 
 //----------------------------------------------------------------------------------------------------------------------

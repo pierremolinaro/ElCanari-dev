@@ -12,6 +12,7 @@ var g_Preferences : Preferences? = nil
 
 let Preferences_warningMessageColor = "Preferences:warningMessageColor"
 let Preferences_successMessageColor = "Preferences:successMessageColor"
+let Preferences_mAutoLayoutStyle = "Preferences:mAutoLayoutStyle"
 let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_symbolColor = "Preferences:symbolColor"
@@ -204,6 +205,23 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_successMessageColor_property_selection : EBSelection <NSColor> { return preferences_successMessageColor_property.selection }
+
+//····················································································································
+//   Atomic property: mAutoLayoutStyle
+//····················································································································
+
+  let preferences_mAutoLayoutStyle_property = EBPreferencesProperty_AutoLayoutUserInterfaceStyle (defaultValue: AutoLayoutUserInterfaceStyle.roundedBezel, prefKey: Preferences_mAutoLayoutStyle)
+
+//····················································································································
+
+  var preferences_mAutoLayoutStyle : AutoLayoutUserInterfaceStyle {
+    get { return preferences_mAutoLayoutStyle_property.propval }
+    set { preferences_mAutoLayoutStyle_property.setProp (newValue) }
+  }
+
+//····················································································································
+
+  var preferences_mAutoLayoutStyle_property_selection : EBSelection <AutoLayoutUserInterfaceStyle> { return preferences_mAutoLayoutStyle_property.selection }
 
 //····················································································································
 //   Atomic property: selectionHiliteColor
@@ -3025,6 +3043,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   @IBOutlet var mAddLibraryEntryButton : EBButton? = nil
   @IBOutlet var mAdditionnalLibraryArrayTableView : EBTableView? = nil
+  @IBOutlet var mAutoLayoutStylePopUpButton : EBPopUpButton? = nil
   @IBOutlet var mBoardBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBoardBottomSideLayoutColorWell : EBColorWell? = nil
   @IBOutlet var mBoardBottomSideLegendColorWell : EBColorWell? = nil
@@ -3305,6 +3324,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   override func awakeFromNib () {
     checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mAutoLayoutStylePopUpButton, "mAutoLayoutStylePopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBottomSideLayoutColorWell, "mBoardBottomSideLayoutColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardBottomSideLegendColorWell, "mBoardBottomSideLegendColorWell", EBColorWell.self, #file, #line)
@@ -3425,6 +3445,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mWarningMessageColorColorWell?.bind_color (preferences_warningMessageColor_property, sendContinously:false)
     mSuccessMessageColorColorWell?.bind_color (preferences_successMessageColor_property, sendContinously:false)
     mShowDebugMenuSwitch?.bind_value (preferences_showDebugMenu_property)
+    mAutoLayoutStylePopUpButton?.bind_selectedIndex (preferences_mAutoLayoutStyle_property)
     mSelectionHiliteColorColorWell?.bind_color (preferences_selectionHiliteColor_property, sendContinously:false)
     selectionHilitePopupButton?.bind_selectedTag (preferences_hiliteWidthMultipliedByTen_property)
     mMenuRevealInFinder_symbols?.bind_populateSubmenus (preferences_mValueRevealInFinder_symbols_property)

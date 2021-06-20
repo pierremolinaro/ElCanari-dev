@@ -8,7 +8,7 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  fileprivate let mTextView = EmbeddedAutoLayoutTextView ()
+  fileprivate let mTextView = InternalAutoLayoutTextView ()
 
   //····················································································································
 

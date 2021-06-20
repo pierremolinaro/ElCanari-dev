@@ -18,9 +18,14 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
     super.init (frame: NSRect (), pullsDown: true)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.controlSize = inSmall ? .small : .regular
     self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-    self.bezelStyle = BUTTON_STYLE
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+    if let cell = self.cell as? NSPopUpButtonCell {
+      cell.arrowPosition = .arrowAtBottom
+    }
+
     self.autoenablesItems = false
     self.addItem (withTitle: "Set All Pop-Up Units")
     self.add (title: "inch", withTag: 2_286_000)
@@ -125,6 +130,13 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
                            _ inObject8 : EBGenericReadWriteProperty <Int>) -> Self {
     self.mObjects = [inObject1, inObject2, inObject3, inObject4, inObject5, inObject6, inObject7, inObject8]
     return self
+  }
+
+  //····················································································································
+
+  override func updateAutoLayoutUserInterfaceStyle () {
+    super.updateAutoLayoutUserInterfaceStyle ()
+    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································

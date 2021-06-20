@@ -2,6 +2,7 @@ include "eb-sources/canari-outlet-class-declaration.eb" ;
 include "eb-sources/auto-layout-outlet-class-declaration.eb" ;
 include "eb-sources/transient-property-classes-structs.eb" ;
 include "eb-sources/common-entities.eb" ;
+//--- Preferences
 include "eb-sources/preferences.eb" ;
 //--- Font
 include "eb-sources/font-FontCharacter.eb" ;

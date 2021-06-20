@@ -110,5 +110,6 @@ typealias EBTransientProperty_BoardTextLayer = EBTransientEnumProperty <BoardTex
 typealias EBReadWriteProperty_BoardTextLayer = EBReadWriteEnumProperty <BoardTextLayer>
 typealias EBStoredProperty_BoardTextLayer = EBStoredEnumProperty <BoardTextLayer>
 typealias EBPropertyProxy_BoardTextLayer = EBPropertyEnumProxy <BoardTextLayer>
+typealias EBPreferencesProperty_BoardTextLayer = EBStoredEnumProperty <BoardTextLayer>
 
 //----------------------------------------------------------------------------------------------------------------------

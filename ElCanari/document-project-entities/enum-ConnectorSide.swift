@@ -107,5 +107,6 @@ typealias EBTransientProperty_ConnectorSide = EBTransientEnumProperty <Connector
 typealias EBReadWriteProperty_ConnectorSide = EBReadWriteEnumProperty <ConnectorSide>
 typealias EBStoredProperty_ConnectorSide = EBStoredEnumProperty <ConnectorSide>
 typealias EBPropertyProxy_ConnectorSide = EBPropertyEnumProxy <ConnectorSide>
+typealias EBPreferencesProperty_ConnectorSide = EBStoredEnumProperty <ConnectorSide>
 
 //----------------------------------------------------------------------------------------------------------------------

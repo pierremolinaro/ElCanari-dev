@@ -107,5 +107,6 @@ typealias EBTransientProperty_RestrictRectangleLayer = EBTransientEnumProperty <
 typealias EBReadWriteProperty_RestrictRectangleLayer = EBReadWriteEnumProperty <RestrictRectangleLayer>
 typealias EBStoredProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
 typealias EBPropertyProxy_RestrictRectangleLayer = EBPropertyEnumProxy <RestrictRectangleLayer>
+typealias EBPreferencesProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
 
 //----------------------------------------------------------------------------------------------------------------------

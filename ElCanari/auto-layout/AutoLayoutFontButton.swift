@@ -11,7 +11,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutFontButton : InternalAutoLayoutButton {
 
   //····················································································································
 
@@ -20,11 +20,11 @@ final class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   init (small inSmall : Bool) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-    self.bezelStyle = BUTTON_STYLE
+    super.init (title: "", small: inSmall)
+//    noteObjectAllocation (self)
+//    self.controlSize = inSmall ? .small : .regular
+//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
 
   //····················································································································
@@ -44,9 +44,16 @@ final class AutoLayoutFontButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+
+  //····················································································································
+
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

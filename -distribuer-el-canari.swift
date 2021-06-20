@@ -28,12 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.3.9"
+let VERSION_CANARI = "1.4.0"
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "Graphic views Magnification bug fixed"
-]
+let BUGFIXES : [String] = []
 let CHANGES : [String] = [
+  "Symbol and Package document use interfaces are managed by auto layout"
 ]
 let NEWS : [String] = [
 ]

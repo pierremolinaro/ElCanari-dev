@@ -10,18 +10,23 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
   init (small inSmall : Bool) {
-    super.init (frame: NSRect (), pullsDown: false)
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
+    super.init (pullsDown: false, small: inSmall)
+//    noteObjectAllocation (self)
+//    self.translatesAutoresizingMaskIntoConstraints = false
+//
+//    self.controlSize = inSmall ? .small : .regular
+//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+//
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//    if let cell = self.cell as? NSPopUpButtonCell {
+//      cell.arrowPosition = .arrowAtBottom
+//    }
 
-    self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-    self.bezelStyle = BUTTON_STYLE
     self.add (title: "inch", withTag: 2_286_000)
     self.add (title: "mil", withTag: 2_286)
     self.add (title: "pt", withTag: 31_750)
@@ -40,9 +45,9 @@ final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProt
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
-  }
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
   
   //····················································································································
 
@@ -51,6 +56,13 @@ final class AutoLayoutCanariUnitPopUpButton : NSPopUpButton, EBUserClassNameProt
     self.mSelectedUnitController = nil
     super.ebCleanUp ()
   }
+
+  //····················································································································
+
+//  override func updateAutoLayoutUserInterfaceStyle () {
+//    super.updateAutoLayoutUserInterfaceStyle ()
+//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+//  }
 
   //····················································································································
 

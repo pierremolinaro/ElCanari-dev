@@ -10,14 +10,6 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-let BUTTON_STYLE = NSButton.BezelStyle.rounded
-let SEGMENTED_CONTROL_STYLE = NSSegmentedControl.Style.rounded
-
-//let BUTTON_STYLE = NSButton.BezelStyle.roundRect
-//let SEGMENTED_CONTROL_STYLE = NSSegmentedControl.Style.roundRect
-
-//----------------------------------------------------------------------------------------------------------------------
-
 let DEBUG_FILL_COLOR = NSColor.gray.withAlphaComponent (0.025)
 let DEBUG_STROKE_COLOR = NSColor.orange
 

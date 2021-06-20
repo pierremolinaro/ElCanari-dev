@@ -107,5 +107,6 @@ typealias EBTransientProperty_SchematicSheetOrientation = EBTransientEnumPropert
 typealias EBReadWriteProperty_SchematicSheetOrientation = EBReadWriteEnumProperty <SchematicSheetOrientation>
 typealias EBStoredProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
 typealias EBPropertyProxy_SchematicSheetOrientation = EBPropertyEnumProxy <SchematicSheetOrientation>
+typealias EBPreferencesProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
 
 //----------------------------------------------------------------------------------------------------------------------

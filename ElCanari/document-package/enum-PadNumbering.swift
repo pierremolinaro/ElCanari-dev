@@ -136,5 +136,6 @@ typealias EBTransientProperty_PadNumbering = EBTransientEnumProperty <PadNumberi
 typealias EBReadWriteProperty_PadNumbering = EBReadWriteEnumProperty <PadNumbering>
 typealias EBStoredProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
 typealias EBPropertyProxy_PadNumbering = EBPropertyEnumProxy <PadNumbering>
+typealias EBPreferencesProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
 
 //----------------------------------------------------------------------------------------------------------------------
