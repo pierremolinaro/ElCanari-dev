@@ -246,6 +246,7 @@ import Cocoa
   @IBOutlet final var mDisplayInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mDisplayTopSidePadSwitch : EBSwitch? = nil
   @IBOutlet final var mDisplayZoneNameSwitch : EBSwitch? = nil
+  @IBOutlet final var mDrawDimensionBackground : EBSwitch? = nil
   @IBOutlet final var mGridDisplayPopUpButton : EBPopUpButton? = nil
   @IBOutlet final var mGridStyle : EBPopUpButton? = nil
   @IBOutlet final var mGridTextField : CanariDimensionTextField? = nil
@@ -586,6 +587,7 @@ import Cocoa
     checkOutletConnection (self.mDisplayInspectorView, "mDisplayInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayZoneNameSwitch, "mDisplayZoneNameSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawDimensionBackground, "mDrawDimensionBackground", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mGridDisplayPopUpButton, "mGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mGridTextField, "mGridTextField", CanariDimensionTextField.self, #file, #line)
@@ -1036,6 +1038,7 @@ import Cocoa
     self.mDimensionXLabelTextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.xDimension_property, self.mPackageDimensionSelectionController.xDimensionUnit_property)
     self.mDimensionYLabelUnitPopUp?.bind_selectedTag (self.mPackageDimensionSelectionController.yDimensionUnit_property)
     self.mDimensionYLabelTextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.yDimension_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
+    self.mDrawDimensionBackground?.bind_value (self.mPackageDimensionSelectionController.drawDimensionBackground_property)
     self.mZoneXUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.xUnit_property)
     self.mZoneXTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property)
     self.mZoneYUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yUnit_property)
@@ -1467,6 +1470,7 @@ import Cocoa
     self.mDimensionXLabelTextField?.unbind_dimensionAndUnit ()
     self.mDimensionYLabelUnitPopUp?.unbind_selectedTag ()
     self.mDimensionYLabelTextField?.unbind_dimensionAndUnit ()
+    self.mDrawDimensionBackground?.unbind_value ()
     self.mZoneXUnitPopUp?.unbind_selectedTag ()
     self.mZoneXTextField?.unbind_dimensionAndUnit ()
     self.mZoneYUnitPopUp?.unbind_selectedTag ()
@@ -1718,6 +1722,7 @@ import Cocoa
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mDisplayTopSidePadSwitch?.ebCleanUp ()
     self.mDisplayZoneNameSwitch?.ebCleanUp ()
+    self.mDrawDimensionBackground?.ebCleanUp ()
     self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mGridTextField?.ebCleanUp ()
@@ -1955,6 +1960,7 @@ import Cocoa
     self.mDisplayInspectorView = nil
     self.mDisplayTopSidePadSwitch = nil
     self.mDisplayZoneNameSwitch = nil
+    self.mDrawDimensionBackground = nil
     self.mGridDisplayPopUpButton = nil
     self.mGridStyle = nil
     self.mGridTextField = nil

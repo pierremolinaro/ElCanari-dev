@@ -78,6 +78,12 @@ protocol PackageDimension_distanceUnit : AnyObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol PackageDimension_drawDimensionBackground : AnyObject {
+  var drawDimensionBackground : Bool { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol PackageDimension_x1 : AnyObject {
   var x1 : Int { get }
 }
@@ -123,6 +129,7 @@ final class PackageDimension : PackageObject,
          PackageDimension_xDimensionUnit,
          PackageDimension_yDimensionUnit,
          PackageDimension_distanceUnit,
+         PackageDimension_drawDimensionBackground,
          PackageDimension_x1,
          PackageDimension_distanceInCanariUnit,
          PackageDimension_objectDisplay,
@@ -406,6 +413,29 @@ final class PackageDimension : PackageObject,
   final var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.selection }
 
   //····················································································································
+  //   Atomic property: drawDimensionBackground
+  //····················································································································
+
+  final let drawDimensionBackground_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawDimensionBackground_toDefaultValue () {
+    self.drawDimensionBackground = true
+  }
+
+  //····················································································································
+
+  final var drawDimensionBackground : Bool {
+    get { return self.drawDimensionBackground_property.propval }
+    set { self.drawDimensionBackground_property.setProp (newValue) }
+  }
+
+  //····················································································································
+
+  final var drawDimensionBackground_property_selection : EBSelection <Bool> { return self.drawDimensionBackground_property.selection }
+
+  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -468,6 +498,7 @@ final class PackageDimension : PackageObject,
     self.xDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.yDimensionUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.distanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
+    self.drawDimensionBackground_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- Atomic property: distanceInCanariUnit
@@ -510,6 +541,7 @@ final class PackageDimension : PackageObject,
         kind &= unwSelf.distanceInCanariUnit_property_selection.kind ()
         kind &= unwSelf.distanceUnit_property_selection.kind ()
         kind &= preferences_dimensionFont_property_selection.kind ()
+        kind &= unwSelf.drawDimensionBackground_property_selection.kind ()
         kind &= preferences_packageBackgroundColor_property_selection.kind ()
         kind &= preferences_packageDimensionColor_property_selection.kind ()
         switch kind {
@@ -518,9 +550,9 @@ final class PackageDimension : PackageObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, preferences_dimensionFont_property_selection, preferences_packageBackgroundColor_property_selection, preferences_packageDimensionColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_PackageDimension_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, preferences_dimensionFont_property_selection, unwSelf.drawDimensionBackground_property_selection, preferences_packageBackgroundColor_property_selection, preferences_packageDimensionColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackageDimension_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -538,6 +570,7 @@ final class PackageDimension : PackageObject,
     self.distanceInCanariUnit_property.addEBObserver (self.objectDisplay_property)
     self.distanceUnit_property.addEBObserver (self.objectDisplay_property)
     preferences_dimensionFont_property.addEBObserver (self.objectDisplay_property)
+    self.drawDimensionBackground_property.addEBObserver (self.objectDisplay_property)
     preferences_packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
     preferences_packageDimensionColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -549,6 +582,7 @@ final class PackageDimension : PackageObject,
         kind &= unwSelf.y2_property_selection.kind ()
         kind &= preferences_packageBackgroundColor_property_selection.kind ()
         kind &= preferences_packageDimensionColor_property_selection.kind ()
+        kind &= unwSelf.drawDimensionBackground_property_selection.kind ()
         kind &= unwSelf.xDimension_property_selection.kind ()
         kind &= unwSelf.yDimension_property_selection.kind ()
         kind &= unwSelf.distanceInCanariUnit_property_selection.kind ()
@@ -561,9 +595,9 @@ final class PackageDimension : PackageObject,
         case .multiple :
           return .multiple
         case .single :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, preferences_packageBackgroundColor_property_selection, preferences_packageDimensionColor_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, preferences_dimensionFont_property_selection, unwSelf.knobSize_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
-            return .single (transient_PackageDimension_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, preferences_packageBackgroundColor_property_selection, preferences_packageDimensionColor_property_selection, unwSelf.drawDimensionBackground_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, preferences_dimensionFont_property_selection, unwSelf.knobSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12)) :
+            return .single (transient_PackageDimension_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12))
           default :
             return .empty
           }
@@ -578,6 +612,7 @@ final class PackageDimension : PackageObject,
     self.y2_property.addEBObserver (self.selectionDisplay_property)
     preferences_packageBackgroundColor_property.addEBObserver (self.selectionDisplay_property)
     preferences_packageDimensionColor_property.addEBObserver (self.selectionDisplay_property)
+    self.drawDimensionBackground_property.addEBObserver (self.selectionDisplay_property)
     self.xDimension_property.addEBObserver (self.selectionDisplay_property)
     self.yDimension_property.addEBObserver (self.selectionDisplay_property)
     self.distanceInCanariUnit_property.addEBObserver (self.selectionDisplay_property)
@@ -615,6 +650,7 @@ final class PackageDimension : PackageObject,
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)
+    self.drawDimensionBackground_property.setSignatureObserver (observer: self)
     self.x1_property.setSignatureObserver (observer: self)
     self.x1Unit_property.setSignatureObserver (observer: self)
     self.x2_property.setSignatureObserver (observer: self)
@@ -647,6 +683,7 @@ final class PackageDimension : PackageObject,
     // self.distanceInCanariUnit_property.removeEBObserver (self.objectDisplay_property)
     // self.distanceUnit_property.removeEBObserver (self.objectDisplay_property)
     // preferences_dimensionFont_property.removeEBObserver (self.objectDisplay_property)
+    // self.drawDimensionBackground_property.removeEBObserver (self.objectDisplay_property)
     // preferences_packageBackgroundColor_property.removeEBObserver (self.objectDisplay_property)
     // preferences_packageDimensionColor_property.removeEBObserver (self.objectDisplay_property)
     // self.x1_property.removeEBObserver (self.selectionDisplay_property)
@@ -655,6 +692,7 @@ final class PackageDimension : PackageObject,
     // self.y2_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_packageBackgroundColor_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_packageDimensionColor_property.removeEBObserver (self.selectionDisplay_property)
+    // self.drawDimensionBackground_property.removeEBObserver (self.selectionDisplay_property)
     // self.xDimension_property.removeEBObserver (self.selectionDisplay_property)
     // self.yDimension_property.removeEBObserver (self.selectionDisplay_property)
     // self.distanceInCanariUnit_property.removeEBObserver (self.selectionDisplay_property)
@@ -667,6 +705,7 @@ final class PackageDimension : PackageObject,
     // self.y2_property.removeEBObserver (self.issues_property)
   //--- Unregister properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: nil)
+    self.drawDimensionBackground_property.setSignatureObserver (observer: nil)
     self.x1_property.setSignatureObserver (observer: nil)
     self.x1Unit_property.setSignatureObserver (observer: nil)
     self.x2_property.setSignatureObserver (observer: nil)
@@ -789,6 +828,14 @@ final class PackageDimension : PackageObject,
       valueExplorer: &self.distanceUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "drawDimensionBackground",
+      idx: self.drawDimensionBackground_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawDimensionBackground_property.mObserverExplorer,
+      valueExplorer: &self.drawDimensionBackground_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "x1",
       idx: self.x1_property.ebObjectIndex,
       y: &y,
@@ -875,6 +922,9 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.mObserverExplorer = nil
     self.distanceUnit_property.mValueExplorer = nil
+  //--- Atomic property: drawDimensionBackground
+    self.drawDimensionBackground_property.mObserverExplorer = nil
+    self.drawDimensionBackground_property.mValueExplorer = nil
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
@@ -930,6 +980,8 @@ final class PackageDimension : PackageObject,
     self.yDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey: "yDimensionUnit")
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "distanceUnit")
+  //--- Atomic property: drawDimensionBackground
+    self.drawDimensionBackground_property.storeIn (dictionary: ioDictionary, forKey: "drawDimensionBackground")
   //--- Atomic property: x1
     self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
@@ -973,6 +1025,8 @@ final class PackageDimension : PackageObject,
     self.yDimensionUnit_property.readFrom (dictionary: inDictionary, forKey: "yDimensionUnit")
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.readFrom (dictionary: inDictionary, forKey: "distanceUnit")
+  //--- Atomic property: drawDimensionBackground
+    self.drawDimensionBackground_property.readFrom (dictionary: inDictionary, forKey: "drawDimensionBackground")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
   }
@@ -997,6 +1051,7 @@ final class PackageDimension : PackageObject,
     ioString += "xDimensionUnit\n"
     ioString += "yDimensionUnit\n"
     ioString += "distanceUnit\n"
+    ioString += "drawDimensionBackground\n"
     ioString += "x1\n"
   //--- To one relationships
   //--- To many relationships
@@ -1032,6 +1087,8 @@ final class PackageDimension : PackageObject,
     self.yDimensionUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.distanceUnit.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawDimensionBackground.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.x1.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1086,6 +1143,9 @@ final class PackageDimension : PackageObject,
       if let range = inDictionary ["distanceUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.distanceUnit = value
       }
+      if let range = inDictionary ["drawDimensionBackground"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawDimensionBackground = value
+      }
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x1 = value
       }
@@ -1118,6 +1178,7 @@ final class PackageDimension : PackageObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.distanceUnit_property.signature ())
+    crc.accumulateUInt32 (self.drawDimensionBackground_property.signature ())
     crc.accumulateUInt32 (self.x1_property.signature ())
     crc.accumulateUInt32 (self.x1Unit_property.signature ())
     crc.accumulateUInt32 (self.x2_property.signature ())

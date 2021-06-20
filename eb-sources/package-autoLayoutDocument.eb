@@ -620,6 +620,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
         }
       )
+      addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabels (left: "Label", right: "∆X", bold: no, small: yes),
         right: CanariDimensionAndPopUp {
@@ -632,6 +633,10 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
         }
       )
+    }
+    hStack {
+      Switch (title: "Draw Label Background", small: yes) { $value #mPackageDimensionSelectionController.drawDimensionBackground }
+      space
     }
     Button (title: "Set Label at Mid X", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidXAction }
     Button (title: "Set Label at Mid Y", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidYAction }

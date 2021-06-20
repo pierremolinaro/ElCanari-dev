@@ -83,6 +83,7 @@
                 <outlet property="mDisplayInspectorView" destination="sHH-7k-fUn" id="yy0-9n-4ni"/>
                 <outlet property="mDisplayTopSidePadSwitch" destination="Gom-0a-3Ut" id="ZFw-12-idQ"/>
                 <outlet property="mDisplayZoneNameSwitch" destination="obU-Tt-UAm" id="0wB-by-pns"/>
+                <outlet property="mDrawDimensionBackground" destination="dWo-Ss-n0i" id="FEN-XC-OiP"/>
                 <outlet property="mGridDisplayPopUpButton" destination="vjx-yN-SDQ" id="zJt-ul-QIg"/>
                 <outlet property="mGridStyle" destination="1tS-aK-Csg" id="l9a-Nm-2d2"/>
                 <outlet property="mGridTextField" destination="Tf2-wd-zhH" id="MIU-zf-3vl"/>
@@ -421,7 +422,7 @@ Gw
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1447">
-                    <rect key="frame" x="20" y="328" width="210" height="5"/>
+                    <rect key="frame" x="20" y="298" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2968">
@@ -615,46 +616,8 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be6-S1-BaA" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="102" y="298" width="60" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="FvS-ft-0mP">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="9R0-w8-wV8"/>
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M05-9A-E0a" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="163" y="299" width="67" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="Il3-7r-NY6" id="Hih-yL-Do1">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="X1M-Hw-tGz">
-                            <items>
-                                <menuItem title="in" tag="2286000" id="qMv-0F-XNO"/>
-                                <menuItem title="mil" tag="2286" id="t4T-bG-y3g"/>
-                                <menuItem title="pt" tag="31750" id="lFM-NI-i24"/>
-                                <menuItem title="cm" tag="900000" id="Qlr-vl-LjB"/>
-                                <menuItem title="mm" tag="90000" id="c1M-2r-E8C"/>
-                                <menuItem title="µm" tag="90" id="ps3-YU-tU7"/>
-                                <menuItem title="pc" state="on" tag="381000" id="Il3-7r-NY6"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="71" translatesAutoresizingMaskIntoConstraints="NO" id="1412">
-                    <rect key="frame" x="17" y="299" width="75" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Distance" id="2730">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXv-uR-9gS" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="19" y="217" width="210" height="19"/>
+                    <rect key="frame" x="19" y="197" width="210" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Set Label at Mid X" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ejj-ZW-XFt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -662,7 +625,7 @@ Gw
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOH-L4-vhs" customClass="EBButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="19" y="191" width="210" height="19"/>
+                    <rect key="frame" x="19" y="171" width="210" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Set Label at Mid Y" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxs-QS-GRt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -688,6 +651,52 @@ Gw
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWo-Ss-n0i" customClass="EBSwitch" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="17" y="221" width="117" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Draws Backgound" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="FgP-bW-r0B">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be6-S1-BaA" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="102" y="312" width="60" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="FvS-ft-0mP">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="9R0-w8-wV8"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M05-9A-E0a" customClass="EBPopUpButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="163" y="313" width="67" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="Il3-7r-NY6" id="Hih-yL-Do1">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="X1M-Hw-tGz">
+                            <items>
+                                <menuItem title="in" tag="2286000" id="qMv-0F-XNO"/>
+                                <menuItem title="mil" tag="2286" id="t4T-bG-y3g"/>
+                                <menuItem title="pt" tag="31750" id="lFM-NI-i24"/>
+                                <menuItem title="cm" tag="900000" id="Qlr-vl-LjB"/>
+                                <menuItem title="mm" tag="90000" id="c1M-2r-E8C"/>
+                                <menuItem title="µm" tag="90" id="ps3-YU-tU7"/>
+                                <menuItem title="pc" state="on" tag="381000" id="Il3-7r-NY6"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="71" translatesAutoresizingMaskIntoConstraints="NO" id="1412">
+                    <rect key="frame" x="17" y="313" width="75" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Distance" id="2730">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-1278" y="137"/>
         </customView>
@@ -6186,7 +6195,7 @@ DQ
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="editorInspector" width="60" height="60"/>
-        <image name="magnifyingGlass" width="40" height="40"/>
+        <image name="editorInspector" width="10" height="10"/>
+        <image name="magnifyingGlass" width="10" height="10"/>
     </resources>
 </document>

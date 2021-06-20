@@ -28,6 +28,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       oldValue.xDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
       oldValue.yDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
       oldValue.distanceUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
+      oldValue.drawDimensionBackground_property.removeEBObserversFrom (&self.mObserversOf_drawDimensionBackground) // Stored property
       oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
       oldValue.distanceInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
       oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
@@ -48,6 +49,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       newValue.xDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
       newValue.yDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
       newValue.distanceUnit_property.addEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
+      newValue.drawDimensionBackground_property.addEBObserversFrom (&self.mObserversOf_drawDimensionBackground) // Stored property
       newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
       newValue.distanceInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
       newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
@@ -892,6 +894,76 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.distanceUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawDimensionBackground' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawDimensionBackground = EBWeakEventSet ()
+
+  //····················································································································
+
+  final var drawDimensionBackground_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.drawDimensionBackground_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawDimensionBackground.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+       v?.drawDimensionBackground_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawDimensionBackground.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      v?.drawDimensionBackground_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawDimensionBackground_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      self.mObserversOf_drawDimensionBackground.apply { (_ observer : EBEvent) in
+        managedObject.drawDimensionBackground_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawDimensionBackground_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    self.mObserversOf_drawDimensionBackground.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawDimensionBackground_property.removeEBObserver (observer)
       }
     }
   }

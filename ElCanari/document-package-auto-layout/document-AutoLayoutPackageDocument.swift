@@ -991,23 +991,33 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_104 (), right: self.computeImplicitView_105 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_106 (), right: self.computeImplicitView_107 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_108 (), right: self.computeImplicitView_109 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_110 (), right: self.computeImplicitView_111 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_112 (), right: self.computeImplicitView_113 ())
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutButton (title: "Set Label at Mid X", small: true)
+    let view_2 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_2_0 = AutoLayoutSwitch (title: "Draw Label Background", small: true)
+        .bind_value (self.mPackageDimensionSelectionController.drawDimensionBackground_property)
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_1)
+    }
+    vStackView.appendView (view_2)
+    let view_3 = AutoLayoutButton (title: "Set Label at Mid X", small: true)
       .makeWidthExpandable ()
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidXAction (_:))
       )
-    vStackView.appendView (view_2)
-    let view_3 = AutoLayoutButton (title: "Set Label at Mid Y", small: true)
+    vStackView.appendView (view_3)
+    let view_4 = AutoLayoutButton (title: "Set Label at Mid Y", small: true)
       .makeWidthExpandable ()
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutPackageDocument.setDimensionTextOriginAtMidYAction (_:))
       )
-    vStackView.appendView (view_3)
+    vStackView.appendView (view_4)
     return vStackView
   } ()
 

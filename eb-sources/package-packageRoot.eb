@@ -452,6 +452,7 @@ graphic entity PackageDimension : PackageObject {
   property @signature Int xDimensionUnit default 2_286 ;
   property @signature Int yDimensionUnit default 2_286 ;
   property @signature Int distanceUnit default 2_286 ;
+  property @signature Bool drawDimensionBackground default yes ;
 
 
   transient Int distanceInCanariUnit dependsFrom
@@ -461,6 +462,7 @@ graphic entity PackageDimension : PackageObject {
   override transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
+     self.drawDimensionBackground,
      prefs.packageBackgroundColor,
      prefs.packageDimensionColor
   ;
@@ -469,6 +471,7 @@ graphic entity PackageDimension : PackageObject {
     self.x1, self.y1, self.x2, self.y2,
     prefs.packageBackgroundColor,
     prefs.packageDimensionColor,
+    self.drawDimensionBackground,
     self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
     super.PackageObject.knobSize
   ;

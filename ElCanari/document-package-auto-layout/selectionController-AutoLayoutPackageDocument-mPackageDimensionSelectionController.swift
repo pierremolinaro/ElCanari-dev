@@ -119,6 +119,15 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   }
 
   //····················································································································
+  //   Selection observable property: drawDimensionBackground
+  //····················································································································
+
+  let drawDimensionBackground_property = EBPropertyProxy_Bool ()
+  var drawDimensionBackground_property_selection : EBSelection <Bool> {
+    return self.drawDimensionBackground_property.selection
+  }
+
+  //····················································································································
   //   Selection observable property: x1
   //····················································································································
 
@@ -195,6 +204,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
     self.bind_property_xDimensionUnit ()
     self.bind_property_yDimensionUnit ()
     self.bind_property_distanceUnit ()
+    self.bind_property_drawDimensionBackground ()
     self.bind_property_x1 ()
     self.bind_property_distanceInCanariUnit ()
     self.bind_property_objectDisplay ()
@@ -268,6 +278,11 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
     self.distanceUnit_property.mWriteModelFunction = nil 
     self.distanceUnit_property.mValidateAndWriteModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_distanceUnit (self.distanceUnit_property)
+  //--- drawDimensionBackground
+    self.drawDimensionBackground_property.mReadModelFunction = nil 
+    self.drawDimensionBackground_property.mWriteModelFunction = nil 
+    self.drawDimensionBackground_property.mValidateAndWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_drawDimensionBackground (self.drawDimensionBackground_property)
   //--- x1
     self.x1_property.mReadModelFunction = nil 
     self.x1_property.mWriteModelFunction = nil 
@@ -418,6 +433,14 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
       view: view,
       observerExplorer: &self.distanceUnit_property.mObserverExplorer,
       valueExplorer: &self.distanceUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawDimensionBackground",
+      idx: self.drawDimensionBackground_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawDimensionBackground_property.mObserverExplorer,
+      valueExplorer: &self.drawDimensionBackground_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
@@ -1296,6 +1319,75 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
         case .single (let v) :
           for object in v {
             let result = object.distanceUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_drawDimensionBackground () {
+    self.selectedArray_property.addEBObserverOf_drawDimensionBackground (self.drawDimensionBackground_property)
+    self.drawDimensionBackground_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawDimensionBackground_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawDimensionBackground_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawDimensionBackground_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawDimensionBackground_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawDimensionBackground_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

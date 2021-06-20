@@ -346,8 +346,10 @@ xibdocument PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mDimensionYLabelTextField
      $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
   ;
-
-
+//--- Draw background Checkbox
+  outlet EBSwitch mDrawDimensionBackground
+     $value #mPackageDimensionSelectionController.drawDimensionBackground
+  ;
 
 //------- Zone inspector
   selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
