@@ -61,12 +61,13 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   //····················································································································
 
   final func addTextObserverColumn (title inTitle : String,
-                                    identifier inIdentifierName : String,
+                                    sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
                                     headerAlignment inHeaderAlignment : NSTextAlignment,
                                     contentAlignment inContentAlignment : NSTextAlignment,
                                     valueDelegate inCallBack : Optional < (_ inRow : Int) -> String >) -> Self {
     let column = InternalTextObserverTableColumn (
-      withIdentifierNamed: inIdentifierName,
+      withIdentifierNamed: String (self.mTableView.tableColumns.count),
+      sort: inSortCallBack,
       contentAlignment: inContentAlignment,
       valueDelegate: inCallBack
     )
@@ -88,20 +89,21 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   //····················································································································
 
   final func addIntObserverColumn (title inTitle : String,
-                                   identifier inIdentifierName : String,
+                                   sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
                                    headerAlignment inHeaderAlignment : NSTextAlignment,
                                    contentAlignment inContentAlignment : NSTextAlignment,
                                    valueDelegate inCallBack : Optional < (_ inRow : Int) -> Int >) -> Self {
     let column = InternalIntObserverTableColumn (
-      withIdentifierNamed: inIdentifierName,
+      withIdentifierNamed: String (self.mTableView.tableColumns.count),
+      sort: inSortCallBack,
       contentAlignment: inContentAlignment,
       valueDelegate: inCallBack
     )
     column.title = inTitle
     column.headerCell.alignment = inHeaderAlignment
-    column.minWidth = 70.0
+    column.minWidth = 80.0
     column.maxWidth = 400.0
-    column.width = 70.0
+    column.width = 80.0
   //--- Add Column
     self.mTableView.addTableColumn (column)
   //--- Update table view sort descriptors
@@ -115,8 +117,13 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   //····················································································································
 
   func reloadData () {
-    let sortDescriptors = self.mTableView.sortDescriptors
-    self.mDataSourceSortCallBack? (sortDescriptors)
+    for sortDescriptor in self.mTableView.sortDescriptors.reversed () {
+      for column in self.mTableView.tableColumns {
+        if sortDescriptor === column.sortDescriptorPrototype, let c = column as? InternalTableColumn {
+          c.mSortCallBack? (sortDescriptor.ascending)
+        }
+      }
+    }
     self.mTableView.reloadData ()
   }
 
@@ -175,22 +182,9 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   //    tableView:sortDescriptorsDidChange: NSTableViewDataSource delegate
   //····················································································································
 
-  final func setSortDataSourceCallBack (_ inCallBack : Optional < (_ inSortDescriptors : [NSSortDescriptor]) -> Void >) -> Self {
-    self.mDataSourceSortCallBack = inCallBack
-    return self
-  }
-
-  //····················································································································
-
-  private var mDataSourceSortCallBack : Optional < (_ inSortDescriptors : [NSSortDescriptor]) -> Void > = nil
-
-  //····················································································································
-
   func tableView (_ tableView : NSTableView,
                   sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    let sortDescriptors = self.mTableView.sortDescriptors
-    self.mDataSourceSortCallBack? (sortDescriptors)
-    self.mTableView.reloadData ()
+    self.reloadData ()
   }
 
   //····················································································································
@@ -204,17 +198,22 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
   //····················································································································
 
   let mContentAlignment : NSTextAlignment
+  let mSortCallBack : Optional < (_ inAscending : Bool) -> Void >
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (withIdentifierNamed inName : String,
+        sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
         contentAlignment inContentAlignment : NSTextAlignment) {
     self.mContentAlignment = inContentAlignment
+    self.mSortCallBack = inSortCallBack
     super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: inName))
     noteObjectAllocation (self)
-    self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
+    if inSortCallBack != nil {
+      self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
+    }
   }
 
   //····················································································································
@@ -251,10 +250,11 @@ fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
   //····················································································································
 
   init (withIdentifierNamed inName : String,
+        sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
         contentAlignment inContentAlignment : NSTextAlignment,
         valueDelegate inCallBack : Optional < (_ inRow : Int) -> String >) {
     self.mValueDelegate = inCallBack
-    super.init (withIdentifierNamed: inName, contentAlignment: inContentAlignment)
+    super.init (withIdentifierNamed: inName, sort: inSortCallBack, contentAlignment: inContentAlignment)
   }
 
   //····················································································································
@@ -288,10 +288,11 @@ fileprivate class InternalIntObserverTableColumn : InternalTableColumn {
   //····················································································································
 
   init (withIdentifierNamed inName : String,
+        sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
         contentAlignment inContentAlignment : NSTextAlignment,
         valueDelegate inCallBack : Optional < (_ inRow : Int) -> Int >) {
     self.mValueDelegate = inCallBack
-    super.init (withIdentifierNamed: inName, contentAlignment: inContentAlignment)
+    super.init (withIdentifierNamed: inName, sort: inSortCallBack, contentAlignment: inContentAlignment)
   //--- Configure number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal

@@ -77,11 +77,6 @@ func reuseTableViewCells () -> Bool {
 func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
   let debugObject = EBAllocationDebug ()
   gDebugObject = debugObject
-//  let mainBundle = Bundle.main
-//  let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
-//  if !ok {
-//    presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
-//  }
 //---
   let item = NSMenuItem (
     title: "Show Allocation Stats",
@@ -224,49 +219,32 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //--- Configure table view
     _ = self.mStatsTableView.addTextObserverColumn (
       title: "Class Name",
-      identifier: "classname",
+      sort: { [weak self] (_ inAscending : Bool) in self?.mAllocationStatsDataSource.sort () { String.numericCompare ($0.className, inAscending, $1.className) } },
       headerAlignment: .center,
       contentAlignment: .left,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" }
     )
     .addIntObserverColumn (
       title: "Snap Shot",
-      identifier: "snapshot",
+      sort: { [weak self] (_ inAscending : Bool) in self?.mAllocationStatsDataSource.sort () { inAscending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) } },
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 }
     )
     .addIntObserverColumn (
       title: "Live",
-      identifier: "live",
+      sort: { [weak self] (_ inAscending : Bool) in self?.mAllocationStatsDataSource.sort () { inAscending ? ($0.live < $1.live) : ($0.live > $1.live) } },
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 }
     )
     .addIntObserverColumn (
       title: "Total",
-      identifier: "total",
+      sort: { [weak self] (_ inAscending : Bool) in self?.mAllocationStatsDataSource.sort () { inAscending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) } },
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 }
     )
-    .setSortDataSourceCallBack { [weak self] (_ inSortDescriptors : [NSSortDescriptor]) in
-      for s in inSortDescriptors.reversed () {
-        if let key = s.key {
-          if key == "classname" {
-            self?.mAllocationStatsDataSource.sort () { String.numericCompare ($0.className, s.ascending, $1.className) }
-          }else if key == "snapshot" {
-            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
-          }else if key == "live" {
-            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
-          }else if key == "total" {
-            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
-          }else{
-            NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
-          }
-        }
-      }
-    }
     .setRowCountDelegate { [weak self] in return self?.mAllocationStatsDataSource.count ?? 0 }
    //--- Configure Window
      self.mAllocationStatsWindow.title = "Allocation Stats"
