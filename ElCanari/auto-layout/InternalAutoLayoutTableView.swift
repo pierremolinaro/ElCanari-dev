@@ -75,7 +75,13 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
     column.minWidth = 60.0
     column.maxWidth = 400.0
     column.width = 60.0
+  //--- Add Column
     self.mTableView.addTableColumn (column)
+  //--- Update table view sort descriptors
+    if let s = column.sortDescriptorPrototype {
+      self.mTableView.sortDescriptors.append (s)
+    }
+  //---
     return self
   }
 
@@ -93,16 +99,24 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
     )
     column.title = inTitle
     column.headerCell.alignment = inHeaderAlignment
-    column.minWidth = 60.0
+    column.minWidth = 70.0
     column.maxWidth = 400.0
-    column.width = 60.0
+    column.width = 70.0
+  //--- Add Column
     self.mTableView.addTableColumn (column)
+  //--- Update table view sort descriptors
+    if let s = column.sortDescriptorPrototype {
+      self.mTableView.sortDescriptors.append (s)
+    }
+  //---
     return self
   }
 
   //····················································································································
 
   func reloadData () {
+    let sortDescriptors = self.mTableView.sortDescriptors
+    self.mDataSourceSortCallBack? (sortDescriptors)
     self.mTableView.reloadData ()
   }
 
@@ -110,7 +124,16 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   //   NSTableViewDataSource protocol
   //····················································································································
 
-  var mNumberOfRowsDelegate : Optional < () -> Int > = nil
+  func setRowCountDelegate (_ inCallBack : Optional < () -> Int >) -> Self {
+    self.mNumberOfRowsDelegate = inCallBack
+    return self
+  }
+
+  //····················································································································
+
+  private var mNumberOfRowsDelegate : Optional < () -> Int > = nil
+
+  //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mNumberOfRowsDelegate? () ?? 0
@@ -149,6 +172,28 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
   }
 
   //····················································································································
+  //    tableView:sortDescriptorsDidChange: NSTableViewDataSource delegate
+  //····················································································································
+
+  final func setSortDataSourceCallBack (_ inCallBack : Optional < (_ inSortDescriptors : [NSSortDescriptor]) -> Void >) -> Self {
+    self.mDataSourceSortCallBack = inCallBack
+    return self
+  }
+
+  //····················································································································
+
+  private var mDataSourceSortCallBack : Optional < (_ inSortDescriptors : [NSSortDescriptor]) -> Void > = nil
+
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+    let sortDescriptors = self.mTableView.sortDescriptors
+    self.mDataSourceSortCallBack? (sortDescriptors)
+    self.mTableView.reloadData ()
+  }
+
+  //····················································································································
 
 }
 
@@ -169,6 +214,7 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
     self.mContentAlignment = inContentAlignment
     super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: inName))
     noteObjectAllocation (self)
+    self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
   }
 
   //····················································································································

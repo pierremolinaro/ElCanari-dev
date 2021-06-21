@@ -229,28 +229,45 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
       contentAlignment: .left,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" }
     )
-    _ = self.mStatsTableView.addIntObserverColumn (
+    .addIntObserverColumn (
       title: "Snap Shot",
       identifier: "snapshot",
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 }
     )
-    _ = self.mStatsTableView.addIntObserverColumn (
+    .addIntObserverColumn (
       title: "Live",
       identifier: "live",
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 }
     )
-    _ = self.mStatsTableView.addIntObserverColumn (
+    .addIntObserverColumn (
       title: "Total",
       identifier: "total",
       headerAlignment: .center,
       contentAlignment: .right,
       valueDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 }
     )
-    self.mStatsTableView.mNumberOfRowsDelegate = { [weak self] in return self?.mAllocationStatsDataSource.count ?? 0 }
+    .setSortDataSourceCallBack { [weak self] (_ inSortDescriptors : [NSSortDescriptor]) in
+      for s in inSortDescriptors.reversed () {
+        if let key = s.key {
+          if key == "classname" {
+            self?.mAllocationStatsDataSource.sort () { String.numericCompare ($0.className, s.ascending, $1.className) }
+          }else if key == "snapshot" {
+            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
+          }else if key == "live" {
+            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
+          }else if key == "total" {
+            self?.mAllocationStatsDataSource.sort () { s.ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
+          }else{
+            NSLog ("Key '\(key)' unknown in \(#file):\(#line)")
+          }
+        }
+      }
+    }
+    .setRowCountDelegate { [weak self] in return self?.mAllocationStatsDataSource.count ?? 0 }
    //--- Configure Window
      self.mAllocationStatsWindow.title = "Allocation Stats"
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
@@ -297,7 +314,6 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
           .appendView (self.mStatsTableView)
         mainVStack.appendView (hStack)
       }
-//      mainVStack.appendFlexibleSpace()
     //--- Assign main view to window
       self.mAllocationStatsWindow.contentView = mainVStack
    //--- Show Window at Launch
@@ -436,7 +452,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
 //      let sortDescriptors : [NSSortDescriptor] = self.mStatsTableView?.sortDescriptors ?? []
 //      array.sort (using: sortDescriptors)
       self.mAllocationStatsDataSource = array
-      self.mStatsTableView.reloadData ()
+      self.mStatsTableView.reloadData () // Will sort mAllocationStatsDataSource
     }
   }
 
