@@ -47,13 +47,21 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
     let column = NSTableColumn (identifier: COLUMN_IDENTIFIER)
     column.title = "Forbidden Pad Numbers"
     column.headerCell.alignment = .center
-//    column.headerCell.isBordered = true
     self.mTableView.addTableColumn (column)
+
+ //   self.mTableView.tile ()
+//    Swift.print ("fittingSize \(self.mTableView.cornerView?.fittingSize)")
+//    Swift.print ("intrinsicContentSize \(self.mTableView.cornerView?.intrinsicContentSize)")
+//    self.mTableView.cornerView = nil
+
 //--- Configure Scroll view
-    self.documentView = self.mTableView
+    self.borderType = .bezelBorder // .noBorder
     self.hasHorizontalScroller = false
     self.hasVerticalScroller = true
-    self.borderType = .bezelBorder // .noBorder
+    self.documentView = self.mTableView
+//    self.drawsBackground = true
+//    self.backgroundColor = .yellow
+//   Swift.print ("Corner \(self.mTableView.cornerView)")
   }
 
   //····················································································································

@@ -978,6 +978,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           left: StaticLabel (title: "Line Grid", bold: no, small: yes),
           right: hStack { ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
         )
+        addSeparator ()
         addCenterYAligned (
           left: StaticLabel (title: "Package", bold: no, small: yes),
           right: hStack { ColorWell { $color prefs.packageColor (sendContinously:no) } space }
@@ -993,6 +994,7 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
             $selectedTag prefs.packageDrawingWidthMultipliedByTen
           }
         )
+        addSeparator ()
         addCenterYAligned (
           left: Switch (title: "Pad Numbering", small: yes) { $value prefs.showPadNumber },
           right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
@@ -1006,8 +1008,26 @@ autoLayoutDocument AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperCla
           right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
         )
         addCenterYAligned (
-          left: Switch (title: "Back Side Pads", small: yes) { $value prefs.displayPackageFrontSidePads },
+          left: Switch (title: "Back Side Pads", small: yes) { $value prefs.displayPackageBackSidePads },
           right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
+        )
+        addSeparator ()
+        addCenterYAligned (
+          left: StaticLabel (title: "Guide Color", bold: no, small: yes),
+          right: hStack { ColorWell { $color prefs.packageGuideColor (sendContinously:no) } space }
+        )
+        addCenterYAligned (
+          left: StaticLabel (title: "Dimension Color", bold: no, small: yes),
+          right: hStack { ColorWell { $color prefs.packageDimensionColor (sendContinously:no) } space }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Dimension Font", bold: no, small: yes),
+          right: FontButton (small: yes) {$fontValue prefs.dimensionFont}
+        )
+        addSeparator ()
+        addCenterYAligned (
+          left: StaticLabel (title: "Zone Color", bold: no, small: yes),
+          right: hStack { ColorWell { $color prefs.padZoneColor (sendContinously:no) } space }
         )
       }
       space

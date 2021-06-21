@@ -23,6 +23,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   //····················································································································
 
+  final func setFirstBaselineAlignment () -> Self {
+    self.alignment = .firstBaseline
+    return self
+  }
+
+  //····················································································································
+
   final func appendVerticalSeparator () {
     let separator = VerticalSeparator ()
     self.appendView (separator)

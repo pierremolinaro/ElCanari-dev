@@ -16,15 +16,12 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  private let mWidth : CGFloat
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
 
   init (small inSmall : Bool) {
- //   self.mWidth = CGFloat (inWidth)
     super.init (frame: NSRect ())
-//    self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
@@ -59,12 +56,6 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override var intrinsicContentSize : NSSize {
-//    return NSSize (width: self.mWidth, height: 19.0)
-//  }
-
-  //····················································································································
-
   override func ebCleanUp () {
     self.mController?.unregister ()
     self.mController = nil
@@ -73,82 +64,10 @@ final class AutoLayoutIntObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  final func set (min inMin : Int) -> Self {
-//    self.mNumberFormatter.minimum = NSNumber (value: inMin)
-//    return self
-//  }
-
-  //····················································································································
-
-//  final func set (max inMax : Int) -> Self {
-//    self.mNumberFormatter.maximum = NSNumber (value: inMax)
-//    return self
-//  }
-
-  //····················································································································
-
   final func set (format inFormatString : String) -> Self {
     self.mNumberFormatter.format = inFormatString
     return self
   }
-
-  //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
-
-//  func controlTextDidChange (_ inUnusedNotification : Notification) {
-//    if self.isContinuous {
-//      if let inputString = currentEditor()?.string {
-//        // NSLog ("inputString %@", inputString)
-//        let numberFormatter = self.formatter as! NumberFormatter
-//        let number = numberFormatter.number (from: inputString)
-//        if number == nil {
-//          _ = control (
-//            self,
-//            didFailToFormatString: inputString,
-//            errorDescription: "The “\(inputString)” value is invalid."
-//          )
-//        }else{
-//          NSApp.sendAction (self.action!, to: self.target, from: self)
-//        }
-//      }
-//    }
-//  }
-
-  //····················································································································
-  //    NSTextFieldDelegate delegate function
-  //····················································································································
-
-//  func control (_ control : NSControl,
-//                didFailToFormatString string : String,
-//                errorDescription error : String?) -> Bool {
-//    let alert = NSAlert ()
-//    if let window = control.window {
-//      alert.messageText = error!
-//      alert.informativeText = "Please provide a valid value."
-//      alert.addButton (withTitle: "Ok")
-//      alert.addButton (withTitle: "Discard Change")
-//      alert.beginSheetModal (
-//        for: window,
-//        completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-//          if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
-// //         self.integerValue = self.myIntegerValue.0
-//          }
-//        }
-//      )
-//    }
-//    return false
-//  }
-
-  //····················································································································
-
-//  @objc fileprivate func valueDidChangeAction (_ inSender : Any?) {
-//    __NSBeep ()
-//    if let formatter = self.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.stringValue) {
-//      let value = Int (outletValueNumber.doubleValue.rounded ())
-//      _ = self.mController?.updateModel (withCandidateValue: value, windowForSheet: self.window)
-//    }
-//  }
 
   //····················································································································
   //  observedValue binding

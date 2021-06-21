@@ -28,9 +28,13 @@ extension AutoLayoutSymbolDocument {
          inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
          inOutlet.setLabel ("", forSegment: 1)
 
-         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 2)
+         inOutlet.setImage (NSImage (named: "magnifyingGlass"), forSegment: 2)
          inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 2)
-         inOutlet.setLabel ("", forSegment: 2)
+         inOutlet.setLabel ("P", forSegment: 2)
+
+         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 3)
+         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
+         inOutlet.setLabel ("", forSegment: 3)
 //--- END OF USER ZONE 2
   }
 }

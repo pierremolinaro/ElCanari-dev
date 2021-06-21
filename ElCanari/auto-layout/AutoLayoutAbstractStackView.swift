@@ -46,14 +46,16 @@ class AutoLayoutAbstractStackView : NSStackView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func appendView (_ inView : NSView) {
+  @discardableResult final func appendView (_ inView : NSView) -> Self {
     self.addView (inView, in: .leading)
+    return self
   }
 
   //····················································································································
 
-  final func appendFlexibleSpace () {
+  @discardableResult final func appendFlexibleSpace () -> Self {
     self.addView (AutoLayoutFlexibleSpace (), in: .leading)
+    return self
   }
 
   //····················································································································

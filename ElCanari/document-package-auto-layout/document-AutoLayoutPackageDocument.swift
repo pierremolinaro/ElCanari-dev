@@ -1192,12 +1192,20 @@ import Cocoa
         .addCenterYAligned (left: self.computeImplicitView_195 (), right: self.computeImplicitView_196 ())
         .addCenterYAligned (left: self.computeImplicitView_197 (), right: self.computeImplicitView_198 ())
         .addCenterYAligned (left: self.computeImplicitView_199 (), right: self.computeImplicitView_200 ())
+        .addSeparator ()
         .addCenterYAligned (left: self.computeImplicitView_201 (), right: self.computeImplicitView_202 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_203 (), right: self.computeImplicitView_204 ())
+        .addSeparator ()
         .addCenterYAligned (left: self.computeImplicitView_205 (), right: self.computeImplicitView_206 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_207 (), right: self.computeImplicitView_208 ())
         .addCenterYAligned (left: self.computeImplicitView_209 (), right: self.computeImplicitView_210 ())
         .addCenterYAligned (left: self.computeImplicitView_211 (), right: self.computeImplicitView_212 ())
+        .addSeparator ()
+        .addCenterYAligned (left: self.computeImplicitView_213 (), right: self.computeImplicitView_214 ())
+        .addCenterYAligned (left: self.computeImplicitView_215 (), right: self.computeImplicitView_216 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_217 (), right: self.computeImplicitView_218 ())
+        .addSeparator ()
+        .addCenterYAligned (left: self.computeImplicitView_219 (), right: self.computeImplicitView_220 ())
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -3547,7 +3555,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_211 () -> NSView {
     let view = AutoLayoutSwitch (title: "Back Side Pads", small: true)
-      .bind_value (preferences_displayPackageFrontSidePads_property)
+      .bind_value (preferences_displayPackageBackSidePads_property)
     return view
   }
 
@@ -3560,6 +3568,100 @@ import Cocoa
     do{
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 213
+  //····················································································································
+
+  fileprivate final func computeImplicitView_213 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Guide Color", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 214
+  //····················································································································
+
+  fileprivate final func computeImplicitView_214 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_packageGuideColor_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 215
+  //····················································································································
+
+  fileprivate final func computeImplicitView_215 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Dimension Color", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 216
+  //····················································································································
+
+  fileprivate final func computeImplicitView_216 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_packageDimensionColor_property, sendContinously:false)
+      view.appendView (view_0)
+      let view_1 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_1)
+    }
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 217
+  //····················································································································
+
+  fileprivate final func computeImplicitView_217 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Dimension Font", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 218
+  //····················································································································
+
+  fileprivate final func computeImplicitView_218 () -> NSView {
+    let view = AutoLayoutFontButton (small: true)
+      .bind_fontValue (preferences_dimensionFont_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 219
+  //····················································································································
+
+  fileprivate final func computeImplicitView_219 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Zone Color", bold: false, small: true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 220
+  //····················································································································
+
+  fileprivate final func computeImplicitView_220 () -> NSView {
+    let view = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0 = AutoLayoutColorWell ()
+        .bind_color (preferences_padZoneColor_property, sendContinously:false)
       view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
       view.appendView (view_1)

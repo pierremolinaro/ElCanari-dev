@@ -2,8 +2,6 @@
 
 autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass root SymbolRoot stackView mDocumentMainView {
 
-//xibdocument SymbolDocument root SymbolRoot {
-
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
@@ -84,10 +82,11 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
           makeWidthExpandable ()
           addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", pageView: stackView mGridZoomInspectorView)
+          addPage (title: "", pageView: stackView mDisplayInspectorView)
           addPage (title: "", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
-          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 2)
-          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 2)
+          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
+          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
          }
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
@@ -165,33 +164,6 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
       })
     }
   }
- 
-//--- Inspector views
-//  outlet NSView mSymbolRootInspectorView ;
-
-//  outlet CanariViewWithKeyView mSymbolBaseInspectorView ;
-
-//  outlet CanariViewWithKeyView mTextInspectorView ;
-//  outlet EBTextField mSymbolTextValueTextField
-//    $value #mSymbolTextSelectionController.text (sendContinously : yes)
-//  ;
-//  outlet CanariEnumSegmentedControl mSymbolTextHorizontalAlignmentSegmentedControl
-//    $selectedSegment #mSymbolTextSelectionController.horizontalAlignment
-//  ;
-
-//  outlet CanariViewWithKeyView mPinInspectorView ;
-//  outlet CanariEnumSegmentedControl mSymbolPinLabelHorizontalAlignmentSegmentedControl
-//    $selectedSegment #mSymbolPinSelectionController.nameHorizontalAlignment
-//  ;
-//  outlet CanariEnumSegmentedControl mSymbolPinNumberHorizontalAlignmentSegmentedControl
-//    $selectedSegment #mSymbolPinSelectionController.numberHorizontalAlignment
-//  ;
-//  outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
-//    $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
-//  ;
-//  outlet EBTextField mSymbolPinLabelNameTextField
-//    $value #mSymbolPinSelectionController.name (sendContinously : yes)
-//  ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   Zoom and flip inspector
@@ -235,8 +207,17 @@ autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass
         left: StaticLabel (title: "Y", bold: no, small: yes),
         right: CanariUnitPopUpButton(small: yes) { $unit root.yPlacardUnit }
       )
-      addSeparator ()
-      add (single: hStack { StaticLabel (title: "Stored in Preferences", bold: no, small: yes) space } )
+    }
+    space
+  }
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Display inspector
+//----------------------------------------------------------------------------------------------------------------------
+
+  stackView mDisplayInspectorView vStack {
+    TwoColumnsGridView {
+//      add (single: hStack { StaticLabel (title: "Stored in Preferences", bold: no, small: yes) space } )
       addCenterYAligned (
         left: StaticLabel (title: "Symbol", bold: no, small: yes),
         right: hStack { ColorWell { $color prefs.symbolColor (sendContinously:no) } space }

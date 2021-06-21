@@ -16,16 +16,6 @@ final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
 
   init (titles inTitles : [String]) {
     super.init (pullsDown: false, small: true)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//    if let cell = self.cell as? NSPopUpButtonCell {
-//      cell.arrowPosition = .arrowAtBottom
-//    }
-//    self.controlSize = .small
-//    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-
     for title in inTitles {
       self.addItem (withTitle: title)
     }
@@ -39,24 +29,11 @@ final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-  
-  //····················································································································
-
   override func ebCleanUp () {
     self.mSelectedIndexController?.unregister ()
     self.mSelectedIndexController = nil
     super.ebCleanUp ()
   }
-
-  //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
 
   //····················································································································
 
