@@ -1,6 +1,6 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-autoLayoutDocument AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass root SymbolRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW

@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutSymbolDocument) class AutoLayoutSymbolDocument : AutoLayoutSymbolDocumentSuperClass, NSToolbarDelegate {
+@objc(AutoLayoutSymbolDocument) class AutoLayoutSymbolDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
   //   Array controller: mSymbolObjectsController

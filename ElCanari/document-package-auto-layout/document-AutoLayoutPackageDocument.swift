@@ -6,7 +6,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : AutoLayoutPackageDocumentSuperClass, NSToolbarDelegate {
+@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
   //   Array controller: mModelImageObjectsController
