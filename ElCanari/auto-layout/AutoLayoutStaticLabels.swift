@@ -16,11 +16,6 @@ final class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
 
   //····················································································································
 
-  fileprivate let mDimensionField = AutoLayoutCanariDimensionField ()
-  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: true)
-
-  //····················································································································
-
   init (left inLeft : String, right inRight : String, bold inBold : Bool, small inSmall : Bool) {
     super.init ()
     self.appendView (AutoLayoutStaticLabel (title: inLeft, bold: inBold, small: inSmall))

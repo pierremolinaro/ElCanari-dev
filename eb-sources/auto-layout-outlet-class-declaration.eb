@@ -49,9 +49,6 @@ extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $e
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
 }
 
-//extern autolayout class Separator {
-//}
-
 extern autolayout class Label (small: Bool) {
   $title transient String
   func setRedTextColor ()
@@ -59,7 +56,7 @@ extern autolayout class Label (small: Bool) {
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, small : Bool) {
   func makeWidthExpandable ()
-  func addPage (title: String, pageView : view)
+  func addPage (title: String, tooltip: String, pageView : view)
   $selectedPage property Int
   $segmentImage transient NSImage (segmentIndex : Int)
   $segmentTitle transient String (segmentIndex : Int)
@@ -95,15 +92,15 @@ extern autolayout class CanariUnitPopUpButton (small: Bool) {
   $unit property Int
 }
 
-extern autolayout class CanariDimensionField {
+extern autolayout class CanariDimensionField (small: Bool) {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariDimensionAndPopUp $enabled $hidden {
+extern autolayout class CanariDimensionAndPopUp (small: Bool) $enabled $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariObservedDimensionAndPopUp $hidden {
+extern autolayout class CanariObservedDimensionAndPopUp (small: Bool) $hidden {
   $dimensionAndUnit transient Int, property Int
 }
 

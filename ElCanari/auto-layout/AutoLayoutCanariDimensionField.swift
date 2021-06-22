@@ -14,14 +14,14 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
 
   //····················································································································
 
-  init () {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.delegate = self
-    self.controlSize = .small
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.boldSystemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
     self.alignment = .center
   }
 

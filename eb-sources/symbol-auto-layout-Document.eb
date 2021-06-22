@@ -12,8 +12,8 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     hStack set (margins: 8) {
       vStack {
         SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
-          addPage (title: "Symbol", pageView: stackView mSymbolPage)
-          addPage (title: "Infos", pageView: stackView mInfosPage)
+          addPage (title: "Symbol", tooltip: "Symbol Editor", pageView: stackView mSymbolPage)
+          addPage (title: "Infos", tooltip: "Symbol Informations", pageView: stackView mInfosPage)
           $selectedPage root.selectedPageIndex
         }
         hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
@@ -80,10 +80,10 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
        SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorMasterView, equalWidth: yes, small: yes)
           [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
           makeWidthExpandable ()
-          addPage (title: "", pageView: stackView mSelectedObjectsInspectorView)
-          addPage (title: "", pageView: stackView mGridZoomInspectorView)
-          addPage (title: "", pageView: stackView mDisplayInspectorView)
-          addPage (title: "", pageView: stackView mIssuesInspectorView)
+          addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
+          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
+          addPage (title: "", tooltip: "Display Inspector (values stored in Prefertences)", pageView: stackView mDisplayInspectorView)
+          addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
           $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)

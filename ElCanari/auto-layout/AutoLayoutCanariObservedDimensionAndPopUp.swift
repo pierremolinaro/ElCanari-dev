@@ -16,12 +16,14 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
 
   //····················································································································
 
-  fileprivate let mDimensionField = AutoLayoutCanariObservedDimensionField ()
-  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: true)
+  fileprivate let mDimensionField  : AutoLayoutCanariObservedDimensionField
+  fileprivate let mUnitPopUpButton : AutoLayoutCanariUnitPopUpButton
 
   //····················································································································
 
-  override init () {
+  init (small inSmall : Bool) {
+    self.mDimensionField  = AutoLayoutCanariObservedDimensionField (small: inSmall)
+    self.mUnitPopUpButton = AutoLayoutCanariUnitPopUpButton (small: inSmall)
     super.init ()
     self.alignment = .firstBaseline
     self.appendView (self.mDimensionField)

@@ -16,12 +16,14 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
 
-  fileprivate let mDimensionField = AutoLayoutCanariDimensionField ()
-  fileprivate let mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: true)
+  fileprivate let mDimensionField  : AutoLayoutCanariDimensionField
+  fileprivate let mUnitPopUpButton : AutoLayoutCanariUnitPopUpButton
 
   //····················································································································
 
-  override init () {
+  init (small inSmall : Bool) {
+    self.mDimensionField = AutoLayoutCanariDimensionField (small: inSmall)
+    self.mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: inSmall)
     super.init ()
     self.appendView (self.mDimensionField)
     self.appendView (self.mUnitPopUpButton)

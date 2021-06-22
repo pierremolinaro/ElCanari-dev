@@ -485,10 +485,10 @@ import Cocoa
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
         let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, small: false)
-          .addPage (title: "Model Image", pageView: self.mModelImagePage)
-          .addPage (title: "Package", pageView: self.mPackagePage)
-          .addPage (title: "Program", pageView: self.mProgramPage)
-          .addPage (title: "Infos", pageView: self.mInfosPage)
+          .addPage (title: "Model Image", tooltip: "Model Image Editor", pageView: self.mModelImagePage)
+          .addPage (title: "Package", tooltip: "Package Editor", pageView: self.mPackagePage)
+          .addPage (title: "Program", tooltip: "Program Editor", pageView: self.mProgramPage)
+          .addPage (title: "Infos", tooltip: "Package Informations", pageView: self.mInfosPage)
           .bind_selectedPage (self.rootObject.selectedPageIndex_property)
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutHorizontalStackView ()
@@ -725,10 +725,10 @@ import Cocoa
       do{
         let view_0_2_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorMasterView, equalWidth: true, small: true)
           .makeWidthExpandable ()
-          .addPage (title: "", pageView: self.mSelectedObjectsInspectorView)
-          .addPage (title: "", pageView: self.mGridZoomInspectorView)
-          .addPage (title: "", pageView: self.mDisplayInspectorView)
-          .addPage (title: "", pageView: self.mIssuesInspectorView)
+          .addPage (title: "", tooltip: "Selected Object Inspector", pageView: self.mSelectedObjectsInspectorView)
+          .addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: self.mGridZoomInspectorView)
+          .addPage (title: "", tooltip: "Display Inspector (values stored in Preferences)", pageView: self.mDisplayInspectorView)
+          .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
           .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
@@ -1371,7 +1371,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImagePageGridStep_property, self.rootObject.mModelImagePageGridStepUnit_property)
     return view
   }
@@ -1507,7 +1507,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1534,7 +1534,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1561,7 +1561,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1588,7 +1588,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_24 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1615,7 +1615,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_26 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1642,7 +1642,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_28 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
       .bind_hidden (
         observedObjects: [self.rootObject.hasModelImage_property],
@@ -1814,7 +1814,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_40 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property)
     return view
   }
@@ -1833,7 +1833,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_42 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y1_property, self.mPackageSegmentSelectionController.y1Unit_property)
     return view
   }
@@ -1852,7 +1852,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_44 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property)
     return view
   }
@@ -1871,7 +1871,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_46 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property)
     return view
   }
@@ -1890,7 +1890,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_48 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
     return view
   }
@@ -1919,7 +1919,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_51 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property)
     return view
   }
@@ -1938,7 +1938,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_53 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y1_property, self.mPackageBezierCurveSelectionController.y1Unit_property)
     return view
   }
@@ -1957,7 +1957,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_55 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x2_property, self.mPackageBezierCurveSelectionController.x2Unit_property)
     return view
   }
@@ -1976,7 +1976,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_57 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y2_property, self.mPackageBezierCurveSelectionController.y2Unit_property)
     return view
   }
@@ -1995,7 +1995,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_59 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx1_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property)
     return view
   }
@@ -2014,7 +2014,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_61 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy1_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property)
     return view
   }
@@ -2033,7 +2033,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_63 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property)
     return view
   }
@@ -2052,7 +2052,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_65 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
     return view
   }
@@ -2081,7 +2081,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_68 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageOvalSelectionController.x_property, self.mPackageOvalSelectionController.xUnit_property)
     return view
   }
@@ -2100,7 +2100,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_70 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageOvalSelectionController.y_property, self.mPackageOvalSelectionController.yUnit_property)
     return view
   }
@@ -2119,7 +2119,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_72 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property)
     return view
   }
@@ -2138,7 +2138,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_74 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property)
     return view
   }
@@ -2167,7 +2167,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_77 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageArcSelectionController.xCenter_property, self.mPackageArcSelectionController.xCenterUnit_property)
     return view
   }
@@ -2186,7 +2186,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_79 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageArcSelectionController.yCenter_property, self.mPackageArcSelectionController.yCenterUnit_property)
     return view
   }
@@ -2205,7 +2205,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_81 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageArcSelectionController.radius_property, self.mPackageArcSelectionController.radiusUnit_property)
     return view
   }
@@ -2262,7 +2262,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_87 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageArcSelectionController.startTangent_property, self.mPackageArcSelectionController.startTangentUnit_property)
     return view
   }
@@ -2281,7 +2281,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_89 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangent_property, self.mPackageArcSelectionController.endTangentUnit_property)
     return view
   }
@@ -2310,7 +2310,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_92 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property)
     return view
   }
@@ -2329,7 +2329,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_94 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y1_property, self.mPackageGuideSelectionController.y1Unit_property)
     return view
   }
@@ -2348,7 +2348,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_96 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x2_property, self.mPackageGuideSelectionController.x2Unit_property)
     return view
   }
@@ -2367,7 +2367,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_98 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y2_property, self.mPackageGuideSelectionController.y2Unit_property)
     return view
   }
@@ -2396,7 +2396,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_101 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x1_property, self.mPackageDimensionSelectionController.x1Unit_property)
     return view
   }
@@ -2415,7 +2415,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_103 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y1_property, self.mPackageDimensionSelectionController.y1Unit_property)
     return view
   }
@@ -2434,7 +2434,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_105 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x2_property, self.mPackageDimensionSelectionController.x2Unit_property)
     return view
   }
@@ -2453,7 +2453,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_107 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property)
     return view
   }
@@ -2472,7 +2472,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_109 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property)
     return view
   }
@@ -2491,7 +2491,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_111 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.xDimension_property, self.mPackageDimensionSelectionController.xDimensionUnit_property)
     return view
   }
@@ -2510,7 +2510,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_113 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.yDimension_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
     return view
   }
@@ -2539,7 +2539,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_116 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property)
     return view
   }
@@ -2558,7 +2558,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_118 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.y_property, self.mPackageZoneSelectionController.yUnit_property)
     return view
   }
@@ -2577,7 +2577,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_120 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.width_property, self.mPackageZoneSelectionController.widthUnit_property)
     return view
   }
@@ -2596,7 +2596,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_122 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property)
     return view
   }
@@ -2615,7 +2615,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_124 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property)
     return view
   }
@@ -2634,7 +2634,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_126 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property)
     return view
   }
@@ -2717,7 +2717,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_134 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.xCenter_property, self.mPackagePadSelectionController.xCenterUnit_property)
     return view
   }
@@ -2736,7 +2736,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_136 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.yCenter_property, self.mPackagePadSelectionController.yCenterUnit_property)
     return view
   }
@@ -2755,7 +2755,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_138 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property)
     return view
   }
@@ -2774,7 +2774,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_140 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property)
     return view
   }
@@ -2835,7 +2835,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_146 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
@@ -2862,7 +2862,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_148 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
@@ -2889,7 +2889,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_150 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
@@ -2995,7 +2995,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_160 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.xCenter_property, self.mPackageSlavePadSelectionController.xCenterUnit_property)
     return view
   }
@@ -3014,7 +3014,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_162 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.yCenter_property, self.mPackageSlavePadSelectionController.yCenterUnit_property)
     return view
   }
@@ -3033,7 +3033,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_164 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.width_property, self.mPackageSlavePadSelectionController.widthUnit_property)
     return view
   }
@@ -3052,7 +3052,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_166 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.height_property, self.mPackageSlavePadSelectionController.heightUnit_property)
     return view
   }
@@ -3113,7 +3113,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_172 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
@@ -3140,7 +3140,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_174 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
@@ -3167,7 +3167,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_176 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp ()
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
       .bind_hidden (
         observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
@@ -3254,7 +3254,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_184 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp ()
+    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property)
     return view
   }

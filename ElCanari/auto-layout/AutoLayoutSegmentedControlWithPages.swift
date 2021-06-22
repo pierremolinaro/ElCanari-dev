@@ -45,9 +45,15 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
   // ADD PAGE
   //····················································································································
 
-  final func addPage (title inTitle : String, pageView inPageView : AutoLayoutAbstractStackView) -> Self {
+  final func addPage (title inTitle : String,
+                      tooltip inTooltipString : String,
+                      pageView inPageView : AutoLayoutAbstractStackView) -> Self {
     self.segmentCount += 1
     self.setLabel (inTitle, forSegment: self.segmentCount - 1)
+    // self.setToolTip (inTooltipString, forSegment: self.segmentCount - 1) // ONLY for 10.13+
+    if let segmentedCell = self.cell as? NSSegmentedCell {
+      segmentedCell.setToolTip (inTooltipString, forSegment: self.segmentCount - 1)
+    }
     self.mPages.append (inPageView)
     self.frame.size = self.intrinsicContentSize
     return self
