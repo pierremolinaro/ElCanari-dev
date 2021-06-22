@@ -874,7 +874,6 @@
 		CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */; };
 		CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172891B3C4CD600F3CA82 /* exclamation.tif */; };
 		CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
-		CF5C4CA3219F04D600EAC52A /* device.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172851B3C4CD600F3CA82 /* device.pdf */; };
 		CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729A1B3C4CD600F3CA82 /* package.pdf */; };
 		CF5C4CA6219F04D600EAC52A /* unbind_all.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B41B3C4CD600F3CA82 /* unbind_all.png */; };
 		CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */; };
@@ -1096,7 +1095,6 @@
 		CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
 		CF6172C81B3C4CD600F3CA82 /* bind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61727A1B3C4CD600F3CA82 /* bind.png */; };
 		CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
-		CF6172D31B3C4CD600F3CA82 /* device.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172851B3C4CD600F3CA82 /* device.pdf */; };
 		CF6172D61B3C4CD600F3CA82 /* display.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172881B3C4CD600F3CA82 /* display.pdf */; };
 		CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172891B3C4CD600F3CA82 /* exclamation.tif */; };
 		CF6172D81B3C4CD600F3CA82 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728A1B3C4CD600F3CA82 /* font.png */; };
@@ -1517,6 +1515,12 @@
 		CF87F3E220F0CE4500918586 /* enum-PadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87F3E020F0CE4500918586 /* enum-PadShape.swift */; };
 		CF87F3E320F0CE4500918586 /* enum-PadSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87F3E120F0CE4500918586 /* enum-PadSide.swift */; };
 		CF880FEF1DDB85F400954D4E /* GeometricCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */; };
+		CF888D47268223C100D97523 /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D46268223C100D97523 /* device.png */; };
+		CF888D48268223C100D97523 /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D46268223C100D97523 /* device.png */; };
+		CF888D49268223C100D97523 /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D46268223C100D97523 /* device.png */; };
+		CF888D4B2682250400D97523 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D4A2682250400D97523 /* settings.png */; };
+		CF888D4C2682250400D97523 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D4A2682250400D97523 /* settings.png */; };
+		CF888D4D2682250400D97523 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = CF888D4A2682250400D97523 /* settings.png */; };
 		CF88969F21E13334007A0F1C /* open-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* open-in-library.swift */; };
 		CF8896A021E13334007A0F1C /* open-in-library.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* open-in-library.swift */; };
 		CF88F74322EB028E00EEBE38 /* check-system-lib-update-at-launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */; };
@@ -1681,7 +1685,6 @@
 		CF9C607725CABE5C00A00D5C /* Freerouting.app in Resources */ = {isa = PBXBuildFile; fileRef = CF012692248BDA22008CC8DA /* Freerouting.app */; };
 		CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21549222B65E4C0068354E /* text-in-symbol.png */; };
 		CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
-		CF9C607B25CABE5C00A00D5C /* device.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172851B3C4CD600F3CA82 /* device.pdf */; };
 		CF9C607C25CABE5C00A00D5C /* package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729A1B3C4CD600F3CA82 /* package.pdf */; };
 		CF9C607D25CABE5C00A00D5C /* unbind_all.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B41B3C4CD600F3CA82 /* unbind_all.png */; };
 		CF9C607E25CABE5C00A00D5C /* A4horizontal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */; };
@@ -4557,7 +4560,6 @@
 		CF6172781B3C4CD600F3CA82 /* autorouter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autorouter.png; sourceTree = "<group>"; };
 		CF61727A1B3C4CD600F3CA82 /* bind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bind.png; sourceTree = "<group>"; };
 		CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circuit-imprime.png"; sourceTree = "<group>"; };
-		CF6172851B3C4CD600F3CA82 /* device.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = device.pdf; sourceTree = "<group>"; };
 		CF6172881B3C4CD600F3CA82 /* display.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = display.pdf; sourceTree = "<group>"; };
 		CF6172891B3C4CD600F3CA82 /* exclamation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = exclamation.tif; sourceTree = "<group>"; };
 		CF61728A1B3C4CD600F3CA82 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
@@ -4746,6 +4748,8 @@
 		CF87F3E020F0CE4500918586 /* enum-PadShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadShape.swift"; sourceTree = "<group>"; };
 		CF87F3E120F0CE4500918586 /* enum-PadSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadSide.swift"; sourceTree = "<group>"; };
 		CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricCircle.swift; sourceTree = "<group>"; };
+		CF888D46268223C100D97523 /* device.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device.png; sourceTree = "<group>"; };
+		CF888D4A2682250400D97523 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		CF88969E21E13334007A0F1C /* open-in-library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "open-in-library.swift"; sourceTree = "<group>"; };
 		CF88F74222EB028E00EEBE38 /* check-system-lib-update-at-launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "check-system-lib-update-at-launch.swift"; sourceTree = "<group>"; };
 		CF8A0999223191D500A17B92 /* entity-SymbolInstanceInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolInstanceInDevice.swift"; sourceTree = "<group>"; };
@@ -6376,7 +6380,7 @@
 				CF61727A1B3C4CD600F3CA82 /* bind.png */,
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
 				CF1C8F4B2364DB4800A36E44 /* danger.png */,
-				CF6172851B3C4CD600F3CA82 /* device.pdf */,
+				CF888D46268223C100D97523 /* device.png */,
 				CF6172881B3C4CD600F3CA82 /* display.pdf */,
 				CF2A42C221BE981D0023992F /* editorInspector.png */,
 				CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */,
@@ -6394,6 +6398,7 @@
 				CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */,
 				CF6172A41B3C4CD600F3CA82 /* restrict-rect-in-board.png */,
 				CF6172A61B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff */,
+				CF888D4A2682250400D97523 /* settings.png */,
 				CF6172AB1B3C4CD600F3CA82 /* sheet.png */,
 				CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */,
 				CF21549222B65E4C0068354E /* text-in-symbol.png */,
@@ -7813,6 +7818,7 @@
 				CF6172E11B3C4CD600F3CA82 /* line-in-symbol.pdf in Resources */,
 				CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */,
 				CFC2685823524EB7007C47F6 /* alignmentLeft.png in Resources */,
+				CF888D4B2682250400D97523 /* settings.png in Resources */,
 				CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */,
 				CFDA579F1BFA524A00EEF3CB /* FontDocument.xib in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
@@ -7843,8 +7849,8 @@
 				CF21549322B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
 				CFCD1F6621A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
-				CF6172D31B3C4CD600F3CA82 /* device.pdf in Resources */,
 				CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */,
+				CF888D47268223C100D97523 /* device.png in Resources */,
 				CF6173021B3C4CD600F3CA82 /* unbind_all.png in Resources */,
 				CF6172BD1B3C4CD600F3CA82 /* A4horizontal.pdf in Resources */,
 				CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */,
@@ -7878,6 +7884,7 @@
 				CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */,
 				CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
+				CF888D4C2682250400D97523 /* settings.png in Resources */,
 				CFE25A9B23525888007232F7 /* alignmentRight.png in Resources */,
 				CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
 				CF2A42C421BE981D0023992F /* editorInspector.png in Resources */,
@@ -7902,10 +7909,10 @@
 				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
 				CF012694248BDA22008CC8DA /* Freerouting.app in Resources */,
+				CF888D48268223C100D97523 /* device.png in Resources */,
 				CF21549422B65E4C0068354E /* text-in-symbol.png in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
 				CFCD1F6721A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
-				CF5C4CA3219F04D600EAC52A /* device.pdf in Resources */,
 				CF5C4CA5219F04D600EAC52A /* package.pdf in Resources */,
 				CF5C4CA6219F04D600EAC52A /* unbind_all.png in Resources */,
 				CF5C4CA7219F04D600EAC52A /* A4horizontal.pdf in Resources */,
@@ -7939,6 +7946,7 @@
 				CF9C605925CABE5C00A00D5C /* freeRoutingLogo.png in Resources */,
 				CF9C605A25CABE5C00A00D5C /* alignmentLeft.png in Resources */,
 				CF9C605B25CABE5C00A00D5C /* circuit-imprime.png in Resources */,
+				CF888D49268223C100D97523 /* device.png in Resources */,
 				CF9C605D25CABE5C00A00D5C /* FontDocument.xib in Resources */,
 				CF9C605E25CABE5C00A00D5C /* artwork.tif in Resources */,
 				CF9C605F25CABE5C00A00D5C /* magnifyingGlass.png in Resources */,
@@ -7966,7 +7974,6 @@
 				CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */,
 				CF9C607925CABE5C00A00D5C /* autorouter.png in Resources */,
 				CF49C0C225D139F00082271E /* MergerDocument.xib in Resources */,
-				CF9C607B25CABE5C00A00D5C /* device.pdf in Resources */,
 				CF9C607C25CABE5C00A00D5C /* package.pdf in Resources */,
 				CF9C607D25CABE5C00A00D5C /* unbind_all.png in Resources */,
 				CF9C607E25CABE5C00A00D5C /* A4horizontal.pdf in Resources */,
@@ -7974,6 +7981,7 @@
 				CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */,
 				CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */,
 				CF9C608325CABE5C00A00D5C /* unbind.png in Resources */,
+				CF888D4D2682250400D97523 /* settings.png in Resources */,
 				CF9C608425CABE5C00A00D5C /* ElCanari-user-manual.pdf in Resources */,
 				CF9C608525CABE5C00A00D5C /* bind.png in Resources */,
 				CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */,
