@@ -23,7 +23,6 @@ include "eb-sources/mergerDocument.eb" ;
 include "eb-sources/symbol-symbolRoot.eb" ;
 include "eb-sources/symbol-auto-layout-Document.eb" ;
 //--- Package
-include "eb-sources/package-packageDocument.eb" ;
 include "eb-sources/package-autoLayoutDocument.eb" ;
 include "eb-sources/package-packageRoot.eb" ;
 //--- Device

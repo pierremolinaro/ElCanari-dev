@@ -32,7 +32,7 @@ let VERSION_CANARI = "1.4.0"
 let NOTES : [String] = []
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [
-  "Symbol and Package document use interfaces are managed by auto layout"
+  "Symbol and Package document user interfaces are managed by auto layout"
 ]
 let NEWS : [String] = [
 ]
