@@ -108,7 +108,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>CustomizedPackageDocument</string>
+			<string>AutoLayoutPackageDocumentSubClass</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
