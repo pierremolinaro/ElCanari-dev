@@ -288,12 +288,12 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mRoot_none : StoredObject_DeviceRoot { return self.mRoot_property }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+     return .single (self.mRoot_property.propval == nil)
   }
 
   //····················································································································
@@ -423,6 +423,14 @@ final class PackageInDevice : EBGraphicManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserver (self.mRoot_none)
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)

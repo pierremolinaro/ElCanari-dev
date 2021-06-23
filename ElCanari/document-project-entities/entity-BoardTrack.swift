@@ -535,12 +535,12 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mConnectorP1_none : StoredObject_BoardConnector { return self.mConnectorP1_property }
+  final let mConnectorP1_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mConnectorP1_none_selection : EBSelection <Bool> {
-    return .single (self.mConnectorP1_property.propval == nil)
+     return .single (self.mConnectorP1_property.propval == nil)
   }
 
   //····················································································································
@@ -573,12 +573,12 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mConnectorP2_none : StoredObject_BoardConnector { return self.mConnectorP2_property }
+  final let mConnectorP2_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mConnectorP2_none_selection : EBSelection <Bool> {
-    return .single (self.mConnectorP2_property.propval == nil)
+     return .single (self.mConnectorP2_property.propval == nil)
   }
 
   //····················································································································
@@ -611,12 +611,12 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var mNet_none : StoredObject_NetInProject { return self.mNet_property }
+  final let mNet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNet_none_selection : EBSelection <Bool> {
-    return .single (self.mNet_property.propval == nil)
+     return .single (self.mNet_property.propval == nil)
   }
 
   //····················································································································
@@ -1006,6 +1006,30 @@ final class BoardTrack : BoardObject,
     self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mConnectorP1_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mConnectorP1_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP1_property.addEBObserver (self.mConnectorP1_none)
+    self.mConnectorP2_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mConnectorP2_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mConnectorP2_property.addEBObserver (self.mConnectorP2_none)
+    self.mNet_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNet_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserver (self.mNet_none)
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (

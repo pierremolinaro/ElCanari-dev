@@ -143,12 +143,12 @@ final class SheetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+     return .single (self.mRoot_property.propval == nil)
   }
 
   //····················································································································
@@ -273,6 +273,14 @@ final class SheetInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserver (self.mRoot_none)
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (

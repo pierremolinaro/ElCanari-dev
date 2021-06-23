@@ -3529,9 +3529,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !preferences_checkForSystemLibraryAtStartUp_property_selection
-        },
+        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.nextSystemLibraryCheckDate
       )
       preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
@@ -3539,9 +3537,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !preferences_checkForSystemLibraryAtStartUp_property_selection
-        },
+        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalPopupButton
       )
       preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
@@ -3549,9 +3545,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !preferences_checkForSystemLibraryAtStartUp_property_selection
-        },
+        computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalTitleTextField
       )
       preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
@@ -3559,9 +3553,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (preferences_additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveLibraryEntryButton
       )
       preferences_additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)

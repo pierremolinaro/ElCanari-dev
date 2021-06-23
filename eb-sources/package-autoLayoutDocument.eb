@@ -286,7 +286,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           makeWidthExpandable ()
           addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Preferences)", pageView: stackView mDisplayInspectorView)
+          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
@@ -915,6 +915,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
+    hStack { space StaticMiniLabel (title: "(Stored in Document Preferences)") space }
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),
@@ -964,74 +965,71 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //--- Display inspector
 
   stackView mDisplayInspectorView vStack {
-    hStack {
-      space
-      TwoColumnsGridView {
-        addCenterYAligned (
-          left: StaticLabel (title: "Background", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) } space }
-        )
-        addCenterYAligned (
-          left: StaticLabel (title: "Cross Grid", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
-        )
-        addCenterYAligned (
-          left: StaticLabel (title: "Line Grid", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
-        )
-        addSeparator ()
-        addCenterYAligned (
-          left: StaticLabel (title: "Package", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.packageColor (sendContinously:no) } space }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Line Width", bold: no, small: yes),
-          right: TaggedPopUpButton {
-            add (title: "0.5 Point", withTag: 5)
-            add (title: "1.0 Point", withTag: 10)
-            add (title: "1.5 Point", withTag: 15)
-            add (title: "2.0 Points", withTag: 20)
-            add (title: "2.5 Points", withTag: 25)
-            $selectedTag prefs.packageDrawingWidthMultipliedByTen
-          }
-        )
-        addSeparator ()
-        addCenterYAligned (
-          left: Switch (title: "Pad Numbering", small: yes) { $value prefs.showPadNumber },
-          right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Pad Font", bold: no, small: yes),
-          right: FontButton (small: yes) {$fontValue prefs.padNumberFont}
-        )
-        addCenterYAligned (
-          left: Switch (title: "Top Side Pads", small: yes) { $value prefs.displayPackageFrontSidePads },
-          right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
-        )
-        addCenterYAligned (
-          left: Switch (title: "Back Side Pads", small: yes) { $value prefs.displayPackageBackSidePads },
-          right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
-        )
-        addSeparator ()
-        addCenterYAligned (
-          left: StaticLabel (title: "Guide Color", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.packageGuideColor (sendContinously:no) } space }
-        )
-        addCenterYAligned (
-          left: StaticLabel (title: "Dimension Color", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.packageDimensionColor (sendContinously:no) } space }
-        )
-        addFirstBaseLineAligned (
-          left: StaticLabel (title: "Dimension Font", bold: no, small: yes),
-          right: FontButton (small: yes) {$fontValue prefs.dimensionFont}
-        )
-        addSeparator ()
-        addCenterYAligned (
-          left: StaticLabel (title: "Zone Color", bold: no, small: yes),
-          right: hStack { ColorWell { $color prefs.padZoneColor (sendContinously:no) } space }
-        )
-      }
-      space
+    hStack { space StaticMiniLabel (title: "(Stored in Application Preferences)") space }
+    TwoColumnsGridView {
+      addCenterYAligned (
+        left: StaticLabel (title: "Background", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.packageBackgroundColor (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Cross Grid", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.crossColorOfPackageGrid (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Line Grid", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.lineColorOfPackageGrid (sendContinously:no) } space }
+      )
+      addSeparator ()
+      addCenterYAligned (
+        left: StaticLabel (title: "Package", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.packageColor (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Line Width", bold: no, small: yes),
+        right: TaggedPopUpButton {
+          add (title: "0.5 Point", withTag: 5)
+          add (title: "1.0 Point", withTag: 10)
+          add (title: "1.5 Point", withTag: 15)
+          add (title: "2.0 Points", withTag: 20)
+          add (title: "2.5 Points", withTag: 25)
+          $selectedTag prefs.packageDrawingWidthMultipliedByTen
+        }
+      )
+      addSeparator ()
+      addCenterYAligned (
+        left: Switch (title: "Pad Numbering", small: yes) { $value prefs.showPadNumber },
+        right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Pad Font", bold: no, small: yes),
+        right: FontButton (small: yes) {$fontValue prefs.padNumberFont}
+      )
+      addCenterYAligned (
+        left: Switch (title: "Top Side Pads", small: yes) { $value prefs.displayPackageFrontSidePads },
+        right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: Switch (title: "Back Side Pads", small: yes) { $value prefs.displayPackageBackSidePads },
+        right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
+      )
+      addSeparator ()
+      addCenterYAligned (
+        left: StaticLabel (title: "Guide Color", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.packageGuideColor (sendContinously:no) } space }
+      )
+      addCenterYAligned (
+        left: StaticLabel (title: "Dimension Color", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.packageDimensionColor (sendContinously:no) } space }
+      )
+      addFirstBaseLineAligned (
+        left: StaticLabel (title: "Dimension Font", bold: no, small: yes),
+        right: FontButton (small: yes) {$fontValue prefs.dimensionFont}
+      )
+      addSeparator ()
+      addCenterYAligned (
+        left: StaticLabel (title: "Zone Color", bold: no, small: yes),
+        right: hStack { ColorWell { $color prefs.padZoneColor (sendContinously:no) } space }
+      )
     }
     space
   }

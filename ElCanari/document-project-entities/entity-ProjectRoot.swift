@@ -3125,12 +3125,12 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mSelectedSheet_none : StoredObject_SheetInProject { return self.mSelectedSheet_property }
+  final let mSelectedSheet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSelectedSheet_none_selection : EBSelection <Bool> {
-    return .single (self.mSelectedSheet_property.propval == nil)
+     return .single (self.mSelectedSheet_property.propval == nil)
   }
 
   //····················································································································
@@ -3324,12 +3324,12 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
+  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mArtwork_none_selection : EBSelection <Bool> {
-    return .single (self.mArtwork_property.propval == nil)
+     return .single (self.mArtwork_property.propval == nil)
   }
 
   //····················································································································
@@ -4191,6 +4191,22 @@ final class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSelectedSheet_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
+    self.mArtwork_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mArtwork_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.addEBObserver (self.mArtwork_none)
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (

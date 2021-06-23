@@ -17,8 +17,7 @@ struct AutoLayoutMenuItemDescriptor {
   let title : String
   let target : NSObject?
   let selector : Selector?
-  let observedObjects : [EBObservableObjectProtocol]
-  let computeFunction : () -> EBSelection <Bool>
+  let expression : EBMultipleBindingBooleanExpression
 
   //····················································································································
 

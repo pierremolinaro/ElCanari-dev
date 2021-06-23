@@ -530,9 +530,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.canDeleteCurrentCharacter_property_selection
-        },
+        computeFunction: .id (self.canDeleteCurrentCharacter_property),
         outlet: self.mDeleteCurrentCharacterButton
       )
       self.canDeleteCurrentCharacter_property.addEBObserver (controller)
@@ -540,9 +538,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.noIssue_property_selection
-        },
+        computeFunction: .id (self.noIssue_property),
         outlet: self.mIssueTableView
       )
       self.noIssue_property.addEBObserver (controller)

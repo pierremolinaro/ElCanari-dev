@@ -630,12 +630,12 @@ final class PackagePad : PackageObject,
 
   //····················································································································
 
-  final var zone_none : StoredObject_PackageZone { return self.zone_property }
+  final let zone_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var zone_none_selection : EBSelection <Bool> {
-    return .single (self.zone_property.propval == nil)
+     return .single (self.zone_property.propval == nil)
   }
 
   //····················································································································
@@ -890,6 +890,14 @@ final class PackagePad : PackageObject,
     self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.zone_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.zone_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.zone_property.addEBObserver (self.zone_none)
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.ebUndoManager = self.ebUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (

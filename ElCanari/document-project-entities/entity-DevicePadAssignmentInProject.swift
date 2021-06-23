@@ -84,12 +84,12 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mPin_none : StoredObject_DevicePinInProject { return self.mPin_property }
+  final let mPin_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mPin_none_selection : EBSelection <Bool> {
-    return .single (self.mPin_property.propval == nil)
+     return .single (self.mPin_property.propval == nil)
   }
 
   //····················································································································
@@ -145,6 +145,14 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mPin_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mPin_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mPin_property.addEBObserver (self.mPin_none)
   //--- To one property: mPin
     self.mPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinPadAssignment

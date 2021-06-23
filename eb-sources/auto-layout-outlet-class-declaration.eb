@@ -40,6 +40,12 @@ extern autolayout class TwoColumnsGridView {
   func addSeparator ()
 }
 
+extern autolayout class StaticMiniLabel (title : String) $enabled $hidden {
+  func setCenterAlignment ()
+  func setLeftAlignment ()
+  func makeWidthExpandable ()
+}
+
 extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
   func setCenterAlignment ()
   func setLeftAlignment ()

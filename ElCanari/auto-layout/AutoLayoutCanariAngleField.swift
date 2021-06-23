@@ -22,7 +22,7 @@ final class AutoLayoutCanariAngleField : NSTextField, EBUserClassNameProtocol, N
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = .small
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
 
     self.delegate = self

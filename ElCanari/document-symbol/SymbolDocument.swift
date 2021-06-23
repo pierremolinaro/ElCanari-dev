@@ -457,9 +457,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
+        computeFunction: .id (self.rootObject.noIssue_property),
         outlet: self.mDeselectIssueButton
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
@@ -467,9 +465,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.noIssue_property_selection
-        },
+        computeFunction: .id (self.rootObject.noIssue_property),
         outlet: self.mIssueScrollView
       )
       self.rootObject.noIssue_property.addEBObserver (controller)

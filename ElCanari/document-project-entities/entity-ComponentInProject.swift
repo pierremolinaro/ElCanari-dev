@@ -891,12 +891,12 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mDevice_none : StoredObject_DeviceInProject { return self.mDevice_property }
+  final let mDevice_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mDevice_none_selection : EBSelection <Bool> {
-    return .single (self.mDevice_property.propval == nil)
+     return .single (self.mDevice_property.propval == nil)
   }
 
   //····················································································································
@@ -952,12 +952,12 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mSelectedPackage_none : StoredObject_DevicePackageInProject { return self.mSelectedPackage_property }
+  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSelectedPackage_none_selection : EBSelection <Bool> {
-    return .single (self.mSelectedPackage_property.propval == nil)
+     return .single (self.mSelectedPackage_property.propval == nil)
   }
 
   //····················································································································
@@ -1128,12 +1128,12 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mNameFont_none : StoredObject_FontInProject { return self.mNameFont_property }
+  final let mNameFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNameFont_none_selection : EBSelection <Bool> {
-    return .single (self.mNameFont_property.propval == nil)
+     return .single (self.mNameFont_property.propval == nil)
   }
 
   //····················································································································
@@ -1166,12 +1166,12 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mValueFont_none : StoredObject_FontInProject { return self.mValueFont_property }
+  final let mValueFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mValueFont_none_selection : EBSelection <Bool> {
-    return .single (self.mValueFont_property.propval == nil)
+     return .single (self.mValueFont_property.propval == nil)
   }
 
   //····················································································································
@@ -1408,6 +1408,38 @@ final class ComponentInProject : BoardObject,
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mDevice_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mDevice_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mDevice_property.addEBObserver (self.mDevice_none)
+    self.mSelectedPackage_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSelectedPackage_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedPackage_property.addEBObserver (self.mSelectedPackage_none)
+    self.mNameFont_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNameFont_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNameFont_property.addEBObserver (self.mNameFont_none)
+    self.mValueFont_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mValueFont_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mValueFont_property.addEBObserver (self.mValueFont_none)
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.ebUndoManager = self.ebUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (

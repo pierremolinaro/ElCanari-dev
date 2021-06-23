@@ -23,7 +23,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
 
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
     self.controlSize = .small
-    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
   }
 
   //····················································································································

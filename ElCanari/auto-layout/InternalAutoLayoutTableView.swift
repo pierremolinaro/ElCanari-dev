@@ -26,7 +26,7 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.mTableView.controlSize = inSmall ? .small : .regular
-    self.mTableView.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
     self.mTableView.delegate = self
     self.mTableView.dataSource = self
@@ -163,6 +163,7 @@ final class InternalAutoLayoutTableView : NSScrollView, EBUserClassNameProtocol,
     textField.drawsBackground = false
     textField.isEditable = false
     textField.controlSize = .small
+    textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
 
     if let tableColumn = inTableColumn as? InternalTableColumn {
       tableColumn.setValueToTextField (textField, inRowIndex)

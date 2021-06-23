@@ -22,7 +22,7 @@ final class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNam
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.boldSystemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
     self.isEditable = false
     self.drawsBackground = false

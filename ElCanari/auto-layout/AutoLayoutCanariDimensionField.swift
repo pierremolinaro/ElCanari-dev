@@ -21,7 +21,7 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
 
     self.delegate = self
     self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.boldSystemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
   }
 

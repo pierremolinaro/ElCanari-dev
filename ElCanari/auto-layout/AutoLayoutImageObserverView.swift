@@ -30,6 +30,7 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
     self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.frame.size = self.intrinsicContentSize
   }
 

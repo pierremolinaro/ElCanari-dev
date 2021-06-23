@@ -36,11 +36,24 @@ extension NSControl {
   //  $enabled binding
   //····················································································································
 
-  final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
-                           computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+//  final func bind_enabled (observedObjects inObjects : [EBObservableObjectProtocol],
+//                           computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+//    let controller = EBReadOnlyPropertyController (
+//      observedObjects: inObjects,
+//      callBack: { [weak self] in self?.updateEnableState (from: inFunction ()) }
+//    )
+//    gEnabledBindingControllerDictionary [self] = controller
+//    return self
+//  }
+
+ //····················································································································
+
+  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    var modelArray = [EBObservableObjectProtocol] ()
+    inExpression.addModelsTo (&modelArray)
     let controller = EBReadOnlyPropertyController (
-      observedObjects: inObjects,
-      callBack: { [weak self] in self?.update (from: inFunction ()) }
+      observedObjects: modelArray,
+      callBack: { [weak self] in self?.updateEnableState (from: inExpression.compute ()) }
     )
     gEnabledBindingControllerDictionary [self] = controller
     return self
@@ -62,7 +75,7 @@ extension NSControl {
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBSelection <Bool>) {
+  fileprivate func updateEnableState (from inObject : EBSelection <Bool>) {
     switch inObject {
     case .empty, .multiple :
       self.enable (fromEnableBinding: false)

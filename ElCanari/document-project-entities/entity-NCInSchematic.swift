@@ -84,12 +84,12 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mPoint_none : StoredObject_PointInSchematic { return self.mPoint_property }
+  final let mPoint_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mPoint_none_selection : EBSelection <Bool> {
-    return .single (self.mPoint_property.propval == nil)
+     return .single (self.mPoint_property.propval == nil)
   }
 
   //····················································································································
@@ -99,6 +99,14 @@ final class NCInSchematic : SchematicObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mPoint_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mPoint_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mPoint_property.addEBObserver (self.mPoint_none)
   //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (

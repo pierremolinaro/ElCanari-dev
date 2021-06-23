@@ -457,9 +457,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mDataController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mDataController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveGenerationFileButton
       )
       self.mDataController.selectedArray_property.count_property.addEBObserver (controller)
@@ -467,9 +465,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.mDataSelection.drawPadHolesInPDF_property_selection
-        },
+        computeFunction: .not (.id (self.mDataSelection.drawPadHolesInPDF_property)),
         outlet: self.mPadHoleDefinitionView
       )
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)

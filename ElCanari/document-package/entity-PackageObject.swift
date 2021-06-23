@@ -91,12 +91,12 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mRoot_none : StoredObject_PackageRoot { return self.mRoot_property }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+     return .single (self.mRoot_property.propval == nil)
   }
 
   //····················································································································
@@ -128,6 +128,14 @@ class PackageObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.mRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserver (self.mRoot_none)
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (

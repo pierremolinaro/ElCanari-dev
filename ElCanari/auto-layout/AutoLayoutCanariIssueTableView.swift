@@ -53,6 +53,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     self.mTableView.headerView = nil
     self.mTableView.gridStyleMask = .dashedHorizontalGridLineMask // [.dashedHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.controlSize = .small
+    self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
 
     let leftColumn = NSTableColumn (identifier: LEFT_COLUMN_IDENTIFIER)
     leftColumn.minWidth = 20.0

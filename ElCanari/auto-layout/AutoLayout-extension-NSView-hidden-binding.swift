@@ -35,11 +35,24 @@ extension NSView {
   //  $hidden binding
   //····················································································································
 
-  final func bind_hidden (observedObjects inObjects : [EBObservableObjectProtocol],
-                          computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+//  final func bind_hidden (observedObjects inObjects : [EBObservableObjectProtocol],
+//                          computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
+//    let controller = EBReadOnlyPropertyController (
+//      observedObjects: inObjects,
+//      callBack: { [weak self] in self?.updateHiddenState (from: inFunction ()) }
+//    )
+//    gHiddenBindingDictionary [self] = controller
+//    return self
+//  }
+
+ //····················································································································
+
+  final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+    var modelArray = [EBObservableObjectProtocol] ()
+    inExpression.addModelsTo (&modelArray)
     let controller = EBReadOnlyPropertyController (
-      observedObjects: inObjects,
-      callBack: { [weak self] in self?.update (from: inFunction ()) }
+      observedObjects: modelArray,
+      callBack: { [weak self] in self?.updateHiddenState (from: inExpression.compute ()) }
     )
     gHiddenBindingDictionary [self] = controller
     return self
@@ -47,7 +60,7 @@ extension NSView {
 
   //····················································································································
 
-  fileprivate func update (from inObject : EBSelection <Bool>) {
+  fileprivate func updateHiddenState (from inObject : EBSelection <Bool>) {
     switch inObject {
     case .empty, .multiple :
       self.isHidden = true

@@ -368,12 +368,12 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final var mFont_none : StoredObject_FontInProject { return self.mFont_property }
+  final let mFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mFont_none_selection : EBSelection <Bool> {
-    return .single (self.mFont_property.propval == nil)
+     return .single (self.mFont_property.propval == nil)
   }
 
   //····················································································································
@@ -415,6 +415,14 @@ final class BoardText : BoardObject,
     self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: ebUndoManager)
     self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mFont_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mFont_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mFont_property.addEBObserver (self.mFont_none)
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (

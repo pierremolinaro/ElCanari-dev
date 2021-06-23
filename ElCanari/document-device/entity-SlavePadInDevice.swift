@@ -301,12 +301,12 @@ final class SlavePadInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mMasterPad_none : StoredObject_MasterPadInDevice { return self.mMasterPad_property }
+  final let mMasterPad_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mMasterPad_none_selection : EBSelection <Bool> {
-    return .single (self.mMasterPad_property.propval == nil)
+     return .single (self.mMasterPad_property.propval == nil)
   }
 
   //····················································································································
@@ -392,6 +392,14 @@ final class SlavePadInDevice : EBManagedObject,
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
     self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mMasterPad_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mMasterPad_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mMasterPad_property.addEBObserver (self.mMasterPad_none)
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.ebUndoManager = self.ebUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (

@@ -27,7 +27,7 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = .small
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
   //--- Target
     self.target = self

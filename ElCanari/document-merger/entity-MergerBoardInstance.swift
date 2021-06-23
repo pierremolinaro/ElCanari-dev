@@ -165,12 +165,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var myModel_none : StoredObject_BoardModel { return self.myModel_property }
+  final let myModel_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var myModel_none_selection : EBSelection <Bool> {
-    return .single (self.myModel_property.propval == nil)
+     return .single (self.myModel_property.propval == nil)
   }
 
   //····················································································································
@@ -272,12 +272,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var myRoot_none : StoredObject_MergerRoot { return self.myRoot_property }
+  final let myRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var myRoot_none_selection : EBSelection <Bool> {
-    return .single (self.myRoot_property.propval == nil)
+     return .single (self.myRoot_property.propval == nil)
   }
 
   //····················································································································
@@ -289,6 +289,22 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.myModel_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.myModel_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.myModel_property.addEBObserver (self.myModel_none)
+    self.myRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.myRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.myRoot_property.addEBObserver (self.myRoot_none)
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.ebUndoManager = self.ebUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (

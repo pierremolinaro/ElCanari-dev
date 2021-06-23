@@ -271,12 +271,12 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbol_none : StoredObject_ComponentSymbolInProject { return self.mSymbol_property }
+  final let mSymbol_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSymbol_none_selection : EBSelection <Bool> {
-    return .single (self.mSymbol_property.propval == nil)
+     return .single (self.mSymbol_property.propval == nil)
   }
 
   //····················································································································
@@ -309,12 +309,12 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mNet_none : StoredObject_NetInProject { return self.mNet_property }
+  final let mNet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNet_none_selection : EBSelection <Bool> {
-    return .single (self.mNet_property.propval == nil)
+     return .single (self.mNet_property.propval == nil)
   }
 
   //····················································································································
@@ -347,12 +347,12 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mNC_none : StoredObject_NCInSchematic { return self.mNC_property }
+  final let mNC_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNC_none_selection : EBSelection <Bool> {
-    return .single (self.mNC_property.propval == nil)
+     return .single (self.mNC_property.propval == nil)
   }
 
   //····················································································································
@@ -546,12 +546,12 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mSheet_none : StoredObject_SheetInProject { return self.mSheet_property }
+  final let mSheet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSheet_none_selection : EBSelection <Bool> {
-    return .single (self.mSheet_property.propval == nil)
+     return .single (self.mSheet_property.propval == nil)
   }
 
   //····················································································································
@@ -678,6 +678,38 @@ final class PointInSchematic : EBManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mSymbol_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSymbol_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbol_property.addEBObserver (self.mSymbol_none)
+    self.mNet_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNet_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNet_property.addEBObserver (self.mNet_none)
+    self.mNC_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNC_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNC_property.addEBObserver (self.mNC_none)
+    self.mSheet_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSheet_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSheet_property.addEBObserver (self.mSheet_none)
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (

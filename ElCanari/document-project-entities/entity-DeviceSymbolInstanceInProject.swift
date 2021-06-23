@@ -98,12 +98,12 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbolType_none : StoredObject_DeviceSymbolTypeInProject { return self.mSymbolType_property }
+  final let mSymbolType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSymbolType_none_selection : EBSelection <Bool> {
-    return .single (self.mSymbolType_property.propval == nil)
+     return .single (self.mSymbolType_property.propval == nil)
   }
 
   //····················································································································
@@ -205,6 +205,14 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mSymbolType_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSymbolType_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
   //--- To one property: mSymbolType
     self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName

@@ -144,12 +144,12 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPinInstance_none : StoredObject_SymbolPinInstanceInDevice { return self.mPinInstance_property }
+  final let mPinInstance_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mPinInstance_none_selection : EBSelection <Bool> {
-    return .single (self.mPinInstance_property.propval == nil)
+     return .single (self.mPinInstance_property.propval == nil)
   }
 
   //····················································································································
@@ -207,6 +207,14 @@ final class PadProxyInDevice : EBManagedObject,
     self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mPinInstance_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mPinInstance_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.ebUndoManager = self.ebUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (

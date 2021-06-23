@@ -1085,9 +1085,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.selectedPageIndex_property_selection <= EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.selectedPageIndex_property), .le, .literalInt (1)),
         outlet: self.showPrefsForSettingMergerDisplayButton
       )
       self.rootObject.selectedPageIndex_property.addEBObserver (controller)
@@ -1095,9 +1093,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.selectedPageIndex_property_selection > EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.selectedPageIndex_property), .gt, .literalInt (1)),
         outlet: self.mDisplaySettingView
       )
       self.rootObject.selectedPageIndex_property.addEBObserver (controller)
@@ -1105,9 +1101,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.boardModels_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)),
         outlet: self.mNoModelMessage
       )
       self.rootObject.boardModels_property.count_property.addEBObserver (controller)
@@ -1115,9 +1109,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.mBoardModelSelection.instanceCount_property_selection == EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))),
         outlet: self.removeBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1126,9 +1118,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.updateBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1136,9 +1126,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.automaticBoardSize_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.automaticBoardSize_property)),
         outlet: self.mAutomaticBoardSizeView
       )
       self.rootObject.automaticBoardSize_property.addEBObserver (controller)
@@ -1146,9 +1134,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.automaticBoardSize_property_selection
-        },
+        computeFunction: .id (self.rootObject.automaticBoardSize_property),
         outlet: self.mManualBoardSizeView
       )
       self.rootObject.automaticBoardSize_property.addEBObserver (controller)
@@ -1156,9 +1142,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEmptyBoardMessage
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
@@ -1166,9 +1150,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)),
         outlet: self.mOverlapSwitch
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
@@ -1176,9 +1158,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveRightButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1186,9 +1166,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveLeftButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1196,9 +1174,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveUpButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1206,9 +1182,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveDownButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -1216,9 +1190,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.mArtwork_none_selection
-        },
+        computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mNoArtworkMessage
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)
@@ -1226,9 +1198,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.documentFileNameOk_property_selection
-        },
+        computeFunction: .id (self.documentFileNameOk_property),
         outlet: self.mDangerView
       )
       self.documentFileNameOk_property.addEBObserver (controller)
@@ -1236,9 +1206,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((!self.rootObject.mArtwork_none_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
-        },
+        computeFunction: .boolcmp (.boolcmp (.not (.id (self.rootObject.mArtwork_none)), .and, .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.id (self.documentIsUnnamed_property))),
         outlet: self.mGenerateProductFilesActionButton
       )
       self.documentIsUnnamed_property.addEBObserver (controller)
@@ -1248,9 +1216,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.mArtwork_none_selection
-        },
+        computeFunction: .id (self.rootObject.mArtwork_none),
         outlet: self.mArtworkSettingsTabView
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)

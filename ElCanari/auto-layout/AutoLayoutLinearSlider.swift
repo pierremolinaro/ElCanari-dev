@@ -27,6 +27,7 @@ final class AutoLayoutLinearSlider : NSSlider, EBUserClassNameProtocol {
     self.maxValue = Double (inMax)
     self.numberOfTickMarks = inMarkCount
     self.controlSize = .small
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.sliderType = .linear
   }
 

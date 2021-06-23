@@ -116,6 +116,7 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNamePro
     textField.isEditable = false
     textField.alignment = .center
     textField.controlSize = .small
+    textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
     result.addSubview (textField)
     result.textField = textField
     let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: result, attribute: .width, multiplier: 1.0, constant: 0.0)

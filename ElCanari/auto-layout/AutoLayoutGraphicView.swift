@@ -102,7 +102,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     tf.isEditable = false
     tf.alignment = .left
     tf.controlSize = .small
-    tf.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    tf.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: tf.controlSize))
     return tf
   }
 

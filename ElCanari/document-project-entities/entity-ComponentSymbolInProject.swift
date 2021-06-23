@@ -473,12 +473,12 @@ final class ComponentSymbolInProject : SchematicObject,
 
   //····················································································································
 
-  final var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+  final let mComponent_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mComponent_none_selection : EBSelection <Bool> {
-    return .single (self.mComponent_property.propval == nil)
+     return .single (self.mComponent_property.propval == nil)
   }
 
   //····················································································································
@@ -613,6 +613,14 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mComponent_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mComponent_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserver (self.mComponent_none)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (

@@ -20,6 +20,7 @@ final class AutoLayoutHelpButton : NSButton, EBUserClassNameProtocol {
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.title = ""
     self.bezelStyle = .helpButton
   }

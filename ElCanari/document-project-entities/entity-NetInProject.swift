@@ -157,12 +157,12 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mNetClass_none : StoredObject_NetClassInProject { return self.mNetClass_property }
+  final let mNetClass_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNetClass_none_selection : EBSelection <Bool> {
-    return .single (self.mNetClass_property.propval == nil)
+     return .single (self.mNetClass_property.propval == nil)
   }
 
   //····················································································································
@@ -333,6 +333,14 @@ final class NetInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mNetClass_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNetClass_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNetClass_property.addEBObserver (self.mNetClass_none)
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (

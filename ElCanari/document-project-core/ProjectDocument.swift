@@ -2763,9 +2763,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mDuplicateSelectedComponentsActionButton
       )
       self.componentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2773,9 +2771,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveSelectedComponentsActionButton
       )
       self.componentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2783,9 +2779,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.canChangePackage_property_selection
-        },
+        computeFunction: .id (self.canChangePackage_property),
         outlet: self.mChangePackageOfSelectedComponentsActionButton
       )
       self.canChangePackage_property.addEBObserver (controller)
@@ -2793,9 +2787,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mChangeValueOfSelectedComponentsActionButton
       )
       self.componentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2803,9 +2795,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.componentController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRevealPackageOfSelectedComponentsButton
       )
       self.componentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2813,9 +2803,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.componentController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mRenameComponentButton
       )
       self.componentController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2823,9 +2811,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.canRemoveNetClasses_property_selection
-        },
+        computeFunction: .id (self.canRemoveNetClasses_property),
         outlet: self.mRemoveNetClassButton
       )
       self.canRemoveNetClasses_property.addEBObserver (controller)
@@ -2833,9 +2819,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.netClassController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mEditNetClassButton
       )
       self.netClassController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2843,9 +2827,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveEmbeddedDevicesButton
       )
       self.rootObject.mDevices_property.count_property.addEBObserver (controller)
@@ -2853,9 +2835,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0)) || (self.rootObject.mFonts_property.count_property_selection > EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))),
         outlet: self.mResetDevicesAndFontsVersionButton
       )
       self.rootObject.mDevices_property.count_property.addEBObserver (controller)
@@ -2864,9 +2844,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.rootObject.mDevices_property.count_property_selection > EBSelection.single (0)) || (self.rootObject.mFonts_property.count_property_selection > EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))),
         outlet: self.mUpdateDevicesAndFontsButton
       )
       self.rootObject.mDevices_property.count_property.addEBObserver (controller)
@@ -2875,9 +2853,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditFontButton
       )
       self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2885,9 +2861,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateFontButton
       )
       self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2895,9 +2869,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0)) && self.canRemoveSelectedFonts_property_selection)
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.canRemoveSelectedFonts_property)),
         outlet: self.mRemoveFontButton
       )
       self.canRemoveSelectedFonts_property.addEBObserver (controller)
@@ -2906,9 +2878,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetFontVersionButton
       )
       self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2916,9 +2886,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedDeviceVersionButton
       )
       self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2926,9 +2894,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.canRemoveSelectedDevices_property_selection
-        },
+        computeFunction: .id (self.canRemoveSelectedDevices_property),
         outlet: self.mRemoveDeviceButton
       )
       self.canRemoveSelectedDevices_property.addEBObserver (controller)
@@ -2936,9 +2902,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditDeviceButton
       )
       self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2946,9 +2910,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportDeviceButton
       )
       self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2956,9 +2918,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.projectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateDeviceButton
       )
       self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
@@ -2966,9 +2926,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.schematicSheetOrientationIsCustom_property_selection
-        },
+        computeFunction: .not (.id (self.schematicSheetOrientationIsCustom_property)),
         outlet: self.mSchematicCustomSizeView
       )
       self.schematicSheetOrientationIsCustom_property.addEBObserver (controller)
@@ -2976,9 +2934,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.mSheets_property.count_property_selection > EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)),
         outlet: self.mRemoveSheetButton
       )
       self.rootObject.mSheets_property.count_property.addEBObserver (controller)
@@ -2986,9 +2942,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mWireRenameNetButton
       )
       self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
@@ -2997,9 +2951,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection > EBSelection.single (0)) && self.wireInSchematicSelectionController.hasNet_property_selection)
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mWireRenameNetWithUniqueNewNameButton
       )
       self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
@@ -3008,9 +2960,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mSchematicWireMergeSubnetButton
       )
       self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
@@ -3019,9 +2969,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.wireInSchematicSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1)) && self.wireInSchematicSelectionController.hasNet_property_selection)
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mSchematicWireInsulateSubnetButton
       )
       self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
@@ -3030,9 +2978,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicsLabelRenameNetButton
       )
       self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
@@ -3040,9 +2986,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicLabelMergeSubnetButton
       )
       self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
@@ -3050,9 +2994,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.schematicLabelSelectionController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicLabelInsulateSubnetButton
       )
       self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
@@ -3060,9 +3002,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.schematicObjectsController.selectedArray_property.count_property_selection == EBSelection.single (1))
-        },
+        computeFunction: .intcmp (.id (self.schematicObjectsController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mRenameComponentFromComponentSymbolButton
       )
       self.schematicObjectsController.selectedArray_property.count_property.addEBObserver (controller)
@@ -3070,9 +3010,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.netCount_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.netCount_property), .gt, .literalInt (0)),
         outlet: self.mRenameNetInNetTabButton
       )
       self.netCount_property.addEBObserver (controller)
@@ -3080,9 +3018,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.netCount_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.netCount_property), .gt, .literalInt (0)),
         outlet: self.mSelectNetClassInNetTabButton
       )
       self.netCount_property.addEBObserver (controller)
@@ -3090,9 +3026,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.netWarningCount_property_selection == EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)),
         outlet: self.mNetWarningImageView
       )
       self.rootObject.netWarningCount_property.addEBObserver (controller)
@@ -3100,9 +3034,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.netWarningCount_property_selection == EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)),
         outlet: self.mNetWarningTextField
       )
       self.rootObject.netWarningCount_property.addEBObserver (controller)
@@ -3110,9 +3042,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.boardCurveSelectionController.isLine_property_selection
-        },
+        computeFunction: .id (self.boardCurveSelectionController.isLine_property),
         outlet: self.mLimitCurveBezierControlPointsView
       )
       self.boardCurveSelectionController.isLine_property.addEBObserver (controller)
@@ -3120,9 +3050,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.boardShapeIsRectangular_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.boardShapeIsRectangular_property)),
         outlet: self.mMessageBoardIsRectangularView
       )
       self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
@@ -3130,9 +3058,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.boardShapeIsRectangular_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.boardShapeIsRectangular_property)),
         outlet: self.mRectangularBoardWidthHeighView
       )
       self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
@@ -3140,9 +3066,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.boardShapeIsRectangular_property_selection
-        },
+        computeFunction: .id (self.rootObject.boardShapeIsRectangular_property),
         outlet: self.mBezierPathBoardHelperView
       )
       self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
@@ -3150,9 +3074,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.trackCanRotate_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.trackCanRotate_property),
         outlet: self.mTrackInBoardRotationTextField
       )
       self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
@@ -3160,9 +3082,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.trackCanRotate_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.trackCanRotate_property),
         outlet: self.mTrackInBoardRotationSlider
       )
       self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
@@ -3170,9 +3090,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.p1CanMove_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.p1CanMove_property),
         outlet: self.mBoardTrackP1xTextField
       )
       self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
@@ -3180,9 +3098,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.p1CanMove_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.p1CanMove_property),
         outlet: self.mBoardTrackP1yTextField
       )
       self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
@@ -3190,9 +3106,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.p2CanMove_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.p2CanMove_property),
         outlet: self.mBoardTrackP2xTextField
       )
       self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
@@ -3200,9 +3114,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.boardTrackSelectionController.p2CanMove_property_selection
-        },
+        computeFunction: .id (self.boardTrackSelectionController.p2CanMove_property),
         outlet: self.mBoardTrackP2yTextField
       )
       self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
@@ -3210,9 +3122,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.restrictRectangleSelectionController.mIsInBackLayer_property_selection
-        },
+        computeFunction: .id (self.restrictRectangleSelectionController.mIsInBackLayer_property),
         outlet: self.mFrontRestrictRectangleSwitch
       )
       self.restrictRectangleSelectionController.mIsInBackLayer_property.addEBObserver (controller)
@@ -3220,9 +3130,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.restrictRectangleSelectionController.mIsInFrontLayer_property_selection
-        },
+        computeFunction: .id (self.restrictRectangleSelectionController.mIsInFrontLayer_property),
         outlet: self.mBackRestrictRectangleSwitch
       )
       self.restrictRectangleSelectionController.mIsInFrontLayer_property.addEBObserver (controller)
@@ -3230,9 +3138,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.hasSlavePads_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.hasSlavePads_property),
         outlet: self.mSlavePadsShouldBeRoutedPopUpButton
       )
       self.componentInBoardSelectionController.hasSlavePads_property.addEBObserver (controller)
@@ -3240,9 +3146,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameFontSizeField
       )
       self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
@@ -3250,9 +3154,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationTextField
       )
       self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
@@ -3260,9 +3162,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationSlider
       )
       self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
@@ -3270,9 +3170,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationSegmentedControl
       )
       self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
@@ -3280,9 +3178,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mNameIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mBoardComponentNameFontPopUpButton
       )
       self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
@@ -3290,9 +3186,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueFontSizeField
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3300,9 +3194,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationTextField
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3310,9 +3202,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationSlider
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3320,9 +3210,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationSegmentedControl
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3330,9 +3218,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mBoardComponentValueTextField
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3340,9 +3226,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.componentInBoardSelectionController.mValueIsVisibleInBoard_property_selection
-        },
+        computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mBoardComponentValueFontPopUpButton
       )
       self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
@@ -3350,9 +3234,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rastnetDisplayOneNet_property_selection
-        },
+        computeFunction: .not (.id (self.rastnetDisplayOneNet_property)),
         outlet: self.mRasnetNetNameSelectionPopUpButton
       )
       self.rastnetDisplayOneNet_property.addEBObserver (controller)
@@ -3360,9 +3242,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rastnetDisplayComponentNet_property_selection
-        },
+        computeFunction: .not (.id (self.rastnetDisplayComponentNet_property)),
         outlet: self.mRasnetComponentNameSelectionPopUpButton
       )
       self.rastnetDisplayComponentNet_property.addEBObserver (controller)
@@ -3370,9 +3250,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.mArtwork_none_selection
-        },
+        computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mNoArtworkMessageTextField
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)
@@ -3380,9 +3258,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.mArtwork_none_selection
-        },
+        computeFunction: .id (self.rootObject.mArtwork_none),
         outlet: self.mArtworkSettingsTabView
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)
@@ -3390,9 +3266,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.mArtwork_none_selection
-        },
+        computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mGenerateProductFilesActionButton
       )
       self.rootObject.mArtwork_none.addEBObserver (controller)
@@ -3400,9 +3274,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.documentFilePathOk_property_selection
-        },
+        computeFunction: .id (self.documentFilePathOk_property),
         outlet: self.mIncorrectFileNameMessageView
       )
       self.documentFilePathOk_property.addEBObserver (controller)

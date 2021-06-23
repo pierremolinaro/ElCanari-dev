@@ -184,12 +184,12 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mType_none : StoredObject_SymbolTypeInDevice { return self.mType_property }
+  final let mType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mType_none_selection : EBSelection <Bool> {
-    return .single (self.mType_property.propval == nil)
+     return .single (self.mType_property.propval == nil)
   }
 
   //····················································································································
@@ -270,6 +270,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mType_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mType_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mType_property.addEBObserver (self.mType_none)
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (

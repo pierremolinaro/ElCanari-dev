@@ -82,7 +82,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
           makeWidthExpandable ()
           addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Prefertences)", pageView: stackView mDisplayInspectorView)
+          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
@@ -170,6 +170,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
+    hStack { space StaticMiniLabel (title: "(Stored in Document Preferences)") space }
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, small: yes),
@@ -216,8 +217,8 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mDisplayInspectorView vStack {
+    hStack { space StaticMiniLabel (title: "(Stored in Application Preferences)") space }
     TwoColumnsGridView {
-//      add (single: hStack { StaticLabel (title: "Stored in Preferences", bold: no, small: yes) space } )
       addCenterYAligned (
         left: StaticLabel (title: "Symbol", bold: no, small: yes),
         right: hStack { ColorWell { $color prefs.symbolColor (sendContinously:no) } space }

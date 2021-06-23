@@ -362,12 +362,12 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mRoot_none : StoredObject_ProjectRoot { return self.mRoot_property }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mRoot_none_selection : EBSelection <Bool> {
-    return .single (self.mRoot_property.propval == nil)
+     return .single (self.mRoot_property.propval == nil)
   }
 
   //····················································································································
@@ -400,12 +400,12 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mNext_none : StoredObject_BorderCurve { return self.mNext_property }
+  final let mNext_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mNext_none_selection : EBSelection <Bool> {
-    return .single (self.mNext_property.propval == nil)
+     return .single (self.mNext_property.propval == nil)
   }
 
   //····················································································································
@@ -438,12 +438,12 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPrevious_none : StoredObject_BorderCurve { return self.mPrevious_property }
+  final let mPrevious_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mPrevious_none_selection : EBSelection <Bool> {
-    return .single (self.mPrevious_property.propval == nil)
+     return .single (self.mPrevious_property.propval == nil)
   }
 
   //····················································································································
@@ -551,6 +551,30 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mRoot_property.addEBObserver (self.mRoot_none)
+    self.mNext_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mNext_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mNext_property.addEBObserver (self.mNext_none)
+    self.mPrevious_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mPrevious_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mPrevious_property.addEBObserver (self.mPrevious_none)
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext {

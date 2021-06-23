@@ -1,38 +1,40 @@
 //
-//  AutoLayoutTextField.swift
+//  AutoLayoutStaticMiniLabel.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 15/06/2021.
+//  Created by Pierre Molinaro on 23/06/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   AutoLayoutTextField
-//----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+final class AutoLayoutStaticMiniLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
+  // INIT
+  //····················································································································
 
-  init (small inSmall : Bool) {
+  init (title inTitle : String) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.delegate = self
-    self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    self.alignment = .center
-
-    self.target = self
-    self.action = #selector (AutoLayoutTextField.ebAction(_:))
+    self.stringValue = inTitle
+    self.isBezeled = false
+    self.isBordered = false
+    self.drawsBackground = false
+    self.isEditable = false
+    self.alignment = .right
+    self.controlSize = .mini
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    self.frame.size = self.intrinsicContentSize
   }
 
   //····················································································································
 
-  required init? (coder inCoder : NSCoder) {
+  required init? (coder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
@@ -44,30 +46,40 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: 19.0)
-  }
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
-  func controlTextDidChange (_ inNotification : Notification) {
-    if self.mSendContinously {
-      self.ebAction (nil)
+  override func draw (_ inDirtyRect : NSRect) {
+    if debugAutoLayout () {
+      DEBUG_FILL_COLOR.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+      let bp = NSBezierPath (rect: self.bounds)
+      bp.lineWidth = 1.0
+      bp.lineJoinStyle = .round
+      DEBUG_STROKE_COLOR.setStroke ()
+      bp.stroke ()
     }
+    super.draw (inDirtyRect)
+  }
+
+  //····················································································································
+  // SET TEXT color
+  //····················································································································
+
+  final func setTextColor (_ inTextColor : NSColor) -> Self {
+    self.textColor = inTextColor
+    return self
   }
 
   //····················································································································
 
-  @objc func ebAction (_ inUnusedSender : Any?) {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
+  final func setCenterAlignment () -> Self {
+    self.alignment = .center
+    return self
+  }
+
+  //····················································································································
+
+  final func setLeftAlignment () -> Self {
+    self.alignment = .left
+    return self
   }
 
   //····················································································································
@@ -78,44 +90,8 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   }
 
   //····················································································································
-  //  value binding
-  //····················································································································
-
-  fileprivate func updateOutlet (_ inModel : EBReadOnlyProperty_String) {
-    switch inModel.selection {
-    case .empty :
-      self.placeholderString = "No Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: false)
-    case .multiple :
-      self.placeholderString = "Multiple Selection"
-      self.stringValue = ""
-      self.enable (fromValueBinding: true)
-    case .single (let propertyValue) :
-      self.placeholderString = nil
-      self.stringValue = propertyValue
-      self.enable (fromValueBinding: true)
-    }
-  }
-
-  //····················································································································
-
-  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
-  private var mSendContinously = false
-
-  //····················································································································
-
-  final func bind_value (_ inModel : EBReadWriteProperty_String, sendContinously inContinuous : Bool) -> Self {
-    self.mSendContinously = inContinuous
-    self.mValueController = EBGenericReadWritePropertyController <String> (
-      observedObject: inModel,
-      callBack: { [weak self] in self?.updateOutlet (inModel) }
-    )
-    return self
-  }
-
-  //····················································································································
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+

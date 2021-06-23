@@ -16,26 +16,8 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   init (title inTitle : String, small inSmall : Bool) {
     super.init (pullsDown: true, small: inSmall)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.controlSize = inSmall ? .small : .regular
-//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-//
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//    if let cell = self.cell as? NSPopUpButtonCell {
-//      cell.arrowPosition = .arrowAtBottom
-//    }
-//
-//    self.autoenablesItems = false
 
     self.addItem (withTitle: inTitle)
-
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: fontSize)
-//    ]
-//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-//    self.lastItem?.attributedTitle = attributedTitle
   }
 
   //····················································································································
@@ -43,12 +25,6 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  //····················································································································
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
 
   //····················································································································
 
@@ -65,13 +41,6 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
-
   final func add (item inMenuItemDescriptor : AutoLayoutMenuItemDescriptor) -> Self {
     self.addItem (withTitle: inMenuItemDescriptor.title)
     let textAttributes : [NSAttributedString.Key : Any] = [
@@ -82,11 +51,16 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
     self.lastItem?.target = inMenuItemDescriptor.target
     self.lastItem?.action = inMenuItemDescriptor.selector
   //--- Add Enabled binding ?
-    if inMenuItemDescriptor.observedObjects.count > 0 {
+    switch inMenuItemDescriptor.expression {
+    case .empty :
+      ()
+    default :
       let lastItem = self.lastItem
+      var modelArray = [EBObservableObjectProtocol] ()
+      inMenuItemDescriptor.expression.addModelsTo (&modelArray)
       let controller = EBReadOnlyPropertyController (
-        observedObjects: inMenuItemDescriptor.observedObjects,
-        callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.computeFunction ()) }
+        observedObjects: modelArray,
+        callBack: { [weak self] in self?.enable (item: lastItem, from: inMenuItemDescriptor.expression.compute ()) }
       )
       self.mControlerArray.append (controller)
     }

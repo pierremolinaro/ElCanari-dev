@@ -1185,12 +1185,12 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mArtwork_none : StoredObject_ArtworkRoot { return self.mArtwork_property }
+  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mArtwork_none_selection : EBSelection <Bool> {
-    return .single (self.mArtwork_property.propval == nil)
+     return .single (self.mArtwork_property.propval == nil)
   }
 
   //····················································································································
@@ -1241,6 +1241,14 @@ final class MergerRoot : EBManagedObject,
     self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mArtwork_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mArtwork_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.addEBObserver (self.mArtwork_none)
   //--- To many property: boardModels (no option)
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)

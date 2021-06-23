@@ -580,12 +580,12 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final var mComponent_none : StoredObject_ComponentInProject { return self.mComponent_property }
+  final let mComponent_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mComponent_none_selection : EBSelection <Bool> {
-    return .single (self.mComponent_property.propval == nil)
+     return .single (self.mComponent_property.propval == nil)
   }
 
   //····················································································································
@@ -836,6 +836,14 @@ final class BoardConnector : BoardObject,
     self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mComponent_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mComponent_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mComponent_property.addEBObserver (self.mComponent_none)
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.ebUndoManager = self.ebUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (

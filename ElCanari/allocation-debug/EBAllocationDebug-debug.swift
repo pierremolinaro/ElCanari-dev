@@ -65,11 +65,18 @@ func reuseTableViewCells () -> Bool {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//    addItemToDebugMenu
+//    appendAllocationDebugMenuItems
 //----------------------------------------------------------------------------------------------------------------------
 
 func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
-  buildDebugObject ()
+  let debugObject = EBAllocationDebug ()
+  gDebugObject = debugObject
+  let mainBundle = Bundle.main
+  let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
+  if !ok {
+    presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
+  }
+//---
   let item = NSMenuItem (
     title: "Show Allocation Stats",
     action: #selector (EBAllocationDebug.showAllocationStatWindow (_:)),
@@ -77,23 +84,7 @@ func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
   )
   item.keyEquivalentModifierMask = [.command, .control]
   item.target = gDebugObject
-  inMenu.addItem(item)
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//    buildDebugObject
-//----------------------------------------------------------------------------------------------------------------------
-
-func buildDebugObject () {
-  if nil == gDebugObject {
-    let debugObject = EBAllocationDebug ()
-    gDebugObject = debugObject
-    let mainBundle = Bundle.main
-    let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
-    if !ok {
-      presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
-    }
-  }
+  inMenu.addItem (item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------

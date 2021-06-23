@@ -684,10 +684,7 @@ import Cocoa
           view_0_0_0.appendView (view_0_0_0_9)
           let view_0_0_0_10 = AutoLayoutDragSourceButton (tooltip: "Add Slave Pad")
             .bind_image (self.addSlavePadButtonImage_property)
-            .bind_enabled (
-              observedObjects: [self.rootObject.packagePads_property.count_property],
-              computeFunction: { return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0)) }
-            )
+            .bind_enabled (.intcmp (.id (self.rootObject.packagePads_property.count_property), .gt, .literalInt (0)))
           self.configure_addPackageSlavePad (view_0_0_0_10) // Configurator
           view_0_0_0.appendView (view_0_0_0_10)
           let view_0_0_0_11 = AutoLayoutFlexibleSpace ()
@@ -727,7 +724,7 @@ import Cocoa
           .makeWidthExpandable ()
           .addPage (title: "", tooltip: "Selected Object Inspector", pageView: self.mSelectedObjectsInspectorView)
           .addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: self.mGridZoomInspectorView)
-          .addPage (title: "", tooltip: "Display Inspector (values stored in Preferences)", pageView: self.mDisplayInspectorView)
+          .addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: self.mDisplayInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
@@ -1065,10 +1062,7 @@ import Cocoa
         view_2_0.appendView (view_2_0_0)
         let view_2_0_1 = AutoLayoutButton (title: "-", small: true)
           .set (width: 32)
-          .bind_enabled (
-            observedObjects: [self.mPackageZoneSelectionController.emptyForbiddenPadArray_property],
-            computeFunction: { return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection }
-          )
+          .bind_enabled (.not (.id (self.mPackageZoneSelectionController.emptyForbiddenPadArray_property)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutPackageDocument.removeZoneForbiddenPadNumberAction (_:))
@@ -1163,7 +1157,17 @@ import Cocoa
 
   lazy var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTwoColumnsGridView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Document Preferences)")
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTwoColumnsGridView ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_179 (), right: self.computeImplicitView_180 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_181 (), right: self.computeImplicitView_182 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_183 (), right: self.computeImplicitView_184 ())
@@ -1172,9 +1176,9 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_189 (), right: self.computeImplicitView_190 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_191 (), right: self.computeImplicitView_192 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_193 (), right: self.computeImplicitView_194 ())
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -1188,31 +1192,33 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTwoColumnsGridView ()
-        .addCenterYAligned (left: self.computeImplicitView_195 (), right: self.computeImplicitView_196 ())
-        .addCenterYAligned (left: self.computeImplicitView_197 (), right: self.computeImplicitView_198 ())
-        .addCenterYAligned (left: self.computeImplicitView_199 (), right: self.computeImplicitView_200 ())
-        .addSeparator ()
-        .addCenterYAligned (left: self.computeImplicitView_201 (), right: self.computeImplicitView_202 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_203 (), right: self.computeImplicitView_204 ())
-        .addSeparator ()
-        .addCenterYAligned (left: self.computeImplicitView_205 (), right: self.computeImplicitView_206 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_207 (), right: self.computeImplicitView_208 ())
-        .addCenterYAligned (left: self.computeImplicitView_209 (), right: self.computeImplicitView_210 ())
-        .addCenterYAligned (left: self.computeImplicitView_211 (), right: self.computeImplicitView_212 ())
-        .addSeparator ()
-        .addCenterYAligned (left: self.computeImplicitView_213 (), right: self.computeImplicitView_214 ())
-        .addCenterYAligned (left: self.computeImplicitView_215 (), right: self.computeImplicitView_216 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_217 (), right: self.computeImplicitView_218 ())
-        .addSeparator ()
-        .addCenterYAligned (left: self.computeImplicitView_219 (), right: self.computeImplicitView_220 ())
+      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Application Preferences)")
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
+    let view_1 = AutoLayoutTwoColumnsGridView ()
+      .addCenterYAligned (left: self.computeImplicitView_195 (), right: self.computeImplicitView_196 ())
+      .addCenterYAligned (left: self.computeImplicitView_197 (), right: self.computeImplicitView_198 ())
+      .addCenterYAligned (left: self.computeImplicitView_199 (), right: self.computeImplicitView_200 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_201 (), right: self.computeImplicitView_202 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_203 (), right: self.computeImplicitView_204 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_205 (), right: self.computeImplicitView_206 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_207 (), right: self.computeImplicitView_208 ())
+      .addCenterYAligned (left: self.computeImplicitView_209 (), right: self.computeImplicitView_210 ())
+      .addCenterYAligned (left: self.computeImplicitView_211 (), right: self.computeImplicitView_212 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_213 (), right: self.computeImplicitView_214 ())
+      .addCenterYAligned (left: self.computeImplicitView_215 (), right: self.computeImplicitView_216 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_217 (), right: self.computeImplicitView_218 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_219 (), right: self.computeImplicitView_220 ())
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -1458,10 +1464,10 @@ import Cocoa
 
   fileprivate final func computeImplicitView_14 () -> NSView {
     let view = AutoLayoutPullDownButton (title: "Action", small: true)
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return !self.rootObject.hasModelImage_property_selection }))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return !self.rootObject.hasModelImage_property_selection }))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return self.rootObject.hasModelImage_property_selection }))
-      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), observedObjects: [self.rootObject.hasModelImage_property], computeFunction: { return self.rootObject.hasModelImage_property_selection }))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1482,10 +1488,7 @@ import Cocoa
   fileprivate final func computeImplicitView_16 () -> NSView {
     let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (small: true)
       .bind_setter6 (self.rootObject.mDimensionUnitFirstModelPointX_property, self.rootObject.mDimensionUnitFirstModelPointY_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, self.rootObject.mModelImageSecondPointXUnit_property, self.rootObject.mModelImageSecondPointYUnit_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1495,10 +1498,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_17 () -> NSView {
     let view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1509,10 +1509,7 @@ import Cocoa
   fileprivate final func computeImplicitView_18 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1522,10 +1519,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1536,10 +1530,7 @@ import Cocoa
   fileprivate final func computeImplicitView_20 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1549,10 +1540,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_21 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "∆X", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1563,10 +1551,7 @@ import Cocoa
   fileprivate final func computeImplicitView_22 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1576,10 +1561,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_23 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1590,10 +1572,7 @@ import Cocoa
   fileprivate final func computeImplicitView_24 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1603,10 +1582,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_25 () -> NSView {
     let view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1617,10 +1593,7 @@ import Cocoa
   fileprivate final func computeImplicitView_26 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1630,10 +1603,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_27 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Y", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1644,10 +1614,7 @@ import Cocoa
   fileprivate final func computeImplicitView_28 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1657,10 +1624,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_29 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1671,10 +1635,7 @@ import Cocoa
   fileprivate final func computeImplicitView_30 () -> NSView {
     let view = AutoLayoutLinearSlider (min: 1, max: 61, ticks: 19)
       .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
-      .bind_hidden (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1686,14 +1647,8 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutButton (title: "Lock Points to Model Image", small: true)
-        .bind_enabled (
-          observedObjects: [self.rootObject.hasModelImage_property, self.rootObject.mPointsAreLocked_property],
-          computeFunction: { return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection) }
-        )
-        .bind_hidden (
-          observedObjects: [self.rootObject.hasModelImage_property],
-          computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-        )
+        .bind_enabled (.boolcmp (.not (.id (self.rootObject.mPointsAreLocked_property)), .and, .id (self.rootObject.hasModelImage_property)))
+        .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutPackageDocument.lockImagePointsAction (_:))
@@ -1703,10 +1658,7 @@ import Cocoa
       view.appendView (view_1)
       let view_2 = AutoLayoutImageObserverView (small: true)
         .bind_image (self.rootObject.lockImageView_property)
-        .bind_hidden (
-          observedObjects: [self.rootObject.hasModelImage_property],
-          computeFunction: { return !self.rootObject.hasModelImage_property_selection }
-        )
+        .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
       view.appendView (view_2)
     }
     return view
@@ -1728,10 +1680,7 @@ import Cocoa
   fileprivate final func computeImplicitView_33 () -> NSView {
     let view = AutoLayoutLinearSlider (min: 0, max: 1, ticks: 11)
       .bind_doubleValue (self.rootObject.mModelImageOpacity_property, sendContinously:true)
-      .bind_enabled (
-        observedObjects: [self.rootObject.hasModelImage_property],
-        computeFunction: { return self.rootObject.hasModelImage_property_selection }
-      )
+      .bind_enabled (.id (self.rootObject.hasModelImage_property))
     return view
   }
 
@@ -1771,20 +1720,14 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "From", bold: false, small: true)
-        .bind_hidden (
-          observedObjects: [self.rootObject.counterClockNumbering_property],
-          computeFunction: { return !self.rootObject.counterClockNumbering_property_selection }
-        )
+        .bind_hidden (.not (.id (self.rootObject.counterClockNumbering_property)))
       view.appendView (view_0)
       let view_1 = AutoLayoutIntField (width: 45)
         .set (min: 0)
         .set (max: 360)
         .set (format: "##0°")
         .bind_value (self.rootObject.counterClockNumberingStartAngle_property, sendContinously:true)
-        .bind_hidden (
-          observedObjects: [self.rootObject.counterClockNumbering_property],
-          computeFunction: { return !self.rootObject.counterClockNumbering_property_selection }
-        )
+        .bind_hidden (.not (.id (self.rootObject.counterClockNumbering_property)))
       view.appendView (view_1)
     }
     return view
@@ -2823,10 +2766,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_145 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2837,10 +2777,7 @@ import Cocoa
   fileprivate final func computeImplicitView_146 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2850,10 +2787,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_147 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2864,10 +2798,7 @@ import Cocoa
   fileprivate final func computeImplicitView_148 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2877,10 +2808,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_149 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2891,10 +2819,7 @@ import Cocoa
   fileprivate final func computeImplicitView_150 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackagePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackagePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2963,10 +2888,7 @@ import Cocoa
     let view = AutoLayoutCanariPadRenumberPullDownButton ()
       .bind_currentNumber (self.mPackagePadSelectionController.padNumber_property)
       .bind_currentZoneName (self.mPackagePadSelectionController.zoneName_property)
-      .bind_enabled (
-        observedObjects: [self.mPackagePadSelectionController.noZone_property, self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property, self.rootObject.freePadNumbering_property],
-        computeFunction: { return ((self.mPackagePadSelectionController.noZone_property_selection && self.rootObject.freePadNumbering_property_selection) || self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property_selection) }
-      )
+      .bind_enabled (.boolcmp (.boolcmp (.id (self.mPackagePadSelectionController.noZone_property), .and, .id (self.rootObject.freePadNumbering_property)), .or, .id (self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property)))
     self.configure_configurePadRenumberPullDownButton (view) // Configurator
     return view
   }
@@ -3101,10 +3023,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_171 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -3115,10 +3034,7 @@ import Cocoa
   fileprivate final func computeImplicitView_172 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -3128,10 +3044,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_173 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -3142,10 +3055,7 @@ import Cocoa
   fileprivate final func computeImplicitView_174 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -3155,10 +3065,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_175 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, small: true)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -3169,10 +3076,7 @@ import Cocoa
   fileprivate final func computeImplicitView_176 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (small: true)
       .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
-      .bind_hidden (
-        observedObjects: [self.mPackageSlavePadSelectionController.padIsTraversing_property],
-        computeFunction: { return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection }
-      )
+      .bind_hidden (.not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 

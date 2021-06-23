@@ -1142,9 +1142,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .id (self.rootObject.hasModelImage_property),
         outlet: self.mModelImageOpacitySlider
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1152,9 +1150,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.mPackagePadSelectionController.padIsTraversing_property_selection
-        },
+        computeFunction: .not (.id (self.mPackagePadSelectionController.padIsTraversing_property)),
         outlet: self.mPadStyleView
       )
       self.mPackagePadSelectionController.padIsTraversing_property.addEBObserver (controller)
@@ -1162,9 +1158,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.mPackagePadSelectionController.noZone_property_selection && self.rootObject.freePadNumbering_property_selection) || self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property_selection)
-        },
+        computeFunction: .boolcmp (.boolcmp (.id (self.mPackagePadSelectionController.noZone_property), .and, .id (self.rootObject.freePadNumbering_property)), .or, .id (self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property)),
         outlet: self.mPadRenumberingPullDownButton
       )
       self.mPackagePadSelectionController.noZone_property.addEBObserver (controller)
@@ -1174,9 +1168,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection
-        },
+        computeFunction: .not (.id (self.mPackageSlavePadSelectionController.padIsTraversing_property)),
         outlet: self.mSlavePadStyleView
       )
       self.mPackageSlavePadSelectionController.padIsTraversing_property.addEBObserver (controller)
@@ -1184,9 +1176,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.mPackageZoneSelectionController.emptyForbiddenPadArray_property_selection
-        },
+        computeFunction: .not (.id (self.mPackageZoneSelectionController.emptyForbiddenPadArray_property)),
         outlet: self.mRemoveZoneForbiddenPadNumberButton
       )
       self.mPackageZoneSelectionController.emptyForbiddenPadArray_property.addEBObserver (controller)
@@ -1194,9 +1184,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return !self.rootObject.counterClockNumbering_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.counterClockNumbering_property)),
         outlet: self.mCounterClockNumberingStartAngleView
       )
       self.rootObject.counterClockNumbering_property.addEBObserver (controller)
@@ -1204,9 +1192,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.noIssue_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.noIssue_property)),
         outlet: self.mDeselectIssueButton
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
@@ -1214,9 +1200,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.packagePads_property.count_property), .gt, .literalInt (0)),
         outlet: self.mAddSlavePadButton
       )
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
@@ -1224,9 +1208,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .id (self.rootObject.hasModelImage_property),
         outlet: self.mModelPointsCircleRadiusSlider
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1234,9 +1216,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.hasModelImage_property)),
         outlet: self.mLoadModelImageFromPasteboardMenuItem
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1244,9 +1224,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return !self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .not (.id (self.rootObject.hasModelImage_property)),
         outlet: self.mLoadDIL16ModelImageFromResourcesdMenuItem
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1254,9 +1232,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .id (self.rootObject.hasModelImage_property),
         outlet: self.mRemoveModelImageMenuItem
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1264,9 +1240,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.hasModelImage_property_selection
-        },
+        computeFunction: .id (self.rootObject.hasModelImage_property),
         outlet: self.mResetModelImagePointsMenuItem
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)
@@ -1274,9 +1248,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (!self.rootObject.mPointsAreLocked_property_selection && self.rootObject.hasModelImage_property_selection)
-        },
+        computeFunction: .boolcmp (.not (.id (self.rootObject.mPointsAreLocked_property)), .and, .id (self.rootObject.hasModelImage_property)),
         outlet: self.mLockImagePointsButton
       )
       self.rootObject.hasModelImage_property.addEBObserver (controller)

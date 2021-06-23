@@ -522,7 +522,7 @@ import Cocoa
           .makeWidthExpandable ()
           .addPage (title: "", tooltip: "Selected Object Inspector", pageView: self.mSelectedObjectsInspectorView)
           .addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: self.mGridZoomInspectorView)
-          .addPage (title: "", tooltip: "Display Inspector (values stored in Prefertences)", pageView: self.mDisplayInspectorView)
+          .addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: self.mDisplayInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
@@ -634,7 +634,17 @@ import Cocoa
 
   lazy var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTwoColumnsGridView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Document Preferences)")
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTwoColumnsGridView ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_11 (), right: self.computeImplicitView_12 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_13 (), right: self.computeImplicitView_14 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_15 (), right: self.computeImplicitView_16 ())
@@ -642,9 +652,9 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_19 (), right: self.computeImplicitView_20 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_21 (), right: self.computeImplicitView_22 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_23 (), right: self.computeImplicitView_24 ())
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -654,16 +664,26 @@ import Cocoa
 
   lazy var mDisplayInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutTwoColumnsGridView ()
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Application Preferences)")
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTwoColumnsGridView ()
       .addCenterYAligned (left: self.computeImplicitView_25 (), right: self.computeImplicitView_26 ())
       .addCenterYAligned (left: self.computeImplicitView_27 (), right: self.computeImplicitView_28 ())
       .addCenterYAligned (left: self.computeImplicitView_29 (), right: self.computeImplicitView_30 ())
       .addCenterYAligned (left: self.computeImplicitView_31 (), right: self.computeImplicitView_32 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_33 (), right: self.computeImplicitView_34 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_35 (), right: self.computeImplicitView_36 ())
-    vStackView.appendView (view_0)
-    let view_1 = AutoLayoutFlexibleSpace ()
     vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    vStackView.appendView (view_2)
     return vStackView
   } ()
 

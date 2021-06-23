@@ -75,12 +75,12 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mP1_none : StoredObject_PointInSchematic { return self.mP1_property }
+  final let mP1_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mP1_none_selection : EBSelection <Bool> {
-    return .single (self.mP1_property.propval == nil)
+     return .single (self.mP1_property.propval == nil)
   }
 
   //····················································································································
@@ -113,12 +113,12 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mP2_none : StoredObject_PointInSchematic { return self.mP2_property }
+  final let mP2_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mP2_none_selection : EBSelection <Bool> {
-    return .single (self.mP2_property.propval == nil)
+     return .single (self.mP2_property.propval == nil)
   }
 
   //····················································································································
@@ -196,6 +196,22 @@ final class WireInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.mP1_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mP1_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mP1_property.addEBObserver (self.mP1_none)
+    self.mP2_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mP2_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mP2_property.addEBObserver (self.mP2_none)
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (

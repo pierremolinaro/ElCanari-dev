@@ -1745,12 +1745,12 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mModelImageDoublePoint_none : StoredObject_PackageModelImageDoublePoint { return self.mModelImageDoublePoint_property }
+  final let mModelImageDoublePoint_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mModelImageDoublePoint_none_selection : EBSelection <Bool> {
-    return .single (self.mModelImageDoublePoint_property.propval == nil)
+     return .single (self.mModelImageDoublePoint_property.propval == nil)
   }
 
   //····················································································································
@@ -2007,6 +2007,14 @@ final class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mModelImageDoublePoint_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
   //--- To many property: packageObjects (has opposite relationship)
     self.packageObjects_property.ebUndoManager = self.ebUndoManager
     self.packageObjects_property.setOppositeRelationShipFunctions (

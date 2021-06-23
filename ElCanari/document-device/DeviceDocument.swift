@@ -787,9 +787,7 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.imageIsValid_property_selection
-        },
+        computeFunction: .id (self.rootObject.imageIsValid_property),
         outlet: self.mCopyImageButton
       )
       self.rootObject.imageIsValid_property.addEBObserver (controller)
@@ -797,9 +795,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.rootObject.imageIsValid_property_selection
-        },
+        computeFunction: .id (self.rootObject.imageIsValid_property),
         outlet: self.mRemoveImageButton
       )
       self.rootObject.imageIsValid_property.addEBObserver (controller)
@@ -807,9 +803,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveSelectedDocButton
       )
       self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
@@ -817,9 +811,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mShowDocButton
       )
       self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
@@ -827,9 +819,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.documentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mSaveDocButton
       )
       self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
@@ -837,9 +827,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)),
         outlet: self.mAddSymbolInstancePullDownButton
       )
       self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
@@ -847,9 +835,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.symbolNameAreConsistent_property_selection
-        },
+        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
         outlet: self.mInconsistentSymbolNameMessageScrollView
       )
       self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
@@ -857,9 +843,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.symbolNameAreConsistent_property_selection
-        },
+        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
         outlet: self.mSymbolErrorMessageTitleTextField
       )
       self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
@@ -867,9 +851,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return self.rootObject.packagePadNameSetsAreConsistent_property_selection
-        },
+        computeFunction: .id (self.rootObject.packagePadNameSetsAreConsistent_property),
         outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
@@ -877,9 +859,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.rootObject.mPackages_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
         outlet: self.mResetSymbolAndPackagesVersionButton
       )
       self.rootObject.mPackages_property.count_property.addEBObserver (controller)
@@ -888,9 +868,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.rootObject.mPackages_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
         outlet: self.mUpdateSymbolAndPackagesButton
       )
       self.rootObject.mPackages_property.count_property.addEBObserver (controller)
@@ -899,9 +877,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedSymbolVersionButton
       )
       self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
@@ -909,9 +885,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditSelectedSymbolsButton
       )
       self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
@@ -919,9 +893,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportSelectedSymbolsButton
       )
       self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
@@ -929,9 +901,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.symbolTypeController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateSelectedSymbolsButton
       )
       self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
@@ -939,9 +909,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return ((self.symbolTypeController.selectedArray_property.count_property_selection == EBSelection.single (1)) && (self.symbolTypeSelection.instanceCount_property_selection == EBSelection.single (0)))
-        },
+        computeFunction: .boolcmp (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.id (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))),
         outlet: self.mRemoveUselessSymbolTypeButton
       )
       self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
@@ -950,9 +918,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedPackageVersionButton
       )
       self.packageController.selectedArray_property.count_property.addEBObserver (controller)
@@ -960,9 +926,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditSelectedPackagesButton
       )
       self.packageController.selectedArray_property.count_property.addEBObserver (controller)
@@ -970,9 +934,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportSelectedPackagesButton
       )
       self.packageController.selectedArray_property.count_property.addEBObserver (controller)
@@ -980,9 +942,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.packageController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateSelectedPackagesButton
       )
       self.packageController.selectedArray_property.count_property.addEBObserver (controller)
@@ -990,9 +950,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (self.rootObject.packagePadNameSetsAreConsistent_property_selection && self.rootObject.symbolNameAreConsistent_property_selection)
-        },
+        computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property)),
         outlet: self.mInconsistentPadNameSetTextField
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
@@ -1001,9 +959,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: {
-          return (!self.rootObject.packagePadNameSetsAreConsistent_property_selection || !self.rootObject.symbolNameAreConsistent_property_selection)
-        },
+        computeFunction: .boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property))),
         outlet: self.mAssignmentSplitView
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
@@ -1012,9 +968,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return (self.hasUnconnectedPad_property_selection && self.hasUnconnectedPin_property_selection)
-        },
+        computeFunction: .boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)),
         outlet: self.mBindButton
       )
       self.hasUnconnectedPad_property.addEBObserver (controller)
@@ -1023,9 +977,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.hasUnconnectedPad_property_selection
-        },
+        computeFunction: .id (self.hasUnconnectedPad_property),
         outlet: self.mNCButton
       )
       self.hasUnconnectedPad_property.addEBObserver (controller)
@@ -1033,9 +985,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.hasAssignedPadProxies_property_selection
-        },
+        computeFunction: .id (self.hasAssignedPadProxies_property),
         outlet: self.mUnbindButton
       )
       self.hasAssignedPadProxies_property.addEBObserver (controller)
@@ -1043,9 +993,7 @@ import Cocoa
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: {
-          return self.hasAssignedPadProxies_property_selection
-        },
+        computeFunction: .id (self.hasAssignedPadProxies_property),
         outlet: self.mUnbindAllButton
       )
       self.hasAssignedPadProxies_property.addEBObserver (controller)

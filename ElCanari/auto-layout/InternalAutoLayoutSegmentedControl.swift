@@ -27,7 +27,7 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
     self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
 
     self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     if #available (OSX 10.13, *) {
       self.setValue (NSNumber (value: 2), forKey: "segmentDistribution") // fillEqually

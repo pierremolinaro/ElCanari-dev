@@ -75,12 +75,12 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbolInstance_none : StoredObject_SymbolInstanceInDevice { return self.mSymbolInstance_property }
+  final let mSymbolInstance_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mSymbolInstance_none_selection : EBSelection <Bool> {
-    return .single (self.mSymbolInstance_property.propval == nil)
+     return .single (self.mSymbolInstance_property.propval == nil)
   }
 
   //····················································································································
@@ -113,12 +113,12 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mType_none : StoredObject_SymbolPinTypeInDevice { return self.mType_property }
+  final let mType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mType_none_selection : EBSelection <Bool> {
-    return .single (self.mType_property.propval == nil)
+     return .single (self.mType_property.propval == nil)
   }
 
   //····················································································································
@@ -151,12 +151,12 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mPadProxy_none : StoredObject_PadProxyInDevice { return self.mPadProxy_property }
+  final let mPadProxy_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
 
   final var mPadProxy_none_selection : EBSelection <Bool> {
-    return .single (self.mPadProxy_property.propval == nil)
+     return .single (self.mPadProxy_property.propval == nil)
   }
 
   //····················································································································
@@ -280,6 +280,30 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+    self.mSymbolInstance_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mSymbolInstance_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstance_property.addEBObserver (self.mSymbolInstance_none)
+    self.mType_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mType_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mType_property.addEBObserver (self.mType_none)
+    self.mPadProxy_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mPadProxy_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (

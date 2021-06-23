@@ -24,6 +24,7 @@ final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
     self.bezelStyle = .rounded
     self.title = inTitle
     self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.target = self
     self.action = #selector (Self.dismissSheetAction (_:))
     self.keyEquivalent = "\u{1b}"

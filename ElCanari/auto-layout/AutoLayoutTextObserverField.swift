@@ -22,7 +22,7 @@ final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
     self.translatesAutoresizingMaskIntoConstraints = false
 
     self.controlSize = inSmall ? .small : .regular
-    let s = inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize
+    let s = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
     self.alignment = .center
     self.isBezeled = false

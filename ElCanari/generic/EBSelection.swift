@@ -8,28 +8,13 @@ import Cocoa
 //   EBSelection
 //----------------------------------------------------------------------------------------------------------------------
 
-enum EBSelection <T> : Equatable where T : Equatable {
+enum EBSelection <T> {
 
   //····················································································································
 
   case empty
   case multiple
   case single (T)
-
-  //····················································································································
-
-  static func == (lhs : EBSelection <T>, rhs : EBSelection <T>) -> Bool {
-    switch (lhs, rhs) {
-    case (.empty, .empty) :
-      return true
-    case (.multiple, .multiple) :
-      return true
-    case (.single (let left), .single (let right)) :
-      return left == right
-    default :
-      return false
-    }
-  }
 
   //····················································································································
 
