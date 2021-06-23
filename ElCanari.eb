@@ -21,7 +21,6 @@ include "eb-sources/MergerRoot.eb" ;
 include "eb-sources/mergerDocument.eb" ;
 //--- Symbol
 include "eb-sources/symbol-symbolRoot.eb" ;
-include "eb-sources/symbol-symbolDocument.eb" ;
 include "eb-sources/symbol-auto-layout-Document.eb" ;
 //--- Package
 include "eb-sources/package-packageDocument.eb" ;
