@@ -415,19 +415,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.currentCharacterCodePoint_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.currentCharacterCodePoint_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_currentCharacterCodePointString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.currentCharacterCodePoint_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_currentCharacterCodePointString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -437,23 +431,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.nominalSize_property_selection.kind ()
-        kind &= unwSelf.characters_property_selection.kind ()
-        kind &= unwSelf.characters_property_selection.kind ()
-        kind &= preferences_sampleString_property_selection.kind ()
-        kind &= preferences_sampleStringSize_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.nominalSize_property_selection, unwSelf.characters_property_selection, unwSelf.characters_property_selection, preferences_sampleString_property_selection, preferences_sampleStringSize_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.nominalSize_property_selection, unwSelf.characters_property_selection, unwSelf.characters_property_selection, preferences_sampleString_property_selection, preferences_sampleStringSize_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -467,19 +451,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.sampleStringBezierPath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_sampleStringBezierPathWidth (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.sampleStringBezierPath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_sampleStringBezierPathWidth (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -489,19 +467,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathAscent
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.sampleStringBezierPath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_sampleStringBezierPathAscent (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.sampleStringBezierPath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_sampleStringBezierPathAscent (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -511,19 +483,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathDescent
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.sampleStringBezierPath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_sampleStringBezierPathDescent (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.sampleStringBezierPath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_sampleStringBezierPathDescent (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -533,19 +499,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: definedCharacters
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.characters_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.characters_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_definedCharacters (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.characters_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_definedCharacters (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -555,19 +515,13 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.characters_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.characters_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontRoot_issues (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.characters_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontRoot_issues (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

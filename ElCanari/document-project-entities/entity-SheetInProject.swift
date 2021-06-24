@@ -302,19 +302,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPoints_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPoints_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SheetInProject_issues (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPoints_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SheetInProject_issues (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -324,19 +318,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPoints_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPoints_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SheetInProject_connectedPoints (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPoints_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SheetInProject_connectedPoints (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -346,19 +334,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SheetInProject_connexionWarnings (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SheetInProject_connexionWarnings (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -368,19 +350,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionErrors
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SheetInProject_connexionErrors (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SheetInProject_connexionErrors (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -390,21 +366,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mRoot_property.sheetGeometry_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.sheetIndexes_property_selection.kind ()
-        kind &= unwSelf.ebObjectIndex_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mRoot_property.sheetGeometry_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.ebObjectIndex_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.sheetGeometry_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.ebObjectIndex_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

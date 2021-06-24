@@ -1854,19 +1854,13 @@ import Cocoa
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.netsDescription_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_netCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.netsDescription_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_netCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1880,19 +1874,13 @@ import Cocoa
   //--- Atomic property: rastnetDisplayComponentNet
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_rastnetDisplayComponentNet (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_rastnetDisplayComponentNet (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1910,19 +1898,13 @@ import Cocoa
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_componentCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_componentCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1936,20 +1918,13 @@ import Cocoa
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.mNetClasses_property.count_property_selection.kind ()
-        kind &= unwSelf.netClassController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.netClassController.selectedArray_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.netClassController.selectedArray_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1964,19 +1939,13 @@ import Cocoa
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1990,19 +1959,13 @@ import Cocoa
   //--- Atomic property: selectedDeviceSymbols
     self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDeviceSymbols (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_selectedDeviceSymbols (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2016,19 +1979,13 @@ import Cocoa
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2042,19 +1999,13 @@ import Cocoa
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_pinPadAssignments (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_pinPadAssignments (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2068,19 +2019,13 @@ import Cocoa
   //--- Atomic property: schematicSheetOrientationIsCustom
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mSchematicSheetOrientation_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mSchematicSheetOrientation_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mSchematicSheetOrientation_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2094,19 +2039,13 @@ import Cocoa
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.netsDescription_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.netsDescription_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_netCountString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.netsDescription_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_netCountString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2120,23 +2059,13 @@ import Cocoa
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
-        kind &= unwSelf.rootObject.mRastnetDisplayedNetName_property_selection.kind ()
-        kind &= unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection.kind ()
-        kind &= unwSelf.rootObject.mBoardObjects_property_selection.kind ()
-        kind &= unwSelf.boardObjectsController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mRastnetDisplay_property_selection, unwSelf.rootObject.mRastnetDisplayedNetName_property_selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection, unwSelf.rootObject.mBoardObjects_property_selection, unwSelf.boardObjectsController.selectedArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mRastnetDisplay_property_selection, unwSelf.rootObject.mRastnetDisplayedNetName_property_selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection, unwSelf.rootObject.mBoardObjects_property_selection, unwSelf.boardObjectsController.selectedArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2154,19 +2083,13 @@ import Cocoa
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mRastnetDisplay_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2180,19 +2103,13 @@ import Cocoa
   //--- Atomic property: artworlImportButtonTitle
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mArtwork_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mArtwork_none_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mArtwork_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2206,19 +2123,13 @@ import Cocoa
   //--- Atomic property: documentFilePathOk
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.documentFilePath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_documentFilePathOk (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_documentFilePathOk (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2232,19 +2143,13 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedFonts
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectFontController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectFontController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectFontController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2258,19 +2163,13 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.projectDeviceController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2284,19 +2183,13 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.unplacedSymbols_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.unplacedSymbols_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.unplacedSymbols_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2310,19 +2203,13 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCountString
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.unplacedSymbolsCount_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.unplacedSymbolsCount_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.unplacedSymbolsCount_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2336,19 +2223,13 @@ import Cocoa
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.unplacedPackages_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.unplacedPackages_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedPackageCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.unplacedPackages_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_unplacedPackageCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2362,19 +2243,13 @@ import Cocoa
   //--- Atomic property: unplacedPackagesCountString
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.unplacedPackageCount_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.unplacedPackageCount_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_unplacedPackagesCountString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.unplacedPackageCount_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_unplacedPackagesCountString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2388,20 +2263,13 @@ import Cocoa
   //--- Atomic property: overDisplay
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rastnetShape_property_selection.kind ()
-        kind &= unwSelf.rootObject.boardIssues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rastnetShape_property_selection, unwSelf.rootObject.boardIssues_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ProjectDocument_overDisplay (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rastnetShape_property_selection, unwSelf.rootObject.boardIssues_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ProjectDocument_overDisplay (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2416,19 +2284,13 @@ import Cocoa
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.componentController.selectedArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.componentController.selectedArray_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_canChangePackage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.componentController.selectedArray_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ProjectDocument_canChangePackage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2766,7 +2628,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mDuplicateSelectedComponentsActionButton
       )
-      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mDuplicateSelectedComponentsActionButton_enabled = controller
     }
     do{
@@ -2774,7 +2635,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveSelectedComponentsActionButton
       )
-      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSelectedComponentsActionButton_enabled = controller
     }
     do{
@@ -2782,7 +2642,6 @@ import Cocoa
         computeFunction: .id (self.canChangePackage_property),
         outlet: self.mChangePackageOfSelectedComponentsActionButton
       )
-      self.canChangePackage_property.addEBObserver (controller)
       self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = controller
     }
     do{
@@ -2790,7 +2649,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mChangeValueOfSelectedComponentsActionButton
       )
-      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = controller
     }
     do{
@@ -2798,7 +2656,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRevealPackageOfSelectedComponentsButton
       )
-      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRevealPackageOfSelectedComponentsButton_enabled = controller
     }
     do{
@@ -2806,7 +2663,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mRenameComponentButton
       )
-      self.componentController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentButton_enabled = controller
     }
     do{
@@ -2814,7 +2670,6 @@ import Cocoa
         computeFunction: .id (self.canRemoveNetClasses_property),
         outlet: self.mRemoveNetClassButton
       )
-      self.canRemoveNetClasses_property.addEBObserver (controller)
       self.mController_mRemoveNetClassButton_enabled = controller
     }
     do{
@@ -2822,7 +2677,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.netClassController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mEditNetClassButton
       )
-      self.netClassController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditNetClassButton_enabled = controller
     }
     do{
@@ -2830,7 +2684,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveEmbeddedDevicesButton
       )
-      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
       self.mController_mRemoveEmbeddedDevicesButton_enabled = controller
     }
     do{
@@ -2838,8 +2691,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))),
         outlet: self.mResetDevicesAndFontsVersionButton
       )
-      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
-      self.rootObject.mFonts_property.count_property.addEBObserver (controller)
       self.mController_mResetDevicesAndFontsVersionButton_enabled = controller
     }
     do{
@@ -2847,8 +2698,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))),
         outlet: self.mUpdateDevicesAndFontsButton
       )
-      self.rootObject.mDevices_property.count_property.addEBObserver (controller)
-      self.rootObject.mFonts_property.count_property.addEBObserver (controller)
       self.mController_mUpdateDevicesAndFontsButton_enabled = controller
     }
     do{
@@ -2856,7 +2705,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditFontButton
       )
-      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditFontButton_enabled = controller
     }
     do{
@@ -2864,7 +2712,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateFontButton
       )
-      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateFontButton_enabled = controller
     }
     do{
@@ -2872,8 +2719,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.canRemoveSelectedFonts_property)),
         outlet: self.mRemoveFontButton
       )
-      self.canRemoveSelectedFonts_property.addEBObserver (controller)
-      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveFontButton_enabled = controller
     }
     do{
@@ -2881,7 +2726,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetFontVersionButton
       )
-      self.projectFontController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetFontVersionButton_enabled = controller
     }
     do{
@@ -2889,7 +2733,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedDeviceVersionButton
       )
-      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetSelectedDeviceVersionButton_enabled = controller
     }
     do{
@@ -2897,7 +2740,6 @@ import Cocoa
         computeFunction: .id (self.canRemoveSelectedDevices_property),
         outlet: self.mRemoveDeviceButton
       )
-      self.canRemoveSelectedDevices_property.addEBObserver (controller)
       self.mController_mRemoveDeviceButton_enabled = controller
     }
     do{
@@ -2905,7 +2747,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditDeviceButton
       )
-      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditDeviceButton_enabled = controller
     }
     do{
@@ -2913,7 +2754,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportDeviceButton
       )
-      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportDeviceButton_enabled = controller
     }
     do{
@@ -2921,7 +2761,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateDeviceButton
       )
-      self.projectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateDeviceButton_enabled = controller
     }
     do{
@@ -2929,7 +2768,6 @@ import Cocoa
         computeFunction: .not (.id (self.schematicSheetOrientationIsCustom_property)),
         outlet: self.mSchematicCustomSizeView
       )
-      self.schematicSheetOrientationIsCustom_property.addEBObserver (controller)
       self.mController_mSchematicCustomSizeView_hidden = controller
     }
     do{
@@ -2937,7 +2775,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)),
         outlet: self.mRemoveSheetButton
       )
-      self.rootObject.mSheets_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSheetButton_enabled = controller
     }
     do{
@@ -2945,8 +2782,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mWireRenameNetButton
       )
-      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
-      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mWireRenameNetButton_enabled = controller
     }
     do{
@@ -2954,8 +2789,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mWireRenameNetWithUniqueNewNameButton
       )
-      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
-      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mWireRenameNetWithUniqueNewNameButton_enabled = controller
     }
     do{
@@ -2963,8 +2796,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mSchematicWireMergeSubnetButton
       )
-      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
-      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicWireMergeSubnetButton_enabled = controller
     }
     do{
@@ -2972,8 +2803,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .id (self.wireInSchematicSelectionController.hasNet_property)),
         outlet: self.mSchematicWireInsulateSubnetButton
       )
-      self.wireInSchematicSelectionController.hasNet_property.addEBObserver (controller)
-      self.wireInSchematicSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicWireInsulateSubnetButton_enabled = controller
     }
     do{
@@ -2981,7 +2810,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicsLabelRenameNetButton
       )
-      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicsLabelRenameNetButton_enabled = controller
     }
     do{
@@ -2989,7 +2817,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicLabelMergeSubnetButton
       )
-      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicLabelMergeSubnetButton_enabled = controller
     }
     do{
@@ -2997,7 +2824,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.schematicLabelSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mSchematicLabelInsulateSubnetButton
       )
-      self.schematicLabelSelectionController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSchematicLabelInsulateSubnetButton_enabled = controller
     }
     do{
@@ -3005,7 +2831,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.schematicObjectsController.selectedArray_property.count_property), .eq, .literalInt (1)),
         outlet: self.mRenameComponentFromComponentSymbolButton
       )
-      self.schematicObjectsController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRenameComponentFromComponentSymbolButton_enabled = controller
     }
     do{
@@ -3013,7 +2838,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.netCount_property), .gt, .literalInt (0)),
         outlet: self.mRenameNetInNetTabButton
       )
-      self.netCount_property.addEBObserver (controller)
       self.mController_mRenameNetInNetTabButton_enabled = controller
     }
     do{
@@ -3021,7 +2845,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.netCount_property), .gt, .literalInt (0)),
         outlet: self.mSelectNetClassInNetTabButton
       )
-      self.netCount_property.addEBObserver (controller)
       self.mController_mSelectNetClassInNetTabButton_enabled = controller
     }
     do{
@@ -3029,7 +2852,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)),
         outlet: self.mNetWarningImageView
       )
-      self.rootObject.netWarningCount_property.addEBObserver (controller)
       self.mController_mNetWarningImageView_hidden = controller
     }
     do{
@@ -3037,7 +2859,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.netWarningCount_property), .eq, .literalInt (0)),
         outlet: self.mNetWarningTextField
       )
-      self.rootObject.netWarningCount_property.addEBObserver (controller)
       self.mController_mNetWarningTextField_hidden = controller
     }
     do{
@@ -3045,7 +2866,6 @@ import Cocoa
         computeFunction: .id (self.boardCurveSelectionController.isLine_property),
         outlet: self.mLimitCurveBezierControlPointsView
       )
-      self.boardCurveSelectionController.isLine_property.addEBObserver (controller)
       self.mController_mLimitCurveBezierControlPointsView_hidden = controller
     }
     do{
@@ -3053,7 +2873,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.boardShapeIsRectangular_property)),
         outlet: self.mMessageBoardIsRectangularView
       )
-      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
       self.mController_mMessageBoardIsRectangularView_hidden = controller
     }
     do{
@@ -3061,7 +2880,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.boardShapeIsRectangular_property)),
         outlet: self.mRectangularBoardWidthHeighView
       )
-      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
       self.mController_mRectangularBoardWidthHeighView_hidden = controller
     }
     do{
@@ -3069,7 +2887,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.boardShapeIsRectangular_property),
         outlet: self.mBezierPathBoardHelperView
       )
-      self.rootObject.boardShapeIsRectangular_property.addEBObserver (controller)
       self.mController_mBezierPathBoardHelperView_hidden = controller
     }
     do{
@@ -3077,7 +2894,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.trackCanRotate_property),
         outlet: self.mTrackInBoardRotationTextField
       )
-      self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
       self.mController_mTrackInBoardRotationTextField_enabled = controller
     }
     do{
@@ -3085,7 +2901,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.trackCanRotate_property),
         outlet: self.mTrackInBoardRotationSlider
       )
-      self.boardTrackSelectionController.trackCanRotate_property.addEBObserver (controller)
       self.mController_mTrackInBoardRotationSlider_enabled = controller
     }
     do{
@@ -3093,7 +2908,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.p1CanMove_property),
         outlet: self.mBoardTrackP1xTextField
       )
-      self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
       self.mController_mBoardTrackP1xTextField_enabled = controller
     }
     do{
@@ -3101,7 +2915,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.p1CanMove_property),
         outlet: self.mBoardTrackP1yTextField
       )
-      self.boardTrackSelectionController.p1CanMove_property.addEBObserver (controller)
       self.mController_mBoardTrackP1yTextField_enabled = controller
     }
     do{
@@ -3109,7 +2922,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.p2CanMove_property),
         outlet: self.mBoardTrackP2xTextField
       )
-      self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
       self.mController_mBoardTrackP2xTextField_enabled = controller
     }
     do{
@@ -3117,7 +2929,6 @@ import Cocoa
         computeFunction: .id (self.boardTrackSelectionController.p2CanMove_property),
         outlet: self.mBoardTrackP2yTextField
       )
-      self.boardTrackSelectionController.p2CanMove_property.addEBObserver (controller)
       self.mController_mBoardTrackP2yTextField_enabled = controller
     }
     do{
@@ -3125,7 +2936,6 @@ import Cocoa
         computeFunction: .id (self.restrictRectangleSelectionController.mIsInBackLayer_property),
         outlet: self.mFrontRestrictRectangleSwitch
       )
-      self.restrictRectangleSelectionController.mIsInBackLayer_property.addEBObserver (controller)
       self.mController_mFrontRestrictRectangleSwitch_enabled = controller
     }
     do{
@@ -3133,7 +2943,6 @@ import Cocoa
         computeFunction: .id (self.restrictRectangleSelectionController.mIsInFrontLayer_property),
         outlet: self.mBackRestrictRectangleSwitch
       )
-      self.restrictRectangleSelectionController.mIsInFrontLayer_property.addEBObserver (controller)
       self.mController_mBackRestrictRectangleSwitch_enabled = controller
     }
     do{
@@ -3141,7 +2950,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.hasSlavePads_property),
         outlet: self.mSlavePadsShouldBeRoutedPopUpButton
       )
-      self.componentInBoardSelectionController.hasSlavePads_property.addEBObserver (controller)
       self.mController_mSlavePadsShouldBeRoutedPopUpButton_enabled = controller
     }
     do{
@@ -3149,7 +2957,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameFontSizeField
       )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentNameFontSizeField_enabled = controller
     }
     do{
@@ -3157,7 +2964,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationTextField
       )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentNameRotationTextField_enabled = controller
     }
     do{
@@ -3165,7 +2971,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationSlider
       )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentNameRotationSlider_enabled = controller
     }
     do{
@@ -3173,7 +2978,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mComponentNameRotationSegmentedControl
       )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentNameRotationSegmentedControl_enabled = controller
     }
     do{
@@ -3181,7 +2985,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mNameIsVisibleInBoard_property),
         outlet: self.mBoardComponentNameFontPopUpButton
       )
-      self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mBoardComponentNameFontPopUpButton_enabled = controller
     }
     do{
@@ -3189,7 +2992,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueFontSizeField
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentValueFontSizeField_enabled = controller
     }
     do{
@@ -3197,7 +2999,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationTextField
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentValueRotationTextField_enabled = controller
     }
     do{
@@ -3205,7 +3006,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationSlider
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentValueRotationSlider_enabled = controller
     }
     do{
@@ -3213,7 +3013,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mComponentValueRotationSegmentedControl
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mComponentValueRotationSegmentedControl_enabled = controller
     }
     do{
@@ -3221,7 +3020,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mBoardComponentValueTextField
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mBoardComponentValueTextField_enabled = controller
     }
     do{
@@ -3229,7 +3027,6 @@ import Cocoa
         computeFunction: .id (self.componentInBoardSelectionController.mValueIsVisibleInBoard_property),
         outlet: self.mBoardComponentValueFontPopUpButton
       )
-      self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.addEBObserver (controller)
       self.mController_mBoardComponentValueFontPopUpButton_enabled = controller
     }
     do{
@@ -3237,7 +3034,6 @@ import Cocoa
         computeFunction: .not (.id (self.rastnetDisplayOneNet_property)),
         outlet: self.mRasnetNetNameSelectionPopUpButton
       )
-      self.rastnetDisplayOneNet_property.addEBObserver (controller)
       self.mController_mRasnetNetNameSelectionPopUpButton_hidden = controller
     }
     do{
@@ -3245,7 +3041,6 @@ import Cocoa
         computeFunction: .not (.id (self.rastnetDisplayComponentNet_property)),
         outlet: self.mRasnetComponentNameSelectionPopUpButton
       )
-      self.rastnetDisplayComponentNet_property.addEBObserver (controller)
       self.mController_mRasnetComponentNameSelectionPopUpButton_hidden = controller
     }
     do{
@@ -3253,7 +3048,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mNoArtworkMessageTextField
       )
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mNoArtworkMessageTextField_hidden = controller
     }
     do{
@@ -3261,7 +3055,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.mArtwork_none),
         outlet: self.mArtworkSettingsTabView
       )
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mArtworkSettingsTabView_hidden = controller
     }
     do{
@@ -3269,7 +3062,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mGenerateProductFilesActionButton
       )
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
     do{
@@ -3277,7 +3069,6 @@ import Cocoa
         computeFunction: .id (self.documentFilePathOk_property),
         outlet: self.mIncorrectFileNameMessageView
       )
-      self.documentFilePathOk_property.addEBObserver (controller)
       self.mController_mIncorrectFileNameMessageView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
@@ -3687,140 +3478,69 @@ import Cocoa
     self.mCommentTextView?.unbind_valueObserver ()
     self.mArtworkVersionTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
-    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mDuplicateSelectedComponentsActionButton_enabled!)
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
-    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
-    self.canChangePackage_property.removeEBObserver (self.mController_mChangePackageOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangePackageOfSelectedComponentsActionButton_enabled = nil
-    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mChangeValueOfSelectedComponentsActionButton_enabled!)
     self.mController_mChangeValueOfSelectedComponentsActionButton_enabled = nil
-    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRevealPackageOfSelectedComponentsButton_enabled!)
     self.mController_mRevealPackageOfSelectedComponentsButton_enabled = nil
-    self.componentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentButton_enabled!)
     self.mController_mRenameComponentButton_enabled = nil
-    self.canRemoveNetClasses_property.removeEBObserver (self.mController_mRemoveNetClassButton_enabled!)
     self.mController_mRemoveNetClassButton_enabled = nil
-    self.netClassController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditNetClassButton_enabled!)
     self.mController_mEditNetClassButton_enabled = nil
-    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mRemoveEmbeddedDevicesButton_enabled!)
     self.mController_mRemoveEmbeddedDevicesButton_enabled = nil
-    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mResetDevicesAndFontsVersionButton_enabled!)
-    self.rootObject.mFonts_property.count_property.removeEBObserver (self.mController_mResetDevicesAndFontsVersionButton_enabled!)
     self.mController_mResetDevicesAndFontsVersionButton_enabled = nil
-    self.rootObject.mDevices_property.count_property.removeEBObserver (self.mController_mUpdateDevicesAndFontsButton_enabled!)
-    self.rootObject.mFonts_property.count_property.removeEBObserver (self.mController_mUpdateDevicesAndFontsButton_enabled!)
     self.mController_mUpdateDevicesAndFontsButton_enabled = nil
-    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
-    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
     self.mController_mUpdateFontButton_enabled = nil
-    self.canRemoveSelectedFonts_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
-    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
     self.mController_mRemoveFontButton_enabled = nil
-    self.projectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
     self.mController_mResetFontVersionButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedDeviceVersionButton_enabled!)
     self.mController_mResetSelectedDeviceVersionButton_enabled = nil
-    self.canRemoveSelectedDevices_property.removeEBObserver (self.mController_mRemoveDeviceButton_enabled!)
     self.mController_mRemoveDeviceButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
     self.mController_mEditDeviceButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportDeviceButton_enabled!)
     self.mController_mExportDeviceButton_enabled = nil
-    self.projectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
     self.mController_mUpdateDeviceButton_enabled = nil
-    self.schematicSheetOrientationIsCustom_property.removeEBObserver (self.mController_mSchematicCustomSizeView_hidden!)
     self.mController_mSchematicCustomSizeView_hidden = nil
-    self.rootObject.mSheets_property.count_property.removeEBObserver (self.mController_mRemoveSheetButton_enabled!)
     self.mController_mRemoveSheetButton_enabled = nil
-    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetButton_enabled!)
-    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mWireRenameNetButton_enabled!)
     self.mController_mWireRenameNetButton_enabled = nil
-    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
-    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mWireRenameNetWithUniqueNewNameButton_enabled!)
     self.mController_mWireRenameNetWithUniqueNewNameButton_enabled = nil
-    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mSchematicWireMergeSubnetButton_enabled!)
-    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireMergeSubnetButton_enabled!)
     self.mController_mSchematicWireMergeSubnetButton_enabled = nil
-    self.wireInSchematicSelectionController.hasNet_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
-    self.wireInSchematicSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicWireInsulateSubnetButton_enabled!)
     self.mController_mSchematicWireInsulateSubnetButton_enabled = nil
-    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicsLabelRenameNetButton_enabled!)
     self.mController_mSchematicsLabelRenameNetButton_enabled = nil
-    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelMergeSubnetButton_enabled!)
     self.mController_mSchematicLabelMergeSubnetButton_enabled = nil
-    self.schematicLabelSelectionController.selectedArray_property.count_property.removeEBObserver (self.mController_mSchematicLabelInsulateSubnetButton_enabled!)
     self.mController_mSchematicLabelInsulateSubnetButton_enabled = nil
-    self.schematicObjectsController.selectedArray_property.count_property.removeEBObserver (self.mController_mRenameComponentFromComponentSymbolButton_enabled!)
     self.mController_mRenameComponentFromComponentSymbolButton_enabled = nil
-    self.netCount_property.removeEBObserver (self.mController_mRenameNetInNetTabButton_enabled!)
     self.mController_mRenameNetInNetTabButton_enabled = nil
-    self.netCount_property.removeEBObserver (self.mController_mSelectNetClassInNetTabButton_enabled!)
     self.mController_mSelectNetClassInNetTabButton_enabled = nil
-    self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningImageView_hidden!)
     self.mController_mNetWarningImageView_hidden = nil
-    self.rootObject.netWarningCount_property.removeEBObserver (self.mController_mNetWarningTextField_hidden!)
     self.mController_mNetWarningTextField_hidden = nil
-    self.boardCurveSelectionController.isLine_property.removeEBObserver (self.mController_mLimitCurveBezierControlPointsView_hidden!)
     self.mController_mLimitCurveBezierControlPointsView_hidden = nil
-    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mMessageBoardIsRectangularView_hidden!)
     self.mController_mMessageBoardIsRectangularView_hidden = nil
-    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mRectangularBoardWidthHeighView_hidden!)
     self.mController_mRectangularBoardWidthHeighView_hidden = nil
-    self.rootObject.boardShapeIsRectangular_property.removeEBObserver (self.mController_mBezierPathBoardHelperView_hidden!)
     self.mController_mBezierPathBoardHelperView_hidden = nil
-    self.boardTrackSelectionController.trackCanRotate_property.removeEBObserver (self.mController_mTrackInBoardRotationTextField_enabled!)
     self.mController_mTrackInBoardRotationTextField_enabled = nil
-    self.boardTrackSelectionController.trackCanRotate_property.removeEBObserver (self.mController_mTrackInBoardRotationSlider_enabled!)
     self.mController_mTrackInBoardRotationSlider_enabled = nil
-    self.boardTrackSelectionController.p1CanMove_property.removeEBObserver (self.mController_mBoardTrackP1xTextField_enabled!)
     self.mController_mBoardTrackP1xTextField_enabled = nil
-    self.boardTrackSelectionController.p1CanMove_property.removeEBObserver (self.mController_mBoardTrackP1yTextField_enabled!)
     self.mController_mBoardTrackP1yTextField_enabled = nil
-    self.boardTrackSelectionController.p2CanMove_property.removeEBObserver (self.mController_mBoardTrackP2xTextField_enabled!)
     self.mController_mBoardTrackP2xTextField_enabled = nil
-    self.boardTrackSelectionController.p2CanMove_property.removeEBObserver (self.mController_mBoardTrackP2yTextField_enabled!)
     self.mController_mBoardTrackP2yTextField_enabled = nil
-    self.restrictRectangleSelectionController.mIsInBackLayer_property.removeEBObserver (self.mController_mFrontRestrictRectangleSwitch_enabled!)
     self.mController_mFrontRestrictRectangleSwitch_enabled = nil
-    self.restrictRectangleSelectionController.mIsInFrontLayer_property.removeEBObserver (self.mController_mBackRestrictRectangleSwitch_enabled!)
     self.mController_mBackRestrictRectangleSwitch_enabled = nil
-    self.componentInBoardSelectionController.hasSlavePads_property.removeEBObserver (self.mController_mSlavePadsShouldBeRoutedPopUpButton_enabled!)
     self.mController_mSlavePadsShouldBeRoutedPopUpButton_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameFontSizeField_enabled!)
     self.mController_mComponentNameFontSizeField_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameRotationTextField_enabled!)
     self.mController_mComponentNameRotationTextField_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameRotationSlider_enabled!)
     self.mController_mComponentNameRotationSlider_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentNameRotationSegmentedControl_enabled!)
     self.mController_mComponentNameRotationSegmentedControl_enabled = nil
-    self.componentInBoardSelectionController.mNameIsVisibleInBoard_property.removeEBObserver (self.mController_mBoardComponentNameFontPopUpButton_enabled!)
     self.mController_mBoardComponentNameFontPopUpButton_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueFontSizeField_enabled!)
     self.mController_mComponentValueFontSizeField_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueRotationTextField_enabled!)
     self.mController_mComponentValueRotationTextField_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueRotationSlider_enabled!)
     self.mController_mComponentValueRotationSlider_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mComponentValueRotationSegmentedControl_enabled!)
     self.mController_mComponentValueRotationSegmentedControl_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mBoardComponentValueTextField_enabled!)
     self.mController_mBoardComponentValueTextField_enabled = nil
-    self.componentInBoardSelectionController.mValueIsVisibleInBoard_property.removeEBObserver (self.mController_mBoardComponentValueFontPopUpButton_enabled!)
     self.mController_mBoardComponentValueFontPopUpButton_enabled = nil
-    self.rastnetDisplayOneNet_property.removeEBObserver (self.mController_mRasnetNetNameSelectionPopUpButton_hidden!)
     self.mController_mRasnetNetNameSelectionPopUpButton_hidden = nil
-    self.rastnetDisplayComponentNet_property.removeEBObserver (self.mController_mRasnetComponentNameSelectionPopUpButton_hidden!)
     self.mController_mRasnetComponentNameSelectionPopUpButton_hidden = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessageTextField_hidden!)
     self.mController_mNoArtworkMessageTextField_hidden = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
     self.mController_mArtworkSettingsTabView_hidden = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.documentFilePathOk_property.removeEBObserver (self.mController_mIncorrectFileNameMessageView_hidden!)
     self.mController_mIncorrectFileNameMessageView_hidden = nil
   //--------------------------- Unbind array controllers
     self.componentController.unbind_tableView (self.mComponentTableView)

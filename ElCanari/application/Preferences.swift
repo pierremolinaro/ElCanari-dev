@@ -3200,21 +3200,13 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
-        var kind = preferences_usesUserLibrary_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_packages_property)
@@ -3222,21 +3214,13 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
     preferences_mValueRevealInFinder_devices_property.mReadModelFunction = {
-        var kind = preferences_usesUserLibrary_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_devices_property)
@@ -3244,21 +3228,13 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
     preferences_mValueRevealInFinder_fonts_property.mReadModelFunction = {
-        var kind = preferences_usesUserLibrary_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_fonts_property)
@@ -3266,21 +3242,13 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
     preferences_mValueRevealInFinder_artworks_property.mReadModelFunction = {
-        var kind = preferences_usesUserLibrary_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_artworks_property)
@@ -3288,21 +3256,13 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
     preferences_mValueRevealInFinder_symbols_property.mReadModelFunction = {
-        var kind = preferences_usesUserLibrary_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        kind &= preferences_additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_symbols_property)
@@ -3532,7 +3492,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.nextSystemLibraryCheckDate
       )
-      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_nextSystemLibraryCheckDate_hidden = controller
     }
     do{
@@ -3540,7 +3499,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalPopupButton
       )
-      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
     }
     do{
@@ -3548,7 +3506,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         computeFunction: .not (.id (preferences_checkForSystemLibraryAtStartUp_property)),
         outlet: self.systemLibraryCheckTimeIntervalTitleTextField
       )
-      preferences_checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
       self.mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
     }
     do{
@@ -3556,7 +3513,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
         computeFunction: .intcmp (.id (preferences_additionnalLibraryArrayController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveLibraryEntryButton
       )
-      preferences_additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveLibraryEntryButton_enabled = controller
     }
   //--------------------------- Array controller

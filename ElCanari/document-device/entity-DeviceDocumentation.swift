@@ -111,19 +111,13 @@ final class DeviceDocumentation : EBManagedObject,
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mFileData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFileData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocumentation_fileSize (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocumentation_fileSize (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

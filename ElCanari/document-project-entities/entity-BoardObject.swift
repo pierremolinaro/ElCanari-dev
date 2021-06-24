@@ -325,19 +325,13 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInBoard
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mRoot_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mRoot_none_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_isPlacedInBoard (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mRoot_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_isPlacedInBoard (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -347,19 +341,13 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -116,22 +116,13 @@ final class NCInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
-        kind &= unwSelf.mOrientation_property_selection.kind ()
-        kind &= unwSelf.mPoint_property.symbolRotation_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_NCInSchematic_objectDisplay (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_NCInSchematic_objectDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -144,22 +135,13 @@ final class NCInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPoint_property.location_property_selection.kind ()
-        kind &= unwSelf.mOrientation_property_selection.kind ()
-        kind &= unwSelf.mPoint_property.symbolRotation_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_NCInSchematic_selectionDisplay (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPoint_property.location_property_selection, unwSelf.mOrientation_property_selection, unwSelf.mPoint_property.symbolRotation_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_NCInSchematic_selectionDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -410,20 +410,13 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xPin_property_selection.kind ()
-        kind &= unwSelf.yPin_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_SymbolPin_filledBezierPath (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_SymbolPin_filledBezierPath (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -434,30 +427,13 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xPin_property_selection.kind ()
-        kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.xNumber_property_selection.kind ()
-        kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.name_property_selection.kind ()
-        kind &= unwSelf.pinNameIsDisplayedInSchematics_property_selection.kind ()
-        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
-        kind &= preferences_symbolColor_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+          return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsDisplayedInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
-            return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -478,26 +454,13 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xPin_property_selection.kind ()
-        kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.xNumber_property_selection.kind ()
-        kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -514,25 +477,13 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xPin_property_selection.kind ()
-        kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.xNumber_property_selection.kind ()
-        kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.name_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+          return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5, v6))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5, v6))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -548,23 +499,13 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: nameRect
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.name_property_selection.kind ()
-        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_SymbolPin_nameRect (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolPin_nameRect (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

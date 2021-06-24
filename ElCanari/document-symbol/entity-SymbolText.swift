@@ -164,24 +164,13 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.text_property_selection.kind ()
-        kind &= unwSelf.horizontalAlignment_property_selection.kind ()
-        kind &= preferences_symbolColor_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_SymbolText_objectDisplay (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_symbolColor_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolText_objectDisplay (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -196,23 +185,13 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.text_property_selection.kind ()
-        kind &= unwSelf.horizontalAlignment_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_SymbolText_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolText_selectionDisplay (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -226,21 +205,13 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.text_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_SymbolText_issues (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_SymbolText_issues (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

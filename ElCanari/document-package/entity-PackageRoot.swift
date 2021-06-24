@@ -2090,19 +2090,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.padNumbering_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.padNumbering_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_freePadNumbering (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.padNumbering_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_freePadNumbering (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2112,19 +2106,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: counterClockNumbering
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.padNumbering_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.padNumbering_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_counterClockNumbering (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.padNumbering_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_counterClockNumbering (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2134,20 +2122,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.gridStep_property_selection.kind ()
-        kind &= unwSelf.gridDisplayFactor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.gridStep_property_selection, unwSelf.gridDisplayFactor_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.gridStep_property_selection, unwSelf.gridDisplayFactor_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2158,20 +2139,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: secondPointX
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mModelImageFirstPointX_property_selection.kind ()
-        kind &= unwSelf.mModelImageSecondPointDx_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointDx_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_PackageRoot_secondPointX (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointDx_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_secondPointX (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2182,20 +2156,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: secondPointY
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mModelImageFirstPointY_property_selection.kind ()
-        kind &= unwSelf.mModelImageSecondPointDy_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointDy_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_PackageRoot_secondPointY (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointDy_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_secondPointY (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2206,19 +2173,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: lockImageView
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPointsAreLocked_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPointsAreLocked_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_lockImageView (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPointsAreLocked_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_lockImageView (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2230,21 +2191,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = preferences_showPadNumber_property_selection.kind ()
-        kind &= unwSelf.packagePads_property_selection.kind ()
-        kind &= unwSelf.packageSlavePads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2256,20 +2209,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: backgroundImagePageBackgroundDisplay
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.packageObjects_property_selection.kind ()
-        kind &= unwSelf.mModelImageData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.packageObjects_property_selection, unwSelf.mModelImageData_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_PackageRoot_backgroundImagePageBackgroundDisplay (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.packageObjects_property_selection, unwSelf.mModelImageData_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_backgroundImagePageBackgroundDisplay (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2280,19 +2226,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: modelImageSizeString
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mModelImageData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mModelImageData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_modelImageSizeString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mModelImageData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_modelImageSizeString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2302,19 +2242,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: hasModelImage
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mModelImageData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mModelImageData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_hasModelImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mModelImageData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_hasModelImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2324,19 +2258,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: masterPadObjectIndexArray
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.packagePads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.packagePads_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_masterPadObjectIndexArray (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.packagePads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_masterPadObjectIndexArray (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2346,24 +2274,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.packageObjects_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= preferences_padZoneFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, preferences_padZoneFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, preferences_padZoneFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2378,19 +2295,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_noIssue (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_noIssue (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2400,19 +2311,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_segmentedControlSegmentIssueImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_segmentedControlSegmentIssueImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -2422,19 +2327,13 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageRoot_segmentedControlSegmentIssueString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_segmentedControlSegmentIssueString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

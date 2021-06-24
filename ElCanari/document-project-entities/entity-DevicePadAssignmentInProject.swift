@@ -158,21 +158,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPadName_property_selection.kind ()
-        kind &= unwSelf.mPin_property.mSymbolInstanceName_property_selection.kind ()
-        kind &= unwSelf.mPin_property.mPinName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.mSymbolInstanceName_property_selection, unwSelf.mPin_property.mPinName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_DevicePadAssignmentInProject_pinPadAssignment (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.mSymbolInstanceName_property_selection, unwSelf.mPin_property.mPinName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_DevicePadAssignmentInProject_pinPadAssignment (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -184,20 +176,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPadName_property_selection.kind ()
-        kind &= unwSelf.mPin_property.descriptor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.descriptor_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DevicePadAssignmentInProject_descriptor (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.descriptor_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DevicePadAssignmentInProject_descriptor (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

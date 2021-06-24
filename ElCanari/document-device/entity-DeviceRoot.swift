@@ -893,19 +893,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: imageIsValid
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mImageData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mImageData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_imageIsValid (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mImageData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_imageIsValid (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -915,20 +909,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPackages_property_selection.kind ()
-        kind &= unwSelf.mPackages_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -939,19 +926,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: inconsistentSymbolNameSetMessage
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolInstances_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolInstances_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -961,19 +942,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolInstances_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_unconnectedPins (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolInstances_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_unconnectedPins (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -983,19 +958,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPackages_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPackages_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_packagePadNameSetsAreConsistent (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPackages_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_packagePadNameSetsAreConsistent (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1005,19 +974,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: symbolNameAreConsistent
     self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_symbolNameAreConsistent (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_symbolNameAreConsistent (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1027,19 +990,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: symbolTypeNames
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolTypes_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolTypes_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_symbolTypeNames (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolTypes_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_symbolTypeNames (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1049,20 +1006,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPadProxies_property_selection.kind ()
-        kind &= unwSelf.mPadProxies_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceRoot_unconnectedPads (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceRoot_unconnectedPads (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1073,22 +1023,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: assignedPadProxies
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPadProxies_property_selection.kind ()
-        kind &= unwSelf.mPadProxies_property_selection.kind ()
-        kind &= unwSelf.mPadProxies_property_selection.kind ()
-        kind &= unwSelf.mPadProxies_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_DeviceRoot_assignedPadProxies (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_DeviceRoot_assignedPadProxies (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1101,29 +1042,13 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTitle_property_selection.kind ()
-        kind &= unwSelf.mPrefix_property_selection.kind ()
-        kind &= unwSelf.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
-        kind &= unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
-        kind &= unwSelf.unconnectedPins_property_selection.kind ()
-        kind &= unwSelf.unconnectedPads_property_selection.kind ()
-        kind &= unwSelf.mPackages_property_selection.kind ()
-        kind &= unwSelf.mPackages_property_selection.kind ()
-        kind &= unwSelf.mSymbolTypes_property_selection.kind ()
-        kind &= unwSelf.mSymbolTypes_property_selection.kind ()
-        kind &= unwSelf.mSymbolTypes_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection, unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+          return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection, unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

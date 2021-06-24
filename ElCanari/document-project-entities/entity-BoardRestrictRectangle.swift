@@ -226,28 +226,13 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mWidth_property_selection.kind ()
-        kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
-        kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
-        kind &= preferences_displayFrontRestrictRectangles_property_selection.kind ()
-        kind &= preferences_displayBackRestrictRectangles_property_selection.kind ()
-        kind &= preferences_frontSideRestrictRectangleColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideRestrictRectangleColorForBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, preferences_displayFrontRestrictRectangles_property_selection, preferences_displayBackRestrictRectangles_property_selection, preferences_frontSideRestrictRectangleColorForBoard_property_selection, preferences_backSideRestrictRectangleColorForBoard_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+          return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, preferences_displayFrontRestrictRectangles_property_selection, preferences_displayBackRestrictRectangles_property_selection, preferences_frontSideRestrictRectangleColorForBoard_property_selection, preferences_backSideRestrictRectangleColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -266,25 +251,13 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mWidth_property_selection.kind ()
-        kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
-        kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
-        kind &= preferences_hiliteWidthMultipliedByTen_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, preferences_hiliteWidthMultipliedByTen_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+          return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection, preferences_hiliteWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -300,24 +273,13 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mWidth_property_selection.kind ()
-        kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mIsInFrontLayer_property_selection.kind ()
-        kind &= unwSelf.mIsInBackLayer_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mIsInFrontLayer_property_selection, unwSelf.mIsInBackLayer_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -340,19 +340,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mVersion_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mVersion_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolTypeInDevice_versionString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mVersion_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolTypeInDevice_versionString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -362,19 +356,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mInstances_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mInstances_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolTypeInDevice_instanceCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mInstances_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolTypeInDevice_instanceCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -384,19 +372,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mFileData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFileData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolTypeInDevice_documentSizeString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolTypeInDevice_documentSizeString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -406,19 +388,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPinTypes_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPinTypes_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolTypeInDevice_pinNameShape (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPinTypes_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolTypeInDevice_pinNameShape (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

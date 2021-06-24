@@ -501,19 +501,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDeviceVersion_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mDeviceVersion_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_versionString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mDeviceVersion_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_versionString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -523,19 +517,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mDeviceFileData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_sizeString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mDeviceFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_sizeString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -545,19 +533,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: canExport
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mDeviceFileData_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_canExport (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mDeviceFileData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_canExport (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -567,19 +549,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: packageNames
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPackages_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPackages_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_packageNames (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPackages_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_packageNames (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -589,19 +565,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceComponentCountString
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponents_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_deviceComponentCountString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponents_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_deviceComponentCountString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -611,19 +581,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponents_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_canRemove (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponents_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_canRemove (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -633,19 +597,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: symbolAndTypesNames
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbols_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbols_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_symbolAndTypesNames (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbols_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_symbolAndTypesNames (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -655,19 +613,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPadAssignments_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadAssignments_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceInProject_pinPadAssignments (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadAssignments_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceInProject_pinPadAssignments (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -677,22 +629,13 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mPadAssignments_property_selection.kind ()
-        kind &= unwSelf.mSymbols_property_selection.kind ()
-        kind &= unwSelf.mSymbols_property_selection.kind ()
-        kind &= unwSelf.mSymbols_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadAssignments_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadAssignments_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection, unwSelf.mSymbols_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -205,19 +205,13 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSheet_property.sheetDescriptor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SchematicObject_sheetDescriptor (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSheet_property.sheetDescriptor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SchematicObject_sheetDescriptor (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -227,19 +221,13 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSheet_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSheet_none_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SchematicObject_isPlacedInSchematic (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSheet_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SchematicObject_isPlacedInSchematic (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

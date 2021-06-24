@@ -325,19 +325,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: pinName
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mType_property.mName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mType_property.mName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolPinInstanceInDevice_pinName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mType_property.mName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolPinInstanceInDevice_pinName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -347,19 +341,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolInstance_property.mInstanceName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolInstance_property.mInstanceName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolPinInstanceInDevice_symbolName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolInstance_property.mInstanceName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolPinInstanceInDevice_symbolName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -369,20 +357,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.symbolName_property_selection.kind ()
-        kind &= unwSelf.pinName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.symbolName_property_selection, unwSelf.pinName_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_SymbolPinInstanceInDevice_pinQualifiedName (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.symbolName_property_selection, unwSelf.pinName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_SymbolPinInstanceInDevice_pinQualifiedName (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -393,19 +374,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPadProxy_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPadProxy_none_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolPinInstanceInDevice_isConnected (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPadProxy_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolPinInstanceInDevice_isConnected (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -415,23 +390,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mType_property.mXNumber_property_selection.kind ()
-        kind &= unwSelf.mType_property.mYNumber_property_selection.kind ()
-        kind &= unwSelf.mType_property.mNumberHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mPadProxy_property.mPadName_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mPadName_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_SymbolPinInstanceInDevice_numberShape (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mPadName_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolPinInstanceInDevice_numberShape (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -411,22 +411,13 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.minPPTPTTTW_property_selection.kind ()
-        kind &= unwSelf.minValueForOARinEBUnit_property_selection.kind ()
-        kind &= unwSelf.minValueForBoardLimitWidth_property_selection.kind ()
-        kind &= unwSelf.minValueForPHDinEBUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.minPPTPTTTW_property_selection, unwSelf.minValueForOARinEBUnit_property_selection, unwSelf.minValueForBoardLimitWidth_property_selection, unwSelf.minValueForPHDinEBUnit_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_ArtworkRoot_signatureForERCChecking (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.minPPTPTTTW_property_selection, unwSelf.minValueForOARinEBUnit_property_selection, unwSelf.minValueForBoardLimitWidth_property_selection, unwSelf.minValueForPHDinEBUnit_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_ArtworkRoot_signatureForERCChecking (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

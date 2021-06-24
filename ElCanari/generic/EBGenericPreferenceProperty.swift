@@ -17,8 +17,19 @@ final class EBGenericPreferenceProperty <T : EBPropertyProtocol> : EBGenericStor
   //····················································································································
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
-    mPreferenceKey = inPreferenceKey
+    self.mPreferenceKey = inPreferenceKey
     super.init (defaultValue: inValue, undoManager: nil)
+  //--- Configure façade
+    self.façade.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.propval)
+      }else{
+        return .empty
+      }
+    }
+    self.façade.mWriteModelFunction = { [weak self] in
+      self?.setProp ($0)
+    }
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
     if let value = possibleValue as? NSObject {
@@ -32,6 +43,10 @@ final class EBGenericPreferenceProperty <T : EBPropertyProtocol> : EBGenericStor
     UserDefaults.standard.set (self.propval.convertToNSObject (), forKey: self.mPreferenceKey)
     super.postEvent ()
   }
+
+  //····················································································································
+
+  let façade = EBGenericPropertyProxy <T> ()
 
   //····················································································································
 

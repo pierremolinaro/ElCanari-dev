@@ -227,22 +227,13 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mP1_property.wireColor_property_selection.kind ()
-        kind &= preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
-        kind &= unwSelf.mP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mP1_property.wireColor_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mP1_property.wireColor_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -255,22 +246,13 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mP1_property.canMove_property_selection.kind ()
-        kind &= unwSelf.mP2_property.location_property_selection.kind ()
-        kind &= unwSelf.mP2_property.canMove_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mP1_property.location_property_selection, unwSelf.mP1_property.canMove_property_selection, unwSelf.mP2_property.location_property_selection, unwSelf.mP2_property.canMove_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mP1_property.location_property_selection, unwSelf.mP1_property.canMove_property_selection, unwSelf.mP2_property.location_property_selection, unwSelf.mP2_property.canMove_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -283,19 +265,13 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mP1_property.netName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mP1_property.netName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_WireInSchematic_netName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mP1_property.netName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_WireInSchematic_netName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -305,19 +281,13 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mP1_property.netClassName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mP1_property.netClassName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_WireInSchematic_netClassName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mP1_property.netClassName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_WireInSchematic_netClassName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -327,19 +297,13 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mP1_property.hasNet_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mP1_property.hasNet_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_WireInSchematic_hasNet (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mP1_property.hasNet_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_WireInSchematic_hasNet (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

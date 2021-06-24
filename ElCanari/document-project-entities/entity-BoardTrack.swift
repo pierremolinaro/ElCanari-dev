@@ -1051,21 +1051,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
-        kind &= unwSelf.mUsesCustomTrackWidth_property_selection.kind ()
-        kind &= unwSelf.mCustomTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.netClassTrackWidth_property_selection, unwSelf.mUsesCustomTrackWidth_property_selection, unwSelf.mCustomTrackWidth_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardTrack_actualTrackWidth (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.netClassTrackWidth_property_selection, unwSelf.mUsesCustomTrackWidth_property_selection, unwSelf.mCustomTrackWidth_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardTrack_actualTrackWidth (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1077,19 +1069,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNet_property.mNetName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.mNetName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_netName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.mNetName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_netName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1099,19 +1085,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNet_property.netClassName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.netClassName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_netClassName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.netClassName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_netClassName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1121,19 +1101,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNet_property.netClassTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.netClassTrackWidth_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_netClassTrackWidth (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.netClassTrackWidth_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_netClassTrackWidth (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1143,19 +1117,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNet_property.netClassViaHoleDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.netClassViaHoleDiameter_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_netClassViaHoleDiameter (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.netClassViaHoleDiameter_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_netClassViaHoleDiameter (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1165,19 +1133,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNet_property.netClassViaPadDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNet_property.netClassViaPadDiameter_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_netClassViaPadDiameter (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNet_property.netClassViaPadDiameter_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_netClassViaPadDiameter (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1187,20 +1149,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: trackLengthInCanariUnit
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardTrack_trackLengthInCanariUnit (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_trackLengthInCanariUnit (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1211,20 +1166,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSide_property_selection.kind ()
-        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardTrack_signatureForERCChecking (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_signatureForERCChecking (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1235,20 +1183,13 @@ final class BoardTrack : BoardObject,
   //--- Computed property: trackDirectionInDegrees
     self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (computed_BoardTrack_trackDirectionInDegrees (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (computed_BoardTrack_trackDirectionInDegrees (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1260,19 +1201,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP1_property.isConnectedToSomePad_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.isConnectedToSomePad_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_p1ConnectedToSomePad (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.isConnectedToSomePad_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_p1ConnectedToSomePad (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1282,19 +1217,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: p2ConnectedToSomePad
     self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP2_property.isConnectedToSomePad_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP2_property.isConnectedToSomePad_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_p2ConnectedToSomePad (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP2_property.isConnectedToSomePad_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardTrack_p2ConnectedToSomePad (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1304,19 +1233,13 @@ final class BoardTrack : BoardObject,
   //--- Computed property: computedP1X
     self.computedP1X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection) {
+        case (.single (let v0)) :
+          return .single (computed_BoardTrack_computedP1X (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection) {
-          case (.single (let v0)) :
-            return .single (computed_BoardTrack_computedP1X (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1327,19 +1250,13 @@ final class BoardTrack : BoardObject,
   //--- Computed property: computedP1Y
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection) {
+        case (.single (let v0)) :
+          return .single (computed_BoardTrack_computedP1Y (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection) {
-          case (.single (let v0)) :
-            return .single (computed_BoardTrack_computedP1Y (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1350,19 +1267,13 @@ final class BoardTrack : BoardObject,
   //--- Computed property: computedP2X
     self.computedP2X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP2_property.location_property_selection) {
+        case (.single (let v0)) :
+          return .single (computed_BoardTrack_computedP2X (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0)) :
-            return .single (computed_BoardTrack_computedP2X (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1373,19 +1284,13 @@ final class BoardTrack : BoardObject,
   //--- Computed property: computedP2Y
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP2_property.location_property_selection) {
+        case (.single (let v0)) :
+          return .single (computed_BoardTrack_computedP2Y (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP2_property.location_property_selection) {
-          case (.single (let v0)) :
-            return .single (computed_BoardTrack_computedP2Y (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1396,26 +1301,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= preferences_displayFrontLayoutForBoard_property_selection.kind ()
-        kind &= preferences_displayBackLayoutForBoard_property_selection.kind ()
-        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
-        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
-        kind &= unwSelf.mSide_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, preferences_displayFrontLayoutForBoard_property_selection, preferences_displayBackLayoutForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.mConnectorP2_property.location_property_selection, preferences_displayFrontLayoutForBoard_property_selection, preferences_displayBackLayoutForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.actualTrackWidth_property_selection, unwSelf.mSide_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1432,20 +1324,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: p1CanMove
     self.p1CanMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mManualLockP1_property_selection.kind ()
-        kind &= unwSelf.p1ConnectedToSomePad_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mManualLockP1_property_selection, unwSelf.p1ConnectedToSomePad_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardTrack_p1CanMove (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mManualLockP1_property_selection, unwSelf.p1ConnectedToSomePad_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_p1CanMove (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1456,20 +1341,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: p2CanMove
     self.p2CanMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mManualLockP2_property_selection.kind ()
-        kind &= unwSelf.p2ConnectedToSomePad_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mManualLockP2_property_selection, unwSelf.p2ConnectedToSomePad_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardTrack_p2CanMove (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mManualLockP2_property_selection, unwSelf.p2ConnectedToSomePad_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_p2CanMove (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1480,20 +1358,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: trackCanRotate
     self.trackCanRotate_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.p1CanMove_property_selection.kind ()
-        kind &= unwSelf.p2CanMove_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.p1CanMove_property_selection, unwSelf.p2CanMove_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardTrack_trackCanRotate (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.p1CanMove_property_selection, unwSelf.p2CanMove_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardTrack_trackCanRotate (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1504,26 +1375,13 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mConnectorP1_property.location_property_selection.kind ()
-        kind &= unwSelf.p1CanMove_property_selection.kind ()
-        kind &= unwSelf.mConnectorP2_property.location_property_selection.kind ()
-        kind &= unwSelf.p2CanMove_property_selection.kind ()
-        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
-        kind &= unwSelf.mSide_property_selection.kind ()
-        kind &= unwSelf.actualTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.p1CanMove_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.p2CanMove_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mConnectorP1_property.location_property_selection, unwSelf.p1CanMove_property_selection, unwSelf.mConnectorP2_property.location_property_selection, unwSelf.p2CanMove_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, unwSelf.mSide_property_selection, unwSelf.actualTrackWidth_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

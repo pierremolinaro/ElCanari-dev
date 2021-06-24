@@ -8,27 +8,10 @@ import Cocoa
 //   PropertyKind
 //----------------------------------------------------------------------------------------------------------------------
 
-enum PropertyKind { case empty ; case single ; case multiple }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func &= (left : inout PropertyKind, right : PropertyKind) {
-  switch left {
-  case .empty : break
-  case .multiple :
-    if right == .empty {
-      left = .empty
-    }
-  case .single :
-    switch right {
-    case .empty :
-      left = .empty
-    case .multiple :
-      left = .multiple
-    case .single :
-      break
-    }
-  }
+enum PropertyKind {
+  case empty
+  case single
+  case multiple
 }
 
 //----------------------------------------------------------------------------------------------------------------------

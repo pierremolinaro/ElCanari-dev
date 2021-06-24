@@ -547,20 +547,13 @@ import Cocoa
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
-        kind &= unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -575,19 +568,13 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPin
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.unconnectedPins_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.unconnectedPins_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.unconnectedPins_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -601,19 +588,13 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_mStatusMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mStatusMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -627,19 +608,13 @@ import Cocoa
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_mMetadataStatus (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mMetadataStatus (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -653,19 +628,13 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.unconnectedPads_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.unconnectedPads_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.unconnectedPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -679,19 +648,13 @@ import Cocoa
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.assignedPadProxies_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.assignedPadProxies_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.assignedPadProxies_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -705,19 +668,13 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceDocument_mStatusImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mStatusImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -790,7 +747,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.imageIsValid_property),
         outlet: self.mCopyImageButton
       )
-      self.rootObject.imageIsValid_property.addEBObserver (controller)
       self.mController_mCopyImageButton_enabled = controller
     }
     do{
@@ -798,7 +754,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.imageIsValid_property),
         outlet: self.mRemoveImageButton
       )
-      self.rootObject.imageIsValid_property.addEBObserver (controller)
       self.mController_mRemoveImageButton_enabled = controller
     }
     do{
@@ -806,7 +761,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveSelectedDocButton
       )
-      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveSelectedDocButton_enabled = controller
     }
     do{
@@ -814,7 +768,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mShowDocButton
       )
-      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mShowDocButton_enabled = controller
     }
     do{
@@ -822,7 +775,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mSaveDocButton
       )
-      self.documentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSaveDocButton_enabled = controller
     }
     do{
@@ -830,7 +782,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)),
         outlet: self.mAddSymbolInstancePullDownButton
       )
-      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
       self.mController_mAddSymbolInstancePullDownButton_enabled = controller
     }
     do{
@@ -838,7 +789,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
         outlet: self.mInconsistentSymbolNameMessageScrollView
       )
-      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mInconsistentSymbolNameMessageScrollView_hidden = controller
     }
     do{
@@ -846,7 +796,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
         outlet: self.mSymbolErrorMessageTitleTextField
       )
-      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mSymbolErrorMessageTitleTextField_hidden = controller
     }
     do{
@@ -854,7 +803,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.packagePadNameSetsAreConsistent_property),
         outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
       )
-      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
       self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = controller
     }
     do{
@@ -862,8 +810,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
         outlet: self.mResetSymbolAndPackagesVersionButton
       )
-      self.rootObject.mPackages_property.count_property.addEBObserver (controller)
-      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
       self.mController_mResetSymbolAndPackagesVersionButton_enabled = controller
     }
     do{
@@ -871,8 +817,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
         outlet: self.mUpdateSymbolAndPackagesButton
       )
-      self.rootObject.mPackages_property.count_property.addEBObserver (controller)
-      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSymbolAndPackagesButton_enabled = controller
     }
     do{
@@ -880,7 +824,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedSymbolVersionButton
       )
-      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetSelectedSymbolVersionButton_enabled = controller
     }
     do{
@@ -888,7 +831,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditSelectedSymbolsButton
       )
-      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditSelectedSymbolsButton_enabled = controller
     }
     do{
@@ -896,7 +838,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportSelectedSymbolsButton
       )
-      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportSelectedSymbolsButton_enabled = controller
     }
     do{
@@ -904,7 +845,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateSelectedSymbolsButton
       )
-      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSelectedSymbolsButton_enabled = controller
     }
     do{
@@ -912,8 +852,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.id (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))),
         outlet: self.mRemoveUselessSymbolTypeButton
       )
-      self.symbolTypeController.selectedArray_property.count_property.addEBObserver (controller)
-      self.symbolTypeSelection.instanceCount_property.addEBObserver (controller)
       self.mController_mRemoveUselessSymbolTypeButton_enabled = controller
     }
     do{
@@ -921,7 +859,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mResetSelectedPackageVersionButton
       )
-      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mResetSelectedPackageVersionButton_enabled = controller
     }
     do{
@@ -929,7 +866,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEditSelectedPackagesButton
       )
-      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mEditSelectedPackagesButton_enabled = controller
     }
     do{
@@ -937,7 +873,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mExportSelectedPackagesButton
       )
-      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mExportSelectedPackagesButton_enabled = controller
     }
     do{
@@ -945,7 +880,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mUpdateSelectedPackagesButton
       )
-      self.packageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSelectedPackagesButton_enabled = controller
     }
     do{
@@ -953,8 +887,6 @@ import Cocoa
         computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property)),
         outlet: self.mInconsistentPadNameSetTextField
       )
-      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
-      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mInconsistentPadNameSetTextField_hidden = controller
     }
     do{
@@ -962,8 +894,6 @@ import Cocoa
         computeFunction: .boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property))),
         outlet: self.mAssignmentSplitView
       )
-      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
-      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mAssignmentSplitView_hidden = controller
     }
     do{
@@ -971,8 +901,6 @@ import Cocoa
         computeFunction: .boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)),
         outlet: self.mBindButton
       )
-      self.hasUnconnectedPad_property.addEBObserver (controller)
-      self.hasUnconnectedPin_property.addEBObserver (controller)
       self.mController_mBindButton_enabled = controller
     }
     do{
@@ -980,7 +908,6 @@ import Cocoa
         computeFunction: .id (self.hasUnconnectedPad_property),
         outlet: self.mNCButton
       )
-      self.hasUnconnectedPad_property.addEBObserver (controller)
       self.mController_mNCButton_enabled = controller
     }
     do{
@@ -988,7 +915,6 @@ import Cocoa
         computeFunction: .id (self.hasAssignedPadProxies_property),
         outlet: self.mUnbindButton
       )
-      self.hasAssignedPadProxies_property.addEBObserver (controller)
       self.mController_mUnbindButton_enabled = controller
     }
     do{
@@ -996,7 +922,6 @@ import Cocoa
         computeFunction: .id (self.hasAssignedPadProxies_property),
         outlet: self.mUnbindAllButton
       )
-      self.hasAssignedPadProxies_property.addEBObserver (controller)
       self.mController_mUnbindAllButton_enabled = controller
     }
     if LOG_OPERATION_DURATION {
@@ -1130,63 +1055,31 @@ import Cocoa
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mCopyImageButton_enabled!)
     self.mController_mCopyImageButton_enabled = nil
-    self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
     self.mController_mRemoveImageButton_enabled = nil
-    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
     self.mController_mRemoveSelectedDocButton_enabled = nil
-    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
     self.mController_mShowDocButton_enabled = nil
-    self.documentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
-    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mAddSymbolInstancePullDownButton_enabled!)
     self.mController_mAddSymbolInstancePullDownButton_enabled = nil
-    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentSymbolNameMessageScrollView_hidden!)
     self.mController_mInconsistentSymbolNameMessageScrollView_hidden = nil
-    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mSymbolErrorMessageTitleTextField_hidden!)
     self.mController_mSymbolErrorMessageTitleTextField_hidden = nil
-    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
-    self.rootObject.mPackages_property.count_property.removeEBObserver (self.mController_mResetSymbolAndPackagesVersionButton_enabled!)
-    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mResetSymbolAndPackagesVersionButton_enabled!)
     self.mController_mResetSymbolAndPackagesVersionButton_enabled = nil
-    self.rootObject.mPackages_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
-    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
     self.mController_mUpdateSymbolAndPackagesButton_enabled = nil
-    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
     self.mController_mResetSelectedSymbolVersionButton_enabled = nil
-    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedSymbolsButton_enabled!)
     self.mController_mEditSelectedSymbolsButton_enabled = nil
-    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedSymbolsButton_enabled!)
     self.mController_mExportSelectedSymbolsButton_enabled = nil
-    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedSymbolsButton_enabled!)
     self.mController_mUpdateSelectedSymbolsButton_enabled = nil
-    self.symbolTypeController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveUselessSymbolTypeButton_enabled!)
-    self.symbolTypeSelection.instanceCount_property.removeEBObserver (self.mController_mRemoveUselessSymbolTypeButton_enabled!)
     self.mController_mRemoveUselessSymbolTypeButton_enabled = nil
-    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
     self.mController_mResetSelectedPackageVersionButton_enabled = nil
-    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
     self.mController_mEditSelectedPackagesButton_enabled = nil
-    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
     self.mController_mExportSelectedPackagesButton_enabled = nil
-    self.packageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
     self.mController_mUpdateSelectedPackagesButton_enabled = nil
-    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
-    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
     self.mController_mInconsistentPadNameSetTextField_hidden = nil
-    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
-    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
     self.mController_mAssignmentSplitView_hidden = nil
-    self.hasUnconnectedPad_property.removeEBObserver (self.mController_mBindButton_enabled!)
-    self.hasUnconnectedPin_property.removeEBObserver (self.mController_mBindButton_enabled!)
     self.mController_mBindButton_enabled = nil
-    self.hasUnconnectedPad_property.removeEBObserver (self.mController_mNCButton_enabled!)
     self.mController_mNCButton_enabled = nil
-    self.hasAssignedPadProxies_property.removeEBObserver (self.mController_mUnbindButton_enabled!)
     self.mController_mUnbindButton_enabled = nil
-    self.hasAssignedPadProxies_property.removeEBObserver (self.mController_mUnbindAllButton_enabled!)
     self.mController_mUnbindAllButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.documentationController.unbind_tableView (self.mDocumentationTableView)

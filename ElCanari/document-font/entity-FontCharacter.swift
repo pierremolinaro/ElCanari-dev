@@ -284,22 +284,13 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -312,19 +303,13 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: gerberCode
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.segmentArrayForDrawing_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontCharacter_gerberCode (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.segmentArrayForDrawing_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontCharacter_gerberCode (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -334,19 +319,13 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.gerberCode_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.gerberCode_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.gerberCode_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -356,23 +335,13 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.codePoint_property_selection.kind ()
-        kind &= unwSelf.advance_property_selection.kind ()
-        kind &= unwSelf.mWarnsWhenNoSegment_property_selection.kind ()
-        kind &= unwSelf.mWarnsWhenAdvanceIsZero_property_selection.kind ()
-        kind &= unwSelf.segments_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.codePoint_property_selection, unwSelf.advance_property_selection, unwSelf.mWarnsWhenNoSegment_property_selection, unwSelf.mWarnsWhenAdvanceIsZero_property_selection, unwSelf.segments_property.count_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_FontCharacter_issues (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.codePoint_property_selection, unwSelf.advance_property_selection, unwSelf.mWarnsWhenNoSegment_property_selection, unwSelf.mWarnsWhenAdvanceIsZero_property_selection, unwSelf.segments_property.count_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_FontCharacter_issues (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

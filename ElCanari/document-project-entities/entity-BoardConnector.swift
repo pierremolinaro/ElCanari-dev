@@ -859,19 +859,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: isConnectedToSomePad
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponentPadName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponentPadName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardConnector_isConnectedToSomePad (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponentPadName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardConnector_isConnectedToSomePad (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -887,23 +881,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        kind &= unwSelf.mPadIndex_property_selection.kind ()
-        kind &= unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardConnector_location (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_BoardConnector_location (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -917,20 +901,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: netNameFromComponentPad
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_netNameFromComponentPad (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_netNameFromComponentPad (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -941,22 +918,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: netNameAndPadLocation
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        kind &= unwSelf.location_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.componentName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.location_property_selection, unwSelf.mComponent_property.componentName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_BoardConnector_netNameAndPadLocation (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.padNetDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.location_property_selection, unwSelf.mComponent_property.componentName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_BoardConnector_netNameAndPadLocation (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -969,23 +937,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: side
     self.side_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponent_property.componentPadDictionary_property_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        kind &= unwSelf.mPadIndex_property_selection.kind ()
-        kind &= unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardConnector_side (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.componentPadDictionary_property_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_BoardConnector_side (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -999,21 +957,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: isVia
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        kind &= unwSelf.mComponent_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection, unwSelf.mComponent_none_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardConnector_isVia (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection, unwSelf.mComponent_none_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_isVia (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1025,27 +975,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.location_property_selection.kind ()
-        kind &= unwSelf.mComponent_none_selection.kind ()
-        kind &= unwSelf.mComponentPadName_property_selection.kind ()
-        kind &= unwSelf.mTracksP1_property.count_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property.count_property_selection.kind ()
-        kind &= unwSelf.errorOrWarningIssueSize_property_selection.kind ()
-        kind &= unwSelf.mPadIndex_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.mSlavePadsShouldBeRouted_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.padNetDictionary_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mComponent_property.mSlavePadsShouldBeRouted_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+          return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.location_property_selection, unwSelf.mComponent_none_selection, unwSelf.mComponentPadName_property_selection, unwSelf.mTracksP1_property.count_property_selection, unwSelf.mTracksP2_property.count_property_selection, unwSelf.errorOrWarningIssueSize_property_selection, unwSelf.mPadIndex_property_selection, unwSelf.mComponent_property.mSlavePadsShouldBeRouted_property_selection, unwSelf.mComponent_property.padNetDictionary_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_BoardConnector_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1063,20 +999,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: viaDefaultHoleDiameter
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_viaDefaultHoleDiameter (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_viaDefaultHoleDiameter (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1087,20 +1016,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: viaDefaultPadDiameter
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_viaDefaultPadDiameter (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_viaDefaultPadDiameter (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1111,20 +1033,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: netNameFromTracks
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_netNameFromTracks (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_netNameFromTracks (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1135,20 +1050,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTracksP1_property_selection.kind ()
-        kind &= unwSelf.mTracksP2_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_netClassName (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracksP1_property_selection, unwSelf.mTracksP2_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardConnector_netClassName (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1159,19 +1067,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponent_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_none_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardConnector_connectedToComponent (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_none_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardConnector_connectedToComponent (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1181,21 +1083,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: actualHoleDiameter
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.viaDefaultHoleDiameter_property_selection.kind ()
-        kind &= unwSelf.mUsesCustomHoleDiameter_property_selection.kind ()
-        kind &= unwSelf.mCustomHoleDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.viaDefaultHoleDiameter_property_selection, unwSelf.mUsesCustomHoleDiameter_property_selection, unwSelf.mCustomHoleDiameter_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardConnector_actualHoleDiameter (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.viaDefaultHoleDiameter_property_selection, unwSelf.mUsesCustomHoleDiameter_property_selection, unwSelf.mCustomHoleDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_actualHoleDiameter (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1207,21 +1101,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: actualPadDiameter
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.viaDefaultPadDiameter_property_selection.kind ()
-        kind &= unwSelf.mUsesCustomPadDiameter_property_selection.kind ()
-        kind &= unwSelf.mCustomPadDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.viaDefaultPadDiameter_property_selection, unwSelf.mUsesCustomPadDiameter_property_selection, unwSelf.mCustomPadDiameter_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardConnector_actualPadDiameter (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.viaDefaultPadDiameter_property_selection, unwSelf.mUsesCustomPadDiameter_property_selection, unwSelf.mCustomPadDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_actualPadDiameter (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1233,24 +1119,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.connectedToComponent_property_selection.kind ()
-        kind &= unwSelf.side_property_selection.kind ()
-        kind &= unwSelf.location_property_selection.kind ()
-        kind &= unwSelf.actualHoleDiameter_property_selection.kind ()
-        kind &= unwSelf.actualPadDiameter_property_selection.kind ()
-        kind &= preferences_frontSidePadColorForBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection, unwSelf.actualHoleDiameter_property_selection, unwSelf.actualPadDiameter_property_selection, preferences_frontSidePadColorForBoard_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection, unwSelf.actualHoleDiameter_property_selection, unwSelf.actualPadDiameter_property_selection, preferences_frontSidePadColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1265,21 +1140,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.connectedToComponent_property_selection.kind ()
-        kind &= unwSelf.side_property_selection.kind ()
-        kind &= unwSelf.location_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardConnector_selectionDisplay (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.connectedToComponent_property_selection, unwSelf.side_property_selection, unwSelf.location_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_selectionDisplay (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1291,21 +1158,13 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.location_property_selection.kind ()
-        kind &= unwSelf.isVia_property_selection.kind ()
-        kind &= unwSelf.actualPadDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.location_property_selection, unwSelf.isVia_property_selection, unwSelf.actualPadDiameter_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_BoardConnector_signatureForERCChecking (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.location_property_selection, unwSelf.isVia_property_selection, unwSelf.actualPadDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardConnector_signatureForERCChecking (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

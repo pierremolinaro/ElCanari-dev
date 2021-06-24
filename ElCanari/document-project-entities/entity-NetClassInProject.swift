@@ -624,20 +624,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: trackWidthString
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mTrackWidth_property_selection.kind ()
-        kind &= unwSelf.mTrackWidthUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTrackWidth_property_selection, unwSelf.mTrackWidthUnit_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_NetClassInProject_trackWidthString (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTrackWidth_property_selection, unwSelf.mTrackWidthUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_NetClassInProject_trackWidthString (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -648,20 +641,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mViaHoleDiameter_property_selection.kind ()
-        kind &= unwSelf.mViaHoleDiameterUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mViaHoleDiameter_property_selection, unwSelf.mViaHoleDiameterUnit_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mViaHoleDiameter_property_selection, unwSelf.mViaHoleDiameterUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -672,20 +658,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaPadDiameter
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mViaPadDiameter_property_selection.kind ()
-        kind &= unwSelf.mViaPadDiameterUnit_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mViaPadDiameter_property_selection, unwSelf.mViaPadDiameterUnit_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mViaPadDiameter_property_selection, unwSelf.mViaPadDiameterUnit_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -696,19 +675,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnFrontSideString
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mAllowTracksOnFrontSide_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mAllowTracksOnFrontSide_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnFrontSideString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mAllowTracksOnFrontSide_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_allowTracksOnFrontSideString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -718,19 +691,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnBackSideString
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mAllowTracksOnBackSide_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mAllowTracksOnBackSide_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnBackSideString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mAllowTracksOnBackSide_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_allowTracksOnBackSideString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -740,19 +707,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNets_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNets_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_canRemove (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNets_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_canRemove (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -762,19 +723,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netUsage
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNets_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNets_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_netUsage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNets_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_netUsage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -784,23 +739,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mNets_property_selection.kind ()
-        kind &= unwSelf.mNets_property_selection.kind ()
-        kind &= unwSelf.mNets_property_selection.kind ()
-        kind &= unwSelf.mNets_property_selection.kind ()
-        kind &= unwSelf.mNetClassName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNets_property_selection, unwSelf.mNetClassName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -814,19 +759,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.netsDescription_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.netsDescription_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_netWarningCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.netsDescription_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetClassInProject_netWarningCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

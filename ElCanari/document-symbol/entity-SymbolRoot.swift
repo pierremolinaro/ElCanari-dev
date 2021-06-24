@@ -488,23 +488,13 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.symbolObjects_property_selection.kind ()
-        kind &= unwSelf.symbolPins_property_selection.kind ()
-        kind &= unwSelf.symbolPins_property_selection.kind ()
-        kind &= unwSelf.symbolPins_property_selection.kind ()
-        kind &= unwSelf.symbolPins_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_SymbolRoot_issues (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolRoot_issues (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -518,19 +508,13 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolRoot_noIssue (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolRoot_noIssue (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -540,19 +524,13 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolRoot_segmentedControlSegmentIssueImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolRoot_segmentedControlSegmentIssueImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -562,19 +540,13 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_SymbolRoot_segmentedControlSegmentIssueString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolRoot_segmentedControlSegmentIssueString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

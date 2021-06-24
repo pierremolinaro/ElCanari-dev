@@ -432,37 +432,13 @@ final class BoardText : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mText_property_selection.kind ()
-        kind &= unwSelf.mFontSize_property_selection.kind ()
-        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
-        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
-        kind &= unwSelf.mLayer_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
-        kind &= unwSelf.mWeight_property_selection.kind ()
-        kind &= unwSelf.mOblique_property_selection.kind ()
-        kind &= preferences_displayFrontLegendForBoard_property_selection.kind ()
-        kind &= preferences_displayBackLegendForBoard_property_selection.kind ()
-        kind &= preferences_displayFrontLayoutForBoard_property_selection.kind ()
-        kind &= preferences_displayBackLayoutForBoard_property_selection.kind ()
-        kind &= preferences_frontSideLegendColorForBoard_property_selection.kind ()
-        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLegendColorForBoard_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, preferences_displayFrontLegendForBoard_property_selection, preferences_displayBackLegendForBoard_property_selection, preferences_displayFrontLayoutForBoard_property_selection, preferences_displayBackLayoutForBoard_property_selection, preferences_frontSideLegendColorForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, preferences_backSideLegendColorForBoard_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18)) :
+          return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, preferences_displayFrontLegendForBoard_property_selection, preferences_displayBackLegendForBoard_property_selection, preferences_displayFrontLayoutForBoard_property_selection, preferences_displayBackLayoutForBoard_property_selection, preferences_frontSideLegendColorForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, preferences_backSideLegendColorForBoard_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18)) :
-            return .single (transient_BoardText_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -490,34 +466,13 @@ final class BoardText : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mText_property_selection.kind ()
-        kind &= unwSelf.mFontSize_property_selection.kind ()
-        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
-        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
-        kind &= unwSelf.mLayer_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
-        kind &= unwSelf.mWeight_property_selection.kind ()
-        kind &= unwSelf.mOblique_property_selection.kind ()
-        kind &= preferences_frontSideLegendColorForBoard_property_selection.kind ()
-        kind &= preferences_frontSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLayoutColorForBoard_property_selection.kind ()
-        kind &= preferences_backSideLegendColorForBoard_property_selection.kind ()
-        kind &= preferences_hiliteWidthMultipliedByTen_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, preferences_frontSideLegendColorForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, preferences_backSideLegendColorForBoard_property_selection, preferences_hiliteWidthMultipliedByTen_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
+          return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mLayer_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection, preferences_frontSideLegendColorForBoard_property_selection, preferences_frontSideLayoutColorForBoard_property_selection, preferences_backSideLayoutColorForBoard_property_selection, preferences_backSideLegendColorForBoard_property_selection, preferences_hiliteWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
-            return .single (transient_BoardText_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -542,19 +497,13 @@ final class BoardText : BoardObject,
   //--- Atomic property: fontName
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mFont_property.mFontName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFont_property.mFontName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardText_fontName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFont_property.mFontName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardText_fontName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -564,29 +513,13 @@ final class BoardText : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mLayer_property_selection.kind ()
-        kind &= unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
-        kind &= unwSelf.mText_property_selection.kind ()
-        kind &= unwSelf.mFontSize_property_selection.kind ()
-        kind &= unwSelf.mFont_property.descriptor_property_selection.kind ()
-        kind &= unwSelf.mHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mVerticalAlignment_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
-        kind &= unwSelf.mWeight_property_selection.kind ()
-        kind &= unwSelf.mOblique_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mLayer_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+          return .single (transient_BoardText_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mLayer_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mText_property_selection, unwSelf.mFontSize_property_selection, unwSelf.mFont_property.descriptor_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mRotation_property_selection, unwSelf.mWeight_property_selection, unwSelf.mOblique_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_BoardText_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

@@ -224,20 +224,13 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mIsNC_property_selection.kind ()
-        kind &= unwSelf.mPinInstance_none_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_none_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_PadProxyInDevice_isConnected (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_none_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PadProxyInDevice_isConnected (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -248,19 +241,13 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPinInstance_property.symbolName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPinInstance_property.symbolName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PadProxyInDevice_symbolName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPinInstance_property.symbolName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PadProxyInDevice_symbolName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

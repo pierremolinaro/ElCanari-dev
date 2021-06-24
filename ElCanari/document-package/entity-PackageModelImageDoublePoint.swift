@@ -271,26 +271,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mFirstX_property_selection.kind ()
-        kind &= unwSelf.mFirstY_property_selection.kind ()
-        kind &= unwSelf.mFirstColor_property_selection.kind ()
-        kind &= unwSelf.mSecondDx_property_selection.kind ()
-        kind &= unwSelf.mSecondDy_property_selection.kind ()
-        kind &= unwSelf.mSecondColor_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mPointsAreLocked_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mFirstColor_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mSecondColor_property_selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection, unwSelf.mRoot_property.mPointsAreLocked_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_PackageModelImageDoublePoint_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mFirstColor_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mSecondColor_property_selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection, unwSelf.mRoot_property.mPointsAreLocked_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackageModelImageDoublePoint_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -307,23 +294,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mFirstX_property_selection.kind ()
-        kind &= unwSelf.mFirstY_property_selection.kind ()
-        kind &= unwSelf.mSecondDx_property_selection.kind ()
-        kind &= unwSelf.mSecondDy_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_PackageModelImageDoublePoint_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFirstX_property_selection, unwSelf.mFirstY_property_selection, unwSelf.mSecondDx_property_selection, unwSelf.mSecondDy_property_selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_PackageModelImageDoublePoint_selectionDisplay (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

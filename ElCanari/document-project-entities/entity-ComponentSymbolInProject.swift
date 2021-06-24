@@ -651,19 +651,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponent_property.componentName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.componentName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ComponentSymbolInProject_componentName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.componentName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_componentName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -673,19 +667,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponent_property.deviceName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.deviceName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ComponentSymbolInProject_deviceName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.deviceName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_deviceName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -695,29 +683,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mRotation_property_selection.kind ()
-        kind &= unwSelf.mMirror_property_selection.kind ()
-        kind &= unwSelf.componentName_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.mComponentValue_property_selection.kind ()
-        kind &= unwSelf.mComponent_property.deviceSymbolDictionary_property_selection.kind ()
-        kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
-        kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
-        kind &= unwSelf.mCenterX_property_selection.kind ()
-        kind &= unwSelf.mCenterY_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        kind &= unwSelf.mPoints_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, preferences_pinNameFont_property_selection, unwSelf.mPoints_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+          return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, preferences_pinNameFont_property_selection, unwSelf.mPoints_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -737,19 +709,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mComponent_property.pinPadAssignments_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponent_property.pinPadAssignments_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ComponentSymbolInProject_pinPadAssignments (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponent_property.pinPadAssignments_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_pinPadAssignments (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -759,28 +725,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = preferences_pinNameFont_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentNameOffsetX_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentNameOffsetY_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValue_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValueOffsetX_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
-        kind &= unwSelf.symbolInfo_property_selection.kind ()
-        kind &= preferences_symbolColorForSchematic_property_selection.kind ()
-        kind &= unwSelf.mSymbolInstanceName_property_selection.kind ()
-        kind &= unwSelf.mSymbolTypeName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_pinNameFont_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, preferences_symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+          return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_pinNameFont_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, preferences_symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -799,27 +750,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = preferences_pinNameFont_property_selection.kind ()
-        kind &= preferences_schematicBackColor_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentNameOffsetX_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentNameOffsetY_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValue_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValueOffsetX_property_selection.kind ()
-        kind &= unwSelf.mDisplayComponentValueOffsetY_property_selection.kind ()
-        kind &= unwSelf.symbolInfo_property_selection.kind ()
-        kind &= unwSelf.mRotation_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_pinNameFont_property_selection, preferences_schematicBackColor_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, unwSelf.mRotation_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+          return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (preferences_pinNameFont_property_selection, preferences_schematicBackColor_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, unwSelf.mRotation_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -837,19 +774,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.isPlacedInSchematic_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.isPlacedInSchematic_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ComponentSymbolInProject_symbolInSchematic (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.isPlacedInSchematic_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ComponentSymbolInProject_symbolInSchematic (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

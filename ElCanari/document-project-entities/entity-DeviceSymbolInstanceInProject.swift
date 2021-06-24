@@ -218,20 +218,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: symbolAndTypeName
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSymbolInstanceName_property_selection.kind ()
-        kind &= unwSelf.mSymbolType_property.mSymbolTypeName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceSymbolInstanceInProject_symbolAndTypeName (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceSymbolInstanceInProject_symbolAndTypeName (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -242,19 +235,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolType_property.mSymbolTypeName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceSymbolInstanceInProject_symbolTypeName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolType_property.mSymbolTypeName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceSymbolInstanceInProject_symbolTypeName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -264,19 +251,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mSymbolType_property.mFilledBezierPath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolType_property.mFilledBezierPath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceSymbolInstanceInProject_filledBezierPath (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolType_property.mFilledBezierPath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceSymbolInstanceInProject_filledBezierPath (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -286,20 +267,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection.kind ()
-        kind &= preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_DeviceSymbolInstanceInProject_strokeBezierPath (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mSymbolType_property.mStrokeBezierPath_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceSymbolInstanceInProject_strokeBezierPath (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

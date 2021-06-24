@@ -351,19 +351,13 @@ import Cocoa
   //--- Atomic property: canDeleteCurrentCharacter
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.definedCharacters_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.definedCharacters_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontDocument_canDeleteCurrentCharacter (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.definedCharacters_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontDocument_canDeleteCurrentCharacter (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -377,19 +371,13 @@ import Cocoa
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontDocument_noIssue (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontDocument_noIssue (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -403,19 +391,13 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontDocument_mStatusImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontDocument_mStatusImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -429,19 +411,13 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontDocument_mStatusMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontDocument_mStatusMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -455,19 +431,13 @@ import Cocoa
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontDocument_mMetadataStatus (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontDocument_mMetadataStatus (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -533,7 +503,6 @@ import Cocoa
         computeFunction: .id (self.canDeleteCurrentCharacter_property),
         outlet: self.mDeleteCurrentCharacterButton
       )
-      self.canDeleteCurrentCharacter_property.addEBObserver (controller)
       self.mController_mDeleteCurrentCharacterButton_enabled = controller
     }
     do{
@@ -541,7 +510,6 @@ import Cocoa
         computeFunction: .id (self.noIssue_property),
         outlet: self.mIssueTableView
       )
-      self.noIssue_property.addEBObserver (controller)
       self.mController_mIssueTableView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
@@ -633,9 +601,7 @@ import Cocoa
     self.mIssueTextField?.unbind_valueObserver ()
     self.commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.canDeleteCurrentCharacter_property.removeEBObserver (self.mController_mDeleteCurrentCharacterButton_enabled!)
     self.mController_mDeleteCurrentCharacterButton_enabled = nil
-    self.noIssue_property.removeEBObserver (self.mController_mIssueTableView_hidden!)
     self.mController_mIssueTableView_hidden = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mSelectedCharacterController

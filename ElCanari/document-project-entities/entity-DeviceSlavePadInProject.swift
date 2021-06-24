@@ -297,26 +297,13 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mCenterX_property_selection.kind ()
-        kind &= unwSelf.mCenterY_property_selection.kind ()
-        kind &= unwSelf.mWidth_property_selection.kind ()
-        kind &= unwSelf.mHeight_property_selection.kind ()
-        kind &= unwSelf.mHoleWidth_property_selection.kind ()
-        kind &= unwSelf.mHoleHeight_property_selection.kind ()
-        kind &= unwSelf.mShape_property_selection.kind ()
-        kind &= unwSelf.mStyle_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_DeviceSlavePadInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_DeviceSlavePadInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

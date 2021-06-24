@@ -314,23 +314,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.myModel_property.modelWidth_property_selection.kind ()
-        kind &= unwSelf.myModel_property.modelHeight_property_selection.kind ()
-        kind &= unwSelf.instanceRotation_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_MergerBoardInstance_instanceRect (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_MergerBoardInstance_instanceRect (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -344,19 +334,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: modelName
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.myModel_property.name_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.myModel_property.name_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerBoardInstance_modelName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.myModel_property.name_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerBoardInstance_modelName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -366,19 +350,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: boardLimitWidth
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.myModel_property.modelLimitWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.myModel_property.modelLimitWidth_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerBoardInstance_boardLimitWidth (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.myModel_property.modelLimitWidth_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerBoardInstance_boardLimitWidth (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -388,19 +366,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.instanceRect_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.instanceRect_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerBoardInstance_selectionDisplay (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.instanceRect_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerBoardInstance_selectionDisplay (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -410,24 +382,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.myModel_property.modelWidth_property_selection.kind ()
-        kind &= unwSelf.myModel_property.modelHeight_property_selection.kind ()
-        kind &= unwSelf.instanceRotation_property_selection.kind ()
-        kind &= unwSelf.myModel_property.imageForInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_MergerBoardInstance_objectDisplay (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_MergerBoardInstance_objectDisplay (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

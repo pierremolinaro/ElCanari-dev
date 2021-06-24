@@ -362,19 +362,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mNetClassName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNetClass_property.mNetClassName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_netClassName (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mNetClassName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_netClassName (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -384,19 +378,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mTrackWidth_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNetClass_property.mTrackWidth_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_netClassTrackWidth (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mTrackWidth_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_netClassTrackWidth (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -406,19 +394,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mViaHoleDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNetClass_property.mViaHoleDiameter_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_netClassViaHoleDiameter (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mViaHoleDiameter_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_netClassViaHoleDiameter (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -428,19 +410,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mViaPadDiameter_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNetClass_property.mViaPadDiameter_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_netClassViaPadDiameter (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mViaPadDiameter_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_netClassViaPadDiameter (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -450,19 +426,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mNetClass_property.mNetClassColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNetClass_property.mNetClassColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_wireColor (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNetClass_property.mNetClassColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_wireColor (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -472,19 +442,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: netSchematicPointsInfo
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPoints_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mPoints_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_netSchematicPointsInfo (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mPoints_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_netSchematicPointsInfo (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -494,19 +458,13 @@ final class NetInProject : EBManagedObject,
   //--- Atomic property: trackCount
     self.trackCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mTracks_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mTracks_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetInProject_trackCount (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mTracks_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_NetInProject_trackCount (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

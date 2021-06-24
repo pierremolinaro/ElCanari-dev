@@ -319,19 +319,13 @@ import Cocoa
   //--- Atomic property: mGeneratedFileCountString
     self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkDocument_mGeneratedFileCountString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_ArtworkDocument_mGeneratedFileCountString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -345,20 +339,13 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
-        kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ArtworkDocument_mStatusImage (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ArtworkDocument_mStatusImage (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -373,20 +360,13 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
-        kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_ArtworkDocument_mStatusMessage (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_ArtworkDocument_mStatusMessage (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -460,7 +440,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mDataController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mRemoveGenerationFileButton
       )
-      self.mDataController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mRemoveGenerationFileButton_enabled = controller
     }
     do{
@@ -468,7 +447,6 @@ import Cocoa
         computeFunction: .not (.id (self.mDataSelection.drawPadHolesInPDF_property)),
         outlet: self.mPadHoleDefinitionView
       )
-      self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
       self.mController_mPadHoleDefinitionView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
@@ -564,9 +542,7 @@ import Cocoa
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
   //--------------------------- Unbind multiple bindings
-    self.mDataController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveGenerationFileButton_enabled!)
     self.mController_mRemoveGenerationFileButton_enabled = nil
-    self.mDataSelection.drawPadHolesInPDF_property.removeEBObserver (self.mController_mPadHoleDefinitionView_hidden!)
     self.mController_mPadHoleDefinitionView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDataController.unbind_tableView (self.mDataTableView)

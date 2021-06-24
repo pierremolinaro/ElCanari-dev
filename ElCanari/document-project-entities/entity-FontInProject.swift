@@ -338,19 +338,13 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mFontVersion_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mFontVersion_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_versionString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mFontVersion_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontInProject_versionString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -360,19 +354,13 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDescriptiveString_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mDescriptiveString_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_FontInProject_sizeString (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mDescriptiveString_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontInProject_sizeString (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -382,20 +370,13 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mNominalSize_property_selection.kind ()
-        kind &= unwSelf.mDescriptiveString_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mNominalSize_property_selection, unwSelf.mDescriptiveString_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_FontInProject_descriptor (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mNominalSize_property_selection, unwSelf.mDescriptiveString_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_FontInProject_descriptor (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -406,20 +387,13 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mComponentNames_property.count_property_selection.kind ()
-        kind &= unwSelf.mComponentValues_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mComponentNames_property.count_property_selection, unwSelf.mComponentValues_property.count_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_FontInProject_canRemoveFont (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mComponentNames_property.count_property_selection, unwSelf.mComponentValues_property.count_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_FontInProject_canRemoveFont (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

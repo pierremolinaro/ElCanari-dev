@@ -734,19 +734,13 @@ import Cocoa
   //--- Atomic property: documentFileNameOk
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.documentFilePath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_documentFileNameOk (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_documentFileNameOk (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -760,19 +754,13 @@ import Cocoa
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.documentFilePath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_documentIsUnnamed (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_documentIsUnnamed (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -786,19 +774,13 @@ import Cocoa
   //--- Atomic property: importArtworkButtonTitle
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.mArtworkName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.mArtworkName_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.mArtworkName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -812,23 +794,13 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
-        kind &= unwSelf.rootObject.boardRect_property_selection.kind ()
-        kind &= unwSelf.rootObject.boardDisplayRect_property_selection.kind ()
-        kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
-        kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.overlapingArrangment_property_selection, unwSelf.rootObject.boardRect_property_selection, unwSelf.rootObject.boardDisplayRect_property_selection, unwSelf.rootObject.boardInstances_property_selection, unwSelf.rootObject.boardInstances_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_MergerDocument_issues (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.overlapingArrangment_property_selection, unwSelf.rootObject.boardRect_property_selection, unwSelf.rootObject.boardDisplayRect_property_selection, unwSelf.rootObject.boardInstances_property_selection, unwSelf.rootObject.boardInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_MergerDocument_issues (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -846,19 +818,13 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_mStatusImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_mStatusImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -872,19 +838,13 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_mStatusMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_mStatusMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -898,19 +858,13 @@ import Cocoa
   //--- Atomic property: incorrectDocumentFileErrorMessage
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.documentFilePath_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1088,7 +1042,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.selectedPageIndex_property), .le, .literalInt (1)),
         outlet: self.showPrefsForSettingMergerDisplayButton
       )
-      self.rootObject.selectedPageIndex_property.addEBObserver (controller)
       self.mController_showPrefsForSettingMergerDisplayButton_enabled = controller
     }
     do{
@@ -1096,7 +1049,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.selectedPageIndex_property), .gt, .literalInt (1)),
         outlet: self.mDisplaySettingView
       )
-      self.rootObject.selectedPageIndex_property.addEBObserver (controller)
       self.mController_mDisplaySettingView_hidden = controller
     }
     do{
@@ -1104,7 +1056,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)),
         outlet: self.mNoModelMessage
       )
-      self.rootObject.boardModels_property.count_property.addEBObserver (controller)
       self.mController_mNoModelMessage_hidden = controller
     }
     do{
@@ -1112,8 +1063,6 @@ import Cocoa
         computeFunction: .boolcmp (.intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))),
         outlet: self.removeBoardModelButton
       )
-      self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
-      self.mBoardModelSelection.instanceCount_property.addEBObserver (controller)
       self.mController_removeBoardModelButton_enabled = controller
     }
     do{
@@ -1121,7 +1070,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.updateBoardModelButton
       )
-      self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_updateBoardModelButton_enabled = controller
     }
     do{
@@ -1129,7 +1077,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.automaticBoardSize_property)),
         outlet: self.mAutomaticBoardSizeView
       )
-      self.rootObject.automaticBoardSize_property.addEBObserver (controller)
       self.mController_mAutomaticBoardSizeView_hidden = controller
     }
     do{
@@ -1137,7 +1084,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.automaticBoardSize_property),
         outlet: self.mManualBoardSizeView
       )
-      self.rootObject.automaticBoardSize_property.addEBObserver (controller)
       self.mController_mManualBoardSizeView_hidden = controller
     }
     do{
@@ -1145,7 +1091,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)),
         outlet: self.mEmptyBoardMessage
       )
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       self.mController_mEmptyBoardMessage_hidden = controller
     }
     do{
@@ -1153,7 +1098,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)),
         outlet: self.mOverlapSwitch
       )
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       self.mController_mOverlapSwitch_enabled = controller
     }
     do{
@@ -1161,7 +1105,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveRightButton
       )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mMoveRightButton_enabled = controller
     }
     do{
@@ -1169,7 +1112,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveLeftButton
       )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mMoveLeftButton_enabled = controller
     }
     do{
@@ -1177,7 +1119,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveUpButton
       )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mMoveUpButton_enabled = controller
     }
     do{
@@ -1185,7 +1126,6 @@ import Cocoa
         computeFunction: .intcmp (.id (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)),
         outlet: self.mMoveDownButton
       )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mMoveDownButton_enabled = controller
     }
     do{
@@ -1193,7 +1133,6 @@ import Cocoa
         computeFunction: .not (.id (self.rootObject.mArtwork_none)),
         outlet: self.mNoArtworkMessage
       )
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mNoArtworkMessage_hidden = controller
     }
     do{
@@ -1201,7 +1140,6 @@ import Cocoa
         computeFunction: .id (self.documentFileNameOk_property),
         outlet: self.mDangerView
       )
-      self.documentFileNameOk_property.addEBObserver (controller)
       self.mController_mDangerView_hidden = controller
     }
     do{
@@ -1209,9 +1147,6 @@ import Cocoa
         computeFunction: .boolcmp (.boolcmp (.not (.id (self.rootObject.mArtwork_none)), .and, .intcmp (.id (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.id (self.documentIsUnnamed_property))),
         outlet: self.mGenerateProductFilesActionButton
       )
-      self.documentIsUnnamed_property.addEBObserver (controller)
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
     do{
@@ -1219,7 +1154,6 @@ import Cocoa
         computeFunction: .id (self.rootObject.mArtwork_none),
         outlet: self.mArtworkSettingsTabView
       )
-      self.rootObject.mArtwork_none.addEBObserver (controller)
       self.mController_mArtworkSettingsTabView_hidden = controller
     }
     if LOG_OPERATION_DURATION {
@@ -1436,42 +1370,22 @@ import Cocoa
     self.mCommentTextView?.unbind_valueObserver ()
     self.mArtworkVersionTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
-    self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
     self.mController_showPrefsForSettingMergerDisplayButton_enabled = nil
-    self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_mDisplaySettingView_hidden!)
     self.mController_mDisplaySettingView_hidden = nil
-    self.rootObject.boardModels_property.count_property.removeEBObserver (self.mController_mNoModelMessage_hidden!)
     self.mController_mNoModelMessage_hidden = nil
-    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
-    self.mBoardModelSelection.instanceCount_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
     self.mController_removeBoardModelButton_enabled = nil
-    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_updateBoardModelButton_enabled!)
     self.mController_updateBoardModelButton_enabled = nil
-    self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mAutomaticBoardSizeView_hidden!)
     self.mController_mAutomaticBoardSizeView_hidden = nil
-    self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mManualBoardSizeView_hidden!)
     self.mController_mManualBoardSizeView_hidden = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mEmptyBoardMessage_hidden!)
     self.mController_mEmptyBoardMessage_hidden = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mOverlapSwitch_enabled!)
     self.mController_mOverlapSwitch_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveRightButton_enabled!)
     self.mController_mMoveRightButton_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveLeftButton_enabled!)
     self.mController_mMoveLeftButton_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveUpButton_enabled!)
     self.mController_mMoveUpButton_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveDownButton_enabled!)
     self.mController_mMoveDownButton_enabled = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
     self.mController_mNoArtworkMessage_hidden = nil
-    self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
     self.mController_mDangerView_hidden = nil
-    self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.rootObject.mArtwork_none.removeEBObserver (self.mController_mArtworkSettingsTabView_hidden!)
     self.mController_mArtworkSettingsTabView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)

@@ -473,26 +473,13 @@ final class PackageArc : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xCenter_property_selection.kind ()
-        kind &= unwSelf.yCenter_property_selection.kind ()
-        kind &= unwSelf.radius_property_selection.kind ()
-        kind &= unwSelf.startAngle_property_selection.kind ()
-        kind &= unwSelf.arcAngle_property_selection.kind ()
-        kind &= unwSelf.pathIsClosed_property_selection.kind ()
-        kind &= unwSelf.startTangent_property_selection.kind ()
-        kind &= unwSelf.endTangent_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+          return .single (transient_PackageArc_strokeBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackageArc_strokeBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -509,21 +496,13 @@ final class PackageArc : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.strokeBezierPath_property_selection.kind ()
-        kind &= preferences_packageColor_property_selection.kind ()
-        kind &= preferences_packageDrawingWidthMultipliedByTen_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_PackageArc_objectDisplay (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PackageArc_objectDisplay (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -535,27 +514,13 @@ final class PackageArc : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xCenter_property_selection.kind ()
-        kind &= unwSelf.yCenter_property_selection.kind ()
-        kind &= unwSelf.radius_property_selection.kind ()
-        kind &= unwSelf.startAngle_property_selection.kind ()
-        kind &= unwSelf.arcAngle_property_selection.kind ()
-        kind &= unwSelf.startTangent_property_selection.kind ()
-        kind &= unwSelf.endTangent_property_selection.kind ()
-        kind &= unwSelf.pathIsClosed_property_selection.kind ()
-        kind &= unwSelf.knobSize_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.knobSize_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+          return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.knobSize_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
-            return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -573,24 +538,13 @@ final class PackageArc : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.xCenter_property_selection.kind ()
-        kind &= unwSelf.yCenter_property_selection.kind ()
-        kind &= unwSelf.radius_property_selection.kind ()
-        kind &= unwSelf.startAngle_property_selection.kind ()
-        kind &= unwSelf.arcAngle_property_selection.kind ()
-        kind &= unwSelf.pathIsClosed_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_PackageArc_issues (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_PackageArc_issues (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

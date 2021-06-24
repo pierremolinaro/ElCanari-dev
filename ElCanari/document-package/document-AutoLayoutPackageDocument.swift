@@ -3697,19 +3697,13 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageColor_property.addEBObserver (self.addSegmentButtonImage_property)
@@ -3719,19 +3713,13 @@ import Cocoa
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageColor_property.addEBObserver (self.addBezierButtonImage_property)
@@ -3741,19 +3729,13 @@ import Cocoa
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageColor_property.addEBObserver (self.addOvalButtonImage_property)
@@ -3763,19 +3745,13 @@ import Cocoa
     }
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageColor_property.addEBObserver (self.addArcButtonImage_property)
@@ -3785,19 +3761,13 @@ import Cocoa
     }
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
-        let kind = preferences_frontSidePadColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_frontSidePadColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_frontSidePadColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_frontSidePadColor_property.addEBObserver (self.addMasterPadButtonImage_property)
@@ -3807,19 +3777,13 @@ import Cocoa
     }
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
-        let kind = preferences_frontSidePadColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_frontSidePadColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_frontSidePadColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_frontSidePadColor_property.addEBObserver (self.addSlavePadButtonImage_property)
@@ -3829,19 +3793,13 @@ import Cocoa
     }
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageGuideColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageGuideColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageGuideColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageGuideColor_property.addEBObserver (self.addGuideButtonImage_property)
@@ -3851,19 +3809,13 @@ import Cocoa
     }
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
-        let kind = preferences_packageDimensionColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_packageDimensionColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_packageDimensionColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_packageDimensionColor_property.addEBObserver (self.addDimensionButtonImage_property)
@@ -3873,19 +3825,13 @@ import Cocoa
     }
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
-        let kind = preferences_padZoneColor_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (preferences_padZoneColor_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (preferences_padZoneColor_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
     }
     preferences_padZoneColor_property.addEBObserver (self.addZoneButtonImage_property)
@@ -3900,19 +3846,13 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -3926,19 +3866,13 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_metadataStatus (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_metadataStatus (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -3952,19 +3886,13 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.rootObject.issues_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

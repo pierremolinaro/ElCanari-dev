@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericReadOnlyProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBGenericReadOnlyProperty <T> : EBAbstractProperty, EBObservableObjectProtocol where T : Equatable {
+class EBGenericReadOnlyProperty <T : Equatable> : EBAbstractProperty, EBObservableObjectProtocol {
 
   //····················································································································
 

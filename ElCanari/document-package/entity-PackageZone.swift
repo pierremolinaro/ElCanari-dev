@@ -616,28 +616,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.zoneName_property_selection.kind ()
-        kind &= preferences_padZoneFont_property_selection.kind ()
-        kind &= preferences_padZoneColor_property_selection.kind ()
-        kind &= unwSelf.displayZoneName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_padZoneColor_property_selection, unwSelf.displayZoneName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+          return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_padZoneColor_property_selection, unwSelf.displayZoneName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -656,25 +641,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.zoneName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+          return .single (transient_PackageZone_issues (v0, v1, v2, v3, v4, v5, v6))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_PackageZone_issues (v0, v1, v2, v3, v4, v5, v6))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -690,22 +663,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: rect
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_PackageZone_rect (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_PackageZone_rect (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -718,30 +682,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.xName_property_selection.kind ()
-        kind &= unwSelf.yName_property_selection.kind ()
-        kind &= unwSelf.zoneName_property_selection.kind ()
-        kind &= preferences_padZoneFont_property_selection.kind ()
-        kind &= preferences_packageBackgroundColor_property_selection.kind ()
-        kind &= preferences_padZoneColor_property_selection.kind ()
-        kind &= unwSelf.knobSize_property_selection.kind ()
-        kind &= unwSelf.displayZoneName_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_packageBackgroundColor_property_selection, preferences_padZoneColor_property_selection, unwSelf.knobSize_property_selection, unwSelf.displayZoneName_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+          return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, preferences_padZoneFont_property_selection, preferences_packageBackgroundColor_property_selection, preferences_padZoneColor_property_selection, unwSelf.knobSize_property_selection, unwSelf.displayZoneName_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
-            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -762,19 +709,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: forbiddenPadArray
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.forbiddenPadNumbers_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.forbiddenPadNumbers_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageZone_forbiddenPadArray (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.forbiddenPadNumbers_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageZone_forbiddenPadArray (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -784,19 +725,13 @@ final class PackageZone : PackageObject,
   //--- Atomic property: emptyForbiddenPadArray
     self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.forbiddenPadNumbers_property.count_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.forbiddenPadNumbers_property.count_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_PackageZone_emptyForbiddenPadArray (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.forbiddenPadNumbers_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageZone_emptyForbiddenPadArray (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

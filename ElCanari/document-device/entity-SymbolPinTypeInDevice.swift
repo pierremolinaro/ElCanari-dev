@@ -384,24 +384,13 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //--- Atomic property: nameShape
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mXName_property_selection.kind ()
-        kind &= unwSelf.mYName_property_selection.kind ()
-        kind &= unwSelf.mName_property_selection.kind ()
-        kind &= unwSelf.mNameHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mPinNameIsDisplayedInSchematics_property_selection.kind ()
-        kind &= preferences_pinNameFont_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, preferences_pinNameFont_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+          return .single (transient_SymbolPinTypeInDevice_nameShape (v0, v1, v2, v3, v4, v5))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, preferences_pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolPinTypeInDevice_nameShape (v0, v1, v2, v3, v4, v5))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty

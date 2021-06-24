@@ -1423,20 +1423,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.boardModels_property_selection.kind ()
-        kind &= unwSelf.boardModels_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_MergerRoot_modelNames (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_MergerRoot_modelNames (v0, v1))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1447,22 +1440,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.automaticBoardSize_property_selection.kind ()
-        kind &= unwSelf.boardManualWidth_property_selection.kind ()
-        kind &= unwSelf.boardManualHeight_property_selection.kind ()
-        kind &= unwSelf.boardInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1475,21 +1459,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardDisplayRect
     self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.boardManualWidth_property_selection.kind ()
-        kind &= unwSelf.boardManualHeight_property_selection.kind ()
-        kind &= unwSelf.boardInstances_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1501,19 +1477,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardRect_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.boardRect_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_boardWidth (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.boardRect_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerRoot_boardWidth (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1523,19 +1493,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardHeight
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardRect_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.boardRect_property_selection) {
+        case (.single (let v0)) :
+          return .single (transient_MergerRoot_boardHeight (v0))
+        case (.multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.boardRect_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerRoot_boardHeight (v0))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
@@ -1547,22 +1511,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.boardRect_property_selection.kind ()
-        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
-        kind &= preferences_mergerBoardViewDisplayBoardLimits_property_selection.kind ()
-        kind &= preferences_mergerColorBoardLimits_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
+        switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, preferences_mergerBoardViewDisplayBoardLimits_property_selection, preferences_mergerColorBoardLimits_property_selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
           return .multiple
-        case .single :
-          switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, preferences_mergerBoardViewDisplayBoardLimits_property_selection, preferences_mergerColorBoardLimits_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
+        default :
+          return .empty
         }
       }else{
         return .empty
