@@ -260,7 +260,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mInstanceName_property.addEBObserver (self.symbolQualifiedName_property)
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolQualifiedName_property)
+    self.mType_property.mTypeName_property.addEBObserver (self.symbolQualifiedName_property)
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -276,7 +276,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mTypeName (self.symbolTypeName_property)
+    self.mType_property.mTypeName_property.addEBObserver (self.symbolTypeName_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -292,9 +292,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.selectionDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mType_property.mFilledBezierPath_property.addEBObserver (self.selectionDisplay_property)
+    self.mType_property.pinNameShape_property.addEBObserver (self.selectionDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.selectionDisplay_property)
     self.symbolQualifiedName_property.addEBObserver (self.selectionDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
@@ -333,9 +333,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
-    self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property)
+    self.mType_property.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.mFilledBezierPath_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.pinNameShape_property.addEBObserver (self.objectDisplay_property)
     self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property)
     self.symbolQualifiedName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)

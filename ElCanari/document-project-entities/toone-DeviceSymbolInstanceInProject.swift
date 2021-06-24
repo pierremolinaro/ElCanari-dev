@@ -16,28 +16,18 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
- //     oldValue.symbolAndTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
       oldValue.symbolAndTypeName_property.removeEBObserver (self.symbolAndTypeName_property) // Transient property
- //     oldValue.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
       oldValue.symbolTypeName_property.removeEBObserver (self.symbolTypeName_property) // Transient property
- //     oldValue.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
       oldValue.filledBezierPath_property.removeEBObserver (self.filledBezierPath_property) // Transient property
- //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
-  //    newValue.symbolAndTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
       newValue.symbolAndTypeName_property.addEBObserver (self.symbolAndTypeName_property) // Transient property
-  //    newValue.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
       newValue.symbolTypeName_property.addEBObserver (self.symbolTypeName_property) // Transient property
-  //    newValue.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
       newValue.filledBezierPath_property.addEBObserver (self.filledBezierPath_property) // Transient property
-  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //····················································································································
 
   final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.mSymbolInstanceName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
-    self.symbolAndTypeName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
     self.symbolAndTypeName_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //····················································································································
 
   final let symbolTypeName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
-    self.symbolTypeName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.filledBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
     self.filledBezierPath_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //····················································································································
 
   final let strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.strokeBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

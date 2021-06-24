@@ -184,7 +184,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.location_property)
+    self.mPoint_property.location_property.addEBObserver (self.location_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -200,7 +200,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netName (self.netName_property)
+    self.mPoint_property.netName_property.addEBObserver (self.netName_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -216,7 +216,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mPoint_property.location_property.addEBObserver (self.selectionDisplay_property)
     self.netName_property.addEBObserver (self.selectionDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
@@ -235,7 +235,7 @@ final class LabelInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mPoint_property.netClassName_property.addEBObserver (self.netClassName_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -253,7 +253,7 @@ final class LabelInSchematic : SchematicObject,
     }
     preferences_symbolColorForSchematic_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mPoint_property.location_property.addEBObserver (self.objectDisplay_property)
     self.netName_property.addEBObserver (self.objectDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)

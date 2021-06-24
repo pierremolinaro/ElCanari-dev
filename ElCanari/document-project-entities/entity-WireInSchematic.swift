@@ -197,10 +197,10 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_wireColor (self.objectDisplay_property)
+    self.mP1_property.wireColor_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
-    self.mP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mP1_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mP2_property.location_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -216,10 +216,10 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mP1_property.addEBObserverOf_canMove (self.selectionDisplay_property)
-    self.mP2_property.addEBObserverOf_location (self.selectionDisplay_property)
-    self.mP2_property.addEBObserverOf_canMove (self.selectionDisplay_property)
+    self.mP1_property.location_property.addEBObserver (self.selectionDisplay_property)
+    self.mP1_property.canMove_property.addEBObserver (self.selectionDisplay_property)
+    self.mP2_property.location_property.addEBObserver (self.selectionDisplay_property)
+    self.mP2_property.canMove_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -235,7 +235,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_netName (self.netName_property)
+    self.mP1_property.netName_property.addEBObserver (self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -251,7 +251,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mP1_property.netClassName_property.addEBObserver (self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -267,7 +267,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserverOf_hasNet (self.hasNet_property)
+    self.mP1_property.hasNet_property.addEBObserver (self.hasNet_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

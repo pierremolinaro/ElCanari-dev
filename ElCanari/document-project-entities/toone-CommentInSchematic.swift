@@ -16,44 +16,26 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mColor_property.removeEBObserversFrom (&self.mObserversOf_mColor) // Stored property
       oldValue.mColor_property.removeEBObserver (self.mColor_property) // Stored property
- //     oldValue.mSize_property.removeEBObserversFrom (&self.mObserversOf_mSize) // Stored property
       oldValue.mSize_property.removeEBObserver (self.mSize_property) // Stored property
- //     oldValue.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
       oldValue.mHorizontalAlignment_property.removeEBObserver (self.mHorizontalAlignment_property) // Stored property
- //     oldValue.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
       oldValue.mVerticalAlignment_property.removeEBObserver (self.mVerticalAlignment_property) // Stored property
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.mComment_property.removeEBObserversFrom (&self.mObserversOf_mComment) // Stored property
       oldValue.mComment_property.removeEBObserver (self.mComment_property) // Stored property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mColor_property.addEBObserversFrom (&self.mObserversOf_mColor) // Stored property
       newValue.mColor_property.addEBObserver (self.mColor_property) // Stored property
- //     newValue.mSize_property.addEBObserversFrom (&self.mObserversOf_mSize) // Stored property
       newValue.mSize_property.addEBObserver (self.mSize_property) // Stored property
- //     newValue.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
       newValue.mHorizontalAlignment_property.addEBObserver (self.mHorizontalAlignment_property) // Stored property
- //     newValue.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
       newValue.mVerticalAlignment_property.addEBObserver (self.mVerticalAlignment_property) // Stored property
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
- //     newValue.mComment_property.addEBObserversFrom (&self.mObserversOf_mComment) // Stored property
       newValue.mComment_property.addEBObserver (self.mComment_property) // Stored property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
     }
   }
@@ -63,12 +45,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
 
   final let mColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mColor (_ inObserver : EBEvent) {
-    self.mColor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -84,12 +60,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mSize (_ inObserver : EBEvent) {
-    self.mSize_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSize (_ inObserver : EBEvent) {
     self.mSize_property.removeEBObserver (inObserver)
   }
@@ -99,12 +69,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
 
   final let mHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
-    self.mHorizontalAlignment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -120,12 +84,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
-    self.mVerticalAlignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
     self.mVerticalAlignment_property.removeEBObserver (inObserver)
   }
@@ -135,12 +93,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
 
   final let mX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -156,12 +108,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.mY_property.removeEBObserver (inObserver)
   }
@@ -171,12 +117,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
 
   final let mComment_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mComment (_ inObserver : EBEvent) {
-    self.mComment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -192,12 +132,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -207,12 +141,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

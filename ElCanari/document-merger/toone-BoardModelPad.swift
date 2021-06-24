@@ -16,32 +16,20 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
       oldValue.y_property.removeEBObserver (self.y_property) // Stored property
- //     oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
       oldValue.width_property.removeEBObserver (self.width_property) // Stored property
- //     oldValue.height_property.removeEBObserversFrom (&self.mObserversOf_height) // Stored property
       oldValue.height_property.removeEBObserver (self.height_property) // Stored property
- //     oldValue.shape_property.removeEBObserversFrom (&self.mObserversOf_shape) // Stored property
       oldValue.shape_property.removeEBObserver (self.shape_property) // Stored property
- //     oldValue.rotation_property.removeEBObserversFrom (&self.mObserversOf_rotation) // Stored property
       oldValue.rotation_property.removeEBObserver (self.rotation_property) // Stored property
- //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
       oldValue.x_property.removeEBObserver (self.x_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
       newValue.y_property.addEBObserver (self.y_property) // Stored property
- //     newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
       newValue.width_property.addEBObserver (self.width_property) // Stored property
- //     newValue.height_property.addEBObserversFrom (&self.mObserversOf_height) // Stored property
       newValue.height_property.addEBObserver (self.height_property) // Stored property
- //     newValue.shape_property.addEBObserversFrom (&self.mObserversOf_shape) // Stored property
       newValue.shape_property.addEBObserver (self.shape_property) // Stored property
- //     newValue.rotation_property.addEBObserversFrom (&self.mObserversOf_rotation) // Stored property
       newValue.rotation_property.addEBObserver (self.rotation_property) // Stored property
- //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
       newValue.x_property.addEBObserver (self.x_property) // Stored property
     }
   }
@@ -51,12 +39,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //····················································································································
 
   final let y_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -72,12 +54,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
-    self.width_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.width_property.removeEBObserver (inObserver)
   }
@@ -87,12 +63,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //····················································································································
 
   final let height_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
-    self.height_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -108,12 +78,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
-    self.shape_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
     self.shape_property.removeEBObserver (inObserver)
   }
@@ -126,12 +90,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
 
   //····················································································································
 
-  final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
-    self.rotation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_rotation (_ inObserver : EBEvent) {
     self.rotation_property.removeEBObserver (inObserver)
   }
@@ -141,12 +99,6 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

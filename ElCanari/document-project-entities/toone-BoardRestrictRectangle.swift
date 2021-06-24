@@ -16,44 +16,26 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
       oldValue.mWidth_property.removeEBObserver (self.mWidth_property) // Stored property
- //     oldValue.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
       oldValue.mHeight_property.removeEBObserver (self.mHeight_property) // Stored property
- //     oldValue.mIsInFrontLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
       oldValue.mIsInFrontLayer_property.removeEBObserver (self.mIsInFrontLayer_property) // Stored property
- //     oldValue.mIsInBackLayer_property.removeEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
       oldValue.mIsInBackLayer_property.removeEBObserver (self.mIsInBackLayer_property) // Stored property
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
- //     newValue.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
       newValue.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
- //     newValue.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
       newValue.mHeight_property.addEBObserver (self.mHeight_property) // Stored property
- //     newValue.mIsInFrontLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInFrontLayer) // Stored property
       newValue.mIsInFrontLayer_property.addEBObserver (self.mIsInFrontLayer_property) // Stored property
- //     newValue.mIsInBackLayer_property.addEBObserversFrom (&self.mObserversOf_mIsInBackLayer) // Stored property
       newValue.mIsInBackLayer_property.addEBObserver (self.mIsInBackLayer_property) // Stored property
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   }
@@ -63,12 +45,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let mY_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -84,12 +60,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 
   //····················································································································
 
-  final func addEBObserverOf_mWidth (_ inObserver : EBEvent) {
-    self.mWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
     self.mWidth_property.removeEBObserver (inObserver)
   }
@@ -99,12 +69,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let mHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mHeight (_ inObserver : EBEvent) {
-    self.mHeight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -120,12 +84,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 
   //····················································································································
 
-  final func addEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
-    self.mIsInFrontLayer_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mIsInFrontLayer (_ inObserver : EBEvent) {
     self.mIsInFrontLayer_property.removeEBObserver (inObserver)
   }
@@ -135,12 +93,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let mIsInBackLayer_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mIsInBackLayer (_ inObserver : EBEvent) {
-    self.mIsInBackLayer_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -156,12 +108,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.mX_property.removeEBObserver (inObserver)
   }
@@ -171,12 +117,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -192,12 +132,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -207,12 +141,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

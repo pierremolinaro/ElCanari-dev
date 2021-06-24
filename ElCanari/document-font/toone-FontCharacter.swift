@@ -16,40 +16,24 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
       oldValue.codePoint_property.removeEBObserver (self.codePoint_property) // Stored property
- //     oldValue.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
       oldValue.advance_property.removeEBObserver (self.advance_property) // Stored property
- //     oldValue.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
       oldValue.mWarnsWhenNoSegment_property.removeEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
- //     oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
       oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
- //     oldValue.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
       oldValue.segmentArrayForDrawing_property.removeEBObserver (self.segmentArrayForDrawing_property) // Transient property
- //     oldValue.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
       oldValue.gerberCode_property.removeEBObserver (self.gerberCode_property) // Transient property
- //     oldValue.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
       oldValue.gerberCodeInstructionCountMessage_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
       newValue.codePoint_property.addEBObserver (self.codePoint_property) // Stored property
- //     newValue.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
       newValue.advance_property.addEBObserver (self.advance_property) // Stored property
- //     newValue.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
       newValue.mWarnsWhenNoSegment_property.addEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
- //     newValue.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
       newValue.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
-  //    newValue.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
       newValue.segmentArrayForDrawing_property.addEBObserver (self.segmentArrayForDrawing_property) // Transient property
-  //    newValue.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
       newValue.gerberCode_property.addEBObserver (self.gerberCode_property) // Transient property
-  //    newValue.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
       newValue.gerberCodeInstructionCountMessage_property.addEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
     }
   }
@@ -59,12 +43,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let codePoint_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
-    self.codePoint_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -80,12 +58,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
-    self.advance_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
     self.advance_property.removeEBObserver (inObserver)
   }
@@ -95,12 +67,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let mWarnsWhenNoSegment_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
-    self.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +82,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
-    self.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
   }
@@ -131,12 +91,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentListClass?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
-    self.segmentArrayForDrawing_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +106,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
-    self.gerberCode_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.gerberCode_property.removeEBObserver (inObserver)
   }
@@ -170,12 +118,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
-    self.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
   }
@@ -185,12 +127,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

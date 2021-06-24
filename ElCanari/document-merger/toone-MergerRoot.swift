@@ -16,108 +16,58 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
       oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
- //     oldValue.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
       oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
- //     oldValue.automaticBoardSize_property.removeEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
       oldValue.automaticBoardSize_property.removeEBObserver (self.automaticBoardSize_property) // Stored property
- //     oldValue.boardManualWidth_property.removeEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
       oldValue.boardManualWidth_property.removeEBObserver (self.boardManualWidth_property) // Stored property
- //     oldValue.boardManualHeight_property.removeEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
       oldValue.boardManualHeight_property.removeEBObserver (self.boardManualHeight_property) // Stored property
- //     oldValue.boardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
       oldValue.boardWidthUnit_property.removeEBObserver (self.boardWidthUnit_property) // Stored property
- //     oldValue.boardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
       oldValue.boardHeightUnit_property.removeEBObserver (self.boardHeightUnit_property) // Stored property
- //     oldValue.overlapingArrangment_property.removeEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
       oldValue.overlapingArrangment_property.removeEBObserver (self.overlapingArrangment_property) // Stored property
- //     oldValue.selectedBoardXUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
       oldValue.selectedBoardXUnit_property.removeEBObserver (self.selectedBoardXUnit_property) // Stored property
- //     oldValue.selectedBoardYUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
       oldValue.selectedBoardYUnit_property.removeEBObserver (self.selectedBoardYUnit_property) // Stored property
- //     oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
       oldValue.boardLimitWidth_property.removeEBObserver (self.boardLimitWidth_property) // Stored property
- //     oldValue.boardLimitWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
       oldValue.boardLimitWidthUnit_property.removeEBObserver (self.boardLimitWidthUnit_property) // Stored property
- //     oldValue.arrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
       oldValue.arrowMagnitude_property.removeEBObserver (self.arrowMagnitude_property) // Stored property
- //     oldValue.arrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
       oldValue.arrowMagnitudeUnit_property.removeEBObserver (self.arrowMagnitudeUnit_property) // Stored property
- //     oldValue.shiftArrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
       oldValue.shiftArrowMagnitude_property.removeEBObserver (self.shiftArrowMagnitude_property) // Stored property
- //     oldValue.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
       oldValue.shiftArrowMagnitudeUnit_property.removeEBObserver (self.shiftArrowMagnitudeUnit_property) // Stored property
- //     oldValue.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
- //     oldValue.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
       oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
- //     oldValue.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
- //     oldValue.modelNames_property.removeEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
       oldValue.modelNames_property.removeEBObserver (self.modelNames_property) // Transient property
- //     oldValue.boardRect_property.removeEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
       oldValue.boardRect_property.removeEBObserver (self.boardRect_property) // Transient property
- //     oldValue.boardDisplayRect_property.removeEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
       oldValue.boardDisplayRect_property.removeEBObserver (self.boardDisplayRect_property) // Transient property
- //     oldValue.boardWidth_property.removeEBObserversFrom (&self.mObserversOf_boardWidth) // Transient property
       oldValue.boardWidth_property.removeEBObserver (self.boardWidth_property) // Transient property
- //     oldValue.boardHeight_property.removeEBObserversFrom (&self.mObserversOf_boardHeight) // Transient property
       oldValue.boardHeight_property.removeEBObserver (self.boardHeight_property) // Transient property
- //     oldValue.boardOutlineRectDisplay_property.removeEBObserversFrom (&self.mObserversOf_boardOutlineRectDisplay) // Transient property
       oldValue.boardOutlineRectDisplay_property.removeEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
- //     newValue.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
       newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
- //     newValue.automaticBoardSize_property.addEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
       newValue.automaticBoardSize_property.addEBObserver (self.automaticBoardSize_property) // Stored property
- //     newValue.boardManualWidth_property.addEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
       newValue.boardManualWidth_property.addEBObserver (self.boardManualWidth_property) // Stored property
- //     newValue.boardManualHeight_property.addEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
       newValue.boardManualHeight_property.addEBObserver (self.boardManualHeight_property) // Stored property
- //     newValue.boardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
       newValue.boardWidthUnit_property.addEBObserver (self.boardWidthUnit_property) // Stored property
- //     newValue.boardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
       newValue.boardHeightUnit_property.addEBObserver (self.boardHeightUnit_property) // Stored property
- //     newValue.overlapingArrangment_property.addEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
       newValue.overlapingArrangment_property.addEBObserver (self.overlapingArrangment_property) // Stored property
- //     newValue.selectedBoardXUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
       newValue.selectedBoardXUnit_property.addEBObserver (self.selectedBoardXUnit_property) // Stored property
- //     newValue.selectedBoardYUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
       newValue.selectedBoardYUnit_property.addEBObserver (self.selectedBoardYUnit_property) // Stored property
- //     newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
       newValue.boardLimitWidth_property.addEBObserver (self.boardLimitWidth_property) // Stored property
- //     newValue.boardLimitWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
       newValue.boardLimitWidthUnit_property.addEBObserver (self.boardLimitWidthUnit_property) // Stored property
- //     newValue.arrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
       newValue.arrowMagnitude_property.addEBObserver (self.arrowMagnitude_property) // Stored property
- //     newValue.arrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
       newValue.arrowMagnitudeUnit_property.addEBObserver (self.arrowMagnitudeUnit_property) // Stored property
- //     newValue.shiftArrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
       newValue.shiftArrowMagnitude_property.addEBObserver (self.shiftArrowMagnitude_property) // Stored property
- //     newValue.shiftArrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
       newValue.shiftArrowMagnitudeUnit_property.addEBObserver (self.shiftArrowMagnitudeUnit_property) // Stored property
- //     newValue.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
       newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
- //     newValue.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
       newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
- //     newValue.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
-  //    newValue.modelNames_property.addEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
       newValue.modelNames_property.addEBObserver (self.modelNames_property) // Transient property
-  //    newValue.boardRect_property.addEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
       newValue.boardRect_property.addEBObserver (self.boardRect_property) // Transient property
-  //    newValue.boardDisplayRect_property.addEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
       newValue.boardDisplayRect_property.addEBObserver (self.boardDisplayRect_property) // Transient property
-  //    newValue.boardWidth_property.addEBObserversFrom (&self.mObserversOf_boardWidth) // Transient property
       newValue.boardWidth_property.addEBObserver (self.boardWidth_property) // Transient property
-  //    newValue.boardHeight_property.addEBObserversFrom (&self.mObserversOf_boardHeight) // Transient property
       newValue.boardHeight_property.addEBObserver (self.boardHeight_property) // Transient property
-  //    newValue.boardOutlineRectDisplay_property.addEBObserversFrom (&self.mObserversOf_boardOutlineRectDisplay) // Transient property
       newValue.boardOutlineRectDisplay_property.addEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   }
@@ -127,12 +77,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.selectedPageIndex_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -148,12 +92,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.zoom_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.zoom_property.removeEBObserver (inObserver)
   }
@@ -163,12 +101,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let automaticBoardSize_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    self.automaticBoardSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -184,12 +116,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    self.boardManualWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
     self.boardManualWidth_property.removeEBObserver (inObserver)
   }
@@ -199,12 +125,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardManualHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    self.boardManualHeight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -220,12 +140,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    self.boardWidthUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
     self.boardWidthUnit_property.removeEBObserver (inObserver)
   }
@@ -235,12 +149,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardHeightUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    self.boardHeightUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -256,12 +164,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    self.overlapingArrangment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
     self.overlapingArrangment_property.removeEBObserver (inObserver)
   }
@@ -271,12 +173,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let selectedBoardXUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    self.selectedBoardXUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -292,12 +188,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    self.selectedBoardYUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
     self.selectedBoardYUnit_property.removeEBObserver (inObserver)
   }
@@ -307,12 +197,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardLimitWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    self.boardLimitWidth_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -328,12 +212,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    self.boardLimitWidthUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
     self.boardLimitWidthUnit_property.removeEBObserver (inObserver)
   }
@@ -343,12 +221,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let arrowMagnitude_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    self.arrowMagnitude_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -364,12 +236,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.arrowMagnitudeUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
   }
@@ -379,12 +245,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let shiftArrowMagnitude_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    self.shiftArrowMagnitude_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -400,12 +260,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
     self.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
   }
@@ -415,12 +269,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
-    self.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -436,12 +284,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
-    self.mArtworkName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
     self.mArtworkName_property.removeEBObserver (inObserver)
   }
@@ -451,12 +293,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let mArtworkVersion_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
-    self.mArtworkVersion_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -472,12 +308,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
-    self.modelNames_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_modelNames (_ inObserver : EBEvent) {
     self.modelNames_property.removeEBObserver (inObserver)
   }
@@ -487,12 +317,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardRect_property = EBGenericTransientProperty <CanariRect?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
-    self.boardRect_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -508,12 +332,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
-    self.boardDisplayRect_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
     self.boardDisplayRect_property.removeEBObserver (inObserver)
   }
@@ -523,12 +341,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
-    self.boardWidth_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -544,12 +356,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
-    self.boardHeight_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
     self.boardHeight_property.removeEBObserver (inObserver)
   }
@@ -559,12 +365,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //····················································································································
 
   final let boardOutlineRectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardOutlineRectDisplay (_ inObserver : EBEvent) {
-    self.boardOutlineRectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

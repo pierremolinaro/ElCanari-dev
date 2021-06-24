@@ -16,80 +16,44 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
       oldValue.mCenterX_property.removeEBObserver (self.mCenterX_property) // Stored property
- //     oldValue.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
       oldValue.mCenterY_property.removeEBObserver (self.mCenterY_property) // Stored property
- //     oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
- //     oldValue.mMirror_property.removeEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
       oldValue.mMirror_property.removeEBObserver (self.mMirror_property) // Stored property
- //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
- //     oldValue.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
       oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
- //     oldValue.mDisplayComponentNameOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
       oldValue.mDisplayComponentNameOffsetX_property.removeEBObserver (self.mDisplayComponentNameOffsetX_property) // Stored property
- //     oldValue.mDisplayComponentNameOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
       oldValue.mDisplayComponentNameOffsetY_property.removeEBObserver (self.mDisplayComponentNameOffsetY_property) // Stored property
- //     oldValue.mDisplayComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
       oldValue.mDisplayComponentValue_property.removeEBObserver (self.mDisplayComponentValue_property) // Stored property
- //     oldValue.mDisplayComponentValueOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
       oldValue.mDisplayComponentValueOffsetX_property.removeEBObserver (self.mDisplayComponentValueOffsetX_property) // Stored property
- //     oldValue.mDisplayComponentValueOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
       oldValue.mDisplayComponentValueOffsetY_property.removeEBObserver (self.mDisplayComponentValueOffsetY_property) // Stored property
- //     oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
- //     oldValue.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       oldValue.deviceName_property.removeEBObserver (self.deviceName_property) // Transient property
- //     oldValue.symbolInfo_property.removeEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
       oldValue.symbolInfo_property.removeEBObserver (self.symbolInfo_property) // Transient property
- //     oldValue.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
       oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.symbolInSchematic_property.removeEBObserversFrom (&self.mObserversOf_symbolInSchematic) // Transient property
       oldValue.symbolInSchematic_property.removeEBObserver (self.symbolInSchematic_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
       newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
- //     newValue.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
       newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
- //     newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
- //     newValue.mMirror_property.addEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
       newValue.mMirror_property.addEBObserver (self.mMirror_property) // Stored property
- //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
- //     newValue.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
       newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
- //     newValue.mDisplayComponentNameOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
       newValue.mDisplayComponentNameOffsetX_property.addEBObserver (self.mDisplayComponentNameOffsetX_property) // Stored property
- //     newValue.mDisplayComponentNameOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
       newValue.mDisplayComponentNameOffsetY_property.addEBObserver (self.mDisplayComponentNameOffsetY_property) // Stored property
- //     newValue.mDisplayComponentValue_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
       newValue.mDisplayComponentValue_property.addEBObserver (self.mDisplayComponentValue_property) // Stored property
- //     newValue.mDisplayComponentValueOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
       newValue.mDisplayComponentValueOffsetX_property.addEBObserver (self.mDisplayComponentValueOffsetX_property) // Stored property
- //     newValue.mDisplayComponentValueOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
       newValue.mDisplayComponentValueOffsetY_property.addEBObserver (self.mDisplayComponentValueOffsetY_property) // Stored property
-  //    newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
-  //    newValue.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       newValue.deviceName_property.addEBObserver (self.deviceName_property) // Transient property
-  //    newValue.symbolInfo_property.addEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
       newValue.symbolInfo_property.addEBObserver (self.symbolInfo_property) // Transient property
-  //    newValue.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
       newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.symbolInSchematic_property.addEBObserversFrom (&self.mObserversOf_symbolInSchematic) // Transient property
       newValue.symbolInSchematic_property.addEBObserver (self.symbolInSchematic_property) // Transient property
     }
   }
@@ -99,12 +63,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mCenterX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
-    self.mCenterX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -120,12 +78,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
-    self.mCenterY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
     self.mCenterY_property.removeEBObserver (inObserver)
   }
@@ -135,12 +87,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
-    self.mRotation_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -156,12 +102,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
-    self.mMirror_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mMirror (_ inObserver : EBEvent) {
     self.mMirror_property.removeEBObserver (inObserver)
   }
@@ -171,12 +111,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.mSymbolInstanceName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -192,12 +126,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.mSymbolTypeName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
     self.mSymbolTypeName_property.removeEBObserver (inObserver)
   }
@@ -207,12 +135,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mDisplayComponentNameOffsetX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
-    self.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -228,12 +150,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
-    self.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
     self.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
   }
@@ -243,12 +159,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mDisplayComponentValue_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
-    self.mDisplayComponentValue_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -264,12 +174,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
-    self.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
     self.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
   }
@@ -279,12 +183,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let mDisplayComponentValueOffsetY_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
-    self.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -300,12 +198,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
-    self.componentName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_componentName (_ inObserver : EBEvent) {
     self.componentName_property.removeEBObserver (inObserver)
   }
@@ -315,12 +207,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let deviceName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
-    self.deviceName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -336,12 +222,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
-    self.symbolInfo_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_symbolInfo (_ inObserver : EBEvent) {
     self.symbolInfo_property.removeEBObserver (inObserver)
   }
@@ -351,12 +231,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.pinPadAssignments_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -372,12 +246,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -390,12 +258,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -405,12 +267,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
 
   final let symbolInSchematic_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolInSchematic (_ inObserver : EBEvent) {
-    self.symbolInSchematic_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

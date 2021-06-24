@@ -16,64 +16,36 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.mFontSize_property.removeEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
       oldValue.mFontSize_property.removeEBObserver (self.mFontSize_property) // Stored property
- //     oldValue.mLayer_property.removeEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
       oldValue.mLayer_property.removeEBObserver (self.mLayer_property) // Stored property
- //     oldValue.mText_property.removeEBObserversFrom (&self.mObserversOf_mText) // Stored property
       oldValue.mText_property.removeEBObserver (self.mText_property) // Stored property
- //     oldValue.mHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
       oldValue.mHorizontalAlignment_property.removeEBObserver (self.mHorizontalAlignment_property) // Stored property
- //     oldValue.mVerticalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
       oldValue.mVerticalAlignment_property.removeEBObserver (self.mVerticalAlignment_property) // Stored property
- //     oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
- //     oldValue.mWeight_property.removeEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
       oldValue.mWeight_property.removeEBObserver (self.mWeight_property) // Stored property
- //     oldValue.mOblique_property.removeEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
       oldValue.mOblique_property.removeEBObserver (self.mOblique_property) // Stored property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.fontName_property.removeEBObserversFrom (&self.mObserversOf_fontName) // Transient property
       oldValue.fontName_property.removeEBObserver (self.fontName_property) // Transient property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
- //     newValue.mFontSize_property.addEBObserversFrom (&self.mObserversOf_mFontSize) // Stored property
       newValue.mFontSize_property.addEBObserver (self.mFontSize_property) // Stored property
- //     newValue.mLayer_property.addEBObserversFrom (&self.mObserversOf_mLayer) // Stored property
       newValue.mLayer_property.addEBObserver (self.mLayer_property) // Stored property
- //     newValue.mText_property.addEBObserversFrom (&self.mObserversOf_mText) // Stored property
       newValue.mText_property.addEBObserver (self.mText_property) // Stored property
- //     newValue.mHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mHorizontalAlignment) // Stored property
       newValue.mHorizontalAlignment_property.addEBObserver (self.mHorizontalAlignment_property) // Stored property
- //     newValue.mVerticalAlignment_property.addEBObserversFrom (&self.mObserversOf_mVerticalAlignment) // Stored property
       newValue.mVerticalAlignment_property.addEBObserver (self.mVerticalAlignment_property) // Stored property
- //     newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
- //     newValue.mWeight_property.addEBObserversFrom (&self.mObserversOf_mWeight) // Stored property
       newValue.mWeight_property.addEBObserver (self.mWeight_property) // Stored property
- //     newValue.mOblique_property.addEBObserversFrom (&self.mObserversOf_mOblique) // Stored property
       newValue.mOblique_property.addEBObserver (self.mOblique_property) // Stored property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.fontName_property.addEBObserversFrom (&self.mObserversOf_fontName) // Transient property
       newValue.fontName_property.addEBObserver (self.fontName_property) // Transient property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   }
@@ -83,12 +55,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let mX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +70,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.mY_property.removeEBObserver (inObserver)
   }
@@ -119,12 +79,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let mFontSize_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFontSize (_ inObserver : EBEvent) {
-    self.mFontSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -140,12 +94,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mLayer (_ inObserver : EBEvent) {
-    self.mLayer_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
     self.mLayer_property.removeEBObserver (inObserver)
   }
@@ -155,12 +103,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let mText_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mText (_ inObserver : EBEvent) {
-    self.mText_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -176,12 +118,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
-    self.mHorizontalAlignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mHorizontalAlignment (_ inObserver : EBEvent) {
     self.mHorizontalAlignment_property.removeEBObserver (inObserver)
   }
@@ -191,12 +127,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let mVerticalAlignment_property = EBGenericTransientProperty <BoardTextVerticalAlignment?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mVerticalAlignment (_ inObserver : EBEvent) {
-    self.mVerticalAlignment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -212,12 +142,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
-    self.mRotation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.mRotation_property.removeEBObserver (inObserver)
   }
@@ -227,12 +151,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let mWeight_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mWeight (_ inObserver : EBEvent) {
-    self.mWeight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -248,12 +166,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_mOblique (_ inObserver : EBEvent) {
-    self.mOblique_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mOblique (_ inObserver : EBEvent) {
     self.mOblique_property.removeEBObserver (inObserver)
   }
@@ -263,12 +175,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -284,12 +190,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -302,12 +202,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
 
   //····················································································································
 
-  final func addEBObserverOf_fontName (_ inObserver : EBEvent) {
-    self.fontName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_fontName (_ inObserver : EBEvent) {
     self.fontName_property.removeEBObserver (inObserver)
   }
@@ -317,12 +211,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

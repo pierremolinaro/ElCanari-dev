@@ -133,7 +133,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_knobSizeMultpliedByTen (self.knobSize_property)
+    self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

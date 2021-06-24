@@ -3591,7 +3591,7 @@ final class ProjectRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTWdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3606,7 +3606,7 @@ final class ProjectRoot : EBManagedObject,
     self.minPPTPTTTW_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minPPTPTTTW_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
+    self.mArtwork_property.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3621,7 +3621,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3636,7 +3636,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForOARinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3651,7 +3651,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDdisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3666,7 +3666,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForPHDinEBUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3681,7 +3681,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidth_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3696,7 +3696,7 @@ final class ProjectRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : Int, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.minValueForBoardLimitWidthDisplayUnit_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3711,7 +3711,7 @@ final class ProjectRoot : EBManagedObject,
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
+    self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- Atomic proxy property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork {
@@ -3726,7 +3726,7 @@ final class ProjectRoot : EBManagedObject,
     self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.addEBObserverOf_comments (self.comments_property)
+    self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mSelectedSheet {
@@ -3741,7 +3741,7 @@ final class ProjectRoot : EBManagedObject,
     self.selectedSheetTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mSelectedSheet?.mSheetTitle_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.selectedSheetTitle_property)
+    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.selectedSheetTitle_property)
   //--- ToMany proxy: selectedSheetObjects
     do{
       let controller = EBReadOnlyPropertyController (
@@ -3835,7 +3835,7 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.addEBObserverOf_issues (self.selectedSheetIssues_property)
+    self.mSelectedSheet_property.issues_property.addEBObserver (self.selectedSheetIssues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3851,7 +3851,7 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSelectedSheet_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+    self.mSelectedSheet_property.connectedPoints_property.addEBObserver (self.connectedPoints_property)
     self.selectedSheetIssues_property.addEBObserver (self.connectedPoints_property)
   //--- Atomic property: connexionWarningString
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
@@ -3951,7 +3951,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-    self.mArtwork_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.mArtwork_property.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Atomic property: ercStatusImage
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4369,7 +4369,7 @@ final class ProjectRoot : EBManagedObject,
     self.mSchematicTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicVersion_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.sheetGeometry_property.addEBObserver (self.schematicBackgroundDisplay_property)
-    self.mSelectedSheet_property.addEBObserverOf_mSheetTitle (self.schematicBackgroundDisplay_property)
+    self.mSelectedSheet_property.mSheetTitle_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSheets_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSelectedSheet_property.addEBObserver (self.schematicBackgroundDisplay_property)
     self.mSchematicDate_property.addEBObserver (self.schematicBackgroundDisplay_property)

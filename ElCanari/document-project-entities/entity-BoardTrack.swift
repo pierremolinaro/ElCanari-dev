@@ -879,7 +879,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.actualTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mUsesCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
     self.mCustomTrackWidth_property.addEBObserver (self.actualTrackWidth_property)
   //--- Atomic property: netName
@@ -897,7 +897,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.mNetName_property.addEBObserver (self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -913,7 +913,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.netClassName_property.addEBObserver (self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -929,7 +929,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.mNet_property.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -945,7 +945,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.mNet_property.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -961,7 +961,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.mNet_property.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property)
   //--- Atomic property: trackLengthInCanariUnit
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -977,8 +977,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackLengthInCanariUnit_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackLengthInCanariUnit_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.trackLengthInCanariUnit_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.trackLengthInCanariUnit_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1012,8 +1012,8 @@ final class BoardTrack : BoardObject,
       }
     }
     self.trackDirectionInDegrees_property.mStoreFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0, $1) ?? false }
-    self.mConnectorP1_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.trackDirectionInDegrees_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
   //--- Atomic property: p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1029,7 +1029,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_isConnectedToSomePad (self.p1ConnectedToSomePad_property)
+    self.mConnectorP1_property.isConnectedToSomePad_property.addEBObserver (self.p1ConnectedToSomePad_property)
   //--- Atomic property: p2ConnectedToSomePad
     self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1045,7 +1045,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP2_property.addEBObserverOf_isConnectedToSomePad (self.p2ConnectedToSomePad_property)
+    self.mConnectorP2_property.isConnectedToSomePad_property.addEBObserver (self.p2ConnectedToSomePad_property)
   //--- Computed property: computedP1X
     self.computedP1X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1062,7 +1062,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP1X_property.mStoreFunction = { [weak self] in self?.compute_computedP1X_property ($0, $1) ?? false }
-    self.mConnectorP1_property.addEBObserverOf_location (self.computedP1X_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.computedP1X_property)
   //--- Computed property: computedP1Y
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1079,7 +1079,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP1Y_property.mStoreFunction = { [weak self] in self?.compute_computedP1Y_property ($0, $1) ?? false }
-    self.mConnectorP1_property.addEBObserverOf_location (self.computedP1Y_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.computedP1Y_property)
   //--- Computed property: computedP2X
     self.computedP2X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1096,7 +1096,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP2X_property.mStoreFunction = { [weak self] in self?.compute_computedP2X_property ($0, $1) ?? false }
-    self.mConnectorP2_property.addEBObserverOf_location (self.computedP2X_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.computedP2X_property)
   //--- Computed property: computedP2Y
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1113,7 +1113,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.computedP2Y_property.mStoreFunction = { [weak self] in self?.compute_computedP2Y_property ($0, $1) ?? false }
-    self.mConnectorP2_property.addEBObserverOf_location (self.computedP2Y_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.computedP2Y_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1129,8 +1129,8 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.objectDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.objectDisplay_property)
     preferences_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
@@ -1203,9 +1203,9 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.mConnectorP1_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP1_property.location_property.addEBObserver (self.selectionDisplay_property)
     self.p1CanMove_property.addEBObserver (self.selectionDisplay_property)
-    self.mConnectorP2_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.selectionDisplay_property)
     self.p2CanMove_property.addEBObserver (self.selectionDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)

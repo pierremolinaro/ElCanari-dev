@@ -16,20 +16,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
       oldValue.mPackageName_property.removeEBObserver (self.mPackageName_property) // Stored property
- //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
- //     oldValue.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
       oldValue.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
       newValue.mPackageName_property.addEBObserver (self.mPackageName_property) // Stored property
- //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
-  //    newValue.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
       newValue.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property) // Transient property
     }
   }
@@ -39,12 +33,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   final let mPackageName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
-    self.mPackageName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -60,12 +48,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.mStrokeBezierPath_property.removeEBObserver (inObserver)
   }
@@ -75,12 +57,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.packagePadDictionary_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

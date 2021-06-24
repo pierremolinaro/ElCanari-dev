@@ -16,20 +16,14 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
       oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
- //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
- //     oldValue.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
       oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
       newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
- //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
- //     newValue.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
       newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
     }
   }
@@ -39,12 +33,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //····················································································································
 
   final let mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.mSymbolTypeName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -60,12 +48,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.mStrokeBezierPath_property.removeEBObserver (inObserver)
   }
@@ -75,12 +57,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //····················································································································
 
   final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mFilledBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

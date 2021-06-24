@@ -16,20 +16,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
       oldValue.mFileName_property.removeEBObserver (self.mFileName_property) // Stored property
- //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       oldValue.mFileData_property.removeEBObserver (self.mFileData_property) // Stored property
- //     oldValue.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
       oldValue.fileSize_property.removeEBObserver (self.fileSize_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
       newValue.mFileName_property.addEBObserver (self.mFileName_property) // Stored property
- //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       newValue.mFileData_property.addEBObserver (self.mFileData_property) // Stored property
-  //    newValue.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
       newValue.fileSize_property.addEBObserver (self.fileSize_property) // Transient property
     }
   }
@@ -39,12 +33,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
 
   final let mFileName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
-    self.mFileName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -60,12 +48,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.mFileData_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.mFileData_property.removeEBObserver (inObserver)
   }
@@ -75,12 +57,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
 
   final let fileSize_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
-    self.fileSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

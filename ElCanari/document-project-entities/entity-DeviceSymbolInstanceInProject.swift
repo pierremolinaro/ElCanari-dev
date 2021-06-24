@@ -191,7 +191,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolInstanceName_property.addEBObserver (self.symbolAndTypeName_property)
-    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolAndTypeName_property)
+    self.mSymbolType_property.mSymbolTypeName_property.addEBObserver (self.symbolAndTypeName_property)
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -207,7 +207,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mSymbolTypeName (self.symbolTypeName_property)
+    self.mSymbolType_property.mSymbolTypeName_property.addEBObserver (self.symbolTypeName_property)
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -223,7 +223,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mFilledBezierPath (self.filledBezierPath_property)
+    self.mSymbolType_property.mFilledBezierPath_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -239,7 +239,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolType_property.addEBObserverOf_mStrokeBezierPath (self.strokeBezierPath_property)
+    self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

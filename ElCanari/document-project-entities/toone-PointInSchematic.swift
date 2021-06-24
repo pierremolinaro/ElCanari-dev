@@ -16,68 +16,38 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
       oldValue.mSymbolPinName_property.removeEBObserver (self.mSymbolPinName_property) // Stored property
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
       oldValue.location_property.removeEBObserver (self.location_property) // Transient property
- //     oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
       oldValue.netName_property.removeEBObserver (self.netName_property) // Transient property
- //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
- //     oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
       oldValue.hasNet_property.removeEBObserver (self.hasNet_property) // Transient property
- //     oldValue.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove) // Transient property
       oldValue.canMove_property.removeEBObserver (self.canMove_property) // Transient property
- //     oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
       oldValue.wireColor_property.removeEBObserver (self.wireColor_property) // Transient property
- //     oldValue.symbolRotation_property.removeEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
       oldValue.symbolRotation_property.removeEBObserver (self.symbolRotation_property) // Transient property
- //     oldValue.symbolNameNetName_property.removeEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
       oldValue.symbolNameNetName_property.removeEBObserver (self.symbolNameNetName_property) // Transient property
- //     oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
- //     oldValue.status_property.removeEBObserversFrom (&self.mObserversOf_status) // Transient property
       oldValue.status_property.removeEBObserver (self.status_property) // Transient property
- //     oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
- //     oldValue.netInfoForPoint_property.removeEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
       oldValue.netInfoForPoint_property.removeEBObserver (self.netInfoForPoint_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
       newValue.mSymbolPinName_property.addEBObserver (self.mSymbolPinName_property) // Stored property
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
-  //    newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
       newValue.location_property.addEBObserver (self.location_property) // Transient property
-  //    newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
       newValue.netName_property.addEBObserver (self.netName_property) // Transient property
-  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-  //    newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
       newValue.hasNet_property.addEBObserver (self.hasNet_property) // Transient property
-  //    newValue.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove) // Transient property
       newValue.canMove_property.addEBObserver (self.canMove_property) // Transient property
-  //    newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
       newValue.wireColor_property.addEBObserver (self.wireColor_property) // Transient property
-  //    newValue.symbolRotation_property.addEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
       newValue.symbolRotation_property.addEBObserver (self.symbolRotation_property) // Transient property
-  //    newValue.symbolNameNetName_property.addEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
       newValue.symbolNameNetName_property.addEBObserver (self.symbolNameNetName_property) // Transient property
-  //    newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-  //    newValue.status_property.addEBObserversFrom (&self.mObserversOf_status) // Transient property
       newValue.status_property.addEBObserver (self.status_property) // Transient property
-  //    newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-  //    newValue.netInfoForPoint_property.addEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
       newValue.netInfoForPoint_property.addEBObserver (self.netInfoForPoint_property) // Transient property
     }
   }
@@ -87,12 +57,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let mSymbolPinName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
-    self.mSymbolPinName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -108,12 +72,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.mX_property.removeEBObserver (inObserver)
   }
@@ -123,12 +81,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let mY_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -144,12 +96,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_location (_ inObserver : EBEvent) {
-    self.location_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.location_property.removeEBObserver (inObserver)
   }
@@ -159,12 +105,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let netName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -180,12 +120,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.netClassName_property.removeEBObserver (inObserver)
   }
@@ -195,12 +129,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let hasNet_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.hasNet_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -216,12 +144,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
-    self.canMove_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
     self.canMove_property.removeEBObserver (inObserver)
   }
@@ -231,12 +153,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.wireColor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -252,12 +168,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
-    self.symbolRotation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
     self.symbolRotation_property.removeEBObserver (inObserver)
   }
@@ -267,12 +177,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let symbolNameNetName_property = EBGenericTransientProperty <TwoStrings?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
-    self.symbolNameNetName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -288,12 +192,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.isConnected_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.isConnected_property.removeEBObserver (inObserver)
   }
@@ -303,12 +201,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let status_property = EBGenericTransientProperty <SchematicPointStatus?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_status (_ inObserver : EBEvent) {
-    self.status_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -324,12 +216,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.connectedPoints_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.connectedPoints_property.removeEBObserver (inObserver)
   }
@@ -339,12 +225,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
 
   final let netInfoForPoint_property = EBGenericTransientProperty <NetInfoPoint?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
-    self.netInfoForPoint_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

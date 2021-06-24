@@ -16,36 +16,22 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
       oldValue.y_property.removeEBObserver (self.y_property) // Stored property
- //     oldValue.text_property.removeEBObserversFrom (&self.mObserversOf_text) // Stored property
       oldValue.text_property.removeEBObserver (self.text_property) // Stored property
- //     oldValue.horizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
       oldValue.horizontalAlignment_property.removeEBObserver (self.horizontalAlignment_property) // Stored property
- //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
       oldValue.x_property.removeEBObserver (self.x_property) // Stored property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
       newValue.y_property.addEBObserver (self.y_property) // Stored property
- //     newValue.text_property.addEBObserversFrom (&self.mObserversOf_text) // Stored property
       newValue.text_property.addEBObserver (self.text_property) // Stored property
- //     newValue.horizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
       newValue.horizontalAlignment_property.addEBObserver (self.horizontalAlignment_property) // Stored property
- //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
       newValue.x_property.addEBObserver (self.x_property) // Stored property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
     }
   }
@@ -55,12 +41,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
 
   final let y_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -76,12 +56,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_text (_ inObserver : EBEvent) {
-    self.text_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_text (_ inObserver : EBEvent) {
     self.text_property.removeEBObserver (inObserver)
   }
@@ -91,12 +65,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
 
   final let horizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
-    self.horizontalAlignment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -112,12 +80,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.x_property.removeEBObserver (inObserver)
   }
@@ -127,12 +89,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -148,12 +104,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -163,12 +113,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

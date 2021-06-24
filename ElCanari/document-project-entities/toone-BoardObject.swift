@@ -16,48 +16,28 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.isPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
       oldValue.isPlacedInBoard_property.removeEBObserver (self.isPlacedInBoard_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
- //     oldValue.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
       oldValue.isVia_property.removeEBObserver (self.isVia_property) // Transient property
- //     oldValue.trackLengthInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
       oldValue.trackLengthInCanariUnit_property.removeEBObserver (self.trackLengthInCanariUnit_property) // Transient property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
- //     oldValue.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
       oldValue.netNameAndPadLocation_property.removeEBObserver (self.netNameAndPadLocation_property) // Transient property
- //     oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
       oldValue.errorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-  //    newValue.isPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
       newValue.isPlacedInBoard_property.addEBObserver (self.isPlacedInBoard_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-  //    newValue.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
       newValue.isVia_property.addEBObserver (self.isVia_property) // Transient property
-  //    newValue.trackLengthInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
       newValue.trackLengthInCanariUnit_property.addEBObserver (self.trackLengthInCanariUnit_property) // Transient property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
-  //    newValue.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
       newValue.netNameAndPadLocation_property.addEBObserver (self.netNameAndPadLocation_property) // Transient property
-  //    newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
       newValue.errorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property) // Transient property
     }
   }
@@ -67,12 +47,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let isPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_isPlacedInBoard (_ inObserver : EBEvent) {
-    self.isPlacedInBoard_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -88,12 +62,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
   }
@@ -103,12 +71,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let isVia_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
-    self.isVia_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -124,12 +86,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_trackLengthInCanariUnit (_ inObserver : EBEvent) {
-    self.trackLengthInCanariUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_trackLengthInCanariUnit (_ inObserver : EBEvent) {
     self.trackLengthInCanariUnit_property.removeEBObserver (inObserver)
   }
@@ -139,12 +95,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -160,12 +110,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
-    self.netNameAndPadLocation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.netNameAndPadLocation_property.removeEBObserver (inObserver)
   }
@@ -175,12 +119,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let componentName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
-    self.componentName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -196,12 +134,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -214,12 +146,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -229,12 +155,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let errorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_errorOrWarningIssueSize (_ inObserver : EBEvent) {
-    self.errorOrWarningIssueSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

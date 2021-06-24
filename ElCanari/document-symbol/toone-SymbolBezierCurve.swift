@@ -16,56 +16,32 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
       oldValue.y1_property.removeEBObserver (self.y1_property) // Stored property
- //     oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
       oldValue.x2_property.removeEBObserver (self.x2_property) // Stored property
- //     oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
       oldValue.y2_property.removeEBObserver (self.y2_property) // Stored property
- //     oldValue.cpx1_property.removeEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
       oldValue.cpx1_property.removeEBObserver (self.cpx1_property) // Stored property
- //     oldValue.cpy1_property.removeEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
       oldValue.cpy1_property.removeEBObserver (self.cpy1_property) // Stored property
- //     oldValue.cpx2_property.removeEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
       oldValue.cpx2_property.removeEBObserver (self.cpx2_property) // Stored property
- //     oldValue.cpy2_property.removeEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
       oldValue.cpy2_property.removeEBObserver (self.cpy2_property) // Stored property
- //     oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
       oldValue.x1_property.removeEBObserver (self.x1_property) // Stored property
- //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
       newValue.y1_property.addEBObserver (self.y1_property) // Stored property
- //     newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
       newValue.x2_property.addEBObserver (self.x2_property) // Stored property
- //     newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
       newValue.y2_property.addEBObserver (self.y2_property) // Stored property
- //     newValue.cpx1_property.addEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
       newValue.cpx1_property.addEBObserver (self.cpx1_property) // Stored property
- //     newValue.cpy1_property.addEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
       newValue.cpy1_property.addEBObserver (self.cpy1_property) // Stored property
- //     newValue.cpx2_property.addEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
       newValue.cpx2_property.addEBObserver (self.cpx2_property) // Stored property
- //     newValue.cpy2_property.addEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
       newValue.cpy2_property.addEBObserver (self.cpy2_property) // Stored property
- //     newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
       newValue.x1_property.addEBObserver (self.x1_property) // Stored property
-  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
     }
   }
@@ -75,12 +51,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let y1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.y1_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -96,12 +66,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.x2_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.x2_property.removeEBObserver (inObserver)
   }
@@ -111,12 +75,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let y2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.y2_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -132,12 +90,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
-    self.cpx1_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.cpx1_property.removeEBObserver (inObserver)
   }
@@ -147,12 +99,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let cpy1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
-    self.cpy1_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -168,12 +114,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
-    self.cpx2_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.cpx2_property.removeEBObserver (inObserver)
   }
@@ -183,12 +123,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let cpy2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
-    self.cpy2_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -204,12 +138,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.x1_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.x1_property.removeEBObserver (inObserver)
   }
@@ -219,12 +147,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.strokeBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -240,12 +162,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -258,12 +174,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -273,12 +183,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

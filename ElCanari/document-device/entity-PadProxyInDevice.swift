@@ -217,7 +217,7 @@ final class PadProxyInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
+    self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)

@@ -16,28 +16,18 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.pinName_property.removeEBObserversFrom (&self.mObserversOf_pinName) // Transient property
       oldValue.pinName_property.removeEBObserver (self.pinName_property) // Transient property
- //     oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
       oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
- //     oldValue.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
       oldValue.pinQualifiedName_property.removeEBObserver (self.pinQualifiedName_property) // Transient property
- //     oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
- //     oldValue.numberShape_property.removeEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
       oldValue.numberShape_property.removeEBObserver (self.numberShape_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-  //    newValue.pinName_property.addEBObserversFrom (&self.mObserversOf_pinName) // Transient property
       newValue.pinName_property.addEBObserver (self.pinName_property) // Transient property
-  //    newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
       newValue.symbolName_property.addEBObserver (self.symbolName_property) // Transient property
-  //    newValue.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
       newValue.pinQualifiedName_property.addEBObserver (self.pinQualifiedName_property) // Transient property
-  //    newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-  //    newValue.numberShape_property.addEBObserversFrom (&self.mObserversOf_numberShape) // Transient property
       newValue.numberShape_property.addEBObserver (self.numberShape_property) // Transient property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //····················································································································
 
   final let pinName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
-    self.pinName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.symbolName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
     self.symbolName_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //····················································································································
 
   final let pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
-    self.pinQualifiedName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.isConnected_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.isConnected_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   //····················································································································
 
   final let numberShape_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_numberShape (_ inObserver : EBEvent) {
-    self.numberShape_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

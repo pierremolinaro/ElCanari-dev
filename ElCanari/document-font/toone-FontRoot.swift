@@ -16,56 +16,32 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
       oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
- //     oldValue.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
       oldValue.nominalSize_property.removeEBObserver (self.nominalSize_property) // Stored property
- //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
       oldValue.selectedTab_property.removeEBObserver (self.selectedTab_property) // Stored property
- //     oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
       oldValue.selectedInspector_property.removeEBObserver (self.selectedInspector_property) // Stored property
- //     oldValue.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
       oldValue.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePoint_property) // Stored property
- //     oldValue.currentCharacterCodePointString_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
       oldValue.currentCharacterCodePointString_property.removeEBObserver (self.currentCharacterCodePointString_property) // Transient property
- //     oldValue.sampleStringBezierPath_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
       oldValue.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPath_property) // Transient property
- //     oldValue.sampleStringBezierPathWidth_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
       oldValue.sampleStringBezierPathWidth_property.removeEBObserver (self.sampleStringBezierPathWidth_property) // Transient property
- //     oldValue.sampleStringBezierPathAscent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
       oldValue.sampleStringBezierPathAscent_property.removeEBObserver (self.sampleStringBezierPathAscent_property) // Transient property
- //     oldValue.sampleStringBezierPathDescent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
       oldValue.sampleStringBezierPathDescent_property.removeEBObserver (self.sampleStringBezierPathDescent_property) // Transient property
- //     oldValue.definedCharacters_property.removeEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
       oldValue.definedCharacters_property.removeEBObserver (self.definedCharacters_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
- //     newValue.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
       newValue.nominalSize_property.addEBObserver (self.nominalSize_property) // Stored property
- //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
       newValue.selectedTab_property.addEBObserver (self.selectedTab_property) // Stored property
- //     newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
       newValue.selectedInspector_property.addEBObserver (self.selectedInspector_property) // Stored property
- //     newValue.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
       newValue.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePoint_property) // Stored property
-  //    newValue.currentCharacterCodePointString_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
       newValue.currentCharacterCodePointString_property.addEBObserver (self.currentCharacterCodePointString_property) // Transient property
-  //    newValue.sampleStringBezierPath_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
       newValue.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPath_property) // Transient property
-  //    newValue.sampleStringBezierPathWidth_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
       newValue.sampleStringBezierPathWidth_property.addEBObserver (self.sampleStringBezierPathWidth_property) // Transient property
-  //    newValue.sampleStringBezierPathAscent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
       newValue.sampleStringBezierPathAscent_property.addEBObserver (self.sampleStringBezierPathAscent_property) // Transient property
-  //    newValue.sampleStringBezierPathDescent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
       newValue.sampleStringBezierPathDescent_property.addEBObserver (self.sampleStringBezierPathDescent_property) // Transient property
-  //    newValue.definedCharacters_property.addEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
       newValue.definedCharacters_property.addEBObserver (self.definedCharacters_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
     }
   }
@@ -75,12 +51,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let comments_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -96,12 +66,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
-    self.nominalSize_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.nominalSize_property.removeEBObserver (inObserver)
   }
@@ -111,12 +75,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let selectedTab_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.selectedTab_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -132,12 +90,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.selectedInspector_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.selectedInspector_property.removeEBObserver (inObserver)
   }
@@ -147,12 +99,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let currentCharacterCodePoint_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
-    self.currentCharacterCodePoint_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -168,12 +114,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.currentCharacterCodePointString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.currentCharacterCodePointString_property.removeEBObserver (inObserver)
   }
@@ -183,12 +123,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let sampleStringBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
-    self.sampleStringBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -204,12 +138,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
   }
@@ -219,12 +147,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let sampleStringBezierPathAscent_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -240,12 +162,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
   }
@@ -258,12 +174,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
-    self.definedCharacters_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
     self.definedCharacters_property.removeEBObserver (inObserver)
   }
@@ -273,12 +183,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

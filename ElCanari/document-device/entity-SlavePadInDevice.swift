@@ -409,7 +409,7 @@ final class SlavePadInDevice : EBManagedObject,
     self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property)
+    self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)

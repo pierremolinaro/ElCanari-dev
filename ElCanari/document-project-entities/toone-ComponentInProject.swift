@@ -16,176 +16,92 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mSlavePadsShouldBeRouted_property.removeEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
       oldValue.mSlavePadsShouldBeRouted_property.removeEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
- //     oldValue.mSide_property.removeEBObserversFrom (&self.mObserversOf_mSide) // Stored property
       oldValue.mSide_property.removeEBObserver (self.mSide_property) // Stored property
- //     oldValue.mDisplayLegend_property.removeEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
       oldValue.mDisplayLegend_property.removeEBObserver (self.mDisplayLegend_property) // Stored property
- //     oldValue.mNameIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
       oldValue.mNameIsVisibleInBoard_property.removeEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
- //     oldValue.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
       oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
- //     oldValue.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
       oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
- //     oldValue.mNameFontSize_property.removeEBObserversFrom (&self.mObserversOf_mNameFontSize) // Stored property
       oldValue.mNameFontSize_property.removeEBObserver (self.mNameFontSize_property) // Stored property
- //     oldValue.mNameRotation_property.removeEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
       oldValue.mNameRotation_property.removeEBObserver (self.mNameRotation_property) // Stored property
- //     oldValue.mValueIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
       oldValue.mValueIsVisibleInBoard_property.removeEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
- //     oldValue.mXValue_property.removeEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
       oldValue.mXValue_property.removeEBObserver (self.mXValue_property) // Stored property
- //     oldValue.mYValue_property.removeEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
       oldValue.mYValue_property.removeEBObserver (self.mYValue_property) // Stored property
- //     oldValue.mValueFontSize_property.removeEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
       oldValue.mValueFontSize_property.removeEBObserver (self.mValueFontSize_property) // Stored property
- //     oldValue.mValueRotation_property.removeEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
       oldValue.mValueRotation_property.removeEBObserver (self.mValueRotation_property) // Stored property
- //     oldValue.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
       oldValue.mComponentValue_property.removeEBObserver (self.mComponentValue_property) // Stored property
- //     oldValue.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
       oldValue.mNamePrefix_property.removeEBObserver (self.mNamePrefix_property) // Stored property
- //     oldValue.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
       oldValue.mNameIndex_property.removeEBObserver (self.mNameIndex_property) // Stored property
- //     oldValue.mXUnit_property.removeEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
       oldValue.mXUnit_property.removeEBObserver (self.mXUnit_property) // Stored property
- //     oldValue.mYUnit_property.removeEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
       oldValue.mYUnit_property.removeEBObserver (self.mYUnit_property) // Stored property
- //     oldValue.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       oldValue.deviceName_property.removeEBObserver (self.deviceName_property) // Transient property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
- //     oldValue.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
       oldValue.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property) // Transient property
- //     oldValue.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
       oldValue.selectedPackageName_property.removeEBObserver (self.selectedPackageName_property) // Transient property
- //     oldValue.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
       oldValue.availablePackages_property.removeEBObserver (self.availablePackages_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
- //     oldValue.componentIsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
       oldValue.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property) // Transient property
- //     oldValue.componentIsPlacedInBoardString_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
       oldValue.componentIsPlacedInBoardString_property.removeEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
- //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
- //     oldValue.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
       oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
- //     oldValue.hasSlavePads_property.removeEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
       oldValue.hasSlavePads_property.removeEBObserver (self.hasSlavePads_property) // Transient property
- //     oldValue.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
       oldValue.placementInSchematic_property.removeEBObserver (self.placementInSchematic_property) // Transient property
- //     oldValue.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
       oldValue.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
- //     oldValue.componentNameFontName_property.removeEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
       oldValue.componentNameFontName_property.removeEBObserver (self.componentNameFontName_property) // Transient property
- //     oldValue.componentValueFontName_property.removeEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
       oldValue.componentValueFontName_property.removeEBObserver (self.componentValueFontName_property) // Transient property
- //     oldValue.componentPadDictionary_property.removeEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
       oldValue.componentPadDictionary_property.removeEBObserver (self.componentPadDictionary_property) // Transient property
- //     oldValue.padNetDictionary_property.removeEBObserversFrom (&self.mObserversOf_padNetDictionary) // Transient property
       oldValue.padNetDictionary_property.removeEBObserver (self.padNetDictionary_property) // Transient property
- //     oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
       oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mSlavePadsShouldBeRouted_property.addEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
       newValue.mSlavePadsShouldBeRouted_property.addEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
- //     newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
       newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
- //     newValue.mSide_property.addEBObserversFrom (&self.mObserversOf_mSide) // Stored property
       newValue.mSide_property.addEBObserver (self.mSide_property) // Stored property
- //     newValue.mDisplayLegend_property.addEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
       newValue.mDisplayLegend_property.addEBObserver (self.mDisplayLegend_property) // Stored property
- //     newValue.mNameIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
       newValue.mNameIsVisibleInBoard_property.addEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
- //     newValue.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
       newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
- //     newValue.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
       newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
- //     newValue.mNameFontSize_property.addEBObserversFrom (&self.mObserversOf_mNameFontSize) // Stored property
       newValue.mNameFontSize_property.addEBObserver (self.mNameFontSize_property) // Stored property
- //     newValue.mNameRotation_property.addEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
       newValue.mNameRotation_property.addEBObserver (self.mNameRotation_property) // Stored property
- //     newValue.mValueIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
       newValue.mValueIsVisibleInBoard_property.addEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
- //     newValue.mXValue_property.addEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
       newValue.mXValue_property.addEBObserver (self.mXValue_property) // Stored property
- //     newValue.mYValue_property.addEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
       newValue.mYValue_property.addEBObserver (self.mYValue_property) // Stored property
- //     newValue.mValueFontSize_property.addEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
       newValue.mValueFontSize_property.addEBObserver (self.mValueFontSize_property) // Stored property
- //     newValue.mValueRotation_property.addEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
       newValue.mValueRotation_property.addEBObserver (self.mValueRotation_property) // Stored property
- //     newValue.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
       newValue.mComponentValue_property.addEBObserver (self.mComponentValue_property) // Stored property
- //     newValue.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
       newValue.mNamePrefix_property.addEBObserver (self.mNamePrefix_property) // Stored property
- //     newValue.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
       newValue.mNameIndex_property.addEBObserver (self.mNameIndex_property) // Stored property
- //     newValue.mXUnit_property.addEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
       newValue.mXUnit_property.addEBObserver (self.mXUnit_property) // Stored property
- //     newValue.mYUnit_property.addEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
       newValue.mYUnit_property.addEBObserver (self.mYUnit_property) // Stored property
-  //    newValue.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       newValue.deviceName_property.addEBObserver (self.deviceName_property) // Transient property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
-  //    newValue.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
       newValue.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property) // Transient property
-  //    newValue.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
       newValue.selectedPackageName_property.addEBObserver (self.selectedPackageName_property) // Transient property
-  //    newValue.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
       newValue.availablePackages_property.addEBObserver (self.availablePackages_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-  //    newValue.componentIsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
       newValue.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property) // Transient property
-  //    newValue.componentIsPlacedInBoardString_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
       newValue.componentIsPlacedInBoardString_property.addEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
-  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
-  //    newValue.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
       newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
-  //    newValue.hasSlavePads_property.addEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
       newValue.hasSlavePads_property.addEBObserver (self.hasSlavePads_property) // Transient property
-  //    newValue.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
       newValue.placementInSchematic_property.addEBObserver (self.placementInSchematic_property) // Transient property
-  //    newValue.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
       newValue.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
-  //    newValue.componentNameFontName_property.addEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
       newValue.componentNameFontName_property.addEBObserver (self.componentNameFontName_property) // Transient property
-  //    newValue.componentValueFontName_property.addEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
       newValue.componentValueFontName_property.addEBObserver (self.componentValueFontName_property) // Transient property
-  //    newValue.componentPadDictionary_property.addEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
       newValue.componentPadDictionary_property.addEBObserver (self.componentPadDictionary_property) // Transient property
-  //    newValue.padNetDictionary_property.addEBObserversFrom (&self.mObserversOf_padNetDictionary) // Transient property
       newValue.padNetDictionary_property.addEBObserver (self.padNetDictionary_property) // Transient property
-  //    newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
       newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
     }
   }
@@ -195,12 +111,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mSlavePadsShouldBeRouted_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSlavePadsShouldBeRouted (_ inObserver : EBEvent) {
-    self.mSlavePadsShouldBeRouted_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -216,12 +126,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.mX_property.removeEBObserver (inObserver)
   }
@@ -231,12 +135,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mY_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -252,12 +150,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
-    self.mRotation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
     self.mRotation_property.removeEBObserver (inObserver)
   }
@@ -267,12 +159,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mSide_property = EBGenericTransientProperty <ComponentSide?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSide (_ inObserver : EBEvent) {
-    self.mSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -288,12 +174,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
-    self.mDisplayLegend_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mDisplayLegend (_ inObserver : EBEvent) {
     self.mDisplayLegend_property.removeEBObserver (inObserver)
   }
@@ -303,12 +183,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mNameIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNameIsVisibleInBoard (_ inObserver : EBEvent) {
-    self.mNameIsVisibleInBoard_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -324,12 +198,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
-    self.mXName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.mXName_property.removeEBObserver (inObserver)
   }
@@ -339,12 +207,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mYName_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
-    self.mYName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -360,12 +222,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mNameFontSize (_ inObserver : EBEvent) {
-    self.mNameFontSize_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mNameFontSize (_ inObserver : EBEvent) {
     self.mNameFontSize_property.removeEBObserver (inObserver)
   }
@@ -375,12 +231,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mNameRotation_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNameRotation (_ inObserver : EBEvent) {
-    self.mNameRotation_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -396,12 +246,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mValueIsVisibleInBoard (_ inObserver : EBEvent) {
-    self.mValueIsVisibleInBoard_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mValueIsVisibleInBoard (_ inObserver : EBEvent) {
     self.mValueIsVisibleInBoard_property.removeEBObserver (inObserver)
   }
@@ -411,12 +255,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mXValue_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mXValue (_ inObserver : EBEvent) {
-    self.mXValue_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -432,12 +270,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mYValue (_ inObserver : EBEvent) {
-    self.mYValue_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mYValue (_ inObserver : EBEvent) {
     self.mYValue_property.removeEBObserver (inObserver)
   }
@@ -447,12 +279,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mValueFontSize_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mValueFontSize (_ inObserver : EBEvent) {
-    self.mValueFontSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -468,12 +294,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mValueRotation (_ inObserver : EBEvent) {
-    self.mValueRotation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mValueRotation (_ inObserver : EBEvent) {
     self.mValueRotation_property.removeEBObserver (inObserver)
   }
@@ -483,12 +303,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mComponentValue_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mComponentValue (_ inObserver : EBEvent) {
-    self.mComponentValue_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -504,12 +318,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
-    self.mNamePrefix_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mNamePrefix (_ inObserver : EBEvent) {
     self.mNamePrefix_property.removeEBObserver (inObserver)
   }
@@ -519,12 +327,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mNameIndex_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNameIndex (_ inObserver : EBEvent) {
-    self.mNameIndex_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -540,12 +342,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mXUnit (_ inObserver : EBEvent) {
-    self.mXUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mXUnit (_ inObserver : EBEvent) {
     self.mXUnit_property.removeEBObserver (inObserver)
   }
@@ -555,12 +351,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let mYUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mYUnit (_ inObserver : EBEvent) {
-    self.mYUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -576,12 +366,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_deviceName (_ inObserver : EBEvent) {
-    self.deviceName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_deviceName (_ inObserver : EBEvent) {
     self.deviceName_property.removeEBObserver (inObserver)
   }
@@ -591,12 +375,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -612,12 +390,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.packagePadDictionary_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.packagePadDictionary_property.removeEBObserver (inObserver)
   }
@@ -627,12 +399,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let selectedPackageName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedPackageName (_ inObserver : EBEvent) {
-    self.selectedPackageName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -648,12 +414,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_availablePackages (_ inObserver : EBEvent) {
-    self.availablePackages_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_availablePackages (_ inObserver : EBEvent) {
     self.availablePackages_property.removeEBObserver (inObserver)
   }
@@ -663,12 +423,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -684,12 +438,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_componentIsPlacedInBoard (_ inObserver : EBEvent) {
-    self.componentIsPlacedInBoard_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_componentIsPlacedInBoard (_ inObserver : EBEvent) {
     self.componentIsPlacedInBoard_property.removeEBObserver (inObserver)
   }
@@ -699,12 +447,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let componentIsPlacedInBoardString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentIsPlacedInBoardString (_ inObserver : EBEvent) {
-    self.componentIsPlacedInBoardString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -720,12 +462,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.strokeBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.strokeBezierPath_property.removeEBObserver (inObserver)
   }
@@ -735,12 +471,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.pinPadAssignments_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -756,12 +486,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_hasSlavePads (_ inObserver : EBEvent) {
-    self.hasSlavePads_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_hasSlavePads (_ inObserver : EBEvent) {
     self.hasSlavePads_property.removeEBObserver (inObserver)
   }
@@ -771,12 +495,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let placementInSchematic_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_placementInSchematic (_ inObserver : EBEvent) {
-    self.placementInSchematic_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -792,12 +510,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
-    self.deviceSymbolDictionary_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
     self.deviceSymbolDictionary_property.removeEBObserver (inObserver)
   }
@@ -807,12 +519,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let componentNameFontName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentNameFontName (_ inObserver : EBEvent) {
-    self.componentNameFontName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -828,12 +534,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_componentValueFontName (_ inObserver : EBEvent) {
-    self.componentValueFontName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_componentValueFontName (_ inObserver : EBEvent) {
     self.componentValueFontName_property.removeEBObserver (inObserver)
   }
@@ -843,12 +543,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let componentPadDictionary_property = EBGenericTransientProperty <ComponentPadDescriptorDictionary?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentPadDictionary (_ inObserver : EBEvent) {
-    self.componentPadDictionary_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -864,12 +558,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_padNetDictionary (_ inObserver : EBEvent) {
-    self.padNetDictionary_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_padNetDictionary (_ inObserver : EBEvent) {
     self.padNetDictionary_property.removeEBObserver (inObserver)
   }
@@ -879,12 +567,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let componentName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentName (_ inObserver : EBEvent) {
-    self.componentName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -900,12 +582,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -918,12 +594,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.unplacedSymbols_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
     self.unplacedSymbols_property.removeEBObserver (inObserver)
   }
@@ -933,12 +603,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

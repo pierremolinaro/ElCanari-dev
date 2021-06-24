@@ -744,7 +744,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.master_property.padNameWithZoneName_property.addEBObserver (self.padNameWithZoneName_property)
   //--- Atomic property: masterPadNameWithZoneName
     self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -760,7 +760,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padNameWithZoneName (self.masterPadNameWithZoneName_property)
+    self.master_property.padNameWithZoneName_property.addEBObserver (self.masterPadNameWithZoneName_property)
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -776,7 +776,7 @@ final class PackageSlavePad : PackageObject,
         return .empty
       }
     }
-    self.master_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    self.master_property.padNameForDisplay_property.addEBObserver (self.padNameForDisplay_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

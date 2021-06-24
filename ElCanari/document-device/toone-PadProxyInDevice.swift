@@ -16,28 +16,18 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mPinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
       oldValue.mPinInstanceName_property.removeEBObserver (self.mPinInstanceName_property) // Stored property
- //     oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       oldValue.mPadName_property.removeEBObserver (self.mPadName_property) // Stored property
- //     oldValue.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
       oldValue.mIsNC_property.removeEBObserver (self.mIsNC_property) // Stored property
- //     oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
- //     oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
       oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mPinInstanceName_property.addEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
       newValue.mPinInstanceName_property.addEBObserver (self.mPinInstanceName_property) // Stored property
- //     newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       newValue.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
- //     newValue.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
       newValue.mIsNC_property.addEBObserver (self.mIsNC_property) // Stored property
-  //    newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
       newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-  //    newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
       newValue.symbolName_property.addEBObserver (self.symbolName_property) // Transient property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //····················································································································
 
   final let mPinInstanceName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPinInstanceName (_ inObserver : EBEvent) {
-    self.mPinInstanceName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.mPadName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.mPadName_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //····················································································································
 
   final let mIsNC_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
-    self.mIsNC_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.isConnected_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
     self.isConnected_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //····················································································································
 
   final let symbolName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.symbolName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

@@ -16,28 +16,18 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
       oldValue.mPath_property.removeEBObserver (self.mPath_property) // Stored property
- //     oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
       oldValue.mUses_property.removeEBObserver (self.mUses_property) // Stored property
- //     oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
       oldValue.mLibraryRepositoryURL_property.removeEBObserver (self.mLibraryRepositoryURL_property) // Stored property
- //     oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
       oldValue.mUserAndPasswordTag_property.removeEBObserver (self.mUserAndPasswordTag_property) // Stored property
- //     oldValue.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
       oldValue.mStatusImage_property.removeEBObserver (self.mStatusImage_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
       newValue.mPath_property.addEBObserver (self.mPath_property) // Stored property
- //     newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
       newValue.mUses_property.addEBObserver (self.mUses_property) // Stored property
- //     newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
       newValue.mLibraryRepositoryURL_property.addEBObserver (self.mLibraryRepositoryURL_property) // Stored property
- //     newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
       newValue.mUserAndPasswordTag_property.addEBObserver (self.mUserAndPasswordTag_property) // Stored property
-  //    newValue.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
       newValue.mStatusImage_property.addEBObserver (self.mStatusImage_property) // Transient property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mPath_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
-    self.mPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
-    self.mUses_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.mUses_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
-    self.mLibraryRepositoryURL_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
-    self.mUserAndPasswordTag_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.mUserAndPasswordTag_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
-    self.mStatusImage_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

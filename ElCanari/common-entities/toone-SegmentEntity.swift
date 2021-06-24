@@ -16,28 +16,18 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
       oldValue.y1_property.removeEBObserver (self.y1_property) // Stored property
- //     oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
       oldValue.x2_property.removeEBObserver (self.x2_property) // Stored property
- //     oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
       oldValue.y2_property.removeEBObserver (self.y2_property) // Stored property
- //     oldValue.width_property.removeEBObserversFrom (&self.mObserversOf_width) // Stored property
       oldValue.width_property.removeEBObserver (self.width_property) // Stored property
- //     oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
       oldValue.x1_property.removeEBObserver (self.x1_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
       newValue.y1_property.addEBObserver (self.y1_property) // Stored property
- //     newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
       newValue.x2_property.addEBObserver (self.x2_property) // Stored property
- //     newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
       newValue.y2_property.addEBObserver (self.y2_property) // Stored property
- //     newValue.width_property.addEBObserversFrom (&self.mObserversOf_width) // Stored property
       newValue.width_property.addEBObserver (self.width_property) // Stored property
- //     newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
       newValue.x1_property.addEBObserver (self.x1_property) // Stored property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //····················································································································
 
   final let y1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.y1_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.x2_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.x2_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //····················································································································
 
   final let y2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.y2_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
-    self.width_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.width_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //····················································································································
 
   final let x1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.x1_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

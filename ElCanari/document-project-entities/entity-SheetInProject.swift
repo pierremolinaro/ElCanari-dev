@@ -324,8 +324,8 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_sheetGeometry (self.sheetDescriptor_property)
-    self.mRoot_property.addEBObserverOf_sheetIndexes (self.sheetDescriptor_property)
+    self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
+    self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },

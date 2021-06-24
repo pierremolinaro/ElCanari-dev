@@ -16,44 +16,26 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
       oldValue.mTypeName_property.removeEBObserver (self.mTypeName_property) // Stored property
- //     oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
       oldValue.mVersion_property.removeEBObserver (self.mVersion_property) // Stored property
- //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       oldValue.mFileData_property.removeEBObserver (self.mFileData_property) // Stored property
- //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
- //     oldValue.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
       oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
- //     oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
- //     oldValue.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
       oldValue.instanceCount_property.removeEBObserver (self.instanceCount_property) // Transient property
- //     oldValue.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
       oldValue.documentSizeString_property.removeEBObserver (self.documentSizeString_property) // Transient property
- //     oldValue.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
       oldValue.pinNameShape_property.removeEBObserver (self.pinNameShape_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
       newValue.mTypeName_property.addEBObserver (self.mTypeName_property) // Stored property
- //     newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
       newValue.mVersion_property.addEBObserver (self.mVersion_property) // Stored property
- //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       newValue.mFileData_property.addEBObserver (self.mFileData_property) // Stored property
- //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
       newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
- //     newValue.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
       newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
-  //    newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-  //    newValue.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
       newValue.instanceCount_property.addEBObserver (self.instanceCount_property) // Transient property
-  //    newValue.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
       newValue.documentSizeString_property.addEBObserver (self.documentSizeString_property) // Transient property
-  //    newValue.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
       newValue.pinNameShape_property.addEBObserver (self.pinNameShape_property) // Transient property
     }
   }
@@ -63,12 +45,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let mTypeName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
-    self.mTypeName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -84,12 +60,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
-    self.mVersion_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.mVersion_property.removeEBObserver (inObserver)
   }
@@ -99,12 +69,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let mFileData_property = EBGenericTransientProperty <Data?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.mFileData_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -120,12 +84,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.mStrokeBezierPath_property.removeEBObserver (inObserver)
   }
@@ -135,12 +93,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mFilledBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -156,12 +108,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.versionString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.versionString_property.removeEBObserver (inObserver)
   }
@@ -171,12 +117,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let instanceCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    self.instanceCount_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -192,12 +132,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
-    self.documentSizeString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
     self.documentSizeString_property.removeEBObserver (inObserver)
   }
@@ -207,12 +141,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let pinNameShape_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
-    self.pinNameShape_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

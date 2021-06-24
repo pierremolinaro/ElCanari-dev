@@ -16,68 +16,38 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.yPin_property.removeEBObserversFrom (&self.mObserversOf_yPin) // Stored property
       oldValue.yPin_property.removeEBObserver (self.yPin_property) // Stored property
- //     oldValue.xName_property.removeEBObserversFrom (&self.mObserversOf_xName) // Stored property
       oldValue.xName_property.removeEBObserver (self.xName_property) // Stored property
- //     oldValue.yName_property.removeEBObserversFrom (&self.mObserversOf_yName) // Stored property
       oldValue.yName_property.removeEBObserver (self.yName_property) // Stored property
- //     oldValue.xNumber_property.removeEBObserversFrom (&self.mObserversOf_xNumber) // Stored property
       oldValue.xNumber_property.removeEBObserver (self.xNumber_property) // Stored property
- //     oldValue.yNumber_property.removeEBObserversFrom (&self.mObserversOf_yNumber) // Stored property
       oldValue.yNumber_property.removeEBObserver (self.yNumber_property) // Stored property
- //     oldValue.name_property.removeEBObserversFrom (&self.mObserversOf_name) // Stored property
       oldValue.name_property.removeEBObserver (self.name_property) // Stored property
- //     oldValue.nameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_nameHorizontalAlignment) // Stored property
       oldValue.nameHorizontalAlignment_property.removeEBObserver (self.nameHorizontalAlignment_property) // Stored property
- //     oldValue.numberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_numberHorizontalAlignment) // Stored property
       oldValue.numberHorizontalAlignment_property.removeEBObserver (self.numberHorizontalAlignment_property) // Stored property
- //     oldValue.pinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_pinNameIsDisplayedInSchematics) // Stored property
       oldValue.pinNameIsDisplayedInSchematics_property.removeEBObserver (self.pinNameIsDisplayedInSchematics_property) // Stored property
- //     oldValue.xPin_property.removeEBObserversFrom (&self.mObserversOf_xPin) // Stored property
       oldValue.xPin_property.removeEBObserver (self.xPin_property) // Stored property
- //     oldValue.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
       oldValue.filledBezierPath_property.removeEBObserver (self.filledBezierPath_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
- //     oldValue.nameRect_property.removeEBObserversFrom (&self.mObserversOf_nameRect) // Transient property
       oldValue.nameRect_property.removeEBObserver (self.nameRect_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.yPin_property.addEBObserversFrom (&self.mObserversOf_yPin) // Stored property
       newValue.yPin_property.addEBObserver (self.yPin_property) // Stored property
- //     newValue.xName_property.addEBObserversFrom (&self.mObserversOf_xName) // Stored property
       newValue.xName_property.addEBObserver (self.xName_property) // Stored property
- //     newValue.yName_property.addEBObserversFrom (&self.mObserversOf_yName) // Stored property
       newValue.yName_property.addEBObserver (self.yName_property) // Stored property
- //     newValue.xNumber_property.addEBObserversFrom (&self.mObserversOf_xNumber) // Stored property
       newValue.xNumber_property.addEBObserver (self.xNumber_property) // Stored property
- //     newValue.yNumber_property.addEBObserversFrom (&self.mObserversOf_yNumber) // Stored property
       newValue.yNumber_property.addEBObserver (self.yNumber_property) // Stored property
- //     newValue.name_property.addEBObserversFrom (&self.mObserversOf_name) // Stored property
       newValue.name_property.addEBObserver (self.name_property) // Stored property
- //     newValue.nameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_nameHorizontalAlignment) // Stored property
       newValue.nameHorizontalAlignment_property.addEBObserver (self.nameHorizontalAlignment_property) // Stored property
- //     newValue.numberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_numberHorizontalAlignment) // Stored property
       newValue.numberHorizontalAlignment_property.addEBObserver (self.numberHorizontalAlignment_property) // Stored property
- //     newValue.pinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_pinNameIsDisplayedInSchematics) // Stored property
       newValue.pinNameIsDisplayedInSchematics_property.addEBObserver (self.pinNameIsDisplayedInSchematics_property) // Stored property
- //     newValue.xPin_property.addEBObserversFrom (&self.mObserversOf_xPin) // Stored property
       newValue.xPin_property.addEBObserver (self.xPin_property) // Stored property
-  //    newValue.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
       newValue.filledBezierPath_property.addEBObserver (self.filledBezierPath_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-  //    newValue.nameRect_property.addEBObserversFrom (&self.mObserversOf_nameRect) // Transient property
       newValue.nameRect_property.addEBObserver (self.nameRect_property) // Transient property
     }
   }
@@ -87,12 +57,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let yPin_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yPin (_ inObserver : EBEvent) {
-    self.yPin_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -108,12 +72,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xName (_ inObserver : EBEvent) {
-    self.xName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_xName (_ inObserver : EBEvent) {
     self.xName_property.removeEBObserver (inObserver)
   }
@@ -123,12 +81,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let yName_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yName (_ inObserver : EBEvent) {
-    self.yName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -144,12 +96,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xNumber (_ inObserver : EBEvent) {
-    self.xNumber_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_xNumber (_ inObserver : EBEvent) {
     self.xNumber_property.removeEBObserver (inObserver)
   }
@@ -159,12 +105,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let yNumber_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yNumber (_ inObserver : EBEvent) {
-    self.yNumber_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -180,12 +120,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.name_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.name_property.removeEBObserver (inObserver)
   }
@@ -195,12 +129,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let nameHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
-    self.nameHorizontalAlignment_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -216,12 +144,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent) {
-    self.numberHorizontalAlignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent) {
     self.numberHorizontalAlignment_property.removeEBObserver (inObserver)
   }
@@ -231,12 +153,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let pinNameIsDisplayedInSchematics_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
-    self.pinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -252,12 +168,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xPin (_ inObserver : EBEvent) {
-    self.xPin_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_xPin (_ inObserver : EBEvent) {
     self.xPin_property.removeEBObserver (inObserver)
   }
@@ -267,12 +177,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let filledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.filledBezierPath_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -288,12 +192,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -303,12 +201,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -324,12 +216,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
   }
@@ -339,12 +225,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //····················································································································
 
   final let nameRect_property = EBGenericTransientProperty <NSRect?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_nameRect (_ inObserver : EBEvent) {
-    self.nameRect_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

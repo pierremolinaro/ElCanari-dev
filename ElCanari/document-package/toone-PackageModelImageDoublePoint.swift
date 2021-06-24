@@ -16,40 +16,24 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mFirstX_property.removeEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
       oldValue.mFirstX_property.removeEBObserver (self.mFirstX_property) // Stored property
- //     oldValue.mFirstY_property.removeEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
       oldValue.mFirstY_property.removeEBObserver (self.mFirstY_property) // Stored property
- //     oldValue.mFirstColor_property.removeEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
       oldValue.mFirstColor_property.removeEBObserver (self.mFirstColor_property) // Stored property
- //     oldValue.mSecondDx_property.removeEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
       oldValue.mSecondDx_property.removeEBObserver (self.mSecondDx_property) // Stored property
- //     oldValue.mSecondDy_property.removeEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
       oldValue.mSecondDy_property.removeEBObserver (self.mSecondDy_property) // Stored property
- //     oldValue.mSecondColor_property.removeEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
       oldValue.mSecondColor_property.removeEBObserver (self.mSecondColor_property) // Stored property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mFirstX_property.addEBObserversFrom (&self.mObserversOf_mFirstX) // Stored property
       newValue.mFirstX_property.addEBObserver (self.mFirstX_property) // Stored property
- //     newValue.mFirstY_property.addEBObserversFrom (&self.mObserversOf_mFirstY) // Stored property
       newValue.mFirstY_property.addEBObserver (self.mFirstY_property) // Stored property
- //     newValue.mFirstColor_property.addEBObserversFrom (&self.mObserversOf_mFirstColor) // Stored property
       newValue.mFirstColor_property.addEBObserver (self.mFirstColor_property) // Stored property
- //     newValue.mSecondDx_property.addEBObserversFrom (&self.mObserversOf_mSecondDx) // Stored property
       newValue.mSecondDx_property.addEBObserver (self.mSecondDx_property) // Stored property
- //     newValue.mSecondDy_property.addEBObserversFrom (&self.mObserversOf_mSecondDy) // Stored property
       newValue.mSecondDy_property.addEBObserver (self.mSecondDy_property) // Stored property
- //     newValue.mSecondColor_property.addEBObserversFrom (&self.mObserversOf_mSecondColor) // Stored property
       newValue.mSecondColor_property.addEBObserver (self.mSecondColor_property) // Stored property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
     }
   }
@@ -59,12 +43,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let mFirstX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFirstX (_ inObserver : EBEvent) {
-    self.mFirstX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -80,12 +58,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_mFirstY (_ inObserver : EBEvent) {
-    self.mFirstY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mFirstY (_ inObserver : EBEvent) {
     self.mFirstY_property.removeEBObserver (inObserver)
   }
@@ -95,12 +67,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let mFirstColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFirstColor (_ inObserver : EBEvent) {
-    self.mFirstColor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +82,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
-    self.mSecondDx_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSecondDx (_ inObserver : EBEvent) {
     self.mSecondDx_property.removeEBObserver (inObserver)
   }
@@ -131,12 +91,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let mSecondDy_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSecondDy (_ inObserver : EBEvent) {
-    self.mSecondDy_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +106,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
-    self.mSecondColor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSecondColor (_ inObserver : EBEvent) {
     self.mSecondColor_property.removeEBObserver (inObserver)
   }
@@ -170,12 +118,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
   }
@@ -185,12 +127,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

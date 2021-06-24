@@ -112,9 +112,9 @@ final class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.objectDisplay_property)
+    self.mPoint_property.location_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.addEBObserverOf_symbolRotation (self.objectDisplay_property)
+    self.mPoint_property.symbolRotation_property.addEBObserver (self.objectDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
@@ -131,9 +131,9 @@ final class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserverOf_location (self.selectionDisplay_property)
+    self.mPoint_property.location_property.addEBObserver (self.selectionDisplay_property)
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
-    self.mPoint_property.addEBObserverOf_symbolRotation (self.selectionDisplay_property)
+    self.mPoint_property.symbolRotation_property.addEBObserver (self.selectionDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

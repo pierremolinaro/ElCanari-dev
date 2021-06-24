@@ -181,7 +181,7 @@ class SchematicObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.sheetDescriptor_property)
+    self.mSheet_property.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property)
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

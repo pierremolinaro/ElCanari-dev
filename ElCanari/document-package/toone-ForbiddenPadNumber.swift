@@ -16,12 +16,10 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.padNumber_property.removeEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
       oldValue.padNumber_property.removeEBObserver (self.padNumber_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.padNumber_property.addEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
       newValue.padNumber_property.addEBObserver (self.padNumber_property) // Stored property
     }
   }
@@ -31,12 +29,6 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   //····················································································································
 
   final let padNumber_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.padNumber_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

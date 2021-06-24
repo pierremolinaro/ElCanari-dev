@@ -16,100 +16,54 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.drawBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
       oldValue.drawBoardLimits_property.removeEBObserver (self.drawBoardLimits_property) // Stored property
- //     oldValue.drawInternalBoardLimits_property.removeEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
       oldValue.drawInternalBoardLimits_property.removeEBObserver (self.drawInternalBoardLimits_property) // Stored property
- //     oldValue.drawComponentNamesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
       oldValue.drawComponentNamesTopSide_property.removeEBObserver (self.drawComponentNamesTopSide_property) // Stored property
- //     oldValue.drawComponentNamesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
       oldValue.drawComponentNamesBottomSide_property.removeEBObserver (self.drawComponentNamesBottomSide_property) // Stored property
- //     oldValue.drawComponentValuesTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
       oldValue.drawComponentValuesTopSide_property.removeEBObserver (self.drawComponentValuesTopSide_property) // Stored property
- //     oldValue.drawComponentValuesBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
       oldValue.drawComponentValuesBottomSide_property.removeEBObserver (self.drawComponentValuesBottomSide_property) // Stored property
- //     oldValue.drawPackageLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
       oldValue.drawPackageLegendTopSide_property.removeEBObserver (self.drawPackageLegendTopSide_property) // Stored property
- //     oldValue.drawPackageLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
       oldValue.drawPackageLegendBottomSide_property.removeEBObserver (self.drawPackageLegendBottomSide_property) // Stored property
- //     oldValue.drawPadHolesInPDF_property.removeEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
       oldValue.drawPadHolesInPDF_property.removeEBObserver (self.drawPadHolesInPDF_property) // Stored property
- //     oldValue.drawPadsTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
       oldValue.drawPadsTopSide_property.removeEBObserver (self.drawPadsTopSide_property) // Stored property
- //     oldValue.drawPadsBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
       oldValue.drawPadsBottomSide_property.removeEBObserver (self.drawPadsBottomSide_property) // Stored property
- //     oldValue.drawTextsLayoutTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
       oldValue.drawTextsLayoutTopSide_property.removeEBObserver (self.drawTextsLayoutTopSide_property) // Stored property
- //     oldValue.drawTextsLayoutBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
       oldValue.drawTextsLayoutBottomSide_property.removeEBObserver (self.drawTextsLayoutBottomSide_property) // Stored property
- //     oldValue.drawTextsLegendTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
       oldValue.drawTextsLegendTopSide_property.removeEBObserver (self.drawTextsLegendTopSide_property) // Stored property
- //     oldValue.drawTextsLegendBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
       oldValue.drawTextsLegendBottomSide_property.removeEBObserver (self.drawTextsLegendBottomSide_property) // Stored property
- //     oldValue.drawTracksTopSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
       oldValue.drawTracksTopSide_property.removeEBObserver (self.drawTracksTopSide_property) // Stored property
- //     oldValue.drawTracksBottomSide_property.removeEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
       oldValue.drawTracksBottomSide_property.removeEBObserver (self.drawTracksBottomSide_property) // Stored property
- //     oldValue.drawVias_property.removeEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
       oldValue.drawVias_property.removeEBObserver (self.drawVias_property) // Stored property
- //     oldValue.fileExtension_property.removeEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
       oldValue.fileExtension_property.removeEBObserver (self.fileExtension_property) // Stored property
- //     oldValue.horizontalMirror_property.removeEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
       oldValue.horizontalMirror_property.removeEBObserver (self.horizontalMirror_property) // Stored property
- //     oldValue.name_property.removeEBObserversFrom (&self.mObserversOf_name) // Stored property
       oldValue.name_property.removeEBObserver (self.name_property) // Stored property
- //     oldValue.measurementUnitForPadHoleInPDF_property.removeEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
       oldValue.measurementUnitForPadHoleInPDF_property.removeEBObserver (self.measurementUnitForPadHoleInPDF_property) // Stored property
- //     oldValue.padHoleDiameterInPDF_property.removeEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
       oldValue.padHoleDiameterInPDF_property.removeEBObserver (self.padHoleDiameterInPDF_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.drawBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawBoardLimits) // Stored property
       newValue.drawBoardLimits_property.addEBObserver (self.drawBoardLimits_property) // Stored property
- //     newValue.drawInternalBoardLimits_property.addEBObserversFrom (&self.mObserversOf_drawInternalBoardLimits) // Stored property
       newValue.drawInternalBoardLimits_property.addEBObserver (self.drawInternalBoardLimits_property) // Stored property
- //     newValue.drawComponentNamesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesTopSide) // Stored property
       newValue.drawComponentNamesTopSide_property.addEBObserver (self.drawComponentNamesTopSide_property) // Stored property
- //     newValue.drawComponentNamesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentNamesBottomSide) // Stored property
       newValue.drawComponentNamesBottomSide_property.addEBObserver (self.drawComponentNamesBottomSide_property) // Stored property
- //     newValue.drawComponentValuesTopSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesTopSide) // Stored property
       newValue.drawComponentValuesTopSide_property.addEBObserver (self.drawComponentValuesTopSide_property) // Stored property
- //     newValue.drawComponentValuesBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawComponentValuesBottomSide) // Stored property
       newValue.drawComponentValuesBottomSide_property.addEBObserver (self.drawComponentValuesBottomSide_property) // Stored property
- //     newValue.drawPackageLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendTopSide) // Stored property
       newValue.drawPackageLegendTopSide_property.addEBObserver (self.drawPackageLegendTopSide_property) // Stored property
- //     newValue.drawPackageLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPackageLegendBottomSide) // Stored property
       newValue.drawPackageLegendBottomSide_property.addEBObserver (self.drawPackageLegendBottomSide_property) // Stored property
- //     newValue.drawPadHolesInPDF_property.addEBObserversFrom (&self.mObserversOf_drawPadHolesInPDF) // Stored property
       newValue.drawPadHolesInPDF_property.addEBObserver (self.drawPadHolesInPDF_property) // Stored property
- //     newValue.drawPadsTopSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsTopSide) // Stored property
       newValue.drawPadsTopSide_property.addEBObserver (self.drawPadsTopSide_property) // Stored property
- //     newValue.drawPadsBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawPadsBottomSide) // Stored property
       newValue.drawPadsBottomSide_property.addEBObserver (self.drawPadsBottomSide_property) // Stored property
- //     newValue.drawTextsLayoutTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutTopSide) // Stored property
       newValue.drawTextsLayoutTopSide_property.addEBObserver (self.drawTextsLayoutTopSide_property) // Stored property
- //     newValue.drawTextsLayoutBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLayoutBottomSide) // Stored property
       newValue.drawTextsLayoutBottomSide_property.addEBObserver (self.drawTextsLayoutBottomSide_property) // Stored property
- //     newValue.drawTextsLegendTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendTopSide) // Stored property
       newValue.drawTextsLegendTopSide_property.addEBObserver (self.drawTextsLegendTopSide_property) // Stored property
- //     newValue.drawTextsLegendBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTextsLegendBottomSide) // Stored property
       newValue.drawTextsLegendBottomSide_property.addEBObserver (self.drawTextsLegendBottomSide_property) // Stored property
- //     newValue.drawTracksTopSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksTopSide) // Stored property
       newValue.drawTracksTopSide_property.addEBObserver (self.drawTracksTopSide_property) // Stored property
- //     newValue.drawTracksBottomSide_property.addEBObserversFrom (&self.mObserversOf_drawTracksBottomSide) // Stored property
       newValue.drawTracksBottomSide_property.addEBObserver (self.drawTracksBottomSide_property) // Stored property
- //     newValue.drawVias_property.addEBObserversFrom (&self.mObserversOf_drawVias) // Stored property
       newValue.drawVias_property.addEBObserver (self.drawVias_property) // Stored property
- //     newValue.fileExtension_property.addEBObserversFrom (&self.mObserversOf_fileExtension) // Stored property
       newValue.fileExtension_property.addEBObserver (self.fileExtension_property) // Stored property
- //     newValue.horizontalMirror_property.addEBObserversFrom (&self.mObserversOf_horizontalMirror) // Stored property
       newValue.horizontalMirror_property.addEBObserver (self.horizontalMirror_property) // Stored property
- //     newValue.name_property.addEBObserversFrom (&self.mObserversOf_name) // Stored property
       newValue.name_property.addEBObserver (self.name_property) // Stored property
- //     newValue.measurementUnitForPadHoleInPDF_property.addEBObserversFrom (&self.mObserversOf_measurementUnitForPadHoleInPDF) // Stored property
       newValue.measurementUnitForPadHoleInPDF_property.addEBObserver (self.measurementUnitForPadHoleInPDF_property) // Stored property
- //     newValue.padHoleDiameterInPDF_property.addEBObserversFrom (&self.mObserversOf_padHoleDiameterInPDF) // Stored property
       newValue.padHoleDiameterInPDF_property.addEBObserver (self.padHoleDiameterInPDF_property) // Stored property
     }
   }
@@ -119,12 +73,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawBoardLimits_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
-    self.drawBoardLimits_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -140,12 +88,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
-    self.drawInternalBoardLimits_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.drawInternalBoardLimits_property.removeEBObserver (inObserver)
   }
@@ -155,12 +97,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentNamesTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
-    self.drawComponentNamesTopSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -176,12 +112,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
-    self.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
   }
@@ -191,12 +121,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentValuesTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
-    self.drawComponentValuesTopSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -212,12 +136,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
-    self.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
   }
@@ -227,12 +145,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPackageLegendTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
-    self.drawPackageLegendTopSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -248,12 +160,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
-    self.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
   }
@@ -263,12 +169,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPadHolesInPDF_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
-    self.drawPadHolesInPDF_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -284,12 +184,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
-    self.drawPadsTopSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.drawPadsTopSide_property.removeEBObserver (inObserver)
   }
@@ -299,12 +193,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPadsBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
-    self.drawPadsBottomSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -320,12 +208,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
-    self.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
   }
@@ -335,12 +217,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLayoutBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
-    self.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -356,12 +232,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
-    self.drawTextsLegendTopSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
   }
@@ -371,12 +241,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLegendBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
-    self.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -392,12 +256,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
-    self.drawTracksTopSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.drawTracksTopSide_property.removeEBObserver (inObserver)
   }
@@ -407,12 +265,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTracksBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
-    self.drawTracksBottomSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -428,12 +280,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
-    self.drawVias_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.drawVias_property.removeEBObserver (inObserver)
   }
@@ -443,12 +289,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let fileExtension_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
-    self.fileExtension_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -464,12 +304,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
-    self.horizontalMirror_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.horizontalMirror_property.removeEBObserver (inObserver)
   }
@@ -479,12 +313,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let name_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.name_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -500,12 +328,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
 
   //····················································································································
 
-  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
-    self.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
   }
@@ -515,12 +337,6 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let padHoleDiameterInPDF_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
-    self.padHoleDiameterInPDF_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

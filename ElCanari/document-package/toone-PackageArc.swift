@@ -16,76 +16,42 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
       oldValue.yCenter_property.removeEBObserver (self.yCenter_property) // Stored property
- //     oldValue.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
       oldValue.radius_property.removeEBObserver (self.radius_property) // Stored property
- //     oldValue.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
       oldValue.startAngle_property.removeEBObserver (self.startAngle_property) // Stored property
- //     oldValue.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
       oldValue.arcAngle_property.removeEBObserver (self.arcAngle_property) // Stored property
- //     oldValue.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
       oldValue.startTangent_property.removeEBObserver (self.startTangent_property) // Stored property
- //     oldValue.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
       oldValue.endTangent_property.removeEBObserver (self.endTangent_property) // Stored property
- //     oldValue.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
       oldValue.pathIsClosed_property.removeEBObserver (self.pathIsClosed_property) // Stored property
- //     oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
       oldValue.xCenterUnit_property.removeEBObserver (self.xCenterUnit_property) // Stored property
- //     oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
       oldValue.yCenterUnit_property.removeEBObserver (self.yCenterUnit_property) // Stored property
- //     oldValue.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
       oldValue.radiusUnit_property.removeEBObserver (self.radiusUnit_property) // Stored property
- //     oldValue.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
       oldValue.startTangentUnit_property.removeEBObserver (self.startTangentUnit_property) // Stored property
- //     oldValue.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
       oldValue.endTangentUnit_property.removeEBObserver (self.endTangentUnit_property) // Stored property
- //     oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
       oldValue.xCenter_property.removeEBObserver (self.xCenter_property) // Stored property
- //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
       newValue.yCenter_property.addEBObserver (self.yCenter_property) // Stored property
- //     newValue.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
       newValue.radius_property.addEBObserver (self.radius_property) // Stored property
- //     newValue.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
       newValue.startAngle_property.addEBObserver (self.startAngle_property) // Stored property
- //     newValue.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
       newValue.arcAngle_property.addEBObserver (self.arcAngle_property) // Stored property
- //     newValue.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
       newValue.startTangent_property.addEBObserver (self.startTangent_property) // Stored property
- //     newValue.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
       newValue.endTangent_property.addEBObserver (self.endTangent_property) // Stored property
- //     newValue.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
       newValue.pathIsClosed_property.addEBObserver (self.pathIsClosed_property) // Stored property
- //     newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
       newValue.xCenterUnit_property.addEBObserver (self.xCenterUnit_property) // Stored property
- //     newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
       newValue.yCenterUnit_property.addEBObserver (self.yCenterUnit_property) // Stored property
- //     newValue.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
       newValue.radiusUnit_property.addEBObserver (self.radiusUnit_property) // Stored property
- //     newValue.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
       newValue.startTangentUnit_property.addEBObserver (self.startTangentUnit_property) // Stored property
- //     newValue.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
       newValue.endTangentUnit_property.addEBObserver (self.endTangentUnit_property) // Stored property
- //     newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
       newValue.xCenter_property.addEBObserver (self.xCenter_property) // Stored property
-  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
     }
   }
@@ -95,12 +61,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let yCenter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
-    self.yCenter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +76,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radius (_ inObserver : EBEvent) {
-    self.radius_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_radius (_ inObserver : EBEvent) {
     self.radius_property.removeEBObserver (inObserver)
   }
@@ -131,12 +85,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let startAngle_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_startAngle (_ inObserver : EBEvent) {
-    self.startAngle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +100,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_arcAngle (_ inObserver : EBEvent) {
-    self.arcAngle_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_arcAngle (_ inObserver : EBEvent) {
     self.arcAngle_property.removeEBObserver (inObserver)
   }
@@ -167,12 +109,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let startTangent_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_startTangent (_ inObserver : EBEvent) {
-    self.startTangent_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -188,12 +124,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangent (_ inObserver : EBEvent) {
-    self.endTangent_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_endTangent (_ inObserver : EBEvent) {
     self.endTangent_property.removeEBObserver (inObserver)
   }
@@ -203,12 +133,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let pathIsClosed_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent) {
-    self.pathIsClosed_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -224,12 +148,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
-    self.xCenterUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
     self.xCenterUnit_property.removeEBObserver (inObserver)
   }
@@ -239,12 +157,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let yCenterUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
-    self.yCenterUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -260,12 +172,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
-    self.radiusUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
     self.radiusUnit_property.removeEBObserver (inObserver)
   }
@@ -275,12 +181,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let startTangentUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
-    self.startTangentUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -296,12 +196,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
-    self.endTangentUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
     self.endTangentUnit_property.removeEBObserver (inObserver)
   }
@@ -311,12 +205,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let xCenter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.xCenter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -332,12 +220,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.strokeBezierPath_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
     self.strokeBezierPath_property.removeEBObserver (inObserver)
   }
@@ -347,12 +229,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -368,12 +244,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -383,12 +253,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

@@ -16,20 +16,14 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
       oldValue.y_property.removeEBObserver (self.y_property) // Stored property
- //     oldValue.padDiameter_property.removeEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
       oldValue.padDiameter_property.removeEBObserver (self.padDiameter_property) // Stored property
- //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
       oldValue.x_property.removeEBObserver (self.x_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
       newValue.y_property.addEBObserver (self.y_property) // Stored property
- //     newValue.padDiameter_property.addEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
       newValue.padDiameter_property.addEBObserver (self.padDiameter_property) // Stored property
- //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
       newValue.x_property.addEBObserver (self.x_property) // Stored property
     }
   }
@@ -39,12 +33,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //····················································································································
 
   final let y_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -60,12 +48,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
 
   //····················································································································
 
-  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
-    self.padDiameter_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.padDiameter_property.removeEBObserver (inObserver)
   }
@@ -75,12 +57,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

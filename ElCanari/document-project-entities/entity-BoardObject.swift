@@ -293,7 +293,7 @@ class BoardObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserverOf_mErrorOrWarningIssueSize (self.errorOrWarningIssueSize_property)
+    self.mRoot_property.mErrorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

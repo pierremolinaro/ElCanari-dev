@@ -16,20 +16,14 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       oldValue.mPadName_property.removeEBObserver (self.mPadName_property) // Stored property
- //     oldValue.pinPadAssignment_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
       oldValue.pinPadAssignment_property.removeEBObserver (self.pinPadAssignment_property) // Transient property
- //     oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       newValue.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
-  //    newValue.pinPadAssignment_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
       newValue.pinPadAssignment_property.addEBObserver (self.pinPadAssignment_property) // Transient property
-  //    newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
     }
   }
@@ -39,12 +33,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let mPadName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.mPadName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -60,12 +48,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
-    self.pinPadAssignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
     self.pinPadAssignment_property.removeEBObserver (inObserver)
   }
@@ -75,12 +57,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let descriptor_property = EBGenericTransientProperty <PinPadAssignmentInProject?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
-    self.descriptor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

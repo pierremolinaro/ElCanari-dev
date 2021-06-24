@@ -16,56 +16,32 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
       oldValue.selectedTab_property.removeEBObserver (self.selectedTab_property) // Stored property
- //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
       oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
- //     oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
       oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
- //     oldValue.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
       oldValue.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property) // Stored property
- //     oldValue.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
       oldValue.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property) // Stored property
- //     oldValue.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
       oldValue.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property) // Stored property
- //     oldValue.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
       oldValue.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property) // Stored property
- //     oldValue.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
       oldValue.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
- //     oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
       oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
- //     oldValue.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
       oldValue.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
- //     oldValue.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
       oldValue.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property) // Stored property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
       newValue.selectedTab_property.addEBObserver (self.selectedTab_property) // Stored property
- //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
- //     newValue.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
       newValue.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
- //     newValue.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
       newValue.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property) // Stored property
- //     newValue.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
       newValue.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property) // Stored property
- //     newValue.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
       newValue.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property) // Stored property
- //     newValue.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
       newValue.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property) // Stored property
- //     newValue.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
       newValue.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
- //     newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
       newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
- //     newValue.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
       newValue.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
- //     newValue.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
       newValue.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property) // Stored property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   }
@@ -75,12 +51,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let selectedTab_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.selectedTab_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -96,12 +66,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.removeEBObserver (inObserver)
   }
@@ -111,12 +75,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minPPTPTTTWdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -132,12 +90,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.minPPTPTTTW_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.minPPTPTTTW_property.removeEBObserver (inObserver)
   }
@@ -147,12 +99,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForOARdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -168,12 +114,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.minValueForOARinEBUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
   }
@@ -183,12 +123,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForPHDdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -204,12 +138,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
   }
@@ -219,12 +147,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForBoardLimitWidthDisplayUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -240,12 +162,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
   }
@@ -258,12 +174,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.drillDataFileExtension_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.drillDataFileExtension_property.removeEBObserver (inObserver)
   }
@@ -273,12 +183,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

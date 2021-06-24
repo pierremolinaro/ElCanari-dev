@@ -16,40 +16,24 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
       oldValue.x_property.removeEBObserver (self.x_property) // Stored property
- //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
       oldValue.y_property.removeEBObserver (self.y_property) // Stored property
- //     oldValue.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
       oldValue.instanceRotation_property.removeEBObserver (self.instanceRotation_property) // Stored property
- //     oldValue.instanceRect_property.removeEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
       oldValue.instanceRect_property.removeEBObserver (self.instanceRect_property) // Transient property
- //     oldValue.modelName_property.removeEBObserversFrom (&self.mObserversOf_modelName) // Transient property
       oldValue.modelName_property.removeEBObserver (self.modelName_property) // Transient property
- //     oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
       oldValue.boardLimitWidth_property.removeEBObserver (self.boardLimitWidth_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
       newValue.x_property.addEBObserver (self.x_property) // Stored property
- //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
       newValue.y_property.addEBObserver (self.y_property) // Stored property
- //     newValue.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
       newValue.instanceRotation_property.addEBObserver (self.instanceRotation_property) // Stored property
-  //    newValue.instanceRect_property.addEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
       newValue.instanceRect_property.addEBObserver (self.instanceRect_property) // Transient property
-  //    newValue.modelName_property.addEBObserversFrom (&self.mObserversOf_modelName) // Transient property
       newValue.modelName_property.addEBObserver (self.modelName_property) // Transient property
-  //    newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
       newValue.boardLimitWidth_property.addEBObserver (self.boardLimitWidth_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
     }
   }
@@ -59,12 +43,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -80,12 +58,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.y_property.removeEBObserver (inObserver)
   }
@@ -95,12 +67,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //····················································································································
 
   final let instanceRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
-    self.instanceRotation_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +82,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_instanceRect (_ inObserver : EBEvent) {
-    self.instanceRect_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_instanceRect (_ inObserver : EBEvent) {
     self.instanceRect_property.removeEBObserver (inObserver)
   }
@@ -131,12 +91,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //····················································································································
 
   final let modelName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_modelName (_ inObserver : EBEvent) {
-    self.modelName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +106,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    self.boardLimitWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.boardLimitWidth_property.removeEBObserver (inObserver)
   }
@@ -170,12 +118,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -185,12 +127,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

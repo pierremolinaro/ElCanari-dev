@@ -620,8 +620,8 @@ final class PointInSchematic : EBManagedObject,
     self.mX_property.addEBObserver (self.location_property)
     self.mY_property.addEBObserver (self.location_property)
     self.mSymbolPinName_property.addEBObserver (self.location_property)
-    self.mSymbol_property.addEBObserverOf_symbolInfo (self.location_property)
-    self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.location_property)
+    self.mSymbol_property.symbolInfo_property.addEBObserver (self.location_property)
+    self.mSymbol_property.mSymbolInstanceName_property.addEBObserver (self.location_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -637,7 +637,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_mNetName (self.netName_property)
+    self.mNet_property.mNetName_property.addEBObserver (self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -653,7 +653,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.mNet_property.netClassName_property.addEBObserver (self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -701,7 +701,7 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mNet_property.addEBObserverOf_wireColor (self.wireColor_property)
+    self.mNet_property.wireColor_property.addEBObserver (self.wireColor_property)
   //--- Atomic property: symbolRotation
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -717,8 +717,8 @@ final class PointInSchematic : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbol_property.addEBObserverOf_mRotation (self.symbolRotation_property)
-    self.mSymbol_property.addEBObserverOf_mMirror (self.symbolRotation_property)
+    self.mSymbol_property.mRotation_property.addEBObserver (self.symbolRotation_property)
+    self.mSymbol_property.mMirror_property.addEBObserver (self.symbolRotation_property)
   //--- To one property: mSheet (has opposite to many relationship: mPoints)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -812,14 +812,14 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mLabels_property.addEBObserver (self.netInfoForPoint_property)
-    self.mSymbol_property.addEBObserverOf_componentName (self.netInfoForPoint_property)
-    self.mSymbol_property.addEBObserverOf_mSymbolInstanceName (self.netInfoForPoint_property)
+    self.mSymbol_property.componentName_property.addEBObserver (self.netInfoForPoint_property)
+    self.mSymbol_property.mSymbolInstanceName_property.addEBObserver (self.netInfoForPoint_property)
     self.mSymbolPinName_property.addEBObserver (self.netInfoForPoint_property)
-    self.mSymbol_property.addEBObserverOf_pinPadAssignments (self.netInfoForPoint_property)
+    self.mSymbol_property.pinPadAssignments_property.addEBObserver (self.netInfoForPoint_property)
     self.mWiresP1s_property.addEBObserver (self.netInfoForPoint_property)
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
-    self.mSheet_property.addEBObserverOf_sheetDescriptor (self.netInfoForPoint_property)
+    self.mSheet_property.sheetDescriptor_property.addEBObserver (self.netInfoForPoint_property)
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },

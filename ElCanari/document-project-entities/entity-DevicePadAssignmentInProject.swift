@@ -143,8 +143,8 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPadName_property.addEBObserver (self.pinPadAssignment_property)
-    self.mPin_property.addEBObserverOf_mSymbolInstanceName (self.pinPadAssignment_property)
-    self.mPin_property.addEBObserverOf_mPinName (self.pinPadAssignment_property)
+    self.mPin_property.mSymbolInstanceName_property.addEBObserver (self.pinPadAssignment_property)
+    self.mPin_property.mPinName_property.addEBObserver (self.pinPadAssignment_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -161,7 +161,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPadName_property.addEBObserver (self.descriptor_property)
-    self.mPin_property.addEBObserverOf_descriptor (self.descriptor_property)
+    self.mPin_property.descriptor_property.addEBObserver (self.descriptor_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -16,60 +16,34 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
- //     oldValue.mCPX1_property.removeEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
       oldValue.mCPX1_property.removeEBObserver (self.mCPX1_property) // Stored property
- //     oldValue.mCPY1_property.removeEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
       oldValue.mCPY1_property.removeEBObserver (self.mCPY1_property) // Stored property
- //     oldValue.mCPX2_property.removeEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
       oldValue.mCPX2_property.removeEBObserver (self.mCPX2_property) // Stored property
- //     oldValue.mCPY2_property.removeEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
       oldValue.mCPY2_property.removeEBObserver (self.mCPY2_property) // Stored property
- //     oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
       oldValue.mShape_property.removeEBObserver (self.mShape_property) // Stored property
- //     oldValue.p2Xstring_property.removeEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
       oldValue.p2Xstring_property.removeEBObserver (self.p2Xstring_property) // Transient property
- //     oldValue.p2Ystring_property.removeEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
       oldValue.p2Ystring_property.removeEBObserver (self.p2Ystring_property) // Transient property
- //     oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.isLine_property.removeEBObserversFrom (&self.mObserversOf_isLine) // Transient property
       oldValue.isLine_property.removeEBObserver (self.isLine_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
- //     newValue.mCPX1_property.addEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
       newValue.mCPX1_property.addEBObserver (self.mCPX1_property) // Stored property
- //     newValue.mCPY1_property.addEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
       newValue.mCPY1_property.addEBObserver (self.mCPY1_property) // Stored property
- //     newValue.mCPX2_property.addEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
       newValue.mCPX2_property.addEBObserver (self.mCPX2_property) // Stored property
- //     newValue.mCPY2_property.addEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
       newValue.mCPY2_property.addEBObserver (self.mCPY2_property) // Stored property
- //     newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
       newValue.mShape_property.addEBObserver (self.mShape_property) // Stored property
-  //    newValue.p2Xstring_property.addEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
       newValue.p2Xstring_property.addEBObserver (self.p2Xstring_property) // Transient property
-  //    newValue.p2Ystring_property.addEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
       newValue.p2Ystring_property.addEBObserver (self.p2Ystring_property) // Transient property
-  //    newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.isLine_property.addEBObserversFrom (&self.mObserversOf_isLine) // Transient property
       newValue.isLine_property.addEBObserver (self.isLine_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
     }
   }
@@ -79,12 +53,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let mX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -100,12 +68,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.mY_property.removeEBObserver (inObserver)
   }
@@ -115,12 +77,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let mCPX1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
-    self.mCPX1_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -136,12 +92,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
-    self.mCPY1_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
     self.mCPY1_property.removeEBObserver (inObserver)
   }
@@ -151,12 +101,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let mCPX2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
-    self.mCPX2_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -172,12 +116,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
-    self.mCPY2_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
     self.mCPY2_property.removeEBObserver (inObserver)
   }
@@ -187,12 +125,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let mShape_property = EBGenericTransientProperty <BorderCurveShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
-    self.mShape_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -208,12 +140,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
-    self.p2Xstring_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_p2Xstring (_ inObserver : EBEvent) {
     self.p2Xstring_property.removeEBObserver (inObserver)
   }
@@ -223,12 +149,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let p2Ystring_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_p2Ystring (_ inObserver : EBEvent) {
-    self.p2Ystring_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -244,12 +164,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
-    self.descriptor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.removeEBObserver (inObserver)
   }
@@ -259,12 +173,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -280,12 +188,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 
   //····················································································································
 
-  final func addEBObserverOf_isLine (_ inObserver : EBEvent) {
-    self.isLine_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_isLine (_ inObserver : EBEvent) {
     self.isLine_property.removeEBObserver (inObserver)
   }
@@ -295,12 +197,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

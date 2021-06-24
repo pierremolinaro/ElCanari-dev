@@ -390,7 +390,7 @@ final class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     self.mText_property.addEBObserver (self.objectDisplay_property)
     self.mFontSize_property.addEBObserver (self.objectDisplay_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.objectDisplay_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.objectDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.mLayer_property.addEBObserver (self.objectDisplay_property)
@@ -424,7 +424,7 @@ final class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mText_property.addEBObserver (self.selectionDisplay_property)
     self.mFontSize_property.addEBObserver (self.selectionDisplay_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.selectionDisplay_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.selectionDisplay_property)
     self.mHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mVerticalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
@@ -451,7 +451,7 @@ final class BoardText : BoardObject,
         return .empty
       }
     }
-    self.mFont_property.addEBObserverOf_mFontName (self.fontName_property)
+    self.mFont_property.mFontName_property.addEBObserver (self.fontName_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -472,7 +472,7 @@ final class BoardText : BoardObject,
     self.mY_property.addEBObserver (self.signatureForERCChecking_property)
     self.mText_property.addEBObserver (self.signatureForERCChecking_property)
     self.mFontSize_property.addEBObserver (self.signatureForERCChecking_property)
-    self.mFont_property.addEBObserverOf_descriptor (self.signatureForERCChecking_property)
+    self.mFont_property.descriptor_property.addEBObserver (self.signatureForERCChecking_property)
     self.mHorizontalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mVerticalAlignment_property.addEBObserver (self.signatureForERCChecking_property)
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)

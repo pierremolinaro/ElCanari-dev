@@ -253,8 +253,8 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDx_property.addEBObserver (self.objectDisplay_property)
     self.mSecondDy_property.addEBObserver (self.objectDisplay_property)
     self.mSecondColor_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mModelPointsCircleRadius (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mPointsAreLocked (self.objectDisplay_property)
+    self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mPointsAreLocked_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -274,7 +274,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mFirstY_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDx_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.addEBObserver (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mModelPointsCircleRadius (self.selectionDisplay_property)
+    self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

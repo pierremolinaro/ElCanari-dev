@@ -16,468 +16,238 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
       oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
- //     oldValue.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
- //     oldValue.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
       oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
- //     oldValue.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
       oldValue.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
- //     oldValue.mLastERCCheckingIsSuccess_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
       oldValue.mLastERCCheckingIsSuccess_property.removeEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
- //     oldValue.mLastERCCheckingSignature_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
       oldValue.mLastERCCheckingSignature_property.removeEBObserver (self.mLastERCCheckingSignature_property) // Stored property
- //     oldValue.mBoardSideForNewTrack_property.removeEBObserversFrom (&self.mObserversOf_mBoardSideForNewTrack) // Stored property
       oldValue.mBoardSideForNewTrack_property.removeEBObserver (self.mBoardSideForNewTrack_property) // Stored property
- //     oldValue.mDirectionForNewTrack_property.removeEBObserversFrom (&self.mObserversOf_mDirectionForNewTrack) // Stored property
       oldValue.mDirectionForNewTrack_property.removeEBObserver (self.mDirectionForNewTrack_property) // Stored property
- //     oldValue.mBoardLayerForNewText_property.removeEBObserversFrom (&self.mObserversOf_mBoardLayerForNewText) // Stored property
       oldValue.mBoardLayerForNewText_property.removeEBObserver (self.mBoardLayerForNewText_property) // Stored property
- //     oldValue.mBoardLayerForNewLine_property.removeEBObserversFrom (&self.mObserversOf_mBoardLayerForNewLine) // Stored property
       oldValue.mBoardLayerForNewLine_property.removeEBObserver (self.mBoardLayerForNewLine_property) // Stored property
- //     oldValue.mBoardSideForNewRestrictRectangle_property.removeEBObserversFrom (&self.mObserversOf_mBoardSideForNewRestrictRectangle) // Stored property
       oldValue.mBoardSideForNewRestrictRectangle_property.removeEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
- //     oldValue.mAutoRouterPreferredDirections_property.removeEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
       oldValue.mAutoRouterPreferredDirections_property.removeEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
- //     oldValue.mAutorouterSnapAngle_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
       oldValue.mAutorouterSnapAngle_property.removeEBObserver (self.mAutorouterSnapAngle_property) // Stored property
- //     oldValue.mRouteDirection_property.removeEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
       oldValue.mRouteDirection_property.removeEBObserver (self.mRouteDirection_property) // Stored property
- //     oldValue.mRouteOrigin_property.removeEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
       oldValue.mRouteOrigin_property.removeEBObserver (self.mRouteOrigin_property) // Stored property
- //     oldValue.mAutorouterInterfaceMode_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
       oldValue.mAutorouterInterfaceMode_property.removeEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
- //     oldValue.mExportExistingTracksAndVias_property.removeEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
       oldValue.mExportExistingTracksAndVias_property.removeEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
- //     oldValue.mTrackLengthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
       oldValue.mTrackLengthUnit_property.removeEBObserver (self.mTrackLengthUnit_property) // Stored property
- //     oldValue.mLayoutClearance_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
       oldValue.mLayoutClearance_property.removeEBObserver (self.mLayoutClearance_property) // Stored property
- //     oldValue.mLayoutClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
       oldValue.mLayoutClearanceUnit_property.removeEBObserver (self.mLayoutClearanceUnit_property) // Stored property
- //     oldValue.mBoardSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
       oldValue.mBoardSelectedInspector_property.removeEBObserver (self.mBoardSelectedInspector_property) // Stored property
- //     oldValue.mBoardHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
       oldValue.mBoardHorizontalFlip_property.removeEBObserver (self.mBoardHorizontalFlip_property) // Stored property
- //     oldValue.mBoardVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
       oldValue.mBoardVerticalFlip_property.removeEBObserver (self.mBoardVerticalFlip_property) // Stored property
- //     oldValue.mBoardGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStyle) // Stored property
       oldValue.mBoardGridStyle_property.removeEBObserver (self.mBoardGridStyle_property) // Stored property
- //     oldValue.mBoardGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridDisplayFactor) // Stored property
       oldValue.mBoardGridDisplayFactor_property.removeEBObserver (self.mBoardGridDisplayFactor_property) // Stored property
- //     oldValue.mBoardZoom_property.removeEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
       oldValue.mBoardZoom_property.removeEBObserver (self.mBoardZoom_property) // Stored property
- //     oldValue.mBoardGridStep_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
       oldValue.mBoardGridStep_property.removeEBObserver (self.mBoardGridStep_property) // Stored property
- //     oldValue.mBoardGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
       oldValue.mBoardGridStepUnit_property.removeEBObserver (self.mBoardGridStepUnit_property) // Stored property
- //     oldValue.mErrorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
       oldValue.mErrorOrWarningIssueSize_property.removeEBObserver (self.mErrorOrWarningIssueSize_property) // Stored property
- //     oldValue.mControlKeyHiliteDiameter_property.removeEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
       oldValue.mControlKeyHiliteDiameter_property.removeEBObserver (self.mControlKeyHiliteDiameter_property) // Stored property
- //     oldValue.mDSNFileProposedName_property.removeEBObserversFrom (&self.mObserversOf_mDSNFileProposedName) // Stored property
       oldValue.mDSNFileProposedName_property.removeEBObserver (self.mDSNFileProposedName_property) // Stored property
- //     oldValue.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
       oldValue.mBoardLimitsWidth_property.removeEBObserver (self.mBoardLimitsWidth_property) // Stored property
- //     oldValue.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
       oldValue.mBoardLimitsWidthUnit_property.removeEBObserver (self.mBoardLimitsWidthUnit_property) // Stored property
- //     oldValue.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
       oldValue.mBoardClearance_property.removeEBObserver (self.mBoardClearance_property) // Stored property
- //     oldValue.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
       oldValue.mBoardClearanceUnit_property.removeEBObserver (self.mBoardClearanceUnit_property) // Stored property
- //     oldValue.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
       oldValue.mBoardLimitsSelectedInspector_property.removeEBObserver (self.mBoardLimitsSelectedInspector_property) // Stored property
- //     oldValue.mBoardLimitsHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
       oldValue.mBoardLimitsHorizontalFlip_property.removeEBObserver (self.mBoardLimitsHorizontalFlip_property) // Stored property
- //     oldValue.mBoardLimitsVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
       oldValue.mBoardLimitsVerticalFlip_property.removeEBObserver (self.mBoardLimitsVerticalFlip_property) // Stored property
- //     oldValue.mBoardLimitsGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStyle) // Stored property
       oldValue.mBoardLimitsGridStyle_property.removeEBObserver (self.mBoardLimitsGridStyle_property) // Stored property
- //     oldValue.mBoardLimitsGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridDisplayFactor) // Stored property
       oldValue.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.mBoardLimitsGridDisplayFactor_property) // Stored property
- //     oldValue.mBoardLimitsZoom_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsZoom) // Stored property
       oldValue.mBoardLimitsZoom_property.removeEBObserver (self.mBoardLimitsZoom_property) // Stored property
- //     oldValue.mBoardLimitsGridStep_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStep) // Stored property
       oldValue.mBoardLimitsGridStep_property.removeEBObserver (self.mBoardLimitsGridStep_property) // Stored property
- //     oldValue.mBoardLimitsGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
       oldValue.mBoardLimitsGridStepUnit_property.removeEBObserver (self.mBoardLimitsGridStepUnit_property) // Stored property
- //     oldValue.mBoardLimitsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
       oldValue.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.mBoardLimitsBoundingBoxUnit_property) // Stored property
- //     oldValue.mBoardPointsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
       oldValue.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.mBoardPointsBoundingBoxUnit_property) // Stored property
- //     oldValue.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
       oldValue.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.mBoardSelectedCurveDisplayUnit_property) // Stored property
- //     oldValue.mBoardLimitControlPointsDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitControlPointsDisplayUnit) // Stored property
       oldValue.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
- //     oldValue.mBoardShape_property.removeEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
       oldValue.mBoardShape_property.removeEBObserver (self.mBoardShape_property) // Stored property
- //     oldValue.mRectangularBoardWidth_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
       oldValue.mRectangularBoardWidth_property.removeEBObserver (self.mRectangularBoardWidth_property) // Stored property
- //     oldValue.mRectangularBoardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
       oldValue.mRectangularBoardWidthUnit_property.removeEBObserver (self.mRectangularBoardWidthUnit_property) // Stored property
- //     oldValue.mRectangularBoardHeight_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
       oldValue.mRectangularBoardHeight_property.removeEBObserver (self.mRectangularBoardHeight_property) // Stored property
- //     oldValue.mRectangularBoardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
       oldValue.mRectangularBoardHeightUnit_property.removeEBObserver (self.mRectangularBoardHeightUnit_property) // Stored property
- //     oldValue.mDefaultNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
       oldValue.mDefaultNetClassName_property.removeEBObserver (self.mDefaultNetClassName_property) // Stored property
- //     oldValue.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
       oldValue.mSelectedPageIndex_property.removeEBObserver (self.mSelectedPageIndex_property) // Stored property
- //     oldValue.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
       oldValue.mSelectedSchematicInspector_property.removeEBObserver (self.mSelectedSchematicInspector_property) // Stored property
- //     oldValue.mSchematicTitle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
       oldValue.mSchematicTitle_property.removeEBObserver (self.mSchematicTitle_property) // Stored property
- //     oldValue.mSchematicVersion_property.removeEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
       oldValue.mSchematicVersion_property.removeEBObserver (self.mSchematicVersion_property) // Stored property
- //     oldValue.mSchematicDate_property.removeEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
       oldValue.mSchematicDate_property.removeEBObserver (self.mSchematicDate_property) // Stored property
- //     oldValue.mSchematicHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSchematicHorizontalFlip) // Stored property
       oldValue.mSchematicHorizontalFlip_property.removeEBObserver (self.mSchematicHorizontalFlip_property) // Stored property
- //     oldValue.mSchematicVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSchematicVerticalFlip) // Stored property
       oldValue.mSchematicVerticalFlip_property.removeEBObserver (self.mSchematicVerticalFlip_property) // Stored property
- //     oldValue.mSchematicZoom_property.removeEBObserversFrom (&self.mObserversOf_mSchematicZoom) // Stored property
       oldValue.mSchematicZoom_property.removeEBObserver (self.mSchematicZoom_property) // Stored property
- //     oldValue.mSchematicGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicGridStyle) // Stored property
       oldValue.mSchematicGridStyle_property.removeEBObserver (self.mSchematicGridStyle_property) // Stored property
- //     oldValue.mSchematicGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mSchematicGridDisplayFactor) // Stored property
       oldValue.mSchematicGridDisplayFactor_property.removeEBObserver (self.mSchematicGridDisplayFactor_property) // Stored property
- //     oldValue.mSchematicCustomWidth_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomWidth) // Stored property
       oldValue.mSchematicCustomWidth_property.removeEBObserver (self.mSchematicCustomWidth_property) // Stored property
- //     oldValue.mSchematicCustomWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomWidthUnit) // Stored property
       oldValue.mSchematicCustomWidthUnit_property.removeEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
- //     oldValue.mSchematicCustomHeight_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomHeight) // Stored property
       oldValue.mSchematicCustomHeight_property.removeEBObserver (self.mSchematicCustomHeight_property) // Stored property
- //     oldValue.mSchematicCustomHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomHeightUnit) // Stored property
       oldValue.mSchematicCustomHeightUnit_property.removeEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
- //     oldValue.mSchematicSheetOrientation_property.removeEBObserversFrom (&self.mObserversOf_mSchematicSheetOrientation) // Stored property
       oldValue.mSchematicSheetOrientation_property.removeEBObserver (self.mSchematicSheetOrientation_property) // Stored property
- //     oldValue.mRastnetDisplay_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplay) // Stored property
       oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
- //     oldValue.mRastnetDisplayedNetName_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplayedNetName) // Stored property
       oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
- //     oldValue.mRastnetDisplayedComponentName_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
       oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
- //     oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
       oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
- //     oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
       oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
- //     oldValue.boardShapeIsRectangular_property.removeEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
       oldValue.boardShapeIsRectangular_property.removeEBObserver (self.boardShapeIsRectangular_property) // Transient property
- //     oldValue.selectedSheetIssues_property.removeEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
       oldValue.selectedSheetIssues_property.removeEBObserver (self.selectedSheetIssues_property) // Transient property
- //     oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
- //     oldValue.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
       oldValue.connexionWarningString_property.removeEBObserver (self.connexionWarningString_property) // Transient property
- //     oldValue.connexionErrorString_property.removeEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
       oldValue.connexionErrorString_property.removeEBObserver (self.connexionErrorString_property) // Transient property
- //     oldValue.sheetIndexes_property.removeEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
       oldValue.sheetIndexes_property.removeEBObserver (self.sheetIndexes_property) // Transient property
- //     oldValue.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
       oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
- //     oldValue.boardIssues_property.removeEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
       oldValue.boardIssues_property.removeEBObserver (self.boardIssues_property) // Transient property
- //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
- //     oldValue.ercStatusImage_property.removeEBObserversFrom (&self.mObserversOf_ercStatusImage) // Transient property
       oldValue.ercStatusImage_property.removeEBObserver (self.ercStatusImage_property) // Transient property
- //     oldValue.ercStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_ercStatusMessage) // Transient property
       oldValue.ercStatusMessage_property.removeEBObserver (self.ercStatusMessage_property) // Transient property
- //     oldValue.viaCountString_property.removeEBObserversFrom (&self.mObserversOf_viaCountString) // Transient property
       oldValue.viaCountString_property.removeEBObserver (self.viaCountString_property) // Transient property
- //     oldValue.trackCountString_property.removeEBObserversFrom (&self.mObserversOf_trackCountString) // Transient property
       oldValue.trackCountString_property.removeEBObserver (self.trackCountString_property) // Transient property
- //     oldValue.trackLengthString_property.removeEBObserversFrom (&self.mObserversOf_trackLengthString) // Transient property
       oldValue.trackLengthString_property.removeEBObserver (self.trackLengthString_property) // Transient property
- //     oldValue.boardStatusImage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
       oldValue.boardStatusImage_property.removeEBObserver (self.boardStatusImage_property) // Transient property
- //     oldValue.boardStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
       oldValue.boardStatusMessage_property.removeEBObserver (self.boardStatusMessage_property) // Transient property
- //     oldValue.interiorBoundBox_property.removeEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
       oldValue.interiorBoundBox_property.removeEBObserver (self.interiorBoundBox_property) // Transient property
- //     oldValue.boardBoundBox_property.removeEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
       oldValue.boardBoundBox_property.removeEBObserver (self.boardBoundBox_property) // Transient property
- //     oldValue.boardInteriorTop_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
       oldValue.boardInteriorTop_property.removeEBObserver (self.boardInteriorTop_property) // Transient property
- //     oldValue.boardInteriorBottom_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
       oldValue.boardInteriorBottom_property.removeEBObserver (self.boardInteriorBottom_property) // Transient property
- //     oldValue.boardInteriorLeft_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
       oldValue.boardInteriorLeft_property.removeEBObserver (self.boardInteriorLeft_property) // Transient property
- //     oldValue.boardInteriorRight_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorRight) // Transient property
       oldValue.boardInteriorRight_property.removeEBObserver (self.boardInteriorRight_property) // Transient property
- //     oldValue.boardLimitBorderTop_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderTop) // Transient property
       oldValue.boardLimitBorderTop_property.removeEBObserver (self.boardLimitBorderTop_property) // Transient property
- //     oldValue.boardLimitBorderBottom_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
       oldValue.boardLimitBorderBottom_property.removeEBObserver (self.boardLimitBorderBottom_property) // Transient property
- //     oldValue.boardLimitBorderLeft_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
       oldValue.boardLimitBorderLeft_property.removeEBObserver (self.boardLimitBorderLeft_property) // Transient property
- //     oldValue.boardLimitBorderRight_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
       oldValue.boardLimitBorderRight_property.removeEBObserver (self.boardLimitBorderRight_property) // Transient property
- //     oldValue.borderElementCountString_property.removeEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
       oldValue.borderElementCountString_property.removeEBObserver (self.borderElementCountString_property) // Transient property
- //     oldValue.borderOutlineBackground_property.removeEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
       oldValue.borderOutlineBackground_property.removeEBObserver (self.borderOutlineBackground_property) // Transient property
- //     oldValue.borderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
       oldValue.borderViewBackground_property.removeEBObserver (self.borderViewBackground_property) // Transient property
- //     oldValue.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
       oldValue.deviceNames_property.removeEBObserver (self.deviceNames_property) // Transient property
- //     oldValue.allClassNames_property.removeEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
       oldValue.allClassNames_property.removeEBObserver (self.allClassNames_property) // Transient property
- //     oldValue.sheetGeometry_property.removeEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
       oldValue.sheetGeometry_property.removeEBObserver (self.sheetGeometry_property) // Transient property
- //     oldValue.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
       oldValue.schematicBackgroundDisplay_property.removeEBObserver (self.schematicBackgroundDisplay_property) // Transient property
- //     oldValue.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
- //     oldValue.netNamesArray_property.removeEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
       oldValue.netNamesArray_property.removeEBObserver (self.netNamesArray_property) // Transient property
- //     oldValue.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
       oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
- //     oldValue.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
       oldValue.unplacedPackages_property.removeEBObserver (self.unplacedPackages_property) // Transient property
- //     oldValue.componentsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
       oldValue.componentsPlacedInBoard_property.removeEBObserver (self.componentsPlacedInBoard_property) // Transient property
- //     oldValue.placedComponentNameArray_property.removeEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
       oldValue.placedComponentNameArray_property.removeEBObserver (self.placedComponentNameArray_property) // Transient property
- //     oldValue.schematicHasErrorOrWarning_property.removeEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
       oldValue.schematicHasErrorOrWarning_property.removeEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
- //     oldValue.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
       oldValue.schematicStatusMessage_property.removeEBObserver (self.schematicStatusMessage_property) // Transient property
- //     oldValue.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
       oldValue.schematicStatusImage_property.removeEBObserver (self.schematicStatusImage_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
       newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
- //     newValue.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
- //     newValue.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
       newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
- //     newValue.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
       newValue.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
- //     newValue.mLastERCCheckingIsSuccess_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
       newValue.mLastERCCheckingIsSuccess_property.addEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
- //     newValue.mLastERCCheckingSignature_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
       newValue.mLastERCCheckingSignature_property.addEBObserver (self.mLastERCCheckingSignature_property) // Stored property
- //     newValue.mBoardSideForNewTrack_property.addEBObserversFrom (&self.mObserversOf_mBoardSideForNewTrack) // Stored property
       newValue.mBoardSideForNewTrack_property.addEBObserver (self.mBoardSideForNewTrack_property) // Stored property
- //     newValue.mDirectionForNewTrack_property.addEBObserversFrom (&self.mObserversOf_mDirectionForNewTrack) // Stored property
       newValue.mDirectionForNewTrack_property.addEBObserver (self.mDirectionForNewTrack_property) // Stored property
- //     newValue.mBoardLayerForNewText_property.addEBObserversFrom (&self.mObserversOf_mBoardLayerForNewText) // Stored property
       newValue.mBoardLayerForNewText_property.addEBObserver (self.mBoardLayerForNewText_property) // Stored property
- //     newValue.mBoardLayerForNewLine_property.addEBObserversFrom (&self.mObserversOf_mBoardLayerForNewLine) // Stored property
       newValue.mBoardLayerForNewLine_property.addEBObserver (self.mBoardLayerForNewLine_property) // Stored property
- //     newValue.mBoardSideForNewRestrictRectangle_property.addEBObserversFrom (&self.mObserversOf_mBoardSideForNewRestrictRectangle) // Stored property
       newValue.mBoardSideForNewRestrictRectangle_property.addEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
- //     newValue.mAutoRouterPreferredDirections_property.addEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
       newValue.mAutoRouterPreferredDirections_property.addEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
- //     newValue.mAutorouterSnapAngle_property.addEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
       newValue.mAutorouterSnapAngle_property.addEBObserver (self.mAutorouterSnapAngle_property) // Stored property
- //     newValue.mRouteDirection_property.addEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
       newValue.mRouteDirection_property.addEBObserver (self.mRouteDirection_property) // Stored property
- //     newValue.mRouteOrigin_property.addEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
       newValue.mRouteOrigin_property.addEBObserver (self.mRouteOrigin_property) // Stored property
- //     newValue.mAutorouterInterfaceMode_property.addEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
       newValue.mAutorouterInterfaceMode_property.addEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
- //     newValue.mExportExistingTracksAndVias_property.addEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
       newValue.mExportExistingTracksAndVias_property.addEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
- //     newValue.mTrackLengthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
       newValue.mTrackLengthUnit_property.addEBObserver (self.mTrackLengthUnit_property) // Stored property
- //     newValue.mLayoutClearance_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
       newValue.mLayoutClearance_property.addEBObserver (self.mLayoutClearance_property) // Stored property
- //     newValue.mLayoutClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
       newValue.mLayoutClearanceUnit_property.addEBObserver (self.mLayoutClearanceUnit_property) // Stored property
- //     newValue.mBoardSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
       newValue.mBoardSelectedInspector_property.addEBObserver (self.mBoardSelectedInspector_property) // Stored property
- //     newValue.mBoardHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
       newValue.mBoardHorizontalFlip_property.addEBObserver (self.mBoardHorizontalFlip_property) // Stored property
- //     newValue.mBoardVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
       newValue.mBoardVerticalFlip_property.addEBObserver (self.mBoardVerticalFlip_property) // Stored property
- //     newValue.mBoardGridStyle_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStyle) // Stored property
       newValue.mBoardGridStyle_property.addEBObserver (self.mBoardGridStyle_property) // Stored property
- //     newValue.mBoardGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mBoardGridDisplayFactor) // Stored property
       newValue.mBoardGridDisplayFactor_property.addEBObserver (self.mBoardGridDisplayFactor_property) // Stored property
- //     newValue.mBoardZoom_property.addEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
       newValue.mBoardZoom_property.addEBObserver (self.mBoardZoom_property) // Stored property
- //     newValue.mBoardGridStep_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
       newValue.mBoardGridStep_property.addEBObserver (self.mBoardGridStep_property) // Stored property
- //     newValue.mBoardGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
       newValue.mBoardGridStepUnit_property.addEBObserver (self.mBoardGridStepUnit_property) // Stored property
- //     newValue.mErrorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
       newValue.mErrorOrWarningIssueSize_property.addEBObserver (self.mErrorOrWarningIssueSize_property) // Stored property
- //     newValue.mControlKeyHiliteDiameter_property.addEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
       newValue.mControlKeyHiliteDiameter_property.addEBObserver (self.mControlKeyHiliteDiameter_property) // Stored property
- //     newValue.mDSNFileProposedName_property.addEBObserversFrom (&self.mObserversOf_mDSNFileProposedName) // Stored property
       newValue.mDSNFileProposedName_property.addEBObserver (self.mDSNFileProposedName_property) // Stored property
- //     newValue.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
       newValue.mBoardLimitsWidth_property.addEBObserver (self.mBoardLimitsWidth_property) // Stored property
- //     newValue.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
       newValue.mBoardLimitsWidthUnit_property.addEBObserver (self.mBoardLimitsWidthUnit_property) // Stored property
- //     newValue.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
       newValue.mBoardClearance_property.addEBObserver (self.mBoardClearance_property) // Stored property
- //     newValue.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
       newValue.mBoardClearanceUnit_property.addEBObserver (self.mBoardClearanceUnit_property) // Stored property
- //     newValue.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
       newValue.mBoardLimitsSelectedInspector_property.addEBObserver (self.mBoardLimitsSelectedInspector_property) // Stored property
- //     newValue.mBoardLimitsHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
       newValue.mBoardLimitsHorizontalFlip_property.addEBObserver (self.mBoardLimitsHorizontalFlip_property) // Stored property
- //     newValue.mBoardLimitsVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
       newValue.mBoardLimitsVerticalFlip_property.addEBObserver (self.mBoardLimitsVerticalFlip_property) // Stored property
- //     newValue.mBoardLimitsGridStyle_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStyle) // Stored property
       newValue.mBoardLimitsGridStyle_property.addEBObserver (self.mBoardLimitsGridStyle_property) // Stored property
- //     newValue.mBoardLimitsGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridDisplayFactor) // Stored property
       newValue.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.mBoardLimitsGridDisplayFactor_property) // Stored property
- //     newValue.mBoardLimitsZoom_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsZoom) // Stored property
       newValue.mBoardLimitsZoom_property.addEBObserver (self.mBoardLimitsZoom_property) // Stored property
- //     newValue.mBoardLimitsGridStep_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStep) // Stored property
       newValue.mBoardLimitsGridStep_property.addEBObserver (self.mBoardLimitsGridStep_property) // Stored property
- //     newValue.mBoardLimitsGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
       newValue.mBoardLimitsGridStepUnit_property.addEBObserver (self.mBoardLimitsGridStepUnit_property) // Stored property
- //     newValue.mBoardLimitsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
       newValue.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.mBoardLimitsBoundingBoxUnit_property) // Stored property
- //     newValue.mBoardPointsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
       newValue.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.mBoardPointsBoundingBoxUnit_property) // Stored property
- //     newValue.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
       newValue.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.mBoardSelectedCurveDisplayUnit_property) // Stored property
- //     newValue.mBoardLimitControlPointsDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitControlPointsDisplayUnit) // Stored property
       newValue.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
- //     newValue.mBoardShape_property.addEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
       newValue.mBoardShape_property.addEBObserver (self.mBoardShape_property) // Stored property
- //     newValue.mRectangularBoardWidth_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
       newValue.mRectangularBoardWidth_property.addEBObserver (self.mRectangularBoardWidth_property) // Stored property
- //     newValue.mRectangularBoardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
       newValue.mRectangularBoardWidthUnit_property.addEBObserver (self.mRectangularBoardWidthUnit_property) // Stored property
- //     newValue.mRectangularBoardHeight_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
       newValue.mRectangularBoardHeight_property.addEBObserver (self.mRectangularBoardHeight_property) // Stored property
- //     newValue.mRectangularBoardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
       newValue.mRectangularBoardHeightUnit_property.addEBObserver (self.mRectangularBoardHeightUnit_property) // Stored property
- //     newValue.mDefaultNetClassName_property.addEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
       newValue.mDefaultNetClassName_property.addEBObserver (self.mDefaultNetClassName_property) // Stored property
- //     newValue.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
       newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
- //     newValue.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
       newValue.mSelectedSchematicInspector_property.addEBObserver (self.mSelectedSchematicInspector_property) // Stored property
- //     newValue.mSchematicTitle_property.addEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
       newValue.mSchematicTitle_property.addEBObserver (self.mSchematicTitle_property) // Stored property
- //     newValue.mSchematicVersion_property.addEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
       newValue.mSchematicVersion_property.addEBObserver (self.mSchematicVersion_property) // Stored property
- //     newValue.mSchematicDate_property.addEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
       newValue.mSchematicDate_property.addEBObserver (self.mSchematicDate_property) // Stored property
- //     newValue.mSchematicHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSchematicHorizontalFlip) // Stored property
       newValue.mSchematicHorizontalFlip_property.addEBObserver (self.mSchematicHorizontalFlip_property) // Stored property
- //     newValue.mSchematicVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSchematicVerticalFlip) // Stored property
       newValue.mSchematicVerticalFlip_property.addEBObserver (self.mSchematicVerticalFlip_property) // Stored property
- //     newValue.mSchematicZoom_property.addEBObserversFrom (&self.mObserversOf_mSchematicZoom) // Stored property
       newValue.mSchematicZoom_property.addEBObserver (self.mSchematicZoom_property) // Stored property
- //     newValue.mSchematicGridStyle_property.addEBObserversFrom (&self.mObserversOf_mSchematicGridStyle) // Stored property
       newValue.mSchematicGridStyle_property.addEBObserver (self.mSchematicGridStyle_property) // Stored property
- //     newValue.mSchematicGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mSchematicGridDisplayFactor) // Stored property
       newValue.mSchematicGridDisplayFactor_property.addEBObserver (self.mSchematicGridDisplayFactor_property) // Stored property
- //     newValue.mSchematicCustomWidth_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomWidth) // Stored property
       newValue.mSchematicCustomWidth_property.addEBObserver (self.mSchematicCustomWidth_property) // Stored property
- //     newValue.mSchematicCustomWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomWidthUnit) // Stored property
       newValue.mSchematicCustomWidthUnit_property.addEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
- //     newValue.mSchematicCustomHeight_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomHeight) // Stored property
       newValue.mSchematicCustomHeight_property.addEBObserver (self.mSchematicCustomHeight_property) // Stored property
- //     newValue.mSchematicCustomHeightUnit_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomHeightUnit) // Stored property
       newValue.mSchematicCustomHeightUnit_property.addEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
- //     newValue.mSchematicSheetOrientation_property.addEBObserversFrom (&self.mObserversOf_mSchematicSheetOrientation) // Stored property
       newValue.mSchematicSheetOrientation_property.addEBObserver (self.mSchematicSheetOrientation_property) // Stored property
- //     newValue.mRastnetDisplay_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplay) // Stored property
       newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
- //     newValue.mRastnetDisplayedNetName_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplayedNetName) // Stored property
       newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
- //     newValue.mRastnetDisplayedComponentName_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
       newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
-  //    newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
       newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
-  //    newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
       newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
-  //    newValue.boardShapeIsRectangular_property.addEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
       newValue.boardShapeIsRectangular_property.addEBObserver (self.boardShapeIsRectangular_property) // Transient property
-  //    newValue.selectedSheetIssues_property.addEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
       newValue.selectedSheetIssues_property.addEBObserver (self.selectedSheetIssues_property) // Transient property
-  //    newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-  //    newValue.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
       newValue.connexionWarningString_property.addEBObserver (self.connexionWarningString_property) // Transient property
-  //    newValue.connexionErrorString_property.addEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
       newValue.connexionErrorString_property.addEBObserver (self.connexionErrorString_property) // Transient property
-  //    newValue.sheetIndexes_property.addEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
       newValue.sheetIndexes_property.addEBObserver (self.sheetIndexes_property) // Transient property
-  //    newValue.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
       newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
-  //    newValue.boardIssues_property.addEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
       newValue.boardIssues_property.addEBObserver (self.boardIssues_property) // Transient property
-  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
-  //    newValue.ercStatusImage_property.addEBObserversFrom (&self.mObserversOf_ercStatusImage) // Transient property
       newValue.ercStatusImage_property.addEBObserver (self.ercStatusImage_property) // Transient property
-  //    newValue.ercStatusMessage_property.addEBObserversFrom (&self.mObserversOf_ercStatusMessage) // Transient property
       newValue.ercStatusMessage_property.addEBObserver (self.ercStatusMessage_property) // Transient property
-  //    newValue.viaCountString_property.addEBObserversFrom (&self.mObserversOf_viaCountString) // Transient property
       newValue.viaCountString_property.addEBObserver (self.viaCountString_property) // Transient property
-  //    newValue.trackCountString_property.addEBObserversFrom (&self.mObserversOf_trackCountString) // Transient property
       newValue.trackCountString_property.addEBObserver (self.trackCountString_property) // Transient property
-  //    newValue.trackLengthString_property.addEBObserversFrom (&self.mObserversOf_trackLengthString) // Transient property
       newValue.trackLengthString_property.addEBObserver (self.trackLengthString_property) // Transient property
-  //    newValue.boardStatusImage_property.addEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
       newValue.boardStatusImage_property.addEBObserver (self.boardStatusImage_property) // Transient property
-  //    newValue.boardStatusMessage_property.addEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
       newValue.boardStatusMessage_property.addEBObserver (self.boardStatusMessage_property) // Transient property
-  //    newValue.interiorBoundBox_property.addEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
       newValue.interiorBoundBox_property.addEBObserver (self.interiorBoundBox_property) // Transient property
-  //    newValue.boardBoundBox_property.addEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
       newValue.boardBoundBox_property.addEBObserver (self.boardBoundBox_property) // Transient property
-  //    newValue.boardInteriorTop_property.addEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
       newValue.boardInteriorTop_property.addEBObserver (self.boardInteriorTop_property) // Transient property
-  //    newValue.boardInteriorBottom_property.addEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
       newValue.boardInteriorBottom_property.addEBObserver (self.boardInteriorBottom_property) // Transient property
-  //    newValue.boardInteriorLeft_property.addEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
       newValue.boardInteriorLeft_property.addEBObserver (self.boardInteriorLeft_property) // Transient property
-  //    newValue.boardInteriorRight_property.addEBObserversFrom (&self.mObserversOf_boardInteriorRight) // Transient property
       newValue.boardInteriorRight_property.addEBObserver (self.boardInteriorRight_property) // Transient property
-  //    newValue.boardLimitBorderTop_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderTop) // Transient property
       newValue.boardLimitBorderTop_property.addEBObserver (self.boardLimitBorderTop_property) // Transient property
-  //    newValue.boardLimitBorderBottom_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
       newValue.boardLimitBorderBottom_property.addEBObserver (self.boardLimitBorderBottom_property) // Transient property
-  //    newValue.boardLimitBorderLeft_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
       newValue.boardLimitBorderLeft_property.addEBObserver (self.boardLimitBorderLeft_property) // Transient property
-  //    newValue.boardLimitBorderRight_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
       newValue.boardLimitBorderRight_property.addEBObserver (self.boardLimitBorderRight_property) // Transient property
-  //    newValue.borderElementCountString_property.addEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
       newValue.borderElementCountString_property.addEBObserver (self.borderElementCountString_property) // Transient property
-  //    newValue.borderOutlineBackground_property.addEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
       newValue.borderOutlineBackground_property.addEBObserver (self.borderOutlineBackground_property) // Transient property
-  //    newValue.borderViewBackground_property.addEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
       newValue.borderViewBackground_property.addEBObserver (self.borderViewBackground_property) // Transient property
-  //    newValue.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
       newValue.deviceNames_property.addEBObserver (self.deviceNames_property) // Transient property
-  //    newValue.allClassNames_property.addEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
       newValue.allClassNames_property.addEBObserver (self.allClassNames_property) // Transient property
-  //    newValue.sheetGeometry_property.addEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
       newValue.sheetGeometry_property.addEBObserver (self.sheetGeometry_property) // Transient property
-  //    newValue.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
       newValue.schematicBackgroundDisplay_property.addEBObserver (self.schematicBackgroundDisplay_property) // Transient property
-  //    newValue.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
       newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
-  //    newValue.netNamesArray_property.addEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
       newValue.netNamesArray_property.addEBObserver (self.netNamesArray_property) // Transient property
-  //    newValue.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
       newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
-  //    newValue.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
       newValue.unplacedPackages_property.addEBObserver (self.unplacedPackages_property) // Transient property
-  //    newValue.componentsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
       newValue.componentsPlacedInBoard_property.addEBObserver (self.componentsPlacedInBoard_property) // Transient property
-  //    newValue.placedComponentNameArray_property.addEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
       newValue.placedComponentNameArray_property.addEBObserver (self.placedComponentNameArray_property) // Transient property
-  //    newValue.schematicHasErrorOrWarning_property.addEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
       newValue.schematicHasErrorOrWarning_property.addEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
-  //    newValue.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
       newValue.schematicStatusMessage_property.addEBObserver (self.schematicStatusMessage_property) // Transient property
-  //    newValue.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
       newValue.schematicStatusImage_property.addEBObserver (self.schematicStatusImage_property) // Transient property
     }
   }
@@ -487,12 +257,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mArtworkName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
-    self.mArtworkName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -508,12 +272,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
-    self.mArtworkVersion_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
     self.mArtworkVersion_property.removeEBObserver (inObserver)
   }
@@ -523,12 +281,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
-    self.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -544,12 +296,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent) {
-    self.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (_ inObserver : EBEvent) {
     self.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (inObserver)
   }
@@ -559,12 +305,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mLastERCCheckingIsSuccess_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mLastERCCheckingIsSuccess (_ inObserver : EBEvent) {
-    self.mLastERCCheckingIsSuccess_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -580,12 +320,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent) {
-    self.mLastERCCheckingSignature_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mLastERCCheckingSignature (_ inObserver : EBEvent) {
     self.mLastERCCheckingSignature_property.removeEBObserver (inObserver)
   }
@@ -595,12 +329,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardSideForNewTrack_property = EBGenericTransientProperty <TrackSide?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardSideForNewTrack (_ inObserver : EBEvent) {
-    self.mBoardSideForNewTrack_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -616,12 +344,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mDirectionForNewTrack (_ inObserver : EBEvent) {
-    self.mDirectionForNewTrack_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mDirectionForNewTrack (_ inObserver : EBEvent) {
     self.mDirectionForNewTrack_property.removeEBObserver (inObserver)
   }
@@ -631,12 +353,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLayerForNewText_property = EBGenericTransientProperty <BoardTextLayer?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLayerForNewText (_ inObserver : EBEvent) {
-    self.mBoardLayerForNewText_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -652,12 +368,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLayerForNewLine (_ inObserver : EBEvent) {
-    self.mBoardLayerForNewLine_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLayerForNewLine (_ inObserver : EBEvent) {
     self.mBoardLayerForNewLine_property.removeEBObserver (inObserver)
   }
@@ -667,12 +377,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardSideForNewRestrictRectangle_property = EBGenericTransientProperty <RestrictRectangleLayer?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardSideForNewRestrictRectangle (_ inObserver : EBEvent) {
-    self.mBoardSideForNewRestrictRectangle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -688,12 +392,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent) {
-    self.mAutoRouterPreferredDirections_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mAutoRouterPreferredDirections (_ inObserver : EBEvent) {
     self.mAutoRouterPreferredDirections_property.removeEBObserver (inObserver)
   }
@@ -703,12 +401,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mAutorouterSnapAngle_property = EBGenericTransientProperty <AutorouterSnapAngle?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mAutorouterSnapAngle (_ inObserver : EBEvent) {
-    self.mAutorouterSnapAngle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -724,12 +416,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRouteDirection (_ inObserver : EBEvent) {
-    self.mRouteDirection_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRouteDirection (_ inObserver : EBEvent) {
     self.mRouteDirection_property.removeEBObserver (inObserver)
   }
@@ -739,12 +425,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mRouteOrigin_property = EBGenericTransientProperty <RouteOrigin?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRouteOrigin (_ inObserver : EBEvent) {
-    self.mRouteOrigin_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -760,12 +440,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mAutorouterInterfaceMode (_ inObserver : EBEvent) {
-    self.mAutorouterInterfaceMode_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mAutorouterInterfaceMode (_ inObserver : EBEvent) {
     self.mAutorouterInterfaceMode_property.removeEBObserver (inObserver)
   }
@@ -775,12 +449,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mExportExistingTracksAndVias_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mExportExistingTracksAndVias (_ inObserver : EBEvent) {
-    self.mExportExistingTracksAndVias_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -796,12 +464,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mTrackLengthUnit (_ inObserver : EBEvent) {
-    self.mTrackLengthUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mTrackLengthUnit (_ inObserver : EBEvent) {
     self.mTrackLengthUnit_property.removeEBObserver (inObserver)
   }
@@ -811,12 +473,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mLayoutClearance_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mLayoutClearance (_ inObserver : EBEvent) {
-    self.mLayoutClearance_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -832,12 +488,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent) {
-    self.mLayoutClearanceUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mLayoutClearanceUnit (_ inObserver : EBEvent) {
     self.mLayoutClearanceUnit_property.removeEBObserver (inObserver)
   }
@@ -847,12 +497,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardSelectedInspector_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardSelectedInspector (_ inObserver : EBEvent) {
-    self.mBoardSelectedInspector_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -868,12 +512,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardHorizontalFlip (_ inObserver : EBEvent) {
-    self.mBoardHorizontalFlip_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardHorizontalFlip (_ inObserver : EBEvent) {
     self.mBoardHorizontalFlip_property.removeEBObserver (inObserver)
   }
@@ -883,12 +521,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardVerticalFlip (_ inObserver : EBEvent) {
-    self.mBoardVerticalFlip_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -904,12 +536,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridStyle (_ inObserver : EBEvent) {
-    self.mBoardGridStyle_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardGridStyle (_ inObserver : EBEvent) {
     self.mBoardGridStyle_property.removeEBObserver (inObserver)
   }
@@ -919,12 +545,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardGridDisplayFactor (_ inObserver : EBEvent) {
-    self.mBoardGridDisplayFactor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -940,12 +560,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardZoom (_ inObserver : EBEvent) {
-    self.mBoardZoom_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardZoom (_ inObserver : EBEvent) {
     self.mBoardZoom_property.removeEBObserver (inObserver)
   }
@@ -955,12 +569,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardGridStep_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardGridStep (_ inObserver : EBEvent) {
-    self.mBoardGridStep_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -976,12 +584,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardGridStepUnit (_ inObserver : EBEvent) {
-    self.mBoardGridStepUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardGridStepUnit (_ inObserver : EBEvent) {
     self.mBoardGridStepUnit_property.removeEBObserver (inObserver)
   }
@@ -991,12 +593,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mErrorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mErrorOrWarningIssueSize (_ inObserver : EBEvent) {
-    self.mErrorOrWarningIssueSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1012,12 +608,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent) {
-    self.mControlKeyHiliteDiameter_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mControlKeyHiliteDiameter (_ inObserver : EBEvent) {
     self.mControlKeyHiliteDiameter_property.removeEBObserver (inObserver)
   }
@@ -1027,12 +617,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mDSNFileProposedName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDSNFileProposedName (_ inObserver : EBEvent) {
-    self.mDSNFileProposedName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1048,12 +632,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsWidth (_ inObserver : EBEvent) {
-    self.mBoardLimitsWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsWidth (_ inObserver : EBEvent) {
     self.mBoardLimitsWidth_property.removeEBObserver (inObserver)
   }
@@ -1063,12 +641,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitsWidthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitsWidthUnit (_ inObserver : EBEvent) {
-    self.mBoardLimitsWidthUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1084,12 +656,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
-    self.mBoardClearance_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardClearance (_ inObserver : EBEvent) {
     self.mBoardClearance_property.removeEBObserver (inObserver)
   }
@@ -1099,12 +665,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardClearanceUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardClearanceUnit (_ inObserver : EBEvent) {
-    self.mBoardClearanceUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1120,12 +680,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsSelectedInspector (_ inObserver : EBEvent) {
-    self.mBoardLimitsSelectedInspector_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsSelectedInspector (_ inObserver : EBEvent) {
     self.mBoardLimitsSelectedInspector_property.removeEBObserver (inObserver)
   }
@@ -1135,12 +689,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitsHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitsHorizontalFlip (_ inObserver : EBEvent) {
-    self.mBoardLimitsHorizontalFlip_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1156,12 +704,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsVerticalFlip (_ inObserver : EBEvent) {
-    self.mBoardLimitsVerticalFlip_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsVerticalFlip (_ inObserver : EBEvent) {
     self.mBoardLimitsVerticalFlip_property.removeEBObserver (inObserver)
   }
@@ -1171,12 +713,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitsGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitsGridStyle (_ inObserver : EBEvent) {
-    self.mBoardLimitsGridStyle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1192,12 +728,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridDisplayFactor (_ inObserver : EBEvent) {
-    self.mBoardLimitsGridDisplayFactor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsGridDisplayFactor (_ inObserver : EBEvent) {
     self.mBoardLimitsGridDisplayFactor_property.removeEBObserver (inObserver)
   }
@@ -1207,12 +737,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitsZoom_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitsZoom (_ inObserver : EBEvent) {
-    self.mBoardLimitsZoom_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1228,12 +752,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsGridStep (_ inObserver : EBEvent) {
-    self.mBoardLimitsGridStep_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsGridStep (_ inObserver : EBEvent) {
     self.mBoardLimitsGridStep_property.removeEBObserver (inObserver)
   }
@@ -1243,12 +761,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitsGridStepUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitsGridStepUnit (_ inObserver : EBEvent) {
-    self.mBoardLimitsGridStepUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1264,12 +776,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardLimitsBoundingBoxUnit (_ inObserver : EBEvent) {
-    self.mBoardLimitsBoundingBoxUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardLimitsBoundingBoxUnit (_ inObserver : EBEvent) {
     self.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (inObserver)
   }
@@ -1279,12 +785,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardPointsBoundingBoxUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardPointsBoundingBoxUnit (_ inObserver : EBEvent) {
-    self.mBoardPointsBoundingBoxUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1300,12 +800,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent) {
-    self.mBoardSelectedCurveDisplayUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardSelectedCurveDisplayUnit (_ inObserver : EBEvent) {
     self.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (inObserver)
   }
@@ -1315,12 +809,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mBoardLimitControlPointsDisplayUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mBoardLimitControlPointsDisplayUnit (_ inObserver : EBEvent) {
-    self.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1336,12 +824,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mBoardShape (_ inObserver : EBEvent) {
-    self.mBoardShape_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mBoardShape (_ inObserver : EBEvent) {
     self.mBoardShape_property.removeEBObserver (inObserver)
   }
@@ -1351,12 +833,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mRectangularBoardWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRectangularBoardWidth (_ inObserver : EBEvent) {
-    self.mRectangularBoardWidth_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1372,12 +848,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRectangularBoardWidthUnit (_ inObserver : EBEvent) {
-    self.mRectangularBoardWidthUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRectangularBoardWidthUnit (_ inObserver : EBEvent) {
     self.mRectangularBoardWidthUnit_property.removeEBObserver (inObserver)
   }
@@ -1387,12 +857,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mRectangularBoardHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRectangularBoardHeight (_ inObserver : EBEvent) {
-    self.mRectangularBoardHeight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1408,12 +872,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRectangularBoardHeightUnit (_ inObserver : EBEvent) {
-    self.mRectangularBoardHeightUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRectangularBoardHeightUnit (_ inObserver : EBEvent) {
     self.mRectangularBoardHeightUnit_property.removeEBObserver (inObserver)
   }
@@ -1423,12 +881,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mDefaultNetClassName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mDefaultNetClassName (_ inObserver : EBEvent) {
-    self.mDefaultNetClassName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1444,12 +896,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
-    self.mSelectedPageIndex_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
     self.mSelectedPageIndex_property.removeEBObserver (inObserver)
   }
@@ -1459,12 +905,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSelectedSchematicInspector_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSelectedSchematicInspector (_ inObserver : EBEvent) {
-    self.mSelectedSchematicInspector_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1480,12 +920,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicTitle (_ inObserver : EBEvent) {
-    self.mSchematicTitle_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicTitle (_ inObserver : EBEvent) {
     self.mSchematicTitle_property.removeEBObserver (inObserver)
   }
@@ -1495,12 +929,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicVersion_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicVersion (_ inObserver : EBEvent) {
-    self.mSchematicVersion_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1516,12 +944,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicDate (_ inObserver : EBEvent) {
-    self.mSchematicDate_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicDate (_ inObserver : EBEvent) {
     self.mSchematicDate_property.removeEBObserver (inObserver)
   }
@@ -1531,12 +953,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicHorizontalFlip (_ inObserver : EBEvent) {
-    self.mSchematicHorizontalFlip_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1552,12 +968,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicVerticalFlip (_ inObserver : EBEvent) {
-    self.mSchematicVerticalFlip_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicVerticalFlip (_ inObserver : EBEvent) {
     self.mSchematicVerticalFlip_property.removeEBObserver (inObserver)
   }
@@ -1567,12 +977,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicZoom_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicZoom (_ inObserver : EBEvent) {
-    self.mSchematicZoom_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1588,12 +992,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicGridStyle (_ inObserver : EBEvent) {
-    self.mSchematicGridStyle_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicGridStyle (_ inObserver : EBEvent) {
     self.mSchematicGridStyle_property.removeEBObserver (inObserver)
   }
@@ -1603,12 +1001,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicGridDisplayFactor (_ inObserver : EBEvent) {
-    self.mSchematicGridDisplayFactor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1624,12 +1016,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent) {
-    self.mSchematicCustomWidth_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicCustomWidth (_ inObserver : EBEvent) {
     self.mSchematicCustomWidth_property.removeEBObserver (inObserver)
   }
@@ -1639,12 +1025,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicCustomWidthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicCustomWidthUnit (_ inObserver : EBEvent) {
-    self.mSchematicCustomWidthUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1660,12 +1040,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent) {
-    self.mSchematicCustomHeight_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicCustomHeight (_ inObserver : EBEvent) {
     self.mSchematicCustomHeight_property.removeEBObserver (inObserver)
   }
@@ -1675,12 +1049,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSchematicCustomHeightUnit (_ inObserver : EBEvent) {
-    self.mSchematicCustomHeightUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1696,12 +1064,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBEvent) {
-    self.mSchematicSheetOrientation_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mSchematicSheetOrientation (_ inObserver : EBEvent) {
     self.mSchematicSheetOrientation_property.removeEBObserver (inObserver)
   }
@@ -1711,12 +1073,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRastnetDisplay (_ inObserver : EBEvent) {
-    self.mRastnetDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1732,12 +1088,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
-    self.mRastnetDisplayedNetName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mRastnetDisplayedNetName (_ inObserver : EBEvent) {
     self.mRastnetDisplayedNetName_property.removeEBObserver (inObserver)
   }
@@ -1747,12 +1097,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mRastnetDisplayedComponentName (_ inObserver : EBEvent) {
-    self.mRastnetDisplayedComponentName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1768,12 +1112,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
-    self.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
     self.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (inObserver)
   }
@@ -1783,12 +1121,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitsGridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
-    self.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1804,12 +1136,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardShapeIsRectangular (_ inObserver : EBEvent) {
-    self.boardShapeIsRectangular_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardShapeIsRectangular (_ inObserver : EBEvent) {
     self.boardShapeIsRectangular_property.removeEBObserver (inObserver)
   }
@@ -1819,12 +1145,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let selectedSheetIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedSheetIssues (_ inObserver : EBEvent) {
-    self.selectedSheetIssues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1840,12 +1160,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.connectedPoints_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.connectedPoints_property.removeEBObserver (inObserver)
   }
@@ -1855,12 +1169,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let connexionWarningString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_connexionWarningString (_ inObserver : EBEvent) {
-    self.connexionWarningString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1876,12 +1184,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_connexionErrorString (_ inObserver : EBEvent) {
-    self.connexionErrorString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_connexionErrorString (_ inObserver : EBEvent) {
     self.connexionErrorString_property.removeEBObserver (inObserver)
   }
@@ -1891,12 +1193,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let sheetIndexes_property = EBGenericTransientProperty <IntArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sheetIndexes (_ inObserver : EBEvent) {
-    self.sheetIndexes_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1912,12 +1208,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
-    self.netsDescription_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.netsDescription_property.removeEBObserver (inObserver)
   }
@@ -1927,12 +1217,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardIssues (_ inObserver : EBEvent) {
-    self.boardIssues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1948,12 +1232,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.signatureForERCChecking_property.removeEBObserver (inObserver)
   }
@@ -1963,12 +1241,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let ercStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_ercStatusImage (_ inObserver : EBEvent) {
-    self.ercStatusImage_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -1984,12 +1256,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_ercStatusMessage (_ inObserver : EBEvent) {
-    self.ercStatusMessage_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_ercStatusMessage (_ inObserver : EBEvent) {
     self.ercStatusMessage_property.removeEBObserver (inObserver)
   }
@@ -1999,12 +1265,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let viaCountString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_viaCountString (_ inObserver : EBEvent) {
-    self.viaCountString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2020,12 +1280,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_trackCountString (_ inObserver : EBEvent) {
-    self.trackCountString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_trackCountString (_ inObserver : EBEvent) {
     self.trackCountString_property.removeEBObserver (inObserver)
   }
@@ -2035,12 +1289,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let trackLengthString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_trackLengthString (_ inObserver : EBEvent) {
-    self.trackLengthString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2056,12 +1304,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardStatusImage (_ inObserver : EBEvent) {
-    self.boardStatusImage_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardStatusImage (_ inObserver : EBEvent) {
     self.boardStatusImage_property.removeEBObserver (inObserver)
   }
@@ -2071,12 +1313,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardStatusMessage_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardStatusMessage (_ inObserver : EBEvent) {
-    self.boardStatusMessage_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2092,12 +1328,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_interiorBoundBox (_ inObserver : EBEvent) {
-    self.interiorBoundBox_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_interiorBoundBox (_ inObserver : EBEvent) {
     self.interiorBoundBox_property.removeEBObserver (inObserver)
   }
@@ -2107,12 +1337,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardBoundBox_property = EBGenericTransientProperty <CanariRect?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardBoundBox (_ inObserver : EBEvent) {
-    self.boardBoundBox_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2128,12 +1352,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorTop (_ inObserver : EBEvent) {
-    self.boardInteriorTop_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardInteriorTop (_ inObserver : EBEvent) {
     self.boardInteriorTop_property.removeEBObserver (inObserver)
   }
@@ -2143,12 +1361,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardInteriorBottom_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardInteriorBottom (_ inObserver : EBEvent) {
-    self.boardInteriorBottom_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2164,12 +1376,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent) {
-    self.boardInteriorLeft_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardInteriorLeft (_ inObserver : EBEvent) {
     self.boardInteriorLeft_property.removeEBObserver (inObserver)
   }
@@ -2179,12 +1385,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardInteriorRight_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardInteriorRight (_ inObserver : EBEvent) {
-    self.boardInteriorRight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2200,12 +1400,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderTop (_ inObserver : EBEvent) {
-    self.boardLimitBorderTop_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardLimitBorderTop (_ inObserver : EBEvent) {
     self.boardLimitBorderTop_property.removeEBObserver (inObserver)
   }
@@ -2215,12 +1409,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardLimitBorderBottom_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitBorderBottom (_ inObserver : EBEvent) {
-    self.boardLimitBorderBottom_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2236,12 +1424,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitBorderLeft (_ inObserver : EBEvent) {
-    self.boardLimitBorderLeft_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_boardLimitBorderLeft (_ inObserver : EBEvent) {
     self.boardLimitBorderLeft_property.removeEBObserver (inObserver)
   }
@@ -2251,12 +1433,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let boardLimitBorderRight_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitBorderRight (_ inObserver : EBEvent) {
-    self.boardLimitBorderRight_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2272,12 +1448,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_borderElementCountString (_ inObserver : EBEvent) {
-    self.borderElementCountString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_borderElementCountString (_ inObserver : EBEvent) {
     self.borderElementCountString_property.removeEBObserver (inObserver)
   }
@@ -2287,12 +1457,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let borderOutlineBackground_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_borderOutlineBackground (_ inObserver : EBEvent) {
-    self.borderOutlineBackground_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2308,12 +1472,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_borderViewBackground (_ inObserver : EBEvent) {
-    self.borderViewBackground_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_borderViewBackground (_ inObserver : EBEvent) {
     self.borderViewBackground_property.removeEBObserver (inObserver)
   }
@@ -2323,12 +1481,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let deviceNames_property = EBGenericTransientProperty <StringArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_deviceNames (_ inObserver : EBEvent) {
-    self.deviceNames_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2344,12 +1496,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_allClassNames (_ inObserver : EBEvent) {
-    self.allClassNames_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_allClassNames (_ inObserver : EBEvent) {
     self.allClassNames_property.removeEBObserver (inObserver)
   }
@@ -2359,12 +1505,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let sheetGeometry_property = EBGenericTransientProperty <SchematicSheetGeometry?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sheetGeometry (_ inObserver : EBEvent) {
-    self.sheetGeometry_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2380,12 +1520,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent) {
-    self.schematicBackgroundDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_schematicBackgroundDisplay (_ inObserver : EBEvent) {
     self.schematicBackgroundDisplay_property.removeEBObserver (inObserver)
   }
@@ -2395,12 +1529,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let netWarningCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
-    self.netWarningCount_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2416,12 +1544,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_netNamesArray (_ inObserver : EBEvent) {
-    self.netNamesArray_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netNamesArray (_ inObserver : EBEvent) {
     self.netNamesArray_property.removeEBObserver (inObserver)
   }
@@ -2431,12 +1553,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_unplacedSymbols (_ inObserver : EBEvent) {
-    self.unplacedSymbols_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2452,12 +1568,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
-    self.unplacedPackages_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_unplacedPackages (_ inObserver : EBEvent) {
     self.unplacedPackages_property.removeEBObserver (inObserver)
   }
@@ -2467,12 +1577,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let componentsPlacedInBoard_property = EBGenericTransientProperty <StringTagArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_componentsPlacedInBoard (_ inObserver : EBEvent) {
-    self.componentsPlacedInBoard_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2488,12 +1592,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_placedComponentNameArray (_ inObserver : EBEvent) {
-    self.placedComponentNameArray_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_placedComponentNameArray (_ inObserver : EBEvent) {
     self.placedComponentNameArray_property.removeEBObserver (inObserver)
   }
@@ -2503,12 +1601,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let schematicHasErrorOrWarning_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_schematicHasErrorOrWarning (_ inObserver : EBEvent) {
-    self.schematicHasErrorOrWarning_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -2524,12 +1616,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
-    self.schematicStatusMessage_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_schematicStatusMessage (_ inObserver : EBEvent) {
     self.schematicStatusMessage_property.removeEBObserver (inObserver)
   }
@@ -2539,12 +1625,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let schematicStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_schematicStatusImage (_ inObserver : EBEvent) {
-    self.schematicStatusImage_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

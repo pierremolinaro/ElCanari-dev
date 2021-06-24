@@ -449,10 +449,10 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
+    self.mRoot_property.mShowPackagePadNumbers_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mShowPackages_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mShowPackageFrontPads_property.addEBObserver (self.objectDisplay_property)
+    self.mRoot_property.mShowPackageBackPads_property.addEBObserver (self.objectDisplay_property)
     self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     preferences_packageColor_property.addEBObserver (self.objectDisplay_property)
     preferences_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
@@ -479,10 +479,10 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackages (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.selectionDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.selectionDisplay_property)
+    self.mRoot_property.mShowPackagePadNumbers_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.mShowPackages_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.mShowPackageFrontPads_property.addEBObserver (self.selectionDisplay_property)
+    self.mRoot_property.mShowPackageBackPads_property.addEBObserver (self.selectionDisplay_property)
     self.mStrokeBezierPath_property.addEBObserver (self.selectionDisplay_property)
     preferences_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.selectionDisplay_property)

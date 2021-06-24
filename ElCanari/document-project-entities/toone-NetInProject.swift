@@ -16,40 +16,24 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
       oldValue.mNetName_property.removeEBObserver (self.mNetName_property) // Stored property
- //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
- //     oldValue.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
       oldValue.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property) // Transient property
- //     oldValue.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
       oldValue.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property) // Transient property
- //     oldValue.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
       oldValue.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property) // Transient property
- //     oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
       oldValue.wireColor_property.removeEBObserver (self.wireColor_property) // Transient property
- //     oldValue.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
       oldValue.netSchematicPointsInfo_property.removeEBObserver (self.netSchematicPointsInfo_property) // Transient property
- //     oldValue.trackCount_property.removeEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
       oldValue.trackCount_property.removeEBObserver (self.trackCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
       newValue.mNetName_property.addEBObserver (self.mNetName_property) // Stored property
-  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-  //    newValue.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
       newValue.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property) // Transient property
-  //    newValue.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
       newValue.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property) // Transient property
-  //    newValue.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
       newValue.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property) // Transient property
-  //    newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
       newValue.wireColor_property.addEBObserver (self.wireColor_property) // Transient property
-  //    newValue.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
       newValue.netSchematicPointsInfo_property.addEBObserver (self.netSchematicPointsInfo_property) // Transient property
-  //    newValue.trackCount_property.addEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
       newValue.trackCount_property.addEBObserver (self.trackCount_property) // Transient property
     }
   }
@@ -59,12 +43,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //····················································································································
 
   final let mNetName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
-    self.mNetName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -80,12 +58,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.netClassName_property.removeEBObserver (inObserver)
   }
@@ -95,12 +67,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //····················································································································
 
   final let netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
-    self.netClassTrackWidth_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +82,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
-    self.netClassViaHoleDiameter_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
     self.netClassViaHoleDiameter_property.removeEBObserver (inObserver)
   }
@@ -131,12 +91,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //····················································································································
 
   final let netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
-    self.netClassViaPadDiameter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +106,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.wireColor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
     self.wireColor_property.removeEBObserver (inObserver)
   }
@@ -170,12 +118,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
-    self.netSchematicPointsInfo_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
     self.netSchematicPointsInfo_property.removeEBObserver (inObserver)
   }
@@ -185,12 +127,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //····················································································································
 
   final let trackCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_trackCount (_ inObserver : EBEvent) {
-    self.trackCount_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

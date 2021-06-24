@@ -16,28 +16,18 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
- //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
- //     oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
       oldValue.netName_property.removeEBObserver (self.netName_property) // Transient property
- //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
- //     oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
       oldValue.hasNet_property.removeEBObserver (self.hasNet_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-  //    newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
       newValue.netName_property.addEBObserver (self.netName_property) // Transient property
-  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-  //    newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
       newValue.hasNet_property.addEBObserver (self.hasNet_property) // Transient property
     }
   }
@@ -47,12 +37,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -68,12 +52,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
   }
@@ -83,12 +61,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //····················································································································
 
   final let netName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +76,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
 
   //····················································································································
 
-  final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.netClassName_property.removeEBObserver (inObserver)
   }
@@ -119,12 +85,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //····················································································································
 
   final let hasNet_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.hasNet_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

@@ -16,40 +16,24 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mNominalSize_property.removeEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
       oldValue.mNominalSize_property.removeEBObserver (self.mNominalSize_property) // Stored property
- //     oldValue.mFontName_property.removeEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
       oldValue.mFontName_property.removeEBObserver (self.mFontName_property) // Stored property
- //     oldValue.mFontVersion_property.removeEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
       oldValue.mFontVersion_property.removeEBObserver (self.mFontVersion_property) // Stored property
- //     oldValue.mDescriptiveString_property.removeEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
       oldValue.mDescriptiveString_property.removeEBObserver (self.mDescriptiveString_property) // Stored property
- //     oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
- //     oldValue.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
       oldValue.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
- //     oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
- //     oldValue.canRemoveFont_property.removeEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
       oldValue.canRemoveFont_property.removeEBObserver (self.canRemoveFont_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mNominalSize_property.addEBObserversFrom (&self.mObserversOf_mNominalSize) // Stored property
       newValue.mNominalSize_property.addEBObserver (self.mNominalSize_property) // Stored property
- //     newValue.mFontName_property.addEBObserversFrom (&self.mObserversOf_mFontName) // Stored property
       newValue.mFontName_property.addEBObserver (self.mFontName_property) // Stored property
- //     newValue.mFontVersion_property.addEBObserversFrom (&self.mObserversOf_mFontVersion) // Stored property
       newValue.mFontVersion_property.addEBObserver (self.mFontVersion_property) // Stored property
- //     newValue.mDescriptiveString_property.addEBObserversFrom (&self.mObserversOf_mDescriptiveString) // Stored property
       newValue.mDescriptiveString_property.addEBObserver (self.mDescriptiveString_property) // Stored property
-  //    newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-  //    newValue.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
       newValue.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
-  //    newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
       newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
-  //    newValue.canRemoveFont_property.addEBObserversFrom (&self.mObserversOf_canRemoveFont) // Transient property
       newValue.canRemoveFont_property.addEBObserver (self.canRemoveFont_property) // Transient property
     }
   }
@@ -59,12 +43,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mNominalSize_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
-    self.mNominalSize_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -80,12 +58,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
-    self.mFontName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.mFontName_property.removeEBObserver (inObserver)
   }
@@ -95,12 +67,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mFontVersion_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
-    self.mFontVersion_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -116,12 +82,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
-    self.mDescriptiveString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.mDescriptiveString_property.removeEBObserver (inObserver)
   }
@@ -131,12 +91,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let versionString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.versionString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -152,12 +106,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.sizeString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.sizeString_property.removeEBObserver (inObserver)
   }
@@ -170,12 +118,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
-    self.descriptor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.removeEBObserver (inObserver)
   }
@@ -185,12 +127,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let canRemoveFont_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
-    self.canRemoveFont_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

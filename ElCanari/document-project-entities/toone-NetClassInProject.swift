@@ -16,84 +16,46 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
       oldValue.mNetClassName_property.removeEBObserver (self.mNetClassName_property) // Stored property
- //     oldValue.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
       oldValue.mNetClassColor_property.removeEBObserver (self.mNetClassColor_property) // Stored property
- //     oldValue.mTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
       oldValue.mTrackWidth_property.removeEBObserver (self.mTrackWidth_property) // Stored property
- //     oldValue.mTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
       oldValue.mTrackWidthUnit_property.removeEBObserver (self.mTrackWidthUnit_property) // Stored property
- //     oldValue.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
       oldValue.mViaHoleDiameter_property.removeEBObserver (self.mViaHoleDiameter_property) // Stored property
- //     oldValue.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
       oldValue.mViaHoleDiameterUnit_property.removeEBObserver (self.mViaHoleDiameterUnit_property) // Stored property
- //     oldValue.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
       oldValue.mViaPadDiameter_property.removeEBObserver (self.mViaPadDiameter_property) // Stored property
- //     oldValue.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
       oldValue.mViaPadDiameterUnit_property.removeEBObserver (self.mViaPadDiameterUnit_property) // Stored property
- //     oldValue.mAllowTracksOnFrontSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
       oldValue.mAllowTracksOnFrontSide_property.removeEBObserver (self.mAllowTracksOnFrontSide_property) // Stored property
- //     oldValue.mAllowTracksOnBackSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
       oldValue.mAllowTracksOnBackSide_property.removeEBObserver (self.mAllowTracksOnBackSide_property) // Stored property
- //     oldValue.trackWidthString_property.removeEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
       oldValue.trackWidthString_property.removeEBObserver (self.trackWidthString_property) // Transient property
- //     oldValue.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
       oldValue.viaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property) // Transient property
- //     oldValue.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
       oldValue.viaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property) // Transient property
- //     oldValue.allowTracksOnFrontSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
       oldValue.allowTracksOnFrontSideString_property.removeEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
- //     oldValue.allowTracksOnBackSideString_property.removeEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
       oldValue.allowTracksOnBackSideString_property.removeEBObserver (self.allowTracksOnBackSideString_property) // Transient property
- //     oldValue.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
       oldValue.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
- //     oldValue.netUsage_property.removeEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
       oldValue.netUsage_property.removeEBObserver (self.netUsage_property) // Transient property
- //     oldValue.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
       oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
- //     oldValue.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
       newValue.mNetClassName_property.addEBObserver (self.mNetClassName_property) // Stored property
- //     newValue.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
       newValue.mNetClassColor_property.addEBObserver (self.mNetClassColor_property) // Stored property
- //     newValue.mTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
       newValue.mTrackWidth_property.addEBObserver (self.mTrackWidth_property) // Stored property
- //     newValue.mTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
       newValue.mTrackWidthUnit_property.addEBObserver (self.mTrackWidthUnit_property) // Stored property
- //     newValue.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
       newValue.mViaHoleDiameter_property.addEBObserver (self.mViaHoleDiameter_property) // Stored property
- //     newValue.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
       newValue.mViaHoleDiameterUnit_property.addEBObserver (self.mViaHoleDiameterUnit_property) // Stored property
- //     newValue.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
       newValue.mViaPadDiameter_property.addEBObserver (self.mViaPadDiameter_property) // Stored property
- //     newValue.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
       newValue.mViaPadDiameterUnit_property.addEBObserver (self.mViaPadDiameterUnit_property) // Stored property
- //     newValue.mAllowTracksOnFrontSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
       newValue.mAllowTracksOnFrontSide_property.addEBObserver (self.mAllowTracksOnFrontSide_property) // Stored property
- //     newValue.mAllowTracksOnBackSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
       newValue.mAllowTracksOnBackSide_property.addEBObserver (self.mAllowTracksOnBackSide_property) // Stored property
-  //    newValue.trackWidthString_property.addEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
       newValue.trackWidthString_property.addEBObserver (self.trackWidthString_property) // Transient property
-  //    newValue.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
       newValue.viaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property) // Transient property
-  //    newValue.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
       newValue.viaPadDiameter_property.addEBObserver (self.viaPadDiameter_property) // Transient property
-  //    newValue.allowTracksOnFrontSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnFrontSideString) // Transient property
       newValue.allowTracksOnFrontSideString_property.addEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
-  //    newValue.allowTracksOnBackSideString_property.addEBObserversFrom (&self.mObserversOf_allowTracksOnBackSideString) // Transient property
       newValue.allowTracksOnBackSideString_property.addEBObserver (self.allowTracksOnBackSideString_property) // Transient property
-  //    newValue.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
       newValue.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
-  //    newValue.netUsage_property.addEBObserversFrom (&self.mObserversOf_netUsage) // Transient property
       newValue.netUsage_property.addEBObserver (self.netUsage_property) // Transient property
-  //    newValue.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
       newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
-  //    newValue.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
       newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
     }
   }
@@ -103,12 +65,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let mNetClassName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
-    self.mNetClassName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -124,12 +80,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.mNetClassColor_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
     self.mNetClassColor_property.removeEBObserver (inObserver)
   }
@@ -139,12 +89,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let mTrackWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
-    self.mTrackWidth_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -160,12 +104,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
-    self.mTrackWidthUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
     self.mTrackWidthUnit_property.removeEBObserver (inObserver)
   }
@@ -175,12 +113,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let mViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
-    self.mViaHoleDiameter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -196,12 +128,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
     self.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
   }
@@ -211,12 +137,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let mViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
-    self.mViaPadDiameter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -232,12 +152,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
-    self.mViaPadDiameterUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
     self.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
   }
@@ -247,12 +161,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let mAllowTracksOnFrontSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
-    self.mAllowTracksOnFrontSide_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -268,12 +176,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
-    self.mAllowTracksOnBackSide_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
     self.mAllowTracksOnBackSide_property.removeEBObserver (inObserver)
   }
@@ -283,12 +185,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let trackWidthString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_trackWidthString (_ inObserver : EBEvent) {
-    self.trackWidthString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -304,12 +200,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
-    self.viaHoleDiameter_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBEvent) {
     self.viaHoleDiameter_property.removeEBObserver (inObserver)
   }
@@ -319,12 +209,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let viaPadDiameter_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_viaPadDiameter (_ inObserver : EBEvent) {
-    self.viaPadDiameter_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -340,12 +224,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
-    self.allowTracksOnFrontSideString_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBEvent) {
     self.allowTracksOnFrontSideString_property.removeEBObserver (inObserver)
   }
@@ -355,12 +233,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let allowTracksOnBackSideString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBEvent) {
-    self.allowTracksOnBackSideString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -376,12 +248,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.canRemove_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
     self.canRemove_property.removeEBObserver (inObserver)
   }
@@ -391,12 +257,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let netUsage_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netUsage (_ inObserver : EBEvent) {
-    self.netUsage_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -412,12 +272,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_netsDescription (_ inObserver : EBEvent) {
-    self.netsDescription_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_netsDescription (_ inObserver : EBEvent) {
     self.netsDescription_property.removeEBObserver (inObserver)
   }
@@ -427,12 +281,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let netWarningCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_netWarningCount (_ inObserver : EBEvent) {
-    self.netWarningCount_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

@@ -16,32 +16,20 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
       oldValue.mSheetTitle_property.removeEBObserver (self.mSheetTitle_property) // Stored property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
- //     oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
- //     oldValue.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
       oldValue.connexionWarnings_property.removeEBObserver (self.connexionWarnings_property) // Transient property
- //     oldValue.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
       oldValue.connexionErrors_property.removeEBObserver (self.connexionErrors_property) // Transient property
- //     oldValue.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
       oldValue.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
       newValue.mSheetTitle_property.addEBObserver (self.mSheetTitle_property) // Stored property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-  //    newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-  //    newValue.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
       newValue.connexionWarnings_property.addEBObserver (self.connexionWarnings_property) // Transient property
-  //    newValue.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
       newValue.connexionErrors_property.addEBObserver (self.connexionErrors_property) // Transient property
-  //    newValue.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
       newValue.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property) // Transient property
     }
   }
@@ -51,12 +39,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //····················································································································
 
   final let mSheetTitle_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
-    self.mSheetTitle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -72,12 +54,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
   }
@@ -87,12 +63,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //····················································································································
 
   final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.connectedPoints_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -108,12 +78,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
-    self.connexionWarnings_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_connexionWarnings (_ inObserver : EBEvent) {
     self.connexionWarnings_property.removeEBObserver (inObserver)
   }
@@ -126,12 +90,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
-    self.connexionErrors_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_connexionErrors (_ inObserver : EBEvent) {
     self.connexionErrors_property.removeEBObserver (inObserver)
   }
@@ -141,12 +99,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //····················································································································
 
   final let sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
-    self.sheetDescriptor_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

@@ -16,64 +16,36 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
       oldValue.selectedInspector_property.removeEBObserver (self.selectedInspector_property) // Stored property
- //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
       oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
- //     oldValue.horizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
       oldValue.horizontalFlip_property.removeEBObserver (self.horizontalFlip_property) // Stored property
- //     oldValue.verticalFlip_property.removeEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
       oldValue.verticalFlip_property.removeEBObserver (self.verticalFlip_property) // Stored property
- //     oldValue.gridStyle_property.removeEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
       oldValue.gridStyle_property.removeEBObserver (self.gridStyle_property) // Stored property
- //     oldValue.gridDisplay_property.removeEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
       oldValue.gridDisplay_property.removeEBObserver (self.gridDisplay_property) // Stored property
- //     oldValue.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
       oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
- //     oldValue.xPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
       oldValue.xPlacardUnit_property.removeEBObserver (self.xPlacardUnit_property) // Stored property
- //     oldValue.yPlacardUnit_property.removeEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
       oldValue.yPlacardUnit_property.removeEBObserver (self.yPlacardUnit_property) // Stored property
- //     oldValue.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
       oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
- //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
- //     oldValue.noIssue_property.removeEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
       oldValue.noIssue_property.removeEBObserver (self.noIssue_property) // Transient property
- //     oldValue.segmentedControlSegmentIssueImage_property.removeEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueImage) // Transient property
       oldValue.segmentedControlSegmentIssueImage_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property) // Transient property
- //     oldValue.segmentedControlSegmentIssueString_property.removeEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueString) // Transient property
       oldValue.segmentedControlSegmentIssueString_property.removeEBObserver (self.segmentedControlSegmentIssueString_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
       newValue.selectedInspector_property.addEBObserver (self.selectedInspector_property) // Stored property
- //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
- //     newValue.horizontalFlip_property.addEBObserversFrom (&self.mObserversOf_horizontalFlip) // Stored property
       newValue.horizontalFlip_property.addEBObserver (self.horizontalFlip_property) // Stored property
- //     newValue.verticalFlip_property.addEBObserversFrom (&self.mObserversOf_verticalFlip) // Stored property
       newValue.verticalFlip_property.addEBObserver (self.verticalFlip_property) // Stored property
- //     newValue.gridStyle_property.addEBObserversFrom (&self.mObserversOf_gridStyle) // Stored property
       newValue.gridStyle_property.addEBObserver (self.gridStyle_property) // Stored property
- //     newValue.gridDisplay_property.addEBObserversFrom (&self.mObserversOf_gridDisplay) // Stored property
       newValue.gridDisplay_property.addEBObserver (self.gridDisplay_property) // Stored property
- //     newValue.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
       newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
- //     newValue.xPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_xPlacardUnit) // Stored property
       newValue.xPlacardUnit_property.addEBObserver (self.xPlacardUnit_property) // Stored property
- //     newValue.yPlacardUnit_property.addEBObserversFrom (&self.mObserversOf_yPlacardUnit) // Stored property
       newValue.yPlacardUnit_property.addEBObserver (self.yPlacardUnit_property) // Stored property
- //     newValue.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
-  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-  //    newValue.noIssue_property.addEBObserversFrom (&self.mObserversOf_noIssue) // Transient property
       newValue.noIssue_property.addEBObserver (self.noIssue_property) // Transient property
-  //    newValue.segmentedControlSegmentIssueImage_property.addEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueImage) // Transient property
       newValue.segmentedControlSegmentIssueImage_property.addEBObserver (self.segmentedControlSegmentIssueImage_property) // Transient property
-  //    newValue.segmentedControlSegmentIssueString_property.addEBObserversFrom (&self.mObserversOf_segmentedControlSegmentIssueString) // Transient property
       newValue.segmentedControlSegmentIssueString_property.addEBObserver (self.segmentedControlSegmentIssueString_property) // Transient property
     }
   }
@@ -83,12 +55,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let selectedInspector_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.selectedInspector_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -104,12 +70,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.removeEBObserver (inObserver)
   }
@@ -119,12 +79,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let horizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
-    self.horizontalFlip_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -140,12 +94,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
-    self.verticalFlip_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
     self.verticalFlip_property.removeEBObserver (inObserver)
   }
@@ -155,12 +103,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let gridStyle_property = EBGenericTransientProperty <GridStyle?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
-    self.gridStyle_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -176,12 +118,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.gridDisplay_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.gridDisplay_property.removeEBObserver (inObserver)
   }
@@ -191,12 +127,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let zoom_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.zoom_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -212,12 +142,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
-    self.xPlacardUnit_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
     self.xPlacardUnit_property.removeEBObserver (inObserver)
   }
@@ -227,12 +151,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let yPlacardUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
-    self.yPlacardUnit_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -248,12 +166,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.selectedPageIndex_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.selectedPageIndex_property.removeEBObserver (inObserver)
   }
@@ -263,12 +175,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -284,12 +190,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
-    self.noIssue_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
     self.noIssue_property.removeEBObserver (inObserver)
   }
@@ -302,12 +202,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
-    self.segmentedControlSegmentIssueImage_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
     self.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
   }
@@ -317,12 +211,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let segmentedControlSegmentIssueString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
-    self.segmentedControlSegmentIssueString_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 

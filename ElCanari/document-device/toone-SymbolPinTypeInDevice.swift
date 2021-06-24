@@ -16,52 +16,30 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
- //     oldValue.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
       oldValue.mPinX_property.removeEBObserver (self.mPinX_property) // Stored property
- //     oldValue.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
       oldValue.mPinY_property.removeEBObserver (self.mPinY_property) // Stored property
- //     oldValue.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
       oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
- //     oldValue.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
       oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
- //     oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
       oldValue.mName_property.removeEBObserver (self.mName_property) // Stored property
- //     oldValue.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
       oldValue.mNameHorizontalAlignment_property.removeEBObserver (self.mNameHorizontalAlignment_property) // Stored property
- //     oldValue.mPinNameIsDisplayedInSchematics_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
       oldValue.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.mPinNameIsDisplayedInSchematics_property) // Stored property
- //     oldValue.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
       oldValue.mXNumber_property.removeEBObserver (self.mXNumber_property) // Stored property
- //     oldValue.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
       oldValue.mYNumber_property.removeEBObserver (self.mYNumber_property) // Stored property
- //     oldValue.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
       oldValue.mNumberHorizontalAlignment_property.removeEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
- //     oldValue.nameShape_property.removeEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
       oldValue.nameShape_property.removeEBObserver (self.nameShape_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
- //     newValue.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
       newValue.mPinX_property.addEBObserver (self.mPinX_property) // Stored property
- //     newValue.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
       newValue.mPinY_property.addEBObserver (self.mPinY_property) // Stored property
- //     newValue.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
       newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
- //     newValue.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
       newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
- //     newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
       newValue.mName_property.addEBObserver (self.mName_property) // Stored property
- //     newValue.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
       newValue.mNameHorizontalAlignment_property.addEBObserver (self.mNameHorizontalAlignment_property) // Stored property
- //     newValue.mPinNameIsDisplayedInSchematics_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematics) // Stored property
       newValue.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.mPinNameIsDisplayedInSchematics_property) // Stored property
- //     newValue.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
       newValue.mXNumber_property.addEBObserver (self.mXNumber_property) // Stored property
- //     newValue.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
       newValue.mYNumber_property.addEBObserver (self.mYNumber_property) // Stored property
- //     newValue.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
       newValue.mNumberHorizontalAlignment_property.addEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
-  //    newValue.nameShape_property.addEBObserversFrom (&self.mObserversOf_nameShape) // Transient property
       newValue.nameShape_property.addEBObserver (self.nameShape_property) // Transient property
     }
   }
@@ -71,12 +49,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let mPinX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPinX (_ inObserver : EBEvent) {
-    self.mPinX_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -92,12 +64,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mPinY (_ inObserver : EBEvent) {
-    self.mPinY_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mPinY (_ inObserver : EBEvent) {
     self.mPinY_property.removeEBObserver (inObserver)
   }
@@ -107,12 +73,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let mXName_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
-    self.mXName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -128,12 +88,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
-    self.mYName_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.mYName_property.removeEBObserver (inObserver)
   }
@@ -143,12 +97,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let mName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
-    self.mName_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -164,12 +112,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
-    self.mNameHorizontalAlignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mNameHorizontalAlignment (_ inObserver : EBEvent) {
     self.mNameHorizontalAlignment_property.removeEBObserver (inObserver)
   }
@@ -179,12 +121,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let mPinNameIsDisplayedInSchematics_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mPinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
-    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -200,12 +136,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
-    self.mXNumber_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.mXNumber_property.removeEBObserver (inObserver)
   }
@@ -215,12 +145,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let mYNumber_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
-    self.mYNumber_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
@@ -236,12 +160,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 
   //····················································································································
 
-  final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
-    self.mNumberHorizontalAlignment_property.addEBObserver (inObserver)
-  }
-
-  //····················································································································
-
   final func removeEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
     self.mNumberHorizontalAlignment_property.removeEBObserver (inObserver)
   }
@@ -251,12 +169,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
 
   final let nameShape_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func addEBObserverOf_nameShape (_ inObserver : EBEvent) {
-    self.nameShape_property.addEBObserver (inObserver)
-  }
 
   //····················································································································
 
