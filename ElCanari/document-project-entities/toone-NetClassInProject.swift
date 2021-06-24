@@ -16,16 +16,16 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
-      oldValue.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
-      oldValue.mTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
-      oldValue.mTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
-      oldValue.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
-      oldValue.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
-      oldValue.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
-      oldValue.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
-      oldValue.mAllowTracksOnFrontSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
-      oldValue.mAllowTracksOnBackSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
+ //     oldValue.mNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
+ //     oldValue.mNetClassColor_property.removeEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
+ //     oldValue.mTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
+ //     oldValue.mTrackWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
+ //     oldValue.mViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
+ //     oldValue.mViaHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
+ //     oldValue.mViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
+ //     oldValue.mViaPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
+ //     oldValue.mAllowTracksOnFrontSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
+ //     oldValue.mAllowTracksOnBackSide_property.removeEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
       oldValue.trackWidthString_property.removeEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
       oldValue.viaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
       oldValue.viaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
@@ -38,16 +38,16 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
-      newValue.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
-      newValue.mTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
-      newValue.mTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
-      newValue.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
-      newValue.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
-      newValue.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
-      newValue.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
-      newValue.mAllowTracksOnFrontSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
-      newValue.mAllowTracksOnBackSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
+ //     newValue.mNetClassName_property.addEBObserversFrom (&self.mObserversOf_mNetClassName) // Stored property
+ //     newValue.mNetClassColor_property.addEBObserversFrom (&self.mObserversOf_mNetClassColor) // Stored property
+ //     newValue.mTrackWidth_property.addEBObserversFrom (&self.mObserversOf_mTrackWidth) // Stored property
+ //     newValue.mTrackWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackWidthUnit) // Stored property
+ //     newValue.mViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameter) // Stored property
+ //     newValue.mViaHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaHoleDiameterUnit) // Stored property
+ //     newValue.mViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameter) // Stored property
+ //     newValue.mViaPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mViaPadDiameterUnit) // Stored property
+ //     newValue.mAllowTracksOnFrontSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnFrontSide) // Stored property
+ //     newValue.mAllowTracksOnBackSide_property.addEBObserversFrom (&self.mObserversOf_mAllowTracksOnBackSide) // Stored property
       newValue.trackWidthString_property.addEBObserversFrom (&self.mObserversOf_trackWidthString) // Transient property
       newValue.viaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaHoleDiameter) // Transient property
       newValue.viaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaPadDiameter) // Transient property
@@ -64,13 +64,14 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mNetClassName' stored property
   //····················································································································
 
-//  private final var mNetClassName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mNetClassName = EBWeakEventSet ()
+  private final var mNetClassName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mNetClassName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mNetClassName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mNetClassName_property_selection : EBSelection <String?> { // §
+    return self.mNetClassName_property.selection
+/*    if let model = self.propval {
       switch (model.mNetClassName_property_selection) {
       case .empty :
         return .empty
@@ -81,46 +82,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mNetClassName.insert (inObserver)
+    self.mNetClassName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mNetClassName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mNetClassName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mNetClassName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetClassName.remove (inObserver)
+    self.mNetClassName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mNetClassName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mNetClassName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mNetClassColor' stored property
   //····················································································································
 
-//  private final var mNetClassColor_property = EBGenericPropertyProxy <NSColor?> ()
-  private final var mObserversOf_mNetClassColor = EBWeakEventSet ()
+  private final var mNetClassColor_property = EBGenericTransientProperty <NSColor?> ()
+//  private final var mObserversOf_mNetClassColor = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mNetClassColor_property_selection : EBSelection <NSColor?> {
-    if let model = self.propval {
+  final var mNetClassColor_property_selection : EBSelection <NSColor?> { // §
+    return self.mNetClassColor_property.selection
+/*    if let model = self.propval {
       switch (model.mNetClassColor_property_selection) {
       case .empty :
         return .empty
@@ -131,46 +133,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mNetClassColor.insert (inObserver)
+    self.mNetClassColor_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mNetClassColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mNetClassColor_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mNetClassColor (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetClassColor.remove (inObserver)
+    self.mNetClassColor_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mNetClassColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mNetClassColor_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mTrackWidth' stored property
   //····················································································································
 
-//  private final var mTrackWidth_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mTrackWidth = EBWeakEventSet ()
+  private final var mTrackWidth_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mTrackWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mTrackWidth_property_selection : EBSelection <Int?> { // §
+    return self.mTrackWidth_property.selection
+/*    if let model = self.propval {
       switch (model.mTrackWidth_property_selection) {
       case .empty :
         return .empty
@@ -181,46 +184,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mTrackWidth.insert (inObserver)
+    self.mTrackWidth_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mTrackWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mTrackWidth_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mTrackWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mTrackWidth.remove (inObserver)
+    self.mTrackWidth_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mTrackWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mTrackWidth_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mTrackWidthUnit' stored property
   //····················································································································
 
-//  private final var mTrackWidthUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
+  private final var mTrackWidthUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mTrackWidthUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mTrackWidthUnit_property_selection : EBSelection <Int?> { // §
+    return self.mTrackWidthUnit_property.selection
+/*    if let model = self.propval {
       switch (model.mTrackWidthUnit_property_selection) {
       case .empty :
         return .empty
@@ -231,46 +235,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mTrackWidthUnit.insert (inObserver)
+    self.mTrackWidthUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mTrackWidthUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mTrackWidthUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mTrackWidthUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mTrackWidthUnit.remove (inObserver)
+    self.mTrackWidthUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mTrackWidthUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mTrackWidthUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mViaHoleDiameter' stored property
   //····················································································································
 
-//  private final var mViaHoleDiameter_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
+  private final var mViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mViaHoleDiameter_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mViaHoleDiameter_property_selection : EBSelection <Int?> { // §
+    return self.mViaHoleDiameter_property.selection
+/*    if let model = self.propval {
       switch (model.mViaHoleDiameter_property_selection) {
       case .empty :
         return .empty
@@ -281,46 +286,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mViaHoleDiameter.insert (inObserver)
+    self.mViaHoleDiameter_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mViaHoleDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mViaHoleDiameter_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mViaHoleDiameter.remove (inObserver)
+    self.mViaHoleDiameter_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mViaHoleDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mViaHoleDiameter_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mViaHoleDiameterUnit' stored property
   //····················································································································
 
-//  private final var mViaHoleDiameterUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
+  private final var mViaHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mViaHoleDiameterUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mViaHoleDiameterUnit_property_selection : EBSelection <Int?> { // §
+    return self.mViaHoleDiameterUnit_property.selection
+/*    if let model = self.propval {
       switch (model.mViaHoleDiameterUnit_property_selection) {
       case .empty :
         return .empty
@@ -331,46 +337,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
+    self.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
+    self.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mViaPadDiameter' stored property
   //····················································································································
 
-//  private final var mViaPadDiameter_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
+  private final var mViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mViaPadDiameter_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mViaPadDiameter_property_selection : EBSelection <Int?> { // §
+    return self.mViaPadDiameter_property.selection
+/*    if let model = self.propval {
       switch (model.mViaPadDiameter_property_selection) {
       case .empty :
         return .empty
@@ -381,46 +388,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mViaPadDiameter.insert (inObserver)
+    self.mViaPadDiameter_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mViaPadDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mViaPadDiameter_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mViaPadDiameter.remove (inObserver)
+    self.mViaPadDiameter_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mViaPadDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mViaPadDiameter_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mViaPadDiameterUnit' stored property
   //····················································································································
 
-//  private final var mViaPadDiameterUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
+  private final var mViaPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mViaPadDiameterUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mViaPadDiameterUnit_property_selection : EBSelection <Int?> { // §
+    return self.mViaPadDiameterUnit_property.selection
+/*    if let model = self.propval {
       switch (model.mViaPadDiameterUnit_property_selection) {
       case .empty :
         return .empty
@@ -431,46 +439,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
+    self.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mViaPadDiameterUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
+    self.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mAllowTracksOnFrontSide' stored property
   //····················································································································
 
-//  private final var mAllowTracksOnFrontSide_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
+  private final var mAllowTracksOnFrontSide_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mAllowTracksOnFrontSide_property_selection : EBSelection <Bool?> { // §
+    return self.mAllowTracksOnFrontSide_property.selection
+/*    if let model = self.propval {
       switch (model.mAllowTracksOnFrontSide_property_selection) {
       case .empty :
         return .empty
@@ -481,46 +490,47 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
+    self.mAllowTracksOnFrontSide_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mAllowTracksOnFrontSide_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mAllowTracksOnFrontSide.remove (inObserver)
+    self.mAllowTracksOnFrontSide_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mAllowTracksOnFrontSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mAllowTracksOnFrontSide_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mAllowTracksOnBackSide' stored property
   //····················································································································
 
-//  private final var mAllowTracksOnBackSide_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
+  private final var mAllowTracksOnBackSide_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mAllowTracksOnBackSide_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mAllowTracksOnBackSide_property_selection : EBSelection <Bool?> { // §
+    return self.mAllowTracksOnBackSide_property.selection
+/*    if let model = self.propval {
       switch (model.mAllowTracksOnBackSide_property_selection) {
       case .empty :
         return .empty
@@ -531,33 +541,33 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
+    self.mAllowTracksOnBackSide_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mAllowTracksOnBackSide_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mAllowTracksOnBackSide.remove (inObserver)
+    self.mAllowTracksOnBackSide_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mAllowTracksOnBackSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mAllowTracksOnBackSide_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -1046,129 +1056,169 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mNetClassName simple stored property
- /*   self.mNetClassName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mNetClassName_property.selection {
-        return selection
+    self.mNetClassName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mNetClassName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mNetClassName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mNetClassName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mNetClassName_property) */
+    self.none_property.addEBObserver (self.mNetClassName_property)
   //--- Configure mNetClassColor simple stored property
- /*   self.mNetClassColor_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mNetClassColor_property.selection {
-        return selection
+    self.mNetClassColor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mNetClassColor_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mNetClassColor_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mNetClassColor_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mNetClassColor_property) */
+    self.none_property.addEBObserver (self.mNetClassColor_property)
   //--- Configure mTrackWidth simple stored property
- /*   self.mTrackWidth_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mTrackWidth_property.selection {
-        return selection
+    self.mTrackWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mTrackWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mTrackWidth_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mTrackWidth_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mTrackWidth_property) */
+    self.none_property.addEBObserver (self.mTrackWidth_property)
   //--- Configure mTrackWidthUnit simple stored property
- /*   self.mTrackWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mTrackWidthUnit_property.selection {
-        return selection
+    self.mTrackWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mTrackWidthUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mTrackWidthUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mTrackWidthUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mTrackWidthUnit_property) */
+    self.none_property.addEBObserver (self.mTrackWidthUnit_property)
   //--- Configure mViaHoleDiameter simple stored property
- /*   self.mViaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mViaHoleDiameter_property.selection {
-        return selection
+    self.mViaHoleDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mViaHoleDiameter_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mViaHoleDiameter_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mViaHoleDiameter_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mViaHoleDiameter_property) */
+    self.none_property.addEBObserver (self.mViaHoleDiameter_property)
   //--- Configure mViaHoleDiameterUnit simple stored property
- /*   self.mViaHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mViaHoleDiameterUnit_property.selection {
-        return selection
+    self.mViaHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mViaHoleDiameterUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mViaHoleDiameterUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mViaHoleDiameterUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mViaHoleDiameterUnit_property) */
+    self.none_property.addEBObserver (self.mViaHoleDiameterUnit_property)
   //--- Configure mViaPadDiameter simple stored property
- /*   self.mViaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mViaPadDiameter_property.selection {
-        return selection
+    self.mViaPadDiameter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mViaPadDiameter_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mViaPadDiameter_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mViaPadDiameter_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mViaPadDiameter_property) */
+    self.none_property.addEBObserver (self.mViaPadDiameter_property)
   //--- Configure mViaPadDiameterUnit simple stored property
- /*   self.mViaPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mViaPadDiameterUnit_property.selection {
-        return selection
+    self.mViaPadDiameterUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mViaPadDiameterUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mViaPadDiameterUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mViaPadDiameterUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mViaPadDiameterUnit_property) */
+    self.none_property.addEBObserver (self.mViaPadDiameterUnit_property)
   //--- Configure mAllowTracksOnFrontSide simple stored property
- /*   self.mAllowTracksOnFrontSide_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mAllowTracksOnFrontSide_property.selection {
-        return selection
+    self.mAllowTracksOnFrontSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mAllowTracksOnFrontSide_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mAllowTracksOnFrontSide_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mAllowTracksOnFrontSide_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mAllowTracksOnFrontSide_property) */
+    self.none_property.addEBObserver (self.mAllowTracksOnFrontSide_property)
   //--- Configure mAllowTracksOnBackSide simple stored property
- /*   self.mAllowTracksOnBackSide_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mAllowTracksOnBackSide_property.selection {
-        return selection
+    self.mAllowTracksOnBackSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mAllowTracksOnBackSide_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mAllowTracksOnBackSide_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mAllowTracksOnBackSide_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mAllowTracksOnBackSide_property) */
- // }
+    self.none_property.addEBObserver (self.mAllowTracksOnBackSide_property)
+  }
 
   //····················································································································
 

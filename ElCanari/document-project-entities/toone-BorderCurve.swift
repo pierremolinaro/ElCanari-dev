@@ -16,13 +16,13 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-      oldValue.mCPX1_property.removeEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
-      oldValue.mCPY1_property.removeEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
-      oldValue.mCPX2_property.removeEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
-      oldValue.mCPY2_property.removeEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
-      oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+ //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+ //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+ //     oldValue.mCPX1_property.removeEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
+ //     oldValue.mCPY1_property.removeEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
+ //     oldValue.mCPX2_property.removeEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
+ //     oldValue.mCPY2_property.removeEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
+ //     oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
       oldValue.p2Xstring_property.removeEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
       oldValue.p2Ystring_property.removeEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
       oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
@@ -32,13 +32,13 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-      newValue.mCPX1_property.addEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
-      newValue.mCPY1_property.addEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
-      newValue.mCPX2_property.addEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
-      newValue.mCPY2_property.addEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
-      newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+ //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+ //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+ //     newValue.mCPX1_property.addEBObserversFrom (&self.mObserversOf_mCPX1) // Stored property
+ //     newValue.mCPY1_property.addEBObserversFrom (&self.mObserversOf_mCPY1) // Stored property
+ //     newValue.mCPX2_property.addEBObserversFrom (&self.mObserversOf_mCPX2) // Stored property
+ //     newValue.mCPY2_property.addEBObserversFrom (&self.mObserversOf_mCPY2) // Stored property
+ //     newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
       newValue.p2Xstring_property.addEBObserversFrom (&self.mObserversOf_p2Xstring) // Transient property
       newValue.p2Ystring_property.addEBObserversFrom (&self.mObserversOf_p2Ystring) // Transient property
       newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
@@ -52,13 +52,14 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mX = EBWeakEventSet ()
+  private final var mX_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mX_property_selection : EBSelection <Int?> { // §
+    return self.mX_property.selection
+/*    if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
         return .empty
@@ -69,46 +70,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mX_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mX_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mX_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mX_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mY = EBWeakEventSet ()
+  private final var mY_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mY_property_selection : EBSelection <Int?> { // §
+    return self.mY_property.selection
+/*    if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
         return .empty
@@ -119,46 +121,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mY_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mY_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mY_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mY_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
-//  private final var mCPX1_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCPX1 = EBWeakEventSet ()
+  private final var mCPX1_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCPX1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCPX1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCPX1_property_selection : EBSelection <Int?> { // §
+    return self.mCPX1_property.selection
+/*    if let model = self.propval {
       switch (model.mCPX1_property_selection) {
       case .empty :
         return .empty
@@ -169,46 +172,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCPX1.insert (inObserver)
+    self.mCPX1_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCPX1.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCPX1_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCPX1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCPX1.remove (inObserver)
+    self.mCPX1_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCPX1.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCPX1_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mCPY1' stored property
   //····················································································································
 
-//  private final var mCPY1_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCPY1 = EBWeakEventSet ()
+  private final var mCPY1_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCPY1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCPY1_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCPY1_property_selection : EBSelection <Int?> { // §
+    return self.mCPY1_property.selection
+/*    if let model = self.propval {
       switch (model.mCPY1_property_selection) {
       case .empty :
         return .empty
@@ -219,46 +223,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCPY1.insert (inObserver)
+    self.mCPY1_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCPY1.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCPY1_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCPY1 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCPY1.remove (inObserver)
+    self.mCPY1_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCPY1.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCPY1_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
-//  private final var mCPX2_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCPX2 = EBWeakEventSet ()
+  private final var mCPX2_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCPX2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCPX2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCPX2_property_selection : EBSelection <Int?> { // §
+    return self.mCPX2_property.selection
+/*    if let model = self.propval {
       switch (model.mCPX2_property_selection) {
       case .empty :
         return .empty
@@ -269,46 +274,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCPX2.insert (inObserver)
+    self.mCPX2_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCPX2.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCPX2_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCPX2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCPX2.remove (inObserver)
+    self.mCPX2_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCPX2.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCPX2_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
-//  private final var mCPY2_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCPY2 = EBWeakEventSet ()
+  private final var mCPY2_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCPY2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCPY2_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCPY2_property_selection : EBSelection <Int?> { // §
+    return self.mCPY2_property.selection
+/*    if let model = self.propval {
       switch (model.mCPY2_property_selection) {
       case .empty :
         return .empty
@@ -319,46 +325,47 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCPY2.insert (inObserver)
+    self.mCPY2_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCPY2.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCPY2_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCPY2 (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCPY2.remove (inObserver)
+    self.mCPY2_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCPY2.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCPY2_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
 
-//  private final var mShape_property = EBGenericPropertyProxy <BorderCurveShape?> ()
-  private final var mObserversOf_mShape = EBWeakEventSet ()
+  private final var mShape_property = EBGenericTransientProperty <BorderCurveShape?> ()
+//  private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mShape_property_selection : EBSelection <BorderCurveShape?> {
-    if let model = self.propval {
+  final var mShape_property_selection : EBSelection <BorderCurveShape?> { // §
+    return self.mShape_property.selection
+/*    if let model = self.propval {
       switch (model.mShape_property_selection) {
       case .empty :
         return .empty
@@ -369,33 +376,33 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mShape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mShape.insert (inObserver)
+    self.mShape_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mShape.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mShape_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mShape.remove (inObserver)
+    self.mShape_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mShape.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mShape_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -696,93 +703,121 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mX simple stored property
- /*   self.mX_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mX_property.selection {
-        return selection
+    self.mX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mX_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mX_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mX_property) */
+    self.none_property.addEBObserver (self.mX_property)
   //--- Configure mY simple stored property
- /*   self.mY_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mY_property.selection {
-        return selection
+    self.mY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mY_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mY_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mY_property) */
+    self.none_property.addEBObserver (self.mY_property)
   //--- Configure mCPX1 simple stored property
- /*   self.mCPX1_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCPX1_property.selection {
-        return selection
+    self.mCPX1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCPX1_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCPX1_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCPX1_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCPX1_property) */
+    self.none_property.addEBObserver (self.mCPX1_property)
   //--- Configure mCPY1 simple stored property
- /*   self.mCPY1_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCPY1_property.selection {
-        return selection
+    self.mCPY1_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCPY1_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCPY1_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCPY1_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCPY1_property) */
+    self.none_property.addEBObserver (self.mCPY1_property)
   //--- Configure mCPX2 simple stored property
- /*   self.mCPX2_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCPX2_property.selection {
-        return selection
+    self.mCPX2_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCPX2_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCPX2_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCPX2_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCPX2_property) */
+    self.none_property.addEBObserver (self.mCPX2_property)
   //--- Configure mCPY2 simple stored property
- /*   self.mCPY2_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCPY2_property.selection {
-        return selection
+    self.mCPY2_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCPY2_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCPY2_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCPY2_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCPY2_property) */
+    self.none_property.addEBObserver (self.mCPY2_property)
   //--- Configure mShape simple stored property
- /*   self.mShape_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mShape_property.selection {
-        return selection
+    self.mShape_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mShape_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mShape_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mShape_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mShape_property) */
- // }
+    self.none_property.addEBObserver (self.mShape_property)
+  }
 
   //····················································································································
 

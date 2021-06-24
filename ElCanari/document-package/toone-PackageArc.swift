@@ -16,19 +16,19 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-      oldValue.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
-      oldValue.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
-      oldValue.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
-      oldValue.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
-      oldValue.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
-      oldValue.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
-      oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-      oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-      oldValue.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
-      oldValue.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
-      oldValue.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
-      oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+ //     oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+ //     oldValue.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
+ //     oldValue.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
+ //     oldValue.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
+ //     oldValue.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
+ //     oldValue.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
+ //     oldValue.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
+ //     oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+ //     oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+ //     oldValue.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
+ //     oldValue.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
+ //     oldValue.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
+ //     oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
       oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -36,19 +36,19 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
-      newValue.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
-      newValue.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
-      newValue.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
-      newValue.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
-      newValue.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
-      newValue.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
-      newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
-      newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
-      newValue.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
-      newValue.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
-      newValue.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
-      newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
+ //     newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
+ //     newValue.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
+ //     newValue.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
+ //     newValue.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
+ //     newValue.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
+ //     newValue.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
+ //     newValue.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
+ //     newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
+ //     newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
+ //     newValue.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
+ //     newValue.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
+ //     newValue.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
+ //     newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
       newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
       newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
       newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -60,13 +60,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'yCenter' stored property
   //····················································································································
 
-//  private final var yCenter_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_yCenter = EBWeakEventSet ()
+  private final var yCenter_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
 
-  final var yCenter_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var yCenter_property_selection : EBSelection <Int?> { // §
+    return self.yCenter_property.selection
+/*    if let model = self.propval {
       switch (model.yCenter_property_selection) {
       case .empty :
         return .empty
@@ -77,46 +78,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_yCenter.insert (inObserver)
+    self.yCenter_property.addEBObserver (inObserver)
+/*    self.mObserversOf_yCenter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.yCenter_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_yCenter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_yCenter.remove (inObserver)
+    self.yCenter_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_yCenter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.yCenter_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'radius' stored property
   //····················································································································
 
-//  private final var radius_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_radius = EBWeakEventSet ()
+  private final var radius_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_radius = EBWeakEventSet ()
 
   //····················································································································
 
-  final var radius_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var radius_property_selection : EBSelection <Int?> { // §
+    return self.radius_property.selection
+/*    if let model = self.propval {
       switch (model.radius_property_selection) {
       case .empty :
         return .empty
@@ -127,46 +129,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_radius (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_radius.insert (inObserver)
+    self.radius_property.addEBObserver (inObserver)
+/*    self.mObserversOf_radius.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.radius_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_radius (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_radius.remove (inObserver)
+    self.radius_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_radius.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.radius_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'startAngle' stored property
   //····················································································································
 
-//  private final var startAngle_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_startAngle = EBWeakEventSet ()
+  private final var startAngle_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_startAngle = EBWeakEventSet ()
 
   //····················································································································
 
-  final var startAngle_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var startAngle_property_selection : EBSelection <Int?> { // §
+    return self.startAngle_property.selection
+/*    if let model = self.propval {
       switch (model.startAngle_property_selection) {
       case .empty :
         return .empty
@@ -177,46 +180,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_startAngle (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_startAngle.insert (inObserver)
+    self.startAngle_property.addEBObserver (inObserver)
+/*    self.mObserversOf_startAngle.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.startAngle_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_startAngle (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_startAngle.remove (inObserver)
+    self.startAngle_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_startAngle.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.startAngle_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'arcAngle' stored property
   //····················································································································
 
-//  private final var arcAngle_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_arcAngle = EBWeakEventSet ()
+  private final var arcAngle_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_arcAngle = EBWeakEventSet ()
 
   //····················································································································
 
-  final var arcAngle_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var arcAngle_property_selection : EBSelection <Int?> { // §
+    return self.arcAngle_property.selection
+/*    if let model = self.propval {
       switch (model.arcAngle_property_selection) {
       case .empty :
         return .empty
@@ -227,46 +231,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_arcAngle (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_arcAngle.insert (inObserver)
+    self.arcAngle_property.addEBObserver (inObserver)
+/*    self.mObserversOf_arcAngle.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.arcAngle_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_arcAngle (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_arcAngle.remove (inObserver)
+    self.arcAngle_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_arcAngle.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.arcAngle_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'startTangent' stored property
   //····················································································································
 
-//  private final var startTangent_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_startTangent = EBWeakEventSet ()
+  private final var startTangent_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_startTangent = EBWeakEventSet ()
 
   //····················································································································
 
-  final var startTangent_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var startTangent_property_selection : EBSelection <Int?> { // §
+    return self.startTangent_property.selection
+/*    if let model = self.propval {
       switch (model.startTangent_property_selection) {
       case .empty :
         return .empty
@@ -277,46 +282,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_startTangent (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_startTangent.insert (inObserver)
+    self.startTangent_property.addEBObserver (inObserver)
+/*    self.mObserversOf_startTangent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.startTangent_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_startTangent (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_startTangent.remove (inObserver)
+    self.startTangent_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_startTangent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.startTangent_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'endTangent' stored property
   //····················································································································
 
-//  private final var endTangent_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_endTangent = EBWeakEventSet ()
+  private final var endTangent_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_endTangent = EBWeakEventSet ()
 
   //····················································································································
 
-  final var endTangent_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var endTangent_property_selection : EBSelection <Int?> { // §
+    return self.endTangent_property.selection
+/*    if let model = self.propval {
       switch (model.endTangent_property_selection) {
       case .empty :
         return .empty
@@ -327,46 +333,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_endTangent (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_endTangent.insert (inObserver)
+    self.endTangent_property.addEBObserver (inObserver)
+/*    self.mObserversOf_endTangent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.endTangent_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_endTangent (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_endTangent.remove (inObserver)
+    self.endTangent_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_endTangent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.endTangent_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'pathIsClosed' stored property
   //····················································································································
 
-//  private final var pathIsClosed_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_pathIsClosed = EBWeakEventSet ()
+  private final var pathIsClosed_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_pathIsClosed = EBWeakEventSet ()
 
   //····················································································································
 
-  final var pathIsClosed_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var pathIsClosed_property_selection : EBSelection <Bool?> { // §
+    return self.pathIsClosed_property.selection
+/*    if let model = self.propval {
       switch (model.pathIsClosed_property_selection) {
       case .empty :
         return .empty
@@ -377,46 +384,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_pathIsClosed (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_pathIsClosed.insert (inObserver)
+    self.pathIsClosed_property.addEBObserver (inObserver)
+/*    self.mObserversOf_pathIsClosed.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.pathIsClosed_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_pathIsClosed (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_pathIsClosed.remove (inObserver)
+    self.pathIsClosed_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_pathIsClosed.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.pathIsClosed_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
-//  private final var xCenterUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
+  private final var xCenterUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var xCenterUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var xCenterUnit_property_selection : EBSelection <Int?> { // §
+    return self.xCenterUnit_property.selection
+/*    if let model = self.propval {
       switch (model.xCenterUnit_property_selection) {
       case .empty :
         return .empty
@@ -427,46 +435,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_xCenterUnit.insert (inObserver)
+    self.xCenterUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_xCenterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.xCenterUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_xCenterUnit.remove (inObserver)
+    self.xCenterUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_xCenterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.xCenterUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-//  private final var yCenterUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
+  private final var yCenterUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var yCenterUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var yCenterUnit_property_selection : EBSelection <Int?> { // §
+    return self.yCenterUnit_property.selection
+/*    if let model = self.propval {
       switch (model.yCenterUnit_property_selection) {
       case .empty :
         return .empty
@@ -477,46 +486,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_yCenterUnit.insert (inObserver)
+    self.yCenterUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_yCenterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.yCenterUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_yCenterUnit.remove (inObserver)
+    self.yCenterUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_yCenterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.yCenterUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'radiusUnit' stored property
   //····················································································································
 
-//  private final var radiusUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_radiusUnit = EBWeakEventSet ()
+  private final var radiusUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_radiusUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var radiusUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var radiusUnit_property_selection : EBSelection <Int?> { // §
+    return self.radiusUnit_property.selection
+/*    if let model = self.propval {
       switch (model.radiusUnit_property_selection) {
       case .empty :
         return .empty
@@ -527,46 +537,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_radiusUnit.insert (inObserver)
+    self.radiusUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_radiusUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.radiusUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_radiusUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_radiusUnit.remove (inObserver)
+    self.radiusUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_radiusUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.radiusUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'startTangentUnit' stored property
   //····················································································································
 
-//  private final var startTangentUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_startTangentUnit = EBWeakEventSet ()
+  private final var startTangentUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_startTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var startTangentUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var startTangentUnit_property_selection : EBSelection <Int?> { // §
+    return self.startTangentUnit_property.selection
+/*    if let model = self.propval {
       switch (model.startTangentUnit_property_selection) {
       case .empty :
         return .empty
@@ -577,46 +588,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_startTangentUnit.insert (inObserver)
+    self.startTangentUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_startTangentUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.startTangentUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_startTangentUnit.remove (inObserver)
+    self.startTangentUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_startTangentUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.startTangentUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'endTangentUnit' stored property
   //····················································································································
 
-//  private final var endTangentUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_endTangentUnit = EBWeakEventSet ()
+  private final var endTangentUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_endTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var endTangentUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var endTangentUnit_property_selection : EBSelection <Int?> { // §
+    return self.endTangentUnit_property.selection
+/*    if let model = self.propval {
       switch (model.endTangentUnit_property_selection) {
       case .empty :
         return .empty
@@ -627,46 +639,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_endTangentUnit.insert (inObserver)
+    self.endTangentUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_endTangentUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.endTangentUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_endTangentUnit.remove (inObserver)
+    self.endTangentUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_endTangentUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.endTangentUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-//  private final var xCenter_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_xCenter = EBWeakEventSet ()
+  private final var xCenter_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
 
-  final var xCenter_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var xCenter_property_selection : EBSelection <Int?> { // §
+    return self.xCenter_property.selection
+/*    if let model = self.propval {
       switch (model.xCenter_property_selection) {
       case .empty :
         return .empty
@@ -677,33 +690,33 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_xCenter.insert (inObserver)
+    self.xCenter_property.addEBObserver (inObserver)
+/*    self.mObserversOf_xCenter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.xCenter_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_xCenter.remove (inObserver)
+    self.xCenter_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_xCenter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.xCenter_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -906,165 +919,217 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure yCenter simple stored property
- /*   self.yCenter_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.yCenter_property.selection {
-        return selection
+    self.yCenter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.yCenter_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.yCenter_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.yCenter_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.yCenter_property) */
+    self.none_property.addEBObserver (self.yCenter_property)
   //--- Configure radius simple stored property
- /*   self.radius_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.radius_property.selection {
-        return selection
+    self.radius_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.radius_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.radius_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.radius_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.radius_property) */
+    self.none_property.addEBObserver (self.radius_property)
   //--- Configure startAngle simple stored property
- /*   self.startAngle_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.startAngle_property.selection {
-        return selection
+    self.startAngle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.startAngle_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.startAngle_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.startAngle_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.startAngle_property) */
+    self.none_property.addEBObserver (self.startAngle_property)
   //--- Configure arcAngle simple stored property
- /*   self.arcAngle_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.arcAngle_property.selection {
-        return selection
+    self.arcAngle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.arcAngle_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.arcAngle_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.arcAngle_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.arcAngle_property) */
+    self.none_property.addEBObserver (self.arcAngle_property)
   //--- Configure startTangent simple stored property
- /*   self.startTangent_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.startTangent_property.selection {
-        return selection
+    self.startTangent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.startTangent_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.startTangent_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.startTangent_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.startTangent_property) */
+    self.none_property.addEBObserver (self.startTangent_property)
   //--- Configure endTangent simple stored property
- /*   self.endTangent_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.endTangent_property.selection {
-        return selection
+    self.endTangent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.endTangent_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.endTangent_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.endTangent_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.endTangent_property) */
+    self.none_property.addEBObserver (self.endTangent_property)
   //--- Configure pathIsClosed simple stored property
- /*   self.pathIsClosed_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.pathIsClosed_property.selection {
-        return selection
+    self.pathIsClosed_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.pathIsClosed_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.pathIsClosed_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.pathIsClosed_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.pathIsClosed_property) */
+    self.none_property.addEBObserver (self.pathIsClosed_property)
   //--- Configure xCenterUnit simple stored property
- /*   self.xCenterUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.xCenterUnit_property.selection {
-        return selection
+    self.xCenterUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.xCenterUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.xCenterUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.xCenterUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.xCenterUnit_property) */
+    self.none_property.addEBObserver (self.xCenterUnit_property)
   //--- Configure yCenterUnit simple stored property
- /*   self.yCenterUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.yCenterUnit_property.selection {
-        return selection
+    self.yCenterUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.yCenterUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.yCenterUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.yCenterUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.yCenterUnit_property) */
+    self.none_property.addEBObserver (self.yCenterUnit_property)
   //--- Configure radiusUnit simple stored property
- /*   self.radiusUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.radiusUnit_property.selection {
-        return selection
+    self.radiusUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.radiusUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.radiusUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.radiusUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.radiusUnit_property) */
+    self.none_property.addEBObserver (self.radiusUnit_property)
   //--- Configure startTangentUnit simple stored property
- /*   self.startTangentUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.startTangentUnit_property.selection {
-        return selection
+    self.startTangentUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.startTangentUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.startTangentUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.startTangentUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.startTangentUnit_property) */
+    self.none_property.addEBObserver (self.startTangentUnit_property)
   //--- Configure endTangentUnit simple stored property
- /*   self.endTangentUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.endTangentUnit_property.selection {
-        return selection
+    self.endTangentUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.endTangentUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.endTangentUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.endTangentUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.endTangentUnit_property) */
+    self.none_property.addEBObserver (self.endTangentUnit_property)
   //--- Configure xCenter simple stored property
- /*   self.xCenter_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.xCenter_property.selection {
-        return selection
+    self.xCenter_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.xCenter_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.xCenter_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.xCenter_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.xCenter_property) */
- // }
+    self.none_property.addEBObserver (self.xCenter_property)
+  }
 
   //····················································································································
 

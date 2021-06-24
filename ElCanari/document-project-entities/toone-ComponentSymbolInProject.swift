@@ -16,17 +16,17 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
-      oldValue.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
-      oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
-      oldValue.mMirror_property.removeEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
-      oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
-      oldValue.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
-      oldValue.mDisplayComponentNameOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
-      oldValue.mDisplayComponentNameOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
-      oldValue.mDisplayComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
-      oldValue.mDisplayComponentValueOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
-      oldValue.mDisplayComponentValueOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
+ //     oldValue.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+ //     oldValue.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+ //     oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+ //     oldValue.mMirror_property.removeEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
+ //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+ //     oldValue.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
+ //     oldValue.mDisplayComponentNameOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
+ //     oldValue.mDisplayComponentNameOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
+ //     oldValue.mDisplayComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
+ //     oldValue.mDisplayComponentValueOffsetX_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
+ //     oldValue.mDisplayComponentValueOffsetY_property.removeEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
       oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       oldValue.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       oldValue.symbolInfo_property.removeEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
@@ -37,17 +37,17 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
-      newValue.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
-      newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
-      newValue.mMirror_property.addEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
-      newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
-      newValue.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
-      newValue.mDisplayComponentNameOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
-      newValue.mDisplayComponentNameOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
-      newValue.mDisplayComponentValue_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
-      newValue.mDisplayComponentValueOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
-      newValue.mDisplayComponentValueOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
+ //     newValue.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+ //     newValue.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+ //     newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+ //     newValue.mMirror_property.addEBObserversFrom (&self.mObserversOf_mMirror) // Stored property
+ //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+ //     newValue.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
+ //     newValue.mDisplayComponentNameOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetX) // Stored property
+ //     newValue.mDisplayComponentNameOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentNameOffsetY) // Stored property
+ //     newValue.mDisplayComponentValue_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValue) // Stored property
+ //     newValue.mDisplayComponentValueOffsetX_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetX) // Stored property
+ //     newValue.mDisplayComponentValueOffsetY_property.addEBObserversFrom (&self.mObserversOf_mDisplayComponentValueOffsetY) // Stored property
       newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
       newValue.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
       newValue.symbolInfo_property.addEBObserversFrom (&self.mObserversOf_symbolInfo) // Transient property
@@ -62,13 +62,14 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-//  private final var mCenterX_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCenterX = EBWeakEventSet ()
+  private final var mCenterX_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCenterX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCenterX_property_selection : EBSelection <Int?> { // §
+    return self.mCenterX_property.selection
+/*    if let model = self.propval {
       switch (model.mCenterX_property_selection) {
       case .empty :
         return .empty
@@ -79,46 +80,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCenterX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCenterX.insert (inObserver)
+    self.mCenterX_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCenterX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCenterX_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCenterX.remove (inObserver)
+    self.mCenterX_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCenterX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCenterX_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
-//  private final var mCenterY_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mCenterY = EBWeakEventSet ()
+  private final var mCenterY_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mCenterY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mCenterY_property_selection : EBSelection <Int?> { // §
+    return self.mCenterY_property.selection
+/*    if let model = self.propval {
       switch (model.mCenterY_property_selection) {
       case .empty :
         return .empty
@@ -129,46 +131,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mCenterY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mCenterY.insert (inObserver)
+    self.mCenterY_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mCenterY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mCenterY_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mCenterY.remove (inObserver)
+    self.mCenterY_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mCenterY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mCenterY_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-//  private final var mRotation_property = EBGenericPropertyProxy <QuadrantRotation?> ()
-  private final var mObserversOf_mRotation = EBWeakEventSet ()
+  private final var mRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+//  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mRotation_property_selection : EBSelection <QuadrantRotation?> {
-    if let model = self.propval {
+  final var mRotation_property_selection : EBSelection <QuadrantRotation?> { // §
+    return self.mRotation_property.selection
+/*    if let model = self.propval {
       switch (model.mRotation_property_selection) {
       case .empty :
         return .empty
@@ -179,46 +182,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mRotation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mRotation.insert (inObserver)
+    self.mRotation_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mRotation.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mRotation_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mRotation (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mRotation.remove (inObserver)
+    self.mRotation_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mRotation.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mRotation_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mMirror' stored property
   //····················································································································
 
-//  private final var mMirror_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mMirror = EBWeakEventSet ()
+  private final var mMirror_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mMirror = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mMirror_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mMirror_property_selection : EBSelection <Bool?> { // §
+    return self.mMirror_property.selection
+/*    if let model = self.propval {
       switch (model.mMirror_property_selection) {
       case .empty :
         return .empty
@@ -229,46 +233,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mMirror (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mMirror.insert (inObserver)
+    self.mMirror_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mMirror.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mMirror_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mMirror (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mMirror.remove (inObserver)
+    self.mMirror_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mMirror.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mMirror_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mSymbolInstanceName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mSymbolInstanceName_property_selection : EBSelection <String?> { // §
+    return self.mSymbolInstanceName_property.selection
+/*    if let model = self.propval {
       switch (model.mSymbolInstanceName_property_selection) {
       case .empty :
         return .empty
@@ -279,46 +284,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
+    self.mSymbolInstanceName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mSymbolInstanceName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
+    self.mSymbolInstanceName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mSymbolInstanceName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-//  private final var mSymbolTypeName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
+  private final var mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mSymbolTypeName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mSymbolTypeName_property_selection : EBSelection <String?> { // §
+    return self.mSymbolTypeName_property.selection
+/*    if let model = self.propval {
       switch (model.mSymbolTypeName_property_selection) {
       case .empty :
         return .empty
@@ -329,46 +335,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolTypeName.insert (inObserver)
+    self.mSymbolTypeName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolTypeName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mSymbolTypeName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolTypeName.remove (inObserver)
+    self.mSymbolTypeName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolTypeName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mSymbolTypeName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mDisplayComponentNameOffsetX' stored property
   //····················································································································
 
-//  private final var mDisplayComponentNameOffsetX_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
+  private final var mDisplayComponentNameOffsetX_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mDisplayComponentNameOffsetX_property_selection : EBSelection <Int?> { // §
+    return self.mDisplayComponentNameOffsetX_property.selection
+/*    if let model = self.propval {
       switch (model.mDisplayComponentNameOffsetX_property_selection) {
       case .empty :
         return .empty
@@ -379,46 +386,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
+    self.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentNameOffsetX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mDisplayComponentNameOffsetX_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDisplayComponentNameOffsetX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentNameOffsetX.remove (inObserver)
+    self.mDisplayComponentNameOffsetX_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentNameOffsetX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mDisplayComponentNameOffsetX_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mDisplayComponentNameOffsetY' stored property
   //····················································································································
 
-//  private final var mDisplayComponentNameOffsetY_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
+  private final var mDisplayComponentNameOffsetY_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mDisplayComponentNameOffsetY_property_selection : EBSelection <Int?> { // §
+    return self.mDisplayComponentNameOffsetY_property.selection
+/*    if let model = self.propval {
       switch (model.mDisplayComponentNameOffsetY_property_selection) {
       case .empty :
         return .empty
@@ -429,46 +437,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
+    self.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentNameOffsetY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mDisplayComponentNameOffsetY_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDisplayComponentNameOffsetY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentNameOffsetY.remove (inObserver)
+    self.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentNameOffsetY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mDisplayComponentNameOffsetY_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mDisplayComponentValue' stored property
   //····················································································································
 
-//  private final var mDisplayComponentValue_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
+  private final var mDisplayComponentValue_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mDisplayComponentValue_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mDisplayComponentValue_property_selection : EBSelection <Bool?> { // §
+    return self.mDisplayComponentValue_property.selection
+/*    if let model = self.propval {
       switch (model.mDisplayComponentValue_property_selection) {
       case .empty :
         return .empty
@@ -479,46 +488,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValue.insert (inObserver)
+    self.mDisplayComponentValue_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValue.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mDisplayComponentValue_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDisplayComponentValue (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValue.remove (inObserver)
+    self.mDisplayComponentValue_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValue.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mDisplayComponentValue_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mDisplayComponentValueOffsetX' stored property
   //····················································································································
 
-//  private final var mDisplayComponentValueOffsetX_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
+  private final var mDisplayComponentValueOffsetX_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mDisplayComponentValueOffsetX_property_selection : EBSelection <Int?> { // §
+    return self.mDisplayComponentValueOffsetX_property.selection
+/*    if let model = self.propval {
       switch (model.mDisplayComponentValueOffsetX_property_selection) {
       case .empty :
         return .empty
@@ -529,46 +539,47 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
+    self.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValueOffsetX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mDisplayComponentValueOffsetX_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDisplayComponentValueOffsetX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValueOffsetX.remove (inObserver)
+    self.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValueOffsetX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mDisplayComponentValueOffsetX_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mDisplayComponentValueOffsetY' stored property
   //····················································································································
 
-//  private final var mDisplayComponentValueOffsetY_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
+  private final var mDisplayComponentValueOffsetY_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mDisplayComponentValueOffsetY_property_selection : EBSelection <Int?> { // §
+    return self.mDisplayComponentValueOffsetY_property.selection
+/*    if let model = self.propval {
       switch (model.mDisplayComponentValueOffsetY_property_selection) {
       case .empty :
         return .empty
@@ -579,33 +590,33 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
+    self.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValueOffsetY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mDisplayComponentValueOffsetY_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDisplayComponentValueOffsetY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mDisplayComponentValueOffsetY.remove (inObserver)
+    self.mDisplayComponentValueOffsetY_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mDisplayComponentValueOffsetY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mDisplayComponentValueOffsetY_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -996,141 +1007,185 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mCenterX simple stored property
- /*   self.mCenterX_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCenterX_property.selection {
-        return selection
+    self.mCenterX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCenterX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCenterX_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCenterX_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCenterX_property) */
+    self.none_property.addEBObserver (self.mCenterX_property)
   //--- Configure mCenterY simple stored property
- /*   self.mCenterY_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mCenterY_property.selection {
-        return selection
+    self.mCenterY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mCenterY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mCenterY_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mCenterY_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mCenterY_property) */
+    self.none_property.addEBObserver (self.mCenterY_property)
   //--- Configure mRotation simple stored property
- /*   self.mRotation_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mRotation_property.selection {
-        return selection
+    self.mRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mRotation_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mRotation_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mRotation_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mRotation_property) */
+    self.none_property.addEBObserver (self.mRotation_property)
   //--- Configure mMirror simple stored property
- /*   self.mMirror_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mMirror_property.selection {
-        return selection
+    self.mMirror_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mMirror_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mMirror_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mMirror_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mMirror_property) */
+    self.none_property.addEBObserver (self.mMirror_property)
   //--- Configure mSymbolInstanceName simple stored property
- /*   self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mSymbolInstanceName_property.selection {
-        return selection
+    self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSymbolInstanceName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mSymbolInstanceName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mSymbolInstanceName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mSymbolInstanceName_property) */
+    self.none_property.addEBObserver (self.mSymbolInstanceName_property)
   //--- Configure mSymbolTypeName simple stored property
- /*   self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mSymbolTypeName_property.selection {
-        return selection
+    self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSymbolTypeName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mSymbolTypeName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mSymbolTypeName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mSymbolTypeName_property) */
+    self.none_property.addEBObserver (self.mSymbolTypeName_property)
   //--- Configure mDisplayComponentNameOffsetX simple stored property
- /*   self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mDisplayComponentNameOffsetX_property.selection {
-        return selection
+    self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mDisplayComponentNameOffsetX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mDisplayComponentNameOffsetX_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mDisplayComponentNameOffsetX_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mDisplayComponentNameOffsetX_property) */
+    self.none_property.addEBObserver (self.mDisplayComponentNameOffsetX_property)
   //--- Configure mDisplayComponentNameOffsetY simple stored property
- /*   self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mDisplayComponentNameOffsetY_property.selection {
-        return selection
+    self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mDisplayComponentNameOffsetY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mDisplayComponentNameOffsetY_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mDisplayComponentNameOffsetY_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mDisplayComponentNameOffsetY_property) */
+    self.none_property.addEBObserver (self.mDisplayComponentNameOffsetY_property)
   //--- Configure mDisplayComponentValue simple stored property
- /*   self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mDisplayComponentValue_property.selection {
-        return selection
+    self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mDisplayComponentValue_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mDisplayComponentValue_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mDisplayComponentValue_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mDisplayComponentValue_property) */
+    self.none_property.addEBObserver (self.mDisplayComponentValue_property)
   //--- Configure mDisplayComponentValueOffsetX simple stored property
- /*   self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mDisplayComponentValueOffsetX_property.selection {
-        return selection
+    self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mDisplayComponentValueOffsetX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mDisplayComponentValueOffsetX_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mDisplayComponentValueOffsetX_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mDisplayComponentValueOffsetX_property) */
+    self.none_property.addEBObserver (self.mDisplayComponentValueOffsetX_property)
   //--- Configure mDisplayComponentValueOffsetY simple stored property
- /*   self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mDisplayComponentValueOffsetY_property.selection {
-        return selection
+    self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mDisplayComponentValueOffsetY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mDisplayComponentValueOffsetY_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mDisplayComponentValueOffsetY_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mDisplayComponentValueOffsetY_property) */
- // }
+    self.none_property.addEBObserver (self.mDisplayComponentValueOffsetY_property)
+  }
 
   //····················································································································
 

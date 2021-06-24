@@ -16,10 +16,10 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-      oldValue.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
-      oldValue.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-      oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+ //     oldValue.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+ //     oldValue.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
+ //     oldValue.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+ //     oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
       oldValue.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
       oldValue.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
       oldValue.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
@@ -27,10 +27,10 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
-      newValue.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
-      newValue.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
-      newValue.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+ //     newValue.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+ //     newValue.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
+ //     newValue.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+ //     newValue.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
       newValue.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
       newValue.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
       newValue.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
@@ -42,13 +42,14 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-//  private final var codePoint_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_codePoint = EBWeakEventSet ()
+  private final var codePoint_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
 
-  final var codePoint_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var codePoint_property_selection : EBSelection <Int?> { // §
+    return self.codePoint_property.selection
+/*    if let model = self.propval {
       switch (model.codePoint_property_selection) {
       case .empty :
         return .empty
@@ -59,46 +60,47 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_codePoint.insert (inObserver)
+    self.codePoint_property.addEBObserver (inObserver)
+/*    self.mObserversOf_codePoint.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.codePoint_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_codePoint.remove (inObserver)
+    self.codePoint_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_codePoint.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.codePoint_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'advance' stored property
   //····················································································································
 
-//  private final var advance_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_advance = EBWeakEventSet ()
+  private final var advance_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_advance = EBWeakEventSet ()
 
   //····················································································································
 
-  final var advance_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var advance_property_selection : EBSelection <Int?> { // §
+    return self.advance_property.selection
+/*    if let model = self.propval {
       switch (model.advance_property_selection) {
       case .empty :
         return .empty
@@ -109,46 +111,47 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_advance (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_advance.insert (inObserver)
+    self.advance_property.addEBObserver (inObserver)
+/*    self.mObserversOf_advance.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.advance_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_advance.remove (inObserver)
+    self.advance_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_advance.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.advance_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-//  private final var mWarnsWhenNoSegment_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
+  private final var mWarnsWhenNoSegment_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> { // §
+    return self.mWarnsWhenNoSegment_property.selection
+/*    if let model = self.propval {
       switch (model.mWarnsWhenNoSegment_property_selection) {
       case .empty :
         return .empty
@@ -159,46 +162,47 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
+    self.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
+    self.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
-//  private final var mWarnsWhenAdvanceIsZero_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
+  private final var mWarnsWhenAdvanceIsZero_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> { // §
+    return self.mWarnsWhenAdvanceIsZero_property.selection
+/*    if let model = self.propval {
       switch (model.mWarnsWhenAdvanceIsZero_property_selection) {
       case .empty :
         return .empty
@@ -209,33 +213,33 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
+    self.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
+    self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -479,57 +483,73 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure codePoint simple stored property
- /*   self.codePoint_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.codePoint_property.selection {
-        return selection
+    self.codePoint_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.codePoint_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.codePoint_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.codePoint_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.codePoint_property) */
+    self.none_property.addEBObserver (self.codePoint_property)
   //--- Configure advance simple stored property
- /*   self.advance_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.advance_property.selection {
-        return selection
+    self.advance_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.advance_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.advance_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.advance_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.advance_property) */
+    self.none_property.addEBObserver (self.advance_property)
   //--- Configure mWarnsWhenNoSegment simple stored property
- /*   self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mWarnsWhenNoSegment_property.selection {
-        return selection
+    self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mWarnsWhenNoSegment_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mWarnsWhenNoSegment_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mWarnsWhenNoSegment_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mWarnsWhenNoSegment_property) */
+    self.none_property.addEBObserver (self.mWarnsWhenNoSegment_property)
   //--- Configure mWarnsWhenAdvanceIsZero simple stored property
- /*   self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mWarnsWhenAdvanceIsZero_property.selection {
-        return selection
+    self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mWarnsWhenAdvanceIsZero_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mWarnsWhenAdvanceIsZero_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property) */
- // }
+    self.none_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property)
+  }
 
   //····················································································································
 

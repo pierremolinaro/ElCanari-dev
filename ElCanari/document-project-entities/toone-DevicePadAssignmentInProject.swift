@@ -16,13 +16,13 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+ //     oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       oldValue.pinPadAssignment_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
       oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+ //     newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
       newValue.pinPadAssignment_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignment) // Transient property
       newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
     }
@@ -32,13 +32,14 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-//  private final var mPadName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mPadName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mPadName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mPadName_property_selection : EBSelection <String?> { // §
+    return self.mPadName_property.selection
+/*    if let model = self.propval {
       switch (model.mPadName_property_selection) {
       case .empty :
         return .empty
@@ -49,33 +50,33 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPadName.insert (inObserver)
+    self.mPadName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mPadName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mPadName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPadName.remove (inObserver)
+    self.mPadName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mPadName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mPadName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -180,21 +181,25 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mPadName simple stored property
- /*   self.mPadName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mPadName_property.selection {
-        return selection
+    self.mPadName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mPadName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mPadName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mPadName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mPadName_property) */
- // }
+    self.none_property.addEBObserver (self.mPadName_property)
+  }
 
   //····················································································································
 

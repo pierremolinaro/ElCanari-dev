@@ -16,18 +16,18 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
-      oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
-      oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
-      oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+ //     oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+ //     oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+ //     oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+ //     oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
       oldValue.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
-      newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
-      newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
-      newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+ //     newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+ //     newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+ //     newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+ //     newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
       newValue.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
     }
   }
@@ -36,13 +36,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-//  private final var mPath_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mPath = EBWeakEventSet ()
+  private final var mPath_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mPath = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mPath_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mPath_property_selection : EBSelection <String?> { // §
+    return self.mPath_property.selection
+/*    if let model = self.propval {
       switch (model.mPath_property_selection) {
       case .empty :
         return .empty
@@ -53,46 +54,47 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPath.insert (inObserver)
+    self.mPath_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mPath_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPath.remove (inObserver)
+    self.mPath_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mPath_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mUses' stored property
   //····················································································································
 
-//  private final var mUses_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_mUses = EBWeakEventSet ()
+  private final var mUses_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_mUses = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mUses_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var mUses_property_selection : EBSelection <Bool?> { // §
+    return self.mUses_property.selection
+/*    if let model = self.propval {
       switch (model.mUses_property_selection) {
       case .empty :
         return .empty
@@ -103,46 +105,47 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mUses.insert (inObserver)
+    self.mUses_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mUses.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mUses_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mUses.remove (inObserver)
+    self.mUses_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mUses.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mUses_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-//  private final var mLibraryRepositoryURL_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
+  private final var mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mLibraryRepositoryURL_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mLibraryRepositoryURL_property_selection : EBSelection <String?> { // §
+    return self.mLibraryRepositoryURL_property.selection
+/*    if let model = self.propval {
       switch (model.mLibraryRepositoryURL_property_selection) {
       case .empty :
         return .empty
@@ -153,46 +156,47 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
+    self.mLibraryRepositoryURL_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mLibraryRepositoryURL_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
+    self.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-//  private final var mUserAndPasswordTag_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
+  private final var mUserAndPasswordTag_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mUserAndPasswordTag_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mUserAndPasswordTag_property_selection : EBSelection <String?> { // §
+    return self.mUserAndPasswordTag_property.selection
+/*    if let model = self.propval {
       switch (model.mUserAndPasswordTag_property_selection) {
       case .empty :
         return .empty
@@ -203,33 +207,33 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
+    self.mUserAndPasswordTag_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mUserAndPasswordTag_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
+    self.mUserAndPasswordTag_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mUserAndPasswordTag_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -285,57 +289,73 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mPath simple stored property
- /*   self.mPath_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mPath_property.selection {
-        return selection
+    self.mPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mPath_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mPath_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mPath_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mPath_property) */
+    self.none_property.addEBObserver (self.mPath_property)
   //--- Configure mUses simple stored property
- /*   self.mUses_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mUses_property.selection {
-        return selection
+    self.mUses_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mUses_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mUses_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mUses_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mUses_property) */
+    self.none_property.addEBObserver (self.mUses_property)
   //--- Configure mLibraryRepositoryURL simple stored property
- /*   self.mLibraryRepositoryURL_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mLibraryRepositoryURL_property.selection {
-        return selection
+    self.mLibraryRepositoryURL_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mLibraryRepositoryURL_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mLibraryRepositoryURL_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mLibraryRepositoryURL_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mLibraryRepositoryURL_property) */
+    self.none_property.addEBObserver (self.mLibraryRepositoryURL_property)
   //--- Configure mUserAndPasswordTag simple stored property
- /*   self.mUserAndPasswordTag_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mUserAndPasswordTag_property.selection {
-        return selection
+    self.mUserAndPasswordTag_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mUserAndPasswordTag_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mUserAndPasswordTag_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mUserAndPasswordTag_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mUserAndPasswordTag_property) */
- // }
+    self.none_property.addEBObserver (self.mUserAndPasswordTag_property)
+  }
 
   //····················································································································
 

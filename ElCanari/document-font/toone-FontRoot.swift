@@ -16,11 +16,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
-      oldValue.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
-      oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-      oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-      oldValue.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
+ //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
+ //     oldValue.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
+ //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+ //     oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+ //     oldValue.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
       oldValue.currentCharacterCodePointString_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
       oldValue.sampleStringBezierPath_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
       oldValue.sampleStringBezierPathWidth_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
@@ -31,11 +31,11 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
-      newValue.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
-      newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-      newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
-      newValue.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
+ //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
+ //     newValue.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
+ //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+ //     newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
+ //     newValue.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
       newValue.currentCharacterCodePointString_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
       newValue.sampleStringBezierPath_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
       newValue.sampleStringBezierPathWidth_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
@@ -50,13 +50,14 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
-//  private final var comments_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_comments = EBWeakEventSet ()
+  private final var comments_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  final var comments_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var comments_property_selection : EBSelection <String?> { // §
+    return self.comments_property.selection
+/*    if let model = self.propval {
       switch (model.comments_property_selection) {
       case .empty :
         return .empty
@@ -67,46 +68,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
+    self.comments_property.addEBObserver (inObserver)
+/*    self.mObserversOf_comments.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.comments_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
+    self.comments_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_comments.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.comments_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'nominalSize' stored property
   //····················································································································
 
-//  private final var nominalSize_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_nominalSize = EBWeakEventSet ()
+  private final var nominalSize_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_nominalSize = EBWeakEventSet ()
 
   //····················································································································
 
-  final var nominalSize_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var nominalSize_property_selection : EBSelection <Int?> { // §
+    return self.nominalSize_property.selection
+/*    if let model = self.propval {
       switch (model.nominalSize_property_selection) {
       case .empty :
         return .empty
@@ -117,46 +119,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_nominalSize.insert (inObserver)
+    self.nominalSize_property.addEBObserver (inObserver)
+/*    self.mObserversOf_nominalSize.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.nominalSize_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_nominalSize.remove (inObserver)
+    self.nominalSize_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_nominalSize.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.nominalSize_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-//  private final var selectedTab_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedTab = EBWeakEventSet ()
+  private final var selectedTab_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedTab_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedTab_property_selection : EBSelection <Int?> { // §
+    return self.selectedTab_property.selection
+/*    if let model = self.propval {
       switch (model.selectedTab_property_selection) {
       case .empty :
         return .empty
@@ -167,46 +170,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedTab.insert (inObserver)
+    self.selectedTab_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedTab.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedTab_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedTab.remove (inObserver)
+    self.selectedTab_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedTab.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedTab_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-//  private final var selectedInspector_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private final var selectedInspector_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedInspector_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedInspector_property_selection : EBSelection <Int?> { // §
+    return self.selectedInspector_property.selection
+/*    if let model = self.propval {
       switch (model.selectedInspector_property_selection) {
       case .empty :
         return .empty
@@ -217,46 +221,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedInspector.insert (inObserver)
+    self.selectedInspector_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedInspector.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedInspector_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedInspector.remove (inObserver)
+    self.selectedInspector_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedInspector.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedInspector_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
 
-//  private final var currentCharacterCodePoint_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
+  private final var currentCharacterCodePoint_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 
   //····················································································································
 
-  final var currentCharacterCodePoint_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var currentCharacterCodePoint_property_selection : EBSelection <Int?> { // §
+    return self.currentCharacterCodePoint_property.selection
+/*    if let model = self.propval {
       switch (model.currentCharacterCodePoint_property_selection) {
       case .empty :
         return .empty
@@ -267,33 +272,33 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
+    self.currentCharacterCodePoint_property.addEBObserver (inObserver)
+/*    self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.currentCharacterCodePoint_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_currentCharacterCodePoint.remove (inObserver)
+    self.currentCharacterCodePoint_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_currentCharacterCodePoint.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.currentCharacterCodePoint_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -684,69 +689,89 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure comments simple stored property
- /*   self.comments_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.comments_property.selection {
-        return selection
+    self.comments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.comments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.comments_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.comments_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.comments_property) */
+    self.none_property.addEBObserver (self.comments_property)
   //--- Configure nominalSize simple stored property
- /*   self.nominalSize_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.nominalSize_property.selection {
-        return selection
+    self.nominalSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.nominalSize_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.nominalSize_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.nominalSize_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.nominalSize_property) */
+    self.none_property.addEBObserver (self.nominalSize_property)
   //--- Configure selectedTab simple stored property
- /*   self.selectedTab_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedTab_property.selection {
-        return selection
+    self.selectedTab_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedTab_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedTab_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedTab_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedTab_property) */
+    self.none_property.addEBObserver (self.selectedTab_property)
   //--- Configure selectedInspector simple stored property
- /*   self.selectedInspector_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedInspector_property.selection {
-        return selection
+    self.selectedInspector_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedInspector_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedInspector_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedInspector_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedInspector_property) */
+    self.none_property.addEBObserver (self.selectedInspector_property)
   //--- Configure currentCharacterCodePoint simple stored property
- /*   self.currentCharacterCodePoint_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.currentCharacterCodePoint_property.selection {
-        return selection
+    self.currentCharacterCodePoint_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.currentCharacterCodePoint_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.currentCharacterCodePoint_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.currentCharacterCodePoint_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.currentCharacterCodePoint_property) */
- // }
+    self.none_property.addEBObserver (self.currentCharacterCodePoint_property)
+  }
 
   //····················································································································
 

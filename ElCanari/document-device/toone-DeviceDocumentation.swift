@@ -16,14 +16,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
-      oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+ //     oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+ //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       oldValue.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
-      newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+ //     newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+ //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
       newValue.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
     }
   }
@@ -32,13 +32,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-//  private final var mFileName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mFileName = EBWeakEventSet ()
+  private final var mFileName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mFileName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mFileName_property_selection : EBSelection <String?> { // §
+    return self.mFileName_property.selection
+/*    if let model = self.propval {
       switch (model.mFileName_property_selection) {
       case .empty :
         return .empty
@@ -49,46 +50,47 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mFileName.insert (inObserver)
+    self.mFileName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mFileName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mFileName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mFileName.remove (inObserver)
+    self.mFileName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mFileName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mFileName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-//  private final var mFileData_property = EBGenericPropertyProxy <Data?> ()
-  private final var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mFileData_property = EBGenericTransientProperty <Data?> ()
+//  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mFileData_property_selection : EBSelection <Data?> {
-    if let model = self.propval {
+  final var mFileData_property_selection : EBSelection <Data?> { // §
+    return self.mFileData_property.selection
+/*    if let model = self.propval {
       switch (model.mFileData_property_selection) {
       case .empty :
         return .empty
@@ -99,33 +101,33 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mFileData.insert (inObserver)
+    self.mFileData_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mFileData.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mFileData_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mFileData.remove (inObserver)
+    self.mFileData_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mFileData.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mFileData_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -181,33 +183,41 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mFileName simple stored property
- /*   self.mFileName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mFileName_property.selection {
-        return selection
+    self.mFileName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mFileName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mFileName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mFileName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mFileName_property) */
+    self.none_property.addEBObserver (self.mFileName_property)
   //--- Configure mFileData simple stored property
- /*   self.mFileData_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mFileData_property.selection {
-        return selection
+    self.mFileData_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mFileData_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mFileData_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mFileData_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mFileData_property) */
- // }
+    self.none_property.addEBObserver (self.mFileData_property)
+  }
 
   //····················································································································
 

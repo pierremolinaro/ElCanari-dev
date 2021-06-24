@@ -16,32 +16,32 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-      oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
-      oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
-      oldValue.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
-      oldValue.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
-      oldValue.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
-      oldValue.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
-      oldValue.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
-      oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
-      oldValue.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
-      oldValue.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
+ //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+ //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
+ //     oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
+ //     oldValue.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
+ //     oldValue.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
+ //     oldValue.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
+ //     oldValue.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
+ //     oldValue.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
+ //     oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
+ //     oldValue.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
+ //     oldValue.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
       oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
-      newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
-      newValue.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
-      newValue.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
-      newValue.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
-      newValue.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
-      newValue.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
-      newValue.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
-      newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
-      newValue.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
-      newValue.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
+ //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
+ //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
+ //     newValue.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
+ //     newValue.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
+ //     newValue.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
+ //     newValue.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
+ //     newValue.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
+ //     newValue.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
+ //     newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
+ //     newValue.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
+ //     newValue.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
       newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
     }
   }
@@ -50,13 +50,14 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-//  private final var selectedTab_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedTab = EBWeakEventSet ()
+  private final var selectedTab_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedTab_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedTab_property_selection : EBSelection <Int?> { // §
+    return self.selectedTab_property.selection
+/*    if let model = self.propval {
       switch (model.selectedTab_property_selection) {
       case .empty :
         return .empty
@@ -67,46 +68,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedTab.insert (inObserver)
+    self.selectedTab_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedTab.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedTab_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedTab.remove (inObserver)
+    self.selectedTab_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedTab.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedTab_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
-//  private final var comments_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_comments = EBWeakEventSet ()
+  private final var comments_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  final var comments_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var comments_property_selection : EBSelection <String?> { // §
+    return self.comments_property.selection
+/*    if let model = self.propval {
       switch (model.comments_property_selection) {
       case .empty :
         return .empty
@@ -117,46 +119,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
+    self.comments_property.addEBObserver (inObserver)
+/*    self.mObserversOf_comments.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.comments_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
+    self.comments_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_comments.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.comments_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
-//  private final var minPPTPTTTWdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
+  private final var minPPTPTTTWdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> { // §
+    return self.minPPTPTTTWdisplayUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minPPTPTTTWdisplayUnit_property_selection) {
       case .empty :
         return .empty
@@ -167,46 +170,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
+    self.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
+    self.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
-//  private final var minPPTPTTTW_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
+  private final var minPPTPTTTW_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minPPTPTTTW_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minPPTPTTTW_property_selection : EBSelection <Int?> { // §
+    return self.minPPTPTTTW_property.selection
+/*    if let model = self.propval {
       switch (model.minPPTPTTTW_property_selection) {
       case .empty :
         return .empty
@@ -217,46 +221,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTW.insert (inObserver)
+    self.minPPTPTTTW_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minPPTPTTTW.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minPPTPTTTW_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTW.remove (inObserver)
+    self.minPPTPTTTW_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minPPTPTTTW.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minPPTPTTTW_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForOARdisplayUnit' stored property
   //····················································································································
 
-//  private final var minValueForOARdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+  private final var minValueForOARdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> { // §
+    return self.minValueForOARdisplayUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForOARdisplayUnit_property_selection) {
       case .empty :
         return .empty
@@ -267,46 +272,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
+    self.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
+    self.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
-//  private final var minValueForOARinEBUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+  private final var minValueForOARinEBUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForOARinEBUnit_property_selection : EBSelection <Int?> { // §
+    return self.minValueForOARinEBUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForOARinEBUnit_property_selection) {
       case .empty :
         return .empty
@@ -317,46 +323,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
+    self.minValueForOARinEBUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForOARinEBUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
+    self.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   //····················································································································
 
-//  private final var minValueForPHDdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+  private final var minValueForPHDdisplayUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> { // §
+    return self.minValueForPHDdisplayUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForPHDdisplayUnit_property_selection) {
       case .empty :
         return .empty
@@ -367,46 +374,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
+    self.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
+    self.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
-//  private final var minValueForPHDinEBUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+  private final var minValueForPHDinEBUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> { // §
+    return self.minValueForPHDinEBUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForPHDinEBUnit_property_selection) {
       case .empty :
         return .empty
@@ -417,46 +425,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
+    self.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
+    self.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   //····················································································································
 
-//  private final var minValueForBoardLimitWidthDisplayUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+  private final var minValueForBoardLimitWidthDisplayUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> { // §
+    return self.minValueForBoardLimitWidthDisplayUnit_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForBoardLimitWidthDisplayUnit_property_selection) {
       case .empty :
         return .empty
@@ -467,46 +476,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
+    self.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
+    self.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
-//  private final var minValueForBoardLimitWidth_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+  private final var minValueForBoardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> { // §
+    return self.minValueForBoardLimitWidth_property.selection
+/*    if let model = self.propval {
       switch (model.minValueForBoardLimitWidth_property_selection) {
       case .empty :
         return .empty
@@ -517,46 +527,47 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
+    self.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
+/*    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
+    self.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
-//  private final var drillDataFileExtension_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+  private final var drillDataFileExtension_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
 
-  final var drillDataFileExtension_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var drillDataFileExtension_property_selection : EBSelection <String?> { // §
+    return self.drillDataFileExtension_property.selection
+/*    if let model = self.propval {
       switch (model.drillDataFileExtension_property_selection) {
       case .empty :
         return .empty
@@ -567,33 +578,33 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.insert (inObserver)
+    self.drillDataFileExtension_property.addEBObserver (inObserver)
+/*    self.mObserversOf_drillDataFileExtension.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.drillDataFileExtension_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.remove (inObserver)
+    self.drillDataFileExtension_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_drillDataFileExtension.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.drillDataFileExtension_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -690,141 +701,185 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure selectedTab simple stored property
- /*   self.selectedTab_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedTab_property.selection {
-        return selection
+    self.selectedTab_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedTab_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedTab_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedTab_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedTab_property) */
+    self.none_property.addEBObserver (self.selectedTab_property)
   //--- Configure comments simple stored property
- /*   self.comments_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.comments_property.selection {
-        return selection
+    self.comments_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.comments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.comments_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.comments_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.comments_property) */
+    self.none_property.addEBObserver (self.comments_property)
   //--- Configure minPPTPTTTWdisplayUnit simple stored property
- /*   self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minPPTPTTTWdisplayUnit_property.selection {
-        return selection
+    self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minPPTPTTTWdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minPPTPTTTWdisplayUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property) */
+    self.none_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Configure minPPTPTTTW simple stored property
- /*   self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minPPTPTTTW_property.selection {
-        return selection
+    self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minPPTPTTTW_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minPPTPTTTW_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minPPTPTTTW_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minPPTPTTTW_property) */
+    self.none_property.addEBObserver (self.minPPTPTTTW_property)
   //--- Configure minValueForOARdisplayUnit simple stored property
- /*   self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForOARdisplayUnit_property.selection {
-        return selection
+    self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForOARdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForOARdisplayUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForOARdisplayUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForOARdisplayUnit_property) */
+    self.none_property.addEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Configure minValueForOARinEBUnit simple stored property
- /*   self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForOARinEBUnit_property.selection {
-        return selection
+    self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForOARinEBUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForOARinEBUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForOARinEBUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForOARinEBUnit_property) */
+    self.none_property.addEBObserver (self.minValueForOARinEBUnit_property)
   //--- Configure minValueForPHDdisplayUnit simple stored property
- /*   self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForPHDdisplayUnit_property.selection {
-        return selection
+    self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForPHDdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForPHDdisplayUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForPHDdisplayUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForPHDdisplayUnit_property) */
+    self.none_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Configure minValueForPHDinEBUnit simple stored property
- /*   self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForPHDinEBUnit_property.selection {
-        return selection
+    self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForPHDinEBUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForPHDinEBUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForPHDinEBUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForPHDinEBUnit_property) */
+    self.none_property.addEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Configure minValueForBoardLimitWidthDisplayUnit simple stored property
- /*   self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForBoardLimitWidthDisplayUnit_property.selection {
-        return selection
+    self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForBoardLimitWidthDisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForBoardLimitWidthDisplayUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) */
+    self.none_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Configure minValueForBoardLimitWidth simple stored property
- /*   self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.minValueForBoardLimitWidth_property.selection {
-        return selection
+    self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.minValueForBoardLimitWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.minValueForBoardLimitWidth_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.minValueForBoardLimitWidth_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.minValueForBoardLimitWidth_property) */
+    self.none_property.addEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Configure drillDataFileExtension simple stored property
- /*   self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.drillDataFileExtension_property.selection {
-        return selection
+    self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drillDataFileExtension_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.drillDataFileExtension_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.drillDataFileExtension_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.drillDataFileExtension_property) */
- // }
+    self.none_property.addEBObserver (self.drillDataFileExtension_property)
+  }
 
   //····················································································································
 

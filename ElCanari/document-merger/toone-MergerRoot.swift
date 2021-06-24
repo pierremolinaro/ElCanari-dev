@@ -16,25 +16,25 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
-      oldValue.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
-      oldValue.automaticBoardSize_property.removeEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
-      oldValue.boardManualWidth_property.removeEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
-      oldValue.boardManualHeight_property.removeEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
-      oldValue.boardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
-      oldValue.boardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
-      oldValue.overlapingArrangment_property.removeEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
-      oldValue.selectedBoardXUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
-      oldValue.selectedBoardYUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
-      oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
-      oldValue.boardLimitWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
-      oldValue.arrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
-      oldValue.arrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
-      oldValue.shiftArrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
-      oldValue.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
-      oldValue.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
-      oldValue.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
-      oldValue.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
+ //     oldValue.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
+ //     oldValue.zoom_property.removeEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+ //     oldValue.automaticBoardSize_property.removeEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
+ //     oldValue.boardManualWidth_property.removeEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
+ //     oldValue.boardManualHeight_property.removeEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
+ //     oldValue.boardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
+ //     oldValue.boardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
+ //     oldValue.overlapingArrangment_property.removeEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
+ //     oldValue.selectedBoardXUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
+ //     oldValue.selectedBoardYUnit_property.removeEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
+ //     oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
+ //     oldValue.boardLimitWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
+ //     oldValue.arrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
+ //     oldValue.arrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
+ //     oldValue.shiftArrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
+ //     oldValue.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
+ //     oldValue.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
+ //     oldValue.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
+ //     oldValue.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       oldValue.modelNames_property.removeEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
       oldValue.boardRect_property.removeEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
       oldValue.boardDisplayRect_property.removeEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
@@ -44,25 +44,25 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
-      newValue.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
-      newValue.automaticBoardSize_property.addEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
-      newValue.boardManualWidth_property.addEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
-      newValue.boardManualHeight_property.addEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
-      newValue.boardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
-      newValue.boardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
-      newValue.overlapingArrangment_property.addEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
-      newValue.selectedBoardXUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
-      newValue.selectedBoardYUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
-      newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
-      newValue.boardLimitWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
-      newValue.arrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
-      newValue.arrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
-      newValue.shiftArrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
-      newValue.shiftArrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
-      newValue.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
-      newValue.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
-      newValue.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
+ //     newValue.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex) // Stored property
+ //     newValue.zoom_property.addEBObserversFrom (&self.mObserversOf_zoom) // Stored property
+ //     newValue.automaticBoardSize_property.addEBObserversFrom (&self.mObserversOf_automaticBoardSize) // Stored property
+ //     newValue.boardManualWidth_property.addEBObserversFrom (&self.mObserversOf_boardManualWidth) // Stored property
+ //     newValue.boardManualHeight_property.addEBObserversFrom (&self.mObserversOf_boardManualHeight) // Stored property
+ //     newValue.boardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardWidthUnit) // Stored property
+ //     newValue.boardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_boardHeightUnit) // Stored property
+ //     newValue.overlapingArrangment_property.addEBObserversFrom (&self.mObserversOf_overlapingArrangment) // Stored property
+ //     newValue.selectedBoardXUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardXUnit) // Stored property
+ //     newValue.selectedBoardYUnit_property.addEBObserversFrom (&self.mObserversOf_selectedBoardYUnit) // Stored property
+ //     newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Stored property
+ //     newValue.boardLimitWidthUnit_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidthUnit) // Stored property
+ //     newValue.arrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitude) // Stored property
+ //     newValue.arrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit) // Stored property
+ //     newValue.shiftArrowMagnitude_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitude) // Stored property
+ //     newValue.shiftArrowMagnitudeUnit_property.addEBObserversFrom (&self.mObserversOf_shiftArrowMagnitudeUnit) // Stored property
+ //     newValue.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
+ //     newValue.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
+ //     newValue.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
       newValue.modelNames_property.addEBObserversFrom (&self.mObserversOf_modelNames) // Transient property
       newValue.boardRect_property.addEBObserversFrom (&self.mObserversOf_boardRect) // Transient property
       newValue.boardDisplayRect_property.addEBObserversFrom (&self.mObserversOf_boardDisplayRect) // Transient property
@@ -76,13 +76,14 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
-//  private final var selectedPageIndex_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private final var selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedPageIndex_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedPageIndex_property_selection : EBSelection <Int?> { // §
+    return self.selectedPageIndex_property.selection
+/*    if let model = self.propval {
       switch (model.selectedPageIndex_property_selection) {
       case .empty :
         return .empty
@@ -93,46 +94,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.insert (inObserver)
+    self.selectedPageIndex_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedPageIndex.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedPageIndex_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.remove (inObserver)
+    self.selectedPageIndex_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedPageIndex.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedPageIndex_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
 
-//  private final var zoom_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_zoom = EBWeakEventSet ()
+  private final var zoom_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
 
-  final var zoom_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var zoom_property_selection : EBSelection <Int?> { // §
+    return self.zoom_property.selection
+/*    if let model = self.propval {
       switch (model.zoom_property_selection) {
       case .empty :
         return .empty
@@ -143,46 +145,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_zoom.insert (inObserver)
+    self.zoom_property.addEBObserver (inObserver)
+/*    self.mObserversOf_zoom.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.zoom_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_zoom.remove (inObserver)
+    self.zoom_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_zoom.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.zoom_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'automaticBoardSize' stored property
   //····················································································································
 
-//  private final var automaticBoardSize_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_automaticBoardSize = EBWeakEventSet ()
+  private final var automaticBoardSize_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_automaticBoardSize = EBWeakEventSet ()
 
   //····················································································································
 
-  final var automaticBoardSize_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var automaticBoardSize_property_selection : EBSelection <Bool?> { // §
+    return self.automaticBoardSize_property.selection
+/*    if let model = self.propval {
       switch (model.automaticBoardSize_property_selection) {
       case .empty :
         return .empty
@@ -193,46 +196,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_automaticBoardSize.insert (inObserver)
+    self.automaticBoardSize_property.addEBObserver (inObserver)
+/*    self.mObserversOf_automaticBoardSize.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.automaticBoardSize_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_automaticBoardSize.remove (inObserver)
+    self.automaticBoardSize_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_automaticBoardSize.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.automaticBoardSize_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardManualWidth' stored property
   //····················································································································
 
-//  private final var boardManualWidth_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardManualWidth = EBWeakEventSet ()
+  private final var boardManualWidth_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardManualWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardManualWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardManualWidth_property_selection : EBSelection <Int?> { // §
+    return self.boardManualWidth_property.selection
+/*    if let model = self.propval {
       switch (model.boardManualWidth_property_selection) {
       case .empty :
         return .empty
@@ -243,46 +247,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardManualWidth.insert (inObserver)
+    self.boardManualWidth_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardManualWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardManualWidth_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardManualWidth.remove (inObserver)
+    self.boardManualWidth_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardManualWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardManualWidth_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardManualHeight' stored property
   //····················································································································
 
-//  private final var boardManualHeight_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardManualHeight = EBWeakEventSet ()
+  private final var boardManualHeight_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardManualHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardManualHeight_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardManualHeight_property_selection : EBSelection <Int?> { // §
+    return self.boardManualHeight_property.selection
+/*    if let model = self.propval {
       switch (model.boardManualHeight_property_selection) {
       case .empty :
         return .empty
@@ -293,46 +298,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardManualHeight.insert (inObserver)
+    self.boardManualHeight_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardManualHeight.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardManualHeight_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardManualHeight.remove (inObserver)
+    self.boardManualHeight_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardManualHeight.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardManualHeight_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardWidthUnit' stored property
   //····················································································································
 
-//  private final var boardWidthUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+  private final var boardWidthUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardWidthUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardWidthUnit_property_selection : EBSelection <Int?> { // §
+    return self.boardWidthUnit_property.selection
+/*    if let model = self.propval {
       switch (model.boardWidthUnit_property_selection) {
       case .empty :
         return .empty
@@ -343,46 +349,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardWidthUnit.insert (inObserver)
+    self.boardWidthUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardWidthUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardWidthUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardWidthUnit.remove (inObserver)
+    self.boardWidthUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardWidthUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardWidthUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardHeightUnit' stored property
   //····················································································································
 
-//  private final var boardHeightUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+  private final var boardHeightUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardHeightUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardHeightUnit_property_selection : EBSelection <Int?> { // §
+    return self.boardHeightUnit_property.selection
+/*    if let model = self.propval {
       switch (model.boardHeightUnit_property_selection) {
       case .empty :
         return .empty
@@ -393,46 +400,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardHeightUnit.insert (inObserver)
+    self.boardHeightUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardHeightUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardHeightUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardHeightUnit.remove (inObserver)
+    self.boardHeightUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardHeightUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardHeightUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'overlapingArrangment' stored property
   //····················································································································
 
-//  private final var overlapingArrangment_property = EBGenericPropertyProxy <Bool?> ()
-  private final var mObserversOf_overlapingArrangment = EBWeakEventSet ()
+  private final var overlapingArrangment_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_overlapingArrangment = EBWeakEventSet ()
 
   //····················································································································
 
-  final var overlapingArrangment_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+  final var overlapingArrangment_property_selection : EBSelection <Bool?> { // §
+    return self.overlapingArrangment_property.selection
+/*    if let model = self.propval {
       switch (model.overlapingArrangment_property_selection) {
       case .empty :
         return .empty
@@ -443,46 +451,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_overlapingArrangment.insert (inObserver)
+    self.overlapingArrangment_property.addEBObserver (inObserver)
+/*    self.mObserversOf_overlapingArrangment.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.overlapingArrangment_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_overlapingArrangment.remove (inObserver)
+    self.overlapingArrangment_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_overlapingArrangment.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.overlapingArrangment_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'selectedBoardXUnit' stored property
   //····················································································································
 
-//  private final var selectedBoardXUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
+  private final var selectedBoardXUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedBoardXUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedBoardXUnit_property_selection : EBSelection <Int?> { // §
+    return self.selectedBoardXUnit_property.selection
+/*    if let model = self.propval {
       switch (model.selectedBoardXUnit_property_selection) {
       case .empty :
         return .empty
@@ -493,46 +502,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedBoardXUnit.insert (inObserver)
+    self.selectedBoardXUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedBoardXUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedBoardXUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedBoardXUnit.remove (inObserver)
+    self.selectedBoardXUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedBoardXUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedBoardXUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'selectedBoardYUnit' stored property
   //····················································································································
 
-//  private final var selectedBoardYUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
+  private final var selectedBoardYUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var selectedBoardYUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var selectedBoardYUnit_property_selection : EBSelection <Int?> { // §
+    return self.selectedBoardYUnit_property.selection
+/*    if let model = self.propval {
       switch (model.selectedBoardYUnit_property_selection) {
       case .empty :
         return .empty
@@ -543,46 +553,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedBoardYUnit.insert (inObserver)
+    self.selectedBoardYUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectedBoardYUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.selectedBoardYUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedBoardYUnit.remove (inObserver)
+    self.selectedBoardYUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectedBoardYUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectedBoardYUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
-//  private final var boardLimitWidth_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var boardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardLimitWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardLimitWidth_property_selection : EBSelection <Int?> { // §
+    return self.boardLimitWidth_property.selection
+/*    if let model = self.propval {
       switch (model.boardLimitWidth_property_selection) {
       case .empty :
         return .empty
@@ -593,46 +604,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitWidth.insert (inObserver)
+    self.boardLimitWidth_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardLimitWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardLimitWidth_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitWidth.remove (inObserver)
+    self.boardLimitWidth_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardLimitWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardLimitWidth_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'boardLimitWidthUnit' stored property
   //····················································································································
 
-//  private final var boardLimitWidthUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+  private final var boardLimitWidthUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var boardLimitWidthUnit_property_selection : EBSelection <Int?> { // §
+    return self.boardLimitWidthUnit_property.selection
+/*    if let model = self.propval {
       switch (model.boardLimitWidthUnit_property_selection) {
       case .empty :
         return .empty
@@ -643,46 +655,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_boardLimitWidthUnit.insert (inObserver)
+    self.boardLimitWidthUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_boardLimitWidthUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.boardLimitWidthUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_boardLimitWidthUnit.remove (inObserver)
+    self.boardLimitWidthUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_boardLimitWidthUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.boardLimitWidthUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'arrowMagnitude' stored property
   //····················································································································
 
-//  private final var arrowMagnitude_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+  private final var arrowMagnitude_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_arrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
-  final var arrowMagnitude_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var arrowMagnitude_property_selection : EBSelection <Int?> { // §
+    return self.arrowMagnitude_property.selection
+/*    if let model = self.propval {
       switch (model.arrowMagnitude_property_selection) {
       case .empty :
         return .empty
@@ -693,46 +706,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_arrowMagnitude.insert (inObserver)
+    self.arrowMagnitude_property.addEBObserver (inObserver)
+/*    self.mObserversOf_arrowMagnitude.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.arrowMagnitude_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_arrowMagnitude.remove (inObserver)
+    self.arrowMagnitude_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_arrowMagnitude.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.arrowMagnitude_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'arrowMagnitudeUnit' stored property
   //····················································································································
 
-//  private final var arrowMagnitudeUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+  private final var arrowMagnitudeUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var arrowMagnitudeUnit_property_selection : EBSelection <Int?> { // §
+    return self.arrowMagnitudeUnit_property.selection
+/*    if let model = self.propval {
       switch (model.arrowMagnitudeUnit_property_selection) {
       case .empty :
         return .empty
@@ -743,46 +757,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_arrowMagnitudeUnit.insert (inObserver)
+    self.arrowMagnitudeUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_arrowMagnitudeUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.arrowMagnitudeUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_arrowMagnitudeUnit.remove (inObserver)
+    self.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_arrowMagnitudeUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'shiftArrowMagnitude' stored property
   //····················································································································
 
-//  private final var shiftArrowMagnitude_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+  private final var shiftArrowMagnitude_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
 
-  final var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var shiftArrowMagnitude_property_selection : EBSelection <Int?> { // §
+    return self.shiftArrowMagnitude_property.selection
+/*    if let model = self.propval {
       switch (model.shiftArrowMagnitude_property_selection) {
       case .empty :
         return .empty
@@ -793,46 +808,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_shiftArrowMagnitude.insert (inObserver)
+    self.shiftArrowMagnitude_property.addEBObserver (inObserver)
+/*    self.mObserversOf_shiftArrowMagnitude.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.shiftArrowMagnitude_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_shiftArrowMagnitude.remove (inObserver)
+    self.shiftArrowMagnitude_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_shiftArrowMagnitude.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.shiftArrowMagnitude_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'shiftArrowMagnitudeUnit' stored property
   //····················································································································
 
-//  private final var shiftArrowMagnitudeUnit_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+  private final var shiftArrowMagnitudeUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> { // §
+    return self.shiftArrowMagnitudeUnit_property.selection
+/*    if let model = self.propval {
       switch (model.shiftArrowMagnitudeUnit_property_selection) {
       case .empty :
         return .empty
@@ -843,46 +859,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
+    self.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
+    self.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-//  private final var mPDFBoardBackgroundColor_property = EBGenericPropertyProxy <NSColor?> ()
-  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
+  private final var mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
+//  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> {
-    if let model = self.propval {
+  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> { // §
+    return self.mPDFBoardBackgroundColor_property.selection
+/*    if let model = self.propval {
       switch (model.mPDFBoardBackgroundColor_property_selection) {
       case .empty :
         return .empty
@@ -893,46 +910,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackgroundColor.insert (inObserver)
+    self.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mPDFBoardBackgroundColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mPDFBoardBackgroundColor_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPDFBoardBackgroundColor (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mPDFBoardBackgroundColor.remove (inObserver)
+    self.mPDFBoardBackgroundColor_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mPDFBoardBackgroundColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mPDFBoardBackgroundColor_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-//  private final var mArtworkName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
+  private final var mArtworkName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mArtworkName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mArtworkName_property_selection : EBSelection <String?> { // §
+    return self.mArtworkName_property.selection
+/*    if let model = self.propval {
       switch (model.mArtworkName_property_selection) {
       case .empty :
         return .empty
@@ -943,46 +961,47 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mArtworkName.insert (inObserver)
+    self.mArtworkName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mArtworkName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mArtworkName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mArtworkName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mArtworkName.remove (inObserver)
+    self.mArtworkName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mArtworkName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mArtworkName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-//  private final var mArtworkVersion_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
+  private final var mArtworkVersion_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mArtworkVersion_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mArtworkVersion_property_selection : EBSelection <Int?> { // §
+    return self.mArtworkVersion_property.selection
+/*    if let model = self.propval {
       switch (model.mArtworkVersion_property_selection) {
       case .empty :
         return .empty
@@ -993,33 +1012,33 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mArtworkVersion.insert (inObserver)
+    self.mArtworkVersion_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mArtworkVersion.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mArtworkVersion_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mArtworkVersion (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mArtworkVersion.remove (inObserver)
+    self.mArtworkVersion_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mArtworkVersion.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mArtworkVersion_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -1402,237 +1421,313 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure selectedPageIndex simple stored property
- /*   self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedPageIndex_property.selection {
-        return selection
+    self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedPageIndex_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedPageIndex_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedPageIndex_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedPageIndex_property) */
+    self.none_property.addEBObserver (self.selectedPageIndex_property)
   //--- Configure zoom simple stored property
- /*   self.zoom_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.zoom_property.selection {
-        return selection
+    self.zoom_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.zoom_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.zoom_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.zoom_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.zoom_property) */
+    self.none_property.addEBObserver (self.zoom_property)
   //--- Configure automaticBoardSize simple stored property
- /*   self.automaticBoardSize_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.automaticBoardSize_property.selection {
-        return selection
+    self.automaticBoardSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.automaticBoardSize_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.automaticBoardSize_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.automaticBoardSize_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.automaticBoardSize_property) */
+    self.none_property.addEBObserver (self.automaticBoardSize_property)
   //--- Configure boardManualWidth simple stored property
- /*   self.boardManualWidth_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardManualWidth_property.selection {
-        return selection
+    self.boardManualWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardManualWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardManualWidth_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardManualWidth_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardManualWidth_property) */
+    self.none_property.addEBObserver (self.boardManualWidth_property)
   //--- Configure boardManualHeight simple stored property
- /*   self.boardManualHeight_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardManualHeight_property.selection {
-        return selection
+    self.boardManualHeight_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardManualHeight_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardManualHeight_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardManualHeight_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardManualHeight_property) */
+    self.none_property.addEBObserver (self.boardManualHeight_property)
   //--- Configure boardWidthUnit simple stored property
- /*   self.boardWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardWidthUnit_property.selection {
-        return selection
+    self.boardWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardWidthUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardWidthUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardWidthUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardWidthUnit_property) */
+    self.none_property.addEBObserver (self.boardWidthUnit_property)
   //--- Configure boardHeightUnit simple stored property
- /*   self.boardHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardHeightUnit_property.selection {
-        return selection
+    self.boardHeightUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardHeightUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardHeightUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardHeightUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardHeightUnit_property) */
+    self.none_property.addEBObserver (self.boardHeightUnit_property)
   //--- Configure overlapingArrangment simple stored property
- /*   self.overlapingArrangment_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.overlapingArrangment_property.selection {
-        return selection
+    self.overlapingArrangment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.overlapingArrangment_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.overlapingArrangment_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.overlapingArrangment_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.overlapingArrangment_property) */
+    self.none_property.addEBObserver (self.overlapingArrangment_property)
   //--- Configure selectedBoardXUnit simple stored property
- /*   self.selectedBoardXUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedBoardXUnit_property.selection {
-        return selection
+    self.selectedBoardXUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedBoardXUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedBoardXUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedBoardXUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedBoardXUnit_property) */
+    self.none_property.addEBObserver (self.selectedBoardXUnit_property)
   //--- Configure selectedBoardYUnit simple stored property
- /*   self.selectedBoardYUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.selectedBoardYUnit_property.selection {
-        return selection
+    self.selectedBoardYUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectedBoardYUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.selectedBoardYUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.selectedBoardYUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.selectedBoardYUnit_property) */
+    self.none_property.addEBObserver (self.selectedBoardYUnit_property)
   //--- Configure boardLimitWidth simple stored property
- /*   self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardLimitWidth_property.selection {
-        return selection
+    self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardLimitWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardLimitWidth_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardLimitWidth_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardLimitWidth_property) */
+    self.none_property.addEBObserver (self.boardLimitWidth_property)
   //--- Configure boardLimitWidthUnit simple stored property
- /*   self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.boardLimitWidthUnit_property.selection {
-        return selection
+    self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardLimitWidthUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.boardLimitWidthUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.boardLimitWidthUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.boardLimitWidthUnit_property) */
+    self.none_property.addEBObserver (self.boardLimitWidthUnit_property)
   //--- Configure arrowMagnitude simple stored property
- /*   self.arrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.arrowMagnitude_property.selection {
-        return selection
+    self.arrowMagnitude_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.arrowMagnitude_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.arrowMagnitude_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.arrowMagnitude_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.arrowMagnitude_property) */
+    self.none_property.addEBObserver (self.arrowMagnitude_property)
   //--- Configure arrowMagnitudeUnit simple stored property
- /*   self.arrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.arrowMagnitudeUnit_property.selection {
-        return selection
+    self.arrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.arrowMagnitudeUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.arrowMagnitudeUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.arrowMagnitudeUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.arrowMagnitudeUnit_property) */
+    self.none_property.addEBObserver (self.arrowMagnitudeUnit_property)
   //--- Configure shiftArrowMagnitude simple stored property
- /*   self.shiftArrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.shiftArrowMagnitude_property.selection {
-        return selection
+    self.shiftArrowMagnitude_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.shiftArrowMagnitude_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.shiftArrowMagnitude_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.shiftArrowMagnitude_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.shiftArrowMagnitude_property) */
+    self.none_property.addEBObserver (self.shiftArrowMagnitude_property)
   //--- Configure shiftArrowMagnitudeUnit simple stored property
- /*   self.shiftArrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.shiftArrowMagnitudeUnit_property.selection {
-        return selection
+    self.shiftArrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.shiftArrowMagnitudeUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.shiftArrowMagnitudeUnit_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.shiftArrowMagnitudeUnit_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.shiftArrowMagnitudeUnit_property) */
+    self.none_property.addEBObserver (self.shiftArrowMagnitudeUnit_property)
   //--- Configure mPDFBoardBackgroundColor simple stored property
- /*   self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mPDFBoardBackgroundColor_property.selection {
-        return selection
+    self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mPDFBoardBackgroundColor_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mPDFBoardBackgroundColor_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mPDFBoardBackgroundColor_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mPDFBoardBackgroundColor_property) */
+    self.none_property.addEBObserver (self.mPDFBoardBackgroundColor_property)
   //--- Configure mArtworkName simple stored property
- /*   self.mArtworkName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mArtworkName_property.selection {
-        return selection
+    self.mArtworkName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mArtworkName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mArtworkName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mArtworkName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mArtworkName_property) */
+    self.none_property.addEBObserver (self.mArtworkName_property)
   //--- Configure mArtworkVersion simple stored property
- /*   self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mArtworkVersion_property.selection {
-        return selection
+    self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mArtworkVersion_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mArtworkVersion_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mArtworkVersion_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mArtworkVersion_property) */
- // }
+    self.none_property.addEBObserver (self.mArtworkVersion_property)
+  }
 
   //····················································································································
 

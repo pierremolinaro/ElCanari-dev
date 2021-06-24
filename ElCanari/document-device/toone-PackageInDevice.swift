@@ -16,12 +16,12 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-      oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
-      oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-      oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-      oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
-      oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+ //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+ //     oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
+ //     oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+ //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+ //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+ //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
       oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       oldValue.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
       oldValue.frontSidePadFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
@@ -32,12 +32,12 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-      newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
-      newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
-      newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-      newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
-      newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+ //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+ //     newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
+ //     newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+ //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+ //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+ //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
       newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
       newValue.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
       newValue.frontSidePadFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_frontSidePadFilledBezierPathArray) // Transient property
@@ -52,13 +52,14 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-//  private final var mFileData_property = EBGenericPropertyProxy <Data?> ()
-  private final var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mFileData_property = EBGenericTransientProperty <Data?> ()
+//  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mFileData_property_selection : EBSelection <Data?> {
-    if let model = self.propval {
+  final var mFileData_property_selection : EBSelection <Data?> { // §
+    return self.mFileData_property.selection
+/*    if let model = self.propval {
       switch (model.mFileData_property_selection) {
       case .empty :
         return .empty
@@ -69,46 +70,47 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mFileData.insert (inObserver)
+    self.mFileData_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mFileData.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mFileData_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mFileData.remove (inObserver)
+    self.mFileData_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mFileData.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mFileData_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mName' stored property
   //····················································································································
 
-//  private final var mName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mName = EBWeakEventSet ()
+  private final var mName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mName_property_selection : EBSelection <String?> { // §
+    return self.mName_property.selection
+/*    if let model = self.propval {
       switch (model.mName_property_selection) {
       case .empty :
         return .empty
@@ -119,46 +121,47 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mName.insert (inObserver)
+    self.mName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mName.remove (inObserver)
+    self.mName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-//  private final var mVersion_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mVersion = EBWeakEventSet ()
+  private final var mVersion_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mVersion_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mVersion_property_selection : EBSelection <Int?> { // §
+    return self.mVersion_property.selection
+/*    if let model = self.propval {
       switch (model.mVersion_property_selection) {
       case .empty :
         return .empty
@@ -169,46 +172,47 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mVersion.insert (inObserver)
+    self.mVersion_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mVersion.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mVersion_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mVersion.remove (inObserver)
+    self.mVersion_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mVersion.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mVersion_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath?> ()
-  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private final var mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+//  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
+  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> { // §
+    return self.mStrokeBezierPath_property.selection
+/*    if let model = self.propval {
       switch (model.mStrokeBezierPath_property_selection) {
       case .empty :
         return .empty
@@ -219,46 +223,47 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    self.mStrokeBezierPath_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mStrokeBezierPath_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    self.mStrokeBezierPath_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mX = EBWeakEventSet ()
+  private final var mX_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mX_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mX_property_selection : EBSelection <Int?> { // §
+    return self.mX_property.selection
+/*    if let model = self.propval {
       switch (model.mX_property_selection) {
       case .empty :
         return .empty
@@ -269,46 +274,47 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mX_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mX_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mX_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mX_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_mY = EBWeakEventSet ()
+  private final var mY_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mY_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var mY_property_selection : EBSelection <Int?> { // §
+    return self.mY_property.selection
+/*    if let model = self.propval {
       switch (model.mY_property_selection) {
       case .empty :
         return .empty
@@ -319,33 +325,33 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mY_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mY_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mY_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mY_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -736,81 +742,105 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mFileData simple stored property
- /*   self.mFileData_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mFileData_property.selection {
-        return selection
+    self.mFileData_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mFileData_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mFileData_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mFileData_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mFileData_property) */
+    self.none_property.addEBObserver (self.mFileData_property)
   //--- Configure mName simple stored property
- /*   self.mName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mName_property.selection {
-        return selection
+    self.mName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mName_property) */
+    self.none_property.addEBObserver (self.mName_property)
   //--- Configure mVersion simple stored property
- /*   self.mVersion_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mVersion_property.selection {
-        return selection
+    self.mVersion_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mVersion_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mVersion_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mVersion_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mVersion_property) */
+    self.none_property.addEBObserver (self.mVersion_property)
   //--- Configure mStrokeBezierPath simple stored property
- /*   self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mStrokeBezierPath_property.selection {
-        return selection
+    self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mStrokeBezierPath_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mStrokeBezierPath_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mStrokeBezierPath_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mStrokeBezierPath_property) */
+    self.none_property.addEBObserver (self.mStrokeBezierPath_property)
   //--- Configure mX simple stored property
- /*   self.mX_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mX_property.selection {
-        return selection
+    self.mX_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mX_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mX_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mX_property) */
+    self.none_property.addEBObserver (self.mX_property)
   //--- Configure mY simple stored property
- /*   self.mY_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mY_property.selection {
-        return selection
+    self.mY_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mY_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mY_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mY_property) */
- // }
+    self.none_property.addEBObserver (self.mY_property)
+  }
 
   //····················································································································
 

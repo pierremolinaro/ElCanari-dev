@@ -16,7 +16,7 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+ //     oldValue.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
       oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
       oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
       oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -25,7 +25,7 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+ //     newValue.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
       newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
       newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
       newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
@@ -38,13 +38,14 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
-//  private final var mOrientation_property = EBGenericPropertyProxy <QuadrantRotation?> ()
-  private final var mObserversOf_mOrientation = EBWeakEventSet ()
+  private final var mOrientation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+//  private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mOrientation_property_selection : EBSelection <QuadrantRotation?> {
-    if let model = self.propval {
+  final var mOrientation_property_selection : EBSelection <QuadrantRotation?> { // §
+    return self.mOrientation_property.selection
+/*    if let model = self.propval {
       switch (model.mOrientation_property_selection) {
       case .empty :
         return .empty
@@ -55,33 +56,33 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mOrientation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mOrientation.insert (inObserver)
+    self.mOrientation_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mOrientation.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mOrientation_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mOrientation.remove (inObserver)
+    self.mOrientation_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mOrientation.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mOrientation_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -333,21 +334,25 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mOrientation simple stored property
- /*   self.mOrientation_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mOrientation_property.selection {
-        return selection
+    self.mOrientation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mOrientation_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mOrientation_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mOrientation_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mOrientation_property) */
- // }
+    self.none_property.addEBObserver (self.mOrientation_property)
+  }
 
   //····················································································································
 

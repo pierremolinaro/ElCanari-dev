@@ -16,7 +16,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+ //     oldValue.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
       oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
       oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       oldValue.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
@@ -25,7 +25,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+ //     newValue.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
       newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
       newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
       newValue.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
@@ -38,13 +38,14 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-//  private final var mSheetTitle_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
+  private final var mSheetTitle_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mSheetTitle_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mSheetTitle_property_selection : EBSelection <String?> { // §
+    return self.mSheetTitle_property.selection
+/*    if let model = self.propval {
       switch (model.mSheetTitle_property_selection) {
       case .empty :
         return .empty
@@ -55,33 +56,33 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSheetTitle.insert (inObserver)
+    self.mSheetTitle_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mSheetTitle.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mSheetTitle_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mSheetTitle (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSheetTitle.remove (inObserver)
+    self.mSheetTitle_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mSheetTitle.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mSheetTitle_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -415,21 +416,25 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mSheetTitle simple stored property
- /*   self.mSheetTitle_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mSheetTitle_property.selection {
-        return selection
+    self.mSheetTitle_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSheetTitle_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mSheetTitle_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mSheetTitle_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mSheetTitle_property) */
- // }
+    self.none_property.addEBObserver (self.mSheetTitle_property)
+  }
 
   //····················································································································
 

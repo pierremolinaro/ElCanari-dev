@@ -16,7 +16,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+ //     oldValue.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
       oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       oldValue.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
       oldValue.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
@@ -27,7 +27,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+ //     newValue.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
       newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
       newValue.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
       newValue.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
@@ -42,13 +42,14 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-//  private final var mNetName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mNetName = EBWeakEventSet ()
+  private final var mNetName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mNetName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mNetName_property_selection : EBSelection <String?> { // §
+    return self.mNetName_property.selection
+/*    if let model = self.propval {
       switch (model.mNetName_property_selection) {
       case .empty :
         return .empty
@@ -59,33 +60,33 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mNetName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mNetName.insert (inObserver)
+    self.mNetName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mNetName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mNetName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mNetName.remove (inObserver)
+    self.mNetName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mNetName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mNetName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -517,21 +518,25 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mNetName simple stored property
- /*   self.mNetName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mNetName_property.selection {
-        return selection
+    self.mNetName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mNetName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mNetName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mNetName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mNetName_property) */
- // }
+    self.none_property.addEBObserver (self.mNetName_property)
+  }
 
   //····················································································································
 

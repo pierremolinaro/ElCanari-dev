@@ -16,9 +16,9 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
-      oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
-      oldValue.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+ //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+ //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+ //     oldValue.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
       oldValue.instanceRect_property.removeEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
       oldValue.modelName_property.removeEBObserversFrom (&self.mObserversOf_modelName) // Transient property
       oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
@@ -27,9 +27,9 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
-      newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
-      newValue.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+ //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+ //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+ //     newValue.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
       newValue.instanceRect_property.addEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
       newValue.modelName_property.addEBObserversFrom (&self.mObserversOf_modelName) // Transient property
       newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
@@ -42,13 +42,14 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'x' stored property
   //····················································································································
 
-//  private final var x_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_x = EBWeakEventSet ()
+  private final var x_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  final var x_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var x_property_selection : EBSelection <Int?> { // §
+    return self.x_property.selection
+/*    if let model = self.propval {
       switch (model.x_property_selection) {
       case .empty :
         return .empty
@@ -59,46 +60,47 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x.insert (inObserver)
+    self.x_property.addEBObserver (inObserver)
+/*    self.mObserversOf_x.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.x_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x.remove (inObserver)
+    self.x_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_x.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.x_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-//  private final var y_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_y = EBWeakEventSet ()
+  private final var y_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  final var y_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var y_property_selection : EBSelection <Int?> { // §
+    return self.y_property.selection
+/*    if let model = self.propval {
       switch (model.y_property_selection) {
       case .empty :
         return .empty
@@ -109,46 +111,47 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_y.insert (inObserver)
+    self.y_property.addEBObserver (inObserver)
+/*    self.mObserversOf_y.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.y_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_y.remove (inObserver)
+    self.y_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_y.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.y_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observers of 'instanceRotation' stored property
   //····················································································································
 
-//  private final var instanceRotation_property = EBGenericPropertyProxy <QuadrantRotation?> ()
-  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
+  private final var instanceRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+//  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 
   //····················································································································
 
-  final var instanceRotation_property_selection : EBSelection <QuadrantRotation?> {
-    if let model = self.propval {
+  final var instanceRotation_property_selection : EBSelection <QuadrantRotation?> { // §
+    return self.instanceRotation_property.selection
+/*    if let model = self.propval {
       switch (model.instanceRotation_property_selection) {
       case .empty :
         return .empty
@@ -159,33 +162,33 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_instanceRotation.insert (inObserver)
+    self.instanceRotation_property.addEBObserver (inObserver)
+/*    self.mObserversOf_instanceRotation.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.instanceRotation_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_instanceRotation.remove (inObserver)
+    self.instanceRotation_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_instanceRotation.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.instanceRotation_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -437,45 +440,57 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure x simple stored property
- /*   self.x_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.x_property.selection {
-        return selection
+    self.x_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.x_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.x_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.x_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.x_property) */
+    self.none_property.addEBObserver (self.x_property)
   //--- Configure y simple stored property
- /*   self.y_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.y_property.selection {
-        return selection
+    self.y_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.y_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.y_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.y_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.y_property) */
+    self.none_property.addEBObserver (self.y_property)
   //--- Configure instanceRotation simple stored property
- /*   self.instanceRotation_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.instanceRotation_property.selection {
-        return selection
+    self.instanceRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.instanceRotation_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.instanceRotation_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.instanceRotation_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.instanceRotation_property) */
- // }
+    self.none_property.addEBObserver (self.instanceRotation_property)
+  }
 
   //····················································································································
 

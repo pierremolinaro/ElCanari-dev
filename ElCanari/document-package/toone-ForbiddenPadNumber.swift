@@ -15,26 +15,21 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
-      oldValue.padNumber_property.removeEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
-      newValue.padNumber_property.addEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
-    }
   }
 
   //····················································································································
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-//  private final var padNumber_property = EBGenericPropertyProxy <Int?> ()
-  private final var mObserversOf_padNumber = EBWeakEventSet ()
+  private final var padNumber_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  final var padNumber_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+  final var padNumber_property_selection : EBSelection <Int?> { // §
+    return self.padNumber_property.selection
+/*    if let model = self.propval {
       switch (model.padNumber_property_selection) {
       case .empty :
         return .empty
@@ -45,54 +40,58 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_padNumber.insert (inObserver)
+    self.padNumber_property.addEBObserver (inObserver)
+/*    self.mObserversOf_padNumber.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.padNumber_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_padNumber.remove (inObserver)
+    self.padNumber_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_padNumber.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.padNumber_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure padNumber simple stored property
- /*   self.padNumber_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.padNumber_property.selection {
-        return selection
+    self.padNumber_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.padNumber_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.padNumber_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.padNumber_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.padNumber_property) */
- // }
+    self.none_property.addEBObserver (self.padNumber_property)
+  }
 
   //····················································································································
 

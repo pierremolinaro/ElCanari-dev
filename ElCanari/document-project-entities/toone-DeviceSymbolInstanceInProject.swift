@@ -16,7 +16,7 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+ //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       oldValue.symbolAndTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
       oldValue.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
       oldValue.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
@@ -24,7 +24,7 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
-      newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+ //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
       newValue.symbolAndTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
       newValue.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
       newValue.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
@@ -36,13 +36,14 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String?> ()
-  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
+  private final var mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final var mSymbolInstanceName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+  final var mSymbolInstanceName_property_selection : EBSelection <String?> { // §
+    return self.mSymbolInstanceName_property.selection
+/*    if let model = self.propval {
       switch (model.mSymbolInstanceName_property_selection) {
       case .empty :
         return .empty
@@ -53,33 +54,33 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
       }
     }else{
       return .single (nil)
-    }
+    } */
   }
 
   //····················································································································
 
   final func addEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
+    self.mSymbolInstanceName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolInstanceName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
        v?.mSymbolInstanceName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
+    self.mSymbolInstanceName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mSymbolInstanceName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mSymbolInstanceName_property.removeEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
@@ -282,21 +283,25 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   INIT 
   //····················································································································
 
- // override init () {
-//    super.init ()
+  override init () {
+    super.init ()
   //--- Configure mSymbolInstanceName simple stored property
- /*   self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let selection = self?.mInternalValue?.mSymbolInstanceName_property.selection {
-        return selection
+    self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mSymbolInstanceName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
       }else{
-        return .empty
+        return .single (nil)
       }
     }
-    self.mSymbolInstanceName_property.mWriteModelFunction = { [weak self] in
-      self?.mInternalValue?.mSymbolInstanceName_property.setProp ($0)
-    }
-    self.none_property.addEBObserver (self.mSymbolInstanceName_property) */
- // }
+    self.none_property.addEBObserver (self.mSymbolInstanceName_property)
+  }
 
   //····················································································································
 
