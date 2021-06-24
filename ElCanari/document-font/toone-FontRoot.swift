@@ -15,35 +15,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
- //     oldValue.nominalSize_property.removeEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
- //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
- //     oldValue.selectedInspector_property.removeEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
- //     oldValue.currentCharacterCodePoint_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
-      oldValue.currentCharacterCodePointString_property.removeEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
-      oldValue.sampleStringBezierPath_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
-      oldValue.sampleStringBezierPathWidth_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
-      oldValue.sampleStringBezierPathAscent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
-      oldValue.sampleStringBezierPathDescent_property.removeEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
-      oldValue.definedCharacters_property.removeEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
-      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
- //     newValue.nominalSize_property.addEBObserversFrom (&self.mObserversOf_nominalSize) // Stored property
- //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
- //     newValue.selectedInspector_property.addEBObserversFrom (&self.mObserversOf_selectedInspector) // Stored property
- //     newValue.currentCharacterCodePoint_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePoint) // Stored property
-      newValue.currentCharacterCodePointString_property.addEBObserversFrom (&self.mObserversOf_currentCharacterCodePointString) // Transient property
-      newValue.sampleStringBezierPath_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPath) // Transient property
-      newValue.sampleStringBezierPathWidth_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathWidth) // Transient property
-      newValue.sampleStringBezierPathAscent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathAscent) // Transient property
-      newValue.sampleStringBezierPathDescent_property.addEBObserversFrom (&self.mObserversOf_sampleStringBezierPathDescent) // Transient property
-      newValue.definedCharacters_property.addEBObserversFrom (&self.mObserversOf_definedCharacters) // Transient property
-      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   }
 
   //····················································································································
@@ -305,12 +277,14 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'currentCharacterCodePointString' transient property
   //····················································································································
 
-  private final var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
+  private final var currentCharacterCodePointString_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
 
   //····················································································································
 
   final var currentCharacterCodePointString_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.currentCharacterCodePointString_property.selection
+/*    if let model = self.propval {
       switch (model.currentCharacterCodePointString_property_selection) {
       case .empty :
         return .empty
@@ -321,45 +295,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
+    self.currentCharacterCodePointString_property.addEBObserver (inObserver)
+/*    self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.currentCharacterCodePointString_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_currentCharacterCodePointString.remove (inObserver)
+    self.currentCharacterCodePointString_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_currentCharacterCodePointString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.currentCharacterCodePointString_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_sampleStringBezierPath = EBWeakEventSet ()
+  private final var sampleStringBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+//  private final var mObserversOf_sampleStringBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    if let model = self.propval {
+    return self.sampleStringBezierPath_property.selection
+/*    if let model = self.propval {
       switch (model.sampleStringBezierPath_property_selection) {
       case .empty :
         return .empty
@@ -370,45 +346,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPath.insert (inObserver)
+    self.sampleStringBezierPath_property.addEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPath_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPath.remove (inObserver)
+    self.sampleStringBezierPath_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPath_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPathWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_sampleStringBezierPathWidth = EBWeakEventSet ()
+  private final var sampleStringBezierPathWidth_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_sampleStringBezierPathWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var sampleStringBezierPathWidth_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.sampleStringBezierPathWidth_property.selection
+/*    if let model = self.propval {
       switch (model.sampleStringBezierPathWidth_property_selection) {
       case .empty :
         return .empty
@@ -419,45 +397,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
+    self.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
+    self.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPathAscent' transient property
   //····················································································································
 
-  private final var mObserversOf_sampleStringBezierPathAscent = EBWeakEventSet ()
+  private final var sampleStringBezierPathAscent_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_sampleStringBezierPathAscent = EBWeakEventSet ()
 
   //····················································································································
 
   final var sampleStringBezierPathAscent_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.sampleStringBezierPathAscent_property.selection
+/*    if let model = self.propval {
       switch (model.sampleStringBezierPathAscent_property_selection) {
       case .empty :
         return .empty
@@ -468,45 +448,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
+    self.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
+    self.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPathDescent' transient property
   //····················································································································
 
-  private final var mObserversOf_sampleStringBezierPathDescent = EBWeakEventSet ()
+  private final var sampleStringBezierPathDescent_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_sampleStringBezierPathDescent = EBWeakEventSet ()
 
   //····················································································································
 
   final var sampleStringBezierPathDescent_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.sampleStringBezierPathDescent_property.selection
+/*    if let model = self.propval {
       switch (model.sampleStringBezierPathDescent_property_selection) {
       case .empty :
         return .empty
@@ -517,45 +499,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
+    self.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
+    self.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'definedCharacters' transient property
   //····················································································································
 
-  private final var mObserversOf_definedCharacters = EBWeakEventSet ()
+  private final var definedCharacters_property = EBGenericTransientProperty <DefinedCharactersInDevice?> ()
+//  private final var mObserversOf_definedCharacters = EBWeakEventSet ()
 
   //····················································································································
 
   final var definedCharacters_property_selection : EBSelection <DefinedCharactersInDevice?> {
-    if let model = self.propval {
+    return self.definedCharacters_property.selection
+/*    if let model = self.propval {
       switch (model.definedCharacters_property_selection) {
       case .empty :
         return .empty
@@ -566,45 +550,47 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_definedCharacters.insert (inObserver)
+    self.definedCharacters_property.addEBObserver (inObserver)
+/*    self.mObserversOf_definedCharacters.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.definedCharacters_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_definedCharacters.remove (inObserver)
+    self.definedCharacters_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_definedCharacters.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.definedCharacters_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakEventSet ()
+  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+//  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
+    return self.issues_property.selection
+/*    if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
         return .empty
@@ -615,33 +601,33 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
+    self.issues_property.addEBObserver (inObserver)
+/*    self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
+    self.issues_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -771,6 +757,118 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       }
     }
     self.none_property.addEBObserver (self.currentCharacterCodePoint_property)
+  //--- Configure currentCharacterCodePointString transient property
+    self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.currentCharacterCodePointString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.currentCharacterCodePointString_property)
+  //--- Configure sampleStringBezierPath transient property
+    self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.sampleStringBezierPath_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.sampleStringBezierPath_property)
+  //--- Configure sampleStringBezierPathWidth transient property
+    self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.sampleStringBezierPathWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.sampleStringBezierPathWidth_property)
+  //--- Configure sampleStringBezierPathAscent transient property
+    self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.sampleStringBezierPathAscent_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.sampleStringBezierPathAscent_property)
+  //--- Configure sampleStringBezierPathDescent transient property
+    self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.sampleStringBezierPathDescent_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.sampleStringBezierPathDescent_property)
+  //--- Configure definedCharacters transient property
+    self.definedCharacters_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.definedCharacters_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.definedCharacters_property)
+  //--- Configure issues transient property
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.issues_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

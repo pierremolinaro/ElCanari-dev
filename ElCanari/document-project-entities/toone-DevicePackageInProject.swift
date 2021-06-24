@@ -15,17 +15,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePackageInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.mPackageName_property.removeEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
- //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-      oldValue.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.mPackageName_property.addEBObserversFrom (&self.mObserversOf_mPackageName) // Stored property
- //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
-      newValue.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
-    }
   }
 
   //····················································································································
@@ -134,12 +124,14 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
+  private final var packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
+//  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
-    if let model = self.propval {
+    return self.packagePadDictionary_property.selection
+/*    if let model = self.propval {
       switch (model.packagePadDictionary_property_selection) {
       case .empty :
         return .empty
@@ -150,33 +142,33 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_packagePadDictionary.insert (inObserver)
+    self.packagePadDictionary_property.addEBObserver (inObserver)
+/*    self.mObserversOf_packagePadDictionary.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.packagePadDictionary_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_packagePadDictionary.remove (inObserver)
+    self.packagePadDictionary_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_packagePadDictionary.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.packagePadDictionary_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -258,6 +250,22 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       }
     }
     self.none_property.addEBObserver (self.mStrokeBezierPath_property)
+  //--- Configure packagePadDictionary transient property
+    self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.packagePadDictionary_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.packagePadDictionary_property)
   }
 
   //····················································································································

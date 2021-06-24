@@ -15,21 +15,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.mPinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
- //     oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
- //     oldValue.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
-      oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-      oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.mPinInstanceName_property.addEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
- //     newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
- //     newValue.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
-      newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-      newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
-    }
   }
 
   //····················································································································
@@ -189,12 +175,14 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var isConnected_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
   final var isConnected_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+    return self.isConnected_property.selection
+/*    if let model = self.propval {
       switch (model.isConnected_property_selection) {
       case .empty :
         return .empty
@@ -205,45 +193,47 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_isConnected.insert (inObserver)
+    self.isConnected_property.addEBObserver (inObserver)
+/*    self.mObserversOf_isConnected.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.isConnected_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_isConnected.remove (inObserver)
+    self.isConnected_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_isConnected.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.isConnected_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolName = EBWeakEventSet ()
+  private final var symbolName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_symbolName = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.symbolName_property.selection
+/*    if let model = self.propval {
       switch (model.symbolName_property_selection) {
       case .empty :
         return .empty
@@ -254,33 +244,33 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_symbolName.insert (inObserver)
+    self.symbolName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_symbolName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolName.remove (inObserver)
+    self.symbolName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_symbolName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolName_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -337,6 +327,38 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       }
     }
     self.none_property.addEBObserver (self.mIsNC_property)
+  //--- Configure isConnected transient property
+    self.isConnected_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.isConnected_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.isConnected_property)
+  //--- Configure symbolName transient property
+    self.symbolName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.symbolName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.symbolName_property)
   }
 
   //····················································································································

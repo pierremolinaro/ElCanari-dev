@@ -15,45 +15,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageArc?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
- //     oldValue.radius_property.removeEBObserversFrom (&self.mObserversOf_radius) // Stored property
- //     oldValue.startAngle_property.removeEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
- //     oldValue.arcAngle_property.removeEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
- //     oldValue.startTangent_property.removeEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
- //     oldValue.endTangent_property.removeEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
- //     oldValue.pathIsClosed_property.removeEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
- //     oldValue.xCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
- //     oldValue.yCenterUnit_property.removeEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
- //     oldValue.radiusUnit_property.removeEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
- //     oldValue.startTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
- //     oldValue.endTangentUnit_property.removeEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
- //     oldValue.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-      oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter) // Stored property
- //     newValue.radius_property.addEBObserversFrom (&self.mObserversOf_radius) // Stored property
- //     newValue.startAngle_property.addEBObserversFrom (&self.mObserversOf_startAngle) // Stored property
- //     newValue.arcAngle_property.addEBObserversFrom (&self.mObserversOf_arcAngle) // Stored property
- //     newValue.startTangent_property.addEBObserversFrom (&self.mObserversOf_startTangent) // Stored property
- //     newValue.endTangent_property.addEBObserversFrom (&self.mObserversOf_endTangent) // Stored property
- //     newValue.pathIsClosed_property.addEBObserversFrom (&self.mObserversOf_pathIsClosed) // Stored property
- //     newValue.xCenterUnit_property.addEBObserversFrom (&self.mObserversOf_xCenterUnit) // Stored property
- //     newValue.yCenterUnit_property.addEBObserversFrom (&self.mObserversOf_yCenterUnit) // Stored property
- //     newValue.radiusUnit_property.addEBObserversFrom (&self.mObserversOf_radiusUnit) // Stored property
- //     newValue.startTangentUnit_property.addEBObserversFrom (&self.mObserversOf_startTangentUnit) // Stored property
- //     newValue.endTangentUnit_property.addEBObserversFrom (&self.mObserversOf_endTangentUnit) // Stored property
- //     newValue.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter) // Stored property
-      newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
-      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   }
 
   //····················································································································
@@ -723,12 +685,14 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+  private final var strokeBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
+//  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <EBBezierPath?> {
-    if let model = self.propval {
+    return self.strokeBezierPath_property.selection
+/*    if let model = self.propval {
       switch (model.strokeBezierPath_property_selection) {
       case .empty :
         return .empty
@@ -739,45 +703,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_strokeBezierPath.insert (inObserver)
+    self.strokeBezierPath_property.addEBObserver (inObserver)
+/*    self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.strokeBezierPath_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_strokeBezierPath.remove (inObserver)
+    self.strokeBezierPath_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_strokeBezierPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.strokeBezierPath_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+//  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
+    return self.objectDisplay_property.selection
+/*    if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
         return .empty
@@ -788,45 +754,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
+    self.objectDisplay_property.addEBObserver (inObserver)
+/*    self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.objectDisplay_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
+    self.objectDisplay_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+//  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
+    return self.selectionDisplay_property.selection
+/*    if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
         return .empty
@@ -837,45 +805,47 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
+    self.selectionDisplay_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectionDisplay_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
+    self.selectionDisplay_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakEventSet ()
+  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+//  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
+    return self.issues_property.selection
+/*    if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
         return .empty
@@ -886,33 +856,33 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
+    self.issues_property.addEBObserver (inObserver)
+/*    self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
+    self.issues_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -1129,6 +1099,70 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       }
     }
     self.none_property.addEBObserver (self.xCenter_property)
+  //--- Configure strokeBezierPath transient property
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.strokeBezierPath_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.strokeBezierPath_property)
+  //--- Configure objectDisplay transient property
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.objectDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.objectDisplay_property)
+  //--- Configure selectionDisplay transient property
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectionDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.selectionDisplay_property)
+  //--- Configure issues transient property
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.issues_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

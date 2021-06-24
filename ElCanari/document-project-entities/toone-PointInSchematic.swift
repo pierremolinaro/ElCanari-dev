@@ -15,41 +15,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.mSymbolPinName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
- //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
- //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
-      oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
-      oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
-      oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-      oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
-      oldValue.canMove_property.removeEBObserversFrom (&self.mObserversOf_canMove) // Transient property
-      oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-      oldValue.symbolRotation_property.removeEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
-      oldValue.symbolNameNetName_property.removeEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
-      oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-      oldValue.status_property.removeEBObserversFrom (&self.mObserversOf_status) // Transient property
-      oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-      oldValue.netInfoForPoint_property.removeEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.mSymbolPinName_property.addEBObserversFrom (&self.mObserversOf_mSymbolPinName) // Stored property
- //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
- //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
-      newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
-      newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
-      newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
-      newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
-      newValue.canMove_property.addEBObserversFrom (&self.mObserversOf_canMove) // Transient property
-      newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
-      newValue.symbolRotation_property.addEBObserversFrom (&self.mObserversOf_symbolRotation) // Transient property
-      newValue.symbolNameNetName_property.addEBObserversFrom (&self.mObserversOf_symbolNameNetName) // Transient property
-      newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
-      newValue.status_property.addEBObserversFrom (&self.mObserversOf_status) // Transient property
-      newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
-      newValue.netInfoForPoint_property.addEBObserversFrom (&self.mObserversOf_netInfoForPoint) // Transient property
-    }
   }
 
   //····················································································································
@@ -209,12 +175,14 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private final var mObserversOf_location = EBWeakEventSet ()
+  private final var location_property = EBGenericTransientProperty <CanariPoint?> ()
+//  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
   final var location_property_selection : EBSelection <CanariPoint?> {
-    if let model = self.propval {
+    return self.location_property.selection
+/*    if let model = self.propval {
       switch (model.location_property_selection) {
       case .empty :
         return .empty
@@ -225,45 +193,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_location (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_location.insert (inObserver)
+    self.location_property.addEBObserver (inObserver)
+/*    self.mObserversOf_location.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.location_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_location (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_location.remove (inObserver)
+    self.location_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_location.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.location_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var mObserversOf_netName = EBWeakEventSet ()
+  private final var netName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.netName_property.selection
+/*    if let model = self.propval {
       switch (model.netName_property_selection) {
       case .empty :
         return .empty
@@ -274,45 +244,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_netName.insert (inObserver)
+    self.netName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_netName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_netName.remove (inObserver)
+    self.netName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_netName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netName_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var netClassName_property = EBGenericTransientProperty <String?> ()
+//  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String?> {
-    if let model = self.propval {
+    return self.netClassName_property.selection
+/*    if let model = self.propval {
       switch (model.netClassName_property_selection) {
       case .empty :
         return .empty
@@ -323,45 +295,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_netClassName.insert (inObserver)
+    self.netClassName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_netClassName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netClassName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_netClassName.remove (inObserver)
+    self.netClassName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_netClassName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netClassName_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private final var mObserversOf_hasNet = EBWeakEventSet ()
+  private final var hasNet_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_hasNet = EBWeakEventSet ()
 
   //····················································································································
 
   final var hasNet_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+    return self.hasNet_property.selection
+/*    if let model = self.propval {
       switch (model.hasNet_property_selection) {
       case .empty :
         return .empty
@@ -372,45 +346,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_hasNet.insert (inObserver)
+    self.hasNet_property.addEBObserver (inObserver)
+/*    self.mObserversOf_hasNet.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.hasNet_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_hasNet.remove (inObserver)
+    self.hasNet_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_hasNet.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.hasNet_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'canMove' transient property
   //····················································································································
 
-  private final var mObserversOf_canMove = EBWeakEventSet ()
+  private final var canMove_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_canMove = EBWeakEventSet ()
 
   //····················································································································
 
   final var canMove_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+    return self.canMove_property.selection
+/*    if let model = self.propval {
       switch (model.canMove_property_selection) {
       case .empty :
         return .empty
@@ -421,45 +397,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_canMove (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_canMove.insert (inObserver)
+    self.canMove_property.addEBObserver (inObserver)
+/*    self.mObserversOf_canMove.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.canMove_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_canMove.remove (inObserver)
+    self.canMove_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_canMove.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.canMove_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private final var mObserversOf_wireColor = EBWeakEventSet ()
+  private final var wireColor_property = EBGenericTransientProperty <NSColor?> ()
+//  private final var mObserversOf_wireColor = EBWeakEventSet ()
 
   //····················································································································
 
   final var wireColor_property_selection : EBSelection <NSColor?> {
-    if let model = self.propval {
+    return self.wireColor_property.selection
+/*    if let model = self.propval {
       switch (model.wireColor_property_selection) {
       case .empty :
         return .empty
@@ -470,45 +448,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_wireColor.insert (inObserver)
+    self.wireColor_property.addEBObserver (inObserver)
+/*    self.mObserversOf_wireColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.wireColor_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_wireColor.remove (inObserver)
+    self.wireColor_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_wireColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.wireColor_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolRotation = EBWeakEventSet ()
+  private final var symbolRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+//  private final var mObserversOf_symbolRotation = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolRotation_property_selection : EBSelection <QuadrantRotation?> {
-    if let model = self.propval {
+    return self.symbolRotation_property.selection
+/*    if let model = self.propval {
       switch (model.symbolRotation_property_selection) {
       case .empty :
         return .empty
@@ -519,45 +499,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_symbolRotation.insert (inObserver)
+    self.symbolRotation_property.addEBObserver (inObserver)
+/*    self.mObserversOf_symbolRotation.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolRotation_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolRotation.remove (inObserver)
+    self.symbolRotation_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_symbolRotation.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolRotation_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolNameNetName = EBWeakEventSet ()
+  private final var symbolNameNetName_property = EBGenericTransientProperty <TwoStrings?> ()
+//  private final var mObserversOf_symbolNameNetName = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolNameNetName_property_selection : EBSelection <TwoStrings?> {
-    if let model = self.propval {
+    return self.symbolNameNetName_property.selection
+/*    if let model = self.propval {
       switch (model.symbolNameNetName_property_selection) {
       case .empty :
         return .empty
@@ -568,45 +550,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_symbolNameNetName.insert (inObserver)
+    self.symbolNameNetName_property.addEBObserver (inObserver)
+/*    self.mObserversOf_symbolNameNetName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolNameNetName_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_symbolNameNetName.remove (inObserver)
+    self.symbolNameNetName_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_symbolNameNetName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.symbolNameNetName_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected = EBWeakEventSet ()
+  private final var isConnected_property = EBGenericTransientProperty <Bool?> ()
+//  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
   final var isConnected_property_selection : EBSelection <Bool?> {
-    if let model = self.propval {
+    return self.isConnected_property.selection
+/*    if let model = self.propval {
       switch (model.isConnected_property_selection) {
       case .empty :
         return .empty
@@ -617,45 +601,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_isConnected.insert (inObserver)
+    self.isConnected_property.addEBObserver (inObserver)
+/*    self.mObserversOf_isConnected.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.isConnected_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_isConnected.remove (inObserver)
+    self.isConnected_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_isConnected.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.isConnected_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'status' transient property
   //····················································································································
 
-  private final var mObserversOf_status = EBWeakEventSet ()
+  private final var status_property = EBGenericTransientProperty <SchematicPointStatus?> ()
+//  private final var mObserversOf_status = EBWeakEventSet ()
 
   //····················································································································
 
   final var status_property_selection : EBSelection <SchematicPointStatus?> {
-    if let model = self.propval {
+    return self.status_property.selection
+/*    if let model = self.propval {
       switch (model.status_property_selection) {
       case .empty :
         return .empty
@@ -666,45 +652,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_status (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_status.insert (inObserver)
+    self.status_property.addEBObserver (inObserver)
+/*    self.mObserversOf_status.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.status_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_status (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_status.remove (inObserver)
+    self.status_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_status.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.status_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var connectedPoints_property = EBGenericTransientProperty <CanariPointArray?> ()
+//  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
-    if let model = self.propval {
+    return self.connectedPoints_property.selection
+/*    if let model = self.propval {
       switch (model.connectedPoints_property_selection) {
       case .empty :
         return .empty
@@ -715,45 +703,47 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_connectedPoints.insert (inObserver)
+    self.connectedPoints_property.addEBObserver (inObserver)
+/*    self.mObserversOf_connectedPoints.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.connectedPoints_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_connectedPoints.remove (inObserver)
+    self.connectedPoints_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_connectedPoints.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.connectedPoints_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
-  private final var mObserversOf_netInfoForPoint = EBWeakEventSet ()
+  private final var netInfoForPoint_property = EBGenericTransientProperty <NetInfoPoint?> ()
+//  private final var mObserversOf_netInfoForPoint = EBWeakEventSet ()
 
   //····················································································································
 
   final var netInfoForPoint_property_selection : EBSelection <NetInfoPoint?> {
-    if let model = self.propval {
+    return self.netInfoForPoint_property.selection
+/*    if let model = self.propval {
       switch (model.netInfoForPoint_property_selection) {
       case .empty :
         return .empty
@@ -764,33 +754,33 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_netInfoForPoint.insert (inObserver)
+    self.netInfoForPoint_property.addEBObserver (inObserver)
+/*    self.mObserversOf_netInfoForPoint.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netInfoForPoint_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_netInfoForPoint.remove (inObserver)
+    self.netInfoForPoint_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_netInfoForPoint.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.netInfoForPoint_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -970,6 +960,198 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       }
     }
     self.none_property.addEBObserver (self.mY_property)
+  //--- Configure location transient property
+    self.location_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.location_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.location_property)
+  //--- Configure netName transient property
+    self.netName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.netName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.netName_property)
+  //--- Configure netClassName transient property
+    self.netClassName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.netClassName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.netClassName_property)
+  //--- Configure hasNet transient property
+    self.hasNet_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasNet_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.hasNet_property)
+  //--- Configure canMove transient property
+    self.canMove_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.canMove_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.canMove_property)
+  //--- Configure wireColor transient property
+    self.wireColor_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.wireColor_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.wireColor_property)
+  //--- Configure symbolRotation transient property
+    self.symbolRotation_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.symbolRotation_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.symbolRotation_property)
+  //--- Configure symbolNameNetName transient property
+    self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.symbolNameNetName_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.symbolNameNetName_property)
+  //--- Configure isConnected transient property
+    self.isConnected_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.isConnected_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.isConnected_property)
+  //--- Configure status transient property
+    self.status_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.status_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.status_property)
+  //--- Configure connectedPoints transient property
+    self.connectedPoints_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.connectedPoints_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.connectedPoints_property)
+  //--- Configure netInfoForPoint transient property
+    self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.netInfoForPoint_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.netInfoForPoint_property)
   }
 
   //····················································································································

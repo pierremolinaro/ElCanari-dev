@@ -15,35 +15,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.selectedTab_property.removeEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
- //     oldValue.comments_property.removeEBObserversFrom (&self.mObserversOf_comments) // Stored property
- //     oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
- //     oldValue.minPPTPTTTW_property.removeEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
- //     oldValue.minValueForOARdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
- //     oldValue.minValueForOARinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
- //     oldValue.minValueForPHDdisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
- //     oldValue.minValueForPHDinEBUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
- //     oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
- //     oldValue.minValueForBoardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
- //     oldValue.drillDataFileExtension_property.removeEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
-      oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.selectedTab_property.addEBObserversFrom (&self.mObserversOf_selectedTab) // Stored property
- //     newValue.comments_property.addEBObserversFrom (&self.mObserversOf_comments) // Stored property
- //     newValue.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTWdisplayUnit) // Stored property
- //     newValue.minPPTPTTTW_property.addEBObserversFrom (&self.mObserversOf_minPPTPTTTW) // Stored property
- //     newValue.minValueForOARdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARdisplayUnit) // Stored property
- //     newValue.minValueForOARinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForOARinEBUnit) // Stored property
- //     newValue.minValueForPHDdisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDdisplayUnit) // Stored property
- //     newValue.minValueForPHDinEBUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForPHDinEBUnit) // Stored property
- //     newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidthDisplayUnit) // Stored property
- //     newValue.minValueForBoardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_minValueForBoardLimitWidth) // Stored property
- //     newValue.drillDataFileExtension_property.addEBObserversFrom (&self.mObserversOf_drillDataFileExtension) // Stored property
-      newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
-    }
   }
 
   //····················································································································
@@ -611,12 +583,14 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+//  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
-    if let model = self.propval {
+    return self.signatureForERCChecking_property.selection
+/*    if let model = self.propval {
       switch (model.signatureForERCChecking_property_selection) {
       case .empty :
         return .empty
@@ -627,33 +601,33 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_signatureForERCChecking.insert (inObserver)
+    self.signatureForERCChecking_property.addEBObserver (inObserver)
+/*    self.mObserversOf_signatureForERCChecking.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.signatureForERCChecking_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_signatureForERCChecking.remove (inObserver)
+    self.signatureForERCChecking_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_signatureForERCChecking.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -879,6 +853,22 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       }
     }
     self.none_property.addEBObserver (self.drillDataFileExtension_property)
+  //--- Configure signatureForERCChecking transient property
+    self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.signatureForERCChecking_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.signatureForERCChecking_property)
   }
 
   //····················································································································

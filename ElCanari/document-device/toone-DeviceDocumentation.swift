@@ -15,17 +15,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceDocumentation?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
- //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-      oldValue.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
- //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
-      newValue.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
-    }
   }
 
   //····················································································································
@@ -134,12 +124,14 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private final var mObserversOf_fileSize = EBWeakEventSet ()
+  private final var fileSize_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_fileSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var fileSize_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+    return self.fileSize_property.selection
+/*    if let model = self.propval {
       switch (model.fileSize_property_selection) {
       case .empty :
         return .empty
@@ -150,33 +142,33 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_fileSize.insert (inObserver)
+    self.fileSize_property.addEBObserver (inObserver)
+/*    self.mObserversOf_fileSize.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.fileSize_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_fileSize.remove (inObserver)
+    self.fileSize_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_fileSize.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.fileSize_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -217,6 +209,22 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
       }
     }
     self.none_property.addEBObserver (self.mFileData_property)
+  //--- Configure fileSize transient property
+    self.fileSize_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.fileSize_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.fileSize_property)
   }
 
   //····················································································································

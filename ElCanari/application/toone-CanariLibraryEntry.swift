@@ -15,21 +15,7 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : CanariLibraryEntry?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
- //     oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
- //     oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
- //     oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
-      oldValue.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
- //     newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
- //     newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
- //     newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
-      newValue.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
-    }
   }
 
   //····················································································································
@@ -240,12 +226,14 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
+  private final var mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+//  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage?> {
-    if let model = self.propval {
+    return self.mStatusImage_property.selection
+/*    if let model = self.propval {
       switch (model.mStatusImage_property_selection) {
       case .empty :
         return .empty
@@ -256,33 +244,33 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_mStatusImage.insert (inObserver)
+    self.mStatusImage_property.addEBObserver (inObserver)
+/*    self.mObserversOf_mStatusImage.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mStatusImage_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_mStatusImage.remove (inObserver)
+    self.mStatusImage_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_mStatusImage.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.mStatusImage_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -355,6 +343,22 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
       }
     }
     self.none_property.addEBObserver (self.mUserAndPasswordTag_property)
+  //--- Configure mStatusImage transient property
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mStatusImage_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.mStatusImage_property)
   }
 
   //····················································································································

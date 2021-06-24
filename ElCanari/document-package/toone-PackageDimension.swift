@@ -15,47 +15,7 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageDimension?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
-    if let oldValue = inOldValue {
- //     oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
- //     oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
- //     oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
- //     oldValue.xDimension_property.removeEBObserversFrom (&self.mObserversOf_xDimension) // Stored property
- //     oldValue.yDimension_property.removeEBObserversFrom (&self.mObserversOf_yDimension) // Stored property
- //     oldValue.x1Unit_property.removeEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
- //     oldValue.y1Unit_property.removeEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
- //     oldValue.x2Unit_property.removeEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
- //     oldValue.y2Unit_property.removeEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
- //     oldValue.xDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
- //     oldValue.yDimensionUnit_property.removeEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
- //     oldValue.distanceUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
- //     oldValue.drawDimensionBackground_property.removeEBObserversFrom (&self.mObserversOf_drawDimensionBackground) // Stored property
- //     oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
-      oldValue.distanceInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
-      oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-      oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
- //     newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
- //     newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
- //     newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
- //     newValue.xDimension_property.addEBObserversFrom (&self.mObserversOf_xDimension) // Stored property
- //     newValue.yDimension_property.addEBObserversFrom (&self.mObserversOf_yDimension) // Stored property
- //     newValue.x1Unit_property.addEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
- //     newValue.y1Unit_property.addEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
- //     newValue.x2Unit_property.addEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
- //     newValue.y2Unit_property.addEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
- //     newValue.xDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_xDimensionUnit) // Stored property
- //     newValue.yDimensionUnit_property.addEBObserversFrom (&self.mObserversOf_yDimensionUnit) // Stored property
- //     newValue.distanceUnit_property.addEBObserversFrom (&self.mObserversOf_distanceUnit) // Stored property
- //     newValue.drawDimensionBackground_property.addEBObserversFrom (&self.mObserversOf_drawDimensionBackground) // Stored property
- //     newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
-      newValue.distanceInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_distanceInCanariUnit) // Transient property
-      newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
-      newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
-      newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
-    }
   }
 
   //····················································································································
@@ -776,12 +736,14 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //   Observers of 'distanceInCanariUnit' transient property
   //····················································································································
 
-  private final var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
+  private final var distanceInCanariUnit_property = EBGenericTransientProperty <Int?> ()
+//  private final var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var distanceInCanariUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
+    return self.distanceInCanariUnit_property.selection
+/*    if let model = self.propval {
       switch (model.distanceInCanariUnit_property_selection) {
       case .empty :
         return .empty
@@ -792,45 +754,47 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_distanceInCanariUnit.insert (inObserver)
+    self.distanceInCanariUnit_property.addEBObserver (inObserver)
+/*    self.mObserversOf_distanceInCanariUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.distanceInCanariUnit_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_distanceInCanariUnit.remove (inObserver)
+    self.distanceInCanariUnit_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_distanceInCanariUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.distanceInCanariUnit_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+//  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
+    return self.objectDisplay_property.selection
+/*    if let model = self.propval {
       switch (model.objectDisplay_property_selection) {
       case .empty :
         return .empty
@@ -841,45 +805,47 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.insert (inObserver)
+    self.objectDisplay_property.addEBObserver (inObserver)
+/*    self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.objectDisplay_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_objectDisplay.remove (inObserver)
+    self.objectDisplay_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+//  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    if let model = self.propval {
+    return self.selectionDisplay_property.selection
+/*    if let model = self.propval {
       switch (model.selectionDisplay_property_selection) {
       case .empty :
         return .empty
@@ -890,45 +856,47 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.insert (inObserver)
+    self.selectionDisplay_property.addEBObserver (inObserver)
+/*    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectionDisplay_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectionDisplay.remove (inObserver)
+    self.selectionDisplay_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakEventSet ()
+  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+//  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    if let model = self.propval {
+    return self.issues_property.selection
+/*    if let model = self.propval {
       switch (model.issues_property_selection) {
       case .empty :
         return .empty
@@ -939,33 +907,33 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       }
     }else{
       return .single (nil)
-    }
+    }*/
   }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
+    self.issues_property.addEBObserver (inObserver)
+/*    self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.addEBObserver (inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
+    self.issues_property.removeEBObserver (inObserver)
+/*    self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
+    }*/
   }
 
   //····················································································································
@@ -1198,6 +1166,70 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
       }
     }
     self.none_property.addEBObserver (self.x1_property)
+  //--- Configure distanceInCanariUnit transient property
+    self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.distanceInCanariUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.distanceInCanariUnit_property)
+  //--- Configure objectDisplay transient property
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.objectDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.objectDisplay_property)
+  //--- Configure selectionDisplay transient property
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.selectionDisplay_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.selectionDisplay_property)
+  //--- Configure issues transient property
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.issues_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································
