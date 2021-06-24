@@ -42,8 +42,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-//  private final var mNominalSize_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mNominalSize = EBWeakEventSet ()
 
   //····················································································································
@@ -92,8 +90,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
   //   Observers of 'mFontName' stored property
   //····················································································································
-
-//  private final var mFontName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mFontName = EBWeakEventSet ()
 
@@ -144,8 +140,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-//  private final var mFontVersion_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mFontVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -194,8 +188,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
-
-//  private final var mDescriptiveString_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mDescriptiveString = EBWeakEventSet ()
 

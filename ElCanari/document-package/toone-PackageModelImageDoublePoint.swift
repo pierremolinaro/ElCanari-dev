@@ -42,8 +42,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
-//  private final var mFirstX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mFirstX = EBWeakEventSet ()
 
   //····················································································································
@@ -92,8 +90,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
   //   Observers of 'mFirstY' stored property
   //····················································································································
-
-//  private final var mFirstY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mFirstY = EBWeakEventSet ()
 
@@ -144,8 +140,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
-//  private final var mFirstColor_property = EBGenericPropertyProxy <NSColor> ()
-
   private final var mObserversOf_mFirstColor = EBWeakEventSet ()
 
   //····················································································································
@@ -194,8 +188,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
   //   Observers of 'mSecondDx' stored property
   //····················································································································
-
-//  private final var mSecondDx_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSecondDx = EBWeakEventSet ()
 
@@ -246,8 +238,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
-//  private final var mSecondDy_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSecondDy = EBWeakEventSet ()
 
   //····················································································································
@@ -296,8 +286,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //····················································································································
   //   Observers of 'mSecondColor' stored property
   //····················································································································
-
-//  private final var mSecondColor_property = EBGenericPropertyProxy <NSColor> ()
 
   private final var mObserversOf_mSecondColor = EBWeakEventSet ()
 

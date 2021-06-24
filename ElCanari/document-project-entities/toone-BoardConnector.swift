@@ -84,8 +84,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-//  private final var mComponentPadName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
@@ -134,8 +132,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mPadIndex' stored property
   //····················································································································
-
-//  private final var mPadIndex_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mPadIndex = EBWeakEventSet ()
 
@@ -186,8 +182,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -236,8 +230,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 
@@ -288,8 +280,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-//  private final var mDefaultHoleDiameterUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -338,8 +328,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
-
-//  private final var mCustomHoleDiameter_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
 
@@ -390,8 +378,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-//  private final var mCustomHoleDiameterUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -440,8 +426,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
-
-//  private final var mUsesCustomHoleDiameter_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
 
@@ -492,8 +476,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-//  private final var mDefaultPadDiameterUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -542,8 +524,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
-
-//  private final var mCustomPadDiameter_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
 
@@ -594,8 +574,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-//  private final var mCustomPadDiameterUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -644,8 +622,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
-
-//  private final var mUsesCustomPadDiameter_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
 

@@ -36,8 +36,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-//  private final var mPinInstanceName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -87,8 +85,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-//  private final var mPadName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
@@ -137,8 +133,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //····················································································································
   //   Observers of 'mIsNC' stored property
   //····················································································································
-
-//  private final var mIsNC_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsNC = EBWeakEventSet ()
 

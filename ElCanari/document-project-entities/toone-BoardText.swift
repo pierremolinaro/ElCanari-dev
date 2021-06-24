@@ -54,8 +54,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -104,8 +102,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 
@@ -156,8 +152,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mFontSize' stored property
   //····················································································································
 
-//  private final var mFontSize_property = EBGenericPropertyProxy <Double> ()
-
   private final var mObserversOf_mFontSize = EBWeakEventSet ()
 
   //····················································································································
@@ -206,8 +200,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
   //   Observers of 'mLayer' stored property
   //····················································································································
-
-//  private final var mLayer_property = EBGenericPropertyProxy <BoardTextLayer> ()
 
   private final var mObserversOf_mLayer = EBWeakEventSet ()
 
@@ -258,8 +250,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mText' stored property
   //····················································································································
 
-//  private final var mText_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mText = EBWeakEventSet ()
 
   //····················································································································
@@ -308,8 +298,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
-
-//  private final var mHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
 
   private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
@@ -360,8 +348,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
-//  private final var mVerticalAlignment_property = EBGenericPropertyProxy <BoardTextVerticalAlignment> ()
-
   private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -410,8 +396,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
-
-//  private final var mRotation_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRotation = EBWeakEventSet ()
 
@@ -462,8 +446,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mWeight' stored property
   //····················································································································
 
-//  private final var mWeight_property = EBGenericPropertyProxy <Double> ()
-
   private final var mObserversOf_mWeight = EBWeakEventSet ()
 
   //····················································································································
@@ -512,8 +494,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //····················································································································
   //   Observers of 'mOblique' stored property
   //····················································································································
-
-//  private final var mOblique_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mOblique = EBWeakEventSet ()
 

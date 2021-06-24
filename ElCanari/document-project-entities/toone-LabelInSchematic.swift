@@ -38,8 +38,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
-//  private final var mOrientation_property = EBGenericPropertyProxy <QuadrantRotation> ()
-
   private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································

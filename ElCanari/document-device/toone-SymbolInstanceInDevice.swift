@@ -42,8 +42,6 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //   Observers of 'mInstanceName' stored property
   //····················································································································
 
-//  private final var mInstanceName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -93,8 +91,6 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -143,8 +139,6 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 

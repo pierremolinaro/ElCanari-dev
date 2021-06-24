@@ -32,8 +32,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-//  private final var mFileName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
@@ -82,8 +80,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
   //   Observers of 'mFileData' stored property
   //····················································································································
-
-//  private final var mFileData_property = EBGenericPropertyProxy <Data> ()
 
   private final var mObserversOf_mFileData = EBWeakEventSet ()
 

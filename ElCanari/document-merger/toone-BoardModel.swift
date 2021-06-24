@@ -130,8 +130,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'name' stored property
   //····················································································································
 
-//  private final var name_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
@@ -180,8 +178,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
   //   Observers of 'modelWidth' stored property
   //····················································································································
-
-//  private final var modelWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_modelWidth = EBWeakEventSet ()
 
@@ -232,8 +228,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
-//  private final var modelWidthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_modelWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -282,8 +276,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
   //   Observers of 'modelHeight' stored property
   //····················································································································
-
-//  private final var modelHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_modelHeight = EBWeakEventSet ()
 
@@ -334,8 +326,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
-//  private final var modelHeightUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_modelHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -384,8 +374,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
-
-//  private final var zoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
@@ -436,8 +424,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
-//  private final var modelLimitWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_modelLimitWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -487,8 +473,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
-//  private final var modelLimitWidthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -537,8 +521,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
   //   Observers of 'artworkName' stored property
   //····················································································································
-
-//  private final var artworkName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_artworkName = EBWeakEventSet ()
 

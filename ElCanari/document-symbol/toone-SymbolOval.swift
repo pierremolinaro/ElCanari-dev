@@ -42,8 +42,6 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   //   Observers of 'y' stored property
   //····················································································································
 
-//  private final var y_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -92,8 +90,6 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
-
-//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -144,8 +140,6 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   //   Observers of 'height' stored property
   //····················································································································
 
-//  private final var height_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -194,8 +188,6 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
-
-//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 

@@ -42,8 +42,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'x' stored property
   //····················································································································
 
-//  private final var x_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
@@ -93,8 +91,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'y' stored property
   //····················································································································
 
-//  private final var y_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -143,8 +139,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //····················································································································
   //   Observers of 'instanceRotation' stored property
   //····················································································································
-
-//  private final var instanceRotation_property = EBGenericPropertyProxy <QuadrantRotation> ()
 
   private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 

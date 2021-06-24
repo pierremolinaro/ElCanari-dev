@@ -64,8 +64,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mNetClassName' stored property
   //····················································································································
 
-//  private final var mNetClassName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mNetClassName = EBWeakEventSet ()
 
   //····················································································································
@@ -114,8 +112,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
   //   Observers of 'mNetClassColor' stored property
   //····················································································································
-
-//  private final var mNetClassColor_property = EBGenericPropertyProxy <NSColor> ()
 
   private final var mObserversOf_mNetClassColor = EBWeakEventSet ()
 
@@ -166,8 +162,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mTrackWidth' stored property
   //····················································································································
 
-//  private final var mTrackWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mTrackWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -216,8 +210,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
   //   Observers of 'mTrackWidthUnit' stored property
   //····················································································································
-
-//  private final var mTrackWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
 
@@ -268,8 +260,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaHoleDiameter' stored property
   //····················································································································
 
-//  private final var mViaHoleDiameter_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -318,8 +308,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
   //   Observers of 'mViaHoleDiameterUnit' stored property
   //····················································································································
-
-//  private final var mViaHoleDiameterUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
 
@@ -370,8 +358,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaPadDiameter' stored property
   //····················································································································
 
-//  private final var mViaPadDiameter_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -420,8 +406,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
   //   Observers of 'mViaPadDiameterUnit' stored property
   //····················································································································
-
-//  private final var mViaPadDiameterUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
 
@@ -472,8 +456,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mAllowTracksOnFrontSide' stored property
   //····················································································································
 
-//  private final var mAllowTracksOnFrontSide_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
 
   //····················································································································
@@ -522,8 +504,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
   //   Observers of 'mAllowTracksOnBackSide' stored property
   //····················································································································
-
-//  private final var mAllowTracksOnBackSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
 

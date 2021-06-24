@@ -52,8 +52,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-//  private final var mDeviceName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mDeviceName = EBWeakEventSet ()
 
   //····················································································································
@@ -102,8 +100,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
-
-//  private final var mPrefix_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
@@ -154,8 +150,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
 
-//  private final var mDeviceVersion_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mDeviceVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -204,8 +198,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //····················································································································
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
-
-//  private final var mDeviceFileData_property = EBGenericPropertyProxy <Data> ()
 
   private final var mObserversOf_mDeviceFileData = EBWeakEventSet ()
 

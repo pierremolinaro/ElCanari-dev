@@ -52,8 +52,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mWidthUnit' stored property
   //····················································································································
 
-//  private final var mWidthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -102,8 +100,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //····················································································································
   //   Observers of 'mX1' stored property
   //····················································································································
-
-//  private final var mX1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX1 = EBWeakEventSet ()
 
@@ -154,8 +150,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX1Unit' stored property
   //····················································································································
 
-//  private final var mX1Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX1Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -204,8 +198,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //····················································································································
   //   Observers of 'mY1' stored property
   //····················································································································
-
-//  private final var mY1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY1 = EBWeakEventSet ()
 
@@ -256,8 +248,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY1Unit' stored property
   //····················································································································
 
-//  private final var mY1Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mY1Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -306,8 +296,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //····················································································································
   //   Observers of 'mX2' stored property
   //····················································································································
-
-//  private final var mX2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX2 = EBWeakEventSet ()
 
@@ -358,8 +346,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX2Unit' stored property
   //····················································································································
 
-//  private final var mX2Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX2Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -408,8 +394,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //····················································································································
   //   Observers of 'mY2' stored property
   //····················································································································
-
-//  private final var mY2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY2 = EBWeakEventSet ()
 
@@ -460,8 +444,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY2Unit' stored property
   //····················································································································
 
-//  private final var mY2Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mY2Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -511,8 +493,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
-//  private final var mLayer_property = EBGenericPropertyProxy <BoardLineLayer> ()
-
   private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -561,8 +541,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
-
-//  private final var mWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 

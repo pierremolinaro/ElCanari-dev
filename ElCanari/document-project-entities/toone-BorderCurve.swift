@@ -52,8 +52,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -102,8 +100,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 
@@ -154,8 +150,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
-//  private final var mCPX1_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCPX1 = EBWeakEventSet ()
 
   //····················································································································
@@ -204,8 +198,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
   //   Observers of 'mCPY1' stored property
   //····················································································································
-
-//  private final var mCPY1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCPY1 = EBWeakEventSet ()
 
@@ -256,8 +248,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
-//  private final var mCPX2_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCPX2 = EBWeakEventSet ()
 
   //····················································································································
@@ -307,8 +297,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
-//  private final var mCPY2_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCPY2 = EBWeakEventSet ()
 
   //····················································································································
@@ -357,8 +345,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
-
-//  private final var mShape_property = EBGenericPropertyProxy <BorderCurveShape> ()
 
   private final var mObserversOf_mShape = EBWeakEventSet ()
 

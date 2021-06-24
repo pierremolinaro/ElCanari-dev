@@ -50,8 +50,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
-//  private final var comments_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -100,8 +98,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
   //   Observers of 'nominalSize' stored property
   //····················································································································
-
-//  private final var nominalSize_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_nominalSize = EBWeakEventSet ()
 
@@ -152,8 +148,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
-//  private final var selectedTab_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
@@ -203,8 +197,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-//  private final var selectedInspector_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -253,8 +245,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //····················································································································
   //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
-
-//  private final var currentCharacterCodePoint_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 

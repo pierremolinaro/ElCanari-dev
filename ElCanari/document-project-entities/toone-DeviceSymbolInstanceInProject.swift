@@ -36,8 +36,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································

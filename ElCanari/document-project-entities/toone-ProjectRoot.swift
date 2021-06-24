@@ -256,8 +256,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-//  private final var mArtworkName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
@@ -306,8 +304,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
-
-//  private final var mArtworkVersion_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
@@ -358,8 +354,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-//  private final var mPDFBoardBackgroundColor_property = EBGenericPropertyProxy <NSColor> ()
-
   private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
@@ -408,8 +402,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
-
-//  private final var mCheckClearanceBetweenPadsOfSameNet_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
@@ -460,8 +452,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
 
-//  private final var mLastERCCheckingIsSuccess_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
   //····················································································································
@@ -510,8 +500,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mLastERCCheckingSignature' stored property
   //····················································································································
-
-//  private final var mLastERCCheckingSignature_property = EBGenericPropertyProxy <UInt32> ()
 
   private final var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
 
@@ -562,8 +550,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewTrack' stored property
   //····················································································································
 
-//  private final var mBoardSideForNewTrack_property = EBGenericPropertyProxy <TrackSide> ()
-
   private final var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
 
   //····················································································································
@@ -612,8 +598,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mDirectionForNewTrack' stored property
   //····················································································································
-
-//  private final var mDirectionForNewTrack_property = EBGenericPropertyProxy <TrackCreationDirection> ()
 
   private final var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
 
@@ -664,8 +648,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewText' stored property
   //····················································································································
 
-//  private final var mBoardLayerForNewText_property = EBGenericPropertyProxy <BoardTextLayer> ()
-
   private final var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
 
   //····················································································································
@@ -714,8 +696,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLayerForNewLine' stored property
   //····················································································································
-
-//  private final var mBoardLayerForNewLine_property = EBGenericPropertyProxy <BoardLineLayer> ()
 
   private final var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
 
@@ -766,8 +746,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
   //····················································································································
 
-//  private final var mBoardSideForNewRestrictRectangle_property = EBGenericPropertyProxy <RestrictRectangleLayer> ()
-
   private final var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
 
   //····················································································································
@@ -816,8 +794,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mAutoRouterPreferredDirections' stored property
   //····················································································································
-
-//  private final var mAutoRouterPreferredDirections_property = EBGenericPropertyProxy <AutorouterPreferredDirections> ()
 
   private final var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
 
@@ -868,8 +844,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterSnapAngle' stored property
   //····················································································································
 
-//  private final var mAutorouterSnapAngle_property = EBGenericPropertyProxy <AutorouterSnapAngle> ()
-
   private final var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
 
   //····················································································································
@@ -918,8 +892,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mRouteDirection' stored property
   //····················································································································
-
-//  private final var mRouteDirection_property = EBGenericPropertyProxy <RouteDirection> ()
 
   private final var mObserversOf_mRouteDirection = EBWeakEventSet ()
 
@@ -970,8 +942,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteOrigin' stored property
   //····················································································································
 
-//  private final var mRouteOrigin_property = EBGenericPropertyProxy <RouteOrigin> ()
-
   private final var mObserversOf_mRouteOrigin = EBWeakEventSet ()
 
   //····················································································································
@@ -1020,8 +990,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mAutorouterInterfaceMode' stored property
   //····················································································································
-
-//  private final var mAutorouterInterfaceMode_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
 
@@ -1072,8 +1040,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mExportExistingTracksAndVias' stored property
   //····················································································································
 
-//  private final var mExportExistingTracksAndVias_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
 
   //····················································································································
@@ -1122,8 +1088,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mTrackLengthUnit' stored property
   //····················································································································
-
-//  private final var mTrackLengthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
 
@@ -1174,8 +1138,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearance' stored property
   //····················································································································
 
-//  private final var mLayoutClearance_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mLayoutClearance = EBWeakEventSet ()
 
   //····················································································································
@@ -1224,8 +1186,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mLayoutClearanceUnit' stored property
   //····················································································································
-
-//  private final var mLayoutClearanceUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
 
@@ -1276,8 +1236,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedInspector' stored property
   //····················································································································
 
-//  private final var mBoardSelectedInspector_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -1326,8 +1284,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardHorizontalFlip' stored property
   //····················································································································
-
-//  private final var mBoardHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
 
@@ -1378,8 +1334,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardVerticalFlip' stored property
   //····················································································································
 
-//  private final var mBoardVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -1428,8 +1382,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardGridStyle' stored property
   //····················································································································
-
-//  private final var mBoardGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
 
@@ -1480,8 +1432,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridDisplayFactor' stored property
   //····················································································································
 
-//  private final var mBoardGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -1530,8 +1480,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardZoom' stored property
   //····················································································································
-
-//  private final var mBoardZoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardZoom = EBWeakEventSet ()
 
@@ -1582,8 +1530,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStep' stored property
   //····················································································································
 
-//  private final var mBoardGridStep_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardGridStep = EBWeakEventSet ()
 
   //····················································································································
@@ -1632,8 +1578,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardGridStepUnit' stored property
   //····················································································································
-
-//  private final var mBoardGridStepUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
 
@@ -1684,8 +1628,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mErrorOrWarningIssueSize' stored property
   //····················································································································
 
-//  private final var mErrorOrWarningIssueSize_property = EBGenericPropertyProxy <Double> ()
-
   private final var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
@@ -1734,8 +1676,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mControlKeyHiliteDiameter' stored property
   //····················································································································
-
-//  private final var mControlKeyHiliteDiameter_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
 
@@ -1786,8 +1726,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDSNFileProposedName' stored property
   //····················································································································
 
-//  private final var mDSNFileProposedName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
 
   //····················································································································
@@ -1836,8 +1774,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsWidth' stored property
   //····················································································································
-
-//  private final var mBoardLimitsWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
 
@@ -1888,8 +1824,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidthUnit' stored property
   //····················································································································
 
-//  private final var mBoardLimitsWidthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1938,8 +1872,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardClearance' stored property
   //····················································································································
-
-//  private final var mBoardClearance_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardClearance = EBWeakEventSet ()
 
@@ -1990,8 +1922,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearanceUnit' stored property
   //····················································································································
 
-//  private final var mBoardClearanceUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2040,8 +1970,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
-
-//  private final var mBoardLimitsSelectedInspector_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
 
@@ -2092,8 +2020,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsHorizontalFlip' stored property
   //····················································································································
 
-//  private final var mBoardLimitsHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -2142,8 +2068,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsVerticalFlip' stored property
   //····················································································································
-
-//  private final var mBoardLimitsVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
 
@@ -2194,8 +2118,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStyle' stored property
   //····················································································································
 
-//  private final var mBoardLimitsGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
-
   private final var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -2244,8 +2166,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsGridDisplayFactor' stored property
   //····················································································································
-
-//  private final var mBoardLimitsGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
 
@@ -2296,8 +2216,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsZoom' stored property
   //····················································································································
 
-//  private final var mBoardLimitsZoom_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -2346,8 +2264,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsGridStep' stored property
   //····················································································································
-
-//  private final var mBoardLimitsGridStep_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
 
@@ -2398,8 +2314,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   //····················································································································
 
-//  private final var mBoardLimitsGridStepUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2448,8 +2362,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   //····················································································································
-
-//  private final var mBoardLimitsBoundingBoxUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
 
@@ -2500,8 +2412,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   //····················································································································
 
-//  private final var mBoardPointsBoundingBoxUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2550,8 +2460,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   //····················································································································
-
-//  private final var mBoardSelectedCurveDisplayUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
 
@@ -2602,8 +2510,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   //····················································································································
 
-//  private final var mBoardLimitControlPointsDisplayUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2652,8 +2558,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mBoardShape' stored property
   //····················································································································
-
-//  private final var mBoardShape_property = EBGenericPropertyProxy <BoardShape> ()
 
   private final var mObserversOf_mBoardShape = EBWeakEventSet ()
 
@@ -2704,8 +2608,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidth' stored property
   //····················································································································
 
-//  private final var mRectangularBoardWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -2754,8 +2656,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   //····················································································································
-
-//  private final var mRectangularBoardWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
 
@@ -2806,8 +2706,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeight' stored property
   //····················································································································
 
-//  private final var mRectangularBoardHeight_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -2856,8 +2754,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   //····················································································································
-
-//  private final var mRectangularBoardHeightUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
 
@@ -2908,8 +2804,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
 
-//  private final var mDefaultNetClassName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
 
   //····················································································································
@@ -2958,8 +2852,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
-
-//  private final var mSelectedPageIndex_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
@@ -3010,8 +2902,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
 
-//  private final var mSelectedSchematicInspector_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -3060,8 +2950,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicTitle' stored property
   //····················································································································
-
-//  private final var mSchematicTitle_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mSchematicTitle = EBWeakEventSet ()
 
@@ -3112,8 +3000,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVersion' stored property
   //····················································································································
 
-//  private final var mSchematicVersion_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSchematicVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -3162,8 +3048,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicDate' stored property
   //····················································································································
-
-//  private final var mSchematicDate_property = EBGenericPropertyProxy <Date> ()
 
   private final var mObserversOf_mSchematicDate = EBWeakEventSet ()
 
@@ -3214,8 +3098,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicHorizontalFlip' stored property
   //····················································································································
 
-//  private final var mSchematicHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -3264,8 +3146,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicVerticalFlip' stored property
   //····················································································································
-
-//  private final var mSchematicVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
 
@@ -3316,8 +3196,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicZoom' stored property
   //····················································································································
 
-//  private final var mSchematicZoom_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSchematicZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -3366,8 +3244,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicGridStyle' stored property
   //····················································································································
-
-//  private final var mSchematicGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
 
@@ -3418,8 +3294,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridDisplayFactor' stored property
   //····················································································································
 
-//  private final var mSchematicGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -3468,8 +3342,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicCustomWidth' stored property
   //····················································································································
-
-//  private final var mSchematicCustomWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
 
@@ -3520,8 +3392,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   //····················································································································
 
-//  private final var mSchematicCustomWidthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -3570,8 +3440,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicCustomHeight' stored property
   //····················································································································
-
-//  private final var mSchematicCustomHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
 
@@ -3622,8 +3490,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   //····················································································································
 
-//  private final var mSchematicCustomHeightUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -3672,8 +3538,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mSchematicSheetOrientation' stored property
   //····················································································································
-
-//  private final var mSchematicSheetOrientation_property = EBGenericPropertyProxy <SchematicSheetOrientation> ()
 
   private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
 
@@ -3724,8 +3588,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
 
-//  private final var mRastnetDisplay_property = EBGenericPropertyProxy <RastnetDisplay> ()
-
   private final var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
 
   //····················································································································
@@ -3775,8 +3637,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedNetName' stored property
   //····················································································································
 
-//  private final var mRastnetDisplayedNetName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
 
   //····················································································································
@@ -3825,8 +3685,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
   //   Observers of 'mRastnetDisplayedComponentName' stored property
   //····················································································································
-
-//  private final var mRastnetDisplayedComponentName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
 

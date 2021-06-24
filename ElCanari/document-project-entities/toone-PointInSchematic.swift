@@ -56,8 +56,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
-//  private final var mSymbolPinName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
@@ -107,8 +105,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -157,8 +153,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 

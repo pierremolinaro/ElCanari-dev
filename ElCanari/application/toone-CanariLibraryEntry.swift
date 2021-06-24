@@ -36,8 +36,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mPath' stored property
   //····················································································································
 
-//  private final var mPath_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mPath = EBWeakEventSet ()
 
   //····················································································································
@@ -86,8 +84,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
   //   Observers of 'mUses' stored property
   //····················································································································
-
-//  private final var mUses_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mUses = EBWeakEventSet ()
 
@@ -138,8 +134,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-//  private final var mLibraryRepositoryURL_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
 
   //····················································································································
@@ -188,8 +182,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
-
-//  private final var mUserAndPasswordTag_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
 

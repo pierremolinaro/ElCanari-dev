@@ -42,8 +42,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-//  private final var codePoint_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
@@ -92,8 +90,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
   //   Observers of 'advance' stored property
   //····················································································································
-
-//  private final var advance_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_advance = EBWeakEventSet ()
 
@@ -144,8 +140,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-//  private final var mWarnsWhenNoSegment_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
@@ -194,8 +188,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
-
-//  private final var mWarnsWhenAdvanceIsZero_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 

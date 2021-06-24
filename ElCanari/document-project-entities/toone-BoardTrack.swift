@@ -92,8 +92,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mSide' stored property
   //····················································································································
 
-//  private final var mSide_property = EBGenericPropertyProxy <TrackSide> ()
-
   private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
@@ -142,8 +140,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
-
-//  private final var mDefaultTrackWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
 
@@ -194,8 +190,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mCustomTrackWidth' stored property
   //····················································································································
 
-//  private final var mCustomTrackWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -244,8 +238,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
-
-//  private final var mCustomTrackWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
 
@@ -296,8 +288,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mUsesCustomTrackWidth' stored property
   //····················································································································
 
-//  private final var mUsesCustomTrackWidth_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -346,8 +336,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
-
-//  private final var mIsPreservedByAutoRouter_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
 
@@ -398,8 +386,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP1XUnit' stored property
   //····················································································································
 
-//  private final var mP1XUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mP1XUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -448,8 +434,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
-
-//  private final var mP1YUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mP1YUnit = EBWeakEventSet ()
 
@@ -500,8 +484,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mP2XUnit' stored property
   //····················································································································
 
-//  private final var mP2XUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mP2XUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -550,8 +532,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
-
-//  private final var mP2YUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mP2YUnit = EBWeakEventSet ()
 
@@ -602,8 +582,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mManualLockP1' stored property
   //····················································································································
 
-//  private final var mManualLockP1_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mManualLockP1 = EBWeakEventSet ()
 
   //····················································································································
@@ -653,8 +631,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
-//  private final var mManualLockP2_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mManualLockP2 = EBWeakEventSet ()
 
   //····················································································································
@@ -703,8 +679,6 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
-
-//  private final var mDirectionLockOnKnobDragging_property = EBGenericPropertyProxy <TrackLockDirection> ()
 
   private final var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
 

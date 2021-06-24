@@ -50,8 +50,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'y' stored property
   //····················································································································
 
-//  private final var y_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -100,8 +98,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
-
-//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -152,8 +148,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'height' stored property
   //····················································································································
 
-//  private final var height_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -202,8 +196,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //····················································································································
   //   Observers of 'xUnit' stored property
   //····················································································································
-
-//  private final var xUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_xUnit = EBWeakEventSet ()
 
@@ -254,8 +246,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-//  private final var yUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -304,8 +294,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
-
-//  private final var widthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
@@ -356,8 +344,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-//  private final var heightUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -406,8 +392,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
-
-//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 

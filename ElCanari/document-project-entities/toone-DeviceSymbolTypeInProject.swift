@@ -32,8 +32,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-//  private final var mSymbolTypeName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
@@ -83,8 +81,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath> ()
-
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
@@ -133,8 +129,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
-
-//  private final var mFilledBezierPath_property = EBGenericPropertyProxy <NSBezierPath> ()
 
   private final var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
 

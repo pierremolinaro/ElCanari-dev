@@ -32,8 +32,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-//  private final var mPadName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································

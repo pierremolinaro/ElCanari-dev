@@ -84,8 +84,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'xCenter' stored property
   //····················································································································
 
-//  private final var xCenter_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -134,8 +132,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'yCenter' stored property
   //····················································································································
-
-//  private final var yCenter_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_yCenter = EBWeakEventSet ()
 
@@ -186,8 +182,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'width' stored property
   //····················································································································
 
-//  private final var width_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
@@ -236,8 +230,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
-
-//  private final var height_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_height = EBWeakEventSet ()
 
@@ -288,8 +280,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'holeWidth' stored property
   //····················································································································
 
-//  private final var holeWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -338,8 +328,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'holeHeight' stored property
   //····················································································································
-
-//  private final var holeHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
@@ -390,8 +378,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'padShape' stored property
   //····················································································································
 
-//  private final var padShape_property = EBGenericPropertyProxy <PadShape> ()
-
   private final var mObserversOf_padShape = EBWeakEventSet ()
 
   //····················································································································
@@ -440,8 +426,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'padStyle' stored property
   //····················································································································
-
-//  private final var padStyle_property = EBGenericPropertyProxy <PadStyle> ()
 
   private final var mObserversOf_padStyle = EBWeakEventSet ()
 
@@ -492,8 +476,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-//  private final var padNumber_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
@@ -542,8 +524,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
-
-//  private final var xCenterUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
@@ -594,8 +574,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
-//  private final var yCenterUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -644,8 +622,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
-
-//  private final var widthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
@@ -696,8 +672,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-//  private final var heightUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -746,8 +720,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
-
-//  private final var holeWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
@@ -798,8 +770,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
 
-//  private final var holeHeightUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -848,8 +818,6 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   //····················································································································
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
-
-//  private final var annularRingUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 

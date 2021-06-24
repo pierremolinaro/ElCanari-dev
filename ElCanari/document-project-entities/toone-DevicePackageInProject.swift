@@ -32,8 +32,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
-//  private final var mPackageName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mPackageName = EBWeakEventSet ()
 
   //····················································································································
@@ -82,8 +80,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
-
-//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath> ()
 
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 

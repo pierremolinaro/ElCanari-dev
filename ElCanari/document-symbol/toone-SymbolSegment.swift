@@ -42,8 +42,6 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'y1' stored property
   //····················································································································
 
-//  private final var y1_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -92,8 +90,6 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //····················································································································
   //   Observers of 'x2' stored property
   //····················································································································
-
-//  private final var x2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
@@ -144,8 +140,6 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //   Observers of 'y2' stored property
   //····················································································································
 
-//  private final var y2_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
@@ -194,8 +188,6 @@ class ReadOnlyObject_SymbolSegment : ReadOnlyAbstractObjectProperty <SymbolSegme
   //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
-
-//  private final var x1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1 = EBWeakEventSet ()
 

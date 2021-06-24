@@ -44,8 +44,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mY' stored property
   //····················································································································
 
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -94,8 +92,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
-
-//  private final var mWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
@@ -146,8 +142,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-//  private final var mHeight_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -196,8 +190,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
-
-//  private final var mIsInFrontLayer_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
 
@@ -248,8 +240,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
 
-//  private final var mIsInBackLayer_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -298,8 +288,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
-
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX = EBWeakEventSet ()
 

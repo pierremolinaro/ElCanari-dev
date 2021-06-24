@@ -44,8 +44,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-//  private final var mCenterX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
@@ -94,8 +92,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
-
-//  private final var mCenterY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
@@ -146,8 +142,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-//  private final var mWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -196,8 +190,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
-
-//  private final var mHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
@@ -248,8 +240,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
-//  private final var mHoleWidth_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -298,8 +288,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //····················································································································
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
-
-//  private final var mHoleHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHoleHeight = EBWeakEventSet ()
 
@@ -350,8 +338,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //   Observers of 'mShape' stored property
   //····················································································································
 
-//  private final var mShape_property = EBGenericPropertyProxy <PadShape> ()
-
   private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
@@ -400,8 +386,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //····················································································································
   //   Observers of 'mStyle' stored property
   //····················································································································
-
-//  private final var mStyle_property = EBGenericPropertyProxy <SlavePadStyle> ()
 
   private final var mObserversOf_mStyle = EBWeakEventSet ()
 

@@ -44,8 +44,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mColor' stored property
   //····················································································································
 
-//  private final var mColor_property = EBGenericPropertyProxy <NSColor> ()
-
   private final var mObserversOf_mColor = EBWeakEventSet ()
 
   //····················································································································
@@ -94,8 +92,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
   //   Observers of 'mSize' stored property
   //····················································································································
-
-//  private final var mSize_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mSize = EBWeakEventSet ()
 
@@ -146,8 +142,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
-//  private final var mHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
-
   private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -196,8 +190,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
-
-//  private final var mVerticalAlignment_property = EBGenericPropertyProxy <VerticalAlignment> ()
 
   private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
@@ -248,8 +240,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -299,8 +289,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mY' stored property
   //····················································································································
 
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -349,8 +337,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //····················································································································
   //   Observers of 'mComment' stored property
   //····················································································································
-
-//  private final var mComment_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mComment = EBWeakEventSet ()
 

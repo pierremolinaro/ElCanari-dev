@@ -38,8 +38,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-//  private final var mSheetTitle_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································

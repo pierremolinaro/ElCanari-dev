@@ -40,8 +40,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'y' stored property
   //····················································································································
 
-//  private final var y_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -90,8 +88,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
   //   Observers of 'text' stored property
   //····················································································································
-
-//  private final var text_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_text = EBWeakEventSet ()
 
@@ -142,8 +138,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'horizontalAlignment' stored property
   //····················································································································
 
-//  private final var horizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
-
   private final var mObserversOf_horizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -192,8 +186,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
-
-//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 

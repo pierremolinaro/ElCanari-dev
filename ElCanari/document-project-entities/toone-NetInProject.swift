@@ -42,8 +42,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-//  private final var mNetName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································

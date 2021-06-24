@@ -62,8 +62,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-//  private final var mCenterX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
@@ -112,8 +110,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
-
-//  private final var mCenterY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
@@ -164,8 +160,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-//  private final var mRotation_property = EBGenericPropertyProxy <QuadrantRotation> ()
-
   private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
@@ -214,8 +208,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
   //   Observers of 'mMirror' stored property
   //····················································································································
-
-//  private final var mMirror_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mMirror = EBWeakEventSet ()
 
@@ -266,8 +258,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -316,8 +306,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
-
-//  private final var mSymbolTypeName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
@@ -368,8 +356,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mDisplayComponentNameOffsetX' stored property
   //····················································································································
 
-//  private final var mDisplayComponentNameOffsetX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mDisplayComponentNameOffsetX = EBWeakEventSet ()
 
   //····················································································································
@@ -418,8 +404,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
   //   Observers of 'mDisplayComponentNameOffsetY' stored property
   //····················································································································
-
-//  private final var mDisplayComponentNameOffsetY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mDisplayComponentNameOffsetY = EBWeakEventSet ()
 
@@ -470,8 +454,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mDisplayComponentValue' stored property
   //····················································································································
 
-//  private final var mDisplayComponentValue_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mDisplayComponentValue = EBWeakEventSet ()
 
   //····················································································································
@@ -521,8 +503,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observers of 'mDisplayComponentValueOffsetX' stored property
   //····················································································································
 
-//  private final var mDisplayComponentValueOffsetX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mDisplayComponentValueOffsetX = EBWeakEventSet ()
 
   //····················································································································
@@ -571,8 +551,6 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //····················································································································
   //   Observers of 'mDisplayComponentValueOffsetY' stored property
   //····················································································································
-
-//  private final var mDisplayComponentValueOffsetY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mDisplayComponentValueOffsetY = EBWeakEventSet ()
 

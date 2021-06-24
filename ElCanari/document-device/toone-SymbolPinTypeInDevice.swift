@@ -48,8 +48,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-//  private final var mPinX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mPinX = EBWeakEventSet ()
 
   //····················································································································
@@ -98,8 +96,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
   //   Observers of 'mPinY' stored property
   //····················································································································
-
-//  private final var mPinY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mPinY = EBWeakEventSet ()
 
@@ -150,8 +146,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mXName' stored property
   //····················································································································
 
-//  private final var mXName_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
@@ -200,8 +194,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
   //   Observers of 'mYName' stored property
   //····················································································································
-
-//  private final var mYName_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mYName = EBWeakEventSet ()
 
@@ -252,8 +244,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mName' stored property
   //····················································································································
 
-//  private final var mName_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
@@ -302,8 +292,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
-
-//  private final var mNameHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
 
   private final var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
 
@@ -354,8 +342,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mPinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
-//  private final var mPinNameIsDisplayedInSchematics_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mPinNameIsDisplayedInSchematics = EBWeakEventSet ()
 
   //····················································································································
@@ -404,8 +390,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
   //   Observers of 'mXNumber' stored property
   //····················································································································
-
-//  private final var mXNumber_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mXNumber = EBWeakEventSet ()
 
@@ -456,8 +440,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-//  private final var mYNumber_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mYNumber = EBWeakEventSet ()
 
   //····················································································································
@@ -506,8 +488,6 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //····················································································································
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
-
-//  private final var mNumberHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
 
   private final var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
 

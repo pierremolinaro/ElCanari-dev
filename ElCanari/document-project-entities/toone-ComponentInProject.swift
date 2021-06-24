@@ -110,8 +110,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-//  private final var mSlavePadsShouldBeRouted_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
 
   //····················································································································
@@ -160,8 +158,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
-
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX = EBWeakEventSet ()
 
@@ -212,8 +208,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mY' stored property
   //····················································································································
 
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -262,8 +256,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mRotation' stored property
   //····················································································································
-
-//  private final var mRotation_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRotation = EBWeakEventSet ()
 
@@ -314,8 +306,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSide' stored property
   //····················································································································
 
-//  private final var mSide_property = EBGenericPropertyProxy <ComponentSide> ()
-
   private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
@@ -364,8 +354,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
-
-//  private final var mDisplayLegend_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mDisplayLegend = EBWeakEventSet ()
 
@@ -416,8 +404,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-//  private final var mNameIsVisibleInBoard_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
@@ -466,8 +452,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mXName' stored property
   //····················································································································
-
-//  private final var mXName_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mXName = EBWeakEventSet ()
 
@@ -518,8 +502,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYName' stored property
   //····················································································································
 
-//  private final var mYName_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
@@ -568,8 +550,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
-
-//  private final var mNameFontSize_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mNameFontSize = EBWeakEventSet ()
 
@@ -620,8 +600,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-//  private final var mNameRotation_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mNameRotation = EBWeakEventSet ()
 
   //····················································································································
@@ -670,8 +648,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
-
-//  private final var mValueIsVisibleInBoard_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
 
@@ -722,8 +698,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-//  private final var mXValue_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mXValue = EBWeakEventSet ()
 
   //····················································································································
@@ -772,8 +746,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mYValue' stored property
   //····················································································································
-
-//  private final var mYValue_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mYValue = EBWeakEventSet ()
 
@@ -824,8 +796,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-//  private final var mValueFontSize_property = EBGenericPropertyProxy <Double> ()
-
   private final var mObserversOf_mValueFontSize = EBWeakEventSet ()
 
   //····················································································································
@@ -874,8 +844,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mValueRotation' stored property
   //····················································································································
-
-//  private final var mValueRotation_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mValueRotation = EBWeakEventSet ()
 
@@ -926,8 +894,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-//  private final var mComponentValue_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mComponentValue = EBWeakEventSet ()
 
   //····················································································································
@@ -976,8 +942,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
-
-//  private final var mNamePrefix_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mNamePrefix = EBWeakEventSet ()
 
@@ -1028,8 +992,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-//  private final var mNameIndex_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mNameIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -1079,8 +1041,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-//  private final var mXUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mXUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1129,8 +1089,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //····················································································································
   //   Observers of 'mYUnit' stored property
   //····················································································································
-
-//  private final var mYUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mYUnit = EBWeakEventSet ()
 

@@ -52,8 +52,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-//  private final var mFileData_property = EBGenericPropertyProxy <Data> ()
-
   private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
@@ -102,8 +100,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //····················································································································
   //   Observers of 'mName' stored property
   //····················································································································
-
-//  private final var mName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mName = EBWeakEventSet ()
 
@@ -154,8 +150,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-//  private final var mVersion_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -204,8 +198,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
-
-//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath> ()
 
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
@@ -256,8 +248,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mX' stored property
   //····················································································································
 
-//  private final var mX_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -306,8 +296,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
-
-//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 

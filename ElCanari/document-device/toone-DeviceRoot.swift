@@ -76,8 +76,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-//  private final var mSelectedPageIndex_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -126,8 +124,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mTitle' stored property
   //····················································································································
-
-//  private final var mTitle_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mTitle = EBWeakEventSet ()
 
@@ -178,8 +174,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mImageData' stored property
   //····················································································································
 
-//  private final var mImageData_property = EBGenericPropertyProxy <Data> ()
-
   private final var mObserversOf_mImageData = EBWeakEventSet ()
 
   //····················································································································
@@ -228,8 +222,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
-
-//  private final var mPrefix_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
@@ -280,8 +272,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mComments' stored property
   //····················································································································
 
-//  private final var mComments_property = EBGenericPropertyProxy <String> ()
-
   private final var mObserversOf_mComments = EBWeakEventSet ()
 
   //····················································································································
@@ -330,8 +320,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mPackageDisplayZoom' stored property
   //····················································································································
-
-//  private final var mPackageDisplayZoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
 
@@ -382,8 +370,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayHorizontalFlip' stored property
   //····················································································································
 
-//  private final var mPackageDisplayHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -432,8 +418,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mPackageDisplayVerticalFlip' stored property
   //····················································································································
-
-//  private final var mPackageDisplayVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
 
@@ -484,8 +468,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackages' stored property
   //····················································································································
 
-//  private final var mShowPackages_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mShowPackages = EBWeakEventSet ()
 
   //····················································································································
@@ -534,8 +516,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mShowPackagePadNumbers' stored property
   //····················································································································
-
-//  private final var mShowPackagePadNumbers_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
 
@@ -586,8 +566,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackageFrontPads' stored property
   //····················································································································
 
-//  private final var mShowPackageFrontPads_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
 
   //····················································································································
@@ -636,8 +614,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mShowPackageBackPads' stored property
   //····················································································································
-
-//  private final var mShowPackageBackPads_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
 
@@ -688,8 +664,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayZoom' stored property
   //····················································································································
 
-//  private final var mSymbolDisplayZoom_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -739,8 +713,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
   //····················································································································
 
-//  private final var mSymbolDisplayHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
-
   private final var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -789,8 +761,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
   //   Observers of 'mSymbolDisplayVerticalFlip' stored property
   //····················································································································
-
-//  private final var mSymbolDisplayVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
 

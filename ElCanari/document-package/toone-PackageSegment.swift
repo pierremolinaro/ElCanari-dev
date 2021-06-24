@@ -54,8 +54,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //   Observers of 'y1' stored property
   //····················································································································
 
-//  private final var y1_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -104,8 +102,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //····················································································································
   //   Observers of 'x2' stored property
   //····················································································································
-
-//  private final var x2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
@@ -156,8 +152,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //   Observers of 'y2' stored property
   //····················································································································
 
-//  private final var y2_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
@@ -206,8 +200,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //····················································································································
   //   Observers of 'x1Unit' stored property
   //····················································································································
-
-//  private final var x1Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1Unit = EBWeakEventSet ()
 
@@ -258,8 +250,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //   Observers of 'y1Unit' stored property
   //····················································································································
 
-//  private final var y1Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y1Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -308,8 +298,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //····················································································································
   //   Observers of 'x2Unit' stored property
   //····················································································································
-
-//  private final var x2Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2Unit = EBWeakEventSet ()
 
@@ -360,8 +348,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //   Observers of 'y2Unit' stored property
   //····················································································································
 
-//  private final var y2Unit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_y2Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -411,8 +397,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //   Observers of 'lengthUnit' stored property
   //····················································································································
 
-//  private final var lengthUnit_property = EBGenericPropertyProxy <Int> ()
-
   private final var mObserversOf_lengthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -461,8 +445,6 @@ class ReadOnlyObject_PackageSegment : ReadOnlyAbstractObjectProperty <PackageSeg
   //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
-
-//  private final var x1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1 = EBWeakEventSet ()
 

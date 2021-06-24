@@ -32,8 +32,6 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
-//  private final var mOrientation_property = EBGenericPropertyProxy <QuadrantRotation> ()
-
   private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
