@@ -39,22 +39,10 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final let pinName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_pinName (_ inObserver : EBEvent) {
-    self.pinName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
   final let symbolName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
-    self.symbolName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'pinQualifiedName' transient property
@@ -63,34 +51,16 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   final let pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBEvent) {
-    self.pinQualifiedName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
   final let isConnected_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.isConnected_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'numberShape' transient property
   //····················································································································
 
   final let numberShape_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_numberShape (_ inObserver : EBEvent) {
-    self.numberShape_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

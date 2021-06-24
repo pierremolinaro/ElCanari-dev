@@ -666,12 +666,12 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mNextX_property.mReadModelFunction = nil
     self.mNextX_property.mWriteModelFunction = nil
     self.mNextX_property.mValidateAndWriteModelFunction = nil
-    self.mNext_property.removeEBObserverOf_mX (self.mNextX_property)
+    self.mNext_property.mX_property.removeEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = nil
     self.mNextY_property.mWriteModelFunction = nil
     self.mNextY_property.mValidateAndWriteModelFunction = nil
-    self.mNext_property.removeEBObserverOf_mY (self.mNextY_property)
+    self.mNext_property.mY_property.removeEBObserver (self.mNextY_property)
     // self.mNext_property.mX_property.removeEBObserver (self.p2Xstring_property)
     // self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.p2Xstring_property)
     // self.mNext_property.mY_property.removeEBObserver (self.p2Ystring_property)

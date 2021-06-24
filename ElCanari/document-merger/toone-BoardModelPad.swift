@@ -41,22 +41,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   final let y_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
 
   final let width_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
-    self.width_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'height' stored property
@@ -65,22 +53,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   final let height_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
-    self.height_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'shape' stored property
   //····················································································································
 
   final let shape_property = EBGenericTransientProperty <PadShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
-    self.shape_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'rotation' stored property
@@ -89,22 +65,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   final let rotation_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_rotation (_ inObserver : EBEvent) {
-    self.rotation_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

@@ -41,22 +41,10 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
   final let connectedPoints_property = EBGenericTransientProperty <CanariPointArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.connectedPoints_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'sheetDescriptor' transient property
@@ -65,22 +53,10 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   final let sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
-    self.sheetDescriptor_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
@@ -89,22 +65,10 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'isPlacedInSchematic' transient property
   //····················································································································
 
   final let isPlacedInSchematic_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
-    self.isPlacedInSchematic_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

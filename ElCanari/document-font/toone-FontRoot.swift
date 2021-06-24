@@ -53,22 +53,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let comments_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'nominalSize' stored property
   //····················································································································
 
   final let nominalSize_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
-    self.nominalSize_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
@@ -77,22 +65,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let selectedTab_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.selectedTab_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
   final let selectedInspector_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.selectedInspector_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'currentCharacterCodePoint' stored property
@@ -101,22 +77,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let currentCharacterCodePoint_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
-    self.currentCharacterCodePoint_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'currentCharacterCodePointString' transient property
   //····················································································································
 
   final let currentCharacterCodePointString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.currentCharacterCodePointString_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPath' transient property
@@ -125,22 +89,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let sampleStringBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
-    self.sampleStringBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'sampleStringBezierPathWidth' transient property
   //····················································································································
 
   final let sampleStringBezierPathWidth_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'sampleStringBezierPathAscent' transient property
@@ -149,22 +101,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let sampleStringBezierPathAscent_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'sampleStringBezierPathDescent' transient property
   //····················································································································
 
   final let sampleStringBezierPathDescent_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
-    self.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'definedCharacters' transient property
@@ -173,22 +113,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   final let definedCharacters_property = EBGenericTransientProperty <DefinedCharactersInDevice?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_definedCharacters (_ inObserver : EBEvent) {
-    self.definedCharacters_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: characters

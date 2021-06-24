@@ -35,34 +35,16 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   final let mFileName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
-    self.mFileName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mFileData' stored property
   //····················································································································
 
   final let mFileData_property = EBGenericTransientProperty <Data?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.mFileData_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'fileSize' transient property
   //····················································································································
 
   final let fileSize_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
-    self.fileSize_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

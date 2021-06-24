@@ -45,22 +45,10 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
   final let y_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
 
   final let width_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
-    self.width_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'height' stored property
@@ -69,22 +57,10 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
   final let height_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
-    self.height_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'filledBezierPath' transient property
@@ -93,22 +69,10 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
   final let filledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.filledBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -117,22 +81,10 @@ class ReadOnlyObject_SymbolSolidRect : ReadOnlyAbstractObjectProperty <SymbolSol
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

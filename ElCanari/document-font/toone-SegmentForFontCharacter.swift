@@ -41,22 +41,10 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   final let x1_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
-    self.x1_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'y1' stored property
   //····················································································································
 
   final let y1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
-    self.y1_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'x2' stored property
@@ -65,22 +53,10 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   final let x2_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
-    self.x2_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'y2' stored property
   //····················································································································
 
   final let y2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
-    self.y2_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
@@ -89,22 +65,10 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

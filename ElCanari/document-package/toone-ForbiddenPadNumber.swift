@@ -31,12 +31,6 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   final let padNumber_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.padNumber_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   INIT 
   //····················································································································
 

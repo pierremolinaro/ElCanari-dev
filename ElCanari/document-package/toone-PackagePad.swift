@@ -87,22 +87,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let xCenter_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.xCenter_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'yCenter' stored property
   //····················································································································
 
   final let yCenter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_yCenter (_ inObserver : EBEvent) {
-    self.yCenter_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'width' stored property
@@ -111,22 +99,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let width_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
-    self.width_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
 
   final let height_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
-    self.height_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'holeWidth' stored property
@@ -135,22 +111,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let holeWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_holeWidth (_ inObserver : EBEvent) {
-    self.holeWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'holeHeight' stored property
   //····················································································································
 
   final let holeHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_holeHeight (_ inObserver : EBEvent) {
-    self.holeHeight_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'padShape' stored property
@@ -159,22 +123,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let padShape_property = EBGenericTransientProperty <PadShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padShape (_ inObserver : EBEvent) {
-    self.padShape_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'padStyle' stored property
   //····················································································································
 
   final let padStyle_property = EBGenericTransientProperty <PadStyle?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_padStyle (_ inObserver : EBEvent) {
-    self.padStyle_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'padNumber' stored property
@@ -183,22 +135,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let padNumber_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
-    self.padNumber_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
   final let xCenterUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
-    self.xCenterUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'yCenterUnit' stored property
@@ -207,22 +147,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let yCenterUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
-    self.yCenterUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
   final let widthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
-    self.widthUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'heightUnit' stored property
@@ -231,22 +159,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let heightUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
-    self.heightUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
   final let holeWidthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_holeWidthUnit (_ inObserver : EBEvent) {
-    self.holeWidthUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'holeHeightUnit' stored property
@@ -255,22 +171,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let holeHeightUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_holeHeightUnit (_ inObserver : EBEvent) {
-    self.holeHeightUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
 
   final let annularRingUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
-    self.annularRingUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
@@ -279,22 +183,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'padNameForDisplay' transient property
@@ -303,22 +195,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let padNameForDisplay_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padNameForDisplay (_ inObserver : EBEvent) {
-    self.padNameForDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'padIsTraversing' transient property
@@ -327,22 +207,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let padIsTraversing_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
-    self.padIsTraversing_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'annularRing' transient property
   //····················································································································
 
   final let annularRing_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_annularRing (_ inObserver : EBEvent) {
-    self.annularRing_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'padNameWithZoneName' transient property
@@ -351,22 +219,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let padNameWithZoneName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padNameWithZoneName (_ inObserver : EBEvent) {
-    self.padNameWithZoneName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'zoneName' transient property
   //····················································································································
 
   final let zoneName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_zoneName (_ inObserver : EBEvent) {
-    self.zoneName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'noZone' transient property
@@ -375,22 +231,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let noZone_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_noZone (_ inObserver : EBEvent) {
-    self.noZone_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'zoneAllowsManualRenumbering' transient property
   //····················································································································
 
   final let zoneAllowsManualRenumbering_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_zoneAllowsManualRenumbering (_ inObserver : EBEvent) {
-    self.zoneAllowsManualRenumbering_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'slavePadCount' transient property
@@ -399,34 +243,16 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
   final let slavePadCount_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
-    self.slavePadCount_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'masterPadObjectIndex' transient property
   //····················································································································
 
   final let masterPadObjectIndex_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_masterPadObjectIndex (_ inObserver : EBEvent) {
-    self.masterPadObjectIndex_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
   final let padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
-    self.padNumberDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: slaves

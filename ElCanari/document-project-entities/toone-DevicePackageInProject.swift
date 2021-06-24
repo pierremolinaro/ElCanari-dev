@@ -35,34 +35,16 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   final let mPackageName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mPackageName (_ inObserver : EBEvent) {
-    self.mPackageName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
   final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
   final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
-    self.packagePadDictionary_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mMasterPads

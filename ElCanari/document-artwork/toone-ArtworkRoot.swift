@@ -53,22 +53,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let selectedTab_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    self.selectedTab_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
   final let comments_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
@@ -77,22 +65,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let minPPTPTTTWdisplayUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
   final let minPPTPTTTW_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.minPPTPTTTW_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'minValueForOARdisplayUnit' stored property
@@ -101,22 +77,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let minValueForOARdisplayUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
   final let minValueForOARinEBUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'minValueForPHDdisplayUnit' stored property
@@ -125,22 +89,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let minValueForPHDdisplayUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
   final let minValueForPHDinEBUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
@@ -149,22 +101,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let minValueForBoardLimitWidthDisplayUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
   final let minValueForBoardLimitWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drillDataFileExtension' stored property
@@ -173,22 +113,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let drillDataFileExtension_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.drillDataFileExtension_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: fileGenerationParameterArray

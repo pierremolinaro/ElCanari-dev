@@ -47,22 +47,10 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   final let mTypeName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
-    self.mTypeName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mVersion' stored property
   //····················································································································
 
   final let mVersion_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
-    self.mVersion_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mFileData' stored property
@@ -71,22 +59,10 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   final let mFileData_property = EBGenericTransientProperty <Data?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
-    self.mFileData_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
   final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
@@ -95,22 +71,10 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mFilledBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
   final let versionString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.versionString_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'instanceCount' transient property
@@ -119,34 +83,16 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   final let instanceCount_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    self.instanceCount_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'documentSizeString' transient property
   //····················································································································
 
   final let documentSizeString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
-    self.documentSizeString_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'pinNameShape' transient property
   //····················································································································
 
   final let pinNameShape_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
-    self.pinNameShape_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mInstances

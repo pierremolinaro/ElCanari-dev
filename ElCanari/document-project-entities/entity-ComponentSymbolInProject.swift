@@ -710,7 +710,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.componentValueProxy_property.mReadModelFunction = nil
     self.componentValueProxy_property.mWriteModelFunction = nil
     self.componentValueProxy_property.mValidateAndWriteModelFunction = nil
-    self.mComponent_property.removeEBObserverOf_mComponentValue (self.componentValueProxy_property)
+    self.mComponent_property.mComponentValue_property.removeEBObserver (self.componentValueProxy_property)
     // self.mComponent_property.componentName_property.removeEBObserver (self.componentName_property)
     // self.mComponent_property.deviceName_property.removeEBObserver (self.deviceName_property)
     // self.mRotation_property.removeEBObserver (self.symbolInfo_property)

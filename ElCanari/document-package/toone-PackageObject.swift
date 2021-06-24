@@ -37,22 +37,10 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
@@ -61,22 +49,10 @@ class ReadOnlyObject_PackageObject : ReadOnlyAbstractObjectProperty <PackageObje
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'knobSize' transient property
   //····················································································································
 
   final let knobSize_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_knobSize (_ inObserver : EBEvent) {
-    self.knobSize_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

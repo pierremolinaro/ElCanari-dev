@@ -75,22 +75,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawBoardLimits_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
-    self.drawBoardLimits_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
 
   final let drawInternalBoardLimits_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
-    self.drawInternalBoardLimits_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawComponentNamesTopSide' stored property
@@ -99,22 +87,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawComponentNamesTopSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
-    self.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
 
   final let drawComponentNamesBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
-    self.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawComponentValuesTopSide' stored property
@@ -123,22 +99,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawComponentValuesTopSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
-    self.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
 
   final let drawComponentValuesBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
-    self.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawPackageLegendTopSide' stored property
@@ -147,22 +111,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawPackageLegendTopSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
-    self.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
 
   final let drawPackageLegendBottomSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
-    self.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawPadHolesInPDF' stored property
@@ -171,22 +123,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawPadHolesInPDF_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
-    self.drawPadHolesInPDF_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
 
   final let drawPadsTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
-    self.drawPadsTopSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawPadsBottomSide' stored property
@@ -195,22 +135,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawPadsBottomSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
-    self.drawPadsBottomSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
 
   final let drawTextsLayoutTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
-    self.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawTextsLayoutBottomSide' stored property
@@ -219,22 +147,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawTextsLayoutBottomSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
-    self.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
 
   final let drawTextsLegendTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
-    self.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawTextsLegendBottomSide' stored property
@@ -243,22 +159,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawTextsLegendBottomSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
-    self.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
 
   final let drawTracksTopSide_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
-    self.drawTracksTopSide_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'drawTracksBottomSide' stored property
@@ -267,22 +171,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let drawTracksBottomSide_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
-    self.drawTracksBottomSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'drawVias' stored property
   //····················································································································
 
   final let drawVias_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
-    self.drawVias_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'fileExtension' stored property
@@ -291,22 +183,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let fileExtension_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_fileExtension (_ inObserver : EBEvent) {
-    self.fileExtension_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
 
   final let horizontalMirror_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
-    self.horizontalMirror_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'name' stored property
@@ -315,34 +195,16 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   final let name_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
-    self.name_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
 
   final let measurementUnitForPadHoleInPDF_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
-    self.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
 
   final let padHoleDiameterInPDF_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
-    self.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

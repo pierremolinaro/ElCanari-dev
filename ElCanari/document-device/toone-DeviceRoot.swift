@@ -79,22 +79,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
-    self.mSelectedPageIndex_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mTitle' stored property
   //····················································································································
 
   final let mTitle_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mTitle (_ inObserver : EBEvent) {
-    self.mTitle_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mImageData' stored property
@@ -103,22 +91,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mImageData_property = EBGenericTransientProperty <Data?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mImageData (_ inObserver : EBEvent) {
-    self.mImageData_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
   final let mPrefix_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mPrefix (_ inObserver : EBEvent) {
-    self.mPrefix_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mComments' stored property
@@ -127,22 +103,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mComments_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mComments (_ inObserver : EBEvent) {
-    self.mComments_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mPackageDisplayZoom' stored property
   //····················································································································
 
   final let mPackageDisplayZoom_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
-    self.mPackageDisplayZoom_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mPackageDisplayHorizontalFlip' stored property
@@ -151,22 +115,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mPackageDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
-    self.mPackageDisplayHorizontalFlip_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mPackageDisplayVerticalFlip' stored property
   //····················································································································
 
   final let mPackageDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
-    self.mPackageDisplayVerticalFlip_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mShowPackages' stored property
@@ -175,22 +127,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mShowPackages_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
-    self.mShowPackages_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mShowPackagePadNumbers' stored property
   //····················································································································
 
   final let mShowPackagePadNumbers_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
-    self.mShowPackagePadNumbers_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mShowPackageFrontPads' stored property
@@ -199,22 +139,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mShowPackageFrontPads_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
-    self.mShowPackageFrontPads_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mShowPackageBackPads' stored property
   //····················································································································
 
   final let mShowPackageBackPads_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
-    self.mShowPackageBackPads_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mSymbolDisplayZoom' stored property
@@ -223,22 +151,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mSymbolDisplayZoom_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
-    self.mSymbolDisplayZoom_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
   //····················································································································
 
   final let mSymbolDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
-    self.mSymbolDisplayHorizontalFlip_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mSymbolDisplayVerticalFlip' stored property
@@ -247,22 +163,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let mSymbolDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
-    self.mSymbolDisplayVerticalFlip_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'imageIsValid' transient property
   //····················································································································
 
   final let imageIsValid_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.imageIsValid_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
@@ -271,22 +175,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let inconsistentPackagePadNameSetsMessage_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
-    self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'inconsistentSymbolNameSetMessage' transient property
   //····················································································································
 
   final let inconsistentSymbolNameSetMessage_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
-    self.inconsistentSymbolNameSetMessage_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'unconnectedPins' transient property
@@ -295,22 +187,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
-    self.unconnectedPins_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
   //····················································································································
 
   final let packagePadNameSetsAreConsistent_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
-    self.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'symbolNameAreConsistent' transient property
@@ -319,22 +199,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let symbolNameAreConsistent_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
-    self.symbolNameAreConsistent_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'symbolTypeNames' transient property
   //····················································································································
 
   final let symbolTypeNames_property = EBGenericTransientProperty <StringArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
-    self.symbolTypeNames_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'unconnectedPads' transient property
@@ -343,34 +211,16 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let unconnectedPads_property = EBGenericTransientProperty <StringArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
-    self.unconnectedPads_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'assignedPadProxies' transient property
   //····················································································································
 
   final let assignedPadProxies_property = EBGenericTransientProperty <AssignedPadProxiesInDevice?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
-    self.assignedPadProxies_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mDocs

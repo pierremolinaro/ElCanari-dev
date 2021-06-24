@@ -41,22 +41,10 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   final let mOrientation_property = EBGenericTransientProperty <QuadrantRotation?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mOrientation (_ inObserver : EBEvent) {
-    self.mOrientation_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'location' transient property
   //····················································································································
 
   final let location_property = EBGenericTransientProperty <CanariPoint?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
-    self.location_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netName' transient property
@@ -65,22 +53,10 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   final let netName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netClassName' transient property
@@ -89,22 +65,10 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   final let netClassName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

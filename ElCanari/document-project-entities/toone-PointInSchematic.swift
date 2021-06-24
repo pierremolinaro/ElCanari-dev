@@ -59,22 +59,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let mSymbolPinName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSymbolPinName (_ inObserver : EBEvent) {
-    self.mSymbolPinName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
   final let mX_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
-    self.mX_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mY' stored property
@@ -83,22 +71,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let mY_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
-    self.mY_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'location' transient property
   //····················································································································
 
   final let location_property = EBGenericTransientProperty <CanariPoint?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_location (_ inObserver : EBEvent) {
-    self.location_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netName' transient property
@@ -107,22 +83,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let netName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
   final let netClassName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'hasNet' transient property
@@ -131,22 +95,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let hasNet_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.hasNet_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'canMove' transient property
   //····················································································································
 
   final let canMove_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_canMove (_ inObserver : EBEvent) {
-    self.canMove_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'wireColor' transient property
@@ -155,22 +107,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.wireColor_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'symbolRotation' transient property
   //····················································································································
 
   final let symbolRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolRotation (_ inObserver : EBEvent) {
-    self.symbolRotation_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'symbolNameNetName' transient property
@@ -179,22 +119,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let symbolNameNetName_property = EBGenericTransientProperty <TwoStrings?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_symbolNameNetName (_ inObserver : EBEvent) {
-    self.symbolNameNetName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
   final let isConnected_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
-    self.isConnected_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'status' transient property
@@ -203,34 +131,16 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   final let status_property = EBGenericTransientProperty <SchematicPointStatus?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_status (_ inObserver : EBEvent) {
-    self.status_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
   final let connectedPoints_property = EBGenericTransientProperty <CanariPointArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
-    self.connectedPoints_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
   final let netInfoForPoint_property = EBGenericTransientProperty <NetInfoPoint?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netInfoForPoint (_ inObserver : EBEvent) {
-    self.netInfoForPoint_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mLabels

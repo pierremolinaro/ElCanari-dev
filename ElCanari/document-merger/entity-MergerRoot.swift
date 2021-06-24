@@ -1366,47 +1366,47 @@ final class MergerRoot : EBManagedObject,
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mWriteModelFunction = nil
     self.minPPTPTTTWdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minPPTPTTTWdisplayUnit (self.minPPTPTTTWdisplayUnit_property)
+    self.mArtwork_property.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = nil
     self.minPPTPTTTW_property.mWriteModelFunction = nil
     self.minPPTPTTTW_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minPPTPTTTW (self.minPPTPTTTW_property)
+    self.mArtwork_property.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = nil
     self.minValueForOARdisplayUnit_property.mWriteModelFunction = nil
     self.minValueForOARdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForOARdisplayUnit (self.minValueForOARdisplayUnit_property)
+    self.mArtwork_property.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = nil
     self.minValueForOARinEBUnit_property.mWriteModelFunction = nil
     self.minValueForOARinEBUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForOARinEBUnit (self.minValueForOARinEBUnit_property)
+    self.mArtwork_property.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mWriteModelFunction = nil
     self.minValueForPHDdisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForPHDdisplayUnit (self.minValueForPHDdisplayUnit_property)
+    self.mArtwork_property.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = nil
     self.minValueForPHDinEBUnit_property.mWriteModelFunction = nil
     self.minValueForPHDinEBUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForPHDinEBUnit (self.minValueForPHDinEBUnit_property)
+    self.mArtwork_property.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidth_property.mWriteModelFunction = nil
     self.minValueForBoardLimitWidth_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidth (self.minValueForBoardLimitWidth_property)
+    self.mArtwork_property.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mWriteModelFunction = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.minValueForBoardLimitWidthDisplayUnit_property)
+    self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = nil
     self.drillDataFileExtension_property.mWriteModelFunction = nil
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_drillDataFileExtension (self.drillDataFileExtension_property)
+    self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property)
   //--- ToMany proxy: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.setModel (nil)
     self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
@@ -1415,7 +1415,7 @@ final class MergerRoot : EBManagedObject,
     self.comments_property.mReadModelFunction = nil
     self.comments_property.mWriteModelFunction = nil
     self.comments_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.removeEBObserverOf_comments (self.comments_property)
+    self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
     // self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     // self.boardModels_property.removeEBObserver (self.modelNames_property)
     // self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)

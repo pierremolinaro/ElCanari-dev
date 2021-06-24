@@ -55,22 +55,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let mDeviceName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
-    self.mDeviceName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
   final let mPrefix_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mPrefix (_ inObserver : EBEvent) {
-    self.mPrefix_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mDeviceVersion' stored property
@@ -79,22 +67,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let mDeviceVersion_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
-    self.mDeviceVersion_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
 
   final let mDeviceFileData_property = EBGenericTransientProperty <Data?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
-    self.mDeviceFileData_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'versionString' transient property
@@ -103,22 +79,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let versionString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
-    self.versionString_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'sizeString' transient property
   //····················································································································
 
   final let sizeString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
-    self.sizeString_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'canExport' transient property
@@ -127,22 +91,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let canExport_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_canExport (_ inObserver : EBEvent) {
-    self.canExport_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'packageNames' transient property
   //····················································································································
 
   final let packageNames_property = EBGenericTransientProperty <StringArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_packageNames (_ inObserver : EBEvent) {
-    self.packageNames_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'deviceComponentCountString' transient property
@@ -151,22 +103,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let deviceComponentCountString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_deviceComponentCountString (_ inObserver : EBEvent) {
-    self.deviceComponentCountString_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'canRemove' transient property
   //····················································································································
 
   final let canRemove_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
-    self.canRemove_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'symbolAndTypesNames' transient property
@@ -175,34 +115,16 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   final let symbolAndTypesNames_property = EBGenericTransientProperty <SymbolInProjectIdentifierArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_symbolAndTypesNames (_ inObserver : EBEvent) {
-    self.symbolAndTypesNames_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
   final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_pinPadAssignments (_ inObserver : EBEvent) {
-    self.pinPadAssignments_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
   final let deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_deviceSymbolDictionary (_ inObserver : EBEvent) {
-    self.deviceSymbolDictionary_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mPackages

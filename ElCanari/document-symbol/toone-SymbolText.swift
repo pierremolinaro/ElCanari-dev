@@ -43,22 +43,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   final let y_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'text' stored property
   //····················································································································
 
   final let text_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_text (_ inObserver : EBEvent) {
-    self.text_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'horizontalAlignment' stored property
@@ -67,22 +55,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   final let horizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
-    self.horizontalAlignment_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
@@ -91,34 +67,16 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

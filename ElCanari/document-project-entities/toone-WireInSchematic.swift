@@ -39,22 +39,10 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netName' transient property
@@ -63,34 +51,16 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   final let netName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
   final let netClassName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'hasNet' transient property
   //····················································································································
 
   final let hasNet_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_hasNet (_ inObserver : EBEvent) {
-    self.hasNet_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

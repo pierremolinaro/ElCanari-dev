@@ -2068,22 +2068,22 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImageFirstPointX_property.mReadModelFunction = nil
     self.mModelImageFirstPointX_property.mWriteModelFunction = nil
     self.mModelImageFirstPointX_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstX (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.mFirstX_property.removeEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = nil
     self.mModelImageFirstPointY_property.mWriteModelFunction = nil
     self.mModelImageFirstPointY_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mFirstY (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.mFirstY_property.removeEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = nil
     self.mModelImageSecondPointDx_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDx_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDx (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.mSecondDx_property.removeEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = nil
     self.mModelImageSecondPointDy_property.mWriteModelFunction = nil
     self.mModelImageSecondPointDy_property.mValidateAndWriteModelFunction = nil
-    self.mModelImageDoublePoint_property.removeEBObserverOf_mSecondDy (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.mSecondDy_property.removeEBObserver (self.mModelImageSecondPointDy_property)
     // self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     // self.padNumbering_property.removeEBObserver (self.counterClockNumbering_property)
     // self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)

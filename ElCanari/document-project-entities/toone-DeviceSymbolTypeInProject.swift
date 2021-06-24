@@ -35,34 +35,16 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
   final let mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSymbolTypeName (_ inObserver : EBEvent) {
-    self.mSymbolTypeName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
   final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
-    self.mStrokeBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
   final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
-    self.mFilledBezierPath_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

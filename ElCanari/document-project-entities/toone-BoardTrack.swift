@@ -95,22 +95,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mSide_property = EBGenericTransientProperty <TrackSide?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSide (_ inObserver : EBEvent) {
-    self.mSide_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
   final let mDefaultTrackWidthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mDefaultTrackWidthUnit (_ inObserver : EBEvent) {
-    self.mDefaultTrackWidthUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mCustomTrackWidth' stored property
@@ -119,22 +107,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mCustomTrackWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mCustomTrackWidth (_ inObserver : EBEvent) {
-    self.mCustomTrackWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
 
   final let mCustomTrackWidthUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mCustomTrackWidthUnit (_ inObserver : EBEvent) {
-    self.mCustomTrackWidthUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mUsesCustomTrackWidth' stored property
@@ -143,22 +119,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mUsesCustomTrackWidth_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mUsesCustomTrackWidth (_ inObserver : EBEvent) {
-    self.mUsesCustomTrackWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
 
   final let mIsPreservedByAutoRouter_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mIsPreservedByAutoRouter (_ inObserver : EBEvent) {
-    self.mIsPreservedByAutoRouter_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mP1XUnit' stored property
@@ -167,22 +131,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mP1XUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mP1XUnit (_ inObserver : EBEvent) {
-    self.mP1XUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
 
   final let mP1YUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mP1YUnit (_ inObserver : EBEvent) {
-    self.mP1YUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mP2XUnit' stored property
@@ -191,22 +143,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mP2XUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mP2XUnit (_ inObserver : EBEvent) {
-    self.mP2XUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
 
   final let mP2YUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mP2YUnit (_ inObserver : EBEvent) {
-    self.mP2YUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mManualLockP1' stored property
@@ -215,22 +155,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mManualLockP1_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mManualLockP1 (_ inObserver : EBEvent) {
-    self.mManualLockP1_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
   final let mManualLockP2_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mManualLockP2 (_ inObserver : EBEvent) {
-    self.mManualLockP2_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
@@ -239,22 +167,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let mDirectionLockOnKnobDragging_property = EBGenericTransientProperty <TrackLockDirection?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mDirectionLockOnKnobDragging (_ inObserver : EBEvent) {
-    self.mDirectionLockOnKnobDragging_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'actualTrackWidth' transient property
   //····················································································································
 
   final let actualTrackWidth_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_actualTrackWidth (_ inObserver : EBEvent) {
-    self.actualTrackWidth_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netName' transient property
@@ -263,22 +179,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let netName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netName (_ inObserver : EBEvent) {
-    self.netName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
   final let netClassName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netClassTrackWidth' transient property
@@ -287,22 +191,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
-    self.netClassTrackWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
   final let netClassViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
-    self.netClassViaHoleDiameter_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netClassViaPadDiameter' transient property
@@ -311,22 +203,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
-    self.netClassViaPadDiameter_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
   final let trackLengthInCanariUnit_property = EBGenericTransientProperty <Double?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_trackLengthInCanariUnit (_ inObserver : EBEvent) {
-    self.trackLengthInCanariUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
@@ -335,22 +215,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
-    self.signatureForERCChecking_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'p1ConnectedToSomePad' transient property
   //····················································································································
 
   final let p1ConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_p1ConnectedToSomePad (_ inObserver : EBEvent) {
-    self.p1ConnectedToSomePad_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'p2ConnectedToSomePad' transient property
@@ -359,22 +227,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let p2ConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_p2ConnectedToSomePad (_ inObserver : EBEvent) {
-    self.p2ConnectedToSomePad_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'p1CanMove' transient property
@@ -383,22 +239,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let p1CanMove_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_p1CanMove (_ inObserver : EBEvent) {
-    self.p1CanMove_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'p2CanMove' transient property
   //····················································································································
 
   final let p2CanMove_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_p2CanMove (_ inObserver : EBEvent) {
-    self.p2CanMove_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'trackCanRotate' transient property
@@ -407,22 +251,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let trackCanRotate_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_trackCanRotate (_ inObserver : EBEvent) {
-    self.trackCanRotate_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'trackDirectionInDegrees' computed property
@@ -431,22 +263,10 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let trackDirectionInDegrees_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_trackDirectionInDegrees (_ inObserver : EBEvent) {
-    self.trackDirectionInDegrees_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'computedP1X' computed property
   //····················································································································
 
   final let computedP1X_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_computedP1X (_ inObserver : EBEvent) {
-    self.computedP1X_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'computedP1Y' computed property
@@ -455,34 +275,16 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   final let computedP1Y_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_computedP1Y (_ inObserver : EBEvent) {
-    self.computedP1Y_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'computedP2X' computed property
   //····················································································································
 
   final let computedP2X_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_computedP2X (_ inObserver : EBEvent) {
-    self.computedP2X_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'computedP2Y' computed property
   //····················································································································
 
   final let computedP2Y_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_computedP2Y (_ inObserver : EBEvent) {
-    self.computedP2Y_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

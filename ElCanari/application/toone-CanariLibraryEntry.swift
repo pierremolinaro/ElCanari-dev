@@ -39,22 +39,10 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   final let mPath_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
-    self.mPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mUses' stored property
   //····················································································································
 
   final let mUses_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
-    self.mUses_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mLibraryRepositoryURL' stored property
@@ -63,34 +51,16 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   final let mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
-    self.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
   final let mUserAndPasswordTag_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
-    self.mUserAndPasswordTag_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
   final let mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
-    self.mStatusImage_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

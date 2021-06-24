@@ -35,34 +35,16 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   final let y_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
-    self.y_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
   final let padDiameter_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
-    self.padDiameter_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
   final let x_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.x_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

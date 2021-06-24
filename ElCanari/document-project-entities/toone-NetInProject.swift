@@ -45,22 +45,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final let mNetName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mNetName (_ inObserver : EBEvent) {
-    self.mNetName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
   final let netClassName_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
-    self.netClassName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netClassTrackWidth' transient property
@@ -69,22 +57,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final let netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassTrackWidth (_ inObserver : EBEvent) {
-    self.netClassTrackWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
   final let netClassViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_netClassViaHoleDiameter (_ inObserver : EBEvent) {
-    self.netClassViaHoleDiameter_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netClassViaPadDiameter' transient property
@@ -93,22 +69,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final let netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netClassViaPadDiameter (_ inObserver : EBEvent) {
-    self.netClassViaPadDiameter_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
   final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_wireColor (_ inObserver : EBEvent) {
-    self.wireColor_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'netSchematicPointsInfo' transient property
@@ -117,22 +81,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   final let netSchematicPointsInfo_property = EBGenericTransientProperty <NetInfoPointArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_netSchematicPointsInfo (_ inObserver : EBEvent) {
-    self.netSchematicPointsInfo_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
   final let trackCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_trackCount (_ inObserver : EBEvent) {
-    self.trackCount_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: mPoints

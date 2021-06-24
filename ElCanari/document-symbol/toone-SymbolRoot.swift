@@ -57,22 +57,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let selectedInspector_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
-    self.selectedInspector_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
   final let comments_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.comments_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'horizontalFlip' stored property
@@ -81,22 +69,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let horizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
-    self.horizontalFlip_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
   final let verticalFlip_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
-    self.verticalFlip_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'gridStyle' stored property
@@ -105,22 +81,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let gridStyle_property = EBGenericTransientProperty <GridStyle?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_gridStyle (_ inObserver : EBEvent) {
-    self.gridStyle_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'gridDisplay' stored property
   //····················································································································
 
   final let gridDisplay_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.gridDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'zoom' stored property
@@ -129,22 +93,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let zoom_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
-    self.zoom_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
   final let xPlacardUnit_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
-    self.xPlacardUnit_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'yPlacardUnit' stored property
@@ -153,22 +105,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let yPlacardUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
-    self.yPlacardUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
   final let selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    self.selectedPageIndex_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'issues' transient property
@@ -177,22 +117,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.issues_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'noIssue' transient property
   //····················································································································
 
   final let noIssue_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
-    self.noIssue_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'segmentedControlSegmentIssueImage' transient property
@@ -201,22 +129,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   final let segmentedControlSegmentIssueImage_property = EBGenericTransientProperty <NSImage?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
-    self.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'segmentedControlSegmentIssueString' transient property
   //····················································································································
 
   final let segmentedControlSegmentIssueString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
-    self.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observable toMany property: symbolObjects

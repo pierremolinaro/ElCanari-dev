@@ -35,34 +35,16 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   final let mPadName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
-    self.mPadName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
   final let pinPadAssignment_property = EBGenericTransientProperty <ThreeStrings?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
-    self.pinPadAssignment_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
   final let descriptor_property = EBGenericTransientProperty <PinPadAssignmentInProject?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
-    self.descriptor_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

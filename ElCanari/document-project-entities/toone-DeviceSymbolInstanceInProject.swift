@@ -39,22 +39,10 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mSymbolInstanceName (_ inObserver : EBEvent) {
-    self.mSymbolInstanceName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
   final let symbolAndTypeName_property = EBGenericTransientProperty <SymbolInProjectIdentifier?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_symbolAndTypeName (_ inObserver : EBEvent) {
-    self.symbolAndTypeName_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'symbolTypeName' transient property
@@ -63,34 +51,16 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   final let symbolTypeName_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
-    self.symbolTypeName_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
   final let filledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.filledBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
   final let strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
-    self.strokeBezierPath_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

@@ -51,22 +51,10 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   final let mCenterX_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mCenterX (_ inObserver : EBEvent) {
-    self.mCenterX_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
   final let mCenterY_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mCenterY (_ inObserver : EBEvent) {
-    self.mCenterY_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mWidth' stored property
@@ -75,22 +63,10 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   final let mWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
-    self.mWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
 
   final let mHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mHeight (_ inObserver : EBEvent) {
-    self.mHeight_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mHoleWidth' stored property
@@ -99,22 +75,10 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   final let mHoleWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mHoleWidth (_ inObserver : EBEvent) {
-    self.mHoleWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
 
   final let mHoleHeight_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mHoleHeight (_ inObserver : EBEvent) {
-    self.mHoleHeight_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mShape' stored property
@@ -123,22 +87,10 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   final let mShape_property = EBGenericTransientProperty <PadShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mShape (_ inObserver : EBEvent) {
-    self.mShape_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mStyle' stored property
   //····················································································································
 
   final let mStyle_property = EBGenericTransientProperty <SlavePadStyle?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mStyle (_ inObserver : EBEvent) {
-    self.mStyle_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'frontSideFilledBezierPath' transient property
@@ -147,34 +99,16 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   final let frontSideFilledBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBEvent) {
-    self.frontSideFilledBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'backSideFilledBezierPath' transient property
   //····················································································································
 
   final let backSideFilledBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_backSideFilledBezierPath (_ inObserver : EBEvent) {
-    self.backSideFilledBezierPath_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
   final let padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
-    self.padNumberDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 

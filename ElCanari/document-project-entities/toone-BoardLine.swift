@@ -55,22 +55,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mWidthUnit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mWidthUnit (_ inObserver : EBEvent) {
-    self.mWidthUnit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mX1' stored property
   //····················································································································
 
   final let mX1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mX1 (_ inObserver : EBEvent) {
-    self.mX1_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mX1Unit' stored property
@@ -79,22 +67,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mX1Unit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mX1Unit (_ inObserver : EBEvent) {
-    self.mX1Unit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mY1' stored property
   //····················································································································
 
   final let mY1_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mY1 (_ inObserver : EBEvent) {
-    self.mY1_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mY1Unit' stored property
@@ -103,22 +79,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mY1Unit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mY1Unit (_ inObserver : EBEvent) {
-    self.mY1Unit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mX2' stored property
   //····················································································································
 
   final let mX2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mX2 (_ inObserver : EBEvent) {
-    self.mX2_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mX2Unit' stored property
@@ -127,22 +91,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mX2Unit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mX2Unit (_ inObserver : EBEvent) {
-    self.mX2Unit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mY2' stored property
   //····················································································································
 
   final let mY2_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mY2 (_ inObserver : EBEvent) {
-    self.mY2_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mY2Unit' stored property
@@ -151,22 +103,10 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mY2Unit_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mY2Unit (_ inObserver : EBEvent) {
-    self.mY2Unit_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'mLayer' stored property
   //····················································································································
 
   final let mLayer_property = EBGenericTransientProperty <BoardLineLayer?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_mLayer (_ inObserver : EBEvent) {
-    self.mLayer_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   Observers of 'mWidth' stored property
@@ -175,34 +115,16 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   final let mWidth_property = EBGenericTransientProperty <Int?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_mWidth (_ inObserver : EBEvent) {
-    self.mWidth_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 
   //····················································································································
-
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
-    self.objectDisplay_property.removeEBObserver (inObserver)
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
-    self.selectionDisplay_property.removeEBObserver (inObserver)
-  }
 
   //····················································································································
   //   INIT 
