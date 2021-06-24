@@ -74,10 +74,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mPinInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
-    return self.mPinInstances_property.selection
-  }
-
   //····················································································································
 
   final var mPinInstances : [SymbolPinInstanceInDevice] {
@@ -105,10 +101,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mInstanceName_property_selection : EBSelection <String> { return self.mInstanceName_property.selection }
-
-  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -126,10 +118,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -151,20 +139,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   To one property: mType
   //····················································································································
 
   final let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false)
-
-  //····················································································································
-
-  final var mType_property_selection : EBSelection <SymbolTypeInDevice?> {
-    return .single (self.mType_property.propval)
-  }
 
   //····················································································································
 
@@ -184,25 +162,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mType_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mType_none_selection : EBSelection <Bool> {
-     return .single (self.mType_property.propval == nil)
-  }
+  final let mType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolQualifiedName
   //····················································································································
 
   final let symbolQualifiedName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var symbolQualifiedName_property_selection : EBSelection <String> {
-    return self.symbolQualifiedName_property.selection
-  }
 
   //····················································································································
 
@@ -223,12 +189,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var symbolTypeName_property_selection : EBSelection <String> {
-    return self.symbolTypeName_property.selection
-  }
-
-  //····················································································································
-
   final var symbolTypeName : String? {
     switch self.symbolTypeName_property.selection {
     case .empty, .multiple :
@@ -243,12 +203,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
-
-  //····················································································································
-
-  final var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
-    return self.unconnectedPins_property.selection
-  }
 
   //····················································································································
 

@@ -235,38 +235,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let name_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_name = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var name_property_selection : EBSelection <String?> { // §
-    return self.name_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.name_property.addEBObserver (inObserver)
-/*    self.mObserversOf_name.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.name_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.name_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_name.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.name_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -274,38 +253,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelWidth_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelWidth_property_selection : EBSelection <Int?> { // §
-    return self.modelWidth_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.modelWidth_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelWidth.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelWidth_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.modelWidth_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelWidth.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelWidth_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -313,38 +271,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelWidthUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelWidthUnit_property_selection : EBSelection <Int?> { // §
-    return self.modelWidthUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.modelWidthUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelWidthUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelWidthUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.modelWidthUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelWidthUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelWidthUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -352,38 +289,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelHeight_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelHeight = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelHeight_property_selection : EBSelection <Int?> { // §
-    return self.modelHeight_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.modelHeight_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelHeight.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelHeight_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.modelHeight_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelHeight.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelHeight_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -391,38 +307,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelHeightUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelHeightUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelHeightUnit_property_selection : EBSelection <Int?> { // §
-    return self.modelHeightUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.modelHeightUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelHeightUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelHeightUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.modelHeightUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelHeightUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelHeightUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -430,38 +325,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let zoom_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_zoom = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var zoom_property_selection : EBSelection <Int?> { // §
-    return self.zoom_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.zoom_property.addEBObserver (inObserver)
-/*    self.mObserversOf_zoom.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.zoom_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.zoom_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_zoom.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.zoom_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -469,38 +343,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelLimitWidth_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelLimitWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelLimitWidth_property_selection : EBSelection <Int?> { // §
-    return self.modelLimitWidth_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.modelLimitWidth_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelLimitWidth.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelLimitWidth_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.modelLimitWidth_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelLimitWidth.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelLimitWidth_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -508,38 +361,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let modelLimitWidthUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var modelLimitWidthUnit_property_selection : EBSelection <Int?> { // §
-    return self.modelLimitWidthUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.modelLimitWidthUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_modelLimitWidthUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.modelLimitWidthUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.modelLimitWidthUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.modelLimitWidthUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -547,38 +379,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let artworkName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_artworkName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var artworkName_property_selection : EBSelection <String?> { // §
-    return self.artworkName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.artworkName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_artworkName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.artworkName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.artworkName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_artworkName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.artworkName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -586,38 +397,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLegendLinesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontLegendLinesSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontLegendLinesSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
     self.frontLegendLinesSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendLinesSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendLinesSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
     self.frontLegendLinesSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendLinesSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendLinesSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -625,38 +415,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLegendLinesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backLegendLinesSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backLegendLinesSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
     self.backLegendLinesSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLegendLinesSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendLinesSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
     self.backLegendLinesSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLegendLinesSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendLinesSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -664,38 +433,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLegendLinesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backLegendLinesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backLegendLinesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.backLegendLinesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendLinesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.backLegendLinesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendLinesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -703,38 +451,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLegendTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontLegendTextsSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontLegendTextsSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
     self.frontLegendTextsSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendTextsSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendTextsSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
     self.frontLegendTextsSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendTextsSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendTextsSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -742,38 +469,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLegendTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontLegendTextsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontLegendTextsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.frontLegendTextsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendTextsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.frontLegendTextsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendTextsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -781,38 +487,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLayoutTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontLayoutTextsSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontLayoutTextsSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
     self.frontLayoutTextsSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLayoutTextsSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLayoutTextsSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
     self.frontLayoutTextsSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLayoutTextsSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLayoutTextsSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -820,38 +505,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLayoutTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontLayoutTextsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontLayoutTextsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.frontLayoutTextsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLayoutTextsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.frontLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -859,38 +523,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLegendTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backLegendTextsSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backLegendTextsSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
     self.backLegendTextsSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLegendTextsSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendTextsSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
     self.backLegendTextsSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLegendTextsSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendTextsSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -898,38 +541,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLegendTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backLegendTextsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backLegendTextsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.backLegendTextsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendTextsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.backLegendTextsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLegendTextsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -937,38 +559,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLayoutTextsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backLayoutTextsSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backLayoutTextsSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
     self.backLayoutTextsSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLayoutTextsSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLayoutTextsSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
     self.backLayoutTextsSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLayoutTextsSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLayoutTextsSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -976,38 +577,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backLayoutTextsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backLayoutTextsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backLayoutTextsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.backLayoutTextsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLayoutTextsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.backLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1015,38 +595,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let internalBoardsLimitsSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_internalBoardsLimitsSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.internalBoardsLimitsSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
     self.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
     self.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1054,38 +613,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let internalBoardsLimitsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_internalBoardsLimitsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.internalBoardsLimitsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
     self.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
     self.internalBoardsLimitsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.internalBoardsLimitsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1093,38 +631,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let drillSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_drillSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drillSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.drillSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.drillSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drillSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drillSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.drillSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drillSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drillSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1132,38 +649,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let holesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_holesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var holesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.holesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
     self.holesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_holesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.holesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
     self.holesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_holesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.holesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1171,38 +667,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let viaShapes_property = EBGenericTransientProperty <MergerViaShapeArray?> ()
-//  private final var mObserversOf_viaShapes = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var viaShapes_property_selection : EBSelection <MergerViaShapeArray?> {
-    return self.viaShapes_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
     self.viaShapes_property.addEBObserver (inObserver)
-/*    self.mObserversOf_viaShapes.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaShapes_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
     self.viaShapes_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_viaShapes.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaShapes_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1210,38 +685,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let viasBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_viasBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var viasBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.viasBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
     self.viasBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_viasBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viasBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
     self.viasBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_viasBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viasBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1249,38 +703,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
-//  private final var mObserversOf_frontPadArray = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontPadArray_property_selection : EBSelection <MergerPadArray?> {
-    return self.frontPadArray_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.frontPadArray_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontPadArray.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPadArray_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.frontPadArray_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontPadArray.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPadArray_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1288,38 +721,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontPadsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontPadsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
     self.frontPadsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontPadsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPadsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
     self.frontPadsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontPadsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPadsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1327,38 +739,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backPadArray_property = EBGenericTransientProperty <MergerPadArray?> ()
-//  private final var mObserversOf_backPadArray = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backPadArray_property_selection : EBSelection <MergerPadArray?> {
-    return self.backPadArray_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.backPadArray_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backPadArray.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPadArray_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.backPadArray_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backPadArray.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPadArray_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1366,38 +757,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backPadsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backPadsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backPadsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
     self.backPadsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backPadsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPadsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
     self.backPadsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backPadsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPadsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1405,38 +775,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let boardLimits_property = EBGenericTransientProperty <MergerBoardLimits?> ()
-//  private final var mObserversOf_boardLimits = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var boardLimits_property_selection : EBSelection <MergerBoardLimits?> {
-    return self.boardLimits_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_boardLimits (_ inObserver : EBEvent) {
     self.boardLimits_property.addEBObserver (inObserver)
-/*    self.mObserversOf_boardLimits.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.boardLimits_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardLimits (_ inObserver : EBEvent) {
     self.boardLimits_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_boardLimits.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.boardLimits_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1444,38 +793,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let boardLimitsBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_boardLimitsBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.boardLimitsBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
     self.boardLimitsBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_boardLimitsBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.boardLimitsBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
     self.boardLimitsBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_boardLimitsBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.boardLimitsBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1483,38 +811,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backComponentNameSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backComponentNameSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backComponentNameSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
     self.backComponentNameSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backComponentNameSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentNameSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
     self.backComponentNameSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backComponentNameSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentNameSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1522,38 +829,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backComponentNamesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backComponentNamesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backComponentNamesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.backComponentNamesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentNamesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.backComponentNamesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentNamesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1561,38 +847,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontComponentNameSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontComponentNameSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontComponentNameSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
     self.frontComponentNameSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentNameSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentNameSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
     self.frontComponentNameSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentNameSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentNameSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1600,38 +865,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontComponentNamesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontComponentNamesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontComponentNamesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.frontComponentNamesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentNamesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.frontComponentNamesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentNamesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1639,38 +883,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontComponentValueSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontComponentValueSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontComponentValueSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
     self.frontComponentValueSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentValueSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentValueSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
     self.frontComponentValueSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentValueSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentValueSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1678,38 +901,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontComponentValuesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontComponentValuesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontComponentValuesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.frontComponentValuesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentValuesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.frontComponentValuesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontComponentValuesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1717,38 +919,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backComponentValueSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backComponentValueSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backComponentValueSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
     self.backComponentValueSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backComponentValueSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentValueSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
     self.backComponentValueSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backComponentValueSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentValueSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1756,38 +937,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backComponentValuesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backComponentValuesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backComponentValuesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.backComponentValuesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentValuesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.backComponentValuesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backComponentValuesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1795,38 +955,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backTrackSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backTrackSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backTrackSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backTrackSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
     self.backTrackSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backTrackSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backTrackSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
     self.backTrackSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backTrackSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backTrackSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1834,38 +973,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backTracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backTracksBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backTracksBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
     self.backTracksBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backTracksBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backTracksBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
     self.backTracksBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backTracksBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backTracksBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1873,38 +991,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontTrackSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontTrackSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontTrackSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
     self.frontTrackSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontTrackSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontTrackSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
     self.frontTrackSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontTrackSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontTrackSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1912,38 +1009,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontTracksBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontTracksBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontTracksBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
     self.frontTracksBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontTracksBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontTracksBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
     self.frontTracksBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontTracksBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontTracksBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1951,38 +1027,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontPackagesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_frontPackagesSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.frontPackagesSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
     self.frontPackagesSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontPackagesSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPackagesSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
     self.frontPackagesSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontPackagesSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPackagesSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1990,38 +1045,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontPackagesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontPackagesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontPackagesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
     self.frontPackagesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontPackagesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPackagesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
     self.frontPackagesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontPackagesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontPackagesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2029,38 +1063,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backPackagesSegments_property = EBGenericTransientProperty <MergerSegmentArray?> ()
-//  private final var mObserversOf_backPackagesSegments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray?> {
-    return self.backPackagesSegments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
     self.backPackagesSegments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backPackagesSegments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPackagesSegments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
     self.backPackagesSegments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backPackagesSegments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPackagesSegments_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2068,38 +1081,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let backPackagesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_backPackagesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.backPackagesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
     self.backPackagesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_backPackagesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPackagesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
     self.backPackagesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_backPackagesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.backPackagesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2107,38 +1099,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let instanceCount_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_instanceCount = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var instanceCount_property_selection : EBSelection <Int?> {
-    return self.instanceCount_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.instanceCount_property.addEBObserver (inObserver)
-/*    self.mObserversOf_instanceCount.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.instanceCount_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.instanceCount_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_instanceCount.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.instanceCount_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2146,38 +1117,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let frontLegendLinesBezierPaths_property = EBGenericTransientProperty <BezierPathArray?> ()
-//  private final var mObserversOf_frontLegendLinesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray?> {
-    return self.frontLegendLinesBezierPaths_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.frontLegendLinesBezierPaths_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.frontLegendLinesBezierPaths_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2185,38 +1135,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let imageForModel_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_imageForModel = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var imageForModel_property_selection : EBSelection <EBShape?> {
-    return self.imageForModel_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
     self.imageForModel_property.addEBObserver (inObserver)
-/*    self.mObserversOf_imageForModel.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageForModel_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
     self.imageForModel_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_imageForModel.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageForModel_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2224,38 +1153,17 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   final let imageForInstances_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_imageForInstances = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var imageForInstances_property_selection : EBSelection <EBShape?> {
-    return self.imageForInstances_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
     self.imageForInstances_property.addEBObserver (inObserver)
-/*    self.mObserversOf_imageForInstances.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageForInstances_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
     self.imageForInstances_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_imageForInstances.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.imageForInstances_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -2263,23 +1171,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_frontLegendLines = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendLines_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontLegendLines_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2307,23 +1198,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var backLegendLines_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backLegendLines_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_backLegendLines (_ inObserver : EBEvent) {
     self.mObserversOf_backLegendLines.insert (inObserver)
     if let object = self.propval {
@@ -2345,23 +1219,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_frontLegendTexts = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontLegendTexts_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontLegendTexts_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2389,23 +1246,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var frontLayoutTexts_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontLayoutTexts_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBEvent) {
     self.mObserversOf_frontLayoutTexts.insert (inObserver)
     if let object = self.propval {
@@ -2427,23 +1267,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_backLegendTexts = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backLegendTexts_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backLegendTexts_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2471,23 +1294,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var backLayoutTexts_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backLayoutTexts_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_backLayoutTexts (_ inObserver : EBEvent) {
     self.mObserversOf_backLayoutTexts.insert (inObserver)
     if let object = self.propval {
@@ -2509,23 +1315,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_internalBoardsLimits = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var internalBoardsLimits_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.internalBoardsLimits_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2553,23 +1342,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var drills_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.drills_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_drills (_ inObserver : EBEvent) {
     self.mObserversOf_drills.insert (inObserver)
     if let object = self.propval {
@@ -2591,23 +1363,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_vias = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var vias_property_selection : EBSelection <[BoardModelVia]> {
-    if let model = self.propval {
-      switch (model.vias_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2635,23 +1390,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var frontPads_property_selection : EBSelection <[BoardModelPad]> {
-    if let model = self.propval {
-      switch (model.frontPads_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
     self.mObserversOf_frontPads.insert (inObserver)
     if let object = self.propval {
@@ -2673,23 +1411,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_backPads = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backPads_property_selection : EBSelection <[BoardModelPad]> {
-    if let model = self.propval {
-      switch (model.backPads_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2717,23 +1438,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var backComponentNames_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backComponentNames_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_backComponentNames (_ inObserver : EBEvent) {
     self.mObserversOf_backComponentNames.insert (inObserver)
     if let object = self.propval {
@@ -2755,23 +1459,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_frontComponentNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontComponentNames_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontComponentNames_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2799,23 +1486,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var frontComponentValues_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontComponentValues_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_frontComponentValues (_ inObserver : EBEvent) {
     self.mObserversOf_frontComponentValues.insert (inObserver)
     if let object = self.propval {
@@ -2837,23 +1507,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_backComponentValues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var backComponentValues_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backComponentValues_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2881,23 +1534,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var backTracks_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backTracks_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_backTracks (_ inObserver : EBEvent) {
     self.mObserversOf_backTracks.insert (inObserver)
     if let object = self.propval {
@@ -2919,23 +1555,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_frontTracks = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var frontTracks_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontTracks_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -2963,23 +1582,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var frontPackages_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.frontPackages_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_frontPackages (_ inObserver : EBEvent) {
     self.mObserversOf_frontPackages.insert (inObserver)
     if let object = self.propval {
@@ -3004,23 +1606,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final var backPackages_property_selection : EBSelection <[SegmentEntity]> {
-    if let model = self.propval {
-      switch (model.backPackages_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_backPackages (_ inObserver : EBEvent) {
     self.mObserversOf_backPackages.insert (inObserver)
     if let object = self.propval {
@@ -3042,23 +1627,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //····················································································································
 
   private final var mObserversOf_myInstances = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var myInstances_property_selection : EBSelection <[MergerBoardInstance]> {
-    if let model = self.propval {
-      switch (model.myInstances_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

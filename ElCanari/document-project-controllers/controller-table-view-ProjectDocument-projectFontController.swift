@@ -137,10 +137,6 @@ final class Controller_ProjectDocument_projectFontController : ReadOnlyAbstractG
   //····················································································································
 
   var selectedArray : [FontInProject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

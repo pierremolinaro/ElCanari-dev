@@ -63,10 +63,6 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   //····················································································································
 
   var selectedArray : [PackageObject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

@@ -53,12 +53,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var mSymbolInstance_property_selection : EBSelection <SymbolInstanceInDevice?> {
-    return .single (self.mSymbolInstance_property.propval)
-  }
-
-  //····················································································································
-
   final var mSymbolInstance : SymbolInstanceInDevice? {
     get {
       return self.mSymbolInstance_property.propval
@@ -75,25 +69,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbolInstance_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSymbolInstance_none_selection : EBSelection <Bool> {
-     return .single (self.mSymbolInstance_property.propval == nil)
-  }
+  final let mSymbolInstance_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mType
   //····················································································································
 
   final let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false)
-
-  //····················································································································
-
-  final var mType_property_selection : EBSelection <SymbolPinTypeInDevice?> {
-    return .single (self.mType_property.propval)
-  }
 
   //····················································································································
 
@@ -113,25 +95,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mType_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mType_none_selection : EBSelection <Bool> {
-     return .single (self.mType_property.propval == nil)
-  }
+  final let mType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mPadProxy
   //····················································································································
 
   final let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPadProxy_property_selection : EBSelection <PadProxyInDevice?> {
-    return .single (self.mPadProxy_property.propval)
-  }
 
   //····················································································································
 
@@ -151,25 +121,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mPadProxy_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPadProxy_none_selection : EBSelection <Bool> {
-     return .single (self.mPadProxy_property.propval == nil)
-  }
+  final let mPadProxy_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinName
   //····················································································································
 
   final let pinName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var pinName_property_selection : EBSelection <String> {
-    return self.pinName_property.selection
-  }
 
   //····················································································································
 
@@ -190,12 +148,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var symbolName_property_selection : EBSelection <String> {
-    return self.symbolName_property.selection
-  }
-
-  //····················································································································
-
   final var symbolName : String? {
     switch self.symbolName_property.selection {
     case .empty, .multiple :
@@ -210,12 +162,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final let pinQualifiedName_property = EBTransientProperty_PinQualifiedNameStruct ()
-
-  //····················································································································
-
-  final var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct> {
-    return self.pinQualifiedName_property.selection
-  }
 
   //····················································································································
 
@@ -236,12 +182,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
   //····················································································································
 
-  final var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.selection
-  }
-
-  //····················································································································
-
   final var isConnected : Bool? {
     switch self.isConnected_property.selection {
     case .empty, .multiple :
@@ -256,12 +196,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final let numberShape_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var numberShape_property_selection : EBSelection <EBShape> {
-    return self.numberShape_property.selection
-  }
 
   //····················································································································
 

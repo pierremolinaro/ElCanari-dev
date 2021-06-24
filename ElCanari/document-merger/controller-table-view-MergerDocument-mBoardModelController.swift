@@ -140,10 +140,6 @@ final class Controller_MergerDocument_mBoardModelController : ReadOnlyAbstractGe
   //····················································································································
 
   var selectedArray : [BoardModel] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[BoardModel]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

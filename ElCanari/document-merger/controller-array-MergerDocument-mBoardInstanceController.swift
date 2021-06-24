@@ -63,10 +63,6 @@ final class Controller_MergerDocument_mBoardInstanceController : ReadOnlyAbstrac
   //····················································································································
 
   var selectedArray : [MergerBoardInstance] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[MergerBoardInstance]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

@@ -51,20 +51,10 @@ final class NCInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.selection }
-
-  //····················································································································
   //   To one property: mPoint
   //····················································································································
 
   final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPoint_property_selection : EBSelection <PointInSchematic?> {
-    return .single (self.mPoint_property.propval)
-  }
 
   //····················································································································
 
@@ -84,13 +74,7 @@ final class NCInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mPoint_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPoint_none_selection : EBSelection <Bool> {
-     return .single (self.mPoint_property.propval == nil)
-  }
+  final let mPoint_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //    init

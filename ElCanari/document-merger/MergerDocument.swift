@@ -52,12 +52,6 @@ import Cocoa
 
   //····················································································································
 
-  final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.selection
-  }
-
-  //····················································································································
-
   final var documentFilePath : String? {
     switch self.documentFilePath_property.selection {
     case .empty, .multiple :
@@ -72,12 +66,6 @@ import Cocoa
   //····················································································································
 
   final let documentFileNameOk_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var documentFileNameOk_property_selection : EBSelection <Bool> {
-    return self.documentFileNameOk_property.selection
-  }
 
   //····················································································································
 
@@ -98,12 +86,6 @@ import Cocoa
 
   //····················································································································
 
-  final var documentIsUnnamed_property_selection : EBSelection <Bool> {
-    return self.documentIsUnnamed_property.selection
-  }
-
-  //····················································································································
-
   final var documentIsUnnamed : Bool? {
     switch self.documentIsUnnamed_property.selection {
     case .empty, .multiple :
@@ -118,12 +100,6 @@ import Cocoa
   //····················································································································
 
   final let importArtworkButtonTitle_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var importArtworkButtonTitle_property_selection : EBSelection <String> {
-    return self.importArtworkButtonTitle_property.selection
-  }
 
   //····················································································································
 
@@ -144,12 +120,6 @@ import Cocoa
 
   //····················································································································
 
-  final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
-
-  //····················································································································
-
   final var issues : CanariIssueArray? {
     switch self.issues_property.selection {
     case .empty, .multiple :
@@ -164,12 +134,6 @@ import Cocoa
   //····················································································································
 
   final let mStatusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.selection
-  }
 
   //····················································································································
 
@@ -190,12 +154,6 @@ import Cocoa
 
   //····················································································································
 
-  final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.selection
-  }
-
-  //····················································································································
-
   final var mStatusMessage : String? {
     switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
@@ -210,12 +168,6 @@ import Cocoa
   //····················································································································
 
   final let incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
-    return self.incorrectDocumentFileErrorMessage_property.selection
-  }
 
   //····················································································································
 

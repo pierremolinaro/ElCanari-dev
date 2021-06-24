@@ -16,19 +16,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var descriptor_property = EBTransientProperty_BorderCurveDescriptor ()
 
-  var descriptor_property_selection : EBSelection <BorderCurveDescriptor> {
-    return self.descriptor_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: isLine
   //····················································································································
 
   var isLine_property = EBTransientProperty_Bool ()
-
-  var isLine_property_selection : EBSelection <Bool> {
-    return self.isLine_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mCPX1
@@ -36,19 +28,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var mCPX1_property = EBPropertyProxy_Int ()
 
-  var mCPX1_property_selection : EBSelection <Int> {
-    return self.mCPX1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCPX2
   //····················································································································
 
   var mCPX2_property = EBPropertyProxy_Int ()
-
-  var mCPX2_property_selection : EBSelection <Int> {
-    return self.mCPX2_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mCPY1
@@ -56,19 +40,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var mCPY1_property = EBPropertyProxy_Int ()
 
-  var mCPY1_property_selection : EBSelection <Int> {
-    return self.mCPY1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCPY2
   //····················································································································
 
   var mCPY2_property = EBPropertyProxy_Int ()
-
-  var mCPY2_property_selection : EBSelection <Int> {
-    return self.mCPY2_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mNext
@@ -80,19 +56,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var mNextX_property = EBPropertyProxy_Int ()
 
-  var mNextX_property_selection : EBSelection <Int> {
-    return self.mNextX_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mNextY
   //····················································································································
 
   var mNextY_property = EBPropertyProxy_Int ()
-
-  var mNextY_property_selection : EBSelection <Int> {
-    return self.mNextY_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mPrevious
@@ -108,19 +76,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var mShape_property = EBPropertyProxy_BorderCurveShape ()
 
-  var mShape_property_selection : EBSelection <BorderCurveShape> {
-    return self.mShape_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
   var mX_property = EBPropertyProxy_Int ()
-
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mY
@@ -128,19 +88,11 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var mY_property = EBPropertyProxy_Int ()
 
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   var objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: p2Xstring
@@ -148,29 +100,17 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
 
   var p2Xstring_property = EBTransientProperty_String ()
 
-  var p2Xstring_property_selection : EBSelection <String> {
-    return self.p2Xstring_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: p2Ystring
   //····················································································································
 
   var p2Ystring_property = EBTransientProperty_String ()
 
-  var p2Ystring_property_selection : EBSelection <String> {
-    return self.p2Ystring_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   BIND SELECTION

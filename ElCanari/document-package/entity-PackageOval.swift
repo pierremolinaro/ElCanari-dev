@@ -114,10 +114,6 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-
-  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
-
-  //····················································································································
   //   Atomic property: width
   //····················································································································
 
@@ -135,10 +131,6 @@ final class PackageOval : PackageObject,
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: height
@@ -160,10 +152,6 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-
-  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
-
-  //····················································································································
   //   Atomic property: xUnit
   //····················································································································
 
@@ -181,10 +169,6 @@ final class PackageOval : PackageObject,
     get { return self.xUnit_property.propval }
     set { self.xUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yUnit
@@ -206,10 +190,6 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-
-  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: widthUnit
   //····················································································································
 
@@ -227,10 +207,6 @@ final class PackageOval : PackageObject,
     get { return self.widthUnit_property.propval }
     set { self.widthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: heightUnit
@@ -252,10 +228,6 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-
-  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: x
   //····················································································································
 
@@ -275,20 +247,10 @@ final class PackageOval : PackageObject,
   }
 
   //····················································································································
-
-  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 

@@ -63,10 +63,6 @@ final class Controller_DeviceDocument_packageDisplayController : ReadOnlyAbstrac
   //····················································································································
 
   var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

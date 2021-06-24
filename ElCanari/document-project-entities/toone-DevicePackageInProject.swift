@@ -39,38 +39,17 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   final let mPackageName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mPackageName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mPackageName_property_selection : EBSelection <String?> { // §
-    return self.mPackageName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.mPackageName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mPackageName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mPackageName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPackageName (_ inObserver : EBEvent) {
     self.mPackageName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mPackageName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mPackageName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -78,38 +57,17 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
-//  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> { // §
-    return self.mStrokeBezierPath_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.mStrokeBezierPath_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mStrokeBezierPath_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
     self.mStrokeBezierPath_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -117,38 +75,17 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
-//  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
-    return self.packagePadDictionary_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.packagePadDictionary_property.addEBObserver (inObserver)
-/*    self.mObserversOf_packagePadDictionary.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.packagePadDictionary_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_packagePadDictionary (_ inObserver : EBEvent) {
     self.packagePadDictionary_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_packagePadDictionary.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.packagePadDictionary_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -156,23 +93,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //····················································································································
 
   private final var mObserversOf_mMasterPads = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mMasterPads_property_selection : EBSelection <[DeviceMasterPadInProject]> {
-    if let model = self.propval {
-      switch (model.mMasterPads_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

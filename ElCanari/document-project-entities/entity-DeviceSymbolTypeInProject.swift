@@ -51,10 +51,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mSymbolTypeName_property_selection : EBSelection <String> { return self.mSymbolTypeName_property.selection }
-
-  //····················································································································
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
@@ -74,10 +70,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.selection }
-
-  //····················································································································
   //   Atomic property: mFilledBezierPath
   //····················································································································
 
@@ -95,10 +87,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
     get { return self.mFilledBezierPath_property.propval }
     set { self.mFilledBezierPath_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mFilledBezierPath_property.selection }
 
   //····················································································································
   //    init

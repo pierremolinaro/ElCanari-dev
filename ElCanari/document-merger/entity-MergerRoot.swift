@@ -263,10 +263,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardModels_property_selection : EBSelection < [BoardModel] > {
-    return self.boardModels_property.selection
-  }
-
   //····················································································································
 
   final var boardModels : [BoardModel] {
@@ -281,10 +277,6 @@ final class MergerRoot : EBManagedObject,
   final let boardInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
 
   //····················································································································
-
-  final var boardInstances_property_selection : EBSelection < [MergerBoardInstance] > {
-    return self.boardInstances_property.selection
-  }
 
   //····················································································································
 
@@ -313,10 +305,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.selection }
-
-  //····················································································································
   //   Atomic property: zoom
   //····················································································································
 
@@ -334,10 +322,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.zoom_property.propval }
     set { self.zoom_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.selection }
 
   //····················································································································
   //   Atomic property: automaticBoardSize
@@ -359,10 +343,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var automaticBoardSize_property_selection : EBSelection <Bool> { return self.automaticBoardSize_property.selection }
-
-  //····················································································································
   //   Atomic property: boardManualWidth
   //····················································································································
 
@@ -380,10 +360,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.boardManualWidth_property.propval }
     set { self.boardManualWidth_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var boardManualWidth_property_selection : EBSelection <Int> { return self.boardManualWidth_property.selection }
 
   //····················································································································
   //   Atomic property: boardManualHeight
@@ -405,10 +381,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var boardManualHeight_property_selection : EBSelection <Int> { return self.boardManualHeight_property.selection }
-
-  //····················································································································
   //   Atomic property: boardWidthUnit
   //····················································································································
 
@@ -426,10 +398,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.boardWidthUnit_property.propval }
     set { self.boardWidthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var boardWidthUnit_property_selection : EBSelection <Int> { return self.boardWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: boardHeightUnit
@@ -451,10 +419,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var boardHeightUnit_property_selection : EBSelection <Int> { return self.boardHeightUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: overlapingArrangment
   //····················································································································
 
@@ -472,10 +436,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.overlapingArrangment_property.propval }
     set { self.overlapingArrangment_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var overlapingArrangment_property_selection : EBSelection <Bool> { return self.overlapingArrangment_property.selection }
 
   //····················································································································
   //   Atomic property: selectedBoardXUnit
@@ -497,10 +457,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var selectedBoardXUnit_property_selection : EBSelection <Int> { return self.selectedBoardXUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: selectedBoardYUnit
   //····················································································································
 
@@ -518,10 +474,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.selectedBoardYUnit_property.propval }
     set { self.selectedBoardYUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var selectedBoardYUnit_property_selection : EBSelection <Int> { return self.selectedBoardYUnit_property.selection }
 
   //····················································································································
   //   Atomic property: boardLimitWidth
@@ -543,10 +495,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var boardLimitWidth_property_selection : EBSelection <Int> { return self.boardLimitWidth_property.selection }
-
-  //····················································································································
   //   Atomic property: boardLimitWidthUnit
   //····················································································································
 
@@ -564,10 +512,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.boardLimitWidthUnit_property.propval }
     set { self.boardLimitWidthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var boardLimitWidthUnit_property_selection : EBSelection <Int> { return self.boardLimitWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: arrowMagnitude
@@ -589,10 +533,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var arrowMagnitude_property_selection : EBSelection <Int> { return self.arrowMagnitude_property.selection }
-
-  //····················································································································
   //   Atomic property: arrowMagnitudeUnit
   //····················································································································
 
@@ -610,10 +550,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.arrowMagnitudeUnit_property.propval }
     set { self.arrowMagnitudeUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var arrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.arrowMagnitudeUnit_property.selection }
 
   //····················································································································
   //   Atomic property: shiftArrowMagnitude
@@ -635,10 +571,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var shiftArrowMagnitude_property_selection : EBSelection <Int> { return self.shiftArrowMagnitude_property.selection }
-
-  //····················································································································
   //   Atomic property: shiftArrowMagnitudeUnit
   //····················································································································
 
@@ -656,10 +588,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.shiftArrowMagnitudeUnit_property.propval }
     set { self.shiftArrowMagnitudeUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> { return self.shiftArrowMagnitudeUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mPDFBoardBackgroundColor
@@ -681,10 +609,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor> { return self.mPDFBoardBackgroundColor_property.selection }
-
-  //····················································································································
   //   Atomic property: mArtworkName
   //····················································································································
 
@@ -704,10 +628,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mArtworkName_property_selection : EBSelection <String> { return self.mArtworkName_property.selection }
-
-  //····················································································································
   //   Atomic property: mArtworkVersion
   //····················································································································
 
@@ -725,10 +645,6 @@ final class MergerRoot : EBManagedObject,
     get { return self.mArtworkVersion_property.propval }
     set { self.mArtworkVersion_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mArtworkVersion_property_selection : EBSelection <Int> { return self.mArtworkVersion_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
@@ -755,10 +671,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> { return self.minPPTPTTTWdisplayUnit_property.selection }
-
-  //····················································································································
   //   Atomic proxy property: minPPTPTTTW
   //····················································································································
 
@@ -781,10 +693,6 @@ final class MergerRoot : EBManagedObject,
       }
     }
   }
-
-  //····················································································································
-
-  var minPPTPTTTW_property_selection : EBSelection <Int> { return self.minPPTPTTTW_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForOARdisplayUnit
@@ -811,10 +719,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForOARdisplayUnit_property.selection }
-
-  //····················································································································
   //   Atomic proxy property: minValueForOARinEBUnit
   //····················································································································
 
@@ -837,10 +741,6 @@ final class MergerRoot : EBManagedObject,
       }
     }
   }
-
-  //····················································································································
-
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int> { return self.minValueForOARinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForPHDdisplayUnit
@@ -867,10 +767,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> { return self.minValueForPHDdisplayUnit_property.selection }
-
-  //····················································································································
   //   Atomic proxy property: minValueForPHDinEBUnit
   //····················································································································
 
@@ -893,10 +789,6 @@ final class MergerRoot : EBManagedObject,
       }
     }
   }
-
-  //····················································································································
-
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int> { return self.minValueForPHDinEBUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: minValueForBoardLimitWidth
@@ -923,10 +815,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidth_property.selection }
-
-  //····················································································································
   //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
   //····················································································································
 
@@ -949,10 +837,6 @@ final class MergerRoot : EBManagedObject,
       }
     }
   }
-
-  //····················································································································
-
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> { return self.minValueForBoardLimitWidthDisplayUnit_property.selection }
 
   //····················································································································
   //   Atomic proxy property: drillDataFileExtension
@@ -979,10 +863,6 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var drillDataFileExtension_property_selection : EBSelection <String> { return self.drillDataFileExtension_property.selection }
-
-  //····················································································································
   //   ToMany proxy: fileGenerationParameterArray
   //····················································································································
 
@@ -1004,12 +884,6 @@ final class MergerRoot : EBManagedObject,
     set {
       self.fileGenerationParameterArray_property.setProp (newValue)
     }
-  }
-
-  //····················································································································
-
-  var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
-    return self.fileGenerationParameterArray_property.selection
   }
 
   //····················································································································
@@ -1037,20 +911,10 @@ final class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
-
-  //····················································································································
   //   Transient property: modelNames
   //····················································································································
 
   final let modelNames_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  final var modelNames_property_selection : EBSelection <StringTagArray> {
-    return self.modelNames_property.selection
-  }
 
   //····················································································································
 
@@ -1071,12 +935,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardRect_property_selection : EBSelection <CanariRect> {
-    return self.boardRect_property.selection
-  }
-
-  //····················································································································
-
   final var boardRect : CanariRect? {
     switch self.boardRect_property.selection {
     case .empty, .multiple :
@@ -1091,12 +949,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let boardDisplayRect_property = EBTransientProperty_CanariRect ()
-
-  //····················································································································
-
-  final var boardDisplayRect_property_selection : EBSelection <CanariRect> {
-    return self.boardDisplayRect_property.selection
-  }
 
   //····················································································································
 
@@ -1117,12 +969,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var boardWidth_property_selection : EBSelection <Int> {
-    return self.boardWidth_property.selection
-  }
-
-  //····················································································································
-
   final var boardWidth : Int? {
     switch self.boardWidth_property.selection {
     case .empty, .multiple :
@@ -1137,12 +983,6 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final let boardHeight_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var boardHeight_property_selection : EBSelection <Int> {
-    return self.boardHeight_property.selection
-  }
 
   //····················································································································
 
@@ -1163,12 +1003,6 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final var mArtwork_property_selection : EBSelection <ArtworkRoot?> {
-    return .single (self.mArtwork_property.propval)
-  }
-
-  //····················································································································
-
   final var mArtwork : ArtworkRoot? {
     get {
       return self.mArtwork_property.propval
@@ -1185,25 +1019,13 @@ final class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mArtwork_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mArtwork_none_selection : EBSelection <Bool> {
-     return .single (self.mArtwork_property.propval == nil)
-  }
+  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
   final let boardOutlineRectDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var boardOutlineRectDisplay_property_selection : EBSelection <EBShape> {
-    return self.boardOutlineRectDisplay_property.selection
-  }
 
   //····················································································································
 

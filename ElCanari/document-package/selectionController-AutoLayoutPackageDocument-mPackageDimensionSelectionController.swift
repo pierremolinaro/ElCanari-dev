@@ -15,136 +15,76 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   //····················································································································
 
   let y1_property = EBPropertyProxy_Int ()
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x2
   //····················································································································
 
   let x2_property = EBPropertyProxy_Int ()
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y2
   //····················································································································
 
   let y2_property = EBPropertyProxy_Int ()
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xDimension
   //····················································································································
 
   let xDimension_property = EBPropertyProxy_Int ()
-  var xDimension_property_selection : EBSelection <Int> {
-    return self.xDimension_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: yDimension
   //····················································································································
 
   let yDimension_property = EBPropertyProxy_Int ()
-  var yDimension_property_selection : EBSelection <Int> {
-    return self.yDimension_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x1Unit
   //····················································································································
 
   let x1Unit_property = EBPropertyProxy_Int ()
-  var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y1Unit
   //····················································································································
 
   let y1Unit_property = EBPropertyProxy_Int ()
-  var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x2Unit
   //····················································································································
 
   let x2Unit_property = EBPropertyProxy_Int ()
-  var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y2Unit
   //····················································································································
 
   let y2Unit_property = EBPropertyProxy_Int ()
-  var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xDimensionUnit
   //····················································································································
 
   let xDimensionUnit_property = EBPropertyProxy_Int ()
-  var xDimensionUnit_property_selection : EBSelection <Int> {
-    return self.xDimensionUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: yDimensionUnit
   //····················································································································
 
   let yDimensionUnit_property = EBPropertyProxy_Int ()
-  var yDimensionUnit_property_selection : EBSelection <Int> {
-    return self.yDimensionUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: distanceUnit
   //····················································································································
 
   let distanceUnit_property = EBPropertyProxy_Int ()
-  var distanceUnit_property_selection : EBSelection <Int> {
-    return self.distanceUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawDimensionBackground
   //····················································································································
 
   let drawDimensionBackground_property = EBPropertyProxy_Bool ()
-  var drawDimensionBackground_property_selection : EBSelection <Bool> {
-    return self.drawDimensionBackground_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x1
   //····················································································································
 
   let x1_property = EBPropertyProxy_Int ()
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: distanceInCanariUnit
   //····················································································································
 
   let distanceInCanariUnit_property = EBTransientProperty_Int ()
-
-  var distanceInCanariUnit_property_selection : EBSelection <Int> {
-    return self.distanceInCanariUnit_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -152,29 +92,17 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

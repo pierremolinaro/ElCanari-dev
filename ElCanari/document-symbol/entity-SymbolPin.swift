@@ -135,10 +135,6 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var yPin_property_selection : EBSelection <Int> { return self.yPin_property.selection }
-
-  //····················································································································
   //   Atomic property: xName
   //····················································································································
 
@@ -156,10 +152,6 @@ final class SymbolPin : SymbolObject,
     get { return self.xName_property.propval }
     set { self.xName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xName_property_selection : EBSelection <Int> { return self.xName_property.selection }
 
   //····················································································································
   //   Atomic property: yName
@@ -181,10 +173,6 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var yName_property_selection : EBSelection <Int> { return self.yName_property.selection }
-
-  //····················································································································
   //   Atomic property: xNumber
   //····················································································································
 
@@ -202,10 +190,6 @@ final class SymbolPin : SymbolObject,
     get { return self.xNumber_property.propval }
     set { self.xNumber_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xNumber_property_selection : EBSelection <Int> { return self.xNumber_property.selection }
 
   //····················································································································
   //   Atomic property: yNumber
@@ -227,10 +211,6 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var yNumber_property_selection : EBSelection <Int> { return self.yNumber_property.selection }
-
-  //····················································································································
   //   Atomic property: name
   //····················································································································
 
@@ -248,10 +228,6 @@ final class SymbolPin : SymbolObject,
     get { return self.name_property.propval }
     set { self.name_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var name_property_selection : EBSelection <String> { return self.name_property.selection }
 
   //····················································································································
   //   Atomic property: nameHorizontalAlignment
@@ -273,10 +249,6 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.nameHorizontalAlignment_property.selection }
-
-  //····················································································································
   //   Atomic property: numberHorizontalAlignment
   //····················································································································
 
@@ -294,10 +266,6 @@ final class SymbolPin : SymbolObject,
     get { return self.numberHorizontalAlignment_property.propval }
     set { self.numberHorizontalAlignment_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.numberHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: pinNameIsDisplayedInSchematics
@@ -319,10 +287,6 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> { return self.pinNameIsDisplayedInSchematics_property.selection }
-
-  //····················································································································
   //   Atomic property: xPin
   //····················································································································
 
@@ -342,20 +306,10 @@ final class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-
-  final var xPin_property_selection : EBSelection <Int> { return self.xPin_property.selection }
-
-  //····················································································································
   //   Transient property: filledBezierPath
   //····················································································································
 
   final let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.selection
-  }
 
   //····················································································································
 
@@ -373,12 +327,6 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   final let nameRect_property = EBTransientProperty_NSRect ()
-
-  //····················································································································
-
-  final var nameRect_property_selection : EBSelection <NSRect> {
-    return self.nameRect_property.selection
-  }
 
   //····················································································································
 

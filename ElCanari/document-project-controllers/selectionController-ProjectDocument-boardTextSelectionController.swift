@@ -15,100 +15,56 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mFontSize
   //····················································································································
 
   let mFontSize_property = EBPropertyProxy_Double ()
-  var mFontSize_property_selection : EBSelection <Double> {
-    return self.mFontSize_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
   let mLayer_property = EBPropertyProxy_BoardTextLayer ()
-  var mLayer_property_selection : EBSelection <BoardTextLayer> {
-    return self.mLayer_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mText
   //····················································································································
 
   let mText_property = EBPropertyProxy_String ()
-  var mText_property_selection : EBSelection <String> {
-    return self.mText_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mHorizontalAlignment
   //····················································································································
 
   let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-  var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.mHorizontalAlignment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mVerticalAlignment
   //····················································································································
 
   let mVerticalAlignment_property = EBPropertyProxy_BoardTextVerticalAlignment ()
-  var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> {
-    return self.mVerticalAlignment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mRotation
   //····················································································································
 
   let mRotation_property = EBPropertyProxy_Int ()
-  var mRotation_property_selection : EBSelection <Int> {
-    return self.mRotation_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mWeight
   //····················································································································
 
   let mWeight_property = EBPropertyProxy_Double ()
-  var mWeight_property_selection : EBSelection <Double> {
-    return self.mWeight_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mOblique
   //····················································································································
 
   let mOblique_property = EBPropertyProxy_Bool ()
-  var mOblique_property_selection : EBSelection <Bool> {
-    return self.mOblique_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: selectionDisplay
@@ -116,29 +72,17 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: fontName
   //····················································································································
 
   let fontName_property = EBTransientProperty_String ()
 
-  var fontName_property_selection : EBSelection <String> {
-    return self.fontName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
-
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

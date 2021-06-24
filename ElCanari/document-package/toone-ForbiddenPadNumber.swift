@@ -31,38 +31,17 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   //····················································································································
 
   final let padNumber_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_padNumber = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var padNumber_property_selection : EBSelection <Int?> { // §
-    return self.padNumber_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.padNumber_property.addEBObserver (inObserver)
-/*    self.mObserversOf_padNumber.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.padNumber_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.padNumber_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_padNumber.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.padNumber_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································

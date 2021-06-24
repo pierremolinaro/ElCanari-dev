@@ -93,10 +93,6 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   Atomic property: mWidth
   //····················································································································
 
@@ -114,10 +110,6 @@ final class BoardRestrictRectangle : BoardObject,
     get { return self.mWidth_property.propval }
     set { self.mWidth_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mWidth_property_selection : EBSelection <Int> { return self.mWidth_property.selection }
 
   //····················································································································
   //   Atomic property: mHeight
@@ -139,10 +131,6 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
-
-  final var mHeight_property_selection : EBSelection <Int> { return self.mHeight_property.selection }
-
-  //····················································································································
   //   Atomic property: mIsInFrontLayer
   //····················································································································
 
@@ -160,10 +148,6 @@ final class BoardRestrictRectangle : BoardObject,
     get { return self.mIsInFrontLayer_property.propval }
     set { self.mIsInFrontLayer_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mIsInFrontLayer_property_selection : EBSelection <Bool> { return self.mIsInFrontLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mIsInBackLayer
@@ -185,10 +169,6 @@ final class BoardRestrictRectangle : BoardObject,
   }
 
   //····················································································································
-
-  final var mIsInBackLayer_property_selection : EBSelection <Bool> { return self.mIsInBackLayer_property.selection }
-
-  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -206,10 +186,6 @@ final class BoardRestrictRectangle : BoardObject,
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //    init

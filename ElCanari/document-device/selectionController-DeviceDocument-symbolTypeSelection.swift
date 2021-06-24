@@ -16,19 +16,11 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   var documentSizeString_property = EBTransientProperty_String ()
 
-  var documentSizeString_property_selection : EBSelection <String> {
-    return self.documentSizeString_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: instanceCount
   //····················································································································
 
   var instanceCount_property = EBTransientProperty_Int ()
-
-  var instanceCount_property_selection : EBSelection <Int> {
-    return self.instanceCount_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mFileData
@@ -36,19 +28,11 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   var mFileData_property = EBPropertyProxy_Data ()
 
-  var mFileData_property_selection : EBSelection <Data> {
-    return self.mFileData_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mFilledBezierPath
   //····················································································································
 
   var mFilledBezierPath_property = EBPropertyProxy_NSBezierPath ()
-
-  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mFilledBezierPath_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mInstances
@@ -64,19 +48,11 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   var mStrokeBezierPath_property = EBPropertyProxy_NSBezierPath ()
 
-  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.mStrokeBezierPath_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mTypeName
   //····················································································································
 
   var mTypeName_property = EBPropertyProxy_String ()
-
-  var mTypeName_property_selection : EBSelection <String> {
-    return self.mTypeName_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mVersion
@@ -84,29 +60,17 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
 
   var mVersion_property = EBPropertyProxy_Int ()
 
-  var mVersion_property_selection : EBSelection <Int> {
-    return self.mVersion_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: pinNameShape
   //····················································································································
 
   var pinNameShape_property = EBTransientProperty_EBShape ()
 
-  var pinNameShape_property_selection : EBSelection <EBShape> {
-    return self.pinNameShape_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: versionString
   //····················································································································
 
   var versionString_property = EBTransientProperty_String ()
-
-  var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.selection
-  }
 
   //····················································································································
   //   BIND SELECTION

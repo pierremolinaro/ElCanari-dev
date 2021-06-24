@@ -149,10 +149,6 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
   //····················································································································
 
   var selectedArray : [DeviceInProject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

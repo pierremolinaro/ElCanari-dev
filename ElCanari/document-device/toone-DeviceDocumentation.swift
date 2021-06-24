@@ -39,38 +39,17 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
 
   final let mFileName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mFileName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mFileName_property_selection : EBSelection <String?> { // §
-    return self.mFileName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.mFileName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mFileName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mFileName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.mFileName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mFileName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mFileName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -78,38 +57,17 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
 
   final let mFileData_property = EBGenericTransientProperty <Data?> ()
-//  private final var mObserversOf_mFileData = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mFileData_property_selection : EBSelection <Data?> { // §
-    return self.mFileData_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.mFileData_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mFileData.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mFileData_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.mFileData_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mFileData.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mFileData_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -117,38 +75,17 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //····················································································································
 
   final let fileSize_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_fileSize = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var fileSize_property_selection : EBSelection <Int?> {
-    return self.fileSize_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.fileSize_property.addEBObserver (inObserver)
-/*    self.mObserversOf_fileSize.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.fileSize_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.fileSize_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_fileSize.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.fileSize_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································

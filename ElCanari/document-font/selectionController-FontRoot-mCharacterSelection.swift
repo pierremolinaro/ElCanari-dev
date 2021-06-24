@@ -18,39 +18,13 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
 
   var advance_property = EBPropertyProxy_Int ()
 
-  var advance_property_selection : EBSelection <Int> {
-    get {
-      return self.advance_property.selection
-    }
-  }
   var codePoint_property = EBPropertyProxy_Int ()
 
-  var codePoint_property_selection : EBSelection <Int> {
-    get {
-      return self.codePoint_property.selection
-    }
-  }
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return self.gerberCode_property.selection
-    }
-  }
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    get {
-      return self.gerberCodeInstructionCountMessage_property.selection
-    }
-  }
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
-
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    get {
-      return self.segmentArrayForDrawing_property.selection
-    }
-  }
 
   //····················································································································
   //   BIND SELECTION
@@ -183,7 +157,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.advance_property_selection {
+            switch object.advance_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -253,7 +227,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.codePoint_property_selection {
+            switch object.codePoint_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -323,7 +297,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
           var s = Set<CharacterGerberCodeClass> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.gerberCode_property_selection {
+            switch object.gerberCode_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -363,7 +337,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.gerberCodeInstructionCountMessage_property_selection {
+            switch object.gerberCodeInstructionCountMessage_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -403,7 +377,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
           var s = Set<CharacterSegmentListClass> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.segmentArrayForDrawing_property_selection {
+            switch object.segmentArrayForDrawing_property.selection {
             case .empty :
               return .empty
             case .multiple :

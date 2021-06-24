@@ -51,20 +51,10 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.selection }
-
-  //····················································································································
   //   To one property: mPin
   //····················································································································
 
   final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPin_property_selection : EBSelection <DevicePinInProject?> {
-    return .single (self.mPin_property.propval)
-  }
 
   //····················································································································
 
@@ -84,25 +74,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mPin_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPin_none_selection : EBSelection <Bool> {
-     return .single (self.mPin_property.propval == nil)
-  }
+  final let mPin_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinPadAssignment
   //····················································································································
 
   final let pinPadAssignment_property = EBTransientProperty_ThreeStrings ()
-
-  //····················································································································
-
-  final var pinPadAssignment_property_selection : EBSelection <ThreeStrings> {
-    return self.pinPadAssignment_property.selection
-  }
 
   //····················································································································
 
@@ -120,12 +98,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   final let descriptor_property = EBTransientProperty_PinPadAssignmentInProject ()
-
-  //····················································································································
-
-  final var descriptor_property_selection : EBSelection <PinPadAssignmentInProject> {
-    return self.descriptor_property.selection
-  }
 
   //····················································································································
 

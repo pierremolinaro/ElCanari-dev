@@ -59,38 +59,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let codePoint_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_codePoint = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var codePoint_property_selection : EBSelection <Int?> { // §
-    return self.codePoint_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.codePoint_property.addEBObserver (inObserver)
-/*    self.mObserversOf_codePoint.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.codePoint_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
     self.codePoint_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_codePoint.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.codePoint_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -98,38 +77,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let advance_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_advance = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var advance_property_selection : EBSelection <Int?> { // §
-    return self.advance_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_advance (_ inObserver : EBEvent) {
     self.advance_property.addEBObserver (inObserver)
-/*    self.mObserversOf_advance.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.advance_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
     self.advance_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_advance.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.advance_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -137,38 +95,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let mWarnsWhenNoSegment_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> { // §
-    return self.mWarnsWhenNoSegment_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
     self.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -176,38 +113,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let mWarnsWhenAdvanceIsZero_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> { // §
-    return self.mWarnsWhenAdvanceIsZero_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
     self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -215,38 +131,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentListClass?> ()
-//  private final var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass?> {
-    return self.segmentArrayForDrawing_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.segmentArrayForDrawing_property.addEBObserver (inObserver)
-/*    self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentArrayForDrawing_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
     self.segmentArrayForDrawing_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentArrayForDrawing_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -254,38 +149,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let gerberCode_property = EBGenericTransientProperty <CharacterGerberCodeClass?> ()
-//  private final var mObserversOf_gerberCode = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass?> {
-    return self.gerberCode_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.gerberCode_property.addEBObserver (inObserver)
-/*    self.mObserversOf_gerberCode.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCode_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
     self.gerberCode_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_gerberCode.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCode_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -293,38 +167,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let gerberCodeInstructionCountMessage_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var gerberCodeInstructionCountMessage_property_selection : EBSelection <String?> {
-    return self.gerberCodeInstructionCountMessage_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
-/*    self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
     self.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -332,38 +185,17 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-//  private final var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.addEBObserver (inObserver)
-/*    self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -371,23 +203,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //····················································································································
 
   private final var mObserversOf_segments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var segments_property_selection : EBSelection <[SegmentForFontCharacter]> {
-    if let model = self.propval {
-      switch (model.segments_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

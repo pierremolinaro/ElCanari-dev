@@ -39,38 +39,17 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let mPadName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mPadName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mPadName_property_selection : EBSelection <String?> { // §
-    return self.mPadName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.mPadName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mPadName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mPadName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.mPadName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mPadName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mPadName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -78,38 +57,17 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let pinPadAssignment_property = EBGenericTransientProperty <ThreeStrings?> ()
-//  private final var mObserversOf_pinPadAssignment = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var pinPadAssignment_property_selection : EBSelection <ThreeStrings?> {
-    return self.pinPadAssignment_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
     self.pinPadAssignment_property.addEBObserver (inObserver)
-/*    self.mObserversOf_pinPadAssignment.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.pinPadAssignment_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBEvent) {
     self.pinPadAssignment_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_pinPadAssignment.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.pinPadAssignment_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -117,38 +75,17 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //····················································································································
 
   final let descriptor_property = EBGenericTransientProperty <PinPadAssignmentInProject?> ()
-//  private final var mObserversOf_descriptor = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var descriptor_property_selection : EBSelection <PinPadAssignmentInProject?> {
-    return self.descriptor_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.addEBObserver (inObserver)
-/*    self.mObserversOf_descriptor.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.descriptor_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_descriptor.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.descriptor_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································

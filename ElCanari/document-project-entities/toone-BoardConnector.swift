@@ -143,38 +143,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mComponentPadName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mComponentPadName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mComponentPadName_property_selection : EBSelection <String?> { // §
-    return self.mComponentPadName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.mComponentPadName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mComponentPadName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mComponentPadName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mComponentPadName (_ inObserver : EBEvent) {
     self.mComponentPadName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mComponentPadName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mComponentPadName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -182,38 +161,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mPadIndex_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mPadIndex = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mPadIndex_property_selection : EBSelection <Int?> { // §
-    return self.mPadIndex_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.mPadIndex_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mPadIndex.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mPadIndex_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPadIndex (_ inObserver : EBEvent) {
     self.mPadIndex_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mPadIndex.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mPadIndex_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -221,38 +179,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mX_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mX = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mX_property_selection : EBSelection <Int?> { // §
-    return self.mX_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.mX_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mX.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mX_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.mX_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mX.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mX_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -260,38 +197,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mY_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mY = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mY_property_selection : EBSelection <Int?> { // §
-    return self.mY_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.mY_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mY.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mY_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.mY_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mY.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mY_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -299,38 +215,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mDefaultHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int?> { // §
-    return self.mDefaultHoleDiameterUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
     self.mDefaultHoleDiameterUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mDefaultHoleDiameterUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mDefaultHoleDiameterUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDefaultHoleDiameterUnit (_ inObserver : EBEvent) {
     self.mDefaultHoleDiameterUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mDefaultHoleDiameterUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mDefaultHoleDiameterUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -338,38 +233,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mCustomHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mCustomHoleDiameter_property_selection : EBSelection <Int?> { // §
-    return self.mCustomHoleDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
     self.mCustomHoleDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mCustomHoleDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mCustomHoleDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCustomHoleDiameter (_ inObserver : EBEvent) {
     self.mCustomHoleDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mCustomHoleDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mCustomHoleDiameter_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -377,38 +251,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mCustomHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int?> { // §
-    return self.mCustomHoleDiameterUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
     self.mCustomHoleDiameterUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mCustomHoleDiameterUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mCustomHoleDiameterUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCustomHoleDiameterUnit (_ inObserver : EBEvent) {
     self.mCustomHoleDiameterUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mCustomHoleDiameterUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mCustomHoleDiameterUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -416,38 +269,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mUsesCustomHoleDiameter_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool?> { // §
-    return self.mUsesCustomHoleDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
     self.mUsesCustomHoleDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mUsesCustomHoleDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mUsesCustomHoleDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUsesCustomHoleDiameter (_ inObserver : EBEvent) {
     self.mUsesCustomHoleDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mUsesCustomHoleDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mUsesCustomHoleDiameter_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -455,38 +287,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mDefaultPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int?> { // §
-    return self.mDefaultPadDiameterUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
     self.mDefaultPadDiameterUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mDefaultPadDiameterUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mDefaultPadDiameterUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDefaultPadDiameterUnit (_ inObserver : EBEvent) {
     self.mDefaultPadDiameterUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mDefaultPadDiameterUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mDefaultPadDiameterUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -494,38 +305,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mCustomPadDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mCustomPadDiameter_property_selection : EBSelection <Int?> { // §
-    return self.mCustomPadDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
     self.mCustomPadDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mCustomPadDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mCustomPadDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCustomPadDiameter (_ inObserver : EBEvent) {
     self.mCustomPadDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mCustomPadDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mCustomPadDiameter_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -533,38 +323,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mCustomPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mCustomPadDiameterUnit_property_selection : EBSelection <Int?> { // §
-    return self.mCustomPadDiameterUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
     self.mCustomPadDiameterUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mCustomPadDiameterUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mCustomPadDiameterUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mCustomPadDiameterUnit (_ inObserver : EBEvent) {
     self.mCustomPadDiameterUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mCustomPadDiameterUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mCustomPadDiameterUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -572,38 +341,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let mUsesCustomPadDiameter_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool?> { // §
-    return self.mUsesCustomPadDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
     self.mUsesCustomPadDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mUsesCustomPadDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mUsesCustomPadDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUsesCustomPadDiameter (_ inObserver : EBEvent) {
     self.mUsesCustomPadDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mUsesCustomPadDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mUsesCustomPadDiameter_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -611,38 +359,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let isConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var isConnectedToSomePad_property_selection : EBSelection <Bool?> {
-    return self.isConnectedToSomePad_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
     self.isConnectedToSomePad_property.addEBObserver (inObserver)
-/*    self.mObserversOf_isConnectedToSomePad.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isConnectedToSomePad_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_isConnectedToSomePad (_ inObserver : EBEvent) {
     self.isConnectedToSomePad_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_isConnectedToSomePad.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isConnectedToSomePad_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -650,38 +377,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let location_property = EBGenericTransientProperty <CanariPoint?> ()
-//  private final var mObserversOf_location = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var location_property_selection : EBSelection <CanariPoint?> {
-    return self.location_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_location (_ inObserver : EBEvent) {
     self.location_property.addEBObserver (inObserver)
-/*    self.mObserversOf_location.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.location_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_location (_ inObserver : EBEvent) {
     self.location_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_location.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.location_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -689,38 +395,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let netNameFromComponentPad_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var netNameFromComponentPad_property_selection : EBSelection <String?> {
-    return self.netNameFromComponentPad_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
     self.netNameFromComponentPad_property.addEBObserver (inObserver)
-/*    self.mObserversOf_netNameFromComponentPad.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameFromComponentPad_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netNameFromComponentPad (_ inObserver : EBEvent) {
     self.netNameFromComponentPad_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_netNameFromComponentPad.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameFromComponentPad_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -728,38 +413,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
-//  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
-    return self.netNameAndPadLocation_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.netNameAndPadLocation_property.addEBObserver (inObserver)
-/*    self.mObserversOf_netNameAndPadLocation.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameAndPadLocation_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netNameAndPadLocation (_ inObserver : EBEvent) {
     self.netNameAndPadLocation_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_netNameAndPadLocation.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameAndPadLocation_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -767,38 +431,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let side_property = EBGenericTransientProperty <ConnectorSide?> ()
-//  private final var mObserversOf_side = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var side_property_selection : EBSelection <ConnectorSide?> {
-    return self.side_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_side (_ inObserver : EBEvent) {
     self.side_property.addEBObserver (inObserver)
-/*    self.mObserversOf_side.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.side_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_side (_ inObserver : EBEvent) {
     self.side_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_side.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.side_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -806,38 +449,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let isVia_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_isVia = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var isVia_property_selection : EBSelection <Bool?> {
-    return self.isVia_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.isVia_property.addEBObserver (inObserver)
-/*    self.mObserversOf_isVia.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isVia_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_isVia (_ inObserver : EBEvent) {
     self.isVia_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_isVia.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isVia_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -845,38 +467,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-//  private final var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.addEBObserver (inObserver)
-/*    self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -884,38 +485,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let viaDefaultHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var viaDefaultHoleDiameter_property_selection : EBSelection <Int?> {
-    return self.viaDefaultHoleDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
     self.viaDefaultHoleDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_viaDefaultHoleDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaDefaultHoleDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_viaDefaultHoleDiameter (_ inObserver : EBEvent) {
     self.viaDefaultHoleDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_viaDefaultHoleDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaDefaultHoleDiameter_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -923,38 +503,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let viaDefaultPadDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var viaDefaultPadDiameter_property_selection : EBSelection <Int?> {
-    return self.viaDefaultPadDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
     self.viaDefaultPadDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_viaDefaultPadDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaDefaultPadDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_viaDefaultPadDiameter (_ inObserver : EBEvent) {
     self.viaDefaultPadDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_viaDefaultPadDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.viaDefaultPadDiameter_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -962,38 +521,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let netNameFromTracks_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_netNameFromTracks = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var netNameFromTracks_property_selection : EBSelection <String?> {
-    return self.netNameFromTracks_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
     self.netNameFromTracks_property.addEBObserver (inObserver)
-/*    self.mObserversOf_netNameFromTracks.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameFromTracks_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netNameFromTracks (_ inObserver : EBEvent) {
     self.netNameFromTracks_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_netNameFromTracks.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netNameFromTracks_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1001,38 +539,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let netClassName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_netClassName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var netClassName_property_selection : EBSelection <String?> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.netClassName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_netClassName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netClassName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_netClassName (_ inObserver : EBEvent) {
     self.netClassName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_netClassName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.netClassName_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1040,38 +557,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let connectedToComponent_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_connectedToComponent = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var connectedToComponent_property_selection : EBSelection <Bool?> {
-    return self.connectedToComponent_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
     self.connectedToComponent_property.addEBObserver (inObserver)
-/*    self.mObserversOf_connectedToComponent.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.connectedToComponent_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_connectedToComponent (_ inObserver : EBEvent) {
     self.connectedToComponent_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_connectedToComponent.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.connectedToComponent_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1079,38 +575,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let actualHoleDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var actualHoleDiameter_property_selection : EBSelection <Int?> {
-    return self.actualHoleDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
     self.actualHoleDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_actualHoleDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.actualHoleDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_actualHoleDiameter (_ inObserver : EBEvent) {
     self.actualHoleDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_actualHoleDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.actualHoleDiameter_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1118,38 +593,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let actualPadDiameter_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_actualPadDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var actualPadDiameter_property_selection : EBSelection <Int?> {
-    return self.actualPadDiameter_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
     self.actualPadDiameter_property.addEBObserver (inObserver)
-/*    self.mObserversOf_actualPadDiameter.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.actualPadDiameter_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_actualPadDiameter (_ inObserver : EBEvent) {
     self.actualPadDiameter_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_actualPadDiameter.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.actualPadDiameter_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1157,38 +611,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1196,38 +629,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1235,38 +647,17 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-//  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
-    return self.signatureForERCChecking_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.signatureForERCChecking_property.addEBObserver (inObserver)
-/*    self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.signatureForERCChecking_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.signatureForERCChecking_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -1274,23 +665,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   private final var mObserversOf_mTracksP2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mTracksP2_property_selection : EBSelection <[BoardTrack]> {
-    if let model = self.propval {
-      switch (model.mTracksP2_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -1315,23 +689,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //····················································································································
 
   private final var mObserversOf_mTracksP1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mTracksP1_property_selection : EBSelection <[BoardTrack]> {
-    if let model = self.propval {
-      switch (model.mTracksP1_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

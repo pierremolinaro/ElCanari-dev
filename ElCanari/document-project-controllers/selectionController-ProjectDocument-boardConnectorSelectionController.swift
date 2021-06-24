@@ -15,118 +15,66 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
   //····················································································································
 
   let mComponentPadName_property = EBPropertyProxy_String ()
-  var mComponentPadName_property_selection : EBSelection <String> {
-    return self.mComponentPadName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mPadIndex
   //····················································································································
 
   let mPadIndex_property = EBPropertyProxy_Int ()
-  var mPadIndex_property_selection : EBSelection <Int> {
-    return self.mPadIndex_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mDefaultHoleDiameterUnit
   //····················································································································
 
   let mDefaultHoleDiameterUnit_property = EBPropertyProxy_Int ()
-  var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultHoleDiameterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomHoleDiameter
   //····················································································································
 
   let mCustomHoleDiameter_property = EBPropertyProxy_Int ()
-  var mCustomHoleDiameter_property_selection : EBSelection <Int> {
-    return self.mCustomHoleDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomHoleDiameterUnit
   //····················································································································
 
   let mCustomHoleDiameterUnit_property = EBPropertyProxy_Int ()
-  var mCustomHoleDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mCustomHoleDiameterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mUsesCustomHoleDiameter
   //····················································································································
 
   let mUsesCustomHoleDiameter_property = EBPropertyProxy_Bool ()
-  var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomHoleDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mDefaultPadDiameterUnit
   //····················································································································
 
   let mDefaultPadDiameterUnit_property = EBPropertyProxy_Int ()
-  var mDefaultPadDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultPadDiameterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomPadDiameter
   //····················································································································
 
   let mCustomPadDiameter_property = EBPropertyProxy_Int ()
-  var mCustomPadDiameter_property_selection : EBSelection <Int> {
-    return self.mCustomPadDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomPadDiameterUnit
   //····················································································································
 
   let mCustomPadDiameterUnit_property = EBPropertyProxy_Int ()
-  var mCustomPadDiameterUnit_property_selection : EBSelection <Int> {
-    return self.mCustomPadDiameterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mUsesCustomPadDiameter
   //····················································································································
 
   let mUsesCustomPadDiameter_property = EBPropertyProxy_Bool ()
-  var mUsesCustomPadDiameter_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomPadDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: isConnectedToSomePad
   //····················································································································
 
   let isConnectedToSomePad_property = EBTransientProperty_Bool ()
-
-  var isConnectedToSomePad_property_selection : EBSelection <Bool> {
-    return self.isConnectedToSomePad_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: location
@@ -134,19 +82,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let location_property = EBTransientProperty_CanariPoint ()
 
-  var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: netNameFromComponentPad
   //····················································································································
 
   let netNameFromComponentPad_property = EBTransientProperty_String ()
-
-  var netNameFromComponentPad_property_selection : EBSelection <String> {
-    return self.netNameFromComponentPad_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netNameAndPadLocation
@@ -154,19 +94,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let netNameAndPadLocation_property = EBTransientProperty_RastnetInfoArray ()
 
-  var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray> {
-    return self.netNameAndPadLocation_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: side
   //····················································································································
 
   let side_property = EBTransientProperty_ConnectorSide ()
-
-  var side_property_selection : EBSelection <ConnectorSide> {
-    return self.side_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: isVia
@@ -174,19 +106,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let isVia_property = EBTransientProperty_Bool ()
 
-  var isVia_property_selection : EBSelection <Bool> {
-    return self.isVia_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: viaDefaultHoleDiameter
@@ -194,19 +118,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let viaDefaultHoleDiameter_property = EBTransientProperty_Int ()
 
-  var viaDefaultHoleDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultHoleDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: viaDefaultPadDiameter
   //····················································································································
 
   let viaDefaultPadDiameter_property = EBTransientProperty_Int ()
-
-  var viaDefaultPadDiameter_property_selection : EBSelection <Int> {
-    return self.viaDefaultPadDiameter_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netNameFromTracks
@@ -214,19 +130,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let netNameFromTracks_property = EBTransientProperty_String ()
 
-  var netNameFromTracks_property_selection : EBSelection <String> {
-    return self.netNameFromTracks_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
   let netClassName_property = EBTransientProperty_String ()
-
-  var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: connectedToComponent
@@ -234,19 +142,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let connectedToComponent_property = EBTransientProperty_Bool ()
 
-  var connectedToComponent_property_selection : EBSelection <Bool> {
-    return self.connectedToComponent_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: actualHoleDiameter
   //····················································································································
 
   let actualHoleDiameter_property = EBTransientProperty_Int ()
-
-  var actualHoleDiameter_property_selection : EBSelection <Int> {
-    return self.actualHoleDiameter_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: actualPadDiameter
@@ -254,19 +154,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let actualPadDiameter_property = EBTransientProperty_Int ()
 
-  var actualPadDiameter_property_selection : EBSelection <Int> {
-    return self.actualPadDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: selectionDisplay
@@ -274,19 +166,11 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
-
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

@@ -65,20 +65,10 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mSymbolInstanceName_property_selection : EBSelection <String> { return self.mSymbolInstanceName_property.selection }
-
-  //····················································································································
   //   To one property: mSymbolType
   //····················································································································
 
   final let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mSymbolType_property_selection : EBSelection <DeviceSymbolTypeInProject?> {
-    return .single (self.mSymbolType_property.propval)
-  }
 
   //····················································································································
 
@@ -98,25 +88,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbolType_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSymbolType_none_selection : EBSelection <Bool> {
-     return .single (self.mSymbolType_property.propval == nil)
-  }
+  final let mSymbolType_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolAndTypeName
   //····················································································································
 
   final let symbolAndTypeName_property = EBTransientProperty_SymbolInProjectIdentifier ()
-
-  //····················································································································
-
-  final var symbolAndTypeName_property_selection : EBSelection <SymbolInProjectIdentifier> {
-    return self.symbolAndTypeName_property.selection
-  }
 
   //····················································································································
 
@@ -137,12 +115,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var symbolTypeName_property_selection : EBSelection <String> {
-    return self.symbolTypeName_property.selection
-  }
-
-  //····················································································································
-
   final var symbolTypeName : String? {
     switch self.symbolTypeName_property.selection {
     case .empty, .multiple :
@@ -160,12 +132,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
 
   //····················································································································
 
-  final var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.selection
-  }
-
-  //····················································································································
-
   final var filledBezierPath : NSBezierPath? {
     switch self.filledBezierPath_property.selection {
     case .empty, .multiple :
@@ -180,12 +146,6 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 

@@ -170,10 +170,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
-
-  //····················································································································
   //   Atomic property: x2
   //····················································································································
 
@@ -191,10 +187,6 @@ final class PackageBezier : PackageObject,
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -216,10 +208,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx1
   //····················································································································
 
@@ -237,10 +225,6 @@ final class PackageBezier : PackageObject,
     get { return self.cpx1_property.propval }
     set { self.cpx1_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx1_property_selection : EBSelection <Int> { return self.cpx1_property.selection }
 
   //····················································································································
   //   Atomic property: cpy1
@@ -262,10 +246,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var cpy1_property_selection : EBSelection <Int> { return self.cpy1_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx2
   //····················································································································
 
@@ -283,10 +263,6 @@ final class PackageBezier : PackageObject,
     get { return self.cpx2_property.propval }
     set { self.cpx2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx2_property_selection : EBSelection <Int> { return self.cpx2_property.selection }
 
   //····················································································································
   //   Atomic property: cpy2
@@ -308,10 +284,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var cpy2_property_selection : EBSelection <Int> { return self.cpy2_property.selection }
-
-  //····················································································································
   //   Atomic property: x1Unit
   //····················································································································
 
@@ -329,10 +301,6 @@ final class PackageBezier : PackageObject,
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -354,10 +322,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: x2Unit
   //····················································································································
 
@@ -375,10 +339,6 @@ final class PackageBezier : PackageObject,
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -400,10 +360,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx1Unit
   //····················································································································
 
@@ -421,10 +377,6 @@ final class PackageBezier : PackageObject,
     get { return self.cpx1Unit_property.propval }
     set { self.cpx1Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx1Unit_property_selection : EBSelection <Int> { return self.cpx1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: cpy1Unit
@@ -446,10 +398,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var cpy1Unit_property_selection : EBSelection <Int> { return self.cpy1Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx2Unit
   //····················································································································
 
@@ -467,10 +415,6 @@ final class PackageBezier : PackageObject,
     get { return self.cpx2Unit_property.propval }
     set { self.cpx2Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx2Unit_property_selection : EBSelection <Int> { return self.cpx2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: cpy2Unit
@@ -492,10 +436,6 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var cpy2Unit_property_selection : EBSelection <Int> { return self.cpy2Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -515,20 +455,10 @@ final class PackageBezier : PackageObject,
   }
 
   //····················································································································
-
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 

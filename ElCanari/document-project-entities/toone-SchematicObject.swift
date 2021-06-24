@@ -51,38 +51,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-//  private final var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.addEBObserver (inObserver)
-/*    self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -90,38 +69,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let connectedPoints_property = EBGenericTransientProperty <CanariPointArray?> ()
-//  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var connectedPoints_property_selection : EBSelection <CanariPointArray?> {
-    return self.connectedPoints_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.connectedPoints_property.addEBObserver (inObserver)
-/*    self.mObserversOf_connectedPoints.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.connectedPoints_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_connectedPoints (_ inObserver : EBEvent) {
     self.connectedPoints_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_connectedPoints.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.connectedPoints_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -129,38 +87,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
-//  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
-    return self.sheetDescriptor_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.sheetDescriptor_property.addEBObserver (inObserver)
-/*    self.mObserversOf_sheetDescriptor.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.sheetDescriptor_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sheetDescriptor (_ inObserver : EBEvent) {
     self.sheetDescriptor_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_sheetDescriptor.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.sheetDescriptor_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -168,38 +105,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -207,38 +123,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -246,38 +141,17 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   //····················································································································
 
   final let isPlacedInSchematic_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_isPlacedInSchematic = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var isPlacedInSchematic_property_selection : EBSelection <Bool?> {
-    return self.isPlacedInSchematic_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.isPlacedInSchematic_property.addEBObserver (inObserver)
-/*    self.mObserversOf_isPlacedInSchematic.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isPlacedInSchematic_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_isPlacedInSchematic (_ inObserver : EBEvent) {
     self.isPlacedInSchematic_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_isPlacedInSchematic.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.isPlacedInSchematic_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································

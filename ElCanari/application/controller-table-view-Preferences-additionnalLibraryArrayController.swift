@@ -137,10 +137,6 @@ final class Controller_Preferences_additionnalLibraryArrayController : ReadOnlyA
   //····················································································································
 
   var selectedArray : [CanariLibraryEntry] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[CanariLibraryEntry]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

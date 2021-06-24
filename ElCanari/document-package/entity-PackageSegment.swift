@@ -128,10 +128,6 @@ final class PackageSegment : PackageObject,
   }
 
   //····················································································································
-
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
-
-  //····················································································································
   //   Atomic property: x2
   //····················································································································
 
@@ -149,10 +145,6 @@ final class PackageSegment : PackageObject,
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -174,10 +166,6 @@ final class PackageSegment : PackageObject,
   }
 
   //····················································································································
-
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
-
-  //····················································································································
   //   Atomic property: x1Unit
   //····················································································································
 
@@ -195,10 +183,6 @@ final class PackageSegment : PackageObject,
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -220,10 +204,6 @@ final class PackageSegment : PackageObject,
   }
 
   //····················································································································
-
-  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: x2Unit
   //····················································································································
 
@@ -241,10 +221,6 @@ final class PackageSegment : PackageObject,
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -266,10 +242,6 @@ final class PackageSegment : PackageObject,
   }
 
   //····················································································································
-
-  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: lengthUnit
   //····················································································································
 
@@ -287,10 +259,6 @@ final class PackageSegment : PackageObject,
     get { return self.lengthUnit_property.propval }
     set { self.lengthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var lengthUnit_property_selection : EBSelection <Int> { return self.lengthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: x1
@@ -312,20 +280,10 @@ final class PackageSegment : PackageObject,
   }
 
   //····················································································································
-
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 
@@ -343,12 +301,6 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   final let lengthInCanariUnit_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var lengthInCanariUnit_property_selection : EBSelection <Int> {
-    return self.lengthInCanariUnit_property.selection
-  }
 
   //····················································································································
 

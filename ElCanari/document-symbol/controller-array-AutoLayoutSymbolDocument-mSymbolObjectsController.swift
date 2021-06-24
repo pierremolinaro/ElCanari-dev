@@ -63,10 +63,6 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   //····················································································································
 
   var selectedArray : [SymbolObject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[SymbolObject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

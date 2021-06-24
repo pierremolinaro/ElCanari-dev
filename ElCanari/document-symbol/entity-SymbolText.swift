@@ -79,10 +79,6 @@ final class SymbolText : SymbolObject,
   }
 
   //····················································································································
-
-  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
-
-  //····················································································································
   //   Atomic property: text
   //····················································································································
 
@@ -100,10 +96,6 @@ final class SymbolText : SymbolObject,
     get { return self.text_property.propval }
     set { self.text_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var text_property_selection : EBSelection <String> { return self.text_property.selection }
 
   //····················································································································
   //   Atomic property: horizontalAlignment
@@ -125,10 +117,6 @@ final class SymbolText : SymbolObject,
   }
 
   //····················································································································
-
-  final var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.horizontalAlignment_property.selection }
-
-  //····················································································································
   //   Atomic property: x
   //····················································································································
 
@@ -146,10 +134,6 @@ final class SymbolText : SymbolObject,
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //    init

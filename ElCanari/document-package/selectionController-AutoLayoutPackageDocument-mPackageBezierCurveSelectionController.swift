@@ -15,154 +15,86 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //····················································································································
 
   let y1_property = EBPropertyProxy_Int ()
-  var y1_property_selection : EBSelection <Int> {
-    return self.y1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x2
   //····················································································································
 
   let x2_property = EBPropertyProxy_Int ()
-  var x2_property_selection : EBSelection <Int> {
-    return self.x2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y2
   //····················································································································
 
   let y2_property = EBPropertyProxy_Int ()
-  var y2_property_selection : EBSelection <Int> {
-    return self.y2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpx1
   //····················································································································
 
   let cpx1_property = EBPropertyProxy_Int ()
-  var cpx1_property_selection : EBSelection <Int> {
-    return self.cpx1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpy1
   //····················································································································
 
   let cpy1_property = EBPropertyProxy_Int ()
-  var cpy1_property_selection : EBSelection <Int> {
-    return self.cpy1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpx2
   //····················································································································
 
   let cpx2_property = EBPropertyProxy_Int ()
-  var cpx2_property_selection : EBSelection <Int> {
-    return self.cpx2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpy2
   //····················································································································
 
   let cpy2_property = EBPropertyProxy_Int ()
-  var cpy2_property_selection : EBSelection <Int> {
-    return self.cpy2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x1Unit
   //····················································································································
 
   let x1Unit_property = EBPropertyProxy_Int ()
-  var x1Unit_property_selection : EBSelection <Int> {
-    return self.x1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y1Unit
   //····················································································································
 
   let y1Unit_property = EBPropertyProxy_Int ()
-  var y1Unit_property_selection : EBSelection <Int> {
-    return self.y1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x2Unit
   //····················································································································
 
   let x2Unit_property = EBPropertyProxy_Int ()
-  var x2Unit_property_selection : EBSelection <Int> {
-    return self.x2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: y2Unit
   //····················································································································
 
   let y2Unit_property = EBPropertyProxy_Int ()
-  var y2Unit_property_selection : EBSelection <Int> {
-    return self.y2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpx1Unit
   //····················································································································
 
   let cpx1Unit_property = EBPropertyProxy_Int ()
-  var cpx1Unit_property_selection : EBSelection <Int> {
-    return self.cpx1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpy1Unit
   //····················································································································
 
   let cpy1Unit_property = EBPropertyProxy_Int ()
-  var cpy1Unit_property_selection : EBSelection <Int> {
-    return self.cpy1Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpx2Unit
   //····················································································································
 
   let cpx2Unit_property = EBPropertyProxy_Int ()
-  var cpx2Unit_property_selection : EBSelection <Int> {
-    return self.cpx2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: cpy2Unit
   //····················································································································
 
   let cpy2Unit_property = EBPropertyProxy_Int ()
-  var cpy2Unit_property_selection : EBSelection <Int> {
-    return self.cpy2Unit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x1
   //····················································································································
 
   let x1_property = EBPropertyProxy_Int ()
-  var x1_property_selection : EBSelection <Int> {
-    return self.x1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
   let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -170,29 +102,17 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

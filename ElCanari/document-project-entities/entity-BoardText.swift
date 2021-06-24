@@ -128,10 +128,6 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
-
-  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -149,10 +145,6 @@ final class BoardText : BoardObject,
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   Atomic property: mFontSize
@@ -174,10 +166,6 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mFontSize_property_selection : EBSelection <Double> { return self.mFontSize_property.selection }
-
-  //····················································································································
   //   Atomic property: mLayer
   //····················································································································
 
@@ -195,10 +183,6 @@ final class BoardText : BoardObject,
     get { return self.mLayer_property.propval }
     set { self.mLayer_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mLayer_property_selection : EBSelection <BoardTextLayer> { return self.mLayer_property.selection }
 
   //····················································································································
   //   Atomic property: mText
@@ -220,10 +204,6 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mText_property_selection : EBSelection <String> { return self.mText_property.selection }
-
-  //····················································································································
   //   Atomic property: mHorizontalAlignment
   //····················································································································
 
@@ -241,10 +221,6 @@ final class BoardText : BoardObject,
     get { return self.mHorizontalAlignment_property.propval }
     set { self.mHorizontalAlignment_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mVerticalAlignment
@@ -266,10 +242,6 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mVerticalAlignment_property_selection : EBSelection <BoardTextVerticalAlignment> { return self.mVerticalAlignment_property.selection }
-
-  //····················································································································
   //   Atomic property: mRotation
   //····················································································································
 
@@ -287,10 +259,6 @@ final class BoardText : BoardObject,
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.selection }
 
   //····················································································································
   //   Atomic property: mWeight
@@ -312,10 +280,6 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mWeight_property_selection : EBSelection <Double> { return self.mWeight_property.selection }
-
-  //····················································································································
   //   Atomic property: mOblique
   //····················································································································
 
@@ -335,20 +299,10 @@ final class BoardText : BoardObject,
   }
 
   //····················································································································
-
-  final var mOblique_property_selection : EBSelection <Bool> { return self.mOblique_property.selection }
-
-  //····················································································································
   //   To one property: mFont
   //····················································································································
 
   final let mFont_property = StoredObject_FontInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mFont_property_selection : EBSelection <FontInProject?> {
-    return .single (self.mFont_property.propval)
-  }
 
   //····················································································································
 
@@ -368,25 +322,13 @@ final class BoardText : BoardObject,
 
   //····················································································································
 
-  final let mFont_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mFont_none_selection : EBSelection <Bool> {
-     return .single (self.mFont_property.propval == nil)
-  }
+  final let mFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: fontName
   //····················································································································
 
   final let fontName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var fontName_property_selection : EBSelection <String> {
-    return self.fontName_property.selection
-  }
 
   //····················································································································
 

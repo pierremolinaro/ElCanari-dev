@@ -28,12 +28,6 @@ import Cocoa
 
   //····················································································································
 
-  final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.selection
-  }
-
-  //····················································································································
-
   final var documentFilePath : String? {
     switch self.documentFilePath_property.selection {
     case .empty, .multiple :
@@ -48,12 +42,6 @@ import Cocoa
   //····················································································································
 
   final let canDeleteCurrentCharacter_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canDeleteCurrentCharacter_property_selection : EBSelection <Bool> {
-    return self.canDeleteCurrentCharacter_property.selection
-  }
 
   //····················································································································
 
@@ -74,12 +62,6 @@ import Cocoa
 
   //····················································································································
 
-  final var noIssue_property_selection : EBSelection <Bool> {
-    return self.noIssue_property.selection
-  }
-
-  //····················································································································
-
   final var noIssue : Bool? {
     switch self.noIssue_property.selection {
     case .empty, .multiple :
@@ -94,12 +76,6 @@ import Cocoa
   //····················································································································
 
   final let mStatusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.selection
-  }
 
   //····················································································································
 
@@ -120,12 +96,6 @@ import Cocoa
 
   //····················································································································
 
-  final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.selection
-  }
-
-  //····················································································································
-
   final var mStatusMessage : String? {
     switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
@@ -140,12 +110,6 @@ import Cocoa
   //····················································································································
 
   final let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
-
-  //····················································································································
-
-  final var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.mMetadataStatus_property.selection
-  }
 
   //····················································································································
 

@@ -27,14 +27,8 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  final var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
-  //····················································································································
-
   final var selectionDisplay : EBShape? {
-    switch self.selectionDisplay_property_selection {
+    switch self.selectionDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -50,14 +44,8 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  final var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
-  //····················································································································
-
   final var objectDisplay : EBShape? {
-    switch self.objectDisplay_property_selection {
+    switch self.objectDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :

@@ -119,38 +119,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawBoardLimits_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawBoardLimits = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawBoardLimits_property_selection : EBSelection <Bool?> { // §
-    return self.drawBoardLimits_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
     self.drawBoardLimits_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawBoardLimits.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawBoardLimits_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBEvent) {
     self.drawBoardLimits_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawBoardLimits.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawBoardLimits_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -158,38 +137,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawInternalBoardLimits_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawInternalBoardLimits_property_selection : EBSelection <Bool?> { // §
-    return self.drawInternalBoardLimits_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.drawInternalBoardLimits_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawInternalBoardLimits_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
     self.drawInternalBoardLimits_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawInternalBoardLimits.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawInternalBoardLimits_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -197,38 +155,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentNamesTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawComponentNamesTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawComponentNamesTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
     self.drawComponentNamesTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawComponentNamesTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBEvent) {
     self.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentNamesTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -236,38 +173,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentNamesBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawComponentNamesBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawComponentNamesBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -275,38 +191,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentValuesTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawComponentValuesTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawComponentValuesTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
     self.drawComponentValuesTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawComponentValuesTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBEvent) {
     self.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentValuesTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -314,38 +209,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawComponentValuesBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawComponentValuesBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawComponentValuesBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBEvent) {
     self.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -353,38 +227,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPackageLegendTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawPackageLegendTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawPackageLegendTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
     self.drawPackageLegendTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawPackageLegendTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBEvent) {
     self.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawPackageLegendTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -392,38 +245,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPackageLegendBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawPackageLegendBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawPackageLegendBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBEvent) {
     self.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -431,38 +263,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPadHolesInPDF_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawPadHolesInPDF_property_selection : EBSelection <Bool?> { // §
-    return self.drawPadHolesInPDF_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
     self.drawPadHolesInPDF_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawPadHolesInPDF_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBEvent) {
     self.drawPadHolesInPDF_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawPadHolesInPDF.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawPadHolesInPDF_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -470,38 +281,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPadsTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawPadsTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawPadsTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.drawPadsTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawPadsTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawPadsTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBEvent) {
     self.drawPadsTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawPadsTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawPadsTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -509,38 +299,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawPadsBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawPadsBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawPadsBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
     self.drawPadsBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawPadsBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawPadsBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBEvent) {
     self.drawPadsBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawPadsBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawPadsBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -548,38 +317,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLayoutTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTextsLayoutTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTextsLayoutTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBEvent) {
     self.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -587,38 +335,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLayoutBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTextsLayoutBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
     self.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBEvent) {
     self.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -626,38 +353,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLegendTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTextsLegendTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTextsLegendTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.drawTextsLegendTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTextsLegendTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBEvent) {
     self.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLegendTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -665,38 +371,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTextsLegendBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTextsLegendBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTextsLegendBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
     self.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBEvent) {
     self.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -704,38 +389,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTracksTopSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTracksTopSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTracksTopSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.drawTracksTopSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTracksTopSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTracksTopSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBEvent) {
     self.drawTracksTopSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTracksTopSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTracksTopSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -743,38 +407,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTracksBottomSide_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawTracksBottomSide_property_selection : EBSelection <Bool?> { // §
-    return self.drawTracksBottomSide_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
     self.drawTracksBottomSide_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawTracksBottomSide.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawTracksBottomSide_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBEvent) {
     self.drawTracksBottomSide_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawTracksBottomSide.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawTracksBottomSide_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -782,38 +425,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawVias_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawVias = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawVias_property_selection : EBSelection <Bool?> { // §
-    return self.drawVias_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.drawVias_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawVias.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawVias_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawVias (_ inObserver : EBEvent) {
     self.drawVias_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawVias.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawVias_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -821,38 +443,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let fileExtension_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_fileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var fileExtension_property_selection : EBSelection <String?> { // §
-    return self.fileExtension_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_fileExtension (_ inObserver : EBEvent) {
     self.fileExtension_property.addEBObserver (inObserver)
-/*    self.mObserversOf_fileExtension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.fileExtension_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_fileExtension (_ inObserver : EBEvent) {
     self.fileExtension_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_fileExtension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.fileExtension_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -860,38 +461,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let horizontalMirror_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_horizontalMirror = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var horizontalMirror_property_selection : EBSelection <Bool?> { // §
-    return self.horizontalMirror_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.horizontalMirror_property.addEBObserver (inObserver)
-/*    self.mObserversOf_horizontalMirror.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.horizontalMirror_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_horizontalMirror (_ inObserver : EBEvent) {
     self.horizontalMirror_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_horizontalMirror.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.horizontalMirror_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -899,38 +479,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let name_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_name = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var name_property_selection : EBSelection <String?> { // §
-    return self.name_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.name_property.addEBObserver (inObserver)
-/*    self.mObserversOf_name.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.name_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.name_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_name.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.name_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -938,38 +497,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let measurementUnitForPadHoleInPDF_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int?> { // §
-    return self.measurementUnitForPadHoleInPDF_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
-/*    self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBEvent) {
     self.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -977,38 +515,17 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let padHoleDiameterInPDF_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var padHoleDiameterInPDF_property_selection : EBSelection <Int?> { // §
-    return self.padHoleDiameterInPDF_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
     self.padHoleDiameterInPDF_property.addEBObserver (inObserver)
-/*    self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.padHoleDiameterInPDF_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBEvent) {
     self.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_padHoleDiameterInPDF.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································

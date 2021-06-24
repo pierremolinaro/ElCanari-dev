@@ -83,38 +83,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let selectedInspector_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_selectedInspector = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectedInspector_property_selection : EBSelection <Int?> { // §
-    return self.selectedInspector_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.selectedInspector_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectedInspector.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.selectedInspector_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.selectedInspector_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectedInspector.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectedInspector_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -122,38 +101,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let comments_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_comments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var comments_property_selection : EBSelection <String?> { // §
-    return self.comments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_comments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.comments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_comments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.comments_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -161,38 +119,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let horizontalFlip_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var horizontalFlip_property_selection : EBSelection <Bool?> { // §
-    return self.horizontalFlip_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
     self.horizontalFlip_property.addEBObserver (inObserver)
-/*    self.mObserversOf_horizontalFlip.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.horizontalFlip_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
     self.horizontalFlip_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_horizontalFlip.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.horizontalFlip_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -200,38 +137,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let verticalFlip_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_verticalFlip = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var verticalFlip_property_selection : EBSelection <Bool?> { // §
-    return self.verticalFlip_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
     self.verticalFlip_property.addEBObserver (inObserver)
-/*    self.mObserversOf_verticalFlip.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.verticalFlip_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
     self.verticalFlip_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_verticalFlip.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.verticalFlip_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -239,38 +155,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let gridStyle_property = EBGenericTransientProperty <GridStyle?> ()
-//  private final var mObserversOf_gridStyle = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var gridStyle_property_selection : EBSelection <GridStyle?> { // §
-    return self.gridStyle_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
     self.gridStyle_property.addEBObserver (inObserver)
-/*    self.mObserversOf_gridStyle.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.gridStyle_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_gridStyle (_ inObserver : EBEvent) {
     self.gridStyle_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_gridStyle.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gridStyle_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -278,38 +173,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let gridDisplay_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_gridDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var gridDisplay_property_selection : EBSelection <Int?> { // §
-    return self.gridDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.gridDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_gridDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.gridDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.gridDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_gridDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.gridDisplay_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -317,38 +191,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let zoom_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_zoom = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var zoom_property_selection : EBSelection <Int?> { // §
-    return self.zoom_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.zoom_property.addEBObserver (inObserver)
-/*    self.mObserversOf_zoom.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.zoom_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.zoom_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_zoom.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.zoom_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -356,38 +209,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let xPlacardUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var xPlacardUnit_property_selection : EBSelection <Int?> { // §
-    return self.xPlacardUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
     self.xPlacardUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_xPlacardUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.xPlacardUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
     self.xPlacardUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_xPlacardUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.xPlacardUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -395,38 +227,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let yPlacardUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var yPlacardUnit_property_selection : EBSelection <Int?> { // §
-    return self.yPlacardUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
     self.yPlacardUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_yPlacardUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.yPlacardUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
     self.yPlacardUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_yPlacardUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.yPlacardUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -434,38 +245,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let selectedPageIndex_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectedPageIndex_property_selection : EBSelection <Int?> { // §
-    return self.selectedPageIndex_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.selectedPageIndex_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectedPageIndex.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.selectedPageIndex_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
     self.selectedPageIndex_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectedPageIndex.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectedPageIndex_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -473,38 +263,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-//  private final var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.addEBObserver (inObserver)
-/*    self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -512,38 +281,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let noIssue_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_noIssue = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var noIssue_property_selection : EBSelection <Bool?> {
-    return self.noIssue_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
     self.noIssue_property.addEBObserver (inObserver)
-/*    self.mObserversOf_noIssue.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.noIssue_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
     self.noIssue_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_noIssue.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.noIssue_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -551,38 +299,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let segmentedControlSegmentIssueImage_property = EBGenericTransientProperty <NSImage?> ()
-//  private final var mObserversOf_segmentedControlSegmentIssueImage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var segmentedControlSegmentIssueImage_property_selection : EBSelection <NSImage?> {
-    return self.segmentedControlSegmentIssueImage_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
     self.segmentedControlSegmentIssueImage_property.addEBObserver (inObserver)
-/*    self.mObserversOf_segmentedControlSegmentIssueImage.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentedControlSegmentIssueImage_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_segmentedControlSegmentIssueImage (_ inObserver : EBEvent) {
     self.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_segmentedControlSegmentIssueImage.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentedControlSegmentIssueImage_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -590,38 +317,17 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let segmentedControlSegmentIssueString_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_segmentedControlSegmentIssueString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var segmentedControlSegmentIssueString_property_selection : EBSelection <String?> {
-    return self.segmentedControlSegmentIssueString_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
     self.segmentedControlSegmentIssueString_property.addEBObserver (inObserver)
-/*    self.mObserversOf_segmentedControlSegmentIssueString.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentedControlSegmentIssueString_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_segmentedControlSegmentIssueString (_ inObserver : EBEvent) {
     self.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_segmentedControlSegmentIssueString.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -629,23 +335,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   private final var mObserversOf_symbolObjects = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var symbolObjects_property_selection : EBSelection <[SymbolObject]> {
-    if let model = self.propval {
-      switch (model.symbolObjects_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -670,23 +359,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   private final var mObserversOf_symbolPins = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var symbolPins_property_selection : EBSelection <[SymbolPin]> {
-    if let model = self.propval {
-      switch (model.symbolPins_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

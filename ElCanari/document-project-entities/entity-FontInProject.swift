@@ -74,10 +74,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mTexts_property_selection : EBSelection < [BoardText] > {
-    return self.mTexts_property.selection
-  }
-
   //····················································································································
 
   final var mTexts : [BoardText] {
@@ -105,10 +101,6 @@ final class FontInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mNominalSize_property_selection : EBSelection <Int> { return self.mNominalSize_property.selection }
-
-  //····················································································································
   //   Atomic property: mFontName
   //····················································································································
 
@@ -126,10 +118,6 @@ final class FontInProject : EBManagedObject,
     get { return self.mFontName_property.propval }
     set { self.mFontName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mFontName_property_selection : EBSelection <String> { return self.mFontName_property.selection }
 
   //····················································································································
   //   Atomic property: mFontVersion
@@ -151,10 +139,6 @@ final class FontInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mFontVersion_property_selection : EBSelection <Int> { return self.mFontVersion_property.selection }
-
-  //····················································································································
   //   Atomic property: mDescriptiveString
   //····················································································································
 
@@ -174,20 +158,12 @@ final class FontInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mDescriptiveString_property_selection : EBSelection <String> { return self.mDescriptiveString_property.selection }
-
-  //····················································································································
   //   To many property: mComponentNames
   //····················································································································
 
   final let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
 
   //····················································································································
-
-  final var mComponentNames_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentNames_property.selection
-  }
 
   //····················································································································
 
@@ -204,10 +180,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mComponentValues_property_selection : EBSelection < [ComponentInProject] > {
-    return self.mComponentValues_property.selection
-  }
-
   //····················································································································
 
   final var mComponentValues : [ComponentInProject] {
@@ -220,12 +192,6 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final let versionString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.selection
-  }
 
   //····················································································································
 
@@ -246,12 +212,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var sizeString_property_selection : EBSelection <String> {
-    return self.sizeString_property.selection
-  }
-
-  //····················································································································
-
   final var sizeString : String? {
     switch self.sizeString_property.selection {
     case .empty, .multiple :
@@ -269,12 +229,6 @@ final class FontInProject : EBManagedObject,
 
   //····················································································································
 
-  final var descriptor_property_selection : EBSelection <BoardFontDescriptor> {
-    return self.descriptor_property.selection
-  }
-
-  //····················································································································
-
   final var descriptor : BoardFontDescriptor? {
     switch self.descriptor_property.selection {
     case .empty, .multiple :
@@ -289,12 +243,6 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final let canRemoveFont_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canRemoveFont_property_selection : EBSelection <Bool> {
-    return self.canRemoveFont_property.selection
-  }
 
   //····················································································································
 

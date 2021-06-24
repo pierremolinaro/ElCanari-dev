@@ -16,19 +16,11 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netName
@@ -36,29 +28,17 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
 
   let netName_property = EBTransientProperty_String ()
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
   let netClassName_property = EBTransientProperty_String ()
 
-  var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: hasNet
   //····················································································································
 
   let hasNet_property = EBTransientProperty_Bool ()
-
-  var hasNet_property_selection : EBSelection <Bool> {
-    return self.hasNet_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

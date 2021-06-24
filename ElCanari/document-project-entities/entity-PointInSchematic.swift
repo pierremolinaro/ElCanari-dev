@@ -135,20 +135,12 @@ final class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mSymbolPinName_property_selection : EBSelection <String> { return self.mSymbolPinName_property.selection }
-
-  //····················································································································
   //   To many property: mLabels
   //····················································································································
 
   final let mLabels_property = StoredArrayOf_LabelInSchematic (usedForSignature: false)
 
   //····················································································································
-
-  final var mLabels_property_selection : EBSelection < [LabelInSchematic] > {
-    return self.mLabels_property.selection
-  }
 
   //····················································································································
 
@@ -177,10 +169,6 @@ final class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
-
-  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -200,20 +188,12 @@ final class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   To many property: mWiresP2s
   //····················································································································
 
   final let mWiresP2s_property = StoredArrayOf_WireInSchematic (usedForSignature: false)
 
   //····················································································································
-
-  final var mWiresP2s_property_selection : EBSelection < [WireInSchematic] > {
-    return self.mWiresP2s_property.selection
-  }
 
   //····················································································································
 
@@ -230,10 +210,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mWiresP1s_property_selection : EBSelection < [WireInSchematic] > {
-    return self.mWiresP1s_property.selection
-  }
-
   //····················································································································
 
   final var mWiresP1s : [WireInSchematic] {
@@ -246,12 +222,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mSymbol_property_selection : EBSelection <ComponentSymbolInProject?> {
-    return .single (self.mSymbol_property.propval)
-  }
 
   //····················································································································
 
@@ -271,25 +241,13 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mSymbol_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSymbol_none_selection : EBSelection <Bool> {
-     return .single (self.mSymbol_property.propval == nil)
-  }
+  final let mSymbol_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNet
   //····················································································································
 
   final let mNet_property = StoredObject_NetInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mNet_property_selection : EBSelection <NetInProject?> {
-    return .single (self.mNet_property.propval)
-  }
 
   //····················································································································
 
@@ -309,25 +267,13 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mNet_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mNet_none_selection : EBSelection <Bool> {
-     return .single (self.mNet_property.propval == nil)
-  }
+  final let mNet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNC
   //····················································································································
 
   final let mNC_property = StoredObject_NCInSchematic (usedForSignature: false)
-
-  //····················································································································
-
-  final var mNC_property_selection : EBSelection <NCInSchematic?> {
-    return .single (self.mNC_property.propval)
-  }
 
   //····················································································································
 
@@ -347,25 +293,13 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mNC_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mNC_none_selection : EBSelection <Bool> {
-     return .single (self.mNC_property.propval == nil)
-  }
+  final let mNC_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: location
   //····················································································································
 
   final let location_property = EBTransientProperty_CanariPoint ()
-
-  //····················································································································
-
-  final var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.selection
-  }
 
   //····················································································································
 
@@ -386,12 +320,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
-  //····················································································································
-
   final var netName : String? {
     switch self.netName_property.selection {
     case .empty, .multiple :
@@ -406,12 +334,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let netClassName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
 
@@ -432,12 +354,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var hasNet_property_selection : EBSelection <Bool> {
-    return self.hasNet_property.selection
-  }
-
-  //····················································································································
-
   final var hasNet : Bool? {
     switch self.hasNet_property.selection {
     case .empty, .multiple :
@@ -452,12 +368,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let canMove_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var canMove_property_selection : EBSelection <Bool> {
-    return self.canMove_property.selection
-  }
 
   //····················································································································
 
@@ -478,12 +388,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var wireColor_property_selection : EBSelection <NSColor> {
-    return self.wireColor_property.selection
-  }
-
-  //····················································································································
-
   final var wireColor : NSColor? {
     switch self.wireColor_property.selection {
     case .empty, .multiple :
@@ -498,12 +402,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let symbolRotation_property = EBTransientProperty_QuadrantRotation ()
-
-  //····················································································································
-
-  final var symbolRotation_property_selection : EBSelection <QuadrantRotation> {
-    return self.symbolRotation_property.selection
-  }
 
   //····················································································································
 
@@ -524,12 +422,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var mSheet_property_selection : EBSelection <SheetInProject?> {
-    return .single (self.mSheet_property.propval)
-  }
-
-  //····················································································································
-
   final var mSheet : SheetInProject? {
     get {
       return self.mSheet_property.propval
@@ -546,25 +438,13 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final let mSheet_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSheet_none_selection : EBSelection <Bool> {
-     return .single (self.mSheet_property.propval == nil)
-  }
+  final let mSheet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: symbolNameNetName
   //····················································································································
 
   final let symbolNameNetName_property = EBTransientProperty_TwoStrings ()
-
-  //····················································································································
-
-  final var symbolNameNetName_property_selection : EBSelection <TwoStrings> {
-    return self.symbolNameNetName_property.selection
-  }
 
   //····················································································································
 
@@ -585,12 +465,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.selection
-  }
-
-  //····················································································································
-
   final var isConnected : Bool? {
     switch self.isConnected_property.selection {
     case .empty, .multiple :
@@ -605,12 +479,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let status_property = EBTransientProperty_SchematicPointStatus ()
-
-  //····················································································································
-
-  final var status_property_selection : EBSelection <SchematicPointStatus> {
-    return self.status_property.selection
-  }
 
   //····················································································································
 
@@ -631,12 +499,6 @@ final class PointInSchematic : EBManagedObject,
 
   //····················································································································
 
-  final var connectedPoints_property_selection : EBSelection <CanariPointArray> {
-    return self.connectedPoints_property.selection
-  }
-
-  //····················································································································
-
   final var connectedPoints : CanariPointArray? {
     switch self.connectedPoints_property.selection {
     case .empty, .multiple :
@@ -651,12 +513,6 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   final let netInfoForPoint_property = EBTransientProperty_NetInfoPoint ()
-
-  //····················································································································
-
-  final var netInfoForPoint_property_selection : EBSelection <NetInfoPoint> {
-    return self.netInfoForPoint_property.selection
-  }
 
   //····················································································································
 

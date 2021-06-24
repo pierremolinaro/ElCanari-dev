@@ -63,10 +63,6 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
   //····················································································································
 
   var selectedArray : [PackageModelImageDoublePoint] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[PackageModelImageDoublePoint]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

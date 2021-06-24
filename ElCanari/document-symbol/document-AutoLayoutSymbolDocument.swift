@@ -34,12 +34,6 @@ import Cocoa
 
   //····················································································································
 
-  final var statusMessage_property_selection : EBSelection <String> {
-    return self.statusMessage_property.selection
-  }
-
-  //····················································································································
-
   final var statusMessage : String? {
     switch self.statusMessage_property.selection {
     case .empty, .multiple :
@@ -54,12 +48,6 @@ import Cocoa
   //····················································································································
 
   final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
-
-  //····················································································································
-
-  final var metadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.metadataStatus_property.selection
-  }
 
   //····················································································································
 
@@ -80,12 +68,6 @@ import Cocoa
 
   //····················································································································
 
-  final var addSegmentButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addSegmentButtonImage_property.selection
-  }
-
-  //····················································································································
-
   final var addSegmentButtonImage : NSImage? {
     switch self.addSegmentButtonImage_property.selection {
     case .empty, .multiple :
@@ -100,12 +82,6 @@ import Cocoa
   //····················································································································
 
   final let addBezierButtonImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var addBezierButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addBezierButtonImage_property.selection
-  }
 
   //····················································································································
 
@@ -126,12 +102,6 @@ import Cocoa
 
   //····················································································································
 
-  final var addOvalButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addOvalButtonImage_property.selection
-  }
-
-  //····················································································································
-
   final var addOvalButtonImage : NSImage? {
     switch self.addOvalButtonImage_property.selection {
     case .empty, .multiple :
@@ -146,12 +116,6 @@ import Cocoa
   //····················································································································
 
   final let addSolidOvalButtonImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var addSolidOvalButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addSolidOvalButtonImage_property.selection
-  }
 
   //····················································································································
 
@@ -172,12 +136,6 @@ import Cocoa
 
   //····················································································································
 
-  final var addSolidRectButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addSolidRectButtonImage_property.selection
-  }
-
-  //····················································································································
-
   final var addSolidRectButtonImage : NSImage? {
     switch self.addSolidRectButtonImage_property.selection {
     case .empty, .multiple :
@@ -192,12 +150,6 @@ import Cocoa
   //····················································································································
 
   final let addTextButtonImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var addTextButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addTextButtonImage_property.selection
-  }
 
   //····················································································································
 
@@ -218,12 +170,6 @@ import Cocoa
 
   //····················································································································
 
-  final var addPinButtonImage_property_selection : EBSelection <NSImage> {
-    return self.addPinButtonImage_property.selection
-  }
-
-  //····················································································································
-
   final var addPinButtonImage : NSImage? {
     switch self.addPinButtonImage_property.selection {
     case .empty, .multiple :
@@ -241,12 +187,6 @@ import Cocoa
 
   //····················································································································
 
-  final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.selection
-  }
-
-  //····················································································································
-
   final var documentFilePath : String? {
     switch self.documentFilePath_property.selection {
     case .empty, .multiple :
@@ -261,12 +201,6 @@ import Cocoa
   //····················································································································
 
   final let statusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var statusImage_property_selection : EBSelection <NSImage> {
-    return self.statusImage_property.selection
-  }
 
   //····················································································································
 

@@ -69,8 +69,6 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   final var count_property = EBTransientProperty_Int ()
 
-  final var count_property_selection : EBSelection <Int> { return self.count_property.selection }
-
   //····················································································································
   //  init
   //····················································································································

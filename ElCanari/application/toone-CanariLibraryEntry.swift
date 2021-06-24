@@ -47,38 +47,17 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mPath_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mPath_property_selection : EBSelection <String?> { // §
-    return self.mPath_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.mPath_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mPath.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mPath_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.mPath_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mPath.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mPath_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -86,38 +65,17 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mUses_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_mUses = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mUses_property_selection : EBSelection <Bool?> { // §
-    return self.mUses_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.mUses_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mUses.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mUses_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.mUses_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mUses.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mUses_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -125,38 +83,17 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mLibraryRepositoryURL_property_selection : EBSelection <String?> { // §
-    return self.mLibraryRepositoryURL_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.mLibraryRepositoryURL_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mLibraryRepositoryURL_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
     self.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -164,38 +101,17 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mUserAndPasswordTag_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mUserAndPasswordTag_property_selection : EBSelection <String?> { // §
-    return self.mUserAndPasswordTag_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.mUserAndPasswordTag_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mUserAndPasswordTag_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
     self.mUserAndPasswordTag_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mUserAndPasswordTag_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -203,38 +119,17 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //····················································································································
 
   final let mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-//  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mStatusImage_property_selection : EBSelection <NSImage?> {
-    return self.mStatusImage_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.mStatusImage_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mStatusImage.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mStatusImage_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.mStatusImage_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mStatusImage.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mStatusImage_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································

@@ -15,127 +15,71 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //····················································································································
 
   let mSide_property = EBPropertyProxy_TrackSide ()
-  var mSide_property_selection : EBSelection <TrackSide> {
-    return self.mSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mDefaultTrackWidthUnit
   //····················································································································
 
   let mDefaultTrackWidthUnit_property = EBPropertyProxy_Int ()
-  var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> {
-    return self.mDefaultTrackWidthUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomTrackWidth
   //····················································································································
 
   let mCustomTrackWidth_property = EBPropertyProxy_Int ()
-  var mCustomTrackWidth_property_selection : EBSelection <Int> {
-    return self.mCustomTrackWidth_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mCustomTrackWidthUnit
   //····················································································································
 
   let mCustomTrackWidthUnit_property = EBPropertyProxy_Int ()
-  var mCustomTrackWidthUnit_property_selection : EBSelection <Int> {
-    return self.mCustomTrackWidthUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mUsesCustomTrackWidth
   //····················································································································
 
   let mUsesCustomTrackWidth_property = EBPropertyProxy_Bool ()
-  var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> {
-    return self.mUsesCustomTrackWidth_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mIsPreservedByAutoRouter
   //····················································································································
 
   let mIsPreservedByAutoRouter_property = EBPropertyProxy_Bool ()
-  var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> {
-    return self.mIsPreservedByAutoRouter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mP1XUnit
   //····················································································································
 
   let mP1XUnit_property = EBPropertyProxy_Int ()
-  var mP1XUnit_property_selection : EBSelection <Int> {
-    return self.mP1XUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mP1YUnit
   //····················································································································
 
   let mP1YUnit_property = EBPropertyProxy_Int ()
-  var mP1YUnit_property_selection : EBSelection <Int> {
-    return self.mP1YUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mP2XUnit
   //····················································································································
 
   let mP2XUnit_property = EBPropertyProxy_Int ()
-  var mP2XUnit_property_selection : EBSelection <Int> {
-    return self.mP2XUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mP2YUnit
   //····················································································································
 
   let mP2YUnit_property = EBPropertyProxy_Int ()
-  var mP2YUnit_property_selection : EBSelection <Int> {
-    return self.mP2YUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mManualLockP1
   //····················································································································
 
   let mManualLockP1_property = EBPropertyProxy_Bool ()
-  var mManualLockP1_property_selection : EBSelection <Bool> {
-    return self.mManualLockP1_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mManualLockP2
   //····················································································································
 
   let mManualLockP2_property = EBPropertyProxy_Bool ()
-  var mManualLockP2_property_selection : EBSelection <Bool> {
-    return self.mManualLockP2_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mDirectionLockOnKnobDragging
   //····················································································································
 
   let mDirectionLockOnKnobDragging_property = EBPropertyProxy_TrackLockDirection ()
-  var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection> {
-    return self.mDirectionLockOnKnobDragging_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: actualTrackWidth
   //····················································································································
 
   let actualTrackWidth_property = EBTransientProperty_Int ()
-
-  var actualTrackWidth_property_selection : EBSelection <Int> {
-    return self.actualTrackWidth_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netName
@@ -143,19 +87,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let netName_property = EBTransientProperty_String ()
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
   let netClassName_property = EBTransientProperty_String ()
-
-  var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netClassTrackWidth
@@ -163,19 +99,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let netClassTrackWidth_property = EBTransientProperty_Int ()
 
-  var netClassTrackWidth_property_selection : EBSelection <Int> {
-    return self.netClassTrackWidth_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: netClassViaHoleDiameter
   //····················································································································
 
   let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
-
-  var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaHoleDiameter_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netClassViaPadDiameter
@@ -183,19 +111,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let netClassViaPadDiameter_property = EBTransientProperty_Int ()
 
-  var netClassViaPadDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaPadDiameter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: trackLengthInCanariUnit
   //····················································································································
 
   let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
-
-  var trackLengthInCanariUnit_property_selection : EBSelection <Double> {
-    return self.trackLengthInCanariUnit_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
@@ -203,19 +123,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: trackDirectionInDegrees
   //····················································································································
 
-  let trackDirectionInDegrees_property = EBPropertyProxy_Int ()
-
-  var trackDirectionInDegrees_property_selection : EBSelection <Int> {
-    return self.trackDirectionInDegrees_property.selection
-  }
+  final let trackDirectionInDegrees_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: p1ConnectedToSomePad
@@ -223,59 +135,35 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let p1ConnectedToSomePad_property = EBTransientProperty_Bool ()
 
-  var p1ConnectedToSomePad_property_selection : EBSelection <Bool> {
-    return self.p1ConnectedToSomePad_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: p2ConnectedToSomePad
   //····················································································································
 
   let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
 
-  var p2ConnectedToSomePad_property_selection : EBSelection <Bool> {
-    return self.p2ConnectedToSomePad_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: computedP1X
   //····················································································································
 
-  let computedP1X_property = EBPropertyProxy_Int ()
-
-  var computedP1X_property_selection : EBSelection <Int> {
-    return self.computedP1X_property.selection
-  }
+  final let computedP1X_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: computedP1Y
   //····················································································································
 
-  let computedP1Y_property = EBPropertyProxy_Int ()
-
-  var computedP1Y_property_selection : EBSelection <Int> {
-    return self.computedP1Y_property.selection
-  }
+  final let computedP1Y_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: computedP2X
   //····················································································································
 
-  let computedP2X_property = EBPropertyProxy_Int ()
-
-  var computedP2X_property_selection : EBSelection <Int> {
-    return self.computedP2X_property.selection
-  }
+  final let computedP2X_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: computedP2Y
   //····················································································································
 
-  let computedP2Y_property = EBPropertyProxy_Int ()
-
-  var computedP2Y_property_selection : EBSelection <Int> {
-    return self.computedP2Y_property.selection
-  }
+  final let computedP2Y_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -283,19 +171,11 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: p1CanMove
   //····················································································································
 
   let p1CanMove_property = EBTransientProperty_Bool ()
-
-  var p1CanMove_property_selection : EBSelection <Bool> {
-    return self.p1CanMove_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: p2CanMove
@@ -303,29 +183,17 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
 
   let p2CanMove_property = EBTransientProperty_Bool ()
 
-  var p2CanMove_property_selection : EBSelection <Bool> {
-    return self.p2CanMove_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: trackCanRotate
   //····················································································································
 
   let trackCanRotate_property = EBTransientProperty_Bool ()
 
-  var trackCanRotate_property_selection : EBSelection <Bool> {
-    return self.trackCanRotate_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

@@ -324,10 +324,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool> { return self.mSlavePadsShouldBeRouted_property.selection }
-
-  //····················································································································
   //   Atomic property: mX
   //····················································································································
 
@@ -345,10 +341,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mX_property.propval }
     set { self.mX_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
 
   //····················································································································
   //   Atomic property: mY
@@ -370,10 +362,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   Atomic property: mRotation
   //····················································································································
 
@@ -391,10 +379,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mRotation_property.propval }
     set { self.mRotation_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mRotation_property_selection : EBSelection <Int> { return self.mRotation_property.selection }
 
   //····················································································································
   //   Atomic property: mSide
@@ -416,10 +400,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mSide_property_selection : EBSelection <ComponentSide> { return self.mSide_property.selection }
-
-  //····················································································································
   //   Atomic property: mDisplayLegend
   //····················································································································
 
@@ -439,20 +419,12 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mDisplayLegend_property_selection : EBSelection <Bool> { return self.mDisplayLegend_property.selection }
-
-  //····················································································································
   //   To many property: mConnectors
   //····················································································································
 
   final let mConnectors_property = StoredArrayOf_BoardConnector (usedForSignature: false)
 
   //····················································································································
-
-  final var mConnectors_property_selection : EBSelection < [BoardConnector] > {
-    return self.mConnectors_property.selection
-  }
 
   //····················································································································
 
@@ -468,10 +440,6 @@ final class ComponentInProject : BoardObject,
   final let mSymbols_property = StoredArrayOf_ComponentSymbolInProject (usedForSignature: false)
 
   //····················································································································
-
-  final var mSymbols_property_selection : EBSelection < [ComponentSymbolInProject] > {
-    return self.mSymbols_property.selection
-  }
 
   //····················································································································
 
@@ -500,10 +468,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mNameIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mNameIsVisibleInBoard_property.selection }
-
-  //····················································································································
   //   Atomic property: mXName
   //····················································································································
 
@@ -521,10 +485,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mXName_property.propval }
     set { self.mXName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mXName_property_selection : EBSelection <Int> { return self.mXName_property.selection }
 
   //····················································································································
   //   Atomic property: mYName
@@ -546,10 +506,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mYName_property_selection : EBSelection <Int> { return self.mYName_property.selection }
-
-  //····················································································································
   //   Atomic property: mNameFontSize
   //····················································································································
 
@@ -567,10 +523,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mNameFontSize_property.propval }
     set { self.mNameFontSize_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mNameFontSize_property_selection : EBSelection <Double> { return self.mNameFontSize_property.selection }
 
   //····················································································································
   //   Atomic property: mNameRotation
@@ -592,10 +544,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mNameRotation_property_selection : EBSelection <Int> { return self.mNameRotation_property.selection }
-
-  //····················································································································
   //   Atomic property: mValueIsVisibleInBoard
   //····················································································································
 
@@ -613,10 +561,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mValueIsVisibleInBoard_property.propval }
     set { self.mValueIsVisibleInBoard_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mValueIsVisibleInBoard_property_selection : EBSelection <Bool> { return self.mValueIsVisibleInBoard_property.selection }
 
   //····················································································································
   //   Atomic property: mXValue
@@ -638,10 +582,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mXValue_property_selection : EBSelection <Int> { return self.mXValue_property.selection }
-
-  //····················································································································
   //   Atomic property: mYValue
   //····················································································································
 
@@ -659,10 +599,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mYValue_property.propval }
     set { self.mYValue_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mYValue_property_selection : EBSelection <Int> { return self.mYValue_property.selection }
 
   //····················································································································
   //   Atomic property: mValueFontSize
@@ -684,10 +620,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mValueFontSize_property_selection : EBSelection <Double> { return self.mValueFontSize_property.selection }
-
-  //····················································································································
   //   Atomic property: mValueRotation
   //····················································································································
 
@@ -705,10 +637,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mValueRotation_property.propval }
     set { self.mValueRotation_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mValueRotation_property_selection : EBSelection <Int> { return self.mValueRotation_property.selection }
 
   //····················································································································
   //   Atomic property: mComponentValue
@@ -730,10 +658,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mComponentValue_property_selection : EBSelection <String> { return self.mComponentValue_property.selection }
-
-  //····················································································································
   //   Atomic property: mNamePrefix
   //····················································································································
 
@@ -751,10 +675,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mNamePrefix_property.propval }
     set { self.mNamePrefix_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mNamePrefix_property_selection : EBSelection <String> { return self.mNamePrefix_property.selection }
 
   //····················································································································
   //   Atomic property: mNameIndex
@@ -776,10 +696,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mNameIndex_property_selection : EBSelection <Int> { return self.mNameIndex_property.selection }
-
-  //····················································································································
   //   Atomic property: mXUnit
   //····················································································································
 
@@ -799,10 +715,6 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  final var mXUnit_property_selection : EBSelection <Int> { return self.mXUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: mYUnit
   //····················································································································
 
@@ -820,10 +732,6 @@ final class ComponentInProject : BoardObject,
     get { return self.mYUnit_property.propval }
     set { self.mYUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mYUnit_property_selection : EBSelection <Int> { return self.mYUnit_property.selection }
 
   //····················································································································
   //   Array controller: componentAvailablePackagesController
@@ -856,22 +764,10 @@ final class ComponentInProject : BoardObject,
   }
 
   //····················································································································
-
-  var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
-    return self.mPackages_property.selection
-  }
-
-  //····················································································································
   //   To one property: mDevice
   //····················································································································
 
   final let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mDevice_property_selection : EBSelection <DeviceInProject?> {
-    return .single (self.mDevice_property.propval)
-  }
 
   //····················································································································
 
@@ -891,25 +787,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mDevice_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mDevice_none_selection : EBSelection <Bool> {
-     return .single (self.mDevice_property.propval == nil)
-  }
+  final let mDevice_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: deviceName
   //····················································································································
 
   final let deviceName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var deviceName_property_selection : EBSelection <String> {
-    return self.deviceName_property.selection
-  }
 
   //····················································································································
 
@@ -930,12 +814,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var mSelectedPackage_property_selection : EBSelection <DevicePackageInProject?> {
-    return .single (self.mSelectedPackage_property.propval)
-  }
-
-  //····················································································································
-
   final var mSelectedPackage : DevicePackageInProject? {
     get {
       return self.mSelectedPackage_property.propval
@@ -952,25 +830,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSelectedPackage_none_selection : EBSelection <Bool> {
-     return .single (self.mSelectedPackage_property.propval == nil)
-  }
+  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: packagePadDictionary
   //····················································································································
 
   final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
-
-  //····················································································································
-
-  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
-    return self.packagePadDictionary_property.selection
-  }
 
   //····················································································································
 
@@ -991,12 +857,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var selectedPackageName_property_selection : EBSelection <String> {
-    return self.selectedPackageName_property.selection
-  }
-
-  //····················································································································
-
   final var selectedPackageName : String? {
     switch self.selectedPackageName_property.selection {
     case .empty, .multiple :
@@ -1011,12 +871,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let availablePackages_property = EBTransientProperty_StringArray ()
-
-  //····················································································································
-
-  final var availablePackages_property_selection : EBSelection <StringArray> {
-    return self.availablePackages_property.selection
-  }
 
   //····················································································································
 
@@ -1037,12 +891,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var componentIsPlacedInBoard_property_selection : EBSelection <Bool> {
-    return self.componentIsPlacedInBoard_property.selection
-  }
-
-  //····················································································································
-
   final var componentIsPlacedInBoard : Bool? {
     switch self.componentIsPlacedInBoard_property.selection {
     case .empty, .multiple :
@@ -1057,12 +905,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var componentIsPlacedInBoardString_property_selection : EBSelection <String> {
-    return self.componentIsPlacedInBoardString_property.selection
-  }
 
   //····················································································································
 
@@ -1083,12 +925,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
-
-  //····················································································································
-
   final var strokeBezierPath : EBBezierPath? {
     switch self.strokeBezierPath_property.selection {
     case .empty, .multiple :
@@ -1103,12 +939,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let mNameFont_property = StoredObject_FontInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mNameFont_property_selection : EBSelection <FontInProject?> {
-    return .single (self.mNameFont_property.propval)
-  }
 
   //····················································································································
 
@@ -1128,25 +958,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mNameFont_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mNameFont_none_selection : EBSelection <Bool> {
-     return .single (self.mNameFont_property.propval == nil)
-  }
+  final let mNameFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mValueFont
   //····················································································································
 
   final let mValueFont_property = StoredObject_FontInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mValueFont_property_selection : EBSelection <FontInProject?> {
-    return .single (self.mValueFont_property.propval)
-  }
 
   //····················································································································
 
@@ -1166,25 +984,13 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mValueFont_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mValueFont_none_selection : EBSelection <Bool> {
-     return .single (self.mValueFont_property.propval == nil)
-  }
+  final let mValueFont_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: pinPadAssignments
   //····················································································································
 
   final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
-
-  //····················································································································
-
-  final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray> {
-    return self.pinPadAssignments_property.selection
-  }
 
   //····················································································································
 
@@ -1205,12 +1011,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var hasSlavePads_property_selection : EBSelection <Bool> {
-    return self.hasSlavePads_property.selection
-  }
-
-  //····················································································································
-
   final var hasSlavePads : Bool? {
     switch self.hasSlavePads_property.selection {
     case .empty, .multiple :
@@ -1225,12 +1025,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let placementInSchematic_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var placementInSchematic_property_selection : EBSelection <String> {
-    return self.placementInSchematic_property.selection
-  }
 
   //····················································································································
 
@@ -1251,12 +1045,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary> {
-    return self.deviceSymbolDictionary_property.selection
-  }
-
-  //····················································································································
-
   final var deviceSymbolDictionary : DeviceSymbolDictionary? {
     switch self.deviceSymbolDictionary_property.selection {
     case .empty, .multiple :
@@ -1271,12 +1059,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let componentNameFontName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var componentNameFontName_property_selection : EBSelection <String> {
-    return self.componentNameFontName_property.selection
-  }
 
   //····················································································································
 
@@ -1297,12 +1079,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var componentValueFontName_property_selection : EBSelection <String> {
-    return self.componentValueFontName_property.selection
-  }
-
-  //····················································································································
-
   final var componentValueFontName : String? {
     switch self.componentValueFontName_property.selection {
     case .empty, .multiple :
@@ -1317,12 +1093,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
-
-  //····················································································································
-
-  final var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary> {
-    return self.componentPadDictionary_property.selection
-  }
 
   //····················································································································
 
@@ -1343,12 +1113,6 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final var padNetDictionary_property_selection : EBSelection <PadNetDictionary> {
-    return self.padNetDictionary_property.selection
-  }
-
-  //····················································································································
-
   final var padNetDictionary : PadNetDictionary? {
     switch self.padNetDictionary_property.selection {
     case .empty, .multiple :
@@ -1363,12 +1127,6 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
-
-  //····················································································································
-
-  final var unplacedSymbols_property_selection : EBSelection <StringTagArray> {
-    return self.unplacedSymbols_property.selection
-  }
 
   //····················································································································
 

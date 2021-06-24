@@ -16,19 +16,11 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   var advance_property = EBPropertyProxy_Int ()
 
-  var advance_property_selection : EBSelection <Int> {
-    return self.advance_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: codePoint
   //····················································································································
 
   var codePoint_property = EBPropertyProxy_Int ()
-
-  var codePoint_property_selection : EBSelection <Int> {
-    return self.codePoint_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: gerberCode
@@ -36,19 +28,11 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    return self.gerberCode_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: gerberCodeInstructionCountMessage
   //····················································································································
 
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
-
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    return self.gerberCodeInstructionCountMessage_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: issues
@@ -56,19 +40,11 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mWarnsWhenAdvanceIsZero
   //····················································································································
 
   var mWarnsWhenAdvanceIsZero_property = EBPropertyProxy_Bool ()
-
-  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenAdvanceIsZero_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: mWarnsWhenNoSegment
@@ -76,19 +52,11 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   var mWarnsWhenNoSegment_property = EBPropertyProxy_Bool ()
 
-  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
-    return self.mWarnsWhenNoSegment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: segmentArrayForDrawing
   //····················································································································
 
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
-
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    return self.segmentArrayForDrawing_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: segments

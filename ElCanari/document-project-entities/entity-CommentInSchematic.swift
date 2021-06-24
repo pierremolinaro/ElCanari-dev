@@ -93,10 +93,6 @@ final class CommentInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mColor_property_selection : EBSelection <NSColor> { return self.mColor_property.selection }
-
-  //····················································································································
   //   Atomic property: mSize
   //····················································································································
 
@@ -114,10 +110,6 @@ final class CommentInSchematic : SchematicObject,
     get { return self.mSize_property.propval }
     set { self.mSize_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mSize_property_selection : EBSelection <Double> { return self.mSize_property.selection }
 
   //····················································································································
   //   Atomic property: mHorizontalAlignment
@@ -139,10 +131,6 @@ final class CommentInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> { return self.mHorizontalAlignment_property.selection }
-
-  //····················································································································
   //   Atomic property: mVerticalAlignment
   //····················································································································
 
@@ -160,10 +148,6 @@ final class CommentInSchematic : SchematicObject,
     get { return self.mVerticalAlignment_property.propval }
     set { self.mVerticalAlignment_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mVerticalAlignment_property_selection : EBSelection <VerticalAlignment> { return self.mVerticalAlignment_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -185,10 +169,6 @@ final class CommentInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
-
-  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -208,10 +188,6 @@ final class CommentInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   Atomic property: mComment
   //····················································································································
 
@@ -229,10 +205,6 @@ final class CommentInSchematic : SchematicObject,
     get { return self.mComment_property.propval }
     set { self.mComment_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mComment_property_selection : EBSelection <String> { return self.mComment_property.selection }
 
   //····················································································································
   //    init

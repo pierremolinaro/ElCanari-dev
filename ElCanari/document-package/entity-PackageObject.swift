@@ -46,12 +46,6 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
-
-  //····················································································································
-
   final var issues : CanariIssueArray? {
     switch self.issues_property.selection {
     case .empty, .multiple :
@@ -66,12 +60,6 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
-
-  //····················································································································
-
-  final var mRoot_property_selection : EBSelection <PackageRoot?> {
-    return .single (self.mRoot_property.propval)
-  }
 
   //····················································································································
 
@@ -91,25 +79,13 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mRoot_none_selection : EBSelection <Bool> {
-     return .single (self.mRoot_property.propval == nil)
-  }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: knobSize
   //····················································································································
 
   final let knobSize_property = EBTransientProperty_Double ()
-
-  //····················································································································
-
-  final var knobSize_property_selection : EBSelection <Double> {
-    return self.knobSize_property.selection
-  }
 
   //····················································································································
 

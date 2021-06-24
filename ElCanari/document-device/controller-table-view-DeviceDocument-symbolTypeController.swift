@@ -137,10 +137,6 @@ final class Controller_DeviceDocument_symbolTypeController : ReadOnlyAbstractGen
   //····················································································································
 
   var selectedArray : [SymbolTypeInDevice] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[SymbolTypeInDevice]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

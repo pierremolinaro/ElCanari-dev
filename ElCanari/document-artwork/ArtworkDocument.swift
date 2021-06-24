@@ -28,12 +28,6 @@ import Cocoa
 
   //····················································································································
 
-  final var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.selection
-  }
-
-  //····················································································································
-
   final var documentFilePath : String? {
     switch self.documentFilePath_property.selection {
     case .empty, .multiple :
@@ -48,12 +42,6 @@ import Cocoa
   //····················································································································
 
   final let mGeneratedFileCountString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mGeneratedFileCountString_property_selection : EBSelection <String> {
-    return self.mGeneratedFileCountString_property.selection
-  }
 
   //····················································································································
 
@@ -74,12 +62,6 @@ import Cocoa
 
   //····················································································································
 
-  final var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.selection
-  }
-
-  //····················································································································
-
   final var mStatusImage : NSImage? {
     switch self.mStatusImage_property.selection {
     case .empty, .multiple :
@@ -94,12 +76,6 @@ import Cocoa
   //····················································································································
 
   final let mStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.selection
-  }
 
   //····················································································································
 

@@ -75,38 +75,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let selectedTab_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_selectedTab = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectedTab_property_selection : EBSelection <Int?> { // §
-    return self.selectedTab_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.selectedTab_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectedTab.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.selectedTab_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.selectedTab_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectedTab.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectedTab_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -114,38 +93,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let comments_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_comments = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var comments_property_selection : EBSelection <String?> { // §
-    return self.comments_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.addEBObserver (inObserver)
-/*    self.mObserversOf_comments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.comments_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.comments_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_comments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.comments_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -153,38 +111,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minPPTPTTTWdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> { // §
-    return self.minPPTPTTTWdisplayUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -192,38 +129,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minPPTPTTTW_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minPPTPTTTW_property_selection : EBSelection <Int?> { // §
-    return self.minPPTPTTTW_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.minPPTPTTTW_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minPPTPTTTW.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minPPTPTTTW_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.minPPTPTTTW_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minPPTPTTTW.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTW_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -231,38 +147,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForOARdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> { // §
-    return self.minValueForOARdisplayUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -270,38 +165,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForOARinEBUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForOARinEBUnit_property_selection : EBSelection <Int?> { // §
-    return self.minValueForOARinEBUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.minValueForOARinEBUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForOARinEBUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -309,38 +183,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForPHDdisplayUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> { // §
-    return self.minValueForPHDdisplayUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -348,38 +201,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForPHDinEBUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> { // §
-    return self.minValueForPHDinEBUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -387,38 +219,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForBoardLimitWidthDisplayUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> { // §
-    return self.minValueForBoardLimitWidthDisplayUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -426,38 +237,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForBoardLimitWidth_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> { // §
-    return self.minValueForBoardLimitWidth_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
-/*    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -465,38 +255,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let drillDataFileExtension_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drillDataFileExtension_property_selection : EBSelection <String?> { // §
-    return self.drillDataFileExtension_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.drillDataFileExtension_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drillDataFileExtension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drillDataFileExtension_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.drillDataFileExtension_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drillDataFileExtension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drillDataFileExtension_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -504,38 +273,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
-//  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
-    return self.signatureForERCChecking_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.signatureForERCChecking_property.addEBObserver (inObserver)
-/*    self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.signatureForERCChecking_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_signatureForERCChecking (_ inObserver : EBEvent) {
     self.signatureForERCChecking_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -543,23 +291,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var fileGenerationParameterArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> {
-    if let model = self.propval {
-      switch (model.fileGenerationParameterArray_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

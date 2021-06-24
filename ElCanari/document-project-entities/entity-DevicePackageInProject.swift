@@ -39,10 +39,6 @@ final class DevicePackageInProject : EBManagedObject,
 
   //····················································································································
 
-  final var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
-    return self.mMasterPads_property.selection
-  }
-
   //····················································································································
 
   final var mMasterPads : [DeviceMasterPadInProject] {
@@ -70,10 +66,6 @@ final class DevicePackageInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mPackageName_property_selection : EBSelection <String> { return self.mPackageName_property.selection }
-
-  //····················································································································
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
@@ -93,20 +85,10 @@ final class DevicePackageInProject : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.selection }
-
-  //····················································································································
   //   Transient property: packagePadDictionary
   //····················································································································
 
   final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
-
-  //····················································································································
-
-  final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary> {
-    return self.packagePadDictionary_property.selection
-  }
 
   //····················································································································
 

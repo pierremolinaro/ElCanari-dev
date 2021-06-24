@@ -156,10 +156,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
-
-  //····················································································································
   //   Atomic property: x2
   //····················································································································
 
@@ -177,10 +173,6 @@ final class PackageDimension : PackageObject,
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -202,10 +194,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
-
-  //····················································································································
   //   Atomic property: xDimension
   //····················································································································
 
@@ -223,10 +211,6 @@ final class PackageDimension : PackageObject,
     get { return self.xDimension_property.propval }
     set { self.xDimension_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xDimension_property_selection : EBSelection <Int> { return self.xDimension_property.selection }
 
   //····················································································································
   //   Atomic property: yDimension
@@ -248,10 +232,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var yDimension_property_selection : EBSelection <Int> { return self.yDimension_property.selection }
-
-  //····················································································································
   //   Atomic property: x1Unit
   //····················································································································
 
@@ -269,10 +249,6 @@ final class PackageDimension : PackageObject,
     get { return self.x1Unit_property.propval }
     set { self.x1Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x1Unit_property_selection : EBSelection <Int> { return self.x1Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y1Unit
@@ -294,10 +270,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var y1Unit_property_selection : EBSelection <Int> { return self.y1Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: x2Unit
   //····················································································································
 
@@ -315,10 +287,6 @@ final class PackageDimension : PackageObject,
     get { return self.x2Unit_property.propval }
     set { self.x2Unit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2Unit_property_selection : EBSelection <Int> { return self.x2Unit_property.selection }
 
   //····················································································································
   //   Atomic property: y2Unit
@@ -340,10 +308,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var y2Unit_property_selection : EBSelection <Int> { return self.y2Unit_property.selection }
-
-  //····················································································································
   //   Atomic property: xDimensionUnit
   //····················································································································
 
@@ -361,10 +325,6 @@ final class PackageDimension : PackageObject,
     get { return self.xDimensionUnit_property.propval }
     set { self.xDimensionUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xDimensionUnit_property_selection : EBSelection <Int> { return self.xDimensionUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yDimensionUnit
@@ -386,10 +346,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var yDimensionUnit_property_selection : EBSelection <Int> { return self.yDimensionUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: distanceUnit
   //····················································································································
 
@@ -407,10 +363,6 @@ final class PackageDimension : PackageObject,
     get { return self.distanceUnit_property.propval }
     set { self.distanceUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var distanceUnit_property_selection : EBSelection <Int> { return self.distanceUnit_property.selection }
 
   //····················································································································
   //   Atomic property: drawDimensionBackground
@@ -432,10 +384,6 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var drawDimensionBackground_property_selection : EBSelection <Bool> { return self.drawDimensionBackground_property.selection }
-
-  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -455,20 +403,10 @@ final class PackageDimension : PackageObject,
   }
 
   //····················································································································
-
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
-
-  //····················································································································
   //   Transient property: distanceInCanariUnit
   //····················································································································
 
   final let distanceInCanariUnit_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var distanceInCanariUnit_property_selection : EBSelection <Int> {
-    return self.distanceInCanariUnit_property.selection
-  }
 
   //····················································································································
 

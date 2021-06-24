@@ -15,19 +15,11 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
   //····················································································································
 
   let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
-  var mOrientation_property_selection : EBSelection <QuadrantRotation> {
-    return self.mOrientation_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: location
   //····················································································································
 
   let location_property = EBTransientProperty_CanariPoint ()
-
-  var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netName
@@ -35,19 +27,11 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
 
   let netName_property = EBTransientProperty_String ()
 
-  var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: netClassName
@@ -55,19 +39,11 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
 
   let netClassName_property = EBTransientProperty_String ()
 
-  var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

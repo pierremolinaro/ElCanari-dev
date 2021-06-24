@@ -60,12 +60,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var mSheet_property_selection : EBSelection <SheetInProject?> {
-    return .single (self.mSheet_property.propval)
-  }
-
-  //····················································································································
-
   final var mSheet : SheetInProject? {
     get {
       return self.mSheet_property.propval
@@ -82,25 +76,13 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mSheet_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mSheet_none_selection : EBSelection <Bool> {
-     return .single (self.mSheet_property.propval == nil)
-  }
+  final let mSheet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: issues
   //····················································································································
 
   final let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
@@ -121,12 +103,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var connectedPoints_property_selection : EBSelection <CanariPointArray> {
-    return self.connectedPoints_property.selection
-  }
-
-  //····················································································································
-
   final var connectedPoints : CanariPointArray? {
     switch self.connectedPoints_property.selection {
     case .empty, .multiple :
@@ -144,12 +120,6 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor> {
-    return self.sheetDescriptor_property.selection
-  }
-
-  //····················································································································
-
   final var sheetDescriptor : SchematicSheetDescriptor? {
     switch self.sheetDescriptor_property.selection {
     case .empty, .multiple :
@@ -164,12 +134,6 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final let isPlacedInSchematic_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var isPlacedInSchematic_property_selection : EBSelection <Bool> {
-    return self.isPlacedInSchematic_property.selection
-  }
 
   //····················································································································
 

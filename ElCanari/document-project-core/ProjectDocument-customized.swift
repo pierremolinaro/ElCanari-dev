@@ -267,7 +267,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       observedObjects: [self.unplacedPackageCount_property],
       callBack: {
         let title : String
-        switch self.unplacedPackageCount_property_selection {
+        switch self.unplacedPackageCount_property.selection {
         case .empty, .multiple :
           title = "—"
         case .single (let v) :
@@ -316,7 +316,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       observedObjects: [self.unplacedSymbolsCount_property],
       callBack: {
         let title : String
-        switch self.unplacedSymbolsCount_property_selection {
+        switch self.unplacedSymbolsCount_property.selection {
         case .empty, .multiple :
           title = "—"
         case .single (let v) :

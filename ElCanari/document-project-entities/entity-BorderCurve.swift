@@ -135,10 +135,6 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
-
-  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -156,10 +152,6 @@ final class BorderCurve : EBGraphicManagedObject,
     get { return self.mY_property.propval }
     set { self.mY_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
 
   //····················································································································
   //   Atomic property: mCPX1
@@ -181,10 +173,6 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mCPX1_property_selection : EBSelection <Int> { return self.mCPX1_property.selection }
-
-  //····················································································································
   //   Atomic property: mCPY1
   //····················································································································
 
@@ -202,10 +190,6 @@ final class BorderCurve : EBGraphicManagedObject,
     get { return self.mCPY1_property.propval }
     set { self.mCPY1_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mCPY1_property_selection : EBSelection <Int> { return self.mCPY1_property.selection }
 
   //····················································································································
   //   Atomic property: mCPX2
@@ -227,10 +211,6 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mCPX2_property_selection : EBSelection <Int> { return self.mCPX2_property.selection }
-
-  //····················································································································
   //   Atomic property: mCPY2
   //····················································································································
 
@@ -250,10 +230,6 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mCPY2_property_selection : EBSelection <Int> { return self.mCPY2_property.selection }
-
-  //····················································································································
   //   Atomic property: mShape
   //····················································································································
 
@@ -271,10 +247,6 @@ final class BorderCurve : EBGraphicManagedObject,
     get { return self.mShape_property.propval }
     set { self.mShape_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mShape_property_selection : EBSelection <BorderCurveShape> { return self.mShape_property.selection }
 
   //····················································································································
   //   Atomic proxy property: mNextX
@@ -301,10 +273,6 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  var mNextX_property_selection : EBSelection <Int> { return self.mNextX_property.selection }
-
-  //····················································································································
   //   Atomic proxy property: mNextY
   //····················································································································
 
@@ -329,20 +297,10 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  var mNextY_property_selection : EBSelection <Int> { return self.mNextY_property.selection }
-
-  //····················································································································
   //   To one property: mRoot
   //····················································································································
 
   final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
-
-  //····················································································································
-
-  final var mRoot_property_selection : EBSelection <ProjectRoot?> {
-    return .single (self.mRoot_property.propval)
-  }
 
   //····················································································································
 
@@ -362,25 +320,13 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mRoot_none_selection : EBSelection <Bool> {
-     return .single (self.mRoot_property.propval == nil)
-  }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNext
   //····················································································································
 
   final let mNext_property = StoredObject_BorderCurve (usedForSignature: false)
-
-  //····················································································································
-
-  final var mNext_property_selection : EBSelection <BorderCurve?> {
-    return .single (self.mNext_property.propval)
-  }
 
   //····················································································································
 
@@ -400,25 +346,13 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mNext_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mNext_none_selection : EBSelection <Bool> {
-     return .single (self.mNext_property.propval == nil)
-  }
+  final let mNext_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mPrevious
   //····················································································································
 
   final let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPrevious_property_selection : EBSelection <BorderCurve?> {
-    return .single (self.mPrevious_property.propval)
-  }
 
   //····················································································································
 
@@ -438,25 +372,13 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mPrevious_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPrevious_none_selection : EBSelection <Bool> {
-     return .single (self.mPrevious_property.propval == nil)
-  }
+  final let mPrevious_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: p2Xstring
   //····················································································································
 
   final let p2Xstring_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var p2Xstring_property_selection : EBSelection <String> {
-    return self.p2Xstring_property.selection
-  }
 
   //····················································································································
 
@@ -477,12 +399,6 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var p2Ystring_property_selection : EBSelection <String> {
-    return self.p2Ystring_property.selection
-  }
-
-  //····················································································································
-
   final var p2Ystring : String? {
     switch self.p2Ystring_property.selection {
     case .empty, .multiple :
@@ -500,12 +416,6 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var descriptor_property_selection : EBSelection <BorderCurveDescriptor> {
-    return self.descriptor_property.selection
-  }
-
-  //····················································································································
-
   final var descriptor : BorderCurveDescriptor? {
     switch self.descriptor_property.selection {
     case .empty, .multiple :
@@ -520,12 +430,6 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final let isLine_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var isLine_property_selection : EBSelection <Bool> {
-    return self.isLine_property.selection
-  }
 
   //····················································································································
 

@@ -16,19 +16,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawBoardLimits_property = EBPropertyProxy_Bool ()
 
-  var drawBoardLimits_property_selection : EBSelection <Bool> {
-    return self.drawBoardLimits_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawComponentNamesBottomSide
   //····················································································································
 
   var drawComponentNamesBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawComponentNamesBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawComponentNamesTopSide
@@ -36,19 +28,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawComponentNamesTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawComponentNamesTopSide_property_selection : EBSelection <Bool> {
-    return self.drawComponentNamesTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawComponentValuesBottomSide
   //····················································································································
 
   var drawComponentValuesBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawComponentValuesBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawComponentValuesTopSide
@@ -56,19 +40,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawComponentValuesTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawComponentValuesTopSide_property_selection : EBSelection <Bool> {
-    return self.drawComponentValuesTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawInternalBoardLimits
   //····················································································································
 
   var drawInternalBoardLimits_property = EBPropertyProxy_Bool ()
-
-  var drawInternalBoardLimits_property_selection : EBSelection <Bool> {
-    return self.drawInternalBoardLimits_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawPackageLegendBottomSide
@@ -76,19 +52,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool ()
 
-  var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawPackageLegendBottomSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawPackageLegendTopSide
   //····················································································································
 
   var drawPackageLegendTopSide_property = EBPropertyProxy_Bool ()
-
-  var drawPackageLegendTopSide_property_selection : EBSelection <Bool> {
-    return self.drawPackageLegendTopSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawPadHolesInPDF
@@ -96,19 +64,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawPadHolesInPDF_property = EBPropertyProxy_Bool ()
 
-  var drawPadHolesInPDF_property_selection : EBSelection <Bool> {
-    return self.drawPadHolesInPDF_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawPadsBottomSide
   //····················································································································
 
   var drawPadsBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawPadsBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawPadsBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawPadsTopSide
@@ -116,19 +76,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawPadsTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawPadsTopSide_property_selection : EBSelection <Bool> {
-    return self.drawPadsTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawTextsLayoutBottomSide
   //····················································································································
 
   var drawTextsLayoutBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawTextsLayoutBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawTextsLayoutTopSide
@@ -136,19 +88,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawTextsLayoutTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> {
-    return self.drawTextsLayoutTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawTextsLegendBottomSide
   //····················································································································
 
   var drawTextsLegendBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawTextsLegendBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawTextsLegendTopSide
@@ -156,19 +100,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawTextsLegendTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawTextsLegendTopSide_property_selection : EBSelection <Bool> {
-    return self.drawTextsLegendTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawTracksBottomSide
   //····················································································································
 
   var drawTracksBottomSide_property = EBPropertyProxy_Bool ()
-
-  var drawTracksBottomSide_property_selection : EBSelection <Bool> {
-    return self.drawTracksBottomSide_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: drawTracksTopSide
@@ -176,19 +112,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var drawTracksTopSide_property = EBPropertyProxy_Bool ()
 
-  var drawTracksTopSide_property_selection : EBSelection <Bool> {
-    return self.drawTracksTopSide_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: drawVias
   //····················································································································
 
   var drawVias_property = EBPropertyProxy_Bool ()
-
-  var drawVias_property_selection : EBSelection <Bool> {
-    return self.drawVias_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: fileExtension
@@ -196,19 +124,11 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var fileExtension_property = EBPropertyProxy_String ()
 
-  var fileExtension_property_selection : EBSelection <String> {
-    return self.fileExtension_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: horizontalMirror
   //····················································································································
 
   var horizontalMirror_property = EBPropertyProxy_Bool ()
-
-  var horizontalMirror_property_selection : EBSelection <Bool> {
-    return self.horizontalMirror_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: measurementUnitForPadHoleInPDF
@@ -216,29 +136,17 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
 
   var measurementUnitForPadHoleInPDF_property = EBPropertyProxy_Int ()
 
-  var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> {
-    return self.measurementUnitForPadHoleInPDF_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: name
   //····················································································································
 
   var name_property = EBPropertyProxy_String ()
 
-  var name_property_selection : EBSelection <String> {
-    return self.name_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: padHoleDiameterInPDF
   //····················································································································
 
   var padHoleDiameterInPDF_property = EBPropertyProxy_Int ()
-
-  var padHoleDiameterInPDF_property_selection : EBSelection <Int> {
-    return self.padHoleDiameterInPDF_property.selection
-  }
 
   //····················································································································
   //   BIND SELECTION

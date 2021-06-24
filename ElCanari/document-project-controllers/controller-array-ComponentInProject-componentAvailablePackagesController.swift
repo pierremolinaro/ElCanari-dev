@@ -50,10 +50,6 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   var selectedArray : [DevicePackageInProject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[DevicePackageInProject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

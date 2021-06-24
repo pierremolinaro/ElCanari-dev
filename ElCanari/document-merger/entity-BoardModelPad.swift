@@ -72,10 +72,6 @@ final class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
-
-  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
-
-  //····················································································································
   //   Atomic property: width
   //····················································································································
 
@@ -93,10 +89,6 @@ final class BoardModelPad : EBManagedObject,
     get { return self.width_property.propval }
     set { self.width_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
 
   //····················································································································
   //   Atomic property: height
@@ -118,10 +110,6 @@ final class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
-
-  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
-
-  //····················································································································
   //   Atomic property: shape
   //····················································································································
 
@@ -139,10 +127,6 @@ final class BoardModelPad : EBManagedObject,
     get { return self.shape_property.propval }
     set { self.shape_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var shape_property_selection : EBSelection <PadShape> { return self.shape_property.selection }
 
   //····················································································································
   //   Atomic property: rotation
@@ -164,10 +148,6 @@ final class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
-
-  final var rotation_property_selection : EBSelection <Int> { return self.rotation_property.selection }
-
-  //····················································································································
   //   Atomic property: x
   //····················································································································
 
@@ -185,10 +165,6 @@ final class BoardModelPad : EBManagedObject,
     get { return self.x_property.propval }
     set { self.x_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
 
   //····················································································································
   //    init

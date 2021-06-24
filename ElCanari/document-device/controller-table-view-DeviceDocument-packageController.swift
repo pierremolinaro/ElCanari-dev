@@ -137,10 +137,6 @@ final class Controller_DeviceDocument_packageController : ReadOnlyAbstractGeneri
   //····················································································································
 
   var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

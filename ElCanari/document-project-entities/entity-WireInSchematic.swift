@@ -53,12 +53,6 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var mP1_property_selection : EBSelection <PointInSchematic?> {
-    return .single (self.mP1_property.propval)
-  }
-
-  //····················································································································
-
   final var mP1 : PointInSchematic? {
     get {
       return self.mP1_property.propval
@@ -75,25 +69,13 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP1_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mP1_none_selection : EBSelection <Bool> {
-     return .single (self.mP1_property.propval == nil)
-  }
+  final let mP1_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mP2
   //····················································································································
 
   final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false)
-
-  //····················································································································
-
-  final var mP2_property_selection : EBSelection <PointInSchematic?> {
-    return .single (self.mP2_property.propval)
-  }
 
   //····················································································································
 
@@ -113,25 +95,13 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP2_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mP2_none_selection : EBSelection <Bool> {
-     return .single (self.mP2_property.propval == nil)
-  }
+  final let mP2_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: netName
   //····················································································································
 
   final let netName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
 
   //····················································································································
 
@@ -152,12 +122,6 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
-
-  //····················································································································
-
   final var netClassName : String? {
     switch self.netClassName_property.selection {
     case .empty, .multiple :
@@ -172,12 +136,6 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   final let hasNet_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var hasNet_property_selection : EBSelection <Bool> {
-    return self.hasNet_property.selection
-  }
 
   //····················································································································
 

@@ -15,64 +15,36 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
   //····················································································································
 
   let mY_property = EBPropertyProxy_Int ()
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mWidth
   //····················································································································
 
   let mWidth_property = EBPropertyProxy_Int ()
-  var mWidth_property_selection : EBSelection <Int> {
-    return self.mWidth_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mHeight
   //····················································································································
 
   let mHeight_property = EBPropertyProxy_Int ()
-  var mHeight_property_selection : EBSelection <Int> {
-    return self.mHeight_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mIsInFrontLayer
   //····················································································································
 
   let mIsInFrontLayer_property = EBPropertyProxy_Bool ()
-  var mIsInFrontLayer_property_selection : EBSelection <Bool> {
-    return self.mIsInFrontLayer_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mIsInBackLayer
   //····················································································································
 
   let mIsInBackLayer_property = EBPropertyProxy_Bool ()
-  var mIsInBackLayer_property_selection : EBSelection <Bool> {
-    return self.mIsInBackLayer_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
   let mX_property = EBPropertyProxy_Int ()
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: selectionDisplay
@@ -80,19 +52,11 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
-
-  var signatureForERCChecking_property_selection : EBSelection <UInt32> {
-    return self.signatureForERCChecking_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

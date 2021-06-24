@@ -121,10 +121,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mFileData_property_selection : EBSelection <Data> { return self.mFileData_property.selection }
-
-  //····················································································································
   //   Atomic property: mName
   //····················································································································
 
@@ -142,10 +138,6 @@ final class PackageInDevice : EBGraphicManagedObject,
     get { return self.mName_property.propval }
     set { self.mName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mName_property_selection : EBSelection <String> { return self.mName_property.selection }
 
   //····················································································································
   //   Atomic property: mVersion
@@ -167,10 +159,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mVersion_property_selection : EBSelection <Int> { return self.mVersion_property.selection }
-
-  //····················································································································
   //   Atomic property: mStrokeBezierPath
   //····················································································································
 
@@ -188,10 +176,6 @@ final class PackageInDevice : EBGraphicManagedObject,
     get { return self.mStrokeBezierPath_property.propval }
     set { self.mStrokeBezierPath_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath> { return self.mStrokeBezierPath_property.selection }
 
   //····················································································································
   //   Atomic property: mX
@@ -213,10 +197,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mX_property_selection : EBSelection <Int> { return self.mX_property.selection }
-
-  //····················································································································
   //   Atomic property: mY
   //····················································································································
 
@@ -236,20 +216,12 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var mY_property_selection : EBSelection <Int> { return self.mY_property.selection }
-
-  //····················································································································
   //   To many property: mMasterPads
   //····················································································································
 
   final let mMasterPads_property = StoredArrayOf_MasterPadInDevice (usedForSignature: true)
 
   //····················································································································
-
-  final var mMasterPads_property_selection : EBSelection < [MasterPadInDevice] > {
-    return self.mMasterPads_property.selection
-  }
 
   //····················································································································
 
@@ -263,12 +235,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false)
-
-  //····················································································································
-
-  final var mRoot_property_selection : EBSelection <DeviceRoot?> {
-    return .single (self.mRoot_property.propval)
-  }
 
   //····················································································································
 
@@ -288,25 +254,13 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mRoot_none_selection : EBSelection <Bool> {
-     return .single (self.mRoot_property.propval == nil)
-  }
+  final let mRoot_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: versionString
   //····················································································································
 
   final let versionString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var versionString_property_selection : EBSelection <String> {
-    return self.versionString_property.selection
-  }
 
   //····················································································································
 
@@ -327,12 +281,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var documentSizeString_property_selection : EBSelection <String> {
-    return self.documentSizeString_property.selection
-  }
-
-  //····················································································································
-
   final var documentSizeString : String? {
     switch self.documentSizeString_property.selection {
     case .empty, .multiple :
@@ -347,12 +295,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final let frontSidePadFilledBezierPathArray_property = EBTransientProperty_BezierPathArray ()
-
-  //····················································································································
-
-  final var frontSidePadFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.frontSidePadFilledBezierPathArray_property.selection
-  }
 
   //····················································································································
 
@@ -373,12 +315,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final var backSidePadFilledBezierPathArray_property_selection : EBSelection <BezierPathArray> {
-    return self.backSidePadFilledBezierPathArray_property.selection
-  }
-
-  //····················································································································
-
   final var backSidePadFilledBezierPathArray : BezierPathArray? {
     switch self.backSidePadFilledBezierPathArray_property.selection {
     case .empty, .multiple :
@@ -393,12 +329,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final let padNameSet_property = EBTransientProperty_StringSet ()
-
-  //····················································································································
-
-  final var padNameSet_property_selection : EBSelection <StringSet> {
-    return self.padNameSet_property.selection
-  }
 
   //····················································································································
 

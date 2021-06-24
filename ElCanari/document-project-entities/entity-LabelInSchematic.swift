@@ -72,20 +72,10 @@ final class LabelInSchematic : SchematicObject,
   }
 
   //····················································································································
-
-  final var mOrientation_property_selection : EBSelection <QuadrantRotation> { return self.mOrientation_property.selection }
-
-  //····················································································································
   //   To one property: mPoint
   //····················································································································
 
   final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPoint_property_selection : EBSelection <PointInSchematic?> {
-    return .single (self.mPoint_property.propval)
-  }
 
   //····················································································································
 
@@ -105,25 +95,13 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mPoint_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPoint_none_selection : EBSelection <Bool> {
-     return .single (self.mPoint_property.propval == nil)
-  }
+  final let mPoint_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: location
   //····················································································································
 
   final let location_property = EBTransientProperty_CanariPoint ()
-
-  //····················································································································
-
-  final var location_property_selection : EBSelection <CanariPoint> {
-    return self.location_property.selection
-  }
 
   //····················································································································
 
@@ -144,12 +122,6 @@ final class LabelInSchematic : SchematicObject,
 
   //····················································································································
 
-  final var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
-  //····················································································································
-
   final var netName : String? {
     switch self.netName_property.selection {
     case .empty, .multiple :
@@ -164,12 +136,6 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final let netClassName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
 

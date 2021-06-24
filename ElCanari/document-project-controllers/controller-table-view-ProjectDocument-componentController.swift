@@ -155,10 +155,6 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
   //····················································································································
 
   var selectedArray : [ComponentInProject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[ComponentInProject]> { return self.selectedArray_property.selection }
  
   //····················································································································
 

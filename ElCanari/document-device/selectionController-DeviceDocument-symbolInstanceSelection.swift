@@ -16,10 +16,6 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   var mInstanceName_property = EBPropertyProxy_String ()
 
-  var mInstanceName_property_selection : EBSelection <String> {
-    return self.mInstanceName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mPinInstances
   //····················································································································
@@ -34,19 +30,11 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   var mX_property = EBPropertyProxy_Int ()
 
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
   var mY_property = EBPropertyProxy_Int ()
-
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -54,19 +42,11 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: symbolQualifiedName
@@ -74,29 +54,17 @@ final class SelectionController_DeviceDocument_symbolInstanceSelection : EBObjec
 
   var symbolQualifiedName_property = EBTransientProperty_String ()
 
-  var symbolQualifiedName_property_selection : EBSelection <String> {
-    return self.symbolQualifiedName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: symbolTypeName
   //····················································································································
 
   var symbolTypeName_property = EBTransientProperty_String ()
 
-  var symbolTypeName_property_selection : EBSelection <String> {
-    return self.symbolTypeName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: unconnectedPins
   //····················································································································
 
   var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
-
-  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
-    return self.unconnectedPins_property.selection
-  }
 
   //····················································································································
   //   BIND SELECTION

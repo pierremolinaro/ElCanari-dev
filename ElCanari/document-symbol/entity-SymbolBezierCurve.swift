@@ -114,10 +114,6 @@ final class SymbolBezierCurve : SymbolObject,
   }
 
   //····················································································································
-
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
-
-  //····················································································································
   //   Atomic property: x2
   //····················································································································
 
@@ -135,10 +131,6 @@ final class SymbolBezierCurve : SymbolObject,
     get { return self.x2_property.propval }
     set { self.x2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
 
   //····················································································································
   //   Atomic property: y2
@@ -160,10 +152,6 @@ final class SymbolBezierCurve : SymbolObject,
   }
 
   //····················································································································
-
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx1
   //····················································································································
 
@@ -181,10 +169,6 @@ final class SymbolBezierCurve : SymbolObject,
     get { return self.cpx1_property.propval }
     set { self.cpx1_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx1_property_selection : EBSelection <Int> { return self.cpx1_property.selection }
 
   //····················································································································
   //   Atomic property: cpy1
@@ -206,10 +190,6 @@ final class SymbolBezierCurve : SymbolObject,
   }
 
   //····················································································································
-
-  final var cpy1_property_selection : EBSelection <Int> { return self.cpy1_property.selection }
-
-  //····················································································································
   //   Atomic property: cpx2
   //····················································································································
 
@@ -227,10 +207,6 @@ final class SymbolBezierCurve : SymbolObject,
     get { return self.cpx2_property.propval }
     set { self.cpx2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var cpx2_property_selection : EBSelection <Int> { return self.cpx2_property.selection }
 
   //····················································································································
   //   Atomic property: cpy2
@@ -252,10 +228,6 @@ final class SymbolBezierCurve : SymbolObject,
   }
 
   //····················································································································
-
-  final var cpy2_property_selection : EBSelection <Int> { return self.cpy2_property.selection }
-
-  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -275,20 +247,10 @@ final class SymbolBezierCurve : SymbolObject,
   }
 
   //····················································································································
-
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 

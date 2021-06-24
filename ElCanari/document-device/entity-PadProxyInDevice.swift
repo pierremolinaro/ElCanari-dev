@@ -65,10 +65,6 @@ final class PadProxyInDevice : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mPinInstanceName_property_selection : EBSelection <String> { return self.mPinInstanceName_property.selection }
-
-  //····················································································································
   //   Atomic property: mPadName
   //····················································································································
 
@@ -86,10 +82,6 @@ final class PadProxyInDevice : EBManagedObject,
     get { return self.mPadName_property.propval }
     set { self.mPadName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mPadName_property_selection : EBSelection <String> { return self.mPadName_property.selection }
 
   //····················································································································
   //   Atomic property: mIsNC
@@ -111,20 +103,10 @@ final class PadProxyInDevice : EBManagedObject,
   }
 
   //····················································································································
-
-  final var mIsNC_property_selection : EBSelection <Bool> { return self.mIsNC_property.selection }
-
-  //····················································································································
   //   To one property: mPinInstance
   //····················································································································
 
   final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false)
-
-  //····················································································································
-
-  final var mPinInstance_property_selection : EBSelection <SymbolPinInstanceInDevice?> {
-    return .single (self.mPinInstance_property.propval)
-  }
 
   //····················································································································
 
@@ -144,25 +126,13 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mPinInstance_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mPinInstance_none_selection : EBSelection <Bool> {
-     return .single (self.mPinInstance_property.propval == nil)
-  }
+  final let mPinInstance_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: isConnected
   //····················································································································
 
   final let isConnected_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var isConnected_property_selection : EBSelection <Bool> {
-    return self.isConnected_property.selection
-  }
 
   //····················································································································
 
@@ -180,12 +150,6 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final let symbolName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var symbolName_property_selection : EBSelection <String> {
-    return self.symbolName_property.selection
-  }
 
   //····················································································································
 

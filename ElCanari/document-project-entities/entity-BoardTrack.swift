@@ -226,10 +226,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mSide_property_selection : EBSelection <TrackSide> { return self.mSide_property.selection }
-
-  //····················································································································
   //   Atomic property: mDefaultTrackWidthUnit
   //····················································································································
 
@@ -247,10 +243,6 @@ final class BoardTrack : BoardObject,
     get { return self.mDefaultTrackWidthUnit_property.propval }
     set { self.mDefaultTrackWidthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mDefaultTrackWidthUnit_property_selection : EBSelection <Int> { return self.mDefaultTrackWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mCustomTrackWidth
@@ -272,10 +264,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mCustomTrackWidth_property_selection : EBSelection <Int> { return self.mCustomTrackWidth_property.selection }
-
-  //····················································································································
   //   Atomic property: mCustomTrackWidthUnit
   //····················································································································
 
@@ -293,10 +281,6 @@ final class BoardTrack : BoardObject,
     get { return self.mCustomTrackWidthUnit_property.propval }
     set { self.mCustomTrackWidthUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mCustomTrackWidthUnit_property_selection : EBSelection <Int> { return self.mCustomTrackWidthUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mUsesCustomTrackWidth
@@ -318,10 +302,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mUsesCustomTrackWidth_property_selection : EBSelection <Bool> { return self.mUsesCustomTrackWidth_property.selection }
-
-  //····················································································································
   //   Atomic property: mIsPreservedByAutoRouter
   //····················································································································
 
@@ -339,10 +319,6 @@ final class BoardTrack : BoardObject,
     get { return self.mIsPreservedByAutoRouter_property.propval }
     set { self.mIsPreservedByAutoRouter_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mIsPreservedByAutoRouter_property_selection : EBSelection <Bool> { return self.mIsPreservedByAutoRouter_property.selection }
 
   //····················································································································
   //   Atomic property: mP1XUnit
@@ -364,10 +340,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mP1XUnit_property_selection : EBSelection <Int> { return self.mP1XUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: mP1YUnit
   //····················································································································
 
@@ -385,10 +357,6 @@ final class BoardTrack : BoardObject,
     get { return self.mP1YUnit_property.propval }
     set { self.mP1YUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mP1YUnit_property_selection : EBSelection <Int> { return self.mP1YUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mP2XUnit
@@ -410,10 +378,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mP2XUnit_property_selection : EBSelection <Int> { return self.mP2XUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: mP2YUnit
   //····················································································································
 
@@ -431,10 +395,6 @@ final class BoardTrack : BoardObject,
     get { return self.mP2YUnit_property.propval }
     set { self.mP2YUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mP2YUnit_property_selection : EBSelection <Int> { return self.mP2YUnit_property.selection }
 
   //····················································································································
   //   Atomic property: mManualLockP1
@@ -456,10 +416,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mManualLockP1_property_selection : EBSelection <Bool> { return self.mManualLockP1_property.selection }
-
-  //····················································································································
   //   Atomic property: mManualLockP2
   //····················································································································
 
@@ -477,10 +433,6 @@ final class BoardTrack : BoardObject,
     get { return self.mManualLockP2_property.propval }
     set { self.mManualLockP2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var mManualLockP2_property_selection : EBSelection <Bool> { return self.mManualLockP2_property.selection }
 
   //····················································································································
   //   Atomic property: mDirectionLockOnKnobDragging
@@ -502,20 +454,10 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-
-  final var mDirectionLockOnKnobDragging_property_selection : EBSelection <TrackLockDirection> { return self.mDirectionLockOnKnobDragging_property.selection }
-
-  //····················································································································
   //   To one property: mConnectorP1
   //····················································································································
 
   final let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false)
-
-  //····················································································································
-
-  final var mConnectorP1_property_selection : EBSelection <BoardConnector?> {
-    return .single (self.mConnectorP1_property.propval)
-  }
 
   //····················································································································
 
@@ -535,25 +477,13 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mConnectorP1_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mConnectorP1_none_selection : EBSelection <Bool> {
-     return .single (self.mConnectorP1_property.propval == nil)
-  }
+  final let mConnectorP1_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mConnectorP2
   //····················································································································
 
   final let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false)
-
-  //····················································································································
-
-  final var mConnectorP2_property_selection : EBSelection <BoardConnector?> {
-    return .single (self.mConnectorP2_property.propval)
-  }
 
   //····················································································································
 
@@ -573,25 +503,13 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mConnectorP2_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mConnectorP2_none_selection : EBSelection <Bool> {
-     return .single (self.mConnectorP2_property.propval == nil)
-  }
+  final let mConnectorP2_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   To one property: mNet
   //····················································································································
 
   final let mNet_property = StoredObject_NetInProject (usedForSignature: false)
-
-  //····················································································································
-
-  final var mNet_property_selection : EBSelection <NetInProject?> {
-    return .single (self.mNet_property.propval)
-  }
 
   //····················································································································
 
@@ -611,25 +529,13 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final let mNet_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var mNet_none_selection : EBSelection <Bool> {
-     return .single (self.mNet_property.propval == nil)
-  }
+  final let mNet_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: actualTrackWidth
   //····················································································································
 
   final let actualTrackWidth_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var actualTrackWidth_property_selection : EBSelection <Int> {
-    return self.actualTrackWidth_property.selection
-  }
 
   //····················································································································
 
@@ -650,12 +556,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var netName_property_selection : EBSelection <String> {
-    return self.netName_property.selection
-  }
-
-  //····················································································································
-
   final var netName : String? {
     switch self.netName_property.selection {
     case .empty, .multiple :
@@ -670,12 +570,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let netClassName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var netClassName_property_selection : EBSelection <String> {
-    return self.netClassName_property.selection
-  }
 
   //····················································································································
 
@@ -696,12 +590,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var netClassTrackWidth_property_selection : EBSelection <Int> {
-    return self.netClassTrackWidth_property.selection
-  }
-
-  //····················································································································
-
   final var netClassTrackWidth : Int? {
     switch self.netClassTrackWidth_property.selection {
     case .empty, .multiple :
@@ -716,12 +604,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let netClassViaHoleDiameter_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  final var netClassViaHoleDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaHoleDiameter_property.selection
-  }
 
   //····················································································································
 
@@ -742,12 +624,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var netClassViaPadDiameter_property_selection : EBSelection <Int> {
-    return self.netClassViaPadDiameter_property.selection
-  }
-
-  //····················································································································
-
   final var netClassViaPadDiameter : Int? {
     switch self.netClassViaPadDiameter_property.selection {
     case .empty, .multiple :
@@ -762,12 +638,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var trackDirectionInDegrees_property_selection : EBSelection <Int> {
-    return self.trackDirectionInDegrees_property.selection
-  }
 
   //····················································································································
 
@@ -788,12 +658,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var p1ConnectedToSomePad_property_selection : EBSelection <Bool> {
-    return self.p1ConnectedToSomePad_property.selection
-  }
-
-  //····················································································································
-
   final var p1ConnectedToSomePad : Bool? {
     switch self.p1ConnectedToSomePad_property.selection {
     case .empty, .multiple :
@@ -808,12 +672,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var p2ConnectedToSomePad_property_selection : EBSelection <Bool> {
-    return self.p2ConnectedToSomePad_property.selection
-  }
 
   //····················································································································
 
@@ -834,12 +692,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var computedP1X_property_selection : EBSelection <Int> {
-    return self.computedP1X_property.selection
-  }
-
-  //····················································································································
-
   final var computedP1X : Int? {
     switch self.computedP1X_property.selection {
     case .empty, .multiple :
@@ -854,12 +706,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let computedP1Y_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var computedP1Y_property_selection : EBSelection <Int> {
-    return self.computedP1Y_property.selection
-  }
 
   //····················································································································
 
@@ -880,12 +726,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var computedP2X_property_selection : EBSelection <Int> {
-    return self.computedP2X_property.selection
-  }
-
-  //····················································································································
-
   final var computedP2X : Int? {
     switch self.computedP2X_property.selection {
     case .empty, .multiple :
@@ -900,12 +740,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let computedP2Y_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var computedP2Y_property_selection : EBSelection <Int> {
-    return self.computedP2Y_property.selection
-  }
 
   //····················································································································
 
@@ -926,12 +760,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var p1CanMove_property_selection : EBSelection <Bool> {
-    return self.p1CanMove_property.selection
-  }
-
-  //····················································································································
-
   final var p1CanMove : Bool? {
     switch self.p1CanMove_property.selection {
     case .empty, .multiple :
@@ -949,12 +777,6 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  final var p2CanMove_property_selection : EBSelection <Bool> {
-    return self.p2CanMove_property.selection
-  }
-
-  //····················································································································
-
   final var p2CanMove : Bool? {
     switch self.p2CanMove_property.selection {
     case .empty, .multiple :
@@ -969,12 +791,6 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final let trackCanRotate_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var trackCanRotate_property_selection : EBSelection <Bool> {
-    return self.trackCanRotate_property.selection
-  }
 
   //····················································································································
 

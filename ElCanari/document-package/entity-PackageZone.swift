@@ -177,10 +177,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var x_property_selection : EBSelection <Int> { return self.x_property.selection }
-
-  //····················································································································
   //   Atomic property: y
   //····················································································································
 
@@ -198,10 +194,6 @@ final class PackageZone : PackageObject,
     get { return self.y_property.propval }
     set { self.y_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var y_property_selection : EBSelection <Int> { return self.y_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -223,10 +215,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
-
-  //····················································································································
   //   Atomic property: height
   //····················································································································
 
@@ -244,10 +232,6 @@ final class PackageZone : PackageObject,
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
 
   //····················································································································
   //   Atomic property: xUnit
@@ -269,10 +253,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var xUnit_property_selection : EBSelection <Int> { return self.xUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: yUnit
   //····················································································································
 
@@ -290,10 +270,6 @@ final class PackageZone : PackageObject,
     get { return self.yUnit_property.propval }
     set { self.yUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var yUnit_property_selection : EBSelection <Int> { return self.yUnit_property.selection }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -315,10 +291,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: heightUnit
   //····················································································································
 
@@ -336,10 +308,6 @@ final class PackageZone : PackageObject,
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: zoneName
@@ -361,10 +329,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var zoneName_property_selection : EBSelection <String> { return self.zoneName_property.selection }
-
-  //····················································································································
   //   Atomic property: displayZoneName
   //····················································································································
 
@@ -382,10 +346,6 @@ final class PackageZone : PackageObject,
     get { return self.displayZoneName_property.propval }
     set { self.displayZoneName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var displayZoneName_property_selection : EBSelection <Bool> { return self.displayZoneName_property.selection }
 
   //····················································································································
   //   Atomic property: xName
@@ -407,10 +367,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var xName_property_selection : EBSelection <Int> { return self.xName_property.selection }
-
-  //····················································································································
   //   Atomic property: yName
   //····················································································································
 
@@ -428,10 +384,6 @@ final class PackageZone : PackageObject,
     get { return self.yName_property.propval }
     set { self.yName_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var yName_property_selection : EBSelection <Int> { return self.yName_property.selection }
 
   //····················································································································
   //   Atomic property: xNameUnit
@@ -453,10 +405,6 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var xNameUnit_property_selection : EBSelection <Int> { return self.xNameUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: yNameUnit
   //····················································································································
 
@@ -474,10 +422,6 @@ final class PackageZone : PackageObject,
     get { return self.yNameUnit_property.propval }
     set { self.yNameUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var yNameUnit_property_selection : EBSelection <Int> { return self.yNameUnit_property.selection }
 
   //····················································································································
   //   Atomic property: zoneNumbering
@@ -499,20 +443,12 @@ final class PackageZone : PackageObject,
   }
 
   //····················································································································
-
-  final var zoneNumbering_property_selection : EBSelection <PadNumbering> { return self.zoneNumbering_property.selection }
-
-  //····················································································································
   //   To many property: forbiddenPadNumbers
   //····················································································································
 
   final let forbiddenPadNumbers_property = StoredArrayOf_ForbiddenPadNumber (usedForSignature: true)
 
   //····················································································································
-
-  final var forbiddenPadNumbers_property_selection : EBSelection < [ForbiddenPadNumber] > {
-    return self.forbiddenPadNumbers_property.selection
-  }
 
   //····················································································································
 
@@ -526,12 +462,6 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   final let rect_property = EBTransientProperty_CanariRect ()
-
-  //····················································································································
-
-  final var rect_property_selection : EBSelection <CanariRect> {
-    return self.rect_property.selection
-  }
 
   //····················································································································
 
@@ -552,12 +482,6 @@ final class PackageZone : PackageObject,
 
   //····················································································································
 
-  final var forbiddenPadArray_property_selection : EBSelection <StringArray> {
-    return self.forbiddenPadArray_property.selection
-  }
-
-  //····················································································································
-
   final var forbiddenPadArray : StringArray? {
     switch self.forbiddenPadArray_property.selection {
     case .empty, .multiple :
@@ -572,12 +496,6 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   final let emptyForbiddenPadArray_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var emptyForbiddenPadArray_property_selection : EBSelection <Bool> {
-    return self.emptyForbiddenPadArray_property.selection
-  }
 
   //····················································································································
 

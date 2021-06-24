@@ -15,46 +15,26 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
   //····················································································································
 
   let y_property = EBPropertyProxy_Int ()
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: text
   //····················································································································
 
   let text_property = EBPropertyProxy_String ()
-  var text_property_selection : EBSelection <String> {
-    return self.text_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: horizontalAlignment
   //····················································································································
 
   let horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.horizontalAlignment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: x
   //····················································································································
 
   let x_property = EBPropertyProxy_Int ()
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: selectionDisplay
@@ -62,19 +42,11 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

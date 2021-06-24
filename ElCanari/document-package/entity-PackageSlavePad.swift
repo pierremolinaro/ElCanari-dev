@@ -198,10 +198,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.selection }
-
-  //····················································································································
   //   Atomic property: yCenter
   //····················································································································
 
@@ -219,10 +215,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.yCenter_property.propval }
     set { self.yCenter_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.selection }
 
   //····················································································································
   //   Atomic property: width
@@ -244,10 +236,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var width_property_selection : EBSelection <Int> { return self.width_property.selection }
-
-  //····················································································································
   //   Atomic property: height
   //····················································································································
 
@@ -265,10 +253,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.height_property.propval }
     set { self.height_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var height_property_selection : EBSelection <Int> { return self.height_property.selection }
 
   //····················································································································
   //   Atomic property: holeWidth
@@ -290,10 +274,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var holeWidth_property_selection : EBSelection <Int> { return self.holeWidth_property.selection }
-
-  //····················································································································
   //   Atomic property: holeHeight
   //····················································································································
 
@@ -311,10 +291,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.holeHeight_property.propval }
     set { self.holeHeight_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var holeHeight_property_selection : EBSelection <Int> { return self.holeHeight_property.selection }
 
   //····················································································································
   //   Atomic property: padShape
@@ -336,10 +312,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var padShape_property_selection : EBSelection <PadShape> { return self.padShape_property.selection }
-
-  //····················································································································
   //   Atomic property: padStyle
   //····················································································································
 
@@ -357,10 +329,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.padStyle_property.propval }
     set { self.padStyle_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var padStyle_property_selection : EBSelection <SlavePadStyle> { return self.padStyle_property.selection }
 
   //····················································································································
   //   Atomic property: xCenterUnit
@@ -382,10 +350,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: yCenterUnit
   //····················································································································
 
@@ -403,10 +367,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.yCenterUnit_property.propval }
     set { self.yCenterUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: widthUnit
@@ -428,10 +388,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var widthUnit_property_selection : EBSelection <Int> { return self.widthUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: heightUnit
   //····················································································································
 
@@ -449,10 +405,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.heightUnit_property.propval }
     set { self.heightUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var heightUnit_property_selection : EBSelection <Int> { return self.heightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: holeWidthUnit
@@ -474,10 +426,6 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var holeWidthUnit_property_selection : EBSelection <Int> { return self.holeWidthUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: holeHeightUnit
   //····················································································································
 
@@ -495,10 +443,6 @@ final class PackageSlavePad : PackageObject,
     get { return self.holeHeightUnit_property.propval }
     set { self.holeHeightUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var holeHeightUnit_property_selection : EBSelection <Int> { return self.holeHeightUnit_property.selection }
 
   //····················································································································
   //   Atomic property: annularRingUnit
@@ -520,20 +464,10 @@ final class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
-
-  final var annularRingUnit_property_selection : EBSelection <Int> { return self.annularRingUnit_property.selection }
-
-  //····················································································································
   //   To one property: master
   //····················································································································
 
   final let master_property = StoredObject_PackagePad (usedForSignature: false)
-
-  //····················································································································
-
-  final var master_property_selection : EBSelection <PackagePad?> {
-    return .single (self.master_property.propval)
-  }
 
   //····················································································································
 
@@ -553,25 +487,13 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final let master_none = EBGenericTransientProperty <Bool> () // §
-
-  //····················································································································
-
-  final var master_none_selection : EBSelection <Bool> {
-     return .single (self.master_property.propval == nil)
-  }
+  final let master_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
   //   Transient property: padIsTraversing
   //····················································································································
 
   final let padIsTraversing_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  final var padIsTraversing_property_selection : EBSelection <Bool> {
-    return self.padIsTraversing_property.selection
-  }
 
   //····················································································································
 
@@ -592,12 +514,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final var annularRing_property_selection : EBSelection <Int> {
-    return self.annularRing_property.selection
-  }
-
-  //····················································································································
-
   final var annularRing : Int? {
     switch self.annularRing_property.selection {
     case .empty, .multiple :
@@ -612,12 +528,6 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final let padNameWithZoneName_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var padNameWithZoneName_property_selection : EBSelection <String> {
-    return self.padNameWithZoneName_property.selection
-  }
 
   //····················································································································
 
@@ -638,12 +548,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final var masterPadNameWithZoneName_property_selection : EBSelection <String> {
-    return self.masterPadNameWithZoneName_property.selection
-  }
-
-  //····················································································································
-
   final var masterPadNameWithZoneName : String? {
     switch self.masterPadNameWithZoneName_property.selection {
     case .empty, .multiple :
@@ -661,12 +565,6 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final var padNameForDisplay_property_selection : EBSelection <String> {
-    return self.padNameForDisplay_property.selection
-  }
-
-  //····················································································································
-
   final var padNameForDisplay : String? {
     switch self.padNameForDisplay_property.selection {
     case .empty, .multiple :
@@ -681,12 +579,6 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final let padNumberDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  final var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    return self.padNumberDisplay_property.selection
-  }
 
   //····················································································································
 

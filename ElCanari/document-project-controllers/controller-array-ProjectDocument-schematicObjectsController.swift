@@ -63,10 +63,6 @@ final class Controller_ProjectDocument_schematicObjectsController : ReadOnlyAbst
   //····················································································································
 
   var selectedArray : [SchematicObject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[SchematicObject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

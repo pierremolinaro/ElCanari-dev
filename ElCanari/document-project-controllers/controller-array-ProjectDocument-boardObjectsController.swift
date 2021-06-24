@@ -63,10 +63,6 @@ final class Controller_ProjectDocument_boardObjectsController : ReadOnlyAbstract
   //····················································································································
 
   var selectedArray : [BoardObject] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[BoardObject]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

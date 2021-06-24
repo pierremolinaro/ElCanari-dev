@@ -72,10 +72,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var x1_property_selection : EBSelection <Int> { return self.x1_property.selection }
-
-  //····················································································································
   //   Atomic property: y1
   //····················································································································
 
@@ -93,10 +89,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     get { return self.y1_property.propval }
     set { self.y1_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var y1_property_selection : EBSelection <Int> { return self.y1_property.selection }
 
   //····················································································································
   //   Atomic property: x2
@@ -118,10 +110,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   }
 
   //····················································································································
-
-  final var x2_property_selection : EBSelection <Int> { return self.x2_property.selection }
-
-  //····················································································································
   //   Atomic property: y2
   //····················································································································
 
@@ -139,10 +127,6 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     get { return self.y2_property.propval }
     set { self.y2_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var y2_property_selection : EBSelection <Int> { return self.y2_property.selection }
 
   //····················································································································
   //    init

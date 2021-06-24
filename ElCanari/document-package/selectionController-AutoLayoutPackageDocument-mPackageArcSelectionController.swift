@@ -15,127 +15,71 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   let yCenter_property = EBPropertyProxy_Int ()
-  var yCenter_property_selection : EBSelection <Int> {
-    return self.yCenter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: radius
   //····················································································································
 
   let radius_property = EBPropertyProxy_Int ()
-  var radius_property_selection : EBSelection <Int> {
-    return self.radius_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: startAngle
   //····················································································································
 
   let startAngle_property = EBPropertyProxy_Int ()
-  var startAngle_property_selection : EBSelection <Int> {
-    return self.startAngle_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: arcAngle
   //····················································································································
 
   let arcAngle_property = EBPropertyProxy_Int ()
-  var arcAngle_property_selection : EBSelection <Int> {
-    return self.arcAngle_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: startTangent
   //····················································································································
 
   let startTangent_property = EBPropertyProxy_Int ()
-  var startTangent_property_selection : EBSelection <Int> {
-    return self.startTangent_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: endTangent
   //····················································································································
 
   let endTangent_property = EBPropertyProxy_Int ()
-  var endTangent_property_selection : EBSelection <Int> {
-    return self.endTangent_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: pathIsClosed
   //····················································································································
 
   let pathIsClosed_property = EBPropertyProxy_Bool ()
-  var pathIsClosed_property_selection : EBSelection <Bool> {
-    return self.pathIsClosed_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xCenterUnit
   //····················································································································
 
   let xCenterUnit_property = EBPropertyProxy_Int ()
-  var xCenterUnit_property_selection : EBSelection <Int> {
-    return self.xCenterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: yCenterUnit
   //····················································································································
 
   let yCenterUnit_property = EBPropertyProxy_Int ()
-  var yCenterUnit_property_selection : EBSelection <Int> {
-    return self.yCenterUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: radiusUnit
   //····················································································································
 
   let radiusUnit_property = EBPropertyProxy_Int ()
-  var radiusUnit_property_selection : EBSelection <Int> {
-    return self.radiusUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: startTangentUnit
   //····················································································································
 
   let startTangentUnit_property = EBPropertyProxy_Int ()
-  var startTangentUnit_property_selection : EBSelection <Int> {
-    return self.startTangentUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: endTangentUnit
   //····················································································································
 
   let endTangentUnit_property = EBPropertyProxy_Int ()
-  var endTangentUnit_property_selection : EBSelection <Int> {
-    return self.endTangentUnit_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xCenter
   //····················································································································
 
   let xCenter_property = EBPropertyProxy_Int ()
-  var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
   let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
-
-  var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -143,29 +87,17 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

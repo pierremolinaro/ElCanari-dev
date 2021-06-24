@@ -99,38 +99,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let y1_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_y1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var y1_property_selection : EBSelection <Int?> { // §
-    return self.y1_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.y1_property.addEBObserver (inObserver)
-/*    self.mObserversOf_y1.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.y1_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.y1_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_y1.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.y1_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -138,38 +117,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let x2_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_x2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var x2_property_selection : EBSelection <Int?> { // §
-    return self.x2_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.x2_property.addEBObserver (inObserver)
-/*    self.mObserversOf_x2.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x2_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.x2_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_x2.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x2_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -177,38 +135,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let y2_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_y2 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var y2_property_selection : EBSelection <Int?> { // §
-    return self.y2_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.y2_property.addEBObserver (inObserver)
-/*    self.mObserversOf_y2.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.y2_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.y2_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_y2.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.y2_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -216,38 +153,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let xDimension_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_xDimension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var xDimension_property_selection : EBSelection <Int?> { // §
-    return self.xDimension_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_xDimension (_ inObserver : EBEvent) {
     self.xDimension_property.addEBObserver (inObserver)
-/*    self.mObserversOf_xDimension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.xDimension_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_xDimension (_ inObserver : EBEvent) {
     self.xDimension_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_xDimension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.xDimension_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -255,38 +171,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let yDimension_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_yDimension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var yDimension_property_selection : EBSelection <Int?> { // §
-    return self.yDimension_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_yDimension (_ inObserver : EBEvent) {
     self.yDimension_property.addEBObserver (inObserver)
-/*    self.mObserversOf_yDimension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.yDimension_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_yDimension (_ inObserver : EBEvent) {
     self.yDimension_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_yDimension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.yDimension_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -294,38 +189,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let x1Unit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_x1Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var x1Unit_property_selection : EBSelection <Int?> { // §
-    return self.x1Unit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.x1Unit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_x1Unit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x1Unit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.x1Unit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_x1Unit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x1Unit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -333,38 +207,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let y1Unit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_y1Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var y1Unit_property_selection : EBSelection <Int?> { // §
-    return self.y1Unit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.y1Unit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_y1Unit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.y1Unit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.y1Unit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_y1Unit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.y1Unit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -372,38 +225,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let x2Unit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_x2Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var x2Unit_property_selection : EBSelection <Int?> { // §
-    return self.x2Unit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.x2Unit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_x2Unit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x2Unit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.x2Unit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_x2Unit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x2Unit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -411,38 +243,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let y2Unit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_y2Unit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var y2Unit_property_selection : EBSelection <Int?> { // §
-    return self.y2Unit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.y2Unit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_y2Unit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.y2Unit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.y2Unit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_y2Unit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.y2Unit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -450,38 +261,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let xDimensionUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_xDimensionUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var xDimensionUnit_property_selection : EBSelection <Int?> { // §
-    return self.xDimensionUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
     self.xDimensionUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_xDimensionUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.xDimensionUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
     self.xDimensionUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_xDimensionUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.xDimensionUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -489,38 +279,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let yDimensionUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_yDimensionUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var yDimensionUnit_property_selection : EBSelection <Int?> { // §
-    return self.yDimensionUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
     self.yDimensionUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_yDimensionUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.yDimensionUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
     self.yDimensionUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_yDimensionUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.yDimensionUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -528,38 +297,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let distanceUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_distanceUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var distanceUnit_property_selection : EBSelection <Int?> { // §
-    return self.distanceUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
     self.distanceUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_distanceUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.distanceUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_distanceUnit (_ inObserver : EBEvent) {
     self.distanceUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_distanceUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.distanceUnit_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -567,38 +315,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let drawDimensionBackground_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_drawDimensionBackground = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var drawDimensionBackground_property_selection : EBSelection <Bool?> { // §
-    return self.drawDimensionBackground_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
     self.drawDimensionBackground_property.addEBObserver (inObserver)
-/*    self.mObserversOf_drawDimensionBackground.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.drawDimensionBackground_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_drawDimensionBackground (_ inObserver : EBEvent) {
     self.drawDimensionBackground_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_drawDimensionBackground.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drawDimensionBackground_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -606,38 +333,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let x1_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_x1 = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var x1_property_selection : EBSelection <Int?> { // §
-    return self.x1_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.x1_property.addEBObserver (inObserver)
-/*    self.mObserversOf_x1.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.x1_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.x1_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_x1.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.x1_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -645,38 +351,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let distanceInCanariUnit_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_distanceInCanariUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var distanceInCanariUnit_property_selection : EBSelection <Int?> {
-    return self.distanceInCanariUnit_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
     self.distanceInCanariUnit_property.addEBObserver (inObserver)
-/*    self.mObserversOf_distanceInCanariUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.distanceInCanariUnit_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_distanceInCanariUnit (_ inObserver : EBEvent) {
     self.distanceInCanariUnit_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_distanceInCanariUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.distanceInCanariUnit_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -684,38 +369,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var objectDisplay_property_selection : EBSelection <EBShape?> {
-    return self.objectDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.objectDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.objectDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -723,38 +387,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
-//  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.addEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.selectionDisplay_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -762,38 +405,17 @@ class ReadOnlyObject_PackageDimension : ReadOnlyAbstractObjectProperty <PackageD
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-//  private final var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray?> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.addEBObserver (inObserver)
-/*    self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.issues_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.issues_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································

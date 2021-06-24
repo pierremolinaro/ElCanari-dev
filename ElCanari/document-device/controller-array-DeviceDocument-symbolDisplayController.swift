@@ -63,10 +63,6 @@ final class Controller_DeviceDocument_symbolDisplayController : ReadOnlyAbstract
   //····················································································································
 
   var selectedArray : [SymbolInstanceInDevice] { return self.selectedArray_property.propval }
-
-  //····················································································································
-
-  var selectedArray_property_selection : EBSelection <[SymbolInstanceInDevice]> { return self.selectedArray_property.selection }
  
   //····················································································································
   //   Init

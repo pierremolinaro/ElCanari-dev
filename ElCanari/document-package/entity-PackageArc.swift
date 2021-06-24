@@ -149,10 +149,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var yCenter_property_selection : EBSelection <Int> { return self.yCenter_property.selection }
-
-  //····················································································································
   //   Atomic property: radius
   //····················································································································
 
@@ -170,10 +166,6 @@ final class PackageArc : PackageObject,
     get { return self.radius_property.propval }
     set { self.radius_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var radius_property_selection : EBSelection <Int> { return self.radius_property.selection }
 
   //····················································································································
   //   Atomic property: startAngle
@@ -195,10 +187,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var startAngle_property_selection : EBSelection <Int> { return self.startAngle_property.selection }
-
-  //····················································································································
   //   Atomic property: arcAngle
   //····················································································································
 
@@ -216,10 +204,6 @@ final class PackageArc : PackageObject,
     get { return self.arcAngle_property.propval }
     set { self.arcAngle_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var arcAngle_property_selection : EBSelection <Int> { return self.arcAngle_property.selection }
 
   //····················································································································
   //   Atomic property: startTangent
@@ -241,10 +225,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var startTangent_property_selection : EBSelection <Int> { return self.startTangent_property.selection }
-
-  //····················································································································
   //   Atomic property: endTangent
   //····················································································································
 
@@ -262,10 +242,6 @@ final class PackageArc : PackageObject,
     get { return self.endTangent_property.propval }
     set { self.endTangent_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var endTangent_property_selection : EBSelection <Int> { return self.endTangent_property.selection }
 
   //····················································································································
   //   Atomic property: pathIsClosed
@@ -287,10 +263,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var pathIsClosed_property_selection : EBSelection <Bool> { return self.pathIsClosed_property.selection }
-
-  //····················································································································
   //   Atomic property: xCenterUnit
   //····················································································································
 
@@ -308,10 +280,6 @@ final class PackageArc : PackageObject,
     get { return self.xCenterUnit_property.propval }
     set { self.xCenterUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xCenterUnit_property_selection : EBSelection <Int> { return self.xCenterUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yCenterUnit
@@ -333,10 +301,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var yCenterUnit_property_selection : EBSelection <Int> { return self.yCenterUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: radiusUnit
   //····················································································································
 
@@ -354,10 +318,6 @@ final class PackageArc : PackageObject,
     get { return self.radiusUnit_property.propval }
     set { self.radiusUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var radiusUnit_property_selection : EBSelection <Int> { return self.radiusUnit_property.selection }
 
   //····················································································································
   //   Atomic property: startTangentUnit
@@ -379,10 +339,6 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var startTangentUnit_property_selection : EBSelection <Int> { return self.startTangentUnit_property.selection }
-
-  //····················································································································
   //   Atomic property: endTangentUnit
   //····················································································································
 
@@ -400,10 +356,6 @@ final class PackageArc : PackageObject,
     get { return self.endTangentUnit_property.propval }
     set { self.endTangentUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var endTangentUnit_property_selection : EBSelection <Int> { return self.endTangentUnit_property.selection }
 
   //····················································································································
   //   Atomic property: xCenter
@@ -425,20 +377,10 @@ final class PackageArc : PackageObject,
   }
 
   //····················································································································
-
-  final var xCenter_property_selection : EBSelection <Int> { return self.xCenter_property.selection }
-
-  //····················································································································
   //   Transient property: strokeBezierPath
   //····················································································································
 
   final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
-
-  //····················································································································
-
-  final var strokeBezierPath_property_selection : EBSelection <EBBezierPath> {
-    return self.strokeBezierPath_property.selection
-  }
 
   //····················································································································
 

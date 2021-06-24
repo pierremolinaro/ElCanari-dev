@@ -15,29 +15,17 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
   //····················································································································
 
   let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
-  var mOrientation_property_selection : EBSelection <QuadrantRotation> {
-    return self.mOrientation_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

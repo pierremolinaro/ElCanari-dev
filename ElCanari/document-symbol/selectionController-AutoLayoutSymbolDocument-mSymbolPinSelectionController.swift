@@ -15,100 +15,56 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   let yPin_property = EBPropertyProxy_Int ()
-  var yPin_property_selection : EBSelection <Int> {
-    return self.yPin_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xName
   //····················································································································
 
   let xName_property = EBPropertyProxy_Int ()
-  var xName_property_selection : EBSelection <Int> {
-    return self.xName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: yName
   //····················································································································
 
   let yName_property = EBPropertyProxy_Int ()
-  var yName_property_selection : EBSelection <Int> {
-    return self.yName_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xNumber
   //····················································································································
 
   let xNumber_property = EBPropertyProxy_Int ()
-  var xNumber_property_selection : EBSelection <Int> {
-    return self.xNumber_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: yNumber
   //····················································································································
 
   let yNumber_property = EBPropertyProxy_Int ()
-  var yNumber_property_selection : EBSelection <Int> {
-    return self.yNumber_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: name
   //····················································································································
 
   let name_property = EBPropertyProxy_String ()
-  var name_property_selection : EBSelection <String> {
-    return self.name_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: nameHorizontalAlignment
   //····················································································································
 
   let nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-  var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.nameHorizontalAlignment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: numberHorizontalAlignment
   //····················································································································
 
   let numberHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
-  var numberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.numberHorizontalAlignment_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: pinNameIsDisplayedInSchematics
   //····················································································································
 
   let pinNameIsDisplayedInSchematics_property = EBPropertyProxy_Bool ()
-  var pinNameIsDisplayedInSchematics_property_selection : EBSelection <Bool> {
-    return self.pinNameIsDisplayedInSchematics_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: xPin
   //····················································································································
 
   let xPin_property = EBPropertyProxy_Int ()
-  var xPin_property_selection : EBSelection <Int> {
-    return self.xPin_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: filledBezierPath
   //····················································································································
 
   let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -116,19 +72,11 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
 
   let objectDisplay_property = EBTransientProperty_EBShape ()
 
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    return self.objectDisplay_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
   let selectionDisplay_property = EBTransientProperty_EBShape ()
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    return self.selectionDisplay_property.selection
-  }
 
   //····················································································································
   //   Selection observable property: issues
@@ -136,19 +84,11 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
 
   let issues_property = EBTransientProperty_CanariIssueArray ()
 
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
-
   //····················································································································
   //   Selection observable property: nameRect
   //····················································································································
 
   let nameRect_property = EBTransientProperty_NSRect ()
-
-  var nameRect_property_selection : EBSelection <NSRect> {
-    return self.nameRect_property.selection
-  }
 
   //····················································································································
   //   Selected array (not observable)

@@ -59,38 +59,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mNominalSize_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mNominalSize = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mNominalSize_property_selection : EBSelection <Int?> { // §
-    return self.mNominalSize_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.mNominalSize_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mNominalSize.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mNominalSize_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mNominalSize (_ inObserver : EBEvent) {
     self.mNominalSize_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mNominalSize.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mNominalSize_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -98,38 +77,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mFontName_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mFontName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mFontName_property_selection : EBSelection <String?> { // §
-    return self.mFontName_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.mFontName_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mFontName.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mFontName_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
     self.mFontName_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mFontName.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mFontName_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -137,38 +95,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mFontVersion_property = EBGenericTransientProperty <Int?> ()
-//  private final var mObserversOf_mFontVersion = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mFontVersion_property_selection : EBSelection <Int?> { // §
-    return self.mFontVersion_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.mFontVersion_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mFontVersion.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mFontVersion_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mFontVersion (_ inObserver : EBEvent) {
     self.mFontVersion_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mFontVersion.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mFontVersion_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -176,38 +113,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let mDescriptiveString_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_mDescriptiveString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mDescriptiveString_property_selection : EBSelection <String?> { // §
-    return self.mDescriptiveString_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.mDescriptiveString_property.addEBObserver (inObserver)
-/*    self.mObserversOf_mDescriptiveString.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-       v?.mDescriptiveString_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_mDescriptiveString (_ inObserver : EBEvent) {
     self.mDescriptiveString_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_mDescriptiveString.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.mDescriptiveString_property.removeEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
@@ -215,38 +131,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let versionString_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_versionString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var versionString_property_selection : EBSelection <String?> {
-    return self.versionString_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.versionString_property.addEBObserver (inObserver)
-/*    self.mObserversOf_versionString.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.versionString_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.versionString_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_versionString.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.versionString_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -254,38 +149,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let sizeString_property = EBGenericTransientProperty <String?> ()
-//  private final var mObserversOf_sizeString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var sizeString_property_selection : EBSelection <String?> {
-    return self.sizeString_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.sizeString_property.addEBObserver (inObserver)
-/*    self.mObserversOf_sizeString.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.sizeString_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
     self.sizeString_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_sizeString.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.sizeString_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -293,38 +167,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let descriptor_property = EBGenericTransientProperty <BoardFontDescriptor?> ()
-//  private final var mObserversOf_descriptor = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var descriptor_property_selection : EBSelection <BoardFontDescriptor?> {
-    return self.descriptor_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.addEBObserver (inObserver)
-/*    self.mObserversOf_descriptor.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.descriptor_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_descriptor (_ inObserver : EBEvent) {
     self.descriptor_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_descriptor.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.descriptor_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -332,38 +185,17 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   final let canRemoveFont_property = EBGenericTransientProperty <Bool?> ()
-//  private final var mObserversOf_canRemoveFont = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var canRemoveFont_property_selection : EBSelection <Bool?> {
-    return self.canRemoveFont_property.selection
-  }
 
   //····················································································································
 
   final func addEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
     self.canRemoveFont_property.addEBObserver (inObserver)
-/*    self.mObserversOf_canRemoveFont.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemoveFont_property.addEBObserver (inObserver)
-    } */
   }
 
   //····················································································································
 
   final func removeEBObserverOf_canRemoveFont (_ inObserver : EBEvent) {
     self.canRemoveFont_property.removeEBObserver (inObserver)
-/*    self.mObserversOf_canRemoveFont.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.canRemoveFont_property.removeEBObserver (inObserver)
-    }*/
   }
 
   //····················································································································
@@ -371,23 +203,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   private final var mObserversOf_mTexts = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mTexts_property_selection : EBSelection <[BoardText]> {
-    if let model = self.propval {
-      switch (model.mTexts_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 
@@ -415,23 +230,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final var mComponentNames_property_selection : EBSelection <[ComponentInProject]> {
-    if let model = self.propval {
-      switch (model.mComponentNames_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
   final func addEBObserverOf_mComponentNames (_ inObserver : EBEvent) {
     self.mObserversOf_mComponentNames.insert (inObserver)
     if let object = self.propval {
@@ -453,23 +251,6 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //····················································································································
 
   private final var mObserversOf_mComponentValues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var mComponentValues_property_selection : EBSelection <[ComponentInProject]> {
-    if let model = self.propval {
-      switch (model.mComponentValues_property.selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
 
   //····················································································································
 

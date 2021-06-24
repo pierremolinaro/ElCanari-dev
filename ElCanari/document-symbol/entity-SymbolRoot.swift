@@ -128,10 +128,6 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var selectedInspector_property_selection : EBSelection <Int> { return self.selectedInspector_property.selection }
-
-  //····················································································································
   //   Atomic property: comments
   //····················································································································
 
@@ -149,10 +145,6 @@ final class SymbolRoot : EBManagedObject,
     get { return self.comments_property.propval }
     set { self.comments_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var comments_property_selection : EBSelection <String> { return self.comments_property.selection }
 
   //····················································································································
   //   Atomic property: horizontalFlip
@@ -174,10 +166,6 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var horizontalFlip_property_selection : EBSelection <Bool> { return self.horizontalFlip_property.selection }
-
-  //····················································································································
   //   Atomic property: verticalFlip
   //····················································································································
 
@@ -195,10 +183,6 @@ final class SymbolRoot : EBManagedObject,
     get { return self.verticalFlip_property.propval }
     set { self.verticalFlip_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var verticalFlip_property_selection : EBSelection <Bool> { return self.verticalFlip_property.selection }
 
   //····················································································································
   //   Atomic property: gridStyle
@@ -220,10 +204,6 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var gridStyle_property_selection : EBSelection <GridStyle> { return self.gridStyle_property.selection }
-
-  //····················································································································
   //   Atomic property: gridDisplay
   //····················································································································
 
@@ -241,10 +221,6 @@ final class SymbolRoot : EBManagedObject,
     get { return self.gridDisplay_property.propval }
     set { self.gridDisplay_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var gridDisplay_property_selection : EBSelection <Int> { return self.gridDisplay_property.selection }
 
   //····················································································································
   //   Atomic property: zoom
@@ -266,10 +242,6 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var zoom_property_selection : EBSelection <Int> { return self.zoom_property.selection }
-
-  //····················································································································
   //   Atomic property: xPlacardUnit
   //····················································································································
 
@@ -287,10 +259,6 @@ final class SymbolRoot : EBManagedObject,
     get { return self.xPlacardUnit_property.propval }
     set { self.xPlacardUnit_property.setProp (newValue) }
   }
-
-  //····················································································································
-
-  final var xPlacardUnit_property_selection : EBSelection <Int> { return self.xPlacardUnit_property.selection }
 
   //····················································································································
   //   Atomic property: yPlacardUnit
@@ -312,20 +280,12 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.selection }
-
-  //····················································································································
   //   To many property: symbolObjects
   //····················································································································
 
   final let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true)
 
   //····················································································································
-
-  final var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
-    return self.symbolObjects_property.selection
-  }
 
   //····················································································································
 
@@ -339,12 +299,6 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final let symbolPins_property = TransientArrayOfSuperOf_SymbolPin <SymbolObject> ()
-
-  //····················································································································
-
-  final var symbolPins_property_selection : EBSelection < [SymbolPin] > {
-    return self.symbolPins_property.selection
-  }
 
   //····················································································································
 
@@ -372,20 +326,10 @@ final class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-
-  final var selectedPageIndex_property_selection : EBSelection <Int> { return self.selectedPageIndex_property.selection }
-
-  //····················································································································
   //   Transient property: issues
   //····················································································································
 
   final let issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  final var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.selection
-  }
 
   //····················································································································
 
@@ -406,12 +350,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var noIssue_property_selection : EBSelection <Bool> {
-    return self.noIssue_property.selection
-  }
-
-  //····················································································································
-
   final var noIssue : Bool? {
     switch self.noIssue_property.selection {
     case .empty, .multiple :
@@ -429,12 +367,6 @@ final class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  final var segmentedControlSegmentIssueImage_property_selection : EBSelection <NSImage> {
-    return self.segmentedControlSegmentIssueImage_property.selection
-  }
-
-  //····················································································································
-
   final var segmentedControlSegmentIssueImage : NSImage? {
     switch self.segmentedControlSegmentIssueImage_property.selection {
     case .empty, .multiple :
@@ -449,12 +381,6 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var segmentedControlSegmentIssueString_property_selection : EBSelection <String> {
-    return self.segmentedControlSegmentIssueString_property.selection
-  }
 
   //····················································································································
 
