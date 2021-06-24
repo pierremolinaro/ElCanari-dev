@@ -305,29 +305,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: statusImage
-  //····················································································································
-
-  final let statusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var statusImage_property_selection : EBSelection <NSImage> {
-    return self.statusImage_property.selection
-  }
-
-  //····················································································································
-
-  final var statusImage : NSImage? {
-    switch self.statusImage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: statusMessage
   //····················································································································
 
@@ -366,6 +343,29 @@ import Cocoa
 
   final var metadataStatus : MetadataStatus? {
     switch self.metadataStatus_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusImage
+  //····················································································································
+
+  final let statusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var statusImage_property_selection : EBSelection <NSImage> {
+    return self.statusImage_property.selection
+  }
+
+  //····················································································································
+
+  final var statusImage : NSImage? {
+    switch self.statusImage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3897,32 +3897,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: statusImage
-    self.statusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3971,6 +3945,32 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusImage
+    self.statusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -4071,9 +4071,9 @@ import Cocoa
     // preferences_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
     // preferences_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
     // preferences_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
     // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
+    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

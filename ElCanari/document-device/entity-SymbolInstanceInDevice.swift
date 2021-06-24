@@ -184,7 +184,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mType_none = EBGenericTransientProperty <Bool> ()
+  final let mType_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -270,7 +270,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mType_none.mReadModelFunction = { [weak self] in
+    self.mType_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
       }else{

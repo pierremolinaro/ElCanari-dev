@@ -891,7 +891,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mDevice_none = EBGenericTransientProperty <Bool> ()
+  final let mDevice_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -952,7 +952,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> ()
+  final let mSelectedPackage_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -1128,7 +1128,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mNameFont_none = EBGenericTransientProperty <Bool> ()
+  final let mNameFont_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -1166,7 +1166,7 @@ final class ComponentInProject : BoardObject,
 
   //····················································································································
 
-  final let mValueFont_none = EBGenericTransientProperty <Bool> ()
+  final let mValueFont_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -1408,7 +1408,7 @@ final class ComponentInProject : BoardObject,
     self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mDevice_none.mReadModelFunction = { [weak self] in
+    self.mDevice_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mDevice_property.propval == nil)
       }else{
@@ -1416,7 +1416,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mDevice_property.addEBObserver (self.mDevice_none)
-    self.mSelectedPackage_none.mReadModelFunction = { [weak self] in
+    self.mSelectedPackage_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mSelectedPackage_property.propval == nil)
       }else{
@@ -1424,7 +1424,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mSelectedPackage_property.addEBObserver (self.mSelectedPackage_none)
-    self.mNameFont_none.mReadModelFunction = { [weak self] in
+    self.mNameFont_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mNameFont_property.propval == nil)
       }else{
@@ -1432,7 +1432,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mNameFont_property.addEBObserver (self.mNameFont_none)
-    self.mValueFont_none.mReadModelFunction = { [weak self] in
+    self.mValueFont_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mValueFont_property.propval == nil)
       }else{

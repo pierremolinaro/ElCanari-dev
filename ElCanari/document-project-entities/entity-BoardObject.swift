@@ -110,7 +110,7 @@ class BoardObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mRoot_none = EBGenericTransientProperty <Bool> ()
+  final let mRoot_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class BoardObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.mRoot_none.mReadModelFunction = { [weak self] in
+    self.mRoot_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
       }else{

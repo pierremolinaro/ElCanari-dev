@@ -48,8 +48,6 @@ class ReadOnlyAbstractObjectProperty <T : Hashable> : ReadOnlyAbstractGenericRel
 
   final var none_property = EBTransientProperty_Bool ()
 
-  final var none_property_selection : EBSelection <Bool> { return self.none_property.selection }
-
   //····················································································································
   //  init
   //····················································································································

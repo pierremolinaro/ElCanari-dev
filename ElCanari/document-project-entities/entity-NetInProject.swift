@@ -157,7 +157,7 @@ final class NetInProject : EBManagedObject,
 
   //····················································································································
 
-  final let mNetClass_none = EBGenericTransientProperty <Bool> ()
+  final let mNetClass_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -333,7 +333,7 @@ final class NetInProject : EBManagedObject,
   required init (_ ebUndoManager : EBUndoManager?) {
     self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mNetClass_none.mReadModelFunction = { [weak self] in
+    self.mNetClass_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mNetClass_property.propval == nil)
       }else{

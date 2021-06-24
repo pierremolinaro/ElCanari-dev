@@ -553,7 +553,7 @@ final class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-  final let master_none = EBGenericTransientProperty <Bool> ()
+  final let master_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -720,7 +720,7 @@ final class PackageSlavePad : PackageObject,
     self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.master_none.mReadModelFunction = { [weak self] in
+    self.master_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.master_property.propval == nil)
       }else{

@@ -1351,25 +1351,6 @@ final class PackageRoot : EBGraphicManagedObject,
   final var yPlacardUnit_property_selection : EBSelection <Int> { return self.yPlacardUnit_property.selection }
 
   //····················································································································
-  //   To many property: packageObjects
-  //····················································································································
-
-  final let packageObjects_property = StoredArrayOf_PackageObject (usedForSignature: true)
-
-  //····················································································································
-
-  final var packageObjects_property_selection : EBSelection < [PackageObject] > {
-    return self.packageObjects_property.selection
-  }
-
-  //····················································································································
-
-  final var packageObjects : [PackageObject] {
-    get { return self.packageObjects_property.propval }
-    set { self.packageObjects_property.setProp (newValue) }
-  }
-
-  //····················································································································
   //   To many property: mModelImageObjects
   //····················································································································
 
@@ -1386,6 +1367,25 @@ final class PackageRoot : EBGraphicManagedObject,
   final var mModelImageObjects : [PackageModelImageDoublePoint] {
     get { return self.mModelImageObjects_property.propval }
     set { self.mModelImageObjects_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   To many property: packageObjects
+  //····················································································································
+
+  final let packageObjects_property = StoredArrayOf_PackageObject (usedForSignature: true)
+
+  //····················································································································
+
+  final var packageObjects_property_selection : EBSelection < [PackageObject] > {
+    return self.packageObjects_property.selection
+  }
+
+  //····················································································································
+
+  final var packageObjects : [PackageObject] {
+    get { return self.packageObjects_property.propval }
+    set { self.packageObjects_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -1745,7 +1745,7 @@ final class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mModelImageDoublePoint_none = EBGenericTransientProperty <Bool> ()
+  final let mModelImageDoublePoint_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -2007,7 +2007,7 @@ final class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
+    self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mModelImageDoublePoint_property.propval == nil)
       }else{
@@ -2015,15 +2015,15 @@ final class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
-  //--- To many property: packageObjects (has opposite relationship)
-    self.packageObjects_property.ebUndoManager = self.ebUndoManager
-    self.packageObjects_property.setOppositeRelationShipFunctions (
-      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
-      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
-    )
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.ebUndoManager = self.ebUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mRoot_property.setProp (nil) }
+    )
+  //--- To many property: packageObjects (has opposite relationship)
+    self.packageObjects_property.ebUndoManager = self.ebUndoManager
+    self.packageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
@@ -2442,11 +2442,11 @@ final class PackageRoot : EBGraphicManagedObject,
     }
     self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
   //--- Install undoers and opposite setter for relationships
-    self.packageObjects_property.setOppositeRelationShipFunctions (
+    self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
-    self.mModelImageObjects_property.setOppositeRelationShipFunctions (
+    self.packageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
@@ -2993,18 +2993,18 @@ final class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForToManyRelationshipNamed (
-      "packageObjects",
-      idx:packageObjects_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&packageObjects_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
       "mModelImageObjects",
       idx:mModelImageObjects_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&mModelImageObjects_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "packageObjects",
+      idx:packageObjects_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&packageObjects_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
     createEntryForToOneRelationshipNamed (
@@ -3142,10 +3142,10 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.mObserverExplorer = nil
     self.yPlacardUnit_property.mValueExplorer = nil
-  //--- To many property: packageObjects
-    self.packageObjects_property.mValueExplorer = nil
   //--- To many property: mModelImageObjects
     self.mModelImageObjects_property.mValueExplorer = nil
+  //--- To many property: packageObjects
+    self.packageObjects_property.mValueExplorer = nil
   //--- Atomic property: mModelImageData
     self.mModelImageData_property.mObserverExplorer = nil
     self.mModelImageData_property.mValueExplorer = nil
@@ -3173,8 +3173,8 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.packageObjects = []
     self.mModelImageObjects = []
+    self.packageObjects = []
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -3275,16 +3275,16 @@ final class PackageRoot : EBGraphicManagedObject,
     self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
-  //--- To many property: packageObjects
-    self.store (
-      managedObjectArray: self.packageObjects_property.propval,
-      relationshipName: "packageObjects",
-      intoDictionary: ioDictionary
-    )
   //--- To many property: mModelImageObjects
     self.store (
       managedObjectArray: self.mModelImageObjects_property.propval,
       relationshipName: "mModelImageObjects",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: packageObjects
+    self.store (
+      managedObjectArray: self.packageObjects_property.propval,
+      relationshipName: "packageObjects",
       intoDictionary: ioDictionary
     )
   //--- Atomic property: mModelImageData
@@ -3302,18 +3302,18 @@ final class PackageRoot : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
-  //--- To many property: packageObjects
-    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "packageObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageObject])
   //--- To many property: mModelImageObjects
     self.mModelImageObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mModelImageObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [PackageModelImageDoublePoint])
+  //--- To many property: packageObjects
+    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "packageObjects",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PackageObject])
   //--- To one property: mModelImageDoublePoint
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -3469,8 +3469,8 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- To one relationships
     ioString += "mModelImageDoublePoint\n"
   //--- To many relationships
-    ioString += "packageObjects\n"
     ioString += "mModelImageObjects\n"
+    ioString += "packageObjects\n"
     ioString += "packagePads\n"
     ioString += "packageSlavePads\n"
     ioString += "packageZones\n"
@@ -3574,7 +3574,7 @@ final class PackageRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.packageObjects {
+      for object in self.mModelImageObjects {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3605,7 +3605,7 @@ final class PackageRoot : EBGraphicManagedObject,
     do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
-      for object in self.mModelImageObjects {
+      for object in self.packageObjects {
         if let firstIndex = optionalFirstIndex {
           if object.savingIndex == (firstIndex + 1) {
             rangeCount += 1
@@ -3775,14 +3775,6 @@ final class PackageRoot : EBGraphicManagedObject,
         inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mModelImageDoublePoint = object }
       }
     //--- To many relationships
-      if let range = inDictionary ["packageObjects"], range.length > 0 {
-        var relationshipArray = [PackageObject] ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageObject)
-        }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.packageObjects = relationshipArray }
-      }
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
         var relationshipArray = [PackageModelImageDoublePoint] ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
@@ -3790,6 +3782,14 @@ final class PackageRoot : EBGraphicManagedObject,
           relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
         }
         inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mModelImageObjects = relationshipArray }
+      }
+      if let range = inDictionary ["packageObjects"], range.length > 0 {
+        var relationshipArray = [PackageObject] ()
+        let indexArray = inData.base62EncodedIntArray (fromRange: range)
+        for idx in indexArray {
+          relationshipArray.append (inObjectArray [idx] as! PackageObject)
+        }
+        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.packageObjects = relationshipArray }
       }
     }
   //--- End of addOperation
@@ -3801,12 +3801,12 @@ final class PackageRoot : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: packageObjects
-    for managedObject in self.packageObjects {
-      objects.append (managedObject)
-    }
   //--- To many property: mModelImageObjects
     for managedObject in self.mModelImageObjects {
+      objects.append (managedObject)
+    }
+  //--- To many property: packageObjects
+    for managedObject in self.packageObjects {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
@@ -3833,12 +3833,12 @@ final class PackageRoot : EBGraphicManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: packageObjects
-    for managedObject in self.packageObjects {
-      objects.append (managedObject)
-    }
   //--- To many property: mModelImageObjects
     for managedObject in self.mModelImageObjects {
+      objects.append (managedObject)
+    }
+  //--- To many property: packageObjects
+    for managedObject in self.packageObjects {
       objects.append (managedObject)
     }
   //--- To many property: packagePads

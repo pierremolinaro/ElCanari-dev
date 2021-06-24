@@ -144,7 +144,7 @@ final class PadProxyInDevice : EBManagedObject,
 
   //····················································································································
 
-  final let mPinInstance_none = EBGenericTransientProperty <Bool> ()
+  final let mPinInstance_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -207,7 +207,7 @@ final class PadProxyInDevice : EBManagedObject,
     self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mPinInstance_none.mReadModelFunction = { [weak self] in
+    self.mPinInstance_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mPinInstance_property.propval == nil)
       }else{

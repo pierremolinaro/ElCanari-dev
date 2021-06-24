@@ -82,7 +82,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  final let mSheet_none = EBGenericTransientProperty <Bool> ()
+  final let mSheet_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -188,7 +188,7 @@ class SchematicObject : EBGraphicManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.mSheet_none.mReadModelFunction = { [weak self] in
+    self.mSheet_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mSheet_property.propval == nil)
       }else{

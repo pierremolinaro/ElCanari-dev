@@ -75,7 +75,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP1_none = EBGenericTransientProperty <Bool> ()
+  final let mP1_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -113,7 +113,7 @@ final class WireInSchematic : SchematicObject,
 
   //····················································································································
 
-  final let mP2_none = EBGenericTransientProperty <Bool> ()
+  final let mP2_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -196,7 +196,7 @@ final class WireInSchematic : SchematicObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-    self.mP1_none.mReadModelFunction = { [weak self] in
+    self.mP1_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mP1_property.propval == nil)
       }else{
@@ -204,7 +204,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.addEBObserver (self.mP1_none)
-    self.mP2_none.mReadModelFunction = { [weak self] in
+    self.mP2_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mP2_property.propval == nil)
       }else{

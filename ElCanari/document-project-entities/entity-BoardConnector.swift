@@ -580,7 +580,7 @@ final class BoardConnector : BoardObject,
 
   //····················································································································
 
-  final let mComponent_none = EBGenericTransientProperty <Bool> ()
+  final let mComponent_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -836,7 +836,7 @@ final class BoardConnector : BoardObject,
     self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mComponent_none.mReadModelFunction = { [weak self] in
+    self.mComponent_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mComponent_property.propval == nil)
       }else{

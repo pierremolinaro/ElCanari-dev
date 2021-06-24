@@ -4320,47 +4320,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-  //   Observable toMany property: packageObjects
-  //····················································································································
-
-  private final var mObserversOf_packageObjects = EBWeakEventSet ()
-
-  //····················································································································
-
-  final var packageObjects_property_selection : EBSelection <[PackageObject]> {
-    if let model = self.propval {
-      switch (model.packageObjects_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_packageObjects (_ inObserver : EBEvent) {
-    self.mObserversOf_packageObjects.insert (inObserver)
-    if let object = self.propval {
-      object.packageObjects_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_packageObjects (_ inObserver : EBEvent) {
-    self.mObserversOf_packageObjects.remove (inObserver)
-    if let object = self.propval {
-      object.packageObjects_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable toMany property: mModelImageObjects
   //····················································································································
 
@@ -4398,6 +4357,47 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     self.mObserversOf_mModelImageObjects.remove (inObserver)
     if let object = self.propval {
       object.mModelImageObjects_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable toMany property: packageObjects
+  //····················································································································
+
+  private final var mObserversOf_packageObjects = EBWeakEventSet ()
+
+  //····················································································································
+
+  final var packageObjects_property_selection : EBSelection <[PackageObject]> {
+    if let model = self.propval {
+      switch (model.packageObjects_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .empty
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_packageObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_packageObjects.insert (inObserver)
+    if let object = self.propval {
+      object.packageObjects_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packageObjects (_ inObserver : EBEvent) {
+    self.mObserversOf_packageObjects.remove (inObserver)
+    if let object = self.propval {
+      object.packageObjects_property.removeEBObserver (inObserver)
     }
   }
 

@@ -3125,7 +3125,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mSelectedSheet_none = EBGenericTransientProperty <Bool> ()
+  final let mSelectedSheet_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -3324,7 +3324,7 @@ final class ProjectRoot : EBManagedObject,
 
   //····················································································································
 
-  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
+  final let mArtwork_none = EBGenericTransientProperty <Bool> () // §
 
   //····················································································································
 
@@ -4191,7 +4191,7 @@ final class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in
+    self.mSelectedSheet_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mSelectedSheet_property.propval == nil)
       }else{
@@ -4199,7 +4199,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
-    self.mArtwork_none.mReadModelFunction = { [weak self] in
+    self.mArtwork_none.mReadModelFunction = { [weak self] in // §
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
       }else{
