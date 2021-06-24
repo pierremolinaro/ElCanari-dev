@@ -66,6 +66,8 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'y1' stored property
   //····················································································································
 
+//  private final var y1_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -112,29 +114,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y1_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x2' stored property
   //····················································································································
+
+//  private final var x2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
@@ -182,29 +165,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'y2' stored property
   //····················································································································
+
+//  private final var y2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
@@ -252,29 +216,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpx1' stored property
   //····················································································································
+
+//  private final var cpx1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpx1 = EBWeakEventSet ()
 
@@ -322,29 +267,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-        managedObject.cpx1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpx1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx1_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpy1' stored property
   //····················································································································
+
+//  private final var cpy1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpy1 = EBWeakEventSet ()
 
@@ -392,29 +318,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-        managedObject.cpy1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpy1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy1_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpx2' stored property
   //····················································································································
+
+//  private final var cpx2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpx2 = EBWeakEventSet ()
 
@@ -462,29 +369,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-        managedObject.cpx2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpx2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpy2' stored property
   //····················································································································
+
+//  private final var cpy2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpy2 = EBWeakEventSet ()
 
@@ -532,29 +420,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-        managedObject.cpy2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpy2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x1Unit' stored property
   //····················································································································
+
+//  private final var x1Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1Unit = EBWeakEventSet ()
 
@@ -602,29 +471,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
-        managedObject.x1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_x1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'y1Unit' stored property
   //····················································································································
+
+//  private final var y1Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_y1Unit = EBWeakEventSet ()
 
@@ -672,29 +522,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
-        managedObject.y1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_y1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x2Unit' stored property
   //····················································································································
+
+//  private final var x2Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2Unit = EBWeakEventSet ()
 
@@ -742,29 +573,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
-        managedObject.x2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_x2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'y2Unit' stored property
   //····················································································································
+
+//  private final var y2Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_y2Unit = EBWeakEventSet ()
 
@@ -812,29 +624,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
-        managedObject.y2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_y2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpx1Unit' stored property
   //····················································································································
+
+//  private final var cpx1Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpx1Unit = EBWeakEventSet ()
 
@@ -882,29 +675,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx1Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpx1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpx1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpy1Unit' stored property
   //····················································································································
+
+//  private final var cpy1Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpy1Unit = EBWeakEventSet ()
 
@@ -952,29 +726,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy1Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpy1Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpy1Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy1Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpx2Unit' stored property
   //····················································································································
+
+//  private final var cpx2Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpx2Unit = EBWeakEventSet ()
 
@@ -1022,29 +777,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpx2Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpx2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpx2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpx2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'cpy2Unit' stored property
   //····················································································································
+
+//  private final var cpy2Unit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_cpy2Unit = EBWeakEventSet ()
 
@@ -1092,29 +828,10 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   }
 
   //····················································································································
-
-  final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_cpy2Unit.apply { (_ observer : EBEvent) in
-        managedObject.cpy2Unit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_cpy2Unit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.cpy2Unit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
+
+//  private final var x1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1 = EBWeakEventSet ()
 
@@ -1158,27 +875,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
       break
     case .single (let v) :
       v?.x1_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
-    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1457,6 +1153,206 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure y1 simple stored property
+ /*   self.y1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y1_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y1_property) */
+  //--- Configure x2 simple stored property
+ /*   self.x2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x2_property) */
+  //--- Configure y2 simple stored property
+ /*   self.y2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y2_property) */
+  //--- Configure cpx1 simple stored property
+ /*   self.cpx1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpx1_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpx1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpx1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpx1_property) */
+  //--- Configure cpy1 simple stored property
+ /*   self.cpy1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpy1_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpy1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpy1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpy1_property) */
+  //--- Configure cpx2 simple stored property
+ /*   self.cpx2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpx2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpx2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpx2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpx2_property) */
+  //--- Configure cpy2 simple stored property
+ /*   self.cpy2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpy2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpy2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpy2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpy2_property) */
+  //--- Configure x1Unit simple stored property
+ /*   self.x1Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x1Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x1Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x1Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x1Unit_property) */
+  //--- Configure y1Unit simple stored property
+ /*   self.y1Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y1Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y1Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y1Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y1Unit_property) */
+  //--- Configure x2Unit simple stored property
+ /*   self.x2Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x2Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x2Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x2Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x2Unit_property) */
+  //--- Configure y2Unit simple stored property
+ /*   self.y2Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y2Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y2Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y2Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y2Unit_property) */
+  //--- Configure cpx1Unit simple stored property
+ /*   self.cpx1Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpx1Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpx1Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpx1Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpx1Unit_property) */
+  //--- Configure cpy1Unit simple stored property
+ /*   self.cpy1Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpy1Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpy1Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpy1Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpy1Unit_property) */
+  //--- Configure cpx2Unit simple stored property
+ /*   self.cpx2Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpx2Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpx2Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpx2Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpx2Unit_property) */
+  //--- Configure cpy2Unit simple stored property
+ /*   self.cpy2Unit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.cpy2Unit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.cpy2Unit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.cpy2Unit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.cpy2Unit_property) */
+  //--- Configure x1 simple stored property
+ /*   self.x1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x1_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x1_property) */
+ // }
 
   //····················································································································
 

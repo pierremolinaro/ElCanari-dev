@@ -36,6 +36,8 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
+//  private final var mPinInstanceName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -82,29 +84,10 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPinInstanceName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
-        managedObject.mPinInstanceName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPinInstanceName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mPinInstanceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPinInstanceName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mPadName' stored property
   //····················································································································
+
+//  private final var mPadName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mPadName = EBWeakEventSet ()
 
@@ -152,29 +135,10 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-        managedObject.mPadName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mPadName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPadName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mIsNC' stored property
   //····················································································································
+
+//  private final var mIsNC_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsNC = EBWeakEventSet ()
 
@@ -218,27 +182,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       break
     case .single (let v) :
       v?.mIsNC_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mIsNC_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
-        managedObject.mIsNC_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mIsNC.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsNC_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -379,6 +322,50 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mPinInstanceName simple stored property
+ /*   self.mPinInstanceName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mPinInstanceName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mPinInstanceName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mPinInstanceName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mPinInstanceName_property) */
+  //--- Configure mPadName simple stored property
+ /*   self.mPadName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mPadName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mPadName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mPadName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mPadName_property) */
+  //--- Configure mIsNC simple stored property
+ /*   self.mIsNC_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mIsNC_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mIsNC_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mIsNC_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mIsNC_property) */
+ // }
 
   //····················································································································
 

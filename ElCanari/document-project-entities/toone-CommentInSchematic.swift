@@ -44,6 +44,8 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mColor' stored property
   //····················································································································
 
+//  private final var mColor_property = EBGenericPropertyProxy <NSColor> ()
+
   private final var mObserversOf_mColor = EBWeakEventSet ()
 
   //····················································································································
@@ -90,29 +92,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mColor_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-        managedObject.mColor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mColor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSize' stored property
   //····················································································································
+
+//  private final var mSize_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mSize = EBWeakEventSet ()
 
@@ -160,29 +143,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSize_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-        managedObject.mSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSize_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
+
+//  private final var mHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
 
   private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
@@ -230,29 +194,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mHorizontalAlignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
+
+//  private final var mVerticalAlignment_property = EBGenericPropertyProxy <VerticalAlignment> ()
 
   private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
@@ -300,29 +245,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.mVerticalAlignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mVerticalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
+
+//  private final var mX_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX = EBWeakEventSet ()
 
@@ -370,29 +296,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
+
+//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 
@@ -440,29 +347,10 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mComment' stored property
   //····················································································································
+
+//  private final var mComment_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mComment = EBWeakEventSet ()
 
@@ -506,27 +394,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
       break
     case .single (let v) :
       v?.mComment_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mComment_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-        managedObject.mComment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    self.mObserversOf_mComment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mComment_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -667,6 +534,98 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mColor simple stored property
+ /*   self.mColor_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mColor_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mColor_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mColor_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mColor_property) */
+  //--- Configure mSize simple stored property
+ /*   self.mSize_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSize_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSize_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSize_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSize_property) */
+  //--- Configure mHorizontalAlignment simple stored property
+ /*   self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mHorizontalAlignment_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mHorizontalAlignment_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mHorizontalAlignment_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mHorizontalAlignment_property) */
+  //--- Configure mVerticalAlignment simple stored property
+ /*   self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mVerticalAlignment_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mVerticalAlignment_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mVerticalAlignment_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mVerticalAlignment_property) */
+  //--- Configure mX simple stored property
+ /*   self.mX_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mX_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mX_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mX_property) */
+  //--- Configure mY simple stored property
+ /*   self.mY_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mY_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mY_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mY_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mY_property) */
+  //--- Configure mComment simple stored property
+ /*   self.mComment_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mComment_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mComment_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mComment_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mComment_property) */
+ // }
 
   //····················································································································
 

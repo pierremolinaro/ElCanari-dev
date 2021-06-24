@@ -42,6 +42,8 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
@@ -88,29 +90,10 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply { (_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
+
+//  private final var y_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_y = EBWeakEventSet ()
 
@@ -158,29 +141,10 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for managedObject in inSet {
-      self.mObserversOf_y.apply { (_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'instanceRotation' stored property
   //····················································································································
+
+//  private final var instanceRotation_property = EBGenericPropertyProxy <QuadrantRotation> ()
 
   private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 
@@ -224,27 +188,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
       break
     case .single (let v) :
       v?.instanceRotation_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for managedObject in inSet {
-      self.mObserversOf_instanceRotation.apply { (_ observer : EBEvent) in
-        managedObject.instanceRotation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    self.mObserversOf_instanceRotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.instanceRotation_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -592,6 +535,50 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure x simple stored property
+ /*   self.x_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x_property) */
+  //--- Configure y simple stored property
+ /*   self.y_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y_property) */
+  //--- Configure instanceRotation simple stored property
+ /*   self.instanceRotation_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.instanceRotation_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.instanceRotation_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.instanceRotation_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.instanceRotation_property) */
+ // }
 
   //····················································································································
 

@@ -32,6 +32,8 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
+//  private final var mPackageName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mPackageName = EBWeakEventSet ()
 
   //····················································································································
@@ -78,29 +80,10 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
-        managedObject.mPackageName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    self.mObserversOf_mPackageName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPackageName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
+
+//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath> ()
 
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
@@ -144,27 +127,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       break
     case .single (let v) :
       v?.mStrokeBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.mStrokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    self.mObserversOf_mStrokeBezierPath.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -277,6 +239,38 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       object.mMasterPads_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mPackageName simple stored property
+ /*   self.mPackageName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mPackageName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mPackageName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mPackageName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mPackageName_property) */
+  //--- Configure mStrokeBezierPath simple stored property
+ /*   self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mStrokeBezierPath_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mStrokeBezierPath_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mStrokeBezierPath_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mStrokeBezierPath_property) */
+ // }
 
   //····················································································································
 

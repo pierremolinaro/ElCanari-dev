@@ -42,6 +42,8 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'mNetName' stored property
   //····················································································································
 
+//  private final var mNetName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································
@@ -84,27 +86,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       break
     case .single (let v) :
       v?.mNetName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : Set<NetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
-        managedObject.mNetName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : Set<NetInProject>) {
-    self.mObserversOf_mNetName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mNetName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -672,6 +653,26 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
       object.mTracks_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mNetName simple stored property
+ /*   self.mNetName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mNetName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mNetName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mNetName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mNetName_property) */
+ // }
 
   //····················································································································
 

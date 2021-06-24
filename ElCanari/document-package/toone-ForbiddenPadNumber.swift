@@ -28,6 +28,8 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   //   Observers of 'padNumber' stored property
   //····················································································································
 
+//  private final var padNumber_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
@@ -74,25 +76,24 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-        managedObject.padNumber_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   INIT 
   //····················································································································
 
-  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<ForbiddenPadNumber>) {
-    self.mObserversOf_padNumber.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padNumber_property.removeEBObserver (observer)
+ // override init () {
+//    super.init ()
+  //--- Configure padNumber simple stored property
+ /*   self.padNumber_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.padNumber_property.selection {
+        return selection
+      }else{
+        return .empty
       }
     }
-  }
+    self.padNumber_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.padNumber_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.padNumber_property) */
+ // }
 
   //····················································································································
 

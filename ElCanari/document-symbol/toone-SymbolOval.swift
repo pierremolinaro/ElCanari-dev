@@ -42,6 +42,8 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -88,29 +90,10 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_y.apply { (_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
+
+//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -158,29 +141,10 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply { (_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
+
+//  private final var height_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_height = EBWeakEventSet ()
 
@@ -228,29 +192,10 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_height.apply { (_ observer : EBEvent) in
-        managedObject.height_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
-    self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.height_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
+
+//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 
@@ -294,27 +239,6 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
       break
     case .single (let v) :
       v?.x_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply { (_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -593,6 +517,62 @@ class ReadOnlyObject_SymbolOval : ReadOnlyAbstractObjectProperty <SymbolOval> {
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure y simple stored property
+ /*   self.y_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y_property) */
+  //--- Configure width simple stored property
+ /*   self.width_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.width_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.width_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.width_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.width_property) */
+  //--- Configure height simple stored property
+ /*   self.height_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.height_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.height_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.height_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.height_property) */
+  //--- Configure x simple stored property
+ /*   self.x_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x_property) */
+ // }
 
   //····················································································································
 

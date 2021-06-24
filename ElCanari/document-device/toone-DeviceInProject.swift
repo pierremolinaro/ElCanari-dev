@@ -52,6 +52,8 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
+//  private final var mDeviceName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mDeviceName = EBWeakEventSet ()
 
   //····················································································································
@@ -98,29 +100,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
+
+//  private final var mPrefix_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
@@ -168,29 +151,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-        managedObject.mPrefix_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mPrefix.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPrefix_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
+
+//  private final var mDeviceVersion_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mDeviceVersion = EBWeakEventSet ()
 
@@ -238,29 +202,10 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceVersion_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceVersion_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
+
+//  private final var mDeviceFileData_property = EBGenericPropertyProxy <Data> ()
 
   private final var mObserversOf_mDeviceFileData = EBWeakEventSet ()
 
@@ -304,27 +249,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
       break
     case .single (let v) :
       v?.mDeviceFileData_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
-        managedObject.mDeviceFileData_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
-    self.mObserversOf_mDeviceFileData.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDeviceFileData_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1112,6 +1036,62 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
       object.mPadAssignments_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mDeviceName simple stored property
+ /*   self.mDeviceName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDeviceName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDeviceName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDeviceName_property) */
+  //--- Configure mPrefix simple stored property
+ /*   self.mPrefix_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mPrefix_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mPrefix_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mPrefix_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mPrefix_property) */
+  //--- Configure mDeviceVersion simple stored property
+ /*   self.mDeviceVersion_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDeviceVersion_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceVersion_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDeviceVersion_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDeviceVersion_property) */
+  //--- Configure mDeviceFileData simple stored property
+ /*   self.mDeviceFileData_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDeviceFileData_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceFileData_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDeviceFileData_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDeviceFileData_property) */
+ // }
 
   //····················································································································
 

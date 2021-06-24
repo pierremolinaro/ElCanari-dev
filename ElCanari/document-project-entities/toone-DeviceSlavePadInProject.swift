@@ -44,6 +44,8 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
+//  private final var mCenterX_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
@@ -90,29 +92,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
-        managedObject.mCenterX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mCenterX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mCenterX_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mCenterY' stored property
   //····················································································································
+
+//  private final var mCenterY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
@@ -160,29 +143,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
-        managedObject.mCenterY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mCenterY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mCenterY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
+
+//  private final var mWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
@@ -230,29 +194,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-        managedObject.mWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
+
+//  private final var mHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
@@ -300,29 +245,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-        managedObject.mHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
+
+//  private final var mHoleWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
@@ -370,29 +296,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHoleWidth_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHoleWidth.apply { (_ observer : EBEvent) in
-        managedObject.mHoleWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mHoleWidth_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mHoleWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHoleWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
+
+//  private final var mHoleHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHoleHeight = EBWeakEventSet ()
 
@@ -440,29 +347,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHoleHeight_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHoleHeight.apply { (_ observer : EBEvent) in
-        managedObject.mHoleHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mHoleHeight_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mHoleHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHoleHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
+
+//  private final var mShape_property = EBGenericPropertyProxy <PadShape> ()
 
   private final var mObserversOf_mShape = EBWeakEventSet ()
 
@@ -510,29 +398,10 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
-        managedObject.mShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mShape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mStyle' stored property
   //····················································································································
+
+//  private final var mStyle_property = EBGenericPropertyProxy <SlavePadStyle> ()
 
   private final var mObserversOf_mStyle = EBWeakEventSet ()
 
@@ -576,27 +445,6 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
       break
     case .single (let v) :
       v?.mStyle_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
-        managedObject.mStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
-    self.mObserversOf_mStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mStyle_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -668,6 +516,110 @@ class ReadOnlyObject_DeviceSlavePadInProject : ReadOnlyAbstractObjectProperty <D
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mCenterX simple stored property
+ /*   self.mCenterX_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mCenterX_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mCenterX_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mCenterX_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mCenterX_property) */
+  //--- Configure mCenterY simple stored property
+ /*   self.mCenterY_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mCenterY_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mCenterY_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mCenterY_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mCenterY_property) */
+  //--- Configure mWidth simple stored property
+ /*   self.mWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mWidth_property) */
+  //--- Configure mHeight simple stored property
+ /*   self.mHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mHeight_property) */
+  //--- Configure mHoleWidth simple stored property
+ /*   self.mHoleWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mHoleWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mHoleWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mHoleWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mHoleWidth_property) */
+  //--- Configure mHoleHeight simple stored property
+ /*   self.mHoleHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mHoleHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mHoleHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mHoleHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mHoleHeight_property) */
+  //--- Configure mShape simple stored property
+ /*   self.mShape_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mShape_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mShape_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mShape_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mShape_property) */
+  //--- Configure mStyle simple stored property
+ /*   self.mStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mStyle_property) */
+ // }
 
   //····················································································································
 

@@ -40,6 +40,8 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -86,29 +88,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_y.apply { (_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'text' stored property
   //····················································································································
+
+//  private final var text_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_text = EBWeakEventSet ()
 
@@ -156,29 +139,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_text_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_text.apply { (_ observer : EBEvent) in
-        managedObject.text_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_text_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    self.mObserversOf_text.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.text_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'horizontalAlignment' stored property
   //····················································································································
+
+//  private final var horizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment> ()
 
   private final var mObserversOf_horizontalAlignment = EBWeakEventSet ()
 
@@ -226,29 +190,10 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_horizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_horizontalAlignment.apply { (_ observer : EBEvent) in
-        managedObject.horizontalAlignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_horizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    self.mObserversOf_horizontalAlignment.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.horizontalAlignment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
+
+//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 
@@ -292,27 +237,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
       break
     case .single (let v) :
       v?.x_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply { (_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -522,6 +446,62 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure y simple stored property
+ /*   self.y_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y_property) */
+  //--- Configure text simple stored property
+ /*   self.text_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.text_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.text_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.text_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.text_property) */
+  //--- Configure horizontalAlignment simple stored property
+ /*   self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.horizontalAlignment_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.horizontalAlignment_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.horizontalAlignment_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.horizontalAlignment_property) */
+  //--- Configure x simple stored property
+ /*   self.x_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x_property) */
+ // }
 
   //····················································································································
 

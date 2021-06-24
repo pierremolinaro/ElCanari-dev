@@ -54,6 +54,8 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
+//  private final var selectedInspector_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -100,29 +102,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-        managedObject.selectedInspector_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
+
+//  private final var comments_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_comments = EBWeakEventSet ()
 
@@ -170,29 +153,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
+
+//  private final var horizontalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
@@ -240,29 +204,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
-        managedObject.horizontalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_horizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.horizontalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'verticalFlip' stored property
   //····················································································································
+
+//  private final var verticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
@@ -310,29 +255,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
-        managedObject.verticalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_verticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.verticalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'gridStyle' stored property
   //····················································································································
+
+//  private final var gridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
@@ -380,29 +306,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
-        managedObject.gridStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_gridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.gridStyle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'gridDisplay' stored property
   //····················································································································
+
+//  private final var gridDisplay_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_gridDisplay = EBWeakEventSet ()
 
@@ -450,29 +357,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_gridDisplay_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_gridDisplay.apply { (_ observer : EBEvent) in
-        managedObject.gridDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_gridDisplay.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.gridDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
+
+//  private final var zoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
@@ -520,29 +408,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
-        managedObject.zoom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_zoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.zoom_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
+
+//  private final var xPlacardUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
@@ -590,29 +459,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
-        managedObject.xPlacardUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_xPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.xPlacardUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
+
+//  private final var yPlacardUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
@@ -660,29 +510,10 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
-        managedObject.yPlacardUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_yPlacardUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.yPlacardUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
+
+//  private final var selectedPageIndex_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
@@ -726,27 +557,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       break
     case .single (let v) :
       v?.selectedPageIndex_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
-        managedObject.selectedPageIndex_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    self.mObserversOf_selectedPageIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedPageIndex_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1107,6 +917,134 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       object.symbolPins_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure selectedInspector simple stored property
+ /*   self.selectedInspector_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.selectedInspector_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.selectedInspector_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.selectedInspector_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.selectedInspector_property) */
+  //--- Configure comments simple stored property
+ /*   self.comments_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.comments_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.comments_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.comments_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.comments_property) */
+  //--- Configure horizontalFlip simple stored property
+ /*   self.horizontalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.horizontalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.horizontalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.horizontalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.horizontalFlip_property) */
+  //--- Configure verticalFlip simple stored property
+ /*   self.verticalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.verticalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.verticalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.verticalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.verticalFlip_property) */
+  //--- Configure gridStyle simple stored property
+ /*   self.gridStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.gridStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.gridStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.gridStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.gridStyle_property) */
+  //--- Configure gridDisplay simple stored property
+ /*   self.gridDisplay_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.gridDisplay_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.gridDisplay_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.gridDisplay_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.gridDisplay_property) */
+  //--- Configure zoom simple stored property
+ /*   self.zoom_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.zoom_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.zoom_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.zoom_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.zoom_property) */
+  //--- Configure xPlacardUnit simple stored property
+ /*   self.xPlacardUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.xPlacardUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.xPlacardUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.xPlacardUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.xPlacardUnit_property) */
+  //--- Configure yPlacardUnit simple stored property
+ /*   self.yPlacardUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.yPlacardUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.yPlacardUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.yPlacardUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.yPlacardUnit_property) */
+  //--- Configure selectedPageIndex simple stored property
+ /*   self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.selectedPageIndex_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.selectedPageIndex_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.selectedPageIndex_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.selectedPageIndex_property) */
+ // }
 
   //····················································································································
 

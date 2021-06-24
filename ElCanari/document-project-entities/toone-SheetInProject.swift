@@ -38,6 +38,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
+//  private final var mSheetTitle_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
@@ -80,27 +82,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       break
     case .single (let v) :
       v?.mSheetTitle_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-        managedObject.mSheetTitle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    self.mObserversOf_mSheetTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSheetTitle_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -530,6 +511,26 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       object.mPoints_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mSheetTitle simple stored property
+ /*   self.mSheetTitle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSheetTitle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSheetTitle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSheetTitle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSheetTitle_property) */
+ // }
 
   //····················································································································
 

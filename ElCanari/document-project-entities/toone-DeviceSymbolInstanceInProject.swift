@@ -36,6 +36,8 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
+//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -78,27 +80,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
       break
     case .single (let v) :
       v?.mSymbolInstanceName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mSymbolInstanceName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
-        managedObject.mSymbolInstanceName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    self.mObserversOf_mSymbolInstanceName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -377,6 +358,26 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mSymbolInstanceName simple stored property
+ /*   self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSymbolInstanceName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstanceName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSymbolInstanceName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSymbolInstanceName_property) */
+ // }
 
   //····················································································································
 

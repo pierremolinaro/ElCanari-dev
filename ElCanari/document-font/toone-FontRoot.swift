@@ -50,6 +50,8 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
+//  private final var comments_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -96,29 +98,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'nominalSize' stored property
   //····················································································································
+
+//  private final var nominalSize_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_nominalSize = EBWeakEventSet ()
 
@@ -166,29 +149,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_nominalSize_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_nominalSize.apply { (_ observer : EBEvent) in
-        managedObject.nominalSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_nominalSize_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_nominalSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.nominalSize_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
+
+//  private final var selectedTab_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
@@ -236,29 +200,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
-        managedObject.selectedTab_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_selectedTab.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedTab_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectedInspector' stored property
   //····················································································································
+
+//  private final var selectedInspector_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
@@ -306,29 +251,10 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-        managedObject.selectedInspector_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_selectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
+
+//  private final var currentCharacterCodePoint_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 
@@ -372,27 +298,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       break
     case .single (let v) :
       v?.currentCharacterCodePoint_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_currentCharacterCodePoint.apply { (_ observer : EBEvent) in
-        managedObject.currentCharacterCodePoint_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_currentCharacterCodePoint.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.currentCharacterCodePoint_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -919,6 +824,74 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       object.characters_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure comments simple stored property
+ /*   self.comments_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.comments_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.comments_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.comments_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.comments_property) */
+  //--- Configure nominalSize simple stored property
+ /*   self.nominalSize_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.nominalSize_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.nominalSize_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.nominalSize_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.nominalSize_property) */
+  //--- Configure selectedTab simple stored property
+ /*   self.selectedTab_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.selectedTab_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.selectedTab_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.selectedTab_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.selectedTab_property) */
+  //--- Configure selectedInspector simple stored property
+ /*   self.selectedInspector_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.selectedInspector_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.selectedInspector_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.selectedInspector_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.selectedInspector_property) */
+  //--- Configure currentCharacterCodePoint simple stored property
+ /*   self.currentCharacterCodePoint_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.currentCharacterCodePoint_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.currentCharacterCodePoint_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.currentCharacterCodePoint_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.currentCharacterCodePoint_property) */
+ // }
 
   //····················································································································
 

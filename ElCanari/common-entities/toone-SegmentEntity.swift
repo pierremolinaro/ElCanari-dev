@@ -36,6 +36,8 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   //   Observers of 'y1' stored property
   //····················································································································
 
+//  private final var y1_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -82,29 +84,10 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-        managedObject.y1_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y1_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x2' stored property
   //····················································································································
+
+//  private final var x2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
@@ -152,29 +135,10 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-        managedObject.x2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'y2' stored property
   //····················································································································
+
+//  private final var y2_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
@@ -222,29 +186,10 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-        managedObject.y2_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_y2.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y2_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
+
+//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -292,29 +237,10 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   }
 
   //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply { (_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
+
+//  private final var x1_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x1 = EBWeakEventSet ()
 
@@ -362,25 +288,72 @@ class ReadOnlyObject_SegmentEntity : ReadOnlyAbstractObjectProperty <SegmentEnti
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for managedObject in inSet {
-      self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-        managedObject.x1_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   INIT 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    self.mObserversOf_x1.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x1_property.removeEBObserver (observer)
+ // override init () {
+//    super.init ()
+  //--- Configure y1 simple stored property
+ /*   self.y1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y1_property.selection {
+        return selection
+      }else{
+        return .empty
       }
     }
-  }
+    self.y1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y1_property) */
+  //--- Configure x2 simple stored property
+ /*   self.x2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x2_property) */
+  //--- Configure y2 simple stored property
+ /*   self.y2_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y2_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.y2_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y2_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y2_property) */
+  //--- Configure width simple stored property
+ /*   self.width_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.width_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.width_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.width_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.width_property) */
+  //--- Configure x1 simple stored property
+ /*   self.x1_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x1_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x1_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x1_property) */
+ // }
 
   //····················································································································
 

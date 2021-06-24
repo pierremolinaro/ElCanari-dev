@@ -38,6 +38,8 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
+//  private final var mOrientation_property = EBGenericPropertyProxy <QuadrantRotation> ()
+
   private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
@@ -80,27 +82,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
       break
     case .single (let v) :
       v?.mOrientation_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mOrientation_toElementsOfSet (_ inSet : Set<LabelInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
-        managedObject.mOrientation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mOrientation_fromElementsOfSet (_ inSet : Set<LabelInSchematic>) {
-    self.mObserversOf_mOrientation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mOrientation_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -448,6 +429,26 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mOrientation simple stored property
+ /*   self.mOrientation_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mOrientation_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mOrientation_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mOrientation_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mOrientation_property) */
+ // }
 
   //····················································································································
 

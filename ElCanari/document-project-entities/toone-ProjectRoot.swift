@@ -256,6 +256,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
+//  private final var mArtworkName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
@@ -302,29 +304,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mArtworkName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
-        managedObject.mArtworkName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mArtworkName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mArtworkName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mArtworkName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
+
+//  private final var mArtworkVersion_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
@@ -372,29 +355,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mArtworkVersion_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
-        managedObject.mArtworkVersion_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mArtworkVersion_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mArtworkVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mArtworkVersion_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
+
+//  private final var mPDFBoardBackgroundColor_property = EBGenericPropertyProxy <NSColor> ()
 
   private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
@@ -442,29 +406,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mPDFBoardBackgroundColor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
-        managedObject.mPDFBoardBackgroundColor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mPDFBoardBackgroundColor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mPDFBoardBackgroundColor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mPDFBoardBackgroundColor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
+
+//  private final var mCheckClearanceBetweenPadsOfSameNet_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
@@ -512,29 +457,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
-        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
+
+//  private final var mLastERCCheckingIsSuccess_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
@@ -582,29 +508,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
-        managedObject.mLastERCCheckingIsSuccess_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mLastERCCheckingIsSuccess.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mLastERCCheckingIsSuccess_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mLastERCCheckingSignature' stored property
   //····················································································································
+
+//  private final var mLastERCCheckingSignature_property = EBGenericPropertyProxy <UInt32> ()
 
   private final var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
 
@@ -652,29 +559,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
-        managedObject.mLastERCCheckingSignature_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mLastERCCheckingSignature.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mLastERCCheckingSignature_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardSideForNewTrack' stored property
   //····················································································································
+
+//  private final var mBoardSideForNewTrack_property = EBGenericPropertyProxy <TrackSide> ()
 
   private final var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
 
@@ -722,29 +610,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardSideForNewTrack_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBEvent) in
-        managedObject.mBoardSideForNewTrack_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardSideForNewTrack_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardSideForNewTrack.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardSideForNewTrack_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mDirectionForNewTrack' stored property
   //····················································································································
+
+//  private final var mDirectionForNewTrack_property = EBGenericPropertyProxy <TrackCreationDirection> ()
 
   private final var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
 
@@ -792,29 +661,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDirectionForNewTrack_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
-        managedObject.mDirectionForNewTrack_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDirectionForNewTrack_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mDirectionForNewTrack.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDirectionForNewTrack_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLayerForNewText' stored property
   //····················································································································
+
+//  private final var mBoardLayerForNewText_property = EBGenericPropertyProxy <BoardTextLayer> ()
 
   private final var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
 
@@ -862,29 +712,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLayerForNewText_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLayerForNewText.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLayerForNewText_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLayerForNewLine' stored property
   //····················································································································
+
+//  private final var mBoardLayerForNewLine_property = EBGenericPropertyProxy <BoardLineLayer> ()
 
   private final var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
 
@@ -932,29 +763,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLayerForNewLine_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLayerForNewLine_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLayerForNewLine_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLayerForNewLine.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLayerForNewLine_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
   //····················································································································
+
+//  private final var mBoardSideForNewRestrictRectangle_property = EBGenericPropertyProxy <RestrictRectangleLayer> ()
 
   private final var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
 
@@ -1002,29 +814,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardSideForNewRestrictRectangle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
-        managedObject.mBoardSideForNewRestrictRectangle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardSideForNewRestrictRectangle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardSideForNewRestrictRectangle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardSideForNewRestrictRectangle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mAutoRouterPreferredDirections' stored property
   //····················································································································
+
+//  private final var mAutoRouterPreferredDirections_property = EBGenericPropertyProxy <AutorouterPreferredDirections> ()
 
   private final var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
 
@@ -1072,29 +865,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mAutoRouterPreferredDirections_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
-        managedObject.mAutoRouterPreferredDirections_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mAutoRouterPreferredDirections_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mAutoRouterPreferredDirections.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mAutoRouterPreferredDirections_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mAutorouterSnapAngle' stored property
   //····················································································································
+
+//  private final var mAutorouterSnapAngle_property = EBGenericPropertyProxy <AutorouterSnapAngle> ()
 
   private final var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
 
@@ -1142,29 +916,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mAutorouterSnapAngle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
-        managedObject.mAutorouterSnapAngle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mAutorouterSnapAngle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mAutorouterSnapAngle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mAutorouterSnapAngle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRouteDirection' stored property
   //····················································································································
+
+//  private final var mRouteDirection_property = EBGenericPropertyProxy <RouteDirection> ()
 
   private final var mObserversOf_mRouteDirection = EBWeakEventSet ()
 
@@ -1212,29 +967,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRouteDirection_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
-        managedObject.mRouteDirection_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRouteDirection_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRouteDirection.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRouteDirection_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRouteOrigin' stored property
   //····················································································································
+
+//  private final var mRouteOrigin_property = EBGenericPropertyProxy <RouteOrigin> ()
 
   private final var mObserversOf_mRouteOrigin = EBWeakEventSet ()
 
@@ -1282,29 +1018,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRouteOrigin_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
-        managedObject.mRouteOrigin_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRouteOrigin_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRouteOrigin.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRouteOrigin_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mAutorouterInterfaceMode' stored property
   //····················································································································
+
+//  private final var mAutorouterInterfaceMode_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
 
@@ -1352,29 +1069,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mAutorouterInterfaceMode_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
-        managedObject.mAutorouterInterfaceMode_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mAutorouterInterfaceMode_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mAutorouterInterfaceMode.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mAutorouterInterfaceMode_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mExportExistingTracksAndVias' stored property
   //····················································································································
+
+//  private final var mExportExistingTracksAndVias_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
 
@@ -1422,29 +1120,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mExportExistingTracksAndVias_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
-        managedObject.mExportExistingTracksAndVias_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mExportExistingTracksAndVias_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mExportExistingTracksAndVias.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mExportExistingTracksAndVias_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mTrackLengthUnit' stored property
   //····················································································································
+
+//  private final var mTrackLengthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
 
@@ -1492,29 +1171,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mTrackLengthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBEvent) in
-        managedObject.mTrackLengthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mTrackLengthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mTrackLengthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mTrackLengthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mLayoutClearance' stored property
   //····················································································································
+
+//  private final var mLayoutClearance_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mLayoutClearance = EBWeakEventSet ()
 
@@ -1562,29 +1222,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mLayoutClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
-        managedObject.mLayoutClearance_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mLayoutClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mLayoutClearance.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mLayoutClearance_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mLayoutClearanceUnit' stored property
   //····················································································································
+
+//  private final var mLayoutClearanceUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
 
@@ -1632,29 +1273,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mLayoutClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
-        managedObject.mLayoutClearanceUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mLayoutClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mLayoutClearanceUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mLayoutClearanceUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardSelectedInspector' stored property
   //····················································································································
+
+//  private final var mBoardSelectedInspector_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
 
@@ -1702,29 +1324,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardSelectedInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBEvent) in
-        managedObject.mBoardSelectedInspector_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardSelectedInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardSelectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardSelectedInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardHorizontalFlip' stored property
   //····················································································································
+
+//  private final var mBoardHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
 
@@ -1772,29 +1375,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardHorizontalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mBoardHorizontalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardHorizontalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardHorizontalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardVerticalFlip' stored property
   //····················································································································
+
+//  private final var mBoardVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
 
@@ -1842,29 +1426,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardVerticalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mBoardVerticalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardVerticalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardVerticalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardGridStyle' stored property
   //····················································································································
+
+//  private final var mBoardGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
 
@@ -1912,29 +1477,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardGridStyle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBEvent) in
-        managedObject.mBoardGridStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardGridStyle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardGridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardGridStyle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardGridDisplayFactor' stored property
   //····················································································································
+
+//  private final var mBoardGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
 
@@ -1982,29 +1528,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardGridDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.mBoardGridDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardGridDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardGridDisplayFactor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardGridDisplayFactor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardZoom' stored property
   //····················································································································
+
+//  private final var mBoardZoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardZoom = EBWeakEventSet ()
 
@@ -2052,29 +1579,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardZoom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardZoom.apply { (_ observer : EBEvent) in
-        managedObject.mBoardZoom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardZoom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardZoom_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardGridStep' stored property
   //····················································································································
+
+//  private final var mBoardGridStep_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardGridStep = EBWeakEventSet ()
 
@@ -2122,29 +1630,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardGridStep_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardGridStep.apply { (_ observer : EBEvent) in
-        managedObject.mBoardGridStep_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardGridStep_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardGridStep.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardGridStep_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardGridStepUnit' stored property
   //····················································································································
+
+//  private final var mBoardGridStepUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
 
@@ -2192,29 +1681,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardGridStepUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardGridStepUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardGridStepUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardGridStepUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardGridStepUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mErrorOrWarningIssueSize' stored property
   //····················································································································
+
+//  private final var mErrorOrWarningIssueSize_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
 
@@ -2262,29 +1732,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mErrorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
-        managedObject.mErrorOrWarningIssueSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mErrorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mErrorOrWarningIssueSize.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mErrorOrWarningIssueSize_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mControlKeyHiliteDiameter' stored property
   //····················································································································
+
+//  private final var mControlKeyHiliteDiameter_property = EBGenericPropertyProxy <Double> ()
 
   private final var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
 
@@ -2332,29 +1783,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mControlKeyHiliteDiameter_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
-        managedObject.mControlKeyHiliteDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mControlKeyHiliteDiameter_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mControlKeyHiliteDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mControlKeyHiliteDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mDSNFileProposedName' stored property
   //····················································································································
+
+//  private final var mDSNFileProposedName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
 
@@ -2402,29 +1834,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDSNFileProposedName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
-        managedObject.mDSNFileProposedName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDSNFileProposedName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mDSNFileProposedName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDSNFileProposedName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsWidth' stored property
   //····················································································································
+
+//  private final var mBoardLimitsWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
 
@@ -2472,29 +1885,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsWidthUnit' stored property
   //····················································································································
+
+//  private final var mBoardLimitsWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
 
@@ -2542,29 +1936,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsWidthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsWidthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsWidthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsWidthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardClearance' stored property
   //····················································································································
+
+//  private final var mBoardClearance_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardClearance = EBWeakEventSet ()
 
@@ -2612,29 +1987,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardClearance_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
-        managedObject.mBoardClearance_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardClearance_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardClearance.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardClearance_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardClearanceUnit' stored property
   //····················································································································
+
+//  private final var mBoardClearanceUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
 
@@ -2682,29 +2038,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardClearanceUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardClearanceUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardClearanceUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardClearanceUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardClearanceUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
+
+//  private final var mBoardLimitsSelectedInspector_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
 
@@ -2752,29 +2089,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsSelectedInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsSelectedInspector_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsSelectedInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsSelectedInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsSelectedInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsHorizontalFlip' stored property
   //····················································································································
+
+//  private final var mBoardLimitsHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
 
@@ -2822,29 +2140,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsHorizontalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsHorizontalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsHorizontalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsHorizontalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsVerticalFlip' stored property
   //····················································································································
+
+//  private final var mBoardLimitsVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
 
@@ -2892,29 +2191,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsVerticalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsVerticalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsVerticalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsVerticalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsGridStyle' stored property
   //····················································································································
+
+//  private final var mBoardLimitsGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
 
@@ -2962,29 +2242,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsGridStyle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsGridStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsGridStyle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsGridStyle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsGridDisplayFactor' stored property
   //····················································································································
+
+//  private final var mBoardLimitsGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
 
@@ -3032,29 +2293,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsGridDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsGridDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsGridDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridDisplayFactor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsGridDisplayFactor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsZoom' stored property
   //····················································································································
+
+//  private final var mBoardLimitsZoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
 
@@ -3102,29 +2344,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsZoom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsZoom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsZoom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsZoom_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsGridStep' stored property
   //····················································································································
+
+//  private final var mBoardLimitsGridStep_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
 
@@ -3172,29 +2395,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsGridStep_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsGridStep_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsGridStep_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStep.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsGridStep_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   //····················································································································
+
+//  private final var mBoardLimitsGridStepUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
 
@@ -3242,29 +2446,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsGridStepUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsGridStepUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsGridStepUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsGridStepUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsGridStepUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   //····················································································································
+
+//  private final var mBoardLimitsBoundingBoxUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
 
@@ -3312,29 +2497,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitsBoundingBoxUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitsBoundingBoxUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitsBoundingBoxUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitsBoundingBoxUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   //····················································································································
+
+//  private final var mBoardPointsBoundingBoxUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
 
@@ -3382,29 +2548,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardPointsBoundingBoxUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardPointsBoundingBoxUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardPointsBoundingBoxUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardPointsBoundingBoxUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardPointsBoundingBoxUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   //····················································································································
+
+//  private final var mBoardSelectedCurveDisplayUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
 
@@ -3452,29 +2599,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardSelectedCurveDisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardSelectedCurveDisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardSelectedCurveDisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardSelectedCurveDisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   //····················································································································
+
+//  private final var mBoardLimitControlPointsDisplayUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
 
@@ -3522,29 +2650,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardLimitControlPointsDisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardLimitControlPointsDisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardLimitControlPointsDisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mBoardShape' stored property
   //····················································································································
+
+//  private final var mBoardShape_property = EBGenericPropertyProxy <BoardShape> ()
 
   private final var mObserversOf_mBoardShape = EBWeakEventSet ()
 
@@ -3592,29 +2701,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mBoardShape_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
-        managedObject.mBoardShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mBoardShape_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mBoardShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mBoardShape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRectangularBoardWidth' stored property
   //····················································································································
+
+//  private final var mRectangularBoardWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
 
@@ -3662,29 +2752,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRectangularBoardWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
-        managedObject.mRectangularBoardWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRectangularBoardWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRectangularBoardWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   //····················································································································
+
+//  private final var mRectangularBoardWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
 
@@ -3732,29 +2803,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRectangularBoardWidthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
-        managedObject.mRectangularBoardWidthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRectangularBoardWidthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRectangularBoardWidthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRectangularBoardHeight' stored property
   //····················································································································
+
+//  private final var mRectangularBoardHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
 
@@ -3802,29 +2854,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRectangularBoardHeight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
-        managedObject.mRectangularBoardHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRectangularBoardHeight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRectangularBoardHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   //····················································································································
+
+//  private final var mRectangularBoardHeightUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
 
@@ -3872,29 +2905,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRectangularBoardHeightUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
-        managedObject.mRectangularBoardHeightUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRectangularBoardHeightUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRectangularBoardHeightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRectangularBoardHeightUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
+
+//  private final var mDefaultNetClassName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
 
@@ -3942,29 +2956,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mDefaultNetClassName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
-        managedObject.mDefaultNetClassName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mDefaultNetClassName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mDefaultNetClassName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mDefaultNetClassName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
+
+//  private final var mSelectedPageIndex_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
@@ -4012,29 +3007,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedPageIndex_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
+
+//  private final var mSelectedSchematicInspector_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
@@ -4082,29 +3058,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSelectedSchematicInspector_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
-        managedObject.mSelectedSchematicInspector_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSelectedSchematicInspector_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedSchematicInspector.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSelectedSchematicInspector_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicTitle' stored property
   //····················································································································
+
+//  private final var mSchematicTitle_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mSchematicTitle = EBWeakEventSet ()
 
@@ -4152,29 +3109,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicTitle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicTitle.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicTitle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicTitle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicTitle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicVersion' stored property
   //····················································································································
+
+//  private final var mSchematicVersion_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mSchematicVersion = EBWeakEventSet ()
 
@@ -4222,29 +3160,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicVersion_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicVersion.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicVersion_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicVersion_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicVersion.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicVersion_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicDate' stored property
   //····················································································································
+
+//  private final var mSchematicDate_property = EBGenericPropertyProxy <Date> ()
 
   private final var mObserversOf_mSchematicDate = EBWeakEventSet ()
 
@@ -4292,29 +3211,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicDate_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicDate.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicDate_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicDate_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicDate.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicDate_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicHorizontalFlip' stored property
   //····················································································································
+
+//  private final var mSchematicHorizontalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
 
@@ -4362,29 +3262,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicHorizontalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicHorizontalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicHorizontalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicHorizontalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicHorizontalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicVerticalFlip' stored property
   //····················································································································
+
+//  private final var mSchematicVerticalFlip_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
 
@@ -4432,29 +3313,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicVerticalFlip_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicVerticalFlip_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicVerticalFlip_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicVerticalFlip.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicVerticalFlip_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicZoom' stored property
   //····················································································································
+
+//  private final var mSchematicZoom_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicZoom = EBWeakEventSet ()
 
@@ -4502,29 +3364,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicZoom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicZoom.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicZoom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicZoom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicZoom.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicZoom_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicGridStyle' stored property
   //····················································································································
+
+//  private final var mSchematicGridStyle_property = EBGenericPropertyProxy <GridStyle> ()
 
   private final var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
 
@@ -4572,29 +3415,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicGridStyle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicGridStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicGridStyle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicGridStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicGridStyle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicGridDisplayFactor' stored property
   //····················································································································
+
+//  private final var mSchematicGridDisplayFactor_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
 
@@ -4642,29 +3466,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicGridDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicGridDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicGridDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicGridDisplayFactor.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicGridDisplayFactor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicCustomWidth' stored property
   //····················································································································
+
+//  private final var mSchematicCustomWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
 
@@ -4712,29 +3517,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicCustomWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicCustomWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicCustomWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicCustomWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   //····················································································································
+
+//  private final var mSchematicCustomWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
 
@@ -4782,29 +3568,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicCustomWidthUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicCustomWidthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicCustomWidthUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicCustomWidthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicCustomHeight' stored property
   //····················································································································
+
+//  private final var mSchematicCustomHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
 
@@ -4852,29 +3619,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicCustomHeight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicCustomHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicCustomHeight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicCustomHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   //····················································································································
+
+//  private final var mSchematicCustomHeightUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
 
@@ -4922,29 +3670,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicCustomHeightUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicCustomHeightUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicCustomHeightUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicCustomHeightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicCustomHeightUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mSchematicSheetOrientation' stored property
   //····················································································································
+
+//  private final var mSchematicSheetOrientation_property = EBGenericPropertyProxy <SchematicSheetOrientation> ()
 
   private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
 
@@ -4992,29 +3721,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSchematicSheetOrientation_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBEvent) in
-        managedObject.mSchematicSheetOrientation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSchematicSheetOrientation_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSchematicSheetOrientation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSchematicSheetOrientation_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
+
+//  private final var mRastnetDisplay_property = EBGenericPropertyProxy <RastnetDisplay> ()
 
   private final var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
 
@@ -5062,29 +3772,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRastnetDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
-        managedObject.mRastnetDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRastnetDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplay.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRastnetDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRastnetDisplayedNetName' stored property
   //····················································································································
+
+//  private final var mRastnetDisplayedNetName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
 
@@ -5132,29 +3823,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mRastnetDisplayedNetName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
-        managedObject.mRastnetDisplayedNetName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRastnetDisplayedNetName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedNetName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRastnetDisplayedNetName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mRastnetDisplayedComponentName' stored property
   //····················································································································
+
+//  private final var mRastnetDisplayedComponentName_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
 
@@ -5200,797 +3872,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       v?.mRastnetDisplayedComponentName_property.removeEBObserver (inObserver)
     }
   }
-
-  //····················································································································
-
-  final func addEBObserversOf_mRastnetDisplayedComponentName_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
-        managedObject.mRastnetDisplayedComponentName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mRastnetDisplayedComponentName_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mRastnetDisplayedComponentName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mRastnetDisplayedComponentName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'minPPTPTTTWdisplayUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minPPTPTTTWdisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minPPTPTTTWdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minPPTPTTTW' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minPPTPTTTW_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minPPTPTTTW_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTW.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTW_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minPPTPTTTW.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minPPTPTTTW_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
-        managedObject.minPPTPTTTW_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minPPTPTTTW.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minPPTPTTTW_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForOARdisplayUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForOARdisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForOARdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForOARinEBUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForOARinEBUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARinEBUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
-        managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForOARinEBUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForPHDdisplayUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForPHDdisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForPHDdisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForPHDinEBUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForPHDinEBUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
-        managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForPHDinEBUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForBoardLimitWidth' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForBoardLimitWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
-        managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForBoardLimitWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'minValueForBoardLimitWidthDisplayUnit' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> {
-    if let model = self.propval {
-      switch (model.minValueForBoardLimitWidthDisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
-        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'drillDataFileExtension' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  var drillDataFileExtension_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.drillDataFileExtension_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drillDataFileExtension_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_drillDataFileExtension.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.drillDataFileExtension_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
-        managedObject.drillDataFileExtension_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_drillDataFileExtension.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drillDataFileExtension_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'comments' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_comments = EBWeakEventSet ()
-
-  //····················································································································
-
-  var comments_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.comments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.comments_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.comments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
-      }
-    }
-  } */
-
-  //····················································································································
-  //   Observers of 'selectedSheetTitle' proxy property
-  //····················································································································
-
-/*  private final var mObserversOf_selectedSheetTitle = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectedSheetTitle_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.selectedSheetTitle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_selectedSheetTitle.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectedSheetTitle_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedSheetTitle (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedSheetTitle.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      v?.selectedSheetTitle_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectedSheetTitle_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
-        managedObject.selectedSheetTitle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedSheetTitle_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_selectedSheetTitle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedSheetTitle_property.removeEBObserver (observer)
-      }
-    }
-  } */
 
   //····················································································································
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
@@ -9314,6 +7195,866 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       object.mComponents_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mArtworkName simple stored property
+ /*   self.mArtworkName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mArtworkName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mArtworkName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mArtworkName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mArtworkName_property) */
+  //--- Configure mArtworkVersion simple stored property
+ /*   self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mArtworkVersion_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mArtworkVersion_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mArtworkVersion_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mArtworkVersion_property) */
+  //--- Configure mPDFBoardBackgroundColor simple stored property
+ /*   self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mPDFBoardBackgroundColor_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mPDFBoardBackgroundColor_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mPDFBoardBackgroundColor_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mPDFBoardBackgroundColor_property) */
+  //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
+ /*   self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mCheckClearanceBetweenPadsOfSameNet_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mCheckClearanceBetweenPadsOfSameNet_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mCheckClearanceBetweenPadsOfSameNet_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) */
+  //--- Configure mLastERCCheckingIsSuccess simple stored property
+ /*   self.mLastERCCheckingIsSuccess_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mLastERCCheckingIsSuccess_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingIsSuccess_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mLastERCCheckingIsSuccess_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mLastERCCheckingIsSuccess_property) */
+  //--- Configure mLastERCCheckingSignature simple stored property
+ /*   self.mLastERCCheckingSignature_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mLastERCCheckingSignature_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mLastERCCheckingSignature_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mLastERCCheckingSignature_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mLastERCCheckingSignature_property) */
+  //--- Configure mBoardSideForNewTrack simple stored property
+ /*   self.mBoardSideForNewTrack_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardSideForNewTrack_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardSideForNewTrack_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardSideForNewTrack_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardSideForNewTrack_property) */
+  //--- Configure mDirectionForNewTrack simple stored property
+ /*   self.mDirectionForNewTrack_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDirectionForNewTrack_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDirectionForNewTrack_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDirectionForNewTrack_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDirectionForNewTrack_property) */
+  //--- Configure mBoardLayerForNewText simple stored property
+ /*   self.mBoardLayerForNewText_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLayerForNewText_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLayerForNewText_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLayerForNewText_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLayerForNewText_property) */
+  //--- Configure mBoardLayerForNewLine simple stored property
+ /*   self.mBoardLayerForNewLine_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLayerForNewLine_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLayerForNewLine_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLayerForNewLine_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLayerForNewLine_property) */
+  //--- Configure mBoardSideForNewRestrictRectangle simple stored property
+ /*   self.mBoardSideForNewRestrictRectangle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardSideForNewRestrictRectangle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardSideForNewRestrictRectangle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardSideForNewRestrictRectangle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardSideForNewRestrictRectangle_property) */
+  //--- Configure mAutoRouterPreferredDirections simple stored property
+ /*   self.mAutoRouterPreferredDirections_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mAutoRouterPreferredDirections_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mAutoRouterPreferredDirections_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mAutoRouterPreferredDirections_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mAutoRouterPreferredDirections_property) */
+  //--- Configure mAutorouterSnapAngle simple stored property
+ /*   self.mAutorouterSnapAngle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mAutorouterSnapAngle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mAutorouterSnapAngle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mAutorouterSnapAngle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mAutorouterSnapAngle_property) */
+  //--- Configure mRouteDirection simple stored property
+ /*   self.mRouteDirection_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRouteDirection_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRouteDirection_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRouteDirection_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRouteDirection_property) */
+  //--- Configure mRouteOrigin simple stored property
+ /*   self.mRouteOrigin_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRouteOrigin_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRouteOrigin_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRouteOrigin_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRouteOrigin_property) */
+  //--- Configure mAutorouterInterfaceMode simple stored property
+ /*   self.mAutorouterInterfaceMode_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mAutorouterInterfaceMode_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mAutorouterInterfaceMode_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mAutorouterInterfaceMode_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mAutorouterInterfaceMode_property) */
+  //--- Configure mExportExistingTracksAndVias simple stored property
+ /*   self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mExportExistingTracksAndVias_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mExportExistingTracksAndVias_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mExportExistingTracksAndVias_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mExportExistingTracksAndVias_property) */
+  //--- Configure mTrackLengthUnit simple stored property
+ /*   self.mTrackLengthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mTrackLengthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mTrackLengthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mTrackLengthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mTrackLengthUnit_property) */
+  //--- Configure mLayoutClearance simple stored property
+ /*   self.mLayoutClearance_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mLayoutClearance_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mLayoutClearance_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mLayoutClearance_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mLayoutClearance_property) */
+  //--- Configure mLayoutClearanceUnit simple stored property
+ /*   self.mLayoutClearanceUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mLayoutClearanceUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mLayoutClearanceUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mLayoutClearanceUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mLayoutClearanceUnit_property) */
+  //--- Configure mBoardSelectedInspector simple stored property
+ /*   self.mBoardSelectedInspector_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardSelectedInspector_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardSelectedInspector_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardSelectedInspector_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardSelectedInspector_property) */
+  //--- Configure mBoardHorizontalFlip simple stored property
+ /*   self.mBoardHorizontalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardHorizontalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardHorizontalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardHorizontalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardHorizontalFlip_property) */
+  //--- Configure mBoardVerticalFlip simple stored property
+ /*   self.mBoardVerticalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardVerticalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardVerticalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardVerticalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardVerticalFlip_property) */
+  //--- Configure mBoardGridStyle simple stored property
+ /*   self.mBoardGridStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardGridStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardGridStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardGridStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardGridStyle_property) */
+  //--- Configure mBoardGridDisplayFactor simple stored property
+ /*   self.mBoardGridDisplayFactor_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardGridDisplayFactor_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardGridDisplayFactor_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardGridDisplayFactor_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardGridDisplayFactor_property) */
+  //--- Configure mBoardZoom simple stored property
+ /*   self.mBoardZoom_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardZoom_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardZoom_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardZoom_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardZoom_property) */
+  //--- Configure mBoardGridStep simple stored property
+ /*   self.mBoardGridStep_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardGridStep_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardGridStep_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardGridStep_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardGridStep_property) */
+  //--- Configure mBoardGridStepUnit simple stored property
+ /*   self.mBoardGridStepUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardGridStepUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardGridStepUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardGridStepUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardGridStepUnit_property) */
+  //--- Configure mErrorOrWarningIssueSize simple stored property
+ /*   self.mErrorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mErrorOrWarningIssueSize_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mErrorOrWarningIssueSize_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mErrorOrWarningIssueSize_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mErrorOrWarningIssueSize_property) */
+  //--- Configure mControlKeyHiliteDiameter simple stored property
+ /*   self.mControlKeyHiliteDiameter_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mControlKeyHiliteDiameter_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mControlKeyHiliteDiameter_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mControlKeyHiliteDiameter_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mControlKeyHiliteDiameter_property) */
+  //--- Configure mDSNFileProposedName simple stored property
+ /*   self.mDSNFileProposedName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDSNFileProposedName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDSNFileProposedName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDSNFileProposedName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDSNFileProposedName_property) */
+  //--- Configure mBoardLimitsWidth simple stored property
+ /*   self.mBoardLimitsWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsWidth_property) */
+  //--- Configure mBoardLimitsWidthUnit simple stored property
+ /*   self.mBoardLimitsWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsWidthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsWidthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsWidthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsWidthUnit_property) */
+  //--- Configure mBoardClearance simple stored property
+ /*   self.mBoardClearance_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardClearance_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardClearance_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardClearance_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardClearance_property) */
+  //--- Configure mBoardClearanceUnit simple stored property
+ /*   self.mBoardClearanceUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardClearanceUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardClearanceUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardClearanceUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardClearanceUnit_property) */
+  //--- Configure mBoardLimitsSelectedInspector simple stored property
+ /*   self.mBoardLimitsSelectedInspector_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsSelectedInspector_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsSelectedInspector_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsSelectedInspector_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsSelectedInspector_property) */
+  //--- Configure mBoardLimitsHorizontalFlip simple stored property
+ /*   self.mBoardLimitsHorizontalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsHorizontalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsHorizontalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsHorizontalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsHorizontalFlip_property) */
+  //--- Configure mBoardLimitsVerticalFlip simple stored property
+ /*   self.mBoardLimitsVerticalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsVerticalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsVerticalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsVerticalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsVerticalFlip_property) */
+  //--- Configure mBoardLimitsGridStyle simple stored property
+ /*   self.mBoardLimitsGridStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsGridStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsGridStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsGridStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsGridStyle_property) */
+  //--- Configure mBoardLimitsGridDisplayFactor simple stored property
+ /*   self.mBoardLimitsGridDisplayFactor_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsGridDisplayFactor_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsGridDisplayFactor_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsGridDisplayFactor_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsGridDisplayFactor_property) */
+  //--- Configure mBoardLimitsZoom simple stored property
+ /*   self.mBoardLimitsZoom_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsZoom_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsZoom_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsZoom_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsZoom_property) */
+  //--- Configure mBoardLimitsGridStep simple stored property
+ /*   self.mBoardLimitsGridStep_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsGridStep_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsGridStep_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsGridStep_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsGridStep_property) */
+  //--- Configure mBoardLimitsGridStepUnit simple stored property
+ /*   self.mBoardLimitsGridStepUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsGridStepUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsGridStepUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsGridStepUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsGridStepUnit_property) */
+  //--- Configure mBoardLimitsBoundingBoxUnit simple stored property
+ /*   self.mBoardLimitsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitsBoundingBoxUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitsBoundingBoxUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitsBoundingBoxUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitsBoundingBoxUnit_property) */
+  //--- Configure mBoardPointsBoundingBoxUnit simple stored property
+ /*   self.mBoardPointsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardPointsBoundingBoxUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardPointsBoundingBoxUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardPointsBoundingBoxUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardPointsBoundingBoxUnit_property) */
+  //--- Configure mBoardSelectedCurveDisplayUnit simple stored property
+ /*   self.mBoardSelectedCurveDisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardSelectedCurveDisplayUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardSelectedCurveDisplayUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardSelectedCurveDisplayUnit_property) */
+  //--- Configure mBoardLimitControlPointsDisplayUnit simple stored property
+ /*   self.mBoardLimitControlPointsDisplayUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardLimitControlPointsDisplayUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardLimitControlPointsDisplayUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardLimitControlPointsDisplayUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardLimitControlPointsDisplayUnit_property) */
+  //--- Configure mBoardShape simple stored property
+ /*   self.mBoardShape_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mBoardShape_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardShape_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mBoardShape_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mBoardShape_property) */
+  //--- Configure mRectangularBoardWidth simple stored property
+ /*   self.mRectangularBoardWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRectangularBoardWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRectangularBoardWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRectangularBoardWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRectangularBoardWidth_property) */
+  //--- Configure mRectangularBoardWidthUnit simple stored property
+ /*   self.mRectangularBoardWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRectangularBoardWidthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRectangularBoardWidthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRectangularBoardWidthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRectangularBoardWidthUnit_property) */
+  //--- Configure mRectangularBoardHeight simple stored property
+ /*   self.mRectangularBoardHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRectangularBoardHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRectangularBoardHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRectangularBoardHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRectangularBoardHeight_property) */
+  //--- Configure mRectangularBoardHeightUnit simple stored property
+ /*   self.mRectangularBoardHeightUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRectangularBoardHeightUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRectangularBoardHeightUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRectangularBoardHeightUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRectangularBoardHeightUnit_property) */
+  //--- Configure mDefaultNetClassName simple stored property
+ /*   self.mDefaultNetClassName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mDefaultNetClassName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mDefaultNetClassName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mDefaultNetClassName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mDefaultNetClassName_property) */
+  //--- Configure mSelectedPageIndex simple stored property
+ /*   self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSelectedPageIndex_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedPageIndex_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSelectedPageIndex_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSelectedPageIndex_property) */
+  //--- Configure mSelectedSchematicInspector simple stored property
+ /*   self.mSelectedSchematicInspector_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSelectedSchematicInspector_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSchematicInspector_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSelectedSchematicInspector_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSelectedSchematicInspector_property) */
+  //--- Configure mSchematicTitle simple stored property
+ /*   self.mSchematicTitle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicTitle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicTitle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicTitle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicTitle_property) */
+  //--- Configure mSchematicVersion simple stored property
+ /*   self.mSchematicVersion_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicVersion_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicVersion_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicVersion_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicVersion_property) */
+  //--- Configure mSchematicDate simple stored property
+ /*   self.mSchematicDate_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicDate_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicDate_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicDate_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicDate_property) */
+  //--- Configure mSchematicHorizontalFlip simple stored property
+ /*   self.mSchematicHorizontalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicHorizontalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicHorizontalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicHorizontalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicHorizontalFlip_property) */
+  //--- Configure mSchematicVerticalFlip simple stored property
+ /*   self.mSchematicVerticalFlip_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicVerticalFlip_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicVerticalFlip_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicVerticalFlip_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicVerticalFlip_property) */
+  //--- Configure mSchematicZoom simple stored property
+ /*   self.mSchematicZoom_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicZoom_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicZoom_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicZoom_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicZoom_property) */
+  //--- Configure mSchematicGridStyle simple stored property
+ /*   self.mSchematicGridStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicGridStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicGridStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicGridStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicGridStyle_property) */
+  //--- Configure mSchematicGridDisplayFactor simple stored property
+ /*   self.mSchematicGridDisplayFactor_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicGridDisplayFactor_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicGridDisplayFactor_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicGridDisplayFactor_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicGridDisplayFactor_property) */
+  //--- Configure mSchematicCustomWidth simple stored property
+ /*   self.mSchematicCustomWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicCustomWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicCustomWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicCustomWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicCustomWidth_property) */
+  //--- Configure mSchematicCustomWidthUnit simple stored property
+ /*   self.mSchematicCustomWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicCustomWidthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicCustomWidthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicCustomWidthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicCustomWidthUnit_property) */
+  //--- Configure mSchematicCustomHeight simple stored property
+ /*   self.mSchematicCustomHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicCustomHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicCustomHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicCustomHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicCustomHeight_property) */
+  //--- Configure mSchematicCustomHeightUnit simple stored property
+ /*   self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicCustomHeightUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicCustomHeightUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicCustomHeightUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicCustomHeightUnit_property) */
+  //--- Configure mSchematicSheetOrientation simple stored property
+ /*   self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSchematicSheetOrientation_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSchematicSheetOrientation_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSchematicSheetOrientation_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSchematicSheetOrientation_property) */
+  //--- Configure mRastnetDisplay simple stored property
+ /*   self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRastnetDisplay_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRastnetDisplay_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRastnetDisplay_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRastnetDisplay_property) */
+  //--- Configure mRastnetDisplayedNetName simple stored property
+ /*   self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRastnetDisplayedNetName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRastnetDisplayedNetName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRastnetDisplayedNetName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRastnetDisplayedNetName_property) */
+  //--- Configure mRastnetDisplayedComponentName simple stored property
+ /*   self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mRastnetDisplayedComponentName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mRastnetDisplayedComponentName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mRastnetDisplayedComponentName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mRastnetDisplayedComponentName_property) */
+ // }
 
   //····················································································································
 

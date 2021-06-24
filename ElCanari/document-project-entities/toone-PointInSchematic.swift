@@ -56,6 +56,8 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
+//  private final var mSymbolPinName_property = EBGenericPropertyProxy <String> ()
+
   private final var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
@@ -102,29 +104,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
-        managedObject.mSymbolPinName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    self.mObserversOf_mSymbolPinName.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mSymbolPinName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
+
+//  private final var mX_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX = EBWeakEventSet ()
 
@@ -172,29 +155,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
+
+//  private final var mY_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mY = EBWeakEventSet ()
 
@@ -238,27 +202,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.mY_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1212,6 +1155,50 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       object.mWiresP1s_property.removeEBObserver (inObserver)
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mSymbolPinName simple stored property
+ /*   self.mSymbolPinName_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mSymbolPinName_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolPinName_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mSymbolPinName_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mSymbolPinName_property) */
+  //--- Configure mX simple stored property
+ /*   self.mX_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mX_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mX_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mX_property) */
+  //--- Configure mY simple stored property
+ /*   self.mY_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mY_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mY_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mY_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mY_property) */
+ // }
 
   //····················································································································
 

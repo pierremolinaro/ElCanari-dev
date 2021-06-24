@@ -32,6 +32,8 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -78,29 +80,10 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for managedObject in inSet {
-      self.mObserversOf_y.apply { (_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padDiameter' stored property
   //····················································································································
+
+//  private final var padDiameter_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_padDiameter = EBWeakEventSet ()
 
@@ -148,29 +131,10 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for managedObject in inSet {
-      self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
-        managedObject.padDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_padDiameter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
+
+//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 
@@ -218,25 +182,48 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply { (_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   INIT 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
+ // override init () {
+//    super.init ()
+  //--- Configure y simple stored property
+ /*   self.y_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y_property.selection {
+        return selection
+      }else{
+        return .empty
       }
     }
-  }
+    self.y_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y_property) */
+  //--- Configure padDiameter simple stored property
+ /*   self.padDiameter_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.padDiameter_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.padDiameter_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.padDiameter_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.padDiameter_property) */
+  //--- Configure x simple stored property
+ /*   self.x_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x_property) */
+ // }
 
   //····················································································································
 

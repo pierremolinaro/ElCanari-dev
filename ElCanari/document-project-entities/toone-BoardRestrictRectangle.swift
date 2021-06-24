@@ -44,6 +44,8 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -90,29 +92,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mY.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
+
+//  private final var mWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
@@ -160,29 +143,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-        managedObject.mWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
+
+//  private final var mHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
@@ -230,29 +194,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-        managedObject.mHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
+
+//  private final var mIsInFrontLayer_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
 
@@ -300,29 +245,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
-        managedObject.mIsInFrontLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mIsInFrontLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsInFrontLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
+
+//  private final var mIsInBackLayer_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
 
@@ -370,29 +296,10 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
-        managedObject.mIsInBackLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mIsInBackLayer.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mIsInBackLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
+
+//  private final var mX_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_mX = EBWeakEventSet ()
 
@@ -436,27 +343,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
       break
     case .single (let v) :
       v?.mX_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    self.mObserversOf_mX.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -666,6 +552,86 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure mY simple stored property
+ /*   self.mY_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mY_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mY_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mY_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mY_property) */
+  //--- Configure mWidth simple stored property
+ /*   self.mWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mWidth_property) */
+  //--- Configure mHeight simple stored property
+ /*   self.mHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mHeight_property) */
+  //--- Configure mIsInFrontLayer simple stored property
+ /*   self.mIsInFrontLayer_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mIsInFrontLayer_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInFrontLayer_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mIsInFrontLayer_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mIsInFrontLayer_property) */
+  //--- Configure mIsInBackLayer simple stored property
+ /*   self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mIsInBackLayer_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mIsInBackLayer_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mIsInBackLayer_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mIsInBackLayer_property) */
+  //--- Configure mX simple stored property
+ /*   self.mX_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.mX_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.mX_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.mX_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.mX_property) */
+ // }
 
   //····················································································································
 

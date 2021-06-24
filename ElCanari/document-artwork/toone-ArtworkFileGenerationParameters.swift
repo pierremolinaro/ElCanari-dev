@@ -72,6 +72,8 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
+//  private final var drawBoardLimits_property = EBGenericPropertyProxy <Bool> ()
+
   private final var mObserversOf_drawBoardLimits = EBWeakEventSet ()
 
   //····················································································································
@@ -118,29 +120,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawBoardLimits.apply { (_ observer : EBEvent) in
-        managedObject.drawBoardLimits_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawBoardLimits.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawBoardLimits_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
+
+//  private final var drawInternalBoardLimits_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
 
@@ -188,29 +171,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawInternalBoardLimits.apply { (_ observer : EBEvent) in
-        managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawInternalBoardLimits.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentNamesTopSide' stored property
   //····················································································································
+
+//  private final var drawComponentNamesTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
 
@@ -258,29 +222,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawComponentNamesTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawComponentNamesTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawComponentNamesTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
+
+//  private final var drawComponentNamesBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
 
@@ -328,29 +273,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawComponentNamesBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawComponentNamesBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawComponentNamesBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentValuesTopSide' stored property
   //····················································································································
+
+//  private final var drawComponentValuesTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
 
@@ -398,29 +324,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawComponentValuesTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawComponentValuesTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawComponentValuesTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
+
+//  private final var drawComponentValuesBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
 
@@ -468,29 +375,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawComponentValuesBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawComponentValuesBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawComponentValuesBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawPackageLegendTopSide' stored property
   //····················································································································
+
+//  private final var drawPackageLegendTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
 
@@ -538,29 +426,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawPackageLegendTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawPackageLegendTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawPackageLegendTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
+
+//  private final var drawPackageLegendBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
 
@@ -608,29 +477,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawPackageLegendBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawPackageLegendBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawPackageLegendBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawPadHolesInPDF' stored property
   //····················································································································
+
+//  private final var drawPadHolesInPDF_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
 
@@ -678,29 +528,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawPadHolesInPDF.apply { (_ observer : EBEvent) in
-        managedObject.drawPadHolesInPDF_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawPadHolesInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
+
+//  private final var drawPadsTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
 
@@ -748,29 +579,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawPadsTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawPadsTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawPadsTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawPadsTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawPadsTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawPadsBottomSide' stored property
   //····················································································································
+
+//  private final var drawPadsBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
 
@@ -818,29 +630,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawPadsBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawPadsBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawPadsBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawPadsBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
+
+//  private final var drawTextsLayoutTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
 
@@ -888,29 +681,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTextsLayoutTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTextsLayoutTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTextsLayoutTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLayoutBottomSide' stored property
   //····················································································································
+
+//  private final var drawTextsLayoutBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
 
@@ -958,29 +732,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTextsLayoutBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTextsLayoutBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTextsLayoutBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
+
+//  private final var drawTextsLegendTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
 
@@ -1028,29 +783,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTextsLegendTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTextsLegendTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTextsLegendTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTextsLegendBottomSide' stored property
   //····················································································································
+
+//  private final var drawTextsLegendBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
 
@@ -1098,29 +834,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTextsLegendBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTextsLegendBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTextsLegendBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
+
+//  private final var drawTracksTopSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
 
@@ -1168,29 +885,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTracksTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTracksTopSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTracksTopSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTracksTopSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTracksTopSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawTracksBottomSide' stored property
   //····················································································································
+
+//  private final var drawTracksBottomSide_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
 
@@ -1238,29 +936,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawTracksBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawTracksBottomSide.apply { (_ observer : EBEvent) in
-        managedObject.drawTracksBottomSide_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawTracksBottomSide.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drawVias' stored property
   //····················································································································
+
+//  private final var drawVias_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_drawVias = EBWeakEventSet ()
 
@@ -1308,29 +987,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_drawVias_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_drawVias.apply { (_ observer : EBEvent) in
-        managedObject.drawVias_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drawVias_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_drawVias.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drawVias_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'fileExtension' stored property
   //····················································································································
+
+//  private final var fileExtension_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_fileExtension = EBWeakEventSet ()
 
@@ -1378,29 +1038,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_fileExtension_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_fileExtension.apply { (_ observer : EBEvent) in
-        managedObject.fileExtension_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_fileExtension_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_fileExtension.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.fileExtension_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
+
+//  private final var horizontalMirror_property = EBGenericPropertyProxy <Bool> ()
 
   private final var mObserversOf_horizontalMirror = EBWeakEventSet ()
 
@@ -1448,29 +1089,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_horizontalMirror_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_horizontalMirror.apply { (_ observer : EBEvent) in
-        managedObject.horizontalMirror_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_horizontalMirror_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_horizontalMirror.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.horizontalMirror_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'name' stored property
   //····················································································································
+
+//  private final var name_property = EBGenericPropertyProxy <String> ()
 
   private final var mObserversOf_name = EBWeakEventSet ()
 
@@ -1518,29 +1140,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_name.apply { (_ observer : EBEvent) in
-        managedObject.name_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_name.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.name_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
+
+//  private final var measurementUnitForPadHoleInPDF_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
 
@@ -1588,29 +1191,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_measurementUnitForPadHoleInPDF.apply { (_ observer : EBEvent) in
-        managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_measurementUnitForPadHoleInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
+
+//  private final var padHoleDiameterInPDF_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
 
@@ -1658,25 +1242,288 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for managedObject in inSet {
-      self.mObserversOf_padHoleDiameterInPDF.apply { (_ observer : EBEvent) in
-        managedObject.padHoleDiameterInPDF_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   INIT 
   //····················································································································
 
-  final func removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    self.mObserversOf_padHoleDiameterInPDF.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
+ // override init () {
+//    super.init ()
+  //--- Configure drawBoardLimits simple stored property
+ /*   self.drawBoardLimits_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawBoardLimits_property.selection {
+        return selection
+      }else{
+        return .empty
       }
     }
-  }
+    self.drawBoardLimits_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawBoardLimits_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawBoardLimits_property) */
+  //--- Configure drawInternalBoardLimits simple stored property
+ /*   self.drawInternalBoardLimits_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawInternalBoardLimits_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawInternalBoardLimits_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawInternalBoardLimits_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawInternalBoardLimits_property) */
+  //--- Configure drawComponentNamesTopSide simple stored property
+ /*   self.drawComponentNamesTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawComponentNamesTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawComponentNamesTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawComponentNamesTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawComponentNamesTopSide_property) */
+  //--- Configure drawComponentNamesBottomSide simple stored property
+ /*   self.drawComponentNamesBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawComponentNamesBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawComponentNamesBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawComponentNamesBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawComponentNamesBottomSide_property) */
+  //--- Configure drawComponentValuesTopSide simple stored property
+ /*   self.drawComponentValuesTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawComponentValuesTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawComponentValuesTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawComponentValuesTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawComponentValuesTopSide_property) */
+  //--- Configure drawComponentValuesBottomSide simple stored property
+ /*   self.drawComponentValuesBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawComponentValuesBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawComponentValuesBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawComponentValuesBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawComponentValuesBottomSide_property) */
+  //--- Configure drawPackageLegendTopSide simple stored property
+ /*   self.drawPackageLegendTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawPackageLegendTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawPackageLegendTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawPackageLegendTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawPackageLegendTopSide_property) */
+  //--- Configure drawPackageLegendBottomSide simple stored property
+ /*   self.drawPackageLegendBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawPackageLegendBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawPackageLegendBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawPackageLegendBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawPackageLegendBottomSide_property) */
+  //--- Configure drawPadHolesInPDF simple stored property
+ /*   self.drawPadHolesInPDF_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawPadHolesInPDF_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawPadHolesInPDF_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawPadHolesInPDF_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawPadHolesInPDF_property) */
+  //--- Configure drawPadsTopSide simple stored property
+ /*   self.drawPadsTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawPadsTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawPadsTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawPadsTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawPadsTopSide_property) */
+  //--- Configure drawPadsBottomSide simple stored property
+ /*   self.drawPadsBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawPadsBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawPadsBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawPadsBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawPadsBottomSide_property) */
+  //--- Configure drawTextsLayoutTopSide simple stored property
+ /*   self.drawTextsLayoutTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTextsLayoutTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTextsLayoutTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTextsLayoutTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTextsLayoutTopSide_property) */
+  //--- Configure drawTextsLayoutBottomSide simple stored property
+ /*   self.drawTextsLayoutBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTextsLayoutBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTextsLayoutBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTextsLayoutBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTextsLayoutBottomSide_property) */
+  //--- Configure drawTextsLegendTopSide simple stored property
+ /*   self.drawTextsLegendTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTextsLegendTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTextsLegendTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTextsLegendTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTextsLegendTopSide_property) */
+  //--- Configure drawTextsLegendBottomSide simple stored property
+ /*   self.drawTextsLegendBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTextsLegendBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTextsLegendBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTextsLegendBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTextsLegendBottomSide_property) */
+  //--- Configure drawTracksTopSide simple stored property
+ /*   self.drawTracksTopSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTracksTopSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksTopSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTracksTopSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTracksTopSide_property) */
+  //--- Configure drawTracksBottomSide simple stored property
+ /*   self.drawTracksBottomSide_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawTracksBottomSide_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksBottomSide_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawTracksBottomSide_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawTracksBottomSide_property) */
+  //--- Configure drawVias simple stored property
+ /*   self.drawVias_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.drawVias_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.drawVias_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.drawVias_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.drawVias_property) */
+  //--- Configure fileExtension simple stored property
+ /*   self.fileExtension_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.fileExtension_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.fileExtension_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.fileExtension_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.fileExtension_property) */
+  //--- Configure horizontalMirror simple stored property
+ /*   self.horizontalMirror_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.horizontalMirror_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.horizontalMirror_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.horizontalMirror_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.horizontalMirror_property) */
+  //--- Configure name simple stored property
+ /*   self.name_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.name_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.name_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.name_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.name_property) */
+  //--- Configure measurementUnitForPadHoleInPDF simple stored property
+ /*   self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.measurementUnitForPadHoleInPDF_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.measurementUnitForPadHoleInPDF_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.measurementUnitForPadHoleInPDF_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.measurementUnitForPadHoleInPDF_property) */
+  //--- Configure padHoleDiameterInPDF simple stored property
+ /*   self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.padHoleDiameterInPDF_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.padHoleDiameterInPDF_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.padHoleDiameterInPDF_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.padHoleDiameterInPDF_property) */
+ // }
 
   //····················································································································
 

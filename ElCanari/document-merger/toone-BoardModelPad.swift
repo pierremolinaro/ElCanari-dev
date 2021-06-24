@@ -38,6 +38,8 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -84,29 +86,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_y.apply { (_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_y.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
+
+//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -154,29 +137,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply { (_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
+
+//  private final var height_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_height = EBWeakEventSet ()
 
@@ -224,29 +188,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_height.apply { (_ observer : EBEvent) in
-        managedObject.height_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.height_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'shape' stored property
   //····················································································································
+
+//  private final var shape_property = EBGenericPropertyProxy <PadShape> ()
 
   private final var mObserversOf_shape = EBWeakEventSet ()
 
@@ -294,29 +239,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_shape_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-        managedObject.shape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_shape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.shape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'rotation' stored property
   //····················································································································
+
+//  private final var rotation_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_rotation = EBWeakEventSet ()
 
@@ -364,29 +290,10 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_rotation_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_rotation.apply { (_ observer : EBEvent) in
-        managedObject.rotation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_rotation.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.rotation_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
+
+//  private final var x_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_x = EBWeakEventSet ()
 
@@ -434,25 +341,84 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   }
 
   //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply { (_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
+  //   INIT 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    self.mObserversOf_x.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
+ // override init () {
+//    super.init ()
+  //--- Configure y simple stored property
+ /*   self.y_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.y_property.selection {
+        return selection
+      }else{
+        return .empty
       }
     }
-  }
+    self.y_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.y_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.y_property) */
+  //--- Configure width simple stored property
+ /*   self.width_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.width_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.width_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.width_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.width_property) */
+  //--- Configure height simple stored property
+ /*   self.height_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.height_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.height_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.height_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.height_property) */
+  //--- Configure shape simple stored property
+ /*   self.shape_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.shape_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.shape_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.shape_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.shape_property) */
+  //--- Configure rotation simple stored property
+ /*   self.rotation_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.rotation_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.rotation_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.rotation_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.rotation_property) */
+  //--- Configure x simple stored property
+ /*   self.x_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.x_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.x_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.x_property) */
+ // }
 
   //····················································································································
 

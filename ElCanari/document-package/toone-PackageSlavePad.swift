@@ -74,6 +74,8 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'xCenter' stored property
   //····················································································································
 
+//  private final var xCenter_property = EBGenericPropertyProxy <Int> ()
+
   private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -120,29 +122,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
-        managedObject.xCenter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_xCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.xCenter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'yCenter' stored property
   //····················································································································
+
+//  private final var yCenter_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_yCenter = EBWeakEventSet ()
 
@@ -190,29 +173,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
-        managedObject.yCenter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_yCenter.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.yCenter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
+
+//  private final var width_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_width = EBWeakEventSet ()
 
@@ -260,29 +224,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_width.apply { (_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_width.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
+
+//  private final var height_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_height = EBWeakEventSet ()
 
@@ -330,29 +275,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_height.apply { (_ observer : EBEvent) in
-        managedObject.height_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_height.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.height_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'holeWidth' stored property
   //····················································································································
+
+//  private final var holeWidth_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
@@ -400,29 +326,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_holeWidth_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
-        managedObject.holeWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeWidth_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeWidth.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'holeHeight' stored property
   //····················································································································
+
+//  private final var holeHeight_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
@@ -470,29 +377,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_holeHeight_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
-        managedObject.holeHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeHeight_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeHeight.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padShape' stored property
   //····················································································································
+
+//  private final var padShape_property = EBGenericPropertyProxy <PadShape> ()
 
   private final var mObserversOf_padShape = EBWeakEventSet ()
 
@@ -540,29 +428,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
-        managedObject.padShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_padShape.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padShape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padStyle' stored property
   //····················································································································
+
+//  private final var padStyle_property = EBGenericPropertyProxy <SlavePadStyle> ()
 
   private final var mObserversOf_padStyle = EBWeakEventSet ()
 
@@ -610,29 +479,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
-        managedObject.padStyle_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_padStyle.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padStyle_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
+
+//  private final var xCenterUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
@@ -680,29 +530,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
-        managedObject.xCenterUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_xCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.xCenterUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
+
+//  private final var yCenterUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
@@ -750,29 +581,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
-        managedObject.yCenterUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_yCenterUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.yCenterUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
+
+//  private final var widthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
@@ -820,29 +632,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
-        managedObject.widthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_widthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.widthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'heightUnit' stored property
   //····················································································································
+
+//  private final var heightUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
@@ -890,29 +683,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
-        managedObject.heightUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_heightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.heightUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
+
+//  private final var holeWidthUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
@@ -960,29 +734,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_holeWidthUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
-        managedObject.holeWidthUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeWidthUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeWidthUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeWidthUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
+
+//  private final var holeHeightUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
@@ -1030,29 +785,10 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_holeHeightUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
-        managedObject.holeHeightUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeHeightUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_holeHeightUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeHeightUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
+
+//  private final var annularRingUnit_property = EBGenericPropertyProxy <Int> ()
 
   private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 
@@ -1096,27 +832,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       break
     case .single (let v) :
       v?.annularRingUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
-        managedObject.annularRingUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    self.mObserversOf_annularRingUnit.apply { (_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.annularRingUnit_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1740,6 +1455,194 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       }
     }
   }
+
+  //····················································································································
+  //   INIT 
+  //····················································································································
+
+ // override init () {
+//    super.init ()
+  //--- Configure xCenter simple stored property
+ /*   self.xCenter_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.xCenter_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.xCenter_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.xCenter_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.xCenter_property) */
+  //--- Configure yCenter simple stored property
+ /*   self.yCenter_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.yCenter_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.yCenter_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.yCenter_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.yCenter_property) */
+  //--- Configure width simple stored property
+ /*   self.width_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.width_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.width_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.width_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.width_property) */
+  //--- Configure height simple stored property
+ /*   self.height_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.height_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.height_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.height_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.height_property) */
+  //--- Configure holeWidth simple stored property
+ /*   self.holeWidth_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.holeWidth_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.holeWidth_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.holeWidth_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.holeWidth_property) */
+  //--- Configure holeHeight simple stored property
+ /*   self.holeHeight_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.holeHeight_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.holeHeight_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.holeHeight_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.holeHeight_property) */
+  //--- Configure padShape simple stored property
+ /*   self.padShape_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.padShape_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.padShape_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.padShape_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.padShape_property) */
+  //--- Configure padStyle simple stored property
+ /*   self.padStyle_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.padStyle_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.padStyle_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.padStyle_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.padStyle_property) */
+  //--- Configure xCenterUnit simple stored property
+ /*   self.xCenterUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.xCenterUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.xCenterUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.xCenterUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.xCenterUnit_property) */
+  //--- Configure yCenterUnit simple stored property
+ /*   self.yCenterUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.yCenterUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.yCenterUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.yCenterUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.yCenterUnit_property) */
+  //--- Configure widthUnit simple stored property
+ /*   self.widthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.widthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.widthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.widthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.widthUnit_property) */
+  //--- Configure heightUnit simple stored property
+ /*   self.heightUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.heightUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.heightUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.heightUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.heightUnit_property) */
+  //--- Configure holeWidthUnit simple stored property
+ /*   self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.holeWidthUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.holeWidthUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.holeWidthUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.holeWidthUnit_property) */
+  //--- Configure holeHeightUnit simple stored property
+ /*   self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.holeHeightUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.holeHeightUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.holeHeightUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.holeHeightUnit_property) */
+  //--- Configure annularRingUnit simple stored property
+ /*   self.annularRingUnit_property.mReadModelFunction = { [weak self] in
+      if let selection = self?.mInternalValue?.annularRingUnit_property.selection {
+        return selection
+      }else{
+        return .empty
+      }
+    }
+    self.annularRingUnit_property.mWriteModelFunction = { [weak self] in
+      self?.mInternalValue?.annularRingUnit_property.setProp ($0)
+    }
+    self.none_property.addEBObserver (self.annularRingUnit_property) */
+ // }
 
   //····················································································································
 
