@@ -241,7 +241,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property_selection {
+    switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -264,7 +264,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var instanceCount : Int? {
-    switch self.instanceCount_property_selection {
+    switch self.instanceCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -287,7 +287,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var documentSizeString : String? {
-    switch self.documentSizeString_property_selection {
+    switch self.documentSizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -310,7 +310,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var pinNameShape : EBShape? {
-    switch self.pinNameShape_property_selection {
+    switch self.pinNameShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -340,7 +340,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mVersion_property_selection) {
+        switch (unwSelf.mVersion_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolTypeInDevice_versionString (v0))
         case (.multiple) :
@@ -356,7 +356,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mInstances_property.count_property_selection) {
+        switch (unwSelf.mInstances_property.count_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolTypeInDevice_instanceCount (v0))
         case (.multiple) :
@@ -372,7 +372,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFileData_property_selection) {
+        switch (unwSelf.mFileData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolTypeInDevice_documentSizeString (v0))
         case (.multiple) :
@@ -388,7 +388,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinTypes_property_selection) {
+        switch (unwSelf.mPinTypes_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolTypeInDevice_pinNameShape (v0))
         case (.multiple) :

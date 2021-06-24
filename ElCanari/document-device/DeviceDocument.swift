@@ -65,7 +65,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -88,7 +88,7 @@ import Cocoa
   //····················································································································
 
   final var assignmentInhibitionMessage : String? {
-    switch self.assignmentInhibitionMessage_property_selection {
+    switch self.assignmentInhibitionMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -111,7 +111,7 @@ import Cocoa
   //····················································································································
 
   final var hasUnconnectedPin : Bool? {
-    switch self.hasUnconnectedPin_property_selection {
+    switch self.hasUnconnectedPin_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -134,7 +134,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage : String? {
-    switch self.mStatusMessage_property_selection {
+    switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -157,7 +157,7 @@ import Cocoa
   //····················································································································
 
   final var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property_selection {
+    switch self.mMetadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -180,7 +180,7 @@ import Cocoa
   //····················································································································
 
   final var hasUnconnectedPad : Bool? {
-    switch self.hasUnconnectedPad_property_selection {
+    switch self.hasUnconnectedPad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -203,7 +203,7 @@ import Cocoa
   //····················································································································
 
   final var hasAssignedPadProxies : Bool? {
-    switch self.hasAssignedPadProxies_property_selection {
+    switch self.hasAssignedPadProxies_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -226,7 +226,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+    switch self.mStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -547,7 +547,7 @@ import Cocoa
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection) {
+        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
         case (.multiple, .multiple) :
@@ -568,7 +568,7 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPin
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPins_property_selection) {
+        switch (unwSelf.rootObject.unconnectedPins_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
         case (.multiple) :
@@ -588,7 +588,7 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_mStatusMessage (v0))
         case (.multiple) :
@@ -608,7 +608,7 @@ import Cocoa
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_mMetadataStatus (v0))
         case (.multiple) :
@@ -628,7 +628,7 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPads_property_selection) {
+        switch (unwSelf.rootObject.unconnectedPads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
         case (.multiple) :
@@ -648,7 +648,7 @@ import Cocoa
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.assignedPadProxies_property_selection) {
+        switch (unwSelf.rootObject.assignedPadProxies_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
         case (.multiple) :
@@ -668,7 +668,7 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocument_mStatusImage (v0))
         case (.multiple) :

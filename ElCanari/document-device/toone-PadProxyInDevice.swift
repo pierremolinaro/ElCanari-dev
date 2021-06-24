@@ -15,32 +15,44 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mPinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
+      oldValue.mPinInstanceName_property.removeEBObserver (self.mPinInstanceName_property) // Stored property
+ //     oldValue.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      oldValue.mPadName_property.removeEBObserver (self.mPadName_property) // Stored property
+ //     oldValue.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
+      oldValue.mIsNC_property.removeEBObserver (self.mIsNC_property) // Stored property
+ //     oldValue.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
+ //     oldValue.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+      oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mPinInstanceName_property.addEBObserversFrom (&self.mObserversOf_mPinInstanceName) // Stored property
+      newValue.mPinInstanceName_property.addEBObserver (self.mPinInstanceName_property) // Stored property
+ //     newValue.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName) // Stored property
+      newValue.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
+ //     newValue.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC) // Stored property
+      newValue.mIsNC_property.addEBObserver (self.mIsNC_property) // Stored property
+  //    newValue.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected) // Transient property
+      newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
+  //    newValue.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName) // Transient property
+      newValue.symbolName_property.addEBObserver (self.symbolName_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  private final var mPinInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mPinInstanceName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPinInstanceName_property_selection : EBSelection <String?> { // §
     return self.mPinInstanceName_property.selection
-/*    if let model = self.propval {
-      switch (model.mPinInstanceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +85,13 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mPadName_property = EBGenericTransientProperty <String?> ()
+  final let mPadName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPadName_property_selection : EBSelection <String?> { // §
     return self.mPadName_property.selection
-/*    if let model = self.propval {
-      switch (model.mPadName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +124,13 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  private final var mIsNC_property = EBGenericTransientProperty <Bool?> ()
+  final let mIsNC_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mIsNC = EBWeakEventSet ()
 
   //····················································································································
 
   final var mIsNC_property_selection : EBSelection <Bool?> { // §
     return self.mIsNC_property.selection
-/*    if let model = self.propval {
-      switch (model.mIsNC_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +163,13 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var isConnected_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnected_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_isConnected = EBWeakEventSet ()
 
   //····················································································································
 
   final var isConnected_property_selection : EBSelection <Bool?> {
     return self.isConnected_property.selection
-/*    if let model = self.propval {
-      switch (model.isConnected_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +202,13 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var symbolName_property = EBGenericTransientProperty <String?> ()
+  final let symbolName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_symbolName = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolName_property_selection : EBSelection <String?> {
     return self.symbolName_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -294,7 +258,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPinInstanceName_property)
   //--- Configure mPadName simple stored property
     self.mPadName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -310,7 +273,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPadName_property)
   //--- Configure mIsNC simple stored property
     self.mIsNC_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -326,7 +288,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mIsNC_property)
   //--- Configure isConnected transient property
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -342,7 +303,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.isConnected_property)
   //--- Configure symbolName transient property
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -358,7 +318,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolName_property)
   }
 
   //····················································································································

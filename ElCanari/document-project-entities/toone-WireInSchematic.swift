@@ -15,32 +15,44 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : WireInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      oldValue.netName_property.removeEBObserver (self.netName_property) // Transient property
+ //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
+ //     oldValue.hasNet_property.removeEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+      oldValue.hasNet_property.removeEBObserver (self.hasNet_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      newValue.netName_property.addEBObserver (self.netName_property) // Transient property
+  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
+  //    newValue.hasNet_property.addEBObserversFrom (&self.mObserversOf_hasNet) // Transient property
+      newValue.hasNet_property.addEBObserver (self.hasNet_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -73,25 +85,13 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +124,13 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var netName_property = EBGenericTransientProperty <String?> ()
+  final let netName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netName_property_selection : EBSelection <String?> {
     return self.netName_property.selection
-/*    if let model = self.propval {
-      switch (model.netName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +163,13 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String?> {
     return self.netClassName_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +202,13 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
   //   Observers of 'hasNet' transient property
   //····················································································································
 
-  private final var hasNet_property = EBGenericTransientProperty <Bool?> ()
+  final let hasNet_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_hasNet = EBWeakEventSet ()
 
   //····················································································································
 
   final var hasNet_property_selection : EBSelection <Bool?> {
     return self.hasNet_property.selection
-/*    if let model = self.propval {
-      switch (model.hasNet_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -294,7 +258,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -310,7 +273,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure netName transient property
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -326,7 +288,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netName_property)
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -342,7 +303,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassName_property)
   //--- Configure hasNet transient property
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -358,7 +318,6 @@ class ReadOnlyObject_WireInSchematic : ReadOnlyAbstractObjectProperty <WireInSch
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.hasNet_property)
   }
 
   //····················································································································

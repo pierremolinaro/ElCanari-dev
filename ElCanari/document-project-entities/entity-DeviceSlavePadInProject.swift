@@ -272,7 +272,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor : SlavePadDescriptor? {
-    switch self.descriptor_property_selection {
+    switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -297,7 +297,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection) {
+        switch (unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mHoleWidth_property.selection, unwSelf.mHoleHeight_property.selection, unwSelf.mShape_property.selection, unwSelf.mStyle_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
           return .single (transient_DeviceSlavePadInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

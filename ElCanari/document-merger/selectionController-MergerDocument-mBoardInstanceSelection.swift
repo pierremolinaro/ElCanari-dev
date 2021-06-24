@@ -283,7 +283,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimitWidth_property_selection {
+            switch object.boardLimitWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -323,7 +323,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <CanariRect> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.instanceRect_property_selection {
+            switch object.instanceRect_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -363,7 +363,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.instanceRotation_property_selection {
+            switch object.instanceRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -433,7 +433,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelName_property_selection {
+            switch object.modelName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -473,7 +473,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -513,7 +513,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -553,7 +553,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x_property_selection {
+            switch object.x_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -623,7 +623,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y_property_selection {
+            switch object.y_property.selection {
             case .empty :
               return .empty
             case .multiple :

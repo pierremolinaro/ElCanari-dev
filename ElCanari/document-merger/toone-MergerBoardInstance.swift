@@ -15,32 +15,56 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : MergerBoardInstance?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.x_property.removeEBObserver (self.x_property) // Stored property
+ //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.y_property.removeEBObserver (self.y_property) // Stored property
+ //     oldValue.instanceRotation_property.removeEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+      oldValue.instanceRotation_property.removeEBObserver (self.instanceRotation_property) // Stored property
+ //     oldValue.instanceRect_property.removeEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
+      oldValue.instanceRect_property.removeEBObserver (self.instanceRect_property) // Transient property
+ //     oldValue.modelName_property.removeEBObserversFrom (&self.mObserversOf_modelName) // Transient property
+      oldValue.modelName_property.removeEBObserver (self.modelName_property) // Transient property
+ //     oldValue.boardLimitWidth_property.removeEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
+      oldValue.boardLimitWidth_property.removeEBObserver (self.boardLimitWidth_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.x_property.addEBObserver (self.x_property) // Stored property
+ //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.y_property.addEBObserver (self.y_property) // Stored property
+ //     newValue.instanceRotation_property.addEBObserversFrom (&self.mObserversOf_instanceRotation) // Stored property
+      newValue.instanceRotation_property.addEBObserver (self.instanceRotation_property) // Stored property
+  //    newValue.instanceRect_property.addEBObserversFrom (&self.mObserversOf_instanceRect) // Transient property
+      newValue.instanceRect_property.addEBObserver (self.instanceRect_property) // Transient property
+  //    newValue.modelName_property.addEBObserversFrom (&self.mObserversOf_modelName) // Transient property
+      newValue.modelName_property.addEBObserver (self.modelName_property) // Transient property
+  //    newValue.boardLimitWidth_property.addEBObserversFrom (&self.mObserversOf_boardLimitWidth) // Transient property
+      newValue.boardLimitWidth_property.addEBObserver (self.boardLimitWidth_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var x_property = EBGenericTransientProperty <Int?> ()
+  final let x_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
   final var x_property_selection : EBSelection <Int?> { // §
     return self.x_property.selection
-/*    if let model = self.propval {
-      switch (model.x_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +97,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var y_property = EBGenericTransientProperty <Int?> ()
+  final let y_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
   final var y_property_selection : EBSelection <Int?> { // §
     return self.y_property.selection
-/*    if let model = self.propval {
-      switch (model.y_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +136,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'instanceRotation' stored property
   //····················································································································
 
-  private final var instanceRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+  final let instanceRotation_property = EBGenericTransientProperty <QuadrantRotation?> ()
 //  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
 
   //····················································································································
 
   final var instanceRotation_property_selection : EBSelection <QuadrantRotation?> { // §
     return self.instanceRotation_property.selection
-/*    if let model = self.propval {
-      switch (model.instanceRotation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +175,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'instanceRect' transient property
   //····················································································································
 
-  private final var instanceRect_property = EBGenericTransientProperty <CanariRect?> ()
+  final let instanceRect_property = EBGenericTransientProperty <CanariRect?> ()
 //  private final var mObserversOf_instanceRect = EBWeakEventSet ()
 
   //····················································································································
 
   final var instanceRect_property_selection : EBSelection <CanariRect?> {
     return self.instanceRect_property.selection
-/*    if let model = self.propval {
-      switch (model.instanceRect_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +214,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'modelName' transient property
   //····················································································································
 
-  private final var modelName_property = EBGenericTransientProperty <String?> ()
+  final let modelName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_modelName = EBWeakEventSet ()
 
   //····················································································································
 
   final var modelName_property_selection : EBSelection <String?> {
     return self.modelName_property.selection
-/*    if let model = self.propval {
-      switch (model.modelName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +253,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'boardLimitWidth' transient property
   //····················································································································
 
-  private final var boardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+  final let boardLimitWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitWidth_property_selection : EBSelection <Int?> {
     return self.boardLimitWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +292,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +331,13 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -447,7 +387,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x_property)
   //--- Configure y simple stored property
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -463,7 +402,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y_property)
   //--- Configure instanceRotation simple stored property
     self.instanceRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -479,7 +417,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.instanceRotation_property)
   //--- Configure instanceRect transient property
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -495,7 +432,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.instanceRect_property)
   //--- Configure modelName transient property
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -511,7 +447,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.modelName_property)
   //--- Configure boardLimitWidth transient property
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -527,7 +462,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitWidth_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -543,7 +477,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -559,7 +492,6 @@ class ReadOnlyObject_MergerBoardInstance : ReadOnlyAbstractObjectProperty <Merge
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   }
 
   //····················································································································

@@ -35,7 +35,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -58,7 +58,7 @@ import Cocoa
   //····················································································································
 
   final var mGeneratedFileCountString : String? {
-    switch self.mGeneratedFileCountString_property_selection {
+    switch self.mGeneratedFileCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -81,7 +81,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+    switch self.mStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -104,7 +104,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage : String? {
-    switch self.mStatusMessage_property_selection {
+    switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -319,7 +319,7 @@ import Cocoa
   //--- Atomic property: mGeneratedFileCountString
     self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
+        switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ArtworkDocument_mGeneratedFileCountString (v0))
         case (.multiple) :
@@ -339,7 +339,7 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_ArtworkDocument_mStatusImage (v0, v1))
         case (.multiple, .multiple) :
@@ -360,7 +360,7 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_ArtworkDocument_mStatusMessage (v0, v1))
         case (.multiple, .multiple) :

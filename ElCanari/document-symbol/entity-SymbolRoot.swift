@@ -390,7 +390,7 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -413,7 +413,7 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final var noIssue : Bool? {
-    switch self.noIssue_property_selection {
+    switch self.noIssue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -436,7 +436,7 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final var segmentedControlSegmentIssueImage : NSImage? {
-    switch self.segmentedControlSegmentIssueImage_property_selection {
+    switch self.segmentedControlSegmentIssueImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -459,7 +459,7 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   final var segmentedControlSegmentIssueString : String? {
-    switch self.segmentedControlSegmentIssueString_property_selection {
+    switch self.segmentedControlSegmentIssueString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -488,7 +488,7 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection) {
+        switch (unwSelf.symbolObjects_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_SymbolRoot_issues (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -508,7 +508,7 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolRoot_noIssue (v0))
         case (.multiple) :
@@ -524,7 +524,7 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolRoot_segmentedControlSegmentIssueImage (v0))
         case (.multiple) :
@@ -540,7 +540,7 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolRoot_segmentedControlSegmentIssueString (v0))
         case (.multiple) :

@@ -640,7 +640,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var imageIsValid : Bool? {
-    switch self.imageIsValid_property_selection {
+    switch self.imageIsValid_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -663,7 +663,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var inconsistentPackagePadNameSetsMessage : String? {
-    switch self.inconsistentPackagePadNameSetsMessage_property_selection {
+    switch self.inconsistentPackagePadNameSetsMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -686,7 +686,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var inconsistentSymbolNameSetMessage : String? {
-    switch self.inconsistentSymbolNameSetMessage_property_selection {
+    switch self.inconsistentSymbolNameSetMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -709,7 +709,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
-    switch self.unconnectedPins_property_selection {
+    switch self.unconnectedPins_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -732,7 +732,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var packagePadNameSetsAreConsistent : Bool? {
-    switch self.packagePadNameSetsAreConsistent_property_selection {
+    switch self.packagePadNameSetsAreConsistent_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -755,7 +755,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolNameAreConsistent : Bool? {
-    switch self.symbolNameAreConsistent_property_selection {
+    switch self.symbolNameAreConsistent_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -778,7 +778,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolTypeNames : StringArray? {
-    switch self.symbolTypeNames_property_selection {
+    switch self.symbolTypeNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -801,7 +801,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var unconnectedPads : StringArray? {
-    switch self.unconnectedPads_property_selection {
+    switch self.unconnectedPads_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -824,7 +824,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var assignedPadProxies : AssignedPadProxiesInDevice? {
-    switch self.assignedPadProxies_property_selection {
+    switch self.assignedPadProxies_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -847,7 +847,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -893,7 +893,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: imageIsValid
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mImageData_property_selection) {
+        switch (unwSelf.mImageData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_imageIsValid (v0))
         case (.multiple) :
@@ -909,7 +909,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection) {
+        switch (unwSelf.mPackages_property.selection, unwSelf.mPackages_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
         case (.multiple, .multiple) :
@@ -926,7 +926,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: inconsistentSymbolNameSetMessage
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstances_property_selection) {
+        switch (unwSelf.mSymbolInstances_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
         case (.multiple) :
@@ -942,7 +942,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstances_property_selection) {
+        switch (unwSelf.mSymbolInstances_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_unconnectedPins (v0))
         case (.multiple) :
@@ -958,7 +958,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPackages_property_selection) {
+        switch (unwSelf.mPackages_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_packagePadNameSetsAreConsistent (v0))
         case (.multiple) :
@@ -974,7 +974,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: symbolNameAreConsistent
     self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
+        switch (unwSelf.inconsistentSymbolNameSetMessage_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_symbolNameAreConsistent (v0))
         case (.multiple) :
@@ -990,7 +990,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: symbolTypeNames
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolTypes_property_selection) {
+        switch (unwSelf.mSymbolTypes_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceRoot_symbolTypeNames (v0))
         case (.multiple) :
@@ -1006,7 +1006,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
+        switch (unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_DeviceRoot_unconnectedPads (v0, v1))
         case (.multiple, .multiple) :
@@ -1023,7 +1023,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: assignedPadProxies
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection, unwSelf.mPadProxies_property_selection) {
+        switch (unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_DeviceRoot_assignedPadProxies (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -1042,7 +1042,7 @@ final class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection, unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection) {
+        switch (unwSelf.mTitle_property.selection, unwSelf.mPrefix_property.selection, unwSelf.inconsistentPackagePadNameSetsMessage_property.selection, unwSelf.inconsistentSymbolNameSetMessage_property.selection, unwSelf.unconnectedPins_property.selection, unwSelf.unconnectedPads_property.selection, unwSelf.mPackages_property.selection, unwSelf.mPackages_property.selection, unwSelf.mSymbolTypes_property.selection, unwSelf.mSymbolTypes_property.selection, unwSelf.mSymbolTypes_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
           return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

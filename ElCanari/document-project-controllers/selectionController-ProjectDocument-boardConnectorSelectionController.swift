@@ -653,7 +653,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mComponentPadName_property_selection {
+            switch object.mComponentPadName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -722,7 +722,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mPadIndex_property_selection {
+            switch object.mPadIndex_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -791,7 +791,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -860,7 +860,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -929,7 +929,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDefaultHoleDiameterUnit_property_selection {
+            switch object.mDefaultHoleDiameterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -998,7 +998,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomHoleDiameter_property_selection {
+            switch object.mCustomHoleDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1067,7 +1067,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomHoleDiameterUnit_property_selection {
+            switch object.mCustomHoleDiameterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1136,7 +1136,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mUsesCustomHoleDiameter_property_selection {
+            switch object.mUsesCustomHoleDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1205,7 +1205,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDefaultPadDiameterUnit_property_selection {
+            switch object.mDefaultPadDiameterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1274,7 +1274,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomPadDiameter_property_selection {
+            switch object.mCustomPadDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1343,7 +1343,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomPadDiameterUnit_property_selection {
+            switch object.mCustomPadDiameterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1412,7 +1412,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mUsesCustomPadDiameter_property_selection {
+            switch object.mUsesCustomPadDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1481,7 +1481,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.isConnectedToSomePad_property_selection {
+            switch object.isConnectedToSomePad_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1520,7 +1520,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <CanariPoint> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.location_property_selection {
+            switch object.location_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1559,7 +1559,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netNameFromComponentPad_property_selection {
+            switch object.netNameFromComponentPad_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1598,7 +1598,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <RastnetInfoArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netNameAndPadLocation_property_selection {
+            switch object.netNameAndPadLocation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1637,7 +1637,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <ConnectorSide> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.side_property_selection {
+            switch object.side_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1676,7 +1676,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.isVia_property_selection {
+            switch object.isVia_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1715,7 +1715,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1754,7 +1754,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viaDefaultHoleDiameter_property_selection {
+            switch object.viaDefaultHoleDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1793,7 +1793,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viaDefaultPadDiameter_property_selection {
+            switch object.viaDefaultPadDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1832,7 +1832,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netNameFromTracks_property_selection {
+            switch object.netNameFromTracks_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1871,7 +1871,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassName_property_selection {
+            switch object.netClassName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1910,7 +1910,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.connectedToComponent_property_selection {
+            switch object.connectedToComponent_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1949,7 +1949,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.actualHoleDiameter_property_selection {
+            switch object.actualHoleDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1988,7 +1988,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.actualPadDiameter_property_selection {
+            switch object.actualPadDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2027,7 +2027,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2066,7 +2066,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2105,7 +2105,7 @@ final class SelectionController_ProjectDocument_boardConnectorSelectionControlle
           var s = Set <UInt32> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.signatureForERCChecking_property_selection {
+            switch object.signatureForERCChecking_property.selection {
             case .empty :
               return .empty
             case .multiple :

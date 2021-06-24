@@ -568,7 +568,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x_property_selection {
+            switch object.x_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -637,7 +637,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y_property_selection {
+            switch object.y_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -706,7 +706,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.width_property_selection {
+            switch object.width_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -775,7 +775,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.height_property_selection {
+            switch object.height_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -844,7 +844,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xUnit_property_selection {
+            switch object.xUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -913,7 +913,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yUnit_property_selection {
+            switch object.yUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -982,7 +982,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.widthUnit_property_selection {
+            switch object.widthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1051,7 +1051,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.heightUnit_property_selection {
+            switch object.heightUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1120,7 +1120,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.zoneName_property_selection {
+            switch object.zoneName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1189,7 +1189,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.displayZoneName_property_selection {
+            switch object.displayZoneName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1258,7 +1258,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xName_property_selection {
+            switch object.xName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1327,7 +1327,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yName_property_selection {
+            switch object.yName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1396,7 +1396,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xNameUnit_property_selection {
+            switch object.xNameUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1465,7 +1465,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yNameUnit_property_selection {
+            switch object.yNameUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1534,7 +1534,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <PadNumbering> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.zoneNumbering_property_selection {
+            switch object.zoneNumbering_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1603,7 +1603,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1642,7 +1642,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1681,7 +1681,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <CanariRect> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.rect_property_selection {
+            switch object.rect_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1720,7 +1720,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1759,7 +1759,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <StringArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.forbiddenPadArray_property_selection {
+            switch object.forbiddenPadArray_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1798,7 +1798,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.emptyForbiddenPadArray_property_selection {
+            switch object.emptyForbiddenPadArray_property.selection {
             case .empty :
               return .empty
             case .multiple :

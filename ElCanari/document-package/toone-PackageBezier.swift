@@ -15,32 +15,104 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : PackageBezier?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.y1_property.removeEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      oldValue.y1_property.removeEBObserver (self.y1_property) // Stored property
+ //     oldValue.x2_property.removeEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      oldValue.x2_property.removeEBObserver (self.x2_property) // Stored property
+ //     oldValue.y2_property.removeEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      oldValue.y2_property.removeEBObserver (self.y2_property) // Stored property
+ //     oldValue.cpx1_property.removeEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
+      oldValue.cpx1_property.removeEBObserver (self.cpx1_property) // Stored property
+ //     oldValue.cpy1_property.removeEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
+      oldValue.cpy1_property.removeEBObserver (self.cpy1_property) // Stored property
+ //     oldValue.cpx2_property.removeEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
+      oldValue.cpx2_property.removeEBObserver (self.cpx2_property) // Stored property
+ //     oldValue.cpy2_property.removeEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
+      oldValue.cpy2_property.removeEBObserver (self.cpy2_property) // Stored property
+ //     oldValue.x1Unit_property.removeEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+      oldValue.x1Unit_property.removeEBObserver (self.x1Unit_property) // Stored property
+ //     oldValue.y1Unit_property.removeEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+      oldValue.y1Unit_property.removeEBObserver (self.y1Unit_property) // Stored property
+ //     oldValue.x2Unit_property.removeEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+      oldValue.x2Unit_property.removeEBObserver (self.x2Unit_property) // Stored property
+ //     oldValue.y2Unit_property.removeEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+      oldValue.y2Unit_property.removeEBObserver (self.y2Unit_property) // Stored property
+ //     oldValue.cpx1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
+      oldValue.cpx1Unit_property.removeEBObserver (self.cpx1Unit_property) // Stored property
+ //     oldValue.cpy1Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
+      oldValue.cpy1Unit_property.removeEBObserver (self.cpy1Unit_property) // Stored property
+ //     oldValue.cpx2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
+      oldValue.cpx2Unit_property.removeEBObserver (self.cpx2Unit_property) // Stored property
+ //     oldValue.cpy2Unit_property.removeEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
+      oldValue.cpy2Unit_property.removeEBObserver (self.cpy2Unit_property) // Stored property
+ //     oldValue.x1_property.removeEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      oldValue.x1_property.removeEBObserver (self.x1_property) // Stored property
+ //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.y1_property.addEBObserversFrom (&self.mObserversOf_y1) // Stored property
+      newValue.y1_property.addEBObserver (self.y1_property) // Stored property
+ //     newValue.x2_property.addEBObserversFrom (&self.mObserversOf_x2) // Stored property
+      newValue.x2_property.addEBObserver (self.x2_property) // Stored property
+ //     newValue.y2_property.addEBObserversFrom (&self.mObserversOf_y2) // Stored property
+      newValue.y2_property.addEBObserver (self.y2_property) // Stored property
+ //     newValue.cpx1_property.addEBObserversFrom (&self.mObserversOf_cpx1) // Stored property
+      newValue.cpx1_property.addEBObserver (self.cpx1_property) // Stored property
+ //     newValue.cpy1_property.addEBObserversFrom (&self.mObserversOf_cpy1) // Stored property
+      newValue.cpy1_property.addEBObserver (self.cpy1_property) // Stored property
+ //     newValue.cpx2_property.addEBObserversFrom (&self.mObserversOf_cpx2) // Stored property
+      newValue.cpx2_property.addEBObserver (self.cpx2_property) // Stored property
+ //     newValue.cpy2_property.addEBObserversFrom (&self.mObserversOf_cpy2) // Stored property
+      newValue.cpy2_property.addEBObserver (self.cpy2_property) // Stored property
+ //     newValue.x1Unit_property.addEBObserversFrom (&self.mObserversOf_x1Unit) // Stored property
+      newValue.x1Unit_property.addEBObserver (self.x1Unit_property) // Stored property
+ //     newValue.y1Unit_property.addEBObserversFrom (&self.mObserversOf_y1Unit) // Stored property
+      newValue.y1Unit_property.addEBObserver (self.y1Unit_property) // Stored property
+ //     newValue.x2Unit_property.addEBObserversFrom (&self.mObserversOf_x2Unit) // Stored property
+      newValue.x2Unit_property.addEBObserver (self.x2Unit_property) // Stored property
+ //     newValue.y2Unit_property.addEBObserversFrom (&self.mObserversOf_y2Unit) // Stored property
+      newValue.y2Unit_property.addEBObserver (self.y2Unit_property) // Stored property
+ //     newValue.cpx1Unit_property.addEBObserversFrom (&self.mObserversOf_cpx1Unit) // Stored property
+      newValue.cpx1Unit_property.addEBObserver (self.cpx1Unit_property) // Stored property
+ //     newValue.cpy1Unit_property.addEBObserversFrom (&self.mObserversOf_cpy1Unit) // Stored property
+      newValue.cpy1Unit_property.addEBObserver (self.cpy1Unit_property) // Stored property
+ //     newValue.cpx2Unit_property.addEBObserversFrom (&self.mObserversOf_cpx2Unit) // Stored property
+      newValue.cpx2Unit_property.addEBObserver (self.cpx2Unit_property) // Stored property
+ //     newValue.cpy2Unit_property.addEBObserversFrom (&self.mObserversOf_cpy2Unit) // Stored property
+      newValue.cpy2Unit_property.addEBObserver (self.cpy2Unit_property) // Stored property
+ //     newValue.x1_property.addEBObserversFrom (&self.mObserversOf_x1) // Stored property
+      newValue.x1_property.addEBObserver (self.x1_property) // Stored property
+  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'y1' stored property
   //····················································································································
 
-  private final var y1_property = EBGenericTransientProperty <Int?> ()
+  final let y1_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
   final var y1_property_selection : EBSelection <Int?> { // §
     return self.y1_property.selection
-/*    if let model = self.propval {
-      switch (model.y1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +145,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'x2' stored property
   //····················································································································
 
-  private final var x2_property = EBGenericTransientProperty <Int?> ()
+  final let x2_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
   final var x2_property_selection : EBSelection <Int?> { // §
     return self.x2_property.selection
-/*    if let model = self.propval {
-      switch (model.x2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +184,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'y2' stored property
   //····················································································································
 
-  private final var y2_property = EBGenericTransientProperty <Int?> ()
+  final let y2_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
   final var y2_property_selection : EBSelection <Int?> { // §
     return self.y2_property.selection
-/*    if let model = self.propval {
-      switch (model.y2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +223,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpx1' stored property
   //····················································································································
 
-  private final var cpx1_property = EBGenericTransientProperty <Int?> ()
+  final let cpx1_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpx1 = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpx1_property_selection : EBSelection <Int?> { // §
     return self.cpx1_property.selection
-/*    if let model = self.propval {
-      switch (model.cpx1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +262,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpy1' stored property
   //····················································································································
 
-  private final var cpy1_property = EBGenericTransientProperty <Int?> ()
+  final let cpy1_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpy1 = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpy1_property_selection : EBSelection <Int?> { // §
     return self.cpy1_property.selection
-/*    if let model = self.propval {
-      switch (model.cpy1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +301,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpx2' stored property
   //····················································································································
 
-  private final var cpx2_property = EBGenericTransientProperty <Int?> ()
+  final let cpx2_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpx2 = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpx2_property_selection : EBSelection <Int?> { // §
     return self.cpx2_property.selection
-/*    if let model = self.propval {
-      switch (model.cpx2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +340,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpy2' stored property
   //····················································································································
 
-  private final var cpy2_property = EBGenericTransientProperty <Int?> ()
+  final let cpy2_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpy2 = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpy2_property_selection : EBSelection <Int?> { // §
     return self.cpy2_property.selection
-/*    if let model = self.propval {
-      switch (model.cpy2_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +379,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'x1Unit' stored property
   //····················································································································
 
-  private final var x1Unit_property = EBGenericTransientProperty <Int?> ()
+  final let x1Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x1Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var x1Unit_property_selection : EBSelection <Int?> { // §
     return self.x1Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.x1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +418,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'y1Unit' stored property
   //····················································································································
 
-  private final var y1Unit_property = EBGenericTransientProperty <Int?> ()
+  final let y1Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y1Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var y1Unit_property_selection : EBSelection <Int?> { // §
     return self.y1Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.y1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +457,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'x2Unit' stored property
   //····················································································································
 
-  private final var x2Unit_property = EBGenericTransientProperty <Int?> ()
+  final let x2Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x2Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var x2Unit_property_selection : EBSelection <Int?> { // §
     return self.x2Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.x2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +496,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'y2Unit' stored property
   //····················································································································
 
-  private final var y2Unit_property = EBGenericTransientProperty <Int?> ()
+  final let y2Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y2Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var y2Unit_property_selection : EBSelection <Int?> { // §
     return self.y2Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.y2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +535,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpx1Unit' stored property
   //····················································································································
 
-  private final var cpx1Unit_property = EBGenericTransientProperty <Int?> ()
+  final let cpx1Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpx1Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpx1Unit_property_selection : EBSelection <Int?> { // §
     return self.cpx1Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.cpx1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +574,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpy1Unit' stored property
   //····················································································································
 
-  private final var cpy1Unit_property = EBGenericTransientProperty <Int?> ()
+  final let cpy1Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpy1Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpy1Unit_property_selection : EBSelection <Int?> { // §
     return self.cpy1Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.cpy1Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -685,25 +613,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpx2Unit' stored property
   //····················································································································
 
-  private final var cpx2Unit_property = EBGenericTransientProperty <Int?> ()
+  final let cpx2Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpx2Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpx2Unit_property_selection : EBSelection <Int?> { // §
     return self.cpx2Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.cpx2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -736,25 +652,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'cpy2Unit' stored property
   //····················································································································
 
-  private final var cpy2Unit_property = EBGenericTransientProperty <Int?> ()
+  final let cpy2Unit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_cpy2Unit = EBWeakEventSet ()
 
   //····················································································································
 
   final var cpy2Unit_property_selection : EBSelection <Int?> { // §
     return self.cpy2Unit_property.selection
-/*    if let model = self.propval {
-      switch (model.cpy2Unit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -787,25 +691,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'x1' stored property
   //····················································································································
 
-  private final var x1_property = EBGenericTransientProperty <Int?> ()
+  final let x1_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
   final var x1_property_selection : EBSelection <Int?> { // §
     return self.x1_property.selection
-/*    if let model = self.propval {
-      switch (model.x1_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -838,25 +730,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 //  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     return self.strokeBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.strokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -889,25 +769,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -940,25 +808,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -991,25 +847,13 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1059,7 +903,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y1_property)
   //--- Configure x2 simple stored property
     self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1075,7 +918,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x2_property)
   //--- Configure y2 simple stored property
     self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1091,7 +933,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y2_property)
   //--- Configure cpx1 simple stored property
     self.cpx1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1107,7 +948,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpx1_property)
   //--- Configure cpy1 simple stored property
     self.cpy1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1123,7 +963,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpy1_property)
   //--- Configure cpx2 simple stored property
     self.cpx2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1139,7 +978,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpx2_property)
   //--- Configure cpy2 simple stored property
     self.cpy2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1155,7 +993,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpy2_property)
   //--- Configure x1Unit simple stored property
     self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1171,7 +1008,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x1Unit_property)
   //--- Configure y1Unit simple stored property
     self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1187,7 +1023,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y1Unit_property)
   //--- Configure x2Unit simple stored property
     self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1203,7 +1038,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x2Unit_property)
   //--- Configure y2Unit simple stored property
     self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1219,7 +1053,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y2Unit_property)
   //--- Configure cpx1Unit simple stored property
     self.cpx1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1235,7 +1068,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpx1Unit_property)
   //--- Configure cpy1Unit simple stored property
     self.cpy1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1251,7 +1083,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpy1Unit_property)
   //--- Configure cpx2Unit simple stored property
     self.cpx2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1267,7 +1098,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpx2Unit_property)
   //--- Configure cpy2Unit simple stored property
     self.cpy2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1283,7 +1113,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.cpy2Unit_property)
   //--- Configure x1 simple stored property
     self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1299,7 +1128,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x1_property)
   //--- Configure strokeBezierPath transient property
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1315,7 +1143,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.strokeBezierPath_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1331,7 +1158,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1347,7 +1173,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1363,7 +1188,6 @@ class ReadOnlyObject_PackageBezier : ReadOnlyAbstractObjectProperty <PackageBezi
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

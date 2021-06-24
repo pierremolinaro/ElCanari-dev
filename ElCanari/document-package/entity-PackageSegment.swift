@@ -330,7 +330,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   final var strokeBezierPath : NSBezierPath? {
-    switch self.strokeBezierPath_property_selection {
+    switch self.strokeBezierPath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -353,7 +353,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   final var lengthInCanariUnit : Int? {
-    switch self.lengthInCanariUnit_property_selection {
+    switch self.lengthInCanariUnit_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -379,7 +379,7 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageSegment_strokeBezierPath (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -398,7 +398,7 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
+        switch (unwSelf.strokeBezierPath_property.selection, preferences_packageColor_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_PackageSegment_objectDisplay (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -416,7 +416,7 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.knobSize_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection, unwSelf.knobSize_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_PackageSegment_selectionDisplay (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -436,7 +436,7 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageSegment_issues (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -455,7 +455,7 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: lengthInCanariUnit
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageSegment_lengthInCanariUnit (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :

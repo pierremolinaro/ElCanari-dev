@@ -15,32 +15,64 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardObject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.isPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+      oldValue.isPlacedInBoard_property.removeEBObserver (self.isPlacedInBoard_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+ //     oldValue.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      oldValue.isVia_property.removeEBObserver (self.isVia_property) // Transient property
+ //     oldValue.trackLengthInCanariUnit_property.removeEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      oldValue.trackLengthInCanariUnit_property.removeEBObserver (self.trackLengthInCanariUnit_property) // Transient property
+ //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+ //     oldValue.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      oldValue.netNameAndPadLocation_property.removeEBObserver (self.netNameAndPadLocation_property) // Transient property
+ //     oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+ //     oldValue.errorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+      oldValue.errorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+  //    newValue.isPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_isPlacedInBoard) // Transient property
+      newValue.isPlacedInBoard_property.addEBObserver (self.isPlacedInBoard_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+  //    newValue.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      newValue.isVia_property.addEBObserver (self.isVia_property) // Transient property
+  //    newValue.trackLengthInCanariUnit_property.addEBObserversFrom (&self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      newValue.trackLengthInCanariUnit_property.addEBObserver (self.trackLengthInCanariUnit_property) // Transient property
+  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+  //    newValue.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      newValue.netNameAndPadLocation_property.addEBObserver (self.netNameAndPadLocation_property) // Transient property
+  //    newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+  //    newValue.errorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_errorOrWarningIssueSize) // Transient property
+      newValue.errorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'isPlacedInBoard' transient property
   //····················································································································
 
-  private final var isPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let isPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_isPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
   final var isPlacedInBoard_property_selection : EBSelection <Bool?> {
     return self.isPlacedInBoard_property.selection
-/*    if let model = self.propval {
-      switch (model.isPlacedInBoard_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -73,25 +105,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +144,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private final var isVia_property = EBGenericTransientProperty <Bool?> ()
+  final let isVia_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
   final var isVia_property_selection : EBSelection <Bool?> {
     return self.isVia_property.selection
-/*    if let model = self.propval {
-      switch (model.isVia_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +183,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private final var trackLengthInCanariUnit_property = EBGenericTransientProperty <Double?> ()
+  final let trackLengthInCanariUnit_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var trackLengthInCanariUnit_property_selection : EBSelection <Double?> {
     return self.trackLengthInCanariUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.trackLengthInCanariUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +222,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
 //  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     return self.signatureForERCChecking_property.selection
-/*    if let model = self.propval {
-      switch (model.signatureForERCChecking_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +261,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private final var netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
+  final let netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
 //  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
   final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
     return self.netNameAndPadLocation_property.selection
-/*    if let model = self.propval {
-      switch (model.netNameAndPadLocation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +300,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private final var componentName_property = EBGenericTransientProperty <String?> ()
+  final let componentName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentName_property_selection : EBSelection <String?> {
     return self.componentName_property.selection
-/*    if let model = self.propval {
-      switch (model.componentName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +339,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -430,25 +378,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -481,25 +417,13 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //   Observers of 'errorOrWarningIssueSize' transient property
   //····················································································································
 
-  private final var errorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
+  final let errorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_errorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var errorOrWarningIssueSize_property_selection : EBSelection <Double?> {
     return self.errorOrWarningIssueSize_property.selection
-/*    if let model = self.propval {
-      switch (model.errorOrWarningIssueSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -549,7 +473,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.isPlacedInBoard_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -565,7 +488,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   //--- Configure isVia transient property
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -581,7 +503,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.isVia_property)
   //--- Configure trackLengthInCanariUnit transient property
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -597,7 +518,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.trackLengthInCanariUnit_property)
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -613,7 +533,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Configure netNameAndPadLocation transient property
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -629,7 +548,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netNameAndPadLocation_property)
   //--- Configure componentName transient property
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -645,7 +563,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentName_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -661,7 +578,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -677,7 +593,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   //--- Configure errorOrWarningIssueSize transient property
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -693,7 +608,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.errorOrWarningIssueSize_property)
   }
 
   //····················································································································

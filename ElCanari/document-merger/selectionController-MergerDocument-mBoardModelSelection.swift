@@ -1031,7 +1031,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.artworkName_property_selection {
+            switch object.artworkName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1101,7 +1101,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentNameSegments_property_selection {
+            switch object.backComponentNameSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1141,7 +1141,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentNamesBezierPaths_property_selection {
+            switch object.backComponentNamesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1181,7 +1181,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentValueSegments_property_selection {
+            switch object.backComponentValueSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1221,7 +1221,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentValuesBezierPaths_property_selection {
+            switch object.backComponentValuesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1261,7 +1261,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLayoutTextsBezierPaths_property_selection {
+            switch object.backLayoutTextsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1301,7 +1301,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLayoutTextsSegments_property_selection {
+            switch object.backLayoutTextsSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1341,7 +1341,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendLinesBezierPaths_property_selection {
+            switch object.backLegendLinesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1381,7 +1381,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendLinesSegments_property_selection {
+            switch object.backLegendLinesSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1421,7 +1421,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendTextsBezierPaths_property_selection {
+            switch object.backLegendTextsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1461,7 +1461,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendTextsSegments_property_selection {
+            switch object.backLegendTextsSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1501,7 +1501,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPackagesBezierPaths_property_selection {
+            switch object.backPackagesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1541,7 +1541,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPackagesSegments_property_selection {
+            switch object.backPackagesSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1581,7 +1581,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPadArray_property_selection {
+            switch object.backPadArray_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1621,7 +1621,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPadsBezierPaths_property_selection {
+            switch object.backPadsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1661,7 +1661,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backTrackSegments_property_selection {
+            switch object.backTrackSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1701,7 +1701,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backTracksBezierPaths_property_selection {
+            switch object.backTracksBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1741,7 +1741,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerBoardLimits> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimits_property_selection {
+            switch object.boardLimits_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1781,7 +1781,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimitsBezierPaths_property_selection {
+            switch object.boardLimitsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1821,7 +1821,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drillSegments_property_selection {
+            switch object.drillSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1861,7 +1861,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentNameSegments_property_selection {
+            switch object.frontComponentNameSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1901,7 +1901,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentNamesBezierPaths_property_selection {
+            switch object.frontComponentNamesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1941,7 +1941,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentValueSegments_property_selection {
+            switch object.frontComponentValueSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1981,7 +1981,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentValuesBezierPaths_property_selection {
+            switch object.frontComponentValuesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2021,7 +2021,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLayoutTextsBezierPaths_property_selection {
+            switch object.frontLayoutTextsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2061,7 +2061,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLayoutTextsSegments_property_selection {
+            switch object.frontLayoutTextsSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2101,7 +2101,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendLinesBezierPaths_property_selection {
+            switch object.frontLegendLinesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2141,7 +2141,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendLinesSegments_property_selection {
+            switch object.frontLegendLinesSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2181,7 +2181,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendTextsBezierPaths_property_selection {
+            switch object.frontLegendTextsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2221,7 +2221,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendTextsSegments_property_selection {
+            switch object.frontLegendTextsSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2261,7 +2261,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPackagesBezierPaths_property_selection {
+            switch object.frontPackagesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2301,7 +2301,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPackagesSegments_property_selection {
+            switch object.frontPackagesSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2341,7 +2341,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPadArray_property_selection {
+            switch object.frontPadArray_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2381,7 +2381,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPadsBezierPaths_property_selection {
+            switch object.frontPadsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2421,7 +2421,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontTrackSegments_property_selection {
+            switch object.frontTrackSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2461,7 +2461,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontTracksBezierPaths_property_selection {
+            switch object.frontTracksBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2501,7 +2501,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holesBezierPaths_property_selection {
+            switch object.holesBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2541,7 +2541,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.imageForInstances_property_selection {
+            switch object.imageForInstances_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2581,7 +2581,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.imageForModel_property_selection {
+            switch object.imageForModel_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2621,7 +2621,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.instanceCount_property_selection {
+            switch object.instanceCount_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2661,7 +2661,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.internalBoardsLimitsBezierPaths_property_selection {
+            switch object.internalBoardsLimitsBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2701,7 +2701,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.internalBoardsLimitsSegments_property_selection {
+            switch object.internalBoardsLimitsSegments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2741,7 +2741,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelHeight_property_selection {
+            switch object.modelHeight_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2811,7 +2811,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelHeightUnit_property_selection {
+            switch object.modelHeightUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2881,7 +2881,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelLimitWidth_property_selection {
+            switch object.modelLimitWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2951,7 +2951,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelLimitWidthUnit_property_selection {
+            switch object.modelLimitWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3021,7 +3021,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelWidth_property_selection {
+            switch object.modelWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3091,7 +3091,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.modelWidthUnit_property_selection {
+            switch object.modelWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3161,7 +3161,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.name_property_selection {
+            switch object.name_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3231,7 +3231,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viaShapes_property_selection {
+            switch object.viaShapes_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3271,7 +3271,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viasBezierPaths_property_selection {
+            switch object.viasBezierPaths_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3311,7 +3311,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.zoom_property_selection {
+            switch object.zoom_property.selection {
             case .empty :
               return .empty
             case .multiple :

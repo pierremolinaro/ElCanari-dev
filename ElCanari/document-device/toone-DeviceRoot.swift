@@ -15,32 +15,124 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
+      oldValue.mSelectedPageIndex_property.removeEBObserver (self.mSelectedPageIndex_property) // Stored property
+ //     oldValue.mTitle_property.removeEBObserversFrom (&self.mObserversOf_mTitle) // Stored property
+      oldValue.mTitle_property.removeEBObserver (self.mTitle_property) // Stored property
+ //     oldValue.mImageData_property.removeEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
+      oldValue.mImageData_property.removeEBObserver (self.mImageData_property) // Stored property
+ //     oldValue.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      oldValue.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
+ //     oldValue.mComments_property.removeEBObserversFrom (&self.mObserversOf_mComments) // Stored property
+      oldValue.mComments_property.removeEBObserver (self.mComments_property) // Stored property
+ //     oldValue.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom) // Stored property
+      oldValue.mPackageDisplayZoom_property.removeEBObserver (self.mPackageDisplayZoom_property) // Stored property
+ //     oldValue.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip) // Stored property
+      oldValue.mPackageDisplayHorizontalFlip_property.removeEBObserver (self.mPackageDisplayHorizontalFlip_property) // Stored property
+ //     oldValue.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip) // Stored property
+      oldValue.mPackageDisplayVerticalFlip_property.removeEBObserver (self.mPackageDisplayVerticalFlip_property) // Stored property
+ //     oldValue.mShowPackages_property.removeEBObserversFrom (&self.mObserversOf_mShowPackages) // Stored property
+      oldValue.mShowPackages_property.removeEBObserver (self.mShowPackages_property) // Stored property
+ //     oldValue.mShowPackagePadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers) // Stored property
+      oldValue.mShowPackagePadNumbers_property.removeEBObserver (self.mShowPackagePadNumbers_property) // Stored property
+ //     oldValue.mShowPackageFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads) // Stored property
+      oldValue.mShowPackageFrontPads_property.removeEBObserver (self.mShowPackageFrontPads_property) // Stored property
+ //     oldValue.mShowPackageBackPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageBackPads) // Stored property
+      oldValue.mShowPackageBackPads_property.removeEBObserver (self.mShowPackageBackPads_property) // Stored property
+ //     oldValue.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom) // Stored property
+      oldValue.mSymbolDisplayZoom_property.removeEBObserver (self.mSymbolDisplayZoom_property) // Stored property
+ //     oldValue.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip) // Stored property
+      oldValue.mSymbolDisplayHorizontalFlip_property.removeEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
+ //     oldValue.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip) // Stored property
+      oldValue.mSymbolDisplayVerticalFlip_property.removeEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
+ //     oldValue.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
+      oldValue.imageIsValid_property.removeEBObserver (self.imageIsValid_property) // Transient property
+ //     oldValue.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage) // Transient property
+      oldValue.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
+ //     oldValue.inconsistentSymbolNameSetMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage) // Transient property
+      oldValue.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.inconsistentSymbolNameSetMessage_property) // Transient property
+ //     oldValue.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
+      oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
+ //     oldValue.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent) // Transient property
+      oldValue.packagePadNameSetsAreConsistent_property.removeEBObserver (self.packagePadNameSetsAreConsistent_property) // Transient property
+ //     oldValue.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent) // Transient property
+      oldValue.symbolNameAreConsistent_property.removeEBObserver (self.symbolNameAreConsistent_property) // Transient property
+ //     oldValue.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames) // Transient property
+      oldValue.symbolTypeNames_property.removeEBObserver (self.symbolTypeNames_property) // Transient property
+ //     oldValue.unconnectedPads_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPads) // Transient property
+      oldValue.unconnectedPads_property.removeEBObserver (self.unconnectedPads_property) // Transient property
+ //     oldValue.assignedPadProxies_property.removeEBObserversFrom (&self.mObserversOf_assignedPadProxies) // Transient property
+      oldValue.assignedPadProxies_property.removeEBObserver (self.assignedPadProxies_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
+      newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
+ //     newValue.mTitle_property.addEBObserversFrom (&self.mObserversOf_mTitle) // Stored property
+      newValue.mTitle_property.addEBObserver (self.mTitle_property) // Stored property
+ //     newValue.mImageData_property.addEBObserversFrom (&self.mObserversOf_mImageData) // Stored property
+      newValue.mImageData_property.addEBObserver (self.mImageData_property) // Stored property
+ //     newValue.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      newValue.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
+ //     newValue.mComments_property.addEBObserversFrom (&self.mObserversOf_mComments) // Stored property
+      newValue.mComments_property.addEBObserver (self.mComments_property) // Stored property
+ //     newValue.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom) // Stored property
+      newValue.mPackageDisplayZoom_property.addEBObserver (self.mPackageDisplayZoom_property) // Stored property
+ //     newValue.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip) // Stored property
+      newValue.mPackageDisplayHorizontalFlip_property.addEBObserver (self.mPackageDisplayHorizontalFlip_property) // Stored property
+ //     newValue.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip) // Stored property
+      newValue.mPackageDisplayVerticalFlip_property.addEBObserver (self.mPackageDisplayVerticalFlip_property) // Stored property
+ //     newValue.mShowPackages_property.addEBObserversFrom (&self.mObserversOf_mShowPackages) // Stored property
+      newValue.mShowPackages_property.addEBObserver (self.mShowPackages_property) // Stored property
+ //     newValue.mShowPackagePadNumbers_property.addEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers) // Stored property
+      newValue.mShowPackagePadNumbers_property.addEBObserver (self.mShowPackagePadNumbers_property) // Stored property
+ //     newValue.mShowPackageFrontPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads) // Stored property
+      newValue.mShowPackageFrontPads_property.addEBObserver (self.mShowPackageFrontPads_property) // Stored property
+ //     newValue.mShowPackageBackPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageBackPads) // Stored property
+      newValue.mShowPackageBackPads_property.addEBObserver (self.mShowPackageBackPads_property) // Stored property
+ //     newValue.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom) // Stored property
+      newValue.mSymbolDisplayZoom_property.addEBObserver (self.mSymbolDisplayZoom_property) // Stored property
+ //     newValue.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip) // Stored property
+      newValue.mSymbolDisplayHorizontalFlip_property.addEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
+ //     newValue.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip) // Stored property
+      newValue.mSymbolDisplayVerticalFlip_property.addEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
+  //    newValue.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid) // Transient property
+      newValue.imageIsValid_property.addEBObserver (self.imageIsValid_property) // Transient property
+  //    newValue.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage) // Transient property
+      newValue.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
+  //    newValue.inconsistentSymbolNameSetMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage) // Transient property
+      newValue.inconsistentSymbolNameSetMessage_property.addEBObserver (self.inconsistentSymbolNameSetMessage_property) // Transient property
+  //    newValue.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins) // Transient property
+      newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
+  //    newValue.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent) // Transient property
+      newValue.packagePadNameSetsAreConsistent_property.addEBObserver (self.packagePadNameSetsAreConsistent_property) // Transient property
+  //    newValue.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent) // Transient property
+      newValue.symbolNameAreConsistent_property.addEBObserver (self.symbolNameAreConsistent_property) // Transient property
+  //    newValue.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames) // Transient property
+      newValue.symbolTypeNames_property.addEBObserver (self.symbolTypeNames_property) // Transient property
+  //    newValue.unconnectedPads_property.addEBObserversFrom (&self.mObserversOf_unconnectedPads) // Transient property
+      newValue.unconnectedPads_property.addEBObserver (self.unconnectedPads_property) // Transient property
+  //    newValue.assignedPadProxies_property.addEBObserversFrom (&self.mObserversOf_assignedPadProxies) // Transient property
+      newValue.assignedPadProxies_property.addEBObserver (self.assignedPadProxies_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  private final var mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSelectedPageIndex_property_selection : EBSelection <Int?> { // §
     return self.mSelectedPageIndex_property.selection
-/*    if let model = self.propval {
-      switch (model.mSelectedPageIndex_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +165,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mTitle' stored property
   //····················································································································
 
-  private final var mTitle_property = EBGenericTransientProperty <String?> ()
+  final let mTitle_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mTitle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mTitle_property_selection : EBSelection <String?> { // §
     return self.mTitle_property.selection
-/*    if let model = self.propval {
-      switch (model.mTitle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +204,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mImageData' stored property
   //····················································································································
 
-  private final var mImageData_property = EBGenericTransientProperty <Data?> ()
+  final let mImageData_property = EBGenericTransientProperty <Data?> ()
 //  private final var mObserversOf_mImageData = EBWeakEventSet ()
 
   //····················································································································
 
   final var mImageData_property_selection : EBSelection <Data?> { // §
     return self.mImageData_property.selection
-/*    if let model = self.propval {
-      switch (model.mImageData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +243,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  private final var mPrefix_property = EBGenericTransientProperty <String?> ()
+  final let mPrefix_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPrefix_property_selection : EBSelection <String?> { // §
     return self.mPrefix_property.selection
-/*    if let model = self.propval {
-      switch (model.mPrefix_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +282,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mComments' stored property
   //····················································································································
 
-  private final var mComments_property = EBGenericTransientProperty <String?> ()
+  final let mComments_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mComments = EBWeakEventSet ()
 
   //····················································································································
 
   final var mComments_property_selection : EBSelection <String?> { // §
     return self.mComments_property.selection
-/*    if let model = self.propval {
-      switch (model.mComments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +321,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayZoom' stored property
   //····················································································································
 
-  private final var mPackageDisplayZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mPackageDisplayZoom_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPackageDisplayZoom_property_selection : EBSelection <Int?> { // §
     return self.mPackageDisplayZoom_property.selection
-/*    if let model = self.propval {
-      switch (model.mPackageDisplayZoom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +360,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayHorizontalFlip' stored property
   //····················································································································
 
-  private final var mPackageDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mPackageDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mPackageDisplayHorizontalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mPackageDisplayHorizontalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +399,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mPackageDisplayVerticalFlip' stored property
   //····················································································································
 
-  private final var mPackageDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mPackageDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mPackageDisplayVerticalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mPackageDisplayVerticalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +438,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackages' stored property
   //····················································································································
 
-  private final var mShowPackages_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackages_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mShowPackages = EBWeakEventSet ()
 
   //····················································································································
 
   final var mShowPackages_property_selection : EBSelection <Bool?> { // §
     return self.mShowPackages_property.selection
-/*    if let model = self.propval {
-      switch (model.mShowPackages_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +477,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackagePadNumbers' stored property
   //····················································································································
 
-  private final var mShowPackagePadNumbers_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackagePadNumbers_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
 
   //····················································································································
 
   final var mShowPackagePadNumbers_property_selection : EBSelection <Bool?> { // §
     return self.mShowPackagePadNumbers_property.selection
-/*    if let model = self.propval {
-      switch (model.mShowPackagePadNumbers_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +516,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackageFrontPads' stored property
   //····················································································································
 
-  private final var mShowPackageFrontPads_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackageFrontPads_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
 
   //····················································································································
 
   final var mShowPackageFrontPads_property_selection : EBSelection <Bool?> { // §
     return self.mShowPackageFrontPads_property.selection
-/*    if let model = self.propval {
-      switch (model.mShowPackageFrontPads_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +555,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mShowPackageBackPads' stored property
   //····················································································································
 
-  private final var mShowPackageBackPads_property = EBGenericTransientProperty <Bool?> ()
+  final let mShowPackageBackPads_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
 
   //····················································································································
 
   final var mShowPackageBackPads_property_selection : EBSelection <Bool?> { // §
     return self.mShowPackageBackPads_property.selection
-/*    if let model = self.propval {
-      switch (model.mShowPackageBackPads_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +594,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayZoom' stored property
   //····················································································································
 
-  private final var mSymbolDisplayZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mSymbolDisplayZoom_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolDisplayZoom_property_selection : EBSelection <Int?> { // §
     return self.mSymbolDisplayZoom_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolDisplayZoom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -685,25 +633,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayHorizontalFlip' stored property
   //····················································································································
 
-  private final var mSymbolDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mSymbolDisplayHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mSymbolDisplayHorizontalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolDisplayHorizontalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -736,25 +672,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'mSymbolDisplayVerticalFlip' stored property
   //····················································································································
 
-  private final var mSymbolDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mSymbolDisplayVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mSymbolDisplayVerticalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolDisplayVerticalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -787,25 +711,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'imageIsValid' transient property
   //····················································································································
 
-  private final var imageIsValid_property = EBGenericTransientProperty <Bool?> ()
+  final let imageIsValid_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_imageIsValid = EBWeakEventSet ()
 
   //····················································································································
 
   final var imageIsValid_property_selection : EBSelection <Bool?> {
     return self.imageIsValid_property.selection
-/*    if let model = self.propval {
-      switch (model.imageIsValid_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -838,25 +750,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
   //····················································································································
 
-  private final var inconsistentPackagePadNameSetsMessage_property = EBGenericTransientProperty <String?> ()
+  final let inconsistentPackagePadNameSetsMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String?> {
     return self.inconsistentPackagePadNameSetsMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.inconsistentPackagePadNameSetsMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -889,25 +789,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'inconsistentSymbolNameSetMessage' transient property
   //····················································································································
 
-  private final var inconsistentSymbolNameSetMessage_property = EBGenericTransientProperty <String?> ()
+  final let inconsistentSymbolNameSetMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var inconsistentSymbolNameSetMessage_property_selection : EBSelection <String?> {
     return self.inconsistentSymbolNameSetMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.inconsistentSymbolNameSetMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -940,25 +828,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'unconnectedPins' transient property
   //····················································································································
 
-  private final var unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
+  final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
 //  private final var mObserversOf_unconnectedPins = EBWeakEventSet ()
 
   //····················································································································
 
   final var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice?> {
     return self.unconnectedPins_property.selection
-/*    if let model = self.propval {
-      switch (model.unconnectedPins_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -991,25 +867,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
   //····················································································································
 
-  private final var packagePadNameSetsAreConsistent_property = EBGenericTransientProperty <Bool?> ()
+  final let packagePadNameSetsAreConsistent_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
 
   //····················································································································
 
   final var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool?> {
     return self.packagePadNameSetsAreConsistent_property.selection
-/*    if let model = self.propval {
-      switch (model.packagePadNameSetsAreConsistent_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1042,25 +906,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'symbolNameAreConsistent' transient property
   //····················································································································
 
-  private final var symbolNameAreConsistent_property = EBGenericTransientProperty <Bool?> ()
+  final let symbolNameAreConsistent_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolNameAreConsistent_property_selection : EBSelection <Bool?> {
     return self.symbolNameAreConsistent_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolNameAreConsistent_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1093,25 +945,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'symbolTypeNames' transient property
   //····················································································································
 
-  private final var symbolTypeNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let symbolTypeNames_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_symbolTypeNames = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolTypeNames_property_selection : EBSelection <StringArray?> {
     return self.symbolTypeNames_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolTypeNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1144,25 +984,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'unconnectedPads' transient property
   //····················································································································
 
-  private final var unconnectedPads_property = EBGenericTransientProperty <StringArray?> ()
+  final let unconnectedPads_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_unconnectedPads = EBWeakEventSet ()
 
   //····················································································································
 
   final var unconnectedPads_property_selection : EBSelection <StringArray?> {
     return self.unconnectedPads_property.selection
-/*    if let model = self.propval {
-      switch (model.unconnectedPads_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1195,25 +1023,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'assignedPadProxies' transient property
   //····················································································································
 
-  private final var assignedPadProxies_property = EBGenericTransientProperty <AssignedPadProxiesInDevice?> ()
+  final let assignedPadProxies_property = EBGenericTransientProperty <AssignedPadProxiesInDevice?> ()
 //  private final var mObserversOf_assignedPadProxies = EBWeakEventSet ()
 
   //····················································································································
 
   final var assignedPadProxies_property_selection : EBSelection <AssignedPadProxiesInDevice?> {
     return self.assignedPadProxies_property.selection
-/*    if let model = self.propval {
-      switch (model.assignedPadProxies_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1246,25 +1062,13 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1303,7 +1107,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   final var mDocs_property_selection : EBSelection <[DeviceDocumentation]> {
     if let model = self.propval {
-      switch (model.mDocs_property_selection) {
+      switch (model.mDocs_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1344,7 +1148,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   final var mSymbolInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
     if let model = self.propval {
-      switch (model.mSymbolInstances_property_selection) {
+      switch (model.mSymbolInstances_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1385,7 +1189,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   final var mPackages_property_selection : EBSelection <[PackageInDevice]> {
     if let model = self.propval {
-      switch (model.mPackages_property_selection) {
+      switch (model.mPackages_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1426,7 +1230,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   final var mSymbolTypes_property_selection : EBSelection <[SymbolTypeInDevice]> {
     if let model = self.propval {
-      switch (model.mSymbolTypes_property_selection) {
+      switch (model.mSymbolTypes_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1467,7 +1271,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 
   final var mPadProxies_property_selection : EBSelection <[PadProxyInDevice]> {
     if let model = self.propval {
-      switch (model.mPadProxies_property_selection) {
+      switch (model.mPadProxies_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1519,7 +1323,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSelectedPageIndex_property)
   //--- Configure mTitle simple stored property
     self.mTitle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1535,7 +1338,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mTitle_property)
   //--- Configure mImageData simple stored property
     self.mImageData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1551,7 +1353,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mImageData_property)
   //--- Configure mPrefix simple stored property
     self.mPrefix_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1567,7 +1368,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPrefix_property)
   //--- Configure mComments simple stored property
     self.mComments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1583,7 +1383,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mComments_property)
   //--- Configure mPackageDisplayZoom simple stored property
     self.mPackageDisplayZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1599,7 +1398,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPackageDisplayZoom_property)
   //--- Configure mPackageDisplayHorizontalFlip simple stored property
     self.mPackageDisplayHorizontalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1615,7 +1413,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPackageDisplayHorizontalFlip_property)
   //--- Configure mPackageDisplayVerticalFlip simple stored property
     self.mPackageDisplayVerticalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1631,7 +1428,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPackageDisplayVerticalFlip_property)
   //--- Configure mShowPackages simple stored property
     self.mShowPackages_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1647,7 +1443,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mShowPackages_property)
   //--- Configure mShowPackagePadNumbers simple stored property
     self.mShowPackagePadNumbers_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1663,7 +1458,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mShowPackagePadNumbers_property)
   //--- Configure mShowPackageFrontPads simple stored property
     self.mShowPackageFrontPads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1679,7 +1473,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mShowPackageFrontPads_property)
   //--- Configure mShowPackageBackPads simple stored property
     self.mShowPackageBackPads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1695,7 +1488,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mShowPackageBackPads_property)
   //--- Configure mSymbolDisplayZoom simple stored property
     self.mSymbolDisplayZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1711,7 +1503,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolDisplayZoom_property)
   //--- Configure mSymbolDisplayHorizontalFlip simple stored property
     self.mSymbolDisplayHorizontalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1727,7 +1518,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolDisplayHorizontalFlip_property)
   //--- Configure mSymbolDisplayVerticalFlip simple stored property
     self.mSymbolDisplayVerticalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1743,7 +1533,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolDisplayVerticalFlip_property)
   //--- Configure imageIsValid transient property
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1759,7 +1548,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.imageIsValid_property)
   //--- Configure inconsistentPackagePadNameSetsMessage transient property
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1775,7 +1563,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.inconsistentPackagePadNameSetsMessage_property)
   //--- Configure inconsistentSymbolNameSetMessage transient property
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1791,7 +1578,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.inconsistentSymbolNameSetMessage_property)
   //--- Configure unconnectedPins transient property
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1807,7 +1593,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.unconnectedPins_property)
   //--- Configure packagePadNameSetsAreConsistent transient property
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1823,7 +1608,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.packagePadNameSetsAreConsistent_property)
   //--- Configure symbolNameAreConsistent transient property
     self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1839,7 +1623,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolNameAreConsistent_property)
   //--- Configure symbolTypeNames transient property
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1855,7 +1638,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolTypeNames_property)
   //--- Configure unconnectedPads transient property
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1871,7 +1653,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.unconnectedPads_property)
   //--- Configure assignedPadProxies transient property
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1887,7 +1668,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.assignedPadProxies_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1903,7 +1683,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

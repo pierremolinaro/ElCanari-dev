@@ -15,32 +15,36 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceDocumentation?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mFileName_property.removeEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+      oldValue.mFileName_property.removeEBObserver (self.mFileName_property) // Stored property
+ //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      oldValue.mFileData_property.removeEBObserver (self.mFileData_property) // Stored property
+ //     oldValue.fileSize_property.removeEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+      oldValue.fileSize_property.removeEBObserver (self.fileSize_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mFileName_property.addEBObserversFrom (&self.mObserversOf_mFileName) // Stored property
+      newValue.mFileName_property.addEBObserver (self.mFileName_property) // Stored property
+ //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      newValue.mFileData_property.addEBObserver (self.mFileData_property) // Stored property
+  //    newValue.fileSize_property.addEBObserversFrom (&self.mObserversOf_fileSize) // Transient property
+      newValue.fileSize_property.addEBObserver (self.fileSize_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mFileName' stored property
   //····················································································································
 
-  private final var mFileName_property = EBGenericTransientProperty <String?> ()
+  final let mFileName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mFileName_property_selection : EBSelection <String?> { // §
     return self.mFileName_property.selection
-/*    if let model = self.propval {
-      switch (model.mFileName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +77,13 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private final var mFileData_property = EBGenericTransientProperty <Data?> ()
+  final let mFileData_property = EBGenericTransientProperty <Data?> ()
 //  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
   final var mFileData_property_selection : EBSelection <Data?> { // §
     return self.mFileData_property.selection
-/*    if let model = self.propval {
-      switch (model.mFileData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +116,13 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private final var fileSize_property = EBGenericTransientProperty <Int?> ()
+  final let fileSize_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_fileSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var fileSize_property_selection : EBSelection <Int?> {
     return self.fileSize_property.selection
-/*    if let model = self.propval {
-      switch (model.fileSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -192,7 +172,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mFileName_property)
   //--- Configure mFileData simple stored property
     self.mFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -208,7 +187,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mFileData_property)
   //--- Configure fileSize transient property
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -224,7 +202,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.fileSize_property)
   }
 
   //····················································································································

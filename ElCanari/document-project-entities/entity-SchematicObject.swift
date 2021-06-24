@@ -105,7 +105,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -128,7 +128,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var connectedPoints : CanariPointArray? {
-    switch self.connectedPoints_property_selection {
+    switch self.connectedPoints_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -151,7 +151,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
-    switch self.sheetDescriptor_property_selection {
+    switch self.sheetDescriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -174,7 +174,7 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isPlacedInSchematic : Bool? {
-    switch self.isPlacedInSchematic_property_selection {
+    switch self.isPlacedInSchematic_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -205,7 +205,7 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSheet_property.sheetDescriptor_property_selection) {
+        switch (unwSelf.mSheet_property.sheetDescriptor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SchematicObject_sheetDescriptor (v0))
         case (.multiple) :
@@ -221,7 +221,7 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSheet_none_selection) {
+        switch (unwSelf.mSheet_none.selection) {
         case (.single (let v0)) :
           return .single (transient_SchematicObject_isPlacedInSchematic (v0))
         case (.multiple) :

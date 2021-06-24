@@ -53,7 +53,7 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -114,7 +114,7 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var knobSize : Double? {
-    switch self.knobSize_property_selection {
+    switch self.knobSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -145,7 +145,7 @@ class PackageObject : EBGraphicManagedObject,
   //--- Atomic property: knobSize
     self.knobSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.knobSizeMultpliedByTen_property_selection) {
+        switch (unwSelf.mRoot_property.knobSizeMultpliedByTen_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageObject_knobSize (v0))
         case (.multiple) :

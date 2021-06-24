@@ -610,7 +610,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xCenter_property_selection {
+            switch object.xCenter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -679,7 +679,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yCenter_property_selection {
+            switch object.yCenter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -748,7 +748,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.width_property_selection {
+            switch object.width_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -817,7 +817,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.height_property_selection {
+            switch object.height_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -886,7 +886,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeWidth_property_selection {
+            switch object.holeWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -955,7 +955,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeHeight_property_selection {
+            switch object.holeHeight_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1024,7 +1024,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <PadShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padShape_property_selection {
+            switch object.padShape_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1093,7 +1093,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <SlavePadStyle> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padStyle_property_selection {
+            switch object.padStyle_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1162,7 +1162,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xCenterUnit_property_selection {
+            switch object.xCenterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1231,7 +1231,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yCenterUnit_property_selection {
+            switch object.yCenterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1300,7 +1300,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.widthUnit_property_selection {
+            switch object.widthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1369,7 +1369,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.heightUnit_property_selection {
+            switch object.heightUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1438,7 +1438,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeWidthUnit_property_selection {
+            switch object.holeWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1507,7 +1507,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holeHeightUnit_property_selection {
+            switch object.holeHeightUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1576,7 +1576,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.annularRingUnit_property_selection {
+            switch object.annularRingUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1645,7 +1645,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1684,7 +1684,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1723,7 +1723,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1762,7 +1762,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padIsTraversing_property_selection {
+            switch object.padIsTraversing_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1801,7 +1801,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.annularRing_property_selection {
+            switch object.annularRing_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1840,7 +1840,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padNameWithZoneName_property_selection {
+            switch object.padNameWithZoneName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1879,7 +1879,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.masterPadNameWithZoneName_property_selection {
+            switch object.masterPadNameWithZoneName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1918,7 +1918,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padNameForDisplay_property_selection {
+            switch object.padNameForDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1957,7 +1957,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padNumberDisplay_property_selection {
+            switch object.padNumberDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

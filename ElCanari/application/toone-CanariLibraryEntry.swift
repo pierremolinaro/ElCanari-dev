@@ -15,32 +15,44 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : CanariLibraryEntry?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mPath_property.removeEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+      oldValue.mPath_property.removeEBObserver (self.mPath_property) // Stored property
+ //     oldValue.mUses_property.removeEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+      oldValue.mUses_property.removeEBObserver (self.mUses_property) // Stored property
+ //     oldValue.mLibraryRepositoryURL_property.removeEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+      oldValue.mLibraryRepositoryURL_property.removeEBObserver (self.mLibraryRepositoryURL_property) // Stored property
+ //     oldValue.mUserAndPasswordTag_property.removeEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+      oldValue.mUserAndPasswordTag_property.removeEBObserver (self.mUserAndPasswordTag_property) // Stored property
+ //     oldValue.mStatusImage_property.removeEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+      oldValue.mStatusImage_property.removeEBObserver (self.mStatusImage_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mPath_property.addEBObserversFrom (&self.mObserversOf_mPath) // Stored property
+      newValue.mPath_property.addEBObserver (self.mPath_property) // Stored property
+ //     newValue.mUses_property.addEBObserversFrom (&self.mObserversOf_mUses) // Stored property
+      newValue.mUses_property.addEBObserver (self.mUses_property) // Stored property
+ //     newValue.mLibraryRepositoryURL_property.addEBObserversFrom (&self.mObserversOf_mLibraryRepositoryURL) // Stored property
+      newValue.mLibraryRepositoryURL_property.addEBObserver (self.mLibraryRepositoryURL_property) // Stored property
+ //     newValue.mUserAndPasswordTag_property.addEBObserversFrom (&self.mObserversOf_mUserAndPasswordTag) // Stored property
+      newValue.mUserAndPasswordTag_property.addEBObserver (self.mUserAndPasswordTag_property) // Stored property
+  //    newValue.mStatusImage_property.addEBObserversFrom (&self.mObserversOf_mStatusImage) // Transient property
+      newValue.mStatusImage_property.addEBObserver (self.mStatusImage_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mPath' stored property
   //····················································································································
 
-  private final var mPath_property = EBGenericTransientProperty <String?> ()
+  final let mPath_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPath_property_selection : EBSelection <String?> { // §
     return self.mPath_property.selection
-/*    if let model = self.propval {
-      switch (model.mPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +85,13 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mUses' stored property
   //····················································································································
 
-  private final var mUses_property = EBGenericTransientProperty <Bool?> ()
+  final let mUses_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mUses = EBWeakEventSet ()
 
   //····················································································································
 
   final var mUses_property_selection : EBSelection <Bool?> { // §
     return self.mUses_property.selection
-/*    if let model = self.propval {
-      switch (model.mUses_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +124,13 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mLibraryRepositoryURL' stored property
   //····················································································································
 
-  private final var mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
+  final let mLibraryRepositoryURL_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
 
   //····················································································································
 
   final var mLibraryRepositoryURL_property_selection : EBSelection <String?> { // §
     return self.mLibraryRepositoryURL_property.selection
-/*    if let model = self.propval {
-      switch (model.mLibraryRepositoryURL_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +163,13 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mUserAndPasswordTag' stored property
   //····················································································································
 
-  private final var mUserAndPasswordTag_property = EBGenericTransientProperty <String?> ()
+  final let mUserAndPasswordTag_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
 
   //····················································································································
 
   final var mUserAndPasswordTag_property_selection : EBSelection <String?> { // §
     return self.mUserAndPasswordTag_property.selection
-/*    if let model = self.propval {
-      switch (model.mUserAndPasswordTag_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +202,13 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
-  private final var mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+  final let mStatusImage_property = EBGenericTransientProperty <NSImage?> ()
 //  private final var mObserversOf_mStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
   final var mStatusImage_property_selection : EBSelection <NSImage?> {
     return self.mStatusImage_property.selection
-/*    if let model = self.propval {
-      switch (model.mStatusImage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -294,7 +258,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPath_property)
   //--- Configure mUses simple stored property
     self.mUses_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -310,7 +273,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mUses_property)
   //--- Configure mLibraryRepositoryURL simple stored property
     self.mLibraryRepositoryURL_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -326,7 +288,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mLibraryRepositoryURL_property)
   //--- Configure mUserAndPasswordTag simple stored property
     self.mUserAndPasswordTag_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -342,7 +303,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mUserAndPasswordTag_property)
   //--- Configure mStatusImage transient property
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -358,7 +318,6 @@ class ReadOnlyObject_CanariLibraryEntry : ReadOnlyAbstractObjectProperty <Canari
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mStatusImage_property)
   }
 
   //····················································································································

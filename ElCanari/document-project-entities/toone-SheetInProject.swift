@@ -15,32 +15,48 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SheetInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mSheetTitle_property.removeEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+      oldValue.mSheetTitle_property.removeEBObserver (self.mSheetTitle_property) // Stored property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+ //     oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
+ //     oldValue.connexionWarnings_property.removeEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
+      oldValue.connexionWarnings_property.removeEBObserver (self.connexionWarnings_property) // Transient property
+ //     oldValue.connexionErrors_property.removeEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+      oldValue.connexionErrors_property.removeEBObserver (self.connexionErrors_property) // Transient property
+ //     oldValue.sheetDescriptor_property.removeEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+      oldValue.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mSheetTitle_property.addEBObserversFrom (&self.mObserversOf_mSheetTitle) // Stored property
+      newValue.mSheetTitle_property.addEBObserver (self.mSheetTitle_property) // Stored property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+  //    newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
+  //    newValue.connexionWarnings_property.addEBObserversFrom (&self.mObserversOf_connexionWarnings) // Transient property
+      newValue.connexionWarnings_property.addEBObserver (self.connexionWarnings_property) // Transient property
+  //    newValue.connexionErrors_property.addEBObserversFrom (&self.mObserversOf_connexionErrors) // Transient property
+      newValue.connexionErrors_property.addEBObserver (self.connexionErrors_property) // Transient property
+  //    newValue.sheetDescriptor_property.addEBObserversFrom (&self.mObserversOf_sheetDescriptor) // Transient property
+      newValue.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  private final var mSheetTitle_property = EBGenericTransientProperty <String?> ()
+  final let mSheetTitle_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSheetTitle_property_selection : EBSelection <String?> { // §
     return self.mSheetTitle_property.selection
-/*    if let model = self.propval {
-      switch (model.mSheetTitle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +89,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +128,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
+  final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <EBShape?> {
     return self.connectedPoints_property.selection
-/*    if let model = self.propval {
-      switch (model.connectedPoints_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +167,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  private final var connexionWarnings_property = EBGenericTransientProperty <Int?> ()
+  final let connexionWarnings_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_connexionWarnings = EBWeakEventSet ()
 
   //····················································································································
 
   final var connexionWarnings_property_selection : EBSelection <Int?> {
     return self.connexionWarnings_property.selection
-/*    if let model = self.propval {
-      switch (model.connexionWarnings_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +206,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  private final var connexionErrors_property = EBGenericTransientProperty <Int?> ()
+  final let connexionErrors_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_connexionErrors = EBWeakEventSet ()
 
   //····················································································································
 
   final var connexionErrors_property_selection : EBSelection <Int?> {
     return self.connexionErrors_property.selection
-/*    if let model = self.propval {
-      switch (model.connexionErrors_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +245,13 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private final var sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
+  final let sheetDescriptor_property = EBGenericTransientProperty <SchematicSheetDescriptor?> ()
 //  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
 
   //····················································································································
 
   final var sheetDescriptor_property_selection : EBSelection <SchematicSheetDescriptor?> {
     return self.sheetDescriptor_property.selection
-/*    if let model = self.propval {
-      switch (model.sheetDescriptor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -334,7 +290,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   final var mObjects_property_selection : EBSelection <[SchematicObject]> {
     if let model = self.propval {
-      switch (model.mObjects_property_selection) {
+      switch (model.mObjects_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -375,7 +331,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   final var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
-      switch (model.mPoints_property_selection) {
+      switch (model.mPoints_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -427,7 +383,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSheetTitle_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -443,7 +398,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   //--- Configure connectedPoints transient property
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -459,7 +413,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connectedPoints_property)
   //--- Configure connexionWarnings transient property
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -475,7 +428,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connexionWarnings_property)
   //--- Configure connexionErrors transient property
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -491,7 +443,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connexionErrors_property)
   //--- Configure sheetDescriptor transient property
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -507,7 +458,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.sheetDescriptor_property)
   }
 
   //····················································································································

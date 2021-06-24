@@ -496,7 +496,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var componentName : String? {
-    switch self.componentName_property_selection {
+    switch self.componentName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -519,7 +519,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var deviceName : String? {
-    switch self.deviceName_property_selection {
+    switch self.deviceName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -542,7 +542,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInfo : ComponentSymbolInfo? {
-    switch self.symbolInfo_property_selection {
+    switch self.symbolInfo_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -565,7 +565,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property_selection {
+    switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -588,7 +588,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInSchematic : Bool? {
-    switch self.symbolInSchematic_property_selection {
+    switch self.symbolInSchematic_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -651,7 +651,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponent_property.componentName_property_selection) {
+        switch (unwSelf.mComponent_property.componentName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ComponentSymbolInProject_componentName (v0))
         case (.multiple) :
@@ -667,7 +667,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponent_property.deviceName_property_selection) {
+        switch (unwSelf.mComponent_property.deviceName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ComponentSymbolInProject_deviceName (v0))
         case (.multiple) :
@@ -683,7 +683,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: symbolInfo
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRotation_property_selection, unwSelf.mMirror_property_selection, unwSelf.componentName_property_selection, unwSelf.mComponent_property.mComponentValue_property_selection, unwSelf.mComponent_property.deviceSymbolDictionary_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection, unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, preferences_pinNameFont_property_selection, unwSelf.mPoints_property_selection) {
+        switch (unwSelf.mRotation_property.selection, unwSelf.mMirror_property.selection, unwSelf.componentName_property.selection, unwSelf.mComponent_property.mComponentValue_property.selection, unwSelf.mComponent_property.deviceSymbolDictionary_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection, unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, preferences_pinNameFont_property.selection, unwSelf.mPoints_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
           return .single (transient_ComponentSymbolInProject_symbolInfo (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -709,7 +709,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponent_property.pinPadAssignments_property_selection) {
+        switch (unwSelf.mComponent_property.pinPadAssignments_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ComponentSymbolInProject_pinPadAssignments (v0))
         case (.multiple) :
@@ -725,7 +725,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_pinNameFont_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, preferences_symbolColorForSchematic_property_selection, unwSelf.mSymbolInstanceName_property_selection, unwSelf.mSymbolTypeName_property_selection) {
+        switch (preferences_pinNameFont_property.selection, unwSelf.mDisplayComponentNameOffsetX_property.selection, unwSelf.mDisplayComponentNameOffsetY_property.selection, unwSelf.mDisplayComponentValue_property.selection, unwSelf.mDisplayComponentValueOffsetX_property.selection, unwSelf.mDisplayComponentValueOffsetY_property.selection, unwSelf.symbolInfo_property.selection, preferences_symbolColorForSchematic_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
           return .single (transient_ComponentSymbolInProject_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -750,7 +750,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_pinNameFont_property_selection, preferences_schematicBackColor_property_selection, unwSelf.mDisplayComponentNameOffsetX_property_selection, unwSelf.mDisplayComponentNameOffsetY_property_selection, unwSelf.mDisplayComponentValue_property_selection, unwSelf.mDisplayComponentValueOffsetX_property_selection, unwSelf.mDisplayComponentValueOffsetY_property_selection, unwSelf.symbolInfo_property_selection, unwSelf.mRotation_property_selection) {
+        switch (preferences_pinNameFont_property.selection, preferences_schematicBackColor_property.selection, unwSelf.mDisplayComponentNameOffsetX_property.selection, unwSelf.mDisplayComponentNameOffsetY_property.selection, unwSelf.mDisplayComponentValue_property.selection, unwSelf.mDisplayComponentValueOffsetX_property.selection, unwSelf.mDisplayComponentValueOffsetY_property.selection, unwSelf.symbolInfo_property.selection, unwSelf.mRotation_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_ComponentSymbolInProject_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -774,7 +774,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- Atomic property: symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.isPlacedInSchematic_property_selection) {
+        switch (unwSelf.isPlacedInSchematic_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ComponentSymbolInProject_symbolInSchematic (v0))
         case (.multiple) :

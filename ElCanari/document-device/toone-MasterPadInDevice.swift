@@ -15,32 +15,72 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : MasterPadInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mCenterX_property.removeEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+      oldValue.mCenterX_property.removeEBObserver (self.mCenterX_property) // Stored property
+ //     oldValue.mCenterY_property.removeEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+      oldValue.mCenterY_property.removeEBObserver (self.mCenterY_property) // Stored property
+ //     oldValue.mWidth_property.removeEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      oldValue.mWidth_property.removeEBObserver (self.mWidth_property) // Stored property
+ //     oldValue.mHeight_property.removeEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      oldValue.mHeight_property.removeEBObserver (self.mHeight_property) // Stored property
+ //     oldValue.mHoleWidth_property.removeEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
+      oldValue.mHoleWidth_property.removeEBObserver (self.mHoleWidth_property) // Stored property
+ //     oldValue.mHoleHeight_property.removeEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
+      oldValue.mHoleHeight_property.removeEBObserver (self.mHoleHeight_property) // Stored property
+ //     oldValue.mShape_property.removeEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      oldValue.mShape_property.removeEBObserver (self.mShape_property) // Stored property
+ //     oldValue.mStyle_property.removeEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
+      oldValue.mStyle_property.removeEBObserver (self.mStyle_property) // Stored property
+ //     oldValue.mName_property.removeEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      oldValue.mName_property.removeEBObserver (self.mName_property) // Stored property
+ //     oldValue.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+      oldValue.padNumberDisplay_property.removeEBObserver (self.padNumberDisplay_property) // Transient property
+ //     oldValue.frontSideFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPathArray) // Transient property
+      oldValue.frontSideFilledBezierPathArray_property.removeEBObserver (self.frontSideFilledBezierPathArray_property) // Transient property
+ //     oldValue.backSideFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_backSideFilledBezierPathArray) // Transient property
+      oldValue.backSideFilledBezierPathArray_property.removeEBObserver (self.backSideFilledBezierPathArray_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mCenterX_property.addEBObserversFrom (&self.mObserversOf_mCenterX) // Stored property
+      newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
+ //     newValue.mCenterY_property.addEBObserversFrom (&self.mObserversOf_mCenterY) // Stored property
+      newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
+ //     newValue.mWidth_property.addEBObserversFrom (&self.mObserversOf_mWidth) // Stored property
+      newValue.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
+ //     newValue.mHeight_property.addEBObserversFrom (&self.mObserversOf_mHeight) // Stored property
+      newValue.mHeight_property.addEBObserver (self.mHeight_property) // Stored property
+ //     newValue.mHoleWidth_property.addEBObserversFrom (&self.mObserversOf_mHoleWidth) // Stored property
+      newValue.mHoleWidth_property.addEBObserver (self.mHoleWidth_property) // Stored property
+ //     newValue.mHoleHeight_property.addEBObserversFrom (&self.mObserversOf_mHoleHeight) // Stored property
+      newValue.mHoleHeight_property.addEBObserver (self.mHoleHeight_property) // Stored property
+ //     newValue.mShape_property.addEBObserversFrom (&self.mObserversOf_mShape) // Stored property
+      newValue.mShape_property.addEBObserver (self.mShape_property) // Stored property
+ //     newValue.mStyle_property.addEBObserversFrom (&self.mObserversOf_mStyle) // Stored property
+      newValue.mStyle_property.addEBObserver (self.mStyle_property) // Stored property
+ //     newValue.mName_property.addEBObserversFrom (&self.mObserversOf_mName) // Stored property
+      newValue.mName_property.addEBObserver (self.mName_property) // Stored property
+  //    newValue.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay) // Transient property
+      newValue.padNumberDisplay_property.addEBObserver (self.padNumberDisplay_property) // Transient property
+  //    newValue.frontSideFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPathArray) // Transient property
+      newValue.frontSideFilledBezierPathArray_property.addEBObserver (self.frontSideFilledBezierPathArray_property) // Transient property
+  //    newValue.backSideFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_backSideFilledBezierPathArray) // Transient property
+      newValue.backSideFilledBezierPathArray_property.addEBObserver (self.backSideFilledBezierPathArray_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
-  private final var mCenterX_property = EBGenericTransientProperty <Int?> ()
+  final let mCenterX_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCenterX_property_selection : EBSelection <Int?> { // §
     return self.mCenterX_property.selection
-/*    if let model = self.propval {
-      switch (model.mCenterX_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +113,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
-  private final var mCenterY_property = EBGenericTransientProperty <Int?> ()
+  final let mCenterY_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCenterY_property_selection : EBSelection <Int?> { // §
     return self.mCenterY_property.selection
-/*    if let model = self.propval {
-      switch (model.mCenterY_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +152,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private final var mWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var mWidth_property_selection : EBSelection <Int?> { // §
     return self.mWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.mWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +191,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  private final var mHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mHeight_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
 
   final var mHeight_property_selection : EBSelection <Int?> { // §
     return self.mHeight_property.selection
-/*    if let model = self.propval {
-      switch (model.mHeight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +230,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
-  private final var mHoleWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mHoleWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var mHoleWidth_property_selection : EBSelection <Int?> { // §
     return self.mHoleWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.mHoleWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +269,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
 
-  private final var mHoleHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mHoleHeight_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mHoleHeight = EBWeakEventSet ()
 
   //····················································································································
 
   final var mHoleHeight_property_selection : EBSelection <Int?> { // §
     return self.mHoleHeight_property.selection
-/*    if let model = self.propval {
-      switch (model.mHoleHeight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +308,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  private final var mShape_property = EBGenericTransientProperty <PadShape?> ()
+  final let mShape_property = EBGenericTransientProperty <PadShape?> ()
 //  private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
 
   final var mShape_property_selection : EBSelection <PadShape?> { // §
     return self.mShape_property.selection
-/*    if let model = self.propval {
-      switch (model.mShape_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +347,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mStyle' stored property
   //····················································································································
 
-  private final var mStyle_property = EBGenericTransientProperty <PadStyle?> ()
+  final let mStyle_property = EBGenericTransientProperty <PadStyle?> ()
 //  private final var mObserversOf_mStyle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mStyle_property_selection : EBSelection <PadStyle?> { // §
     return self.mStyle_property.selection
-/*    if let model = self.propval {
-      switch (model.mStyle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +386,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'mName' stored property
   //····················································································································
 
-  private final var mName_property = EBGenericTransientProperty <String?> ()
+  final let mName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mName_property_selection : EBSelection <String?> { // §
     return self.mName_property.selection
-/*    if let model = self.propval {
-      switch (model.mName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +425,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
-  private final var padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let padNumberDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_padNumberDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var padNumberDisplay_property_selection : EBSelection <EBShape?> {
     return self.padNumberDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.padNumberDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -532,25 +464,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'frontSideFilledBezierPathArray' transient property
   //····················································································································
 
-  private final var frontSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let frontSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
 //  private final var mObserversOf_frontSideFilledBezierPathArray = EBWeakEventSet ()
 
   //····················································································································
 
   final var frontSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray?> {
     return self.frontSideFilledBezierPathArray_property.selection
-/*    if let model = self.propval {
-      switch (model.frontSideFilledBezierPathArray_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -583,25 +503,13 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observers of 'backSideFilledBezierPathArray' transient property
   //····················································································································
 
-  private final var backSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
+  final let backSideFilledBezierPathArray_property = EBGenericTransientProperty <BezierPathArray?> ()
 //  private final var mObserversOf_backSideFilledBezierPathArray = EBWeakEventSet ()
 
   //····················································································································
 
   final var backSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray?> {
     return self.backSideFilledBezierPathArray_property.selection
-/*    if let model = self.propval {
-      switch (model.backSideFilledBezierPathArray_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -640,7 +548,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 
   final var mSlavePads_property_selection : EBSelection <[SlavePadInDevice]> {
     if let model = self.propval {
-      switch (model.mSlavePads_property_selection) {
+      switch (model.mSlavePads_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -692,7 +600,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCenterX_property)
   //--- Configure mCenterY simple stored property
     self.mCenterY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -708,7 +615,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCenterY_property)
   //--- Configure mWidth simple stored property
     self.mWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -724,7 +630,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mWidth_property)
   //--- Configure mHeight simple stored property
     self.mHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -740,7 +645,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mHeight_property)
   //--- Configure mHoleWidth simple stored property
     self.mHoleWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -756,7 +660,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mHoleWidth_property)
   //--- Configure mHoleHeight simple stored property
     self.mHoleHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -772,7 +675,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mHoleHeight_property)
   //--- Configure mShape simple stored property
     self.mShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -788,7 +690,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mShape_property)
   //--- Configure mStyle simple stored property
     self.mStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -804,7 +705,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mStyle_property)
   //--- Configure mName simple stored property
     self.mName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -820,7 +720,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mName_property)
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -836,7 +735,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.padNumberDisplay_property)
   //--- Configure frontSideFilledBezierPathArray transient property
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -852,7 +750,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
   //--- Configure backSideFilledBezierPathArray transient property
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -868,7 +765,6 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.backSideFilledBezierPathArray_property)
   }
 
   //····················································································································

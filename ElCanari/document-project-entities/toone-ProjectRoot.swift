@@ -15,32 +15,484 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mArtworkName_property.removeEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
+      oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
+ //     oldValue.mArtworkVersion_property.removeEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
+      oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
+ //     oldValue.mPDFBoardBackgroundColor_property.removeEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
+      oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
+ //     oldValue.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
+      oldValue.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
+ //     oldValue.mLastERCCheckingIsSuccess_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
+      oldValue.mLastERCCheckingIsSuccess_property.removeEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
+ //     oldValue.mLastERCCheckingSignature_property.removeEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
+      oldValue.mLastERCCheckingSignature_property.removeEBObserver (self.mLastERCCheckingSignature_property) // Stored property
+ //     oldValue.mBoardSideForNewTrack_property.removeEBObserversFrom (&self.mObserversOf_mBoardSideForNewTrack) // Stored property
+      oldValue.mBoardSideForNewTrack_property.removeEBObserver (self.mBoardSideForNewTrack_property) // Stored property
+ //     oldValue.mDirectionForNewTrack_property.removeEBObserversFrom (&self.mObserversOf_mDirectionForNewTrack) // Stored property
+      oldValue.mDirectionForNewTrack_property.removeEBObserver (self.mDirectionForNewTrack_property) // Stored property
+ //     oldValue.mBoardLayerForNewText_property.removeEBObserversFrom (&self.mObserversOf_mBoardLayerForNewText) // Stored property
+      oldValue.mBoardLayerForNewText_property.removeEBObserver (self.mBoardLayerForNewText_property) // Stored property
+ //     oldValue.mBoardLayerForNewLine_property.removeEBObserversFrom (&self.mObserversOf_mBoardLayerForNewLine) // Stored property
+      oldValue.mBoardLayerForNewLine_property.removeEBObserver (self.mBoardLayerForNewLine_property) // Stored property
+ //     oldValue.mBoardSideForNewRestrictRectangle_property.removeEBObserversFrom (&self.mObserversOf_mBoardSideForNewRestrictRectangle) // Stored property
+      oldValue.mBoardSideForNewRestrictRectangle_property.removeEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
+ //     oldValue.mAutoRouterPreferredDirections_property.removeEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
+      oldValue.mAutoRouterPreferredDirections_property.removeEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
+ //     oldValue.mAutorouterSnapAngle_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
+      oldValue.mAutorouterSnapAngle_property.removeEBObserver (self.mAutorouterSnapAngle_property) // Stored property
+ //     oldValue.mRouteDirection_property.removeEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
+      oldValue.mRouteDirection_property.removeEBObserver (self.mRouteDirection_property) // Stored property
+ //     oldValue.mRouteOrigin_property.removeEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
+      oldValue.mRouteOrigin_property.removeEBObserver (self.mRouteOrigin_property) // Stored property
+ //     oldValue.mAutorouterInterfaceMode_property.removeEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
+      oldValue.mAutorouterInterfaceMode_property.removeEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
+ //     oldValue.mExportExistingTracksAndVias_property.removeEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
+      oldValue.mExportExistingTracksAndVias_property.removeEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
+ //     oldValue.mTrackLengthUnit_property.removeEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
+      oldValue.mTrackLengthUnit_property.removeEBObserver (self.mTrackLengthUnit_property) // Stored property
+ //     oldValue.mLayoutClearance_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
+      oldValue.mLayoutClearance_property.removeEBObserver (self.mLayoutClearance_property) // Stored property
+ //     oldValue.mLayoutClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
+      oldValue.mLayoutClearanceUnit_property.removeEBObserver (self.mLayoutClearanceUnit_property) // Stored property
+ //     oldValue.mBoardSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
+      oldValue.mBoardSelectedInspector_property.removeEBObserver (self.mBoardSelectedInspector_property) // Stored property
+ //     oldValue.mBoardHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
+      oldValue.mBoardHorizontalFlip_property.removeEBObserver (self.mBoardHorizontalFlip_property) // Stored property
+ //     oldValue.mBoardVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
+      oldValue.mBoardVerticalFlip_property.removeEBObserver (self.mBoardVerticalFlip_property) // Stored property
+ //     oldValue.mBoardGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStyle) // Stored property
+      oldValue.mBoardGridStyle_property.removeEBObserver (self.mBoardGridStyle_property) // Stored property
+ //     oldValue.mBoardGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridDisplayFactor) // Stored property
+      oldValue.mBoardGridDisplayFactor_property.removeEBObserver (self.mBoardGridDisplayFactor_property) // Stored property
+ //     oldValue.mBoardZoom_property.removeEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
+      oldValue.mBoardZoom_property.removeEBObserver (self.mBoardZoom_property) // Stored property
+ //     oldValue.mBoardGridStep_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
+      oldValue.mBoardGridStep_property.removeEBObserver (self.mBoardGridStep_property) // Stored property
+ //     oldValue.mBoardGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
+      oldValue.mBoardGridStepUnit_property.removeEBObserver (self.mBoardGridStepUnit_property) // Stored property
+ //     oldValue.mErrorOrWarningIssueSize_property.removeEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
+      oldValue.mErrorOrWarningIssueSize_property.removeEBObserver (self.mErrorOrWarningIssueSize_property) // Stored property
+ //     oldValue.mControlKeyHiliteDiameter_property.removeEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
+      oldValue.mControlKeyHiliteDiameter_property.removeEBObserver (self.mControlKeyHiliteDiameter_property) // Stored property
+ //     oldValue.mDSNFileProposedName_property.removeEBObserversFrom (&self.mObserversOf_mDSNFileProposedName) // Stored property
+      oldValue.mDSNFileProposedName_property.removeEBObserver (self.mDSNFileProposedName_property) // Stored property
+ //     oldValue.mBoardLimitsWidth_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
+      oldValue.mBoardLimitsWidth_property.removeEBObserver (self.mBoardLimitsWidth_property) // Stored property
+ //     oldValue.mBoardLimitsWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
+      oldValue.mBoardLimitsWidthUnit_property.removeEBObserver (self.mBoardLimitsWidthUnit_property) // Stored property
+ //     oldValue.mBoardClearance_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
+      oldValue.mBoardClearance_property.removeEBObserver (self.mBoardClearance_property) // Stored property
+ //     oldValue.mBoardClearanceUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+      oldValue.mBoardClearanceUnit_property.removeEBObserver (self.mBoardClearanceUnit_property) // Stored property
+ //     oldValue.mBoardLimitsSelectedInspector_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
+      oldValue.mBoardLimitsSelectedInspector_property.removeEBObserver (self.mBoardLimitsSelectedInspector_property) // Stored property
+ //     oldValue.mBoardLimitsHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
+      oldValue.mBoardLimitsHorizontalFlip_property.removeEBObserver (self.mBoardLimitsHorizontalFlip_property) // Stored property
+ //     oldValue.mBoardLimitsVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
+      oldValue.mBoardLimitsVerticalFlip_property.removeEBObserver (self.mBoardLimitsVerticalFlip_property) // Stored property
+ //     oldValue.mBoardLimitsGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStyle) // Stored property
+      oldValue.mBoardLimitsGridStyle_property.removeEBObserver (self.mBoardLimitsGridStyle_property) // Stored property
+ //     oldValue.mBoardLimitsGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridDisplayFactor) // Stored property
+      oldValue.mBoardLimitsGridDisplayFactor_property.removeEBObserver (self.mBoardLimitsGridDisplayFactor_property) // Stored property
+ //     oldValue.mBoardLimitsZoom_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsZoom) // Stored property
+      oldValue.mBoardLimitsZoom_property.removeEBObserver (self.mBoardLimitsZoom_property) // Stored property
+ //     oldValue.mBoardLimitsGridStep_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStep) // Stored property
+      oldValue.mBoardLimitsGridStep_property.removeEBObserver (self.mBoardLimitsGridStep_property) // Stored property
+ //     oldValue.mBoardLimitsGridStepUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
+      oldValue.mBoardLimitsGridStepUnit_property.removeEBObserver (self.mBoardLimitsGridStepUnit_property) // Stored property
+ //     oldValue.mBoardLimitsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
+      oldValue.mBoardLimitsBoundingBoxUnit_property.removeEBObserver (self.mBoardLimitsBoundingBoxUnit_property) // Stored property
+ //     oldValue.mBoardPointsBoundingBoxUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
+      oldValue.mBoardPointsBoundingBoxUnit_property.removeEBObserver (self.mBoardPointsBoundingBoxUnit_property) // Stored property
+ //     oldValue.mBoardSelectedCurveDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
+      oldValue.mBoardSelectedCurveDisplayUnit_property.removeEBObserver (self.mBoardSelectedCurveDisplayUnit_property) // Stored property
+ //     oldValue.mBoardLimitControlPointsDisplayUnit_property.removeEBObserversFrom (&self.mObserversOf_mBoardLimitControlPointsDisplayUnit) // Stored property
+      oldValue.mBoardLimitControlPointsDisplayUnit_property.removeEBObserver (self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
+ //     oldValue.mBoardShape_property.removeEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
+      oldValue.mBoardShape_property.removeEBObserver (self.mBoardShape_property) // Stored property
+ //     oldValue.mRectangularBoardWidth_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
+      oldValue.mRectangularBoardWidth_property.removeEBObserver (self.mRectangularBoardWidth_property) // Stored property
+ //     oldValue.mRectangularBoardWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
+      oldValue.mRectangularBoardWidthUnit_property.removeEBObserver (self.mRectangularBoardWidthUnit_property) // Stored property
+ //     oldValue.mRectangularBoardHeight_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
+      oldValue.mRectangularBoardHeight_property.removeEBObserver (self.mRectangularBoardHeight_property) // Stored property
+ //     oldValue.mRectangularBoardHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
+      oldValue.mRectangularBoardHeightUnit_property.removeEBObserver (self.mRectangularBoardHeightUnit_property) // Stored property
+ //     oldValue.mDefaultNetClassName_property.removeEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
+      oldValue.mDefaultNetClassName_property.removeEBObserver (self.mDefaultNetClassName_property) // Stored property
+ //     oldValue.mSelectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
+      oldValue.mSelectedPageIndex_property.removeEBObserver (self.mSelectedPageIndex_property) // Stored property
+ //     oldValue.mSelectedSchematicInspector_property.removeEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
+      oldValue.mSelectedSchematicInspector_property.removeEBObserver (self.mSelectedSchematicInspector_property) // Stored property
+ //     oldValue.mSchematicTitle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
+      oldValue.mSchematicTitle_property.removeEBObserver (self.mSchematicTitle_property) // Stored property
+ //     oldValue.mSchematicVersion_property.removeEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
+      oldValue.mSchematicVersion_property.removeEBObserver (self.mSchematicVersion_property) // Stored property
+ //     oldValue.mSchematicDate_property.removeEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
+      oldValue.mSchematicDate_property.removeEBObserver (self.mSchematicDate_property) // Stored property
+ //     oldValue.mSchematicHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSchematicHorizontalFlip) // Stored property
+      oldValue.mSchematicHorizontalFlip_property.removeEBObserver (self.mSchematicHorizontalFlip_property) // Stored property
+ //     oldValue.mSchematicVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSchematicVerticalFlip) // Stored property
+      oldValue.mSchematicVerticalFlip_property.removeEBObserver (self.mSchematicVerticalFlip_property) // Stored property
+ //     oldValue.mSchematicZoom_property.removeEBObserversFrom (&self.mObserversOf_mSchematicZoom) // Stored property
+      oldValue.mSchematicZoom_property.removeEBObserver (self.mSchematicZoom_property) // Stored property
+ //     oldValue.mSchematicGridStyle_property.removeEBObserversFrom (&self.mObserversOf_mSchematicGridStyle) // Stored property
+      oldValue.mSchematicGridStyle_property.removeEBObserver (self.mSchematicGridStyle_property) // Stored property
+ //     oldValue.mSchematicGridDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_mSchematicGridDisplayFactor) // Stored property
+      oldValue.mSchematicGridDisplayFactor_property.removeEBObserver (self.mSchematicGridDisplayFactor_property) // Stored property
+ //     oldValue.mSchematicCustomWidth_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomWidth) // Stored property
+      oldValue.mSchematicCustomWidth_property.removeEBObserver (self.mSchematicCustomWidth_property) // Stored property
+ //     oldValue.mSchematicCustomWidthUnit_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomWidthUnit) // Stored property
+      oldValue.mSchematicCustomWidthUnit_property.removeEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
+ //     oldValue.mSchematicCustomHeight_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomHeight) // Stored property
+      oldValue.mSchematicCustomHeight_property.removeEBObserver (self.mSchematicCustomHeight_property) // Stored property
+ //     oldValue.mSchematicCustomHeightUnit_property.removeEBObserversFrom (&self.mObserversOf_mSchematicCustomHeightUnit) // Stored property
+      oldValue.mSchematicCustomHeightUnit_property.removeEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+ //     oldValue.mSchematicSheetOrientation_property.removeEBObserversFrom (&self.mObserversOf_mSchematicSheetOrientation) // Stored property
+      oldValue.mSchematicSheetOrientation_property.removeEBObserver (self.mSchematicSheetOrientation_property) // Stored property
+ //     oldValue.mRastnetDisplay_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplay) // Stored property
+      oldValue.mRastnetDisplay_property.removeEBObserver (self.mRastnetDisplay_property) // Stored property
+ //     oldValue.mRastnetDisplayedNetName_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplayedNetName) // Stored property
+      oldValue.mRastnetDisplayedNetName_property.removeEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+ //     oldValue.mRastnetDisplayedComponentName_property.removeEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
+      oldValue.mRastnetDisplayedComponentName_property.removeEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
+ //     oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
+      oldValue.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
+ //     oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
+      oldValue.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
+ //     oldValue.boardShapeIsRectangular_property.removeEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
+      oldValue.boardShapeIsRectangular_property.removeEBObserver (self.boardShapeIsRectangular_property) // Transient property
+ //     oldValue.selectedSheetIssues_property.removeEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
+      oldValue.selectedSheetIssues_property.removeEBObserver (self.selectedSheetIssues_property) // Transient property
+ //     oldValue.connectedPoints_property.removeEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
+ //     oldValue.connexionWarningString_property.removeEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
+      oldValue.connexionWarningString_property.removeEBObserver (self.connexionWarningString_property) // Transient property
+ //     oldValue.connexionErrorString_property.removeEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
+      oldValue.connexionErrorString_property.removeEBObserver (self.connexionErrorString_property) // Transient property
+ //     oldValue.sheetIndexes_property.removeEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
+      oldValue.sheetIndexes_property.removeEBObserver (self.sheetIndexes_property) // Transient property
+ //     oldValue.netsDescription_property.removeEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+      oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
+ //     oldValue.boardIssues_property.removeEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
+      oldValue.boardIssues_property.removeEBObserver (self.boardIssues_property) // Transient property
+ //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+ //     oldValue.ercStatusImage_property.removeEBObserversFrom (&self.mObserversOf_ercStatusImage) // Transient property
+      oldValue.ercStatusImage_property.removeEBObserver (self.ercStatusImage_property) // Transient property
+ //     oldValue.ercStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_ercStatusMessage) // Transient property
+      oldValue.ercStatusMessage_property.removeEBObserver (self.ercStatusMessage_property) // Transient property
+ //     oldValue.viaCountString_property.removeEBObserversFrom (&self.mObserversOf_viaCountString) // Transient property
+      oldValue.viaCountString_property.removeEBObserver (self.viaCountString_property) // Transient property
+ //     oldValue.trackCountString_property.removeEBObserversFrom (&self.mObserversOf_trackCountString) // Transient property
+      oldValue.trackCountString_property.removeEBObserver (self.trackCountString_property) // Transient property
+ //     oldValue.trackLengthString_property.removeEBObserversFrom (&self.mObserversOf_trackLengthString) // Transient property
+      oldValue.trackLengthString_property.removeEBObserver (self.trackLengthString_property) // Transient property
+ //     oldValue.boardStatusImage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
+      oldValue.boardStatusImage_property.removeEBObserver (self.boardStatusImage_property) // Transient property
+ //     oldValue.boardStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
+      oldValue.boardStatusMessage_property.removeEBObserver (self.boardStatusMessage_property) // Transient property
+ //     oldValue.interiorBoundBox_property.removeEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
+      oldValue.interiorBoundBox_property.removeEBObserver (self.interiorBoundBox_property) // Transient property
+ //     oldValue.boardBoundBox_property.removeEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
+      oldValue.boardBoundBox_property.removeEBObserver (self.boardBoundBox_property) // Transient property
+ //     oldValue.boardInteriorTop_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
+      oldValue.boardInteriorTop_property.removeEBObserver (self.boardInteriorTop_property) // Transient property
+ //     oldValue.boardInteriorBottom_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
+      oldValue.boardInteriorBottom_property.removeEBObserver (self.boardInteriorBottom_property) // Transient property
+ //     oldValue.boardInteriorLeft_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
+      oldValue.boardInteriorLeft_property.removeEBObserver (self.boardInteriorLeft_property) // Transient property
+ //     oldValue.boardInteriorRight_property.removeEBObserversFrom (&self.mObserversOf_boardInteriorRight) // Transient property
+      oldValue.boardInteriorRight_property.removeEBObserver (self.boardInteriorRight_property) // Transient property
+ //     oldValue.boardLimitBorderTop_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderTop) // Transient property
+      oldValue.boardLimitBorderTop_property.removeEBObserver (self.boardLimitBorderTop_property) // Transient property
+ //     oldValue.boardLimitBorderBottom_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
+      oldValue.boardLimitBorderBottom_property.removeEBObserver (self.boardLimitBorderBottom_property) // Transient property
+ //     oldValue.boardLimitBorderLeft_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
+      oldValue.boardLimitBorderLeft_property.removeEBObserver (self.boardLimitBorderLeft_property) // Transient property
+ //     oldValue.boardLimitBorderRight_property.removeEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
+      oldValue.boardLimitBorderRight_property.removeEBObserver (self.boardLimitBorderRight_property) // Transient property
+ //     oldValue.borderElementCountString_property.removeEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
+      oldValue.borderElementCountString_property.removeEBObserver (self.borderElementCountString_property) // Transient property
+ //     oldValue.borderOutlineBackground_property.removeEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
+      oldValue.borderOutlineBackground_property.removeEBObserver (self.borderOutlineBackground_property) // Transient property
+ //     oldValue.borderViewBackground_property.removeEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
+      oldValue.borderViewBackground_property.removeEBObserver (self.borderViewBackground_property) // Transient property
+ //     oldValue.deviceNames_property.removeEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
+      oldValue.deviceNames_property.removeEBObserver (self.deviceNames_property) // Transient property
+ //     oldValue.allClassNames_property.removeEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
+      oldValue.allClassNames_property.removeEBObserver (self.allClassNames_property) // Transient property
+ //     oldValue.sheetGeometry_property.removeEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
+      oldValue.sheetGeometry_property.removeEBObserver (self.sheetGeometry_property) // Transient property
+ //     oldValue.schematicBackgroundDisplay_property.removeEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
+      oldValue.schematicBackgroundDisplay_property.removeEBObserver (self.schematicBackgroundDisplay_property) // Transient property
+ //     oldValue.netWarningCount_property.removeEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+      oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
+ //     oldValue.netNamesArray_property.removeEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
+      oldValue.netNamesArray_property.removeEBObserver (self.netNamesArray_property) // Transient property
+ //     oldValue.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+      oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
+ //     oldValue.unplacedPackages_property.removeEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
+      oldValue.unplacedPackages_property.removeEBObserver (self.unplacedPackages_property) // Transient property
+ //     oldValue.componentsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
+      oldValue.componentsPlacedInBoard_property.removeEBObserver (self.componentsPlacedInBoard_property) // Transient property
+ //     oldValue.placedComponentNameArray_property.removeEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
+      oldValue.placedComponentNameArray_property.removeEBObserver (self.placedComponentNameArray_property) // Transient property
+ //     oldValue.schematicHasErrorOrWarning_property.removeEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
+      oldValue.schematicHasErrorOrWarning_property.removeEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
+ //     oldValue.schematicStatusMessage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+      oldValue.schematicStatusMessage_property.removeEBObserver (self.schematicStatusMessage_property) // Transient property
+ //     oldValue.schematicStatusImage_property.removeEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+      oldValue.schematicStatusImage_property.removeEBObserver (self.schematicStatusImage_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mArtworkName_property.addEBObserversFrom (&self.mObserversOf_mArtworkName) // Stored property
+      newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
+ //     newValue.mArtworkVersion_property.addEBObserversFrom (&self.mObserversOf_mArtworkVersion) // Stored property
+      newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
+ //     newValue.mPDFBoardBackgroundColor_property.addEBObserversFrom (&self.mObserversOf_mPDFBoardBackgroundColor) // Stored property
+      newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
+ //     newValue.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserversFrom (&self.mObserversOf_mCheckClearanceBetweenPadsOfSameNet) // Stored property
+      newValue.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
+ //     newValue.mLastERCCheckingIsSuccess_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingIsSuccess) // Stored property
+      newValue.mLastERCCheckingIsSuccess_property.addEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
+ //     newValue.mLastERCCheckingSignature_property.addEBObserversFrom (&self.mObserversOf_mLastERCCheckingSignature) // Stored property
+      newValue.mLastERCCheckingSignature_property.addEBObserver (self.mLastERCCheckingSignature_property) // Stored property
+ //     newValue.mBoardSideForNewTrack_property.addEBObserversFrom (&self.mObserversOf_mBoardSideForNewTrack) // Stored property
+      newValue.mBoardSideForNewTrack_property.addEBObserver (self.mBoardSideForNewTrack_property) // Stored property
+ //     newValue.mDirectionForNewTrack_property.addEBObserversFrom (&self.mObserversOf_mDirectionForNewTrack) // Stored property
+      newValue.mDirectionForNewTrack_property.addEBObserver (self.mDirectionForNewTrack_property) // Stored property
+ //     newValue.mBoardLayerForNewText_property.addEBObserversFrom (&self.mObserversOf_mBoardLayerForNewText) // Stored property
+      newValue.mBoardLayerForNewText_property.addEBObserver (self.mBoardLayerForNewText_property) // Stored property
+ //     newValue.mBoardLayerForNewLine_property.addEBObserversFrom (&self.mObserversOf_mBoardLayerForNewLine) // Stored property
+      newValue.mBoardLayerForNewLine_property.addEBObserver (self.mBoardLayerForNewLine_property) // Stored property
+ //     newValue.mBoardSideForNewRestrictRectangle_property.addEBObserversFrom (&self.mObserversOf_mBoardSideForNewRestrictRectangle) // Stored property
+      newValue.mBoardSideForNewRestrictRectangle_property.addEBObserver (self.mBoardSideForNewRestrictRectangle_property) // Stored property
+ //     newValue.mAutoRouterPreferredDirections_property.addEBObserversFrom (&self.mObserversOf_mAutoRouterPreferredDirections) // Stored property
+      newValue.mAutoRouterPreferredDirections_property.addEBObserver (self.mAutoRouterPreferredDirections_property) // Stored property
+ //     newValue.mAutorouterSnapAngle_property.addEBObserversFrom (&self.mObserversOf_mAutorouterSnapAngle) // Stored property
+      newValue.mAutorouterSnapAngle_property.addEBObserver (self.mAutorouterSnapAngle_property) // Stored property
+ //     newValue.mRouteDirection_property.addEBObserversFrom (&self.mObserversOf_mRouteDirection) // Stored property
+      newValue.mRouteDirection_property.addEBObserver (self.mRouteDirection_property) // Stored property
+ //     newValue.mRouteOrigin_property.addEBObserversFrom (&self.mObserversOf_mRouteOrigin) // Stored property
+      newValue.mRouteOrigin_property.addEBObserver (self.mRouteOrigin_property) // Stored property
+ //     newValue.mAutorouterInterfaceMode_property.addEBObserversFrom (&self.mObserversOf_mAutorouterInterfaceMode) // Stored property
+      newValue.mAutorouterInterfaceMode_property.addEBObserver (self.mAutorouterInterfaceMode_property) // Stored property
+ //     newValue.mExportExistingTracksAndVias_property.addEBObserversFrom (&self.mObserversOf_mExportExistingTracksAndVias) // Stored property
+      newValue.mExportExistingTracksAndVias_property.addEBObserver (self.mExportExistingTracksAndVias_property) // Stored property
+ //     newValue.mTrackLengthUnit_property.addEBObserversFrom (&self.mObserversOf_mTrackLengthUnit) // Stored property
+      newValue.mTrackLengthUnit_property.addEBObserver (self.mTrackLengthUnit_property) // Stored property
+ //     newValue.mLayoutClearance_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearance) // Stored property
+      newValue.mLayoutClearance_property.addEBObserver (self.mLayoutClearance_property) // Stored property
+ //     newValue.mLayoutClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mLayoutClearanceUnit) // Stored property
+      newValue.mLayoutClearanceUnit_property.addEBObserver (self.mLayoutClearanceUnit_property) // Stored property
+ //     newValue.mBoardSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedInspector) // Stored property
+      newValue.mBoardSelectedInspector_property.addEBObserver (self.mBoardSelectedInspector_property) // Stored property
+ //     newValue.mBoardHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardHorizontalFlip) // Stored property
+      newValue.mBoardHorizontalFlip_property.addEBObserver (self.mBoardHorizontalFlip_property) // Stored property
+ //     newValue.mBoardVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardVerticalFlip) // Stored property
+      newValue.mBoardVerticalFlip_property.addEBObserver (self.mBoardVerticalFlip_property) // Stored property
+ //     newValue.mBoardGridStyle_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStyle) // Stored property
+      newValue.mBoardGridStyle_property.addEBObserver (self.mBoardGridStyle_property) // Stored property
+ //     newValue.mBoardGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mBoardGridDisplayFactor) // Stored property
+      newValue.mBoardGridDisplayFactor_property.addEBObserver (self.mBoardGridDisplayFactor_property) // Stored property
+ //     newValue.mBoardZoom_property.addEBObserversFrom (&self.mObserversOf_mBoardZoom) // Stored property
+      newValue.mBoardZoom_property.addEBObserver (self.mBoardZoom_property) // Stored property
+ //     newValue.mBoardGridStep_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStep) // Stored property
+      newValue.mBoardGridStep_property.addEBObserver (self.mBoardGridStep_property) // Stored property
+ //     newValue.mBoardGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardGridStepUnit) // Stored property
+      newValue.mBoardGridStepUnit_property.addEBObserver (self.mBoardGridStepUnit_property) // Stored property
+ //     newValue.mErrorOrWarningIssueSize_property.addEBObserversFrom (&self.mObserversOf_mErrorOrWarningIssueSize) // Stored property
+      newValue.mErrorOrWarningIssueSize_property.addEBObserver (self.mErrorOrWarningIssueSize_property) // Stored property
+ //     newValue.mControlKeyHiliteDiameter_property.addEBObserversFrom (&self.mObserversOf_mControlKeyHiliteDiameter) // Stored property
+      newValue.mControlKeyHiliteDiameter_property.addEBObserver (self.mControlKeyHiliteDiameter_property) // Stored property
+ //     newValue.mDSNFileProposedName_property.addEBObserversFrom (&self.mObserversOf_mDSNFileProposedName) // Stored property
+      newValue.mDSNFileProposedName_property.addEBObserver (self.mDSNFileProposedName_property) // Stored property
+ //     newValue.mBoardLimitsWidth_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidth) // Stored property
+      newValue.mBoardLimitsWidth_property.addEBObserver (self.mBoardLimitsWidth_property) // Stored property
+ //     newValue.mBoardLimitsWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsWidthUnit) // Stored property
+      newValue.mBoardLimitsWidthUnit_property.addEBObserver (self.mBoardLimitsWidthUnit_property) // Stored property
+ //     newValue.mBoardClearance_property.addEBObserversFrom (&self.mObserversOf_mBoardClearance) // Stored property
+      newValue.mBoardClearance_property.addEBObserver (self.mBoardClearance_property) // Stored property
+ //     newValue.mBoardClearanceUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardClearanceUnit) // Stored property
+      newValue.mBoardClearanceUnit_property.addEBObserver (self.mBoardClearanceUnit_property) // Stored property
+ //     newValue.mBoardLimitsSelectedInspector_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsSelectedInspector) // Stored property
+      newValue.mBoardLimitsSelectedInspector_property.addEBObserver (self.mBoardLimitsSelectedInspector_property) // Stored property
+ //     newValue.mBoardLimitsHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsHorizontalFlip) // Stored property
+      newValue.mBoardLimitsHorizontalFlip_property.addEBObserver (self.mBoardLimitsHorizontalFlip_property) // Stored property
+ //     newValue.mBoardLimitsVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsVerticalFlip) // Stored property
+      newValue.mBoardLimitsVerticalFlip_property.addEBObserver (self.mBoardLimitsVerticalFlip_property) // Stored property
+ //     newValue.mBoardLimitsGridStyle_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStyle) // Stored property
+      newValue.mBoardLimitsGridStyle_property.addEBObserver (self.mBoardLimitsGridStyle_property) // Stored property
+ //     newValue.mBoardLimitsGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridDisplayFactor) // Stored property
+      newValue.mBoardLimitsGridDisplayFactor_property.addEBObserver (self.mBoardLimitsGridDisplayFactor_property) // Stored property
+ //     newValue.mBoardLimitsZoom_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsZoom) // Stored property
+      newValue.mBoardLimitsZoom_property.addEBObserver (self.mBoardLimitsZoom_property) // Stored property
+ //     newValue.mBoardLimitsGridStep_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStep) // Stored property
+      newValue.mBoardLimitsGridStep_property.addEBObserver (self.mBoardLimitsGridStep_property) // Stored property
+ //     newValue.mBoardLimitsGridStepUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsGridStepUnit) // Stored property
+      newValue.mBoardLimitsGridStepUnit_property.addEBObserver (self.mBoardLimitsGridStepUnit_property) // Stored property
+ //     newValue.mBoardLimitsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitsBoundingBoxUnit) // Stored property
+      newValue.mBoardLimitsBoundingBoxUnit_property.addEBObserver (self.mBoardLimitsBoundingBoxUnit_property) // Stored property
+ //     newValue.mBoardPointsBoundingBoxUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardPointsBoundingBoxUnit) // Stored property
+      newValue.mBoardPointsBoundingBoxUnit_property.addEBObserver (self.mBoardPointsBoundingBoxUnit_property) // Stored property
+ //     newValue.mBoardSelectedCurveDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardSelectedCurveDisplayUnit) // Stored property
+      newValue.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.mBoardSelectedCurveDisplayUnit_property) // Stored property
+ //     newValue.mBoardLimitControlPointsDisplayUnit_property.addEBObserversFrom (&self.mObserversOf_mBoardLimitControlPointsDisplayUnit) // Stored property
+      newValue.mBoardLimitControlPointsDisplayUnit_property.addEBObserver (self.mBoardLimitControlPointsDisplayUnit_property) // Stored property
+ //     newValue.mBoardShape_property.addEBObserversFrom (&self.mObserversOf_mBoardShape) // Stored property
+      newValue.mBoardShape_property.addEBObserver (self.mBoardShape_property) // Stored property
+ //     newValue.mRectangularBoardWidth_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidth) // Stored property
+      newValue.mRectangularBoardWidth_property.addEBObserver (self.mRectangularBoardWidth_property) // Stored property
+ //     newValue.mRectangularBoardWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardWidthUnit) // Stored property
+      newValue.mRectangularBoardWidthUnit_property.addEBObserver (self.mRectangularBoardWidthUnit_property) // Stored property
+ //     newValue.mRectangularBoardHeight_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeight) // Stored property
+      newValue.mRectangularBoardHeight_property.addEBObserver (self.mRectangularBoardHeight_property) // Stored property
+ //     newValue.mRectangularBoardHeightUnit_property.addEBObserversFrom (&self.mObserversOf_mRectangularBoardHeightUnit) // Stored property
+      newValue.mRectangularBoardHeightUnit_property.addEBObserver (self.mRectangularBoardHeightUnit_property) // Stored property
+ //     newValue.mDefaultNetClassName_property.addEBObserversFrom (&self.mObserversOf_mDefaultNetClassName) // Stored property
+      newValue.mDefaultNetClassName_property.addEBObserver (self.mDefaultNetClassName_property) // Stored property
+ //     newValue.mSelectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_mSelectedPageIndex) // Stored property
+      newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
+ //     newValue.mSelectedSchematicInspector_property.addEBObserversFrom (&self.mObserversOf_mSelectedSchematicInspector) // Stored property
+      newValue.mSelectedSchematicInspector_property.addEBObserver (self.mSelectedSchematicInspector_property) // Stored property
+ //     newValue.mSchematicTitle_property.addEBObserversFrom (&self.mObserversOf_mSchematicTitle) // Stored property
+      newValue.mSchematicTitle_property.addEBObserver (self.mSchematicTitle_property) // Stored property
+ //     newValue.mSchematicVersion_property.addEBObserversFrom (&self.mObserversOf_mSchematicVersion) // Stored property
+      newValue.mSchematicVersion_property.addEBObserver (self.mSchematicVersion_property) // Stored property
+ //     newValue.mSchematicDate_property.addEBObserversFrom (&self.mObserversOf_mSchematicDate) // Stored property
+      newValue.mSchematicDate_property.addEBObserver (self.mSchematicDate_property) // Stored property
+ //     newValue.mSchematicHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSchematicHorizontalFlip) // Stored property
+      newValue.mSchematicHorizontalFlip_property.addEBObserver (self.mSchematicHorizontalFlip_property) // Stored property
+ //     newValue.mSchematicVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSchematicVerticalFlip) // Stored property
+      newValue.mSchematicVerticalFlip_property.addEBObserver (self.mSchematicVerticalFlip_property) // Stored property
+ //     newValue.mSchematicZoom_property.addEBObserversFrom (&self.mObserversOf_mSchematicZoom) // Stored property
+      newValue.mSchematicZoom_property.addEBObserver (self.mSchematicZoom_property) // Stored property
+ //     newValue.mSchematicGridStyle_property.addEBObserversFrom (&self.mObserversOf_mSchematicGridStyle) // Stored property
+      newValue.mSchematicGridStyle_property.addEBObserver (self.mSchematicGridStyle_property) // Stored property
+ //     newValue.mSchematicGridDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_mSchematicGridDisplayFactor) // Stored property
+      newValue.mSchematicGridDisplayFactor_property.addEBObserver (self.mSchematicGridDisplayFactor_property) // Stored property
+ //     newValue.mSchematicCustomWidth_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomWidth) // Stored property
+      newValue.mSchematicCustomWidth_property.addEBObserver (self.mSchematicCustomWidth_property) // Stored property
+ //     newValue.mSchematicCustomWidthUnit_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomWidthUnit) // Stored property
+      newValue.mSchematicCustomWidthUnit_property.addEBObserver (self.mSchematicCustomWidthUnit_property) // Stored property
+ //     newValue.mSchematicCustomHeight_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomHeight) // Stored property
+      newValue.mSchematicCustomHeight_property.addEBObserver (self.mSchematicCustomHeight_property) // Stored property
+ //     newValue.mSchematicCustomHeightUnit_property.addEBObserversFrom (&self.mObserversOf_mSchematicCustomHeightUnit) // Stored property
+      newValue.mSchematicCustomHeightUnit_property.addEBObserver (self.mSchematicCustomHeightUnit_property) // Stored property
+ //     newValue.mSchematicSheetOrientation_property.addEBObserversFrom (&self.mObserversOf_mSchematicSheetOrientation) // Stored property
+      newValue.mSchematicSheetOrientation_property.addEBObserver (self.mSchematicSheetOrientation_property) // Stored property
+ //     newValue.mRastnetDisplay_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplay) // Stored property
+      newValue.mRastnetDisplay_property.addEBObserver (self.mRastnetDisplay_property) // Stored property
+ //     newValue.mRastnetDisplayedNetName_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplayedNetName) // Stored property
+      newValue.mRastnetDisplayedNetName_property.addEBObserver (self.mRastnetDisplayedNetName_property) // Stored property
+ //     newValue.mRastnetDisplayedComponentName_property.addEBObserversFrom (&self.mObserversOf_mRastnetDisplayedComponentName) // Stored property
+      newValue.mRastnetDisplayedComponentName_property.addEBObserver (self.mRastnetDisplayedComponentName_property) // Stored property
+  //    newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardGridStepMultipliedByDisplayFactor) // Transient property
+      newValue.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property) // Transient property
+  //    newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserversFrom (&self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor) // Transient property
+      newValue.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property) // Transient property
+  //    newValue.boardShapeIsRectangular_property.addEBObserversFrom (&self.mObserversOf_boardShapeIsRectangular) // Transient property
+      newValue.boardShapeIsRectangular_property.addEBObserver (self.boardShapeIsRectangular_property) // Transient property
+  //    newValue.selectedSheetIssues_property.addEBObserversFrom (&self.mObserversOf_selectedSheetIssues) // Transient property
+      newValue.selectedSheetIssues_property.addEBObserver (self.selectedSheetIssues_property) // Transient property
+  //    newValue.connectedPoints_property.addEBObserversFrom (&self.mObserversOf_connectedPoints) // Transient property
+      newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
+  //    newValue.connexionWarningString_property.addEBObserversFrom (&self.mObserversOf_connexionWarningString) // Transient property
+      newValue.connexionWarningString_property.addEBObserver (self.connexionWarningString_property) // Transient property
+  //    newValue.connexionErrorString_property.addEBObserversFrom (&self.mObserversOf_connexionErrorString) // Transient property
+      newValue.connexionErrorString_property.addEBObserver (self.connexionErrorString_property) // Transient property
+  //    newValue.sheetIndexes_property.addEBObserversFrom (&self.mObserversOf_sheetIndexes) // Transient property
+      newValue.sheetIndexes_property.addEBObserver (self.sheetIndexes_property) // Transient property
+  //    newValue.netsDescription_property.addEBObserversFrom (&self.mObserversOf_netsDescription) // Transient property
+      newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
+  //    newValue.boardIssues_property.addEBObserversFrom (&self.mObserversOf_boardIssues) // Transient property
+      newValue.boardIssues_property.addEBObserver (self.boardIssues_property) // Transient property
+  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+  //    newValue.ercStatusImage_property.addEBObserversFrom (&self.mObserversOf_ercStatusImage) // Transient property
+      newValue.ercStatusImage_property.addEBObserver (self.ercStatusImage_property) // Transient property
+  //    newValue.ercStatusMessage_property.addEBObserversFrom (&self.mObserversOf_ercStatusMessage) // Transient property
+      newValue.ercStatusMessage_property.addEBObserver (self.ercStatusMessage_property) // Transient property
+  //    newValue.viaCountString_property.addEBObserversFrom (&self.mObserversOf_viaCountString) // Transient property
+      newValue.viaCountString_property.addEBObserver (self.viaCountString_property) // Transient property
+  //    newValue.trackCountString_property.addEBObserversFrom (&self.mObserversOf_trackCountString) // Transient property
+      newValue.trackCountString_property.addEBObserver (self.trackCountString_property) // Transient property
+  //    newValue.trackLengthString_property.addEBObserversFrom (&self.mObserversOf_trackLengthString) // Transient property
+      newValue.trackLengthString_property.addEBObserver (self.trackLengthString_property) // Transient property
+  //    newValue.boardStatusImage_property.addEBObserversFrom (&self.mObserversOf_boardStatusImage) // Transient property
+      newValue.boardStatusImage_property.addEBObserver (self.boardStatusImage_property) // Transient property
+  //    newValue.boardStatusMessage_property.addEBObserversFrom (&self.mObserversOf_boardStatusMessage) // Transient property
+      newValue.boardStatusMessage_property.addEBObserver (self.boardStatusMessage_property) // Transient property
+  //    newValue.interiorBoundBox_property.addEBObserversFrom (&self.mObserversOf_interiorBoundBox) // Transient property
+      newValue.interiorBoundBox_property.addEBObserver (self.interiorBoundBox_property) // Transient property
+  //    newValue.boardBoundBox_property.addEBObserversFrom (&self.mObserversOf_boardBoundBox) // Transient property
+      newValue.boardBoundBox_property.addEBObserver (self.boardBoundBox_property) // Transient property
+  //    newValue.boardInteriorTop_property.addEBObserversFrom (&self.mObserversOf_boardInteriorTop) // Transient property
+      newValue.boardInteriorTop_property.addEBObserver (self.boardInteriorTop_property) // Transient property
+  //    newValue.boardInteriorBottom_property.addEBObserversFrom (&self.mObserversOf_boardInteriorBottom) // Transient property
+      newValue.boardInteriorBottom_property.addEBObserver (self.boardInteriorBottom_property) // Transient property
+  //    newValue.boardInteriorLeft_property.addEBObserversFrom (&self.mObserversOf_boardInteriorLeft) // Transient property
+      newValue.boardInteriorLeft_property.addEBObserver (self.boardInteriorLeft_property) // Transient property
+  //    newValue.boardInteriorRight_property.addEBObserversFrom (&self.mObserversOf_boardInteriorRight) // Transient property
+      newValue.boardInteriorRight_property.addEBObserver (self.boardInteriorRight_property) // Transient property
+  //    newValue.boardLimitBorderTop_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderTop) // Transient property
+      newValue.boardLimitBorderTop_property.addEBObserver (self.boardLimitBorderTop_property) // Transient property
+  //    newValue.boardLimitBorderBottom_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderBottom) // Transient property
+      newValue.boardLimitBorderBottom_property.addEBObserver (self.boardLimitBorderBottom_property) // Transient property
+  //    newValue.boardLimitBorderLeft_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderLeft) // Transient property
+      newValue.boardLimitBorderLeft_property.addEBObserver (self.boardLimitBorderLeft_property) // Transient property
+  //    newValue.boardLimitBorderRight_property.addEBObserversFrom (&self.mObserversOf_boardLimitBorderRight) // Transient property
+      newValue.boardLimitBorderRight_property.addEBObserver (self.boardLimitBorderRight_property) // Transient property
+  //    newValue.borderElementCountString_property.addEBObserversFrom (&self.mObserversOf_borderElementCountString) // Transient property
+      newValue.borderElementCountString_property.addEBObserver (self.borderElementCountString_property) // Transient property
+  //    newValue.borderOutlineBackground_property.addEBObserversFrom (&self.mObserversOf_borderOutlineBackground) // Transient property
+      newValue.borderOutlineBackground_property.addEBObserver (self.borderOutlineBackground_property) // Transient property
+  //    newValue.borderViewBackground_property.addEBObserversFrom (&self.mObserversOf_borderViewBackground) // Transient property
+      newValue.borderViewBackground_property.addEBObserver (self.borderViewBackground_property) // Transient property
+  //    newValue.deviceNames_property.addEBObserversFrom (&self.mObserversOf_deviceNames) // Transient property
+      newValue.deviceNames_property.addEBObserver (self.deviceNames_property) // Transient property
+  //    newValue.allClassNames_property.addEBObserversFrom (&self.mObserversOf_allClassNames) // Transient property
+      newValue.allClassNames_property.addEBObserver (self.allClassNames_property) // Transient property
+  //    newValue.sheetGeometry_property.addEBObserversFrom (&self.mObserversOf_sheetGeometry) // Transient property
+      newValue.sheetGeometry_property.addEBObserver (self.sheetGeometry_property) // Transient property
+  //    newValue.schematicBackgroundDisplay_property.addEBObserversFrom (&self.mObserversOf_schematicBackgroundDisplay) // Transient property
+      newValue.schematicBackgroundDisplay_property.addEBObserver (self.schematicBackgroundDisplay_property) // Transient property
+  //    newValue.netWarningCount_property.addEBObserversFrom (&self.mObserversOf_netWarningCount) // Transient property
+      newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
+  //    newValue.netNamesArray_property.addEBObserversFrom (&self.mObserversOf_netNamesArray) // Transient property
+      newValue.netNamesArray_property.addEBObserver (self.netNamesArray_property) // Transient property
+  //    newValue.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+      newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
+  //    newValue.unplacedPackages_property.addEBObserversFrom (&self.mObserversOf_unplacedPackages) // Transient property
+      newValue.unplacedPackages_property.addEBObserver (self.unplacedPackages_property) // Transient property
+  //    newValue.componentsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentsPlacedInBoard) // Transient property
+      newValue.componentsPlacedInBoard_property.addEBObserver (self.componentsPlacedInBoard_property) // Transient property
+  //    newValue.placedComponentNameArray_property.addEBObserversFrom (&self.mObserversOf_placedComponentNameArray) // Transient property
+      newValue.placedComponentNameArray_property.addEBObserver (self.placedComponentNameArray_property) // Transient property
+  //    newValue.schematicHasErrorOrWarning_property.addEBObserversFrom (&self.mObserversOf_schematicHasErrorOrWarning) // Transient property
+      newValue.schematicHasErrorOrWarning_property.addEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
+  //    newValue.schematicStatusMessage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusMessage) // Transient property
+      newValue.schematicStatusMessage_property.addEBObserver (self.schematicStatusMessage_property) // Transient property
+  //    newValue.schematicStatusImage_property.addEBObserversFrom (&self.mObserversOf_schematicStatusImage) // Transient property
+      newValue.schematicStatusImage_property.addEBObserver (self.schematicStatusImage_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
-  private final var mArtworkName_property = EBGenericTransientProperty <String?> ()
+  final let mArtworkName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mArtworkName_property_selection : EBSelection <String?> { // §
     return self.mArtworkName_property.selection
-/*    if let model = self.propval {
-      switch (model.mArtworkName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +525,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
-  private final var mArtworkVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mArtworkVersion_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
 
   final var mArtworkVersion_property_selection : EBSelection <Int?> { // §
     return self.mArtworkVersion_property.selection
-/*    if let model = self.propval {
-      switch (model.mArtworkVersion_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +564,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
-  private final var mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let mPDFBoardBackgroundColor_property = EBGenericTransientProperty <NSColor?> ()
 //  private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPDFBoardBackgroundColor_property_selection : EBSelection <NSColor?> { // §
     return self.mPDFBoardBackgroundColor_property.selection
-/*    if let model = self.propval {
-      switch (model.mPDFBoardBackgroundColor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +603,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
 
-  private final var mCheckClearanceBetweenPadsOfSameNet_property = EBGenericTransientProperty <Bool?> ()
+  final let mCheckClearanceBetweenPadsOfSameNet_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCheckClearanceBetweenPadsOfSameNet_property_selection : EBSelection <Bool?> { // §
     return self.mCheckClearanceBetweenPadsOfSameNet_property.selection
-/*    if let model = self.propval {
-      switch (model.mCheckClearanceBetweenPadsOfSameNet_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +642,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
 
-  private final var mLastERCCheckingIsSuccess_property = EBGenericTransientProperty <Bool?> ()
+  final let mLastERCCheckingIsSuccess_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
   //····················································································································
 
   final var mLastERCCheckingIsSuccess_property_selection : EBSelection <Bool?> { // §
     return self.mLastERCCheckingIsSuccess_property.selection
-/*    if let model = self.propval {
-      switch (model.mLastERCCheckingIsSuccess_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +681,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingSignature' stored property
   //····················································································································
 
-  private final var mLastERCCheckingSignature_property = EBGenericTransientProperty <UInt32?> ()
+  final let mLastERCCheckingSignature_property = EBGenericTransientProperty <UInt32?> ()
 //  private final var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
 
   //····················································································································
 
   final var mLastERCCheckingSignature_property_selection : EBSelection <UInt32?> { // §
     return self.mLastERCCheckingSignature_property.selection
-/*    if let model = self.propval {
-      switch (model.mLastERCCheckingSignature_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +720,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewTrack' stored property
   //····················································································································
 
-  private final var mBoardSideForNewTrack_property = EBGenericTransientProperty <TrackSide?> ()
+  final let mBoardSideForNewTrack_property = EBGenericTransientProperty <TrackSide?> ()
 //  private final var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardSideForNewTrack_property_selection : EBSelection <TrackSide?> { // §
     return self.mBoardSideForNewTrack_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardSideForNewTrack_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +759,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDirectionForNewTrack' stored property
   //····················································································································
 
-  private final var mDirectionForNewTrack_property = EBGenericTransientProperty <TrackCreationDirection?> ()
+  final let mDirectionForNewTrack_property = EBGenericTransientProperty <TrackCreationDirection?> ()
 //  private final var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDirectionForNewTrack_property_selection : EBSelection <TrackCreationDirection?> { // §
     return self.mDirectionForNewTrack_property.selection
-/*    if let model = self.propval {
-      switch (model.mDirectionForNewTrack_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +798,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewText' stored property
   //····················································································································
 
-  private final var mBoardLayerForNewText_property = EBGenericTransientProperty <BoardTextLayer?> ()
+  final let mBoardLayerForNewText_property = EBGenericTransientProperty <BoardTextLayer?> ()
 //  private final var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLayerForNewText_property_selection : EBSelection <BoardTextLayer?> { // §
     return self.mBoardLayerForNewText_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLayerForNewText_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +837,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewLine' stored property
   //····················································································································
 
-  private final var mBoardLayerForNewLine_property = EBGenericTransientProperty <BoardLineLayer?> ()
+  final let mBoardLayerForNewLine_property = EBGenericTransientProperty <BoardLineLayer?> ()
 //  private final var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLayerForNewLine_property_selection : EBSelection <BoardLineLayer?> { // §
     return self.mBoardLayerForNewLine_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLayerForNewLine_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +876,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
   //····················································································································
 
-  private final var mBoardSideForNewRestrictRectangle_property = EBGenericTransientProperty <RestrictRectangleLayer?> ()
+  final let mBoardSideForNewRestrictRectangle_property = EBGenericTransientProperty <RestrictRectangleLayer?> ()
 //  private final var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardSideForNewRestrictRectangle_property_selection : EBSelection <RestrictRectangleLayer?> { // §
     return self.mBoardSideForNewRestrictRectangle_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardSideForNewRestrictRectangle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +915,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutoRouterPreferredDirections' stored property
   //····················································································································
 
-  private final var mAutoRouterPreferredDirections_property = EBGenericTransientProperty <AutorouterPreferredDirections?> ()
+  final let mAutoRouterPreferredDirections_property = EBGenericTransientProperty <AutorouterPreferredDirections?> ()
 //  private final var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
 
   //····················································································································
 
   final var mAutoRouterPreferredDirections_property_selection : EBSelection <AutorouterPreferredDirections?> { // §
     return self.mAutoRouterPreferredDirections_property.selection
-/*    if let model = self.propval {
-      switch (model.mAutoRouterPreferredDirections_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +954,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterSnapAngle' stored property
   //····················································································································
 
-  private final var mAutorouterSnapAngle_property = EBGenericTransientProperty <AutorouterSnapAngle?> ()
+  final let mAutorouterSnapAngle_property = EBGenericTransientProperty <AutorouterSnapAngle?> ()
 //  private final var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mAutorouterSnapAngle_property_selection : EBSelection <AutorouterSnapAngle?> { // §
     return self.mAutorouterSnapAngle_property.selection
-/*    if let model = self.propval {
-      switch (model.mAutorouterSnapAngle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -685,25 +993,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteDirection' stored property
   //····················································································································
 
-  private final var mRouteDirection_property = EBGenericTransientProperty <RouteDirection?> ()
+  final let mRouteDirection_property = EBGenericTransientProperty <RouteDirection?> ()
 //  private final var mObserversOf_mRouteDirection = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRouteDirection_property_selection : EBSelection <RouteDirection?> { // §
     return self.mRouteDirection_property.selection
-/*    if let model = self.propval {
-      switch (model.mRouteDirection_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -736,25 +1032,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteOrigin' stored property
   //····················································································································
 
-  private final var mRouteOrigin_property = EBGenericTransientProperty <RouteOrigin?> ()
+  final let mRouteOrigin_property = EBGenericTransientProperty <RouteOrigin?> ()
 //  private final var mObserversOf_mRouteOrigin = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRouteOrigin_property_selection : EBSelection <RouteOrigin?> { // §
     return self.mRouteOrigin_property.selection
-/*    if let model = self.propval {
-      switch (model.mRouteOrigin_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -787,25 +1071,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterInterfaceMode' stored property
   //····················································································································
 
-  private final var mAutorouterInterfaceMode_property = EBGenericTransientProperty <Int?> ()
+  final let mAutorouterInterfaceMode_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
 
   //····················································································································
 
   final var mAutorouterInterfaceMode_property_selection : EBSelection <Int?> { // §
     return self.mAutorouterInterfaceMode_property.selection
-/*    if let model = self.propval {
-      switch (model.mAutorouterInterfaceMode_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -838,25 +1110,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mExportExistingTracksAndVias' stored property
   //····················································································································
 
-  private final var mExportExistingTracksAndVias_property = EBGenericTransientProperty <Bool?> ()
+  final let mExportExistingTracksAndVias_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
 
   //····················································································································
 
   final var mExportExistingTracksAndVias_property_selection : EBSelection <Bool?> { // §
     return self.mExportExistingTracksAndVias_property.selection
-/*    if let model = self.propval {
-      switch (model.mExportExistingTracksAndVias_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -889,25 +1149,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mTrackLengthUnit' stored property
   //····················································································································
 
-  private final var mTrackLengthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mTrackLengthUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mTrackLengthUnit_property_selection : EBSelection <Int?> { // §
     return self.mTrackLengthUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mTrackLengthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -940,25 +1188,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearance' stored property
   //····················································································································
 
-  private final var mLayoutClearance_property = EBGenericTransientProperty <Int?> ()
+  final let mLayoutClearance_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mLayoutClearance = EBWeakEventSet ()
 
   //····················································································································
 
   final var mLayoutClearance_property_selection : EBSelection <Int?> { // §
     return self.mLayoutClearance_property.selection
-/*    if let model = self.propval {
-      switch (model.mLayoutClearance_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -991,25 +1227,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearanceUnit' stored property
   //····················································································································
 
-  private final var mLayoutClearanceUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mLayoutClearanceUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mLayoutClearanceUnit_property_selection : EBSelection <Int?> { // §
     return self.mLayoutClearanceUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mLayoutClearanceUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1042,25 +1266,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedInspector' stored property
   //····················································································································
 
-  private final var mBoardSelectedInspector_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardSelectedInspector_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardSelectedInspector_property_selection : EBSelection <Int?> { // §
     return self.mBoardSelectedInspector_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardSelectedInspector_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1093,25 +1305,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardHorizontalFlip' stored property
   //····················································································································
 
-  private final var mBoardHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mBoardHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardHorizontalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mBoardHorizontalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardHorizontalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1144,25 +1344,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardVerticalFlip' stored property
   //····················································································································
 
-  private final var mBoardVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mBoardVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardVerticalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mBoardVerticalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardVerticalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1195,25 +1383,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStyle' stored property
   //····················································································································
 
-  private final var mBoardGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
+  final let mBoardGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
 //  private final var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardGridStyle_property_selection : EBSelection <GridStyle?> { // §
     return self.mBoardGridStyle_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardGridStyle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1246,25 +1422,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridDisplayFactor' stored property
   //····················································································································
 
-  private final var mBoardGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardGridDisplayFactor_property_selection : EBSelection <Int?> { // §
     return self.mBoardGridDisplayFactor_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardGridDisplayFactor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1297,25 +1461,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardZoom' stored property
   //····················································································································
 
-  private final var mBoardZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardZoom_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardZoom = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardZoom_property_selection : EBSelection <Int?> { // §
     return self.mBoardZoom_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardZoom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1348,25 +1500,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStep' stored property
   //····················································································································
 
-  private final var mBoardGridStep_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardGridStep_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardGridStep = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardGridStep_property_selection : EBSelection <Int?> { // §
     return self.mBoardGridStep_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardGridStep_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1399,25 +1539,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStepUnit' stored property
   //····················································································································
 
-  private final var mBoardGridStepUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardGridStepUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardGridStepUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardGridStepUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardGridStepUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1450,25 +1578,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mErrorOrWarningIssueSize' stored property
   //····················································································································
 
-  private final var mErrorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
+  final let mErrorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var mErrorOrWarningIssueSize_property_selection : EBSelection <Double?> { // §
     return self.mErrorOrWarningIssueSize_property.selection
-/*    if let model = self.propval {
-      switch (model.mErrorOrWarningIssueSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1501,25 +1617,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mControlKeyHiliteDiameter' stored property
   //····················································································································
 
-  private final var mControlKeyHiliteDiameter_property = EBGenericTransientProperty <Double?> ()
+  final let mControlKeyHiliteDiameter_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var mControlKeyHiliteDiameter_property_selection : EBSelection <Double?> { // §
     return self.mControlKeyHiliteDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.mControlKeyHiliteDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1552,25 +1656,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDSNFileProposedName' stored property
   //····················································································································
 
-  private final var mDSNFileProposedName_property = EBGenericTransientProperty <String?> ()
+  final let mDSNFileProposedName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDSNFileProposedName_property_selection : EBSelection <String?> { // §
     return self.mDSNFileProposedName_property.selection
-/*    if let model = self.propval {
-      switch (model.mDSNFileProposedName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1603,25 +1695,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidth' stored property
   //····················································································································
 
-  private final var mBoardLimitsWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsWidth_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1654,25 +1734,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidthUnit' stored property
   //····················································································································
 
-  private final var mBoardLimitsWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsWidthUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsWidthUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsWidthUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsWidthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1705,25 +1773,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearance' stored property
   //····················································································································
 
-  private final var mBoardClearance_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardClearance_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardClearance = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardClearance_property_selection : EBSelection <Int?> { // §
     return self.mBoardClearance_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardClearance_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1756,25 +1812,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearanceUnit' stored property
   //····················································································································
 
-  private final var mBoardClearanceUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardClearanceUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardClearanceUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardClearanceUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardClearanceUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1807,25 +1851,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
 
-  private final var mBoardLimitsSelectedInspector_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsSelectedInspector_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsSelectedInspector_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsSelectedInspector_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsSelectedInspector_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1858,25 +1890,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsHorizontalFlip' stored property
   //····················································································································
 
-  private final var mBoardLimitsHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mBoardLimitsHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsHorizontalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mBoardLimitsHorizontalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsHorizontalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1909,25 +1929,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsVerticalFlip' stored property
   //····················································································································
 
-  private final var mBoardLimitsVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mBoardLimitsVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsVerticalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mBoardLimitsVerticalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsVerticalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1960,25 +1968,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStyle' stored property
   //····················································································································
 
-  private final var mBoardLimitsGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
+  final let mBoardLimitsGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
 //  private final var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsGridStyle_property_selection : EBSelection <GridStyle?> { // §
     return self.mBoardLimitsGridStyle_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsGridStyle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2011,25 +2007,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridDisplayFactor' stored property
   //····················································································································
 
-  private final var mBoardLimitsGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsGridDisplayFactor_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsGridDisplayFactor_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsGridDisplayFactor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2062,25 +2046,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsZoom' stored property
   //····················································································································
 
-  private final var mBoardLimitsZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsZoom_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsZoom_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsZoom_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsZoom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2113,25 +2085,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStep' stored property
   //····················································································································
 
-  private final var mBoardLimitsGridStep_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsGridStep_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsGridStep_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsGridStep_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsGridStep_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2164,25 +2124,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   //····················································································································
 
-  private final var mBoardLimitsGridStepUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsGridStepUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsGridStepUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsGridStepUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsGridStepUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2215,25 +2163,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   //····················································································································
 
-  private final var mBoardLimitsBoundingBoxUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitsBoundingBoxUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitsBoundingBoxUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitsBoundingBoxUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitsBoundingBoxUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2266,25 +2202,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   //····················································································································
 
-  private final var mBoardPointsBoundingBoxUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardPointsBoundingBoxUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardPointsBoundingBoxUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardPointsBoundingBoxUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardPointsBoundingBoxUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2317,25 +2241,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   //····················································································································
 
-  private final var mBoardSelectedCurveDisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardSelectedCurveDisplayUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardSelectedCurveDisplayUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardSelectedCurveDisplayUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardSelectedCurveDisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2368,25 +2280,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   //····················································································································
 
-  private final var mBoardLimitControlPointsDisplayUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mBoardLimitControlPointsDisplayUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardLimitControlPointsDisplayUnit_property_selection : EBSelection <Int?> { // §
     return self.mBoardLimitControlPointsDisplayUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardLimitControlPointsDisplayUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2419,25 +2319,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardShape' stored property
   //····················································································································
 
-  private final var mBoardShape_property = EBGenericTransientProperty <BoardShape?> ()
+  final let mBoardShape_property = EBGenericTransientProperty <BoardShape?> ()
 //  private final var mObserversOf_mBoardShape = EBWeakEventSet ()
 
   //····················································································································
 
   final var mBoardShape_property_selection : EBSelection <BoardShape?> { // §
     return self.mBoardShape_property.selection
-/*    if let model = self.propval {
-      switch (model.mBoardShape_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2470,25 +2358,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidth' stored property
   //····················································································································
 
-  private final var mRectangularBoardWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mRectangularBoardWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRectangularBoardWidth_property_selection : EBSelection <Int?> { // §
     return self.mRectangularBoardWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.mRectangularBoardWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2521,25 +2397,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   //····················································································································
 
-  private final var mRectangularBoardWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mRectangularBoardWidthUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRectangularBoardWidthUnit_property_selection : EBSelection <Int?> { // §
     return self.mRectangularBoardWidthUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mRectangularBoardWidthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2572,25 +2436,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeight' stored property
   //····················································································································
 
-  private final var mRectangularBoardHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mRectangularBoardHeight_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRectangularBoardHeight_property_selection : EBSelection <Int?> { // §
     return self.mRectangularBoardHeight_property.selection
-/*    if let model = self.propval {
-      switch (model.mRectangularBoardHeight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2623,25 +2475,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   //····················································································································
 
-  private final var mRectangularBoardHeightUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mRectangularBoardHeightUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRectangularBoardHeightUnit_property_selection : EBSelection <Int?> { // §
     return self.mRectangularBoardHeightUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mRectangularBoardHeightUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2674,25 +2514,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
 
-  private final var mDefaultNetClassName_property = EBGenericTransientProperty <String?> ()
+  final let mDefaultNetClassName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDefaultNetClassName_property_selection : EBSelection <String?> { // §
     return self.mDefaultNetClassName_property.selection
-/*    if let model = self.propval {
-      switch (model.mDefaultNetClassName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2725,25 +2553,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
-  private final var mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedPageIndex_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSelectedPageIndex_property_selection : EBSelection <Int?> { // §
     return self.mSelectedPageIndex_property.selection
-/*    if let model = self.propval {
-      switch (model.mSelectedPageIndex_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2776,25 +2592,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
 
-  private final var mSelectedSchematicInspector_property = EBGenericTransientProperty <Int?> ()
+  final let mSelectedSchematicInspector_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSelectedSchematicInspector_property_selection : EBSelection <Int?> { // §
     return self.mSelectedSchematicInspector_property.selection
-/*    if let model = self.propval {
-      switch (model.mSelectedSchematicInspector_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2827,25 +2631,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicTitle' stored property
   //····················································································································
 
-  private final var mSchematicTitle_property = EBGenericTransientProperty <String?> ()
+  final let mSchematicTitle_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSchematicTitle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicTitle_property_selection : EBSelection <String?> { // §
     return self.mSchematicTitle_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicTitle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2878,25 +2670,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVersion' stored property
   //····················································································································
 
-  private final var mSchematicVersion_property = EBGenericTransientProperty <String?> ()
+  final let mSchematicVersion_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSchematicVersion = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicVersion_property_selection : EBSelection <String?> { // §
     return self.mSchematicVersion_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicVersion_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2929,25 +2709,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicDate' stored property
   //····················································································································
 
-  private final var mSchematicDate_property = EBGenericTransientProperty <Date?> ()
+  final let mSchematicDate_property = EBGenericTransientProperty <Date?> ()
 //  private final var mObserversOf_mSchematicDate = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicDate_property_selection : EBSelection <Date?> { // §
     return self.mSchematicDate_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicDate_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -2980,25 +2748,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicHorizontalFlip' stored property
   //····················································································································
 
-  private final var mSchematicHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mSchematicHorizontalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicHorizontalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mSchematicHorizontalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicHorizontalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3031,25 +2787,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVerticalFlip' stored property
   //····················································································································
 
-  private final var mSchematicVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
+  final let mSchematicVerticalFlip_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicVerticalFlip_property_selection : EBSelection <Bool?> { // §
     return self.mSchematicVerticalFlip_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicVerticalFlip_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3082,25 +2826,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicZoom' stored property
   //····················································································································
 
-  private final var mSchematicZoom_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicZoom_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicZoom = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicZoom_property_selection : EBSelection <Int?> { // §
     return self.mSchematicZoom_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicZoom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3133,25 +2865,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridStyle' stored property
   //····················································································································
 
-  private final var mSchematicGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
+  final let mSchematicGridStyle_property = EBGenericTransientProperty <GridStyle?> ()
 //  private final var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicGridStyle_property_selection : EBSelection <GridStyle?> { // §
     return self.mSchematicGridStyle_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicGridStyle_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3184,25 +2904,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridDisplayFactor' stored property
   //····················································································································
 
-  private final var mSchematicGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicGridDisplayFactor_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicGridDisplayFactor_property_selection : EBSelection <Int?> { // §
     return self.mSchematicGridDisplayFactor_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicGridDisplayFactor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3235,25 +2943,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidth' stored property
   //····················································································································
 
-  private final var mSchematicCustomWidth_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicCustomWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicCustomWidth_property_selection : EBSelection <Int?> { // §
     return self.mSchematicCustomWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicCustomWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3286,25 +2982,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   //····················································································································
 
-  private final var mSchematicCustomWidthUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicCustomWidthUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicCustomWidthUnit_property_selection : EBSelection <Int?> { // §
     return self.mSchematicCustomWidthUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicCustomWidthUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3337,25 +3021,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeight' stored property
   //····················································································································
 
-  private final var mSchematicCustomHeight_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicCustomHeight_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicCustomHeight_property_selection : EBSelection <Int?> { // §
     return self.mSchematicCustomHeight_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicCustomHeight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3388,25 +3060,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   //····················································································································
 
-  private final var mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mSchematicCustomHeightUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicCustomHeightUnit_property_selection : EBSelection <Int?> { // §
     return self.mSchematicCustomHeightUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicCustomHeightUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3439,25 +3099,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicSheetOrientation' stored property
   //····················································································································
 
-  private final var mSchematicSheetOrientation_property = EBGenericTransientProperty <SchematicSheetOrientation?> ()
+  final let mSchematicSheetOrientation_property = EBGenericTransientProperty <SchematicSheetOrientation?> ()
 //  private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSchematicSheetOrientation_property_selection : EBSelection <SchematicSheetOrientation?> { // §
     return self.mSchematicSheetOrientation_property.selection
-/*    if let model = self.propval {
-      switch (model.mSchematicSheetOrientation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3490,25 +3138,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
 
-  private final var mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
+  final let mRastnetDisplay_property = EBGenericTransientProperty <RastnetDisplay?> ()
 //  private final var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRastnetDisplay_property_selection : EBSelection <RastnetDisplay?> { // §
     return self.mRastnetDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.mRastnetDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3541,25 +3177,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedNetName' stored property
   //····················································································································
 
-  private final var mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
+  final let mRastnetDisplayedNetName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRastnetDisplayedNetName_property_selection : EBSelection <String?> { // §
     return self.mRastnetDisplayedNetName_property.selection
-/*    if let model = self.propval {
-      switch (model.mRastnetDisplayedNetName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3592,25 +3216,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedComponentName' stored property
   //····················································································································
 
-  private final var mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
+  final let mRastnetDisplayedComponentName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRastnetDisplayedComponentName_property_selection : EBSelection <String?> { // §
     return self.mRastnetDisplayedComponentName_property.selection
-/*    if let model = self.propval {
-      switch (model.mRastnetDisplayedComponentName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -3643,25 +3255,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  private final var boardGridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let boardGridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_boardGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
     return self.boardGridStepMultipliedByDisplayFactor_property.selection
-/*    if let model = self.propval {
-      switch (model.boardGridStepMultipliedByDisplayFactor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3694,25 +3294,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitsGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
-  private final var boardLimitsGridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
+  final let boardLimitsGridStepMultipliedByDisplayFactor_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitsGridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int?> {
     return self.boardLimitsGridStepMultipliedByDisplayFactor_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitsGridStepMultipliedByDisplayFactor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3745,25 +3333,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardShapeIsRectangular' transient property
   //····················································································································
 
-  private final var boardShapeIsRectangular_property = EBGenericTransientProperty <Bool?> ()
+  final let boardShapeIsRectangular_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_boardShapeIsRectangular = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardShapeIsRectangular_property_selection : EBSelection <Bool?> {
     return self.boardShapeIsRectangular_property.selection
-/*    if let model = self.propval {
-      switch (model.boardShapeIsRectangular_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3796,25 +3372,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'selectedSheetIssues' transient property
   //····················································································································
 
-  private final var selectedSheetIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let selectedSheetIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_selectedSheetIssues = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectedSheetIssues_property_selection : EBSelection <CanariIssueArray?> {
     return self.selectedSheetIssues_property.selection
-/*    if let model = self.propval {
-      switch (model.selectedSheetIssues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3847,25 +3411,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
+  final let connectedPoints_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
 
   //····················································································································
 
   final var connectedPoints_property_selection : EBSelection <EBShape?> {
     return self.connectedPoints_property.selection
-/*    if let model = self.propval {
-      switch (model.connectedPoints_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3898,25 +3450,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connexionWarningString' transient property
   //····················································································································
 
-  private final var connexionWarningString_property = EBGenericTransientProperty <String?> ()
+  final let connexionWarningString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_connexionWarningString = EBWeakEventSet ()
 
   //····················································································································
 
   final var connexionWarningString_property_selection : EBSelection <String?> {
     return self.connexionWarningString_property.selection
-/*    if let model = self.propval {
-      switch (model.connexionWarningString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -3949,25 +3489,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'connexionErrorString' transient property
   //····················································································································
 
-  private final var connexionErrorString_property = EBGenericTransientProperty <String?> ()
+  final let connexionErrorString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_connexionErrorString = EBWeakEventSet ()
 
   //····················································································································
 
   final var connexionErrorString_property_selection : EBSelection <String?> {
     return self.connexionErrorString_property.selection
-/*    if let model = self.propval {
-      switch (model.connexionErrorString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4000,25 +3528,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'sheetIndexes' transient property
   //····················································································································
 
-  private final var sheetIndexes_property = EBGenericTransientProperty <IntArray?> ()
+  final let sheetIndexes_property = EBGenericTransientProperty <IntArray?> ()
 //  private final var mObserversOf_sheetIndexes = EBWeakEventSet ()
 
   //····················································································································
 
   final var sheetIndexes_property_selection : EBSelection <IntArray?> {
     return self.sheetIndexes_property.selection
-/*    if let model = self.propval {
-      switch (model.sheetIndexes_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4051,25 +3567,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
-  private final var netsDescription_property = EBGenericTransientProperty <NetInfoArray?> ()
+  final let netsDescription_property = EBGenericTransientProperty <NetInfoArray?> ()
 //  private final var mObserversOf_netsDescription = EBWeakEventSet ()
 
   //····················································································································
 
   final var netsDescription_property_selection : EBSelection <NetInfoArray?> {
     return self.netsDescription_property.selection
-/*    if let model = self.propval {
-      switch (model.netsDescription_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4102,25 +3606,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardIssues' transient property
   //····················································································································
 
-  private final var boardIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let boardIssues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_boardIssues = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardIssues_property_selection : EBSelection <CanariIssueArray?> {
     return self.boardIssues_property.selection
-/*    if let model = self.propval {
-      switch (model.boardIssues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4153,25 +3645,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
 //  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     return self.signatureForERCChecking_property.selection
-/*    if let model = self.propval {
-      switch (model.signatureForERCChecking_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4204,25 +3684,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'ercStatusImage' transient property
   //····················································································································
 
-  private final var ercStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+  final let ercStatusImage_property = EBGenericTransientProperty <NSImage?> ()
 //  private final var mObserversOf_ercStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
   final var ercStatusImage_property_selection : EBSelection <NSImage?> {
     return self.ercStatusImage_property.selection
-/*    if let model = self.propval {
-      switch (model.ercStatusImage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4255,25 +3723,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'ercStatusMessage' transient property
   //····················································································································
 
-  private final var ercStatusMessage_property = EBGenericTransientProperty <String?> ()
+  final let ercStatusMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_ercStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var ercStatusMessage_property_selection : EBSelection <String?> {
     return self.ercStatusMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.ercStatusMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4306,25 +3762,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'viaCountString' transient property
   //····················································································································
 
-  private final var viaCountString_property = EBGenericTransientProperty <String?> ()
+  final let viaCountString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_viaCountString = EBWeakEventSet ()
 
   //····················································································································
 
   final var viaCountString_property_selection : EBSelection <String?> {
     return self.viaCountString_property.selection
-/*    if let model = self.propval {
-      switch (model.viaCountString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4357,25 +3801,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'trackCountString' transient property
   //····················································································································
 
-  private final var trackCountString_property = EBGenericTransientProperty <String?> ()
+  final let trackCountString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_trackCountString = EBWeakEventSet ()
 
   //····················································································································
 
   final var trackCountString_property_selection : EBSelection <String?> {
     return self.trackCountString_property.selection
-/*    if let model = self.propval {
-      switch (model.trackCountString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4408,25 +3840,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'trackLengthString' transient property
   //····················································································································
 
-  private final var trackLengthString_property = EBGenericTransientProperty <String?> ()
+  final let trackLengthString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_trackLengthString = EBWeakEventSet ()
 
   //····················································································································
 
   final var trackLengthString_property_selection : EBSelection <String?> {
     return self.trackLengthString_property.selection
-/*    if let model = self.propval {
-      switch (model.trackLengthString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4459,25 +3879,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardStatusImage' transient property
   //····················································································································
 
-  private final var boardStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+  final let boardStatusImage_property = EBGenericTransientProperty <NSImage?> ()
 //  private final var mObserversOf_boardStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardStatusImage_property_selection : EBSelection <NSImage?> {
     return self.boardStatusImage_property.selection
-/*    if let model = self.propval {
-      switch (model.boardStatusImage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4510,25 +3918,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardStatusMessage' transient property
   //····················································································································
 
-  private final var boardStatusMessage_property = EBGenericTransientProperty <String?> ()
+  final let boardStatusMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardStatusMessage_property_selection : EBSelection <String?> {
     return self.boardStatusMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.boardStatusMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4561,25 +3957,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'interiorBoundBox' transient property
   //····················································································································
 
-  private final var interiorBoundBox_property = EBGenericTransientProperty <CanariRect?> ()
+  final let interiorBoundBox_property = EBGenericTransientProperty <CanariRect?> ()
 //  private final var mObserversOf_interiorBoundBox = EBWeakEventSet ()
 
   //····················································································································
 
   final var interiorBoundBox_property_selection : EBSelection <CanariRect?> {
     return self.interiorBoundBox_property.selection
-/*    if let model = self.propval {
-      switch (model.interiorBoundBox_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4612,25 +3996,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardBoundBox' transient property
   //····················································································································
 
-  private final var boardBoundBox_property = EBGenericTransientProperty <CanariRect?> ()
+  final let boardBoundBox_property = EBGenericTransientProperty <CanariRect?> ()
 //  private final var mObserversOf_boardBoundBox = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardBoundBox_property_selection : EBSelection <CanariRect?> {
     return self.boardBoundBox_property.selection
-/*    if let model = self.propval {
-      switch (model.boardBoundBox_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4663,25 +4035,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorTop' transient property
   //····················································································································
 
-  private final var boardInteriorTop_property = EBGenericTransientProperty <String?> ()
+  final let boardInteriorTop_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardInteriorTop = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardInteriorTop_property_selection : EBSelection <String?> {
     return self.boardInteriorTop_property.selection
-/*    if let model = self.propval {
-      switch (model.boardInteriorTop_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4714,25 +4074,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorBottom' transient property
   //····················································································································
 
-  private final var boardInteriorBottom_property = EBGenericTransientProperty <String?> ()
+  final let boardInteriorBottom_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardInteriorBottom = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardInteriorBottom_property_selection : EBSelection <String?> {
     return self.boardInteriorBottom_property.selection
-/*    if let model = self.propval {
-      switch (model.boardInteriorBottom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4765,25 +4113,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorLeft' transient property
   //····················································································································
 
-  private final var boardInteriorLeft_property = EBGenericTransientProperty <String?> ()
+  final let boardInteriorLeft_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardInteriorLeft = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardInteriorLeft_property_selection : EBSelection <String?> {
     return self.boardInteriorLeft_property.selection
-/*    if let model = self.propval {
-      switch (model.boardInteriorLeft_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4816,25 +4152,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardInteriorRight' transient property
   //····················································································································
 
-  private final var boardInteriorRight_property = EBGenericTransientProperty <String?> ()
+  final let boardInteriorRight_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardInteriorRight = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardInteriorRight_property_selection : EBSelection <String?> {
     return self.boardInteriorRight_property.selection
-/*    if let model = self.propval {
-      switch (model.boardInteriorRight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4867,25 +4191,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderTop' transient property
   //····················································································································
 
-  private final var boardLimitBorderTop_property = EBGenericTransientProperty <String?> ()
+  final let boardLimitBorderTop_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardLimitBorderTop = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitBorderTop_property_selection : EBSelection <String?> {
     return self.boardLimitBorderTop_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitBorderTop_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4918,25 +4230,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderBottom' transient property
   //····················································································································
 
-  private final var boardLimitBorderBottom_property = EBGenericTransientProperty <String?> ()
+  final let boardLimitBorderBottom_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardLimitBorderBottom = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitBorderBottom_property_selection : EBSelection <String?> {
     return self.boardLimitBorderBottom_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitBorderBottom_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -4969,25 +4269,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderLeft' transient property
   //····················································································································
 
-  private final var boardLimitBorderLeft_property = EBGenericTransientProperty <String?> ()
+  final let boardLimitBorderLeft_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardLimitBorderLeft = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitBorderLeft_property_selection : EBSelection <String?> {
     return self.boardLimitBorderLeft_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitBorderLeft_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5020,25 +4308,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'boardLimitBorderRight' transient property
   //····················································································································
 
-  private final var boardLimitBorderRight_property = EBGenericTransientProperty <String?> ()
+  final let boardLimitBorderRight_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_boardLimitBorderRight = EBWeakEventSet ()
 
   //····················································································································
 
   final var boardLimitBorderRight_property_selection : EBSelection <String?> {
     return self.boardLimitBorderRight_property.selection
-/*    if let model = self.propval {
-      switch (model.boardLimitBorderRight_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5071,25 +4347,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderElementCountString' transient property
   //····················································································································
 
-  private final var borderElementCountString_property = EBGenericTransientProperty <String?> ()
+  final let borderElementCountString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_borderElementCountString = EBWeakEventSet ()
 
   //····················································································································
 
   final var borderElementCountString_property_selection : EBSelection <String?> {
     return self.borderElementCountString_property.selection
-/*    if let model = self.propval {
-      switch (model.borderElementCountString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5122,25 +4386,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderOutlineBackground' transient property
   //····················································································································
 
-  private final var borderOutlineBackground_property = EBGenericTransientProperty <EBShape?> ()
+  final let borderOutlineBackground_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_borderOutlineBackground = EBWeakEventSet ()
 
   //····················································································································
 
   final var borderOutlineBackground_property_selection : EBSelection <EBShape?> {
     return self.borderOutlineBackground_property.selection
-/*    if let model = self.propval {
-      switch (model.borderOutlineBackground_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5173,25 +4425,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'borderViewBackground' transient property
   //····················································································································
 
-  private final var borderViewBackground_property = EBGenericTransientProperty <EBShape?> ()
+  final let borderViewBackground_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_borderViewBackground = EBWeakEventSet ()
 
   //····················································································································
 
   final var borderViewBackground_property_selection : EBSelection <EBShape?> {
     return self.borderViewBackground_property.selection
-/*    if let model = self.propval {
-      switch (model.borderViewBackground_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5224,25 +4464,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'deviceNames' transient property
   //····················································································································
 
-  private final var deviceNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let deviceNames_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_deviceNames = EBWeakEventSet ()
 
   //····················································································································
 
   final var deviceNames_property_selection : EBSelection <StringArray?> {
     return self.deviceNames_property.selection
-/*    if let model = self.propval {
-      switch (model.deviceNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5275,25 +4503,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'allClassNames' transient property
   //····················································································································
 
-  private final var allClassNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let allClassNames_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_allClassNames = EBWeakEventSet ()
 
   //····················································································································
 
   final var allClassNames_property_selection : EBSelection <StringArray?> {
     return self.allClassNames_property.selection
-/*    if let model = self.propval {
-      switch (model.allClassNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5326,25 +4542,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'sheetGeometry' transient property
   //····················································································································
 
-  private final var sheetGeometry_property = EBGenericTransientProperty <SchematicSheetGeometry?> ()
+  final let sheetGeometry_property = EBGenericTransientProperty <SchematicSheetGeometry?> ()
 //  private final var mObserversOf_sheetGeometry = EBWeakEventSet ()
 
   //····················································································································
 
   final var sheetGeometry_property_selection : EBSelection <SchematicSheetGeometry?> {
     return self.sheetGeometry_property.selection
-/*    if let model = self.propval {
-      switch (model.sheetGeometry_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5377,25 +4581,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicBackgroundDisplay' transient property
   //····················································································································
 
-  private final var schematicBackgroundDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let schematicBackgroundDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_schematicBackgroundDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var schematicBackgroundDisplay_property_selection : EBSelection <EBShape?> {
     return self.schematicBackgroundDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.schematicBackgroundDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5428,25 +4620,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
-  private final var netWarningCount_property = EBGenericTransientProperty <Int?> ()
+  final let netWarningCount_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_netWarningCount = EBWeakEventSet ()
 
   //····················································································································
 
   final var netWarningCount_property_selection : EBSelection <Int?> {
     return self.netWarningCount_property.selection
-/*    if let model = self.propval {
-      switch (model.netWarningCount_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5479,25 +4659,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'netNamesArray' transient property
   //····················································································································
 
-  private final var netNamesArray_property = EBGenericTransientProperty <StringArray?> ()
+  final let netNamesArray_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_netNamesArray = EBWeakEventSet ()
 
   //····················································································································
 
   final var netNamesArray_property_selection : EBSelection <StringArray?> {
     return self.netNamesArray_property.selection
-/*    if let model = self.propval {
-      switch (model.netNamesArray_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5530,25 +4698,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private final var unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
 //  private final var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
   final var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     return self.unplacedSymbols_property.selection
-/*    if let model = self.propval {
-      switch (model.unplacedSymbols_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5581,25 +4737,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'unplacedPackages' transient property
   //····················································································································
 
-  private final var unplacedPackages_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let unplacedPackages_property = EBGenericTransientProperty <StringTagArray?> ()
 //  private final var mObserversOf_unplacedPackages = EBWeakEventSet ()
 
   //····················································································································
 
   final var unplacedPackages_property_selection : EBSelection <StringTagArray?> {
     return self.unplacedPackages_property.selection
-/*    if let model = self.propval {
-      switch (model.unplacedPackages_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5632,25 +4776,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'componentsPlacedInBoard' transient property
   //····················································································································
 
-  private final var componentsPlacedInBoard_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let componentsPlacedInBoard_property = EBGenericTransientProperty <StringTagArray?> ()
 //  private final var mObserversOf_componentsPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentsPlacedInBoard_property_selection : EBSelection <StringTagArray?> {
     return self.componentsPlacedInBoard_property.selection
-/*    if let model = self.propval {
-      switch (model.componentsPlacedInBoard_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5683,25 +4815,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'placedComponentNameArray' transient property
   //····················································································································
 
-  private final var placedComponentNameArray_property = EBGenericTransientProperty <StringArray?> ()
+  final let placedComponentNameArray_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_placedComponentNameArray = EBWeakEventSet ()
 
   //····················································································································
 
   final var placedComponentNameArray_property_selection : EBSelection <StringArray?> {
     return self.placedComponentNameArray_property.selection
-/*    if let model = self.propval {
-      switch (model.placedComponentNameArray_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5734,25 +4854,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicHasErrorOrWarning' transient property
   //····················································································································
 
-  private final var schematicHasErrorOrWarning_property = EBGenericTransientProperty <Bool?> ()
+  final let schematicHasErrorOrWarning_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_schematicHasErrorOrWarning = EBWeakEventSet ()
 
   //····················································································································
 
   final var schematicHasErrorOrWarning_property_selection : EBSelection <Bool?> {
     return self.schematicHasErrorOrWarning_property.selection
-/*    if let model = self.propval {
-      switch (model.schematicHasErrorOrWarning_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5785,25 +4893,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicStatusMessage' transient property
   //····················································································································
 
-  private final var schematicStatusMessage_property = EBGenericTransientProperty <String?> ()
+  final let schematicStatusMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_schematicStatusMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var schematicStatusMessage_property_selection : EBSelection <String?> {
     return self.schematicStatusMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.schematicStatusMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5836,25 +4932,13 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'schematicStatusImage' transient property
   //····················································································································
 
-  private final var schematicStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+  final let schematicStatusImage_property = EBGenericTransientProperty <NSImage?> ()
 //  private final var mObserversOf_schematicStatusImage = EBWeakEventSet ()
 
   //····················································································································
 
   final var schematicStatusImage_property_selection : EBSelection <NSImage?> {
     return self.schematicStatusImage_property.selection
-/*    if let model = self.propval {
-      switch (model.schematicStatusImage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -5893,7 +4977,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mSheets_property_selection : EBSelection <[SheetInProject]> {
     if let model = self.propval {
-      switch (model.mSheets_property_selection) {
+      switch (model.mSheets_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -5934,7 +5018,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mNetClasses_property_selection : EBSelection <[NetClassInProject]> {
     if let model = self.propval {
-      switch (model.mNetClasses_property_selection) {
+      switch (model.mNetClasses_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -5975,7 +5059,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mFonts_property_selection : EBSelection <[FontInProject]> {
     if let model = self.propval {
-      switch (model.mFonts_property_selection) {
+      switch (model.mFonts_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -6016,7 +5100,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mDevices_property_selection : EBSelection <[DeviceInProject]> {
     if let model = self.propval {
-      switch (model.mDevices_property_selection) {
+      switch (model.mDevices_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -6057,7 +5141,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mBorderCurves_property_selection : EBSelection <[BorderCurve]> {
     if let model = self.propval {
-      switch (model.mBorderCurves_property_selection) {
+      switch (model.mBorderCurves_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -6098,7 +5182,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mBoardObjects_property_selection : EBSelection <[BoardObject]> {
     if let model = self.propval {
-      switch (model.mBoardObjects_property_selection) {
+      switch (model.mBoardObjects_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -6139,7 +5223,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 
   final var mComponents_property_selection : EBSelection <[ComponentInProject]> {
     if let model = self.propval {
-      switch (model.mComponents_property_selection) {
+      switch (model.mComponents_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -6191,7 +5275,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mArtworkName_property)
   //--- Configure mArtworkVersion simple stored property
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6207,7 +5290,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mArtworkVersion_property)
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6223,7 +5305,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPDFBoardBackgroundColor_property)
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6239,7 +5320,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property)
   //--- Configure mLastERCCheckingIsSuccess simple stored property
     self.mLastERCCheckingIsSuccess_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6255,7 +5335,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mLastERCCheckingIsSuccess_property)
   //--- Configure mLastERCCheckingSignature simple stored property
     self.mLastERCCheckingSignature_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6271,7 +5350,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mLastERCCheckingSignature_property)
   //--- Configure mBoardSideForNewTrack simple stored property
     self.mBoardSideForNewTrack_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6287,7 +5365,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardSideForNewTrack_property)
   //--- Configure mDirectionForNewTrack simple stored property
     self.mDirectionForNewTrack_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6303,7 +5380,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDirectionForNewTrack_property)
   //--- Configure mBoardLayerForNewText simple stored property
     self.mBoardLayerForNewText_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6319,7 +5395,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLayerForNewText_property)
   //--- Configure mBoardLayerForNewLine simple stored property
     self.mBoardLayerForNewLine_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6335,7 +5410,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLayerForNewLine_property)
   //--- Configure mBoardSideForNewRestrictRectangle simple stored property
     self.mBoardSideForNewRestrictRectangle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6351,7 +5425,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardSideForNewRestrictRectangle_property)
   //--- Configure mAutoRouterPreferredDirections simple stored property
     self.mAutoRouterPreferredDirections_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6367,7 +5440,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mAutoRouterPreferredDirections_property)
   //--- Configure mAutorouterSnapAngle simple stored property
     self.mAutorouterSnapAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6383,7 +5455,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mAutorouterSnapAngle_property)
   //--- Configure mRouteDirection simple stored property
     self.mRouteDirection_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6399,7 +5470,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRouteDirection_property)
   //--- Configure mRouteOrigin simple stored property
     self.mRouteOrigin_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6415,7 +5485,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRouteOrigin_property)
   //--- Configure mAutorouterInterfaceMode simple stored property
     self.mAutorouterInterfaceMode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6431,7 +5500,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mAutorouterInterfaceMode_property)
   //--- Configure mExportExistingTracksAndVias simple stored property
     self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6447,7 +5515,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mExportExistingTracksAndVias_property)
   //--- Configure mTrackLengthUnit simple stored property
     self.mTrackLengthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6463,7 +5530,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mTrackLengthUnit_property)
   //--- Configure mLayoutClearance simple stored property
     self.mLayoutClearance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6479,7 +5545,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mLayoutClearance_property)
   //--- Configure mLayoutClearanceUnit simple stored property
     self.mLayoutClearanceUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6495,7 +5560,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mLayoutClearanceUnit_property)
   //--- Configure mBoardSelectedInspector simple stored property
     self.mBoardSelectedInspector_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6511,7 +5575,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardSelectedInspector_property)
   //--- Configure mBoardHorizontalFlip simple stored property
     self.mBoardHorizontalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6527,7 +5590,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardHorizontalFlip_property)
   //--- Configure mBoardVerticalFlip simple stored property
     self.mBoardVerticalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6543,7 +5605,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardVerticalFlip_property)
   //--- Configure mBoardGridStyle simple stored property
     self.mBoardGridStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6559,7 +5620,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardGridStyle_property)
   //--- Configure mBoardGridDisplayFactor simple stored property
     self.mBoardGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6575,7 +5635,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardGridDisplayFactor_property)
   //--- Configure mBoardZoom simple stored property
     self.mBoardZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6591,7 +5650,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardZoom_property)
   //--- Configure mBoardGridStep simple stored property
     self.mBoardGridStep_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6607,7 +5665,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardGridStep_property)
   //--- Configure mBoardGridStepUnit simple stored property
     self.mBoardGridStepUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6623,7 +5680,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardGridStepUnit_property)
   //--- Configure mErrorOrWarningIssueSize simple stored property
     self.mErrorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6639,7 +5695,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mErrorOrWarningIssueSize_property)
   //--- Configure mControlKeyHiliteDiameter simple stored property
     self.mControlKeyHiliteDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6655,7 +5710,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mControlKeyHiliteDiameter_property)
   //--- Configure mDSNFileProposedName simple stored property
     self.mDSNFileProposedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6671,7 +5725,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDSNFileProposedName_property)
   //--- Configure mBoardLimitsWidth simple stored property
     self.mBoardLimitsWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6687,7 +5740,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsWidth_property)
   //--- Configure mBoardLimitsWidthUnit simple stored property
     self.mBoardLimitsWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6703,7 +5755,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsWidthUnit_property)
   //--- Configure mBoardClearance simple stored property
     self.mBoardClearance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6719,7 +5770,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardClearance_property)
   //--- Configure mBoardClearanceUnit simple stored property
     self.mBoardClearanceUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6735,7 +5785,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardClearanceUnit_property)
   //--- Configure mBoardLimitsSelectedInspector simple stored property
     self.mBoardLimitsSelectedInspector_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6751,7 +5800,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsSelectedInspector_property)
   //--- Configure mBoardLimitsHorizontalFlip simple stored property
     self.mBoardLimitsHorizontalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6767,7 +5815,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsHorizontalFlip_property)
   //--- Configure mBoardLimitsVerticalFlip simple stored property
     self.mBoardLimitsVerticalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6783,7 +5830,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsVerticalFlip_property)
   //--- Configure mBoardLimitsGridStyle simple stored property
     self.mBoardLimitsGridStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6799,7 +5845,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsGridStyle_property)
   //--- Configure mBoardLimitsGridDisplayFactor simple stored property
     self.mBoardLimitsGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6815,7 +5860,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsGridDisplayFactor_property)
   //--- Configure mBoardLimitsZoom simple stored property
     self.mBoardLimitsZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6831,7 +5875,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsZoom_property)
   //--- Configure mBoardLimitsGridStep simple stored property
     self.mBoardLimitsGridStep_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6847,7 +5890,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsGridStep_property)
   //--- Configure mBoardLimitsGridStepUnit simple stored property
     self.mBoardLimitsGridStepUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6863,7 +5905,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsGridStepUnit_property)
   //--- Configure mBoardLimitsBoundingBoxUnit simple stored property
     self.mBoardLimitsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6879,7 +5920,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitsBoundingBoxUnit_property)
   //--- Configure mBoardPointsBoundingBoxUnit simple stored property
     self.mBoardPointsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6895,7 +5935,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardPointsBoundingBoxUnit_property)
   //--- Configure mBoardSelectedCurveDisplayUnit simple stored property
     self.mBoardSelectedCurveDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6911,7 +5950,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardSelectedCurveDisplayUnit_property)
   //--- Configure mBoardLimitControlPointsDisplayUnit simple stored property
     self.mBoardLimitControlPointsDisplayUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6927,7 +5965,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardLimitControlPointsDisplayUnit_property)
   //--- Configure mBoardShape simple stored property
     self.mBoardShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6943,7 +5980,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mBoardShape_property)
   //--- Configure mRectangularBoardWidth simple stored property
     self.mRectangularBoardWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6959,7 +5995,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRectangularBoardWidth_property)
   //--- Configure mRectangularBoardWidthUnit simple stored property
     self.mRectangularBoardWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6975,7 +6010,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRectangularBoardWidthUnit_property)
   //--- Configure mRectangularBoardHeight simple stored property
     self.mRectangularBoardHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -6991,7 +6025,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRectangularBoardHeight_property)
   //--- Configure mRectangularBoardHeightUnit simple stored property
     self.mRectangularBoardHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7007,7 +6040,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRectangularBoardHeightUnit_property)
   //--- Configure mDefaultNetClassName simple stored property
     self.mDefaultNetClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7023,7 +6055,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDefaultNetClassName_property)
   //--- Configure mSelectedPageIndex simple stored property
     self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7039,7 +6070,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSelectedPageIndex_property)
   //--- Configure mSelectedSchematicInspector simple stored property
     self.mSelectedSchematicInspector_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7055,7 +6085,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSelectedSchematicInspector_property)
   //--- Configure mSchematicTitle simple stored property
     self.mSchematicTitle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7071,7 +6100,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicTitle_property)
   //--- Configure mSchematicVersion simple stored property
     self.mSchematicVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7087,7 +6115,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicVersion_property)
   //--- Configure mSchematicDate simple stored property
     self.mSchematicDate_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7103,7 +6130,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicDate_property)
   //--- Configure mSchematicHorizontalFlip simple stored property
     self.mSchematicHorizontalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7119,7 +6145,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicHorizontalFlip_property)
   //--- Configure mSchematicVerticalFlip simple stored property
     self.mSchematicVerticalFlip_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7135,7 +6160,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicVerticalFlip_property)
   //--- Configure mSchematicZoom simple stored property
     self.mSchematicZoom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7151,7 +6175,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicZoom_property)
   //--- Configure mSchematicGridStyle simple stored property
     self.mSchematicGridStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7167,7 +6190,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicGridStyle_property)
   //--- Configure mSchematicGridDisplayFactor simple stored property
     self.mSchematicGridDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7183,7 +6205,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicGridDisplayFactor_property)
   //--- Configure mSchematicCustomWidth simple stored property
     self.mSchematicCustomWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7199,7 +6220,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicCustomWidth_property)
   //--- Configure mSchematicCustomWidthUnit simple stored property
     self.mSchematicCustomWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7215,7 +6235,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicCustomWidthUnit_property)
   //--- Configure mSchematicCustomHeight simple stored property
     self.mSchematicCustomHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7231,7 +6250,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicCustomHeight_property)
   //--- Configure mSchematicCustomHeightUnit simple stored property
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7247,7 +6265,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicCustomHeightUnit_property)
   //--- Configure mSchematicSheetOrientation simple stored property
     self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7263,7 +6280,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSchematicSheetOrientation_property)
   //--- Configure mRastnetDisplay simple stored property
     self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7279,7 +6295,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRastnetDisplay_property)
   //--- Configure mRastnetDisplayedNetName simple stored property
     self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7295,7 +6310,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRastnetDisplayedNetName_property)
   //--- Configure mRastnetDisplayedComponentName simple stored property
     self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7311,7 +6325,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRastnetDisplayedComponentName_property)
   //--- Configure boardGridStepMultipliedByDisplayFactor transient property
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7327,7 +6340,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
   //--- Configure boardLimitsGridStepMultipliedByDisplayFactor transient property
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7343,7 +6355,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
   //--- Configure boardShapeIsRectangular transient property
     self.boardShapeIsRectangular_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7359,7 +6370,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardShapeIsRectangular_property)
   //--- Configure selectedSheetIssues transient property
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7375,7 +6385,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectedSheetIssues_property)
   //--- Configure connectedPoints transient property
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7391,7 +6400,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connectedPoints_property)
   //--- Configure connexionWarningString transient property
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7407,7 +6415,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connexionWarningString_property)
   //--- Configure connexionErrorString transient property
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7423,7 +6430,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connexionErrorString_property)
   //--- Configure sheetIndexes transient property
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7439,7 +6445,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.sheetIndexes_property)
   //--- Configure netsDescription transient property
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7455,7 +6460,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netsDescription_property)
   //--- Configure boardIssues transient property
     self.boardIssues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7471,7 +6475,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardIssues_property)
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7487,7 +6490,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Configure ercStatusImage transient property
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7503,7 +6505,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.ercStatusImage_property)
   //--- Configure ercStatusMessage transient property
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7519,7 +6520,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.ercStatusMessage_property)
   //--- Configure viaCountString transient property
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7535,7 +6535,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.viaCountString_property)
   //--- Configure trackCountString transient property
     self.trackCountString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7551,7 +6550,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.trackCountString_property)
   //--- Configure trackLengthString transient property
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7567,7 +6565,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.trackLengthString_property)
   //--- Configure boardStatusImage transient property
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7583,7 +6580,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardStatusImage_property)
   //--- Configure boardStatusMessage transient property
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7599,7 +6595,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardStatusMessage_property)
   //--- Configure interiorBoundBox transient property
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7615,7 +6610,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.interiorBoundBox_property)
   //--- Configure boardBoundBox transient property
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7631,7 +6625,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardBoundBox_property)
   //--- Configure boardInteriorTop transient property
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7647,7 +6640,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardInteriorTop_property)
   //--- Configure boardInteriorBottom transient property
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7663,7 +6655,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardInteriorBottom_property)
   //--- Configure boardInteriorLeft transient property
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7679,7 +6670,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardInteriorLeft_property)
   //--- Configure boardInteriorRight transient property
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7695,7 +6685,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardInteriorRight_property)
   //--- Configure boardLimitBorderTop transient property
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7711,7 +6700,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitBorderTop_property)
   //--- Configure boardLimitBorderBottom transient property
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7727,7 +6715,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitBorderBottom_property)
   //--- Configure boardLimitBorderLeft transient property
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7743,7 +6730,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitBorderLeft_property)
   //--- Configure boardLimitBorderRight transient property
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7759,7 +6745,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.boardLimitBorderRight_property)
   //--- Configure borderElementCountString transient property
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7775,7 +6760,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.borderElementCountString_property)
   //--- Configure borderOutlineBackground transient property
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7791,7 +6775,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.borderOutlineBackground_property)
   //--- Configure borderViewBackground transient property
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7807,7 +6790,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.borderViewBackground_property)
   //--- Configure deviceNames transient property
     self.deviceNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7823,7 +6805,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.deviceNames_property)
   //--- Configure allClassNames transient property
     self.allClassNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7839,7 +6820,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.allClassNames_property)
   //--- Configure sheetGeometry transient property
     self.sheetGeometry_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7855,7 +6835,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.sheetGeometry_property)
   //--- Configure schematicBackgroundDisplay transient property
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7871,7 +6850,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.schematicBackgroundDisplay_property)
   //--- Configure netWarningCount transient property
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7887,7 +6865,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netWarningCount_property)
   //--- Configure netNamesArray transient property
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7903,7 +6880,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netNamesArray_property)
   //--- Configure unplacedSymbols transient property
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7919,7 +6895,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.unplacedSymbols_property)
   //--- Configure unplacedPackages transient property
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7935,7 +6910,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.unplacedPackages_property)
   //--- Configure componentsPlacedInBoard transient property
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7951,7 +6925,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentsPlacedInBoard_property)
   //--- Configure placedComponentNameArray transient property
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7967,7 +6940,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.placedComponentNameArray_property)
   //--- Configure schematicHasErrorOrWarning transient property
     self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7983,7 +6955,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.schematicHasErrorOrWarning_property)
   //--- Configure schematicStatusMessage transient property
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -7999,7 +6970,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.schematicStatusMessage_property)
   //--- Configure schematicStatusImage transient property
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -8015,7 +6985,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.schematicStatusImage_property)
   }
 
   //····················································································································

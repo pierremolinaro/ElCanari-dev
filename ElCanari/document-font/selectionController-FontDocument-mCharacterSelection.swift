@@ -289,7 +289,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.advance_property_selection {
+            switch object.advance_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -359,7 +359,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.codePoint_property_selection {
+            switch object.codePoint_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -429,7 +429,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <CharacterGerberCodeClass> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.gerberCode_property_selection {
+            switch object.gerberCode_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -469,7 +469,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.gerberCodeInstructionCountMessage_property_selection {
+            switch object.gerberCodeInstructionCountMessage_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -509,7 +509,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -549,7 +549,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWarnsWhenAdvanceIsZero_property_selection {
+            switch object.mWarnsWhenAdvanceIsZero_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -619,7 +619,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWarnsWhenNoSegment_property_selection {
+            switch object.mWarnsWhenNoSegment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -689,7 +689,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
           var s = Set <CharacterSegmentListClass> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.segmentArrayForDrawing_property_selection {
+            switch object.segmentArrayForDrawing_property.selection {
             case .empty :
               return .empty
             case .multiple :

@@ -576,7 +576,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padIsTraversing : Bool? {
-    switch self.padIsTraversing_property_selection {
+    switch self.padIsTraversing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -599,7 +599,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var annularRing : Int? {
-    switch self.annularRing_property_selection {
+    switch self.annularRing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -622,7 +622,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNameWithZoneName : String? {
-    switch self.padNameWithZoneName_property_selection {
+    switch self.padNameWithZoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -645,7 +645,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var masterPadNameWithZoneName : String? {
-    switch self.masterPadNameWithZoneName_property_selection {
+    switch self.masterPadNameWithZoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -668,7 +668,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNameForDisplay : String? {
-    switch self.padNameForDisplay_property_selection {
+    switch self.padNameForDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -691,7 +691,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property_selection {
+    switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -737,7 +737,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, preferences_frontSidePadColor_property_selection, preferences_displayPackageFrontSidePads_property_selection, preferences_backSidePadColor_property_selection, preferences_displayPackageBackSidePads_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection, unwSelf.padShape_property.selection, unwSelf.padStyle_property.selection, preferences_frontSidePadColor_property.selection, preferences_displayPackageFrontSidePads_property.selection, preferences_backSidePadColor_property.selection, preferences_displayPackageBackSidePads_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
           return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -764,7 +764,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.padShape_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.padShape_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_PackageSlavePad_selectionDisplay (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -784,7 +784,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
           return .single (transient_PackageSlavePad_issues (v0, v1, v2, v3, v4, v5))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -805,7 +805,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padStyle_property_selection) {
+        switch (unwSelf.padStyle_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageSlavePad_padIsTraversing (v0))
         case (.multiple) :
@@ -821,7 +821,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeWidth_property_selection, unwSelf.holeHeight_property_selection) {
+        switch (unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageSlavePad_annularRing (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -840,7 +840,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.master_property.padNameWithZoneName_property_selection) {
+        switch (unwSelf.master_property.padNameWithZoneName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageSlavePad_padNameWithZoneName (v0))
         case (.multiple) :
@@ -856,7 +856,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: masterPadNameWithZoneName
     self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.master_property.padNameWithZoneName_property_selection) {
+        switch (unwSelf.master_property.padNameWithZoneName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageSlavePad_masterPadNameWithZoneName (v0))
         case (.multiple) :
@@ -872,7 +872,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.master_property.padNameForDisplay_property_selection) {
+        switch (unwSelf.master_property.padNameForDisplay_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageSlavePad_padNameForDisplay (v0))
         case (.multiple) :
@@ -888,7 +888,7 @@ final class PackageSlavePad : PackageObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, preferences_padNumberFont_property_selection, preferences_padNumberColor_property_selection, unwSelf.padNameForDisplay_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, preferences_padNumberFont_property.selection, preferences_padNumberColor_property.selection, unwSelf.padNameForDisplay_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_PackageSlavePad_padNumberDisplay (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :

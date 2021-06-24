@@ -926,7 +926,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSlavePadsShouldBeRouted_property_selection {
+            switch object.mSlavePadsShouldBeRouted_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -995,7 +995,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1064,7 +1064,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1133,7 +1133,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mRotation_property_selection {
+            switch object.mRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1202,7 +1202,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <ComponentSide> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSide_property_selection {
+            switch object.mSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1271,7 +1271,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayLegend_property_selection {
+            switch object.mDisplayLegend_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1340,7 +1340,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNameIsVisibleInBoard_property_selection {
+            switch object.mNameIsVisibleInBoard_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1409,7 +1409,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mXName_property_selection {
+            switch object.mXName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1478,7 +1478,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mYName_property_selection {
+            switch object.mYName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1547,7 +1547,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNameFontSize_property_selection {
+            switch object.mNameFontSize_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1616,7 +1616,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNameRotation_property_selection {
+            switch object.mNameRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1685,7 +1685,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mValueIsVisibleInBoard_property_selection {
+            switch object.mValueIsVisibleInBoard_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1754,7 +1754,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mXValue_property_selection {
+            switch object.mXValue_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1823,7 +1823,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mYValue_property_selection {
+            switch object.mYValue_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1892,7 +1892,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mValueFontSize_property_selection {
+            switch object.mValueFontSize_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1961,7 +1961,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mValueRotation_property_selection {
+            switch object.mValueRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2030,7 +2030,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mComponentValue_property_selection {
+            switch object.mComponentValue_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2099,7 +2099,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNamePrefix_property_selection {
+            switch object.mNamePrefix_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2168,7 +2168,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNameIndex_property_selection {
+            switch object.mNameIndex_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2237,7 +2237,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mXUnit_property_selection {
+            switch object.mXUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2306,7 +2306,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mYUnit_property_selection {
+            switch object.mYUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2375,7 +2375,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.deviceName_property_selection {
+            switch object.deviceName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2414,7 +2414,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <UInt32> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.signatureForERCChecking_property_selection {
+            switch object.signatureForERCChecking_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2453,7 +2453,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <PackageMasterPadDictionary> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.packagePadDictionary_property_selection {
+            switch object.packagePadDictionary_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2492,7 +2492,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectedPackageName_property_selection {
+            switch object.selectedPackageName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2531,7 +2531,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <StringArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.availablePackages_property_selection {
+            switch object.availablePackages_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2570,7 +2570,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2609,7 +2609,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentIsPlacedInBoard_property_selection {
+            switch object.componentIsPlacedInBoard_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2648,7 +2648,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentIsPlacedInBoardString_property_selection {
+            switch object.componentIsPlacedInBoardString_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2687,7 +2687,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <EBBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.strokeBezierPath_property_selection {
+            switch object.strokeBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2726,7 +2726,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <ThreeStringArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pinPadAssignments_property_selection {
+            switch object.pinPadAssignments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2765,7 +2765,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.hasSlavePads_property_selection {
+            switch object.hasSlavePads_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2804,7 +2804,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.placementInSchematic_property_selection {
+            switch object.placementInSchematic_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2843,7 +2843,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <DeviceSymbolDictionary> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.deviceSymbolDictionary_property_selection {
+            switch object.deviceSymbolDictionary_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2882,7 +2882,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentNameFontName_property_selection {
+            switch object.componentNameFontName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2921,7 +2921,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentValueFontName_property_selection {
+            switch object.componentValueFontName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2960,7 +2960,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <ComponentPadDescriptorDictionary> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentPadDictionary_property_selection {
+            switch object.componentPadDictionary_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2999,7 +2999,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <PadNetDictionary> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padNetDictionary_property_selection {
+            switch object.padNetDictionary_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3038,7 +3038,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentName_property_selection {
+            switch object.componentName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3077,7 +3077,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3116,7 +3116,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <StringTagArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.unplacedSymbols_property_selection {
+            switch object.unplacedSymbols_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3155,7 +3155,7 @@ final class SelectionController_ProjectDocument_componentInBoardSelectionControl
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

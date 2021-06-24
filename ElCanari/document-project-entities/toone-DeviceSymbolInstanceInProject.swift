@@ -15,32 +15,44 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolInstanceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
+ //     oldValue.symbolAndTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
+      oldValue.symbolAndTypeName_property.removeEBObserver (self.symbolAndTypeName_property) // Transient property
+ //     oldValue.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      oldValue.symbolTypeName_property.removeEBObserver (self.symbolTypeName_property) // Transient property
+ //     oldValue.filledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
+      oldValue.filledBezierPath_property.removeEBObserver (self.filledBezierPath_property) // Transient property
+ //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
+  //    newValue.symbolAndTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypeName) // Transient property
+      newValue.symbolAndTypeName_property.addEBObserver (self.symbolAndTypeName_property) // Transient property
+  //    newValue.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName) // Transient property
+      newValue.symbolTypeName_property.addEBObserver (self.symbolTypeName_property) // Transient property
+  //    newValue.filledBezierPath_property.addEBObserversFrom (&self.mObserversOf_filledBezierPath) // Transient property
+      newValue.filledBezierPath_property.addEBObserver (self.filledBezierPath_property) // Transient property
+  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private final var mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolInstanceName_property_selection : EBSelection <String?> { // §
     return self.mSymbolInstanceName_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolInstanceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +85,13 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'symbolAndTypeName' transient property
   //····················································································································
 
-  private final var symbolAndTypeName_property = EBGenericTransientProperty <SymbolInProjectIdentifier?> ()
+  final let symbolAndTypeName_property = EBGenericTransientProperty <SymbolInProjectIdentifier?> ()
 //  private final var mObserversOf_symbolAndTypeName = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolAndTypeName_property_selection : EBSelection <SymbolInProjectIdentifier?> {
     return self.symbolAndTypeName_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolAndTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +124,13 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
-  private final var symbolTypeName_property = EBGenericTransientProperty <String?> ()
+  final let symbolTypeName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_symbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolTypeName_property_selection : EBSelection <String?> {
     return self.symbolTypeName_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +163,13 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'filledBezierPath' transient property
   //····················································································································
 
-  private final var filledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let filledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 //  private final var mObserversOf_filledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var filledBezierPath_property_selection : EBSelection <NSBezierPath?> {
     return self.filledBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.filledBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +202,13 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let strokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 //  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
     return self.strokeBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.strokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -294,7 +258,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolInstanceName_property)
   //--- Configure symbolAndTypeName transient property
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -310,7 +273,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolAndTypeName_property)
   //--- Configure symbolTypeName transient property
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -326,7 +288,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolTypeName_property)
   //--- Configure filledBezierPath transient property
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -342,7 +303,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.filledBezierPath_property)
   //--- Configure strokeBezierPath transient property
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -358,7 +318,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.strokeBezierPath_property)
   }
 
   //····················································································································

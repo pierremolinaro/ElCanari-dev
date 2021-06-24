@@ -317,7 +317,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.documentSizeString_property_selection {
+            switch object.documentSizeString_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -357,7 +357,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.instanceCount_property_selection {
+            switch object.instanceCount_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -397,7 +397,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <Data> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mFileData_property_selection {
+            switch object.mFileData_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -467,7 +467,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <NSBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mFilledBezierPath_property_selection {
+            switch object.mFilledBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -537,7 +537,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <NSBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mStrokeBezierPath_property_selection {
+            switch object.mStrokeBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -607,7 +607,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mTypeName_property_selection {
+            switch object.mTypeName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -677,7 +677,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mVersion_property_selection {
+            switch object.mVersion_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -747,7 +747,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pinNameShape_property_selection {
+            switch object.pinNameShape_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -787,7 +787,7 @@ final class SelectionController_DeviceDocument_symbolTypeSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.versionString_property_selection {
+            switch object.versionString_property.selection {
             case .empty :
               return .empty
             case .multiple :

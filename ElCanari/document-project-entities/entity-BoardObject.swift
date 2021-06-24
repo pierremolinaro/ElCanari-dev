@@ -133,7 +133,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isPlacedInBoard : Bool? {
-    switch self.isPlacedInBoard_property_selection {
+    switch self.isPlacedInBoard_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -156,7 +156,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -179,7 +179,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isVia : Bool? {
-    switch self.isVia_property_selection {
+    switch self.isVia_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -202,7 +202,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var trackLengthInCanariUnit : Double? {
-    switch self.trackLengthInCanariUnit_property_selection {
+    switch self.trackLengthInCanariUnit_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -225,7 +225,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var signatureForERCChecking : UInt32? {
-    switch self.signatureForERCChecking_property_selection {
+    switch self.signatureForERCChecking_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -248,7 +248,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var netNameAndPadLocation : RastnetInfoArray? {
-    switch self.netNameAndPadLocation_property_selection {
+    switch self.netNameAndPadLocation_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -271,7 +271,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var componentName : String? {
-    switch self.componentName_property_selection {
+    switch self.componentName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -294,7 +294,7 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   final var errorOrWarningIssueSize : Double? {
-    switch self.errorOrWarningIssueSize_property_selection {
+    switch self.errorOrWarningIssueSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -325,7 +325,7 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInBoard
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_none_selection) {
+        switch (unwSelf.mRoot_none.selection) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_isPlacedInBoard (v0))
         case (.multiple) :
@@ -341,7 +341,7 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property_selection) {
+        switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property.selection) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
         case (.multiple) :

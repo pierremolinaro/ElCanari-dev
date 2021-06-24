@@ -59,7 +59,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -82,7 +82,7 @@ import Cocoa
   //····················································································································
 
   final var documentFileNameOk : Bool? {
-    switch self.documentFileNameOk_property_selection {
+    switch self.documentFileNameOk_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -105,7 +105,7 @@ import Cocoa
   //····················································································································
 
   final var documentIsUnnamed : Bool? {
-    switch self.documentIsUnnamed_property_selection {
+    switch self.documentIsUnnamed_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -128,7 +128,7 @@ import Cocoa
   //····················································································································
 
   final var importArtworkButtonTitle : String? {
-    switch self.importArtworkButtonTitle_property_selection {
+    switch self.importArtworkButtonTitle_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -151,7 +151,7 @@ import Cocoa
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -174,7 +174,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+    switch self.mStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -197,7 +197,7 @@ import Cocoa
   //····················································································································
 
   final var mStatusMessage : String? {
-    switch self.mStatusMessage_property_selection {
+    switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -220,7 +220,7 @@ import Cocoa
   //····················································································································
 
   final var incorrectDocumentFileErrorMessage : String? {
-    switch self.incorrectDocumentFileErrorMessage_property_selection {
+    switch self.incorrectDocumentFileErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -734,7 +734,7 @@ import Cocoa
   //--- Atomic property: documentFileNameOk
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property_selection) {
+        switch (unwSelf.documentFilePath_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_documentFileNameOk (v0))
         case (.multiple) :
@@ -754,7 +754,7 @@ import Cocoa
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property_selection) {
+        switch (unwSelf.documentFilePath_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_documentIsUnnamed (v0))
         case (.multiple) :
@@ -774,7 +774,7 @@ import Cocoa
   //--- Atomic property: importArtworkButtonTitle
     self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mArtworkName_property_selection) {
+        switch (unwSelf.rootObject.mArtworkName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
         case (.multiple) :
@@ -794,7 +794,7 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.overlapingArrangment_property_selection, unwSelf.rootObject.boardRect_property_selection, unwSelf.rootObject.boardDisplayRect_property_selection, unwSelf.rootObject.boardInstances_property_selection, unwSelf.rootObject.boardInstances_property_selection) {
+        switch (unwSelf.rootObject.overlapingArrangment_property.selection, unwSelf.rootObject.boardRect_property.selection, unwSelf.rootObject.boardDisplayRect_property.selection, unwSelf.rootObject.boardInstances_property.selection, unwSelf.rootObject.boardInstances_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_MergerDocument_issues (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -818,7 +818,7 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_mStatusImage (v0))
         case (.multiple) :
@@ -838,7 +838,7 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_mStatusMessage (v0))
         case (.multiple) :
@@ -858,7 +858,7 @@ import Cocoa
   //--- Atomic property: incorrectDocumentFileErrorMessage
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property_selection) {
+        switch (unwSelf.documentFilePath_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
         case (.multiple) :

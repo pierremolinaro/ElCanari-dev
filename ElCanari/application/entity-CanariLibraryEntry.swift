@@ -152,7 +152,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+    switch self.mStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -173,7 +173,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPath_property_selection) {
+        switch (unwSelf.mPath_property.selection) {
         case (.single (let v0)) :
           return .single (transient_CanariLibraryEntry_mStatusImage (v0))
         case (.multiple) :

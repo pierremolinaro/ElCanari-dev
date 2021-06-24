@@ -1592,7 +1592,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var freePadNumbering : Bool? {
-    switch self.freePadNumbering_property_selection {
+    switch self.freePadNumbering_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1615,7 +1615,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var counterClockNumbering : Bool? {
-    switch self.counterClockNumbering_property_selection {
+    switch self.counterClockNumbering_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1638,7 +1638,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var gridStepMultipliedByDisplayFactor : Int? {
-    switch self.gridStepMultipliedByDisplayFactor_property_selection {
+    switch self.gridStepMultipliedByDisplayFactor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1661,7 +1661,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var secondPointX : Int? {
-    switch self.secondPointX_property_selection {
+    switch self.secondPointX_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1684,7 +1684,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var secondPointY : Int? {
-    switch self.secondPointY_property_selection {
+    switch self.secondPointY_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1707,7 +1707,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var lockImageView : NSImage? {
-    switch self.lockImageView_property_selection {
+    switch self.lockImageView_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1768,7 +1768,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property_selection {
+    switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1791,7 +1791,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var backgroundImagePageBackgroundDisplay : EBShape? {
-    switch self.backgroundImagePageBackgroundDisplay_property_selection {
+    switch self.backgroundImagePageBackgroundDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1814,7 +1814,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var modelImageSizeString : String? {
-    switch self.modelImageSizeString_property_selection {
+    switch self.modelImageSizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1837,7 +1837,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var hasModelImage : Bool? {
-    switch self.hasModelImage_property_selection {
+    switch self.hasModelImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1860,7 +1860,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var masterPadObjectIndexArray : IntArray? {
-    switch self.masterPadObjectIndexArray_property_selection {
+    switch self.masterPadObjectIndexArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1883,7 +1883,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1906,7 +1906,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var noIssue : Bool? {
-    switch self.noIssue_property_selection {
+    switch self.noIssue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1929,7 +1929,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var segmentedControlSegmentIssueImage : NSImage? {
-    switch self.segmentedControlSegmentIssueImage_property_selection {
+    switch self.segmentedControlSegmentIssueImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1952,7 +1952,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final var segmentedControlSegmentIssueString : String? {
-    switch self.segmentedControlSegmentIssueString_property_selection {
+    switch self.segmentedControlSegmentIssueString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2090,7 +2090,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumbering_property_selection) {
+        switch (unwSelf.padNumbering_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_freePadNumbering (v0))
         case (.multiple) :
@@ -2106,7 +2106,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: counterClockNumbering
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumbering_property_selection) {
+        switch (unwSelf.padNumbering_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_counterClockNumbering (v0))
         case (.multiple) :
@@ -2122,7 +2122,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.gridStep_property_selection, unwSelf.gridDisplayFactor_property_selection) {
+        switch (unwSelf.gridStep_property.selection, unwSelf.gridDisplayFactor_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
         case (.multiple, .multiple) :
@@ -2139,7 +2139,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: secondPointX
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointX_property_selection, unwSelf.mModelImageSecondPointDx_property_selection) {
+        switch (unwSelf.mModelImageFirstPointX_property.selection, unwSelf.mModelImageSecondPointDx_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_PackageRoot_secondPointX (v0, v1))
         case (.multiple, .multiple) :
@@ -2156,7 +2156,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: secondPointY
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointY_property_selection, unwSelf.mModelImageSecondPointDy_property_selection) {
+        switch (unwSelf.mModelImageFirstPointY_property.selection, unwSelf.mModelImageSecondPointDy_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_PackageRoot_secondPointY (v0, v1))
         case (.multiple, .multiple) :
@@ -2173,7 +2173,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: lockImageView
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPointsAreLocked_property_selection) {
+        switch (unwSelf.mPointsAreLocked_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_lockImageView (v0))
         case (.multiple) :
@@ -2191,7 +2191,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
+        switch (preferences_showPadNumber_property.selection, unwSelf.packagePads_property.selection, unwSelf.packageSlavePads_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -2209,7 +2209,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: backgroundImagePageBackgroundDisplay
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property_selection, unwSelf.mModelImageData_property_selection) {
+        switch (unwSelf.packageObjects_property.selection, unwSelf.mModelImageData_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_PackageRoot_backgroundImagePageBackgroundDisplay (v0, v1))
         case (.multiple, .multiple) :
@@ -2226,7 +2226,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: modelImageSizeString
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageData_property_selection) {
+        switch (unwSelf.mModelImageData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_modelImageSizeString (v0))
         case (.multiple) :
@@ -2242,7 +2242,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: hasModelImage
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageData_property_selection) {
+        switch (unwSelf.mModelImageData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_hasModelImage (v0))
         case (.multiple) :
@@ -2258,7 +2258,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: masterPadObjectIndexArray
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packagePads_property_selection) {
+        switch (unwSelf.packagePads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_masterPadObjectIndexArray (v0))
         case (.multiple) :
@@ -2274,7 +2274,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, preferences_padZoneFont_property_selection) {
+        switch (unwSelf.packageObjects_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, preferences_padZoneFont_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
           return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -2295,7 +2295,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_noIssue (v0))
         case (.multiple) :
@@ -2311,7 +2311,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_segmentedControlSegmentIssueImage (v0))
         case (.multiple) :
@@ -2327,7 +2327,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_segmentedControlSegmentIssueString (v0))
         case (.multiple) :

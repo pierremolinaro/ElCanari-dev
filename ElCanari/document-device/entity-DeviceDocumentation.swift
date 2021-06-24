@@ -92,7 +92,7 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   final var fileSize : Int? {
-    switch self.fileSize_property_selection {
+    switch self.fileSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -111,7 +111,7 @@ final class DeviceDocumentation : EBManagedObject,
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFileData_property_selection) {
+        switch (unwSelf.mFileData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DeviceDocumentation_fileSize (v0))
         case (.multiple) :

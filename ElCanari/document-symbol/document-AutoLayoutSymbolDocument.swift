@@ -41,7 +41,7 @@ import Cocoa
   //····················································································································
 
   final var statusMessage : String? {
-    switch self.statusMessage_property_selection {
+    switch self.statusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -64,7 +64,7 @@ import Cocoa
   //····················································································································
 
   final var metadataStatus : MetadataStatus? {
-    switch self.metadataStatus_property_selection {
+    switch self.metadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -87,7 +87,7 @@ import Cocoa
   //····················································································································
 
   final var addSegmentButtonImage : NSImage? {
-    switch self.addSegmentButtonImage_property_selection {
+    switch self.addSegmentButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -110,7 +110,7 @@ import Cocoa
   //····················································································································
 
   final var addBezierButtonImage : NSImage? {
-    switch self.addBezierButtonImage_property_selection {
+    switch self.addBezierButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -133,7 +133,7 @@ import Cocoa
   //····················································································································
 
   final var addOvalButtonImage : NSImage? {
-    switch self.addOvalButtonImage_property_selection {
+    switch self.addOvalButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -156,7 +156,7 @@ import Cocoa
   //····················································································································
 
   final var addSolidOvalButtonImage : NSImage? {
-    switch self.addSolidOvalButtonImage_property_selection {
+    switch self.addSolidOvalButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -179,7 +179,7 @@ import Cocoa
   //····················································································································
 
   final var addSolidRectButtonImage : NSImage? {
-    switch self.addSolidRectButtonImage_property_selection {
+    switch self.addSolidRectButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -202,7 +202,7 @@ import Cocoa
   //····················································································································
 
   final var addTextButtonImage : NSImage? {
-    switch self.addTextButtonImage_property_selection {
+    switch self.addTextButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -225,7 +225,7 @@ import Cocoa
   //····················································································································
 
   final var addPinButtonImage : NSImage? {
-    switch self.addPinButtonImage_property_selection {
+    switch self.addPinButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -248,7 +248,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -271,7 +271,7 @@ import Cocoa
   //····················································································································
 
   final var statusImage : NSImage? {
-    switch self.statusImage_property_selection {
+    switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1226,7 +1226,7 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusMessage (v0))
         case (.multiple) :
@@ -1246,7 +1246,7 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_metadataStatus (v0))
         case (.multiple) :
@@ -1265,7 +1265,7 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSegmentButtonImage (v0))
         case (.multiple) :
@@ -1281,7 +1281,7 @@ import Cocoa
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addBezierButtonImage (v0))
         case (.multiple) :
@@ -1297,7 +1297,7 @@ import Cocoa
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addOvalButtonImage (v0))
         case (.multiple) :
@@ -1313,7 +1313,7 @@ import Cocoa
     }
   //--- Atomic property: addSolidOvalButtonImage
     self.addSolidOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSolidOvalButtonImage (v0))
         case (.multiple) :
@@ -1329,7 +1329,7 @@ import Cocoa
     }
   //--- Atomic property: addSolidRectButtonImage
     self.addSolidRectButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSolidRectButtonImage (v0))
         case (.multiple) :
@@ -1345,7 +1345,7 @@ import Cocoa
     }
   //--- Atomic property: addTextButtonImage
     self.addTextButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addTextButtonImage (v0))
         case (.multiple) :
@@ -1361,7 +1361,7 @@ import Cocoa
     }
   //--- Atomic property: addPinButtonImage
     self.addPinButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property_selection) {
+        switch (preferences_symbolColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addPinButtonImage (v0))
         case (.multiple) :
@@ -1382,7 +1382,7 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusImage (v0))
         case (.multiple) :

@@ -425,7 +425,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -494,7 +494,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -563,7 +563,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mFontSize_property_selection {
+            switch object.mFontSize_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -632,7 +632,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <BoardTextLayer> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mLayer_property_selection {
+            switch object.mLayer_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -701,7 +701,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mText_property_selection {
+            switch object.mText_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -770,7 +770,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mHorizontalAlignment_property_selection {
+            switch object.mHorizontalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -839,7 +839,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <BoardTextVerticalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mVerticalAlignment_property_selection {
+            switch object.mVerticalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -908,7 +908,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mRotation_property_selection {
+            switch object.mRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -977,7 +977,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWeight_property_selection {
+            switch object.mWeight_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1046,7 +1046,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mOblique_property_selection {
+            switch object.mOblique_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1115,7 +1115,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1154,7 +1154,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1193,7 +1193,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.fontName_property_selection {
+            switch object.fontName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1232,7 +1232,7 @@ final class SelectionController_ProjectDocument_boardTextSelectionController : E
           var s = Set <UInt32> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.signatureForERCChecking_property_selection {
+            switch object.signatureForERCChecking_property.selection {
             case .empty :
               return .empty
             case .multiple :

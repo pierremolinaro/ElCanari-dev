@@ -15,32 +15,28 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ForbiddenPadNumber?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.padNumber_property.removeEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
+      oldValue.padNumber_property.removeEBObserver (self.padNumber_property) // Stored property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.padNumber_property.addEBObserversFrom (&self.mObserversOf_padNumber) // Stored property
+      newValue.padNumber_property.addEBObserver (self.padNumber_property) // Stored property
+    }
   }
 
   //····················································································································
   //   Observers of 'padNumber' stored property
   //····················································································································
 
-  private final var padNumber_property = EBGenericTransientProperty <Int?> ()
+  final let padNumber_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································
 
   final var padNumber_property_selection : EBSelection <Int?> { // §
     return self.padNumber_property.selection
-/*    if let model = self.propval {
-      switch (model.padNumber_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -90,7 +86,6 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.padNumber_property)
   }
 
   //····················································································································

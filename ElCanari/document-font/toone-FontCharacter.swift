@@ -15,32 +15,56 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : FontCharacter?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.codePoint_property.removeEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+      oldValue.codePoint_property.removeEBObserver (self.codePoint_property) // Stored property
+ //     oldValue.advance_property.removeEBObserversFrom (&self.mObserversOf_advance) // Stored property
+      oldValue.advance_property.removeEBObserver (self.advance_property) // Stored property
+ //     oldValue.mWarnsWhenNoSegment_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+      oldValue.mWarnsWhenNoSegment_property.removeEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
+ //     oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+      oldValue.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
+ //     oldValue.segmentArrayForDrawing_property.removeEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
+      oldValue.segmentArrayForDrawing_property.removeEBObserver (self.segmentArrayForDrawing_property) // Transient property
+ //     oldValue.gerberCode_property.removeEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
+      oldValue.gerberCode_property.removeEBObserver (self.gerberCode_property) // Transient property
+ //     oldValue.gerberCodeInstructionCountMessage_property.removeEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
+      oldValue.gerberCodeInstructionCountMessage_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.codePoint_property.addEBObserversFrom (&self.mObserversOf_codePoint) // Stored property
+      newValue.codePoint_property.addEBObserver (self.codePoint_property) // Stored property
+ //     newValue.advance_property.addEBObserversFrom (&self.mObserversOf_advance) // Stored property
+      newValue.advance_property.addEBObserver (self.advance_property) // Stored property
+ //     newValue.mWarnsWhenNoSegment_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenNoSegment) // Stored property
+      newValue.mWarnsWhenNoSegment_property.addEBObserver (self.mWarnsWhenNoSegment_property) // Stored property
+ //     newValue.mWarnsWhenAdvanceIsZero_property.addEBObserversFrom (&self.mObserversOf_mWarnsWhenAdvanceIsZero) // Stored property
+      newValue.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property) // Stored property
+  //    newValue.segmentArrayForDrawing_property.addEBObserversFrom (&self.mObserversOf_segmentArrayForDrawing) // Transient property
+      newValue.segmentArrayForDrawing_property.addEBObserver (self.segmentArrayForDrawing_property) // Transient property
+  //    newValue.gerberCode_property.addEBObserversFrom (&self.mObserversOf_gerberCode) // Transient property
+      newValue.gerberCode_property.addEBObserver (self.gerberCode_property) // Transient property
+  //    newValue.gerberCodeInstructionCountMessage_property.addEBObserversFrom (&self.mObserversOf_gerberCodeInstructionCountMessage) // Transient property
+      newValue.gerberCodeInstructionCountMessage_property.addEBObserver (self.gerberCodeInstructionCountMessage_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'codePoint' stored property
   //····················································································································
 
-  private final var codePoint_property = EBGenericTransientProperty <Int?> ()
+  final let codePoint_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
 
   final var codePoint_property_selection : EBSelection <Int?> { // §
     return self.codePoint_property.selection
-/*    if let model = self.propval {
-      switch (model.codePoint_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +97,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'advance' stored property
   //····················································································································
 
-  private final var advance_property = EBGenericTransientProperty <Int?> ()
+  final let advance_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_advance = EBWeakEventSet ()
 
   //····················································································································
 
   final var advance_property_selection : EBSelection <Int?> { // §
     return self.advance_property.selection
-/*    if let model = self.propval {
-      switch (model.advance_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +136,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
-  private final var mWarnsWhenNoSegment_property = EBGenericTransientProperty <Bool?> ()
+  final let mWarnsWhenNoSegment_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
 
   final var mWarnsWhenNoSegment_property_selection : EBSelection <Bool?> { // §
     return self.mWarnsWhenNoSegment_property.selection
-/*    if let model = self.propval {
-      switch (model.mWarnsWhenNoSegment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +175,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
-  private final var mWarnsWhenAdvanceIsZero_property = EBGenericTransientProperty <Bool?> ()
+  final let mWarnsWhenAdvanceIsZero_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 
   //····················································································································
 
   final var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool?> { // §
     return self.mWarnsWhenAdvanceIsZero_property.selection
-/*    if let model = self.propval {
-      switch (model.mWarnsWhenAdvanceIsZero_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +214,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  private final var segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentListClass?> ()
+  final let segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentListClass?> ()
 //  private final var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
 
   //····················································································································
 
   final var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass?> {
     return self.segmentArrayForDrawing_property.selection
-/*    if let model = self.propval {
-      switch (model.segmentArrayForDrawing_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +253,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
-  private final var gerberCode_property = EBGenericTransientProperty <CharacterGerberCodeClass?> ()
+  final let gerberCode_property = EBGenericTransientProperty <CharacterGerberCodeClass?> ()
 //  private final var mObserversOf_gerberCode = EBWeakEventSet ()
 
   //····················································································································
 
   final var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass?> {
     return self.gerberCode_property.selection
-/*    if let model = self.propval {
-      switch (model.gerberCode_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +292,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'gerberCodeInstructionCountMessage' transient property
   //····················································································································
 
-  private final var gerberCodeInstructionCountMessage_property = EBGenericTransientProperty <String?> ()
+  final let gerberCodeInstructionCountMessage_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
 
   //····················································································································
 
   final var gerberCodeInstructionCountMessage_property_selection : EBSelection <String?> {
     return self.gerberCodeInstructionCountMessage_property.selection
-/*    if let model = self.propval {
-      switch (model.gerberCodeInstructionCountMessage_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +331,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -436,7 +376,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
 
   final var segments_property_selection : EBSelection <[SegmentForFontCharacter]> {
     if let model = self.propval {
-      switch (model.segments_property_selection) {
+      switch (model.segments_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -488,7 +428,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.codePoint_property)
   //--- Configure advance simple stored property
     self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -504,7 +443,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.advance_property)
   //--- Configure mWarnsWhenNoSegment simple stored property
     self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -520,7 +458,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mWarnsWhenNoSegment_property)
   //--- Configure mWarnsWhenAdvanceIsZero simple stored property
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -536,7 +473,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mWarnsWhenAdvanceIsZero_property)
   //--- Configure segmentArrayForDrawing transient property
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -552,7 +488,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.segmentArrayForDrawing_property)
   //--- Configure gerberCode transient property
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -568,7 +503,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.gerberCode_property)
   //--- Configure gerberCodeInstructionCountMessage transient property
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -584,7 +518,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -600,7 +533,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

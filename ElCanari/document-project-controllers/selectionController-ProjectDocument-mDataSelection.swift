@@ -685,7 +685,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawBoardLimits_property_selection {
+            switch object.drawBoardLimits_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -755,7 +755,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawComponentNamesBottomSide_property_selection {
+            switch object.drawComponentNamesBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -825,7 +825,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawComponentNamesTopSide_property_selection {
+            switch object.drawComponentNamesTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -895,7 +895,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawComponentValuesBottomSide_property_selection {
+            switch object.drawComponentValuesBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -965,7 +965,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawComponentValuesTopSide_property_selection {
+            switch object.drawComponentValuesTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1035,7 +1035,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawInternalBoardLimits_property_selection {
+            switch object.drawInternalBoardLimits_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1105,7 +1105,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawPackageLegendBottomSide_property_selection {
+            switch object.drawPackageLegendBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1175,7 +1175,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawPackageLegendTopSide_property_selection {
+            switch object.drawPackageLegendTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1245,7 +1245,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawPadHolesInPDF_property_selection {
+            switch object.drawPadHolesInPDF_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1315,7 +1315,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawPadsBottomSide_property_selection {
+            switch object.drawPadsBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1385,7 +1385,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawPadsTopSide_property_selection {
+            switch object.drawPadsTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1455,7 +1455,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTextsLayoutBottomSide_property_selection {
+            switch object.drawTextsLayoutBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1525,7 +1525,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTextsLayoutTopSide_property_selection {
+            switch object.drawTextsLayoutTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1595,7 +1595,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTextsLegendBottomSide_property_selection {
+            switch object.drawTextsLegendBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1665,7 +1665,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTextsLegendTopSide_property_selection {
+            switch object.drawTextsLegendTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1735,7 +1735,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTracksBottomSide_property_selection {
+            switch object.drawTracksBottomSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1805,7 +1805,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawTracksTopSide_property_selection {
+            switch object.drawTracksTopSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1875,7 +1875,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.drawVias_property_selection {
+            switch object.drawVias_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1945,7 +1945,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.fileExtension_property_selection {
+            switch object.fileExtension_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2015,7 +2015,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.horizontalMirror_property_selection {
+            switch object.horizontalMirror_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2085,7 +2085,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.measurementUnitForPadHoleInPDF_property_selection {
+            switch object.measurementUnitForPadHoleInPDF_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2155,7 +2155,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.name_property_selection {
+            switch object.name_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2225,7 +2225,7 @@ final class SelectionController_ProjectDocument_mDataSelection : EBObject {
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padHoleDiameterInPDF_property_selection {
+            switch object.padHoleDiameterInPDF_property.selection {
             case .empty :
               return .empty
             case .multiple :

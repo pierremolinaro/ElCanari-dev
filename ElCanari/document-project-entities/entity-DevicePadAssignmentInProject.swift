@@ -107,7 +107,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   final var pinPadAssignment : ThreeStrings? {
-    switch self.pinPadAssignment_property_selection {
+    switch self.pinPadAssignment_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -130,7 +130,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor : PinPadAssignmentInProject? {
-    switch self.descriptor_property_selection {
+    switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -158,7 +158,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.mSymbolInstanceName_property_selection, unwSelf.mPin_property.mPinName_property_selection) {
+        switch (unwSelf.mPadName_property.selection, unwSelf.mPin_property.mSymbolInstanceName_property.selection, unwSelf.mPin_property.mPinName_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_DevicePadAssignmentInProject_pinPadAssignment (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -176,7 +176,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadName_property_selection, unwSelf.mPin_property.descriptor_property_selection) {
+        switch (unwSelf.mPadName_property.selection, unwSelf.mPin_property.descriptor_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_DevicePadAssignmentInProject_descriptor (v0, v1))
         case (.multiple, .multiple) :

@@ -15,32 +15,48 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : LabelInSchematic?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mOrientation_property.removeEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      oldValue.mOrientation_property.removeEBObserver (self.mOrientation_property) // Stored property
+ //     oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+      oldValue.location_property.removeEBObserver (self.location_property) // Transient property
+ //     oldValue.netName_property.removeEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      oldValue.netName_property.removeEBObserver (self.netName_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mOrientation_property.addEBObserversFrom (&self.mObserversOf_mOrientation) // Stored property
+      newValue.mOrientation_property.addEBObserver (self.mOrientation_property) // Stored property
+  //    newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+      newValue.location_property.addEBObserver (self.location_property) // Transient property
+  //    newValue.netName_property.addEBObserversFrom (&self.mObserversOf_netName) // Transient property
+      newValue.netName_property.addEBObserver (self.netName_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
-  private final var mOrientation_property = EBGenericTransientProperty <QuadrantRotation?> ()
+  final let mOrientation_property = EBGenericTransientProperty <QuadrantRotation?> ()
 //  private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
 
   final var mOrientation_property_selection : EBSelection <QuadrantRotation?> { // §
     return self.mOrientation_property.selection
-/*    if let model = self.propval {
-      switch (model.mOrientation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +89,13 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'location' transient property
   //····················································································································
 
-  private final var location_property = EBGenericTransientProperty <CanariPoint?> ()
+  final let location_property = EBGenericTransientProperty <CanariPoint?> ()
 //  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
   final var location_property_selection : EBSelection <CanariPoint?> {
     return self.location_property.selection
-/*    if let model = self.propval {
-      switch (model.location_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +128,13 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var netName_property = EBGenericTransientProperty <String?> ()
+  final let netName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netName_property_selection : EBSelection <String?> {
     return self.netName_property.selection
-/*    if let model = self.propval {
-      switch (model.netName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +167,13 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +206,13 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String?> {
     return self.netClassName_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +245,13 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -345,7 +301,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mOrientation_property)
   //--- Configure location transient property
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -361,7 +316,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.location_property)
   //--- Configure netName transient property
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -377,7 +331,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netName_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -393,7 +346,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -409,7 +361,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassName_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -425,7 +376,6 @@ class ReadOnlyObject_LabelInSchematic : ReadOnlyAbstractObjectProperty <LabelInS
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   }
 
   //····················································································································

@@ -15,32 +15,56 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : NetInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mNetName_property.removeEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+      oldValue.mNetName_property.removeEBObserver (self.mNetName_property) // Stored property
+ //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
+ //     oldValue.netClassTrackWidth_property.removeEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+      oldValue.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property) // Transient property
+ //     oldValue.netClassViaHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      oldValue.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property) // Transient property
+ //     oldValue.netClassViaPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
+      oldValue.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property) // Transient property
+ //     oldValue.wireColor_property.removeEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      oldValue.wireColor_property.removeEBObserver (self.wireColor_property) // Transient property
+ //     oldValue.netSchematicPointsInfo_property.removeEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+      oldValue.netSchematicPointsInfo_property.removeEBObserver (self.netSchematicPointsInfo_property) // Transient property
+ //     oldValue.trackCount_property.removeEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+      oldValue.trackCount_property.removeEBObserver (self.trackCount_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mNetName_property.addEBObserversFrom (&self.mObserversOf_mNetName) // Stored property
+      newValue.mNetName_property.addEBObserver (self.mNetName_property) // Stored property
+  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
+  //    newValue.netClassTrackWidth_property.addEBObserversFrom (&self.mObserversOf_netClassTrackWidth) // Transient property
+      newValue.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property) // Transient property
+  //    newValue.netClassViaHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      newValue.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property) // Transient property
+  //    newValue.netClassViaPadDiameter_property.addEBObserversFrom (&self.mObserversOf_netClassViaPadDiameter) // Transient property
+      newValue.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property) // Transient property
+  //    newValue.wireColor_property.addEBObserversFrom (&self.mObserversOf_wireColor) // Transient property
+      newValue.wireColor_property.addEBObserver (self.wireColor_property) // Transient property
+  //    newValue.netSchematicPointsInfo_property.addEBObserversFrom (&self.mObserversOf_netSchematicPointsInfo) // Transient property
+      newValue.netSchematicPointsInfo_property.addEBObserver (self.netSchematicPointsInfo_property) // Transient property
+  //    newValue.trackCount_property.addEBObserversFrom (&self.mObserversOf_trackCount) // Transient property
+      newValue.trackCount_property.addEBObserver (self.trackCount_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-  private final var mNetName_property = EBGenericTransientProperty <String?> ()
+  final let mNetName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mNetName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNetName_property_selection : EBSelection <String?> { // §
     return self.mNetName_property.selection
-/*    if let model = self.propval {
-      switch (model.mNetName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +97,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String?> {
     return self.netClassName_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -124,25 +136,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private final var netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
+  final let netClassTrackWidth_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassTrackWidth_property_selection : EBSelection <Int?> {
     return self.netClassTrackWidth_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassTrackWidth_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -175,25 +175,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private final var netClassViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let netClassViaHoleDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassViaHoleDiameter_property_selection : EBSelection <Int?> {
     return self.netClassViaHoleDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassViaHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -226,25 +214,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private final var netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let netClassViaPadDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassViaPadDiameter_property_selection : EBSelection <Int?> {
     return self.netClassViaPadDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassViaPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +253,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private final var wireColor_property = EBGenericTransientProperty <NSColor?> ()
+  final let wireColor_property = EBGenericTransientProperty <NSColor?> ()
 //  private final var mObserversOf_wireColor = EBWeakEventSet ()
 
   //····················································································································
 
   final var wireColor_property_selection : EBSelection <NSColor?> {
     return self.wireColor_property.selection
-/*    if let model = self.propval {
-      switch (model.wireColor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +292,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  private final var netSchematicPointsInfo_property = EBGenericTransientProperty <NetInfoPointArray?> ()
+  final let netSchematicPointsInfo_property = EBGenericTransientProperty <NetInfoPointArray?> ()
 //  private final var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
 
   //····················································································································
 
   final var netSchematicPointsInfo_property_selection : EBSelection <NetInfoPointArray?> {
     return self.netSchematicPointsInfo_property.selection
-/*    if let model = self.propval {
-      switch (model.netSchematicPointsInfo_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +331,13 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
   //   Observers of 'trackCount' transient property
   //····················································································································
 
-  private final var trackCount_property = EBGenericTransientProperty <Int?> ()
+  final let trackCount_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_trackCount = EBWeakEventSet ()
 
   //····················································································································
 
   final var trackCount_property_selection : EBSelection <Int?> {
     return self.trackCount_property.selection
-/*    if let model = self.propval {
-      switch (model.trackCount_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -436,7 +376,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   final var mPoints_property_selection : EBSelection <[PointInSchematic]> {
     if let model = self.propval {
-      switch (model.mPoints_property_selection) {
+      switch (model.mPoints_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -477,7 +417,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   final var mTracks_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
-      switch (model.mTracks_property_selection) {
+      switch (model.mTracks_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -529,7 +469,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNetName_property)
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -545,7 +484,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassName_property)
   //--- Configure netClassTrackWidth transient property
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -561,7 +499,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassTrackWidth_property)
   //--- Configure netClassViaHoleDiameter transient property
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -577,7 +514,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassViaHoleDiameter_property)
   //--- Configure netClassViaPadDiameter transient property
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -593,7 +529,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassViaPadDiameter_property)
   //--- Configure wireColor transient property
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -609,7 +544,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.wireColor_property)
   //--- Configure netSchematicPointsInfo transient property
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -625,7 +559,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netSchematicPointsInfo_property)
   //--- Configure trackCount transient property
     self.trackCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -641,7 +574,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.trackCount_property)
   }
 
   //····················································································································

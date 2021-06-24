@@ -166,7 +166,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -189,7 +189,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connectedPoints : EBShape? {
-    switch self.connectedPoints_property_selection {
+    switch self.connectedPoints_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -212,7 +212,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionWarnings : Int? {
-    switch self.connexionWarnings_property_selection {
+    switch self.connexionWarnings_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -235,7 +235,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionErrors : Int? {
-    switch self.connexionErrors_property_selection {
+    switch self.connexionErrors_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -258,7 +258,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
-    switch self.sheetDescriptor_property_selection {
+    switch self.sheetDescriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -302,7 +302,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoints_property_selection) {
+        switch (unwSelf.mPoints_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_issues (v0))
         case (.multiple) :
@@ -318,7 +318,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoints_property_selection) {
+        switch (unwSelf.mPoints_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_connectedPoints (v0))
         case (.multiple) :
@@ -334,7 +334,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_connexionWarnings (v0))
         case (.multiple) :
@@ -350,7 +350,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionErrors
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property_selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_connexionErrors (v0))
         case (.multiple) :
@@ -366,7 +366,7 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.sheetGeometry_property_selection, unwSelf.mRoot_property.sheetIndexes_property_selection, unwSelf.ebObjectIndex_selection) {
+        switch (unwSelf.mRoot_property.sheetGeometry_property.selection, unwSelf.mRoot_property.sheetIndexes_property.selection, unwSelf.ebObjectIndex.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :

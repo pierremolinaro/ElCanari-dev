@@ -15,32 +15,80 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePinInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mPinName_property.removeEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
+      oldValue.mPinName_property.removeEBObserver (self.mPinName_property) // Stored property
+ //     oldValue.mSymbolInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
+ //     oldValue.mSymbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
+      oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
+ //     oldValue.mPinX_property.removeEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
+      oldValue.mPinX_property.removeEBObserver (self.mPinX_property) // Stored property
+ //     oldValue.mPinY_property.removeEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
+      oldValue.mPinY_property.removeEBObserver (self.mPinY_property) // Stored property
+ //     oldValue.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
+ //     oldValue.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
+ //     oldValue.mNameHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
+      oldValue.mNameHorizontalAlignment_property.removeEBObserver (self.mNameHorizontalAlignment_property) // Stored property
+ //     oldValue.mPinNameIsDisplayedInSchematic_property.removeEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematic) // Stored property
+      oldValue.mPinNameIsDisplayedInSchematic_property.removeEBObserver (self.mPinNameIsDisplayedInSchematic_property) // Stored property
+ //     oldValue.mXNumber_property.removeEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
+      oldValue.mXNumber_property.removeEBObserver (self.mXNumber_property) // Stored property
+ //     oldValue.mYNumber_property.removeEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
+      oldValue.mYNumber_property.removeEBObserver (self.mYNumber_property) // Stored property
+ //     oldValue.mNumberHorizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
+      oldValue.mNumberHorizontalAlignment_property.removeEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
+ //     oldValue.pinQualifiedName_property.removeEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
+      oldValue.pinQualifiedName_property.removeEBObserver (self.pinQualifiedName_property) // Transient property
+ //     oldValue.descriptor_property.removeEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mPinName_property.addEBObserversFrom (&self.mObserversOf_mPinName) // Stored property
+      newValue.mPinName_property.addEBObserver (self.mPinName_property) // Stored property
+ //     newValue.mSymbolInstanceName_property.addEBObserversFrom (&self.mObserversOf_mSymbolInstanceName) // Stored property
+      newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
+ //     newValue.mSymbolTypeName_property.addEBObserversFrom (&self.mObserversOf_mSymbolTypeName) // Stored property
+      newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
+ //     newValue.mPinX_property.addEBObserversFrom (&self.mObserversOf_mPinX) // Stored property
+      newValue.mPinX_property.addEBObserver (self.mPinX_property) // Stored property
+ //     newValue.mPinY_property.addEBObserversFrom (&self.mObserversOf_mPinY) // Stored property
+      newValue.mPinY_property.addEBObserver (self.mPinY_property) // Stored property
+ //     newValue.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
+ //     newValue.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
+ //     newValue.mNameHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNameHorizontalAlignment) // Stored property
+      newValue.mNameHorizontalAlignment_property.addEBObserver (self.mNameHorizontalAlignment_property) // Stored property
+ //     newValue.mPinNameIsDisplayedInSchematic_property.addEBObserversFrom (&self.mObserversOf_mPinNameIsDisplayedInSchematic) // Stored property
+      newValue.mPinNameIsDisplayedInSchematic_property.addEBObserver (self.mPinNameIsDisplayedInSchematic_property) // Stored property
+ //     newValue.mXNumber_property.addEBObserversFrom (&self.mObserversOf_mXNumber) // Stored property
+      newValue.mXNumber_property.addEBObserver (self.mXNumber_property) // Stored property
+ //     newValue.mYNumber_property.addEBObserversFrom (&self.mObserversOf_mYNumber) // Stored property
+      newValue.mYNumber_property.addEBObserver (self.mYNumber_property) // Stored property
+ //     newValue.mNumberHorizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_mNumberHorizontalAlignment) // Stored property
+      newValue.mNumberHorizontalAlignment_property.addEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
+  //    newValue.pinQualifiedName_property.addEBObserversFrom (&self.mObserversOf_pinQualifiedName) // Transient property
+      newValue.pinQualifiedName_property.addEBObserver (self.pinQualifiedName_property) // Transient property
+  //    newValue.descriptor_property.addEBObserversFrom (&self.mObserversOf_descriptor) // Transient property
+      newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mPinName' stored property
   //····················································································································
 
-  private final var mPinName_property = EBGenericTransientProperty <String?> ()
+  final let mPinName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPinName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPinName_property_selection : EBSelection <String?> { // §
     return self.mPinName_property.selection
-/*    if let model = self.propval {
-      switch (model.mPinName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +121,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
-  private final var mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolInstanceName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolInstanceName_property_selection : EBSelection <String?> { // §
     return self.mSymbolInstanceName_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolInstanceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +160,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mSymbolTypeName' stored property
   //····················································································································
 
-  private final var mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
+  final let mSymbolTypeName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mSymbolTypeName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSymbolTypeName_property_selection : EBSelection <String?> { // §
     return self.mSymbolTypeName_property.selection
-/*    if let model = self.propval {
-      switch (model.mSymbolTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +199,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinX' stored property
   //····················································································································
 
-  private final var mPinX_property = EBGenericTransientProperty <Int?> ()
+  final let mPinX_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mPinX = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPinX_property_selection : EBSelection <Int?> { // §
     return self.mPinX_property.selection
-/*    if let model = self.propval {
-      switch (model.mPinX_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +238,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinY' stored property
   //····················································································································
 
-  private final var mPinY_property = EBGenericTransientProperty <Int?> ()
+  final let mPinY_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mPinY = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPinY_property_selection : EBSelection <Int?> { // §
     return self.mPinY_property.selection
-/*    if let model = self.propval {
-      switch (model.mPinY_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +277,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private final var mXName_property = EBGenericTransientProperty <Int?> ()
+  final let mXName_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mXName_property_selection : EBSelection <Int?> { // §
     return self.mXName_property.selection
-/*    if let model = self.propval {
-      switch (model.mXName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +316,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private final var mYName_property = EBGenericTransientProperty <Int?> ()
+  final let mYName_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mYName_property_selection : EBSelection <Int?> { // §
     return self.mYName_property.selection
-/*    if let model = self.propval {
-      switch (model.mYName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +355,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mNameHorizontalAlignment' stored property
   //····················································································································
 
-  private final var mNameHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNameHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
 //  private final var mObserversOf_mNameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> { // §
     return self.mNameHorizontalAlignment_property.selection
-/*    if let model = self.propval {
-      switch (model.mNameHorizontalAlignment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +394,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mPinNameIsDisplayedInSchematic' stored property
   //····················································································································
 
-  private final var mPinNameIsDisplayedInSchematic_property = EBGenericTransientProperty <Bool?> ()
+  final let mPinNameIsDisplayedInSchematic_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mPinNameIsDisplayedInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPinNameIsDisplayedInSchematic_property_selection : EBSelection <Bool?> { // §
     return self.mPinNameIsDisplayedInSchematic_property.selection
-/*    if let model = self.propval {
-      switch (model.mPinNameIsDisplayedInSchematic_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +433,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  private final var mXNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mXNumber_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mXNumber = EBWeakEventSet ()
 
   //····················································································································
 
   final var mXNumber_property_selection : EBSelection <Int?> { // §
     return self.mXNumber_property.selection
-/*    if let model = self.propval {
-      switch (model.mXNumber_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +472,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mYNumber' stored property
   //····················································································································
 
-  private final var mYNumber_property = EBGenericTransientProperty <Int?> ()
+  final let mYNumber_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mYNumber = EBWeakEventSet ()
 
   //····················································································································
 
   final var mYNumber_property_selection : EBSelection <Int?> { // §
     return self.mYNumber_property.selection
-/*    if let model = self.propval {
-      switch (model.mYNumber_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +511,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'mNumberHorizontalAlignment' stored property
   //····················································································································
 
-  private final var mNumberHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let mNumberHorizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
 //  private final var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> { // §
     return self.mNumberHorizontalAlignment_property.selection
-/*    if let model = self.propval {
-      switch (model.mNumberHorizontalAlignment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +550,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'pinQualifiedName' transient property
   //····················································································································
 
-  private final var pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
+  final let pinQualifiedName_property = EBGenericTransientProperty <PinQualifiedNameStruct?> ()
 //  private final var mObserversOf_pinQualifiedName = EBWeakEventSet ()
 
   //····················································································································
 
   final var pinQualifiedName_property_selection : EBSelection <PinQualifiedNameStruct?> {
     return self.pinQualifiedName_property.selection
-/*    if let model = self.propval {
-      switch (model.pinQualifiedName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -685,25 +589,13 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var descriptor_property = EBGenericTransientProperty <PinInProjectDescriptor?> ()
+  final let descriptor_property = EBGenericTransientProperty <PinInProjectDescriptor?> ()
 //  private final var mObserversOf_descriptor = EBWeakEventSet ()
 
   //····················································································································
 
   final var descriptor_property_selection : EBSelection <PinInProjectDescriptor?> {
     return self.descriptor_property.selection
-/*    if let model = self.propval {
-      switch (model.descriptor_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -753,7 +645,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPinName_property)
   //--- Configure mSymbolInstanceName simple stored property
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -769,7 +660,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolInstanceName_property)
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -785,7 +675,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSymbolTypeName_property)
   //--- Configure mPinX simple stored property
     self.mPinX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -801,7 +690,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPinX_property)
   //--- Configure mPinY simple stored property
     self.mPinY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -817,7 +705,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPinY_property)
   //--- Configure mXName simple stored property
     self.mXName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -833,7 +720,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mXName_property)
   //--- Configure mYName simple stored property
     self.mYName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -849,7 +735,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mYName_property)
   //--- Configure mNameHorizontalAlignment simple stored property
     self.mNameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -865,7 +750,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNameHorizontalAlignment_property)
   //--- Configure mPinNameIsDisplayedInSchematic simple stored property
     self.mPinNameIsDisplayedInSchematic_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -881,7 +765,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPinNameIsDisplayedInSchematic_property)
   //--- Configure mXNumber simple stored property
     self.mXNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -897,7 +780,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mXNumber_property)
   //--- Configure mYNumber simple stored property
     self.mYNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -913,7 +795,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mYNumber_property)
   //--- Configure mNumberHorizontalAlignment simple stored property
     self.mNumberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -929,7 +810,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNumberHorizontalAlignment_property)
   //--- Configure pinQualifiedName transient property
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -945,7 +825,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.pinQualifiedName_property)
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -961,7 +840,6 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.descriptor_property)
   }
 
   //····················································································································

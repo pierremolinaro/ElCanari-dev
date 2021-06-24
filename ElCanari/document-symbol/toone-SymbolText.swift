@@ -15,32 +15,52 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolText?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.y_property.removeEBObserver (self.y_property) // Stored property
+ //     oldValue.text_property.removeEBObserversFrom (&self.mObserversOf_text) // Stored property
+      oldValue.text_property.removeEBObserver (self.text_property) // Stored property
+ //     oldValue.horizontalAlignment_property.removeEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
+      oldValue.horizontalAlignment_property.removeEBObserver (self.horizontalAlignment_property) // Stored property
+ //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.x_property.removeEBObserver (self.x_property) // Stored property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.y_property.addEBObserver (self.y_property) // Stored property
+ //     newValue.text_property.addEBObserversFrom (&self.mObserversOf_text) // Stored property
+      newValue.text_property.addEBObserver (self.text_property) // Stored property
+ //     newValue.horizontalAlignment_property.addEBObserversFrom (&self.mObserversOf_horizontalAlignment) // Stored property
+      newValue.horizontalAlignment_property.addEBObserver (self.horizontalAlignment_property) // Stored property
+ //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.x_property.addEBObserver (self.x_property) // Stored property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var y_property = EBGenericTransientProperty <Int?> ()
+  final let y_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
   final var y_property_selection : EBSelection <Int?> { // §
     return self.y_property.selection
-/*    if let model = self.propval {
-      switch (model.y_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +93,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'text' stored property
   //····················································································································
 
-  private final var text_property = EBGenericTransientProperty <String?> ()
+  final let text_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_text = EBWeakEventSet ()
 
   //····················································································································
 
   final var text_property_selection : EBSelection <String?> { // §
     return self.text_property.selection
-/*    if let model = self.propval {
-      switch (model.text_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +132,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'horizontalAlignment' stored property
   //····················································································································
 
-  private final var horizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
+  final let horizontalAlignment_property = EBGenericTransientProperty <HorizontalAlignment?> ()
 //  private final var mObserversOf_horizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
   final var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment?> { // §
     return self.horizontalAlignment_property.selection
-/*    if let model = self.propval {
-      switch (model.horizontalAlignment_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +171,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var x_property = EBGenericTransientProperty <Int?> ()
+  final let x_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
   final var x_property_selection : EBSelection <Int?> { // §
     return self.x_property.selection
-/*    if let model = self.propval {
-      switch (model.x_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +210,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +249,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +288,13 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -396,7 +344,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y_property)
   //--- Configure text simple stored property
     self.text_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -412,7 +359,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.text_property)
   //--- Configure horizontalAlignment simple stored property
     self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -428,7 +374,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.horizontalAlignment_property)
   //--- Configure x simple stored property
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -444,7 +389,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -460,7 +404,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -476,7 +419,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -492,7 +434,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   }
 
   //····················································································································

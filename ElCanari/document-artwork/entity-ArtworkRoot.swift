@@ -381,7 +381,7 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var signatureForERCChecking : UInt32? {
-    switch self.signatureForERCChecking_property_selection {
+    switch self.signatureForERCChecking_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -411,7 +411,7 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.minPPTPTTTW_property_selection, unwSelf.minValueForOARinEBUnit_property_selection, unwSelf.minValueForBoardLimitWidth_property_selection, unwSelf.minValueForPHDinEBUnit_property_selection) {
+        switch (unwSelf.minPPTPTTTW_property.selection, unwSelf.minValueForOARinEBUnit_property.selection, unwSelf.minValueForBoardLimitWidth_property.selection, unwSelf.minValueForPHDinEBUnit_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_ArtworkRoot_signatureForERCChecking (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :

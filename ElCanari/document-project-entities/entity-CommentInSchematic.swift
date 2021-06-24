@@ -250,7 +250,7 @@ final class CommentInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        switch (unwSelf.mComment_property.selection, unwSelf.mColor_property.selection, unwSelf.mSize_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
           return .single (transient_CommentInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -272,7 +272,7 @@ final class CommentInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComment_property_selection, unwSelf.mColor_property_selection, unwSelf.mSize_property_selection, unwSelf.mHorizontalAlignment_property_selection, unwSelf.mVerticalAlignment_property_selection, preferences_schematicBackColor_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        switch (unwSelf.mComment_property.selection, unwSelf.mColor_property.selection, unwSelf.mSize_property.selection, unwSelf.mHorizontalAlignment_property.selection, unwSelf.mVerticalAlignment_property.selection, preferences_schematicBackColor_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
           return .single (transient_CommentInSchematic_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

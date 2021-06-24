@@ -15,32 +15,140 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardConnector?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mComponentPadName_property.removeEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+      oldValue.mComponentPadName_property.removeEBObserver (self.mComponentPadName_property) // Stored property
+ //     oldValue.mPadIndex_property.removeEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+      oldValue.mPadIndex_property.removeEBObserver (self.mPadIndex_property) // Stored property
+ //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
+ //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
+ //     oldValue.mDefaultHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mDefaultHoleDiameterUnit) // Stored property
+      oldValue.mDefaultHoleDiameterUnit_property.removeEBObserver (self.mDefaultHoleDiameterUnit_property) // Stored property
+ //     oldValue.mCustomHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mCustomHoleDiameter) // Stored property
+      oldValue.mCustomHoleDiameter_property.removeEBObserver (self.mCustomHoleDiameter_property) // Stored property
+ //     oldValue.mCustomHoleDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomHoleDiameterUnit) // Stored property
+      oldValue.mCustomHoleDiameterUnit_property.removeEBObserver (self.mCustomHoleDiameterUnit_property) // Stored property
+ //     oldValue.mUsesCustomHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomHoleDiameter) // Stored property
+      oldValue.mUsesCustomHoleDiameter_property.removeEBObserver (self.mUsesCustomHoleDiameter_property) // Stored property
+ //     oldValue.mDefaultPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mDefaultPadDiameterUnit) // Stored property
+      oldValue.mDefaultPadDiameterUnit_property.removeEBObserver (self.mDefaultPadDiameterUnit_property) // Stored property
+ //     oldValue.mCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
+      oldValue.mCustomPadDiameter_property.removeEBObserver (self.mCustomPadDiameter_property) // Stored property
+ //     oldValue.mCustomPadDiameterUnit_property.removeEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
+      oldValue.mCustomPadDiameterUnit_property.removeEBObserver (self.mCustomPadDiameterUnit_property) // Stored property
+ //     oldValue.mUsesCustomPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+      oldValue.mUsesCustomPadDiameter_property.removeEBObserver (self.mUsesCustomPadDiameter_property) // Stored property
+ //     oldValue.isConnectedToSomePad_property.removeEBObserversFrom (&self.mObserversOf_isConnectedToSomePad) // Transient property
+      oldValue.isConnectedToSomePad_property.removeEBObserver (self.isConnectedToSomePad_property) // Transient property
+ //     oldValue.location_property.removeEBObserversFrom (&self.mObserversOf_location) // Transient property
+      oldValue.location_property.removeEBObserver (self.location_property) // Transient property
+ //     oldValue.netNameFromComponentPad_property.removeEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
+      oldValue.netNameFromComponentPad_property.removeEBObserver (self.netNameFromComponentPad_property) // Transient property
+ //     oldValue.netNameAndPadLocation_property.removeEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      oldValue.netNameAndPadLocation_property.removeEBObserver (self.netNameAndPadLocation_property) // Transient property
+ //     oldValue.side_property.removeEBObserversFrom (&self.mObserversOf_side) // Transient property
+      oldValue.side_property.removeEBObserver (self.side_property) // Transient property
+ //     oldValue.isVia_property.removeEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      oldValue.isVia_property.removeEBObserver (self.isVia_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+ //     oldValue.viaDefaultHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
+      oldValue.viaDefaultHoleDiameter_property.removeEBObserver (self.viaDefaultHoleDiameter_property) // Transient property
+ //     oldValue.viaDefaultPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
+      oldValue.viaDefaultPadDiameter_property.removeEBObserver (self.viaDefaultPadDiameter_property) // Transient property
+ //     oldValue.netNameFromTracks_property.removeEBObserversFrom (&self.mObserversOf_netNameFromTracks) // Transient property
+      oldValue.netNameFromTracks_property.removeEBObserver (self.netNameFromTracks_property) // Transient property
+ //     oldValue.netClassName_property.removeEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
+ //     oldValue.connectedToComponent_property.removeEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+      oldValue.connectedToComponent_property.removeEBObserver (self.connectedToComponent_property) // Transient property
+ //     oldValue.actualHoleDiameter_property.removeEBObserversFrom (&self.mObserversOf_actualHoleDiameter) // Transient property
+      oldValue.actualHoleDiameter_property.removeEBObserver (self.actualHoleDiameter_property) // Transient property
+ //     oldValue.actualPadDiameter_property.removeEBObserversFrom (&self.mObserversOf_actualPadDiameter) // Transient property
+      oldValue.actualPadDiameter_property.removeEBObserver (self.actualPadDiameter_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mComponentPadName_property.addEBObserversFrom (&self.mObserversOf_mComponentPadName) // Stored property
+      newValue.mComponentPadName_property.addEBObserver (self.mComponentPadName_property) // Stored property
+ //     newValue.mPadIndex_property.addEBObserversFrom (&self.mObserversOf_mPadIndex) // Stored property
+      newValue.mPadIndex_property.addEBObserver (self.mPadIndex_property) // Stored property
+ //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mX_property.addEBObserver (self.mX_property) // Stored property
+ //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mY_property.addEBObserver (self.mY_property) // Stored property
+ //     newValue.mDefaultHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mDefaultHoleDiameterUnit) // Stored property
+      newValue.mDefaultHoleDiameterUnit_property.addEBObserver (self.mDefaultHoleDiameterUnit_property) // Stored property
+ //     newValue.mCustomHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mCustomHoleDiameter) // Stored property
+      newValue.mCustomHoleDiameter_property.addEBObserver (self.mCustomHoleDiameter_property) // Stored property
+ //     newValue.mCustomHoleDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomHoleDiameterUnit) // Stored property
+      newValue.mCustomHoleDiameterUnit_property.addEBObserver (self.mCustomHoleDiameterUnit_property) // Stored property
+ //     newValue.mUsesCustomHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomHoleDiameter) // Stored property
+      newValue.mUsesCustomHoleDiameter_property.addEBObserver (self.mUsesCustomHoleDiameter_property) // Stored property
+ //     newValue.mDefaultPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mDefaultPadDiameterUnit) // Stored property
+      newValue.mDefaultPadDiameterUnit_property.addEBObserver (self.mDefaultPadDiameterUnit_property) // Stored property
+ //     newValue.mCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameter) // Stored property
+      newValue.mCustomPadDiameter_property.addEBObserver (self.mCustomPadDiameter_property) // Stored property
+ //     newValue.mCustomPadDiameterUnit_property.addEBObserversFrom (&self.mObserversOf_mCustomPadDiameterUnit) // Stored property
+      newValue.mCustomPadDiameterUnit_property.addEBObserver (self.mCustomPadDiameterUnit_property) // Stored property
+ //     newValue.mUsesCustomPadDiameter_property.addEBObserversFrom (&self.mObserversOf_mUsesCustomPadDiameter) // Stored property
+      newValue.mUsesCustomPadDiameter_property.addEBObserver (self.mUsesCustomPadDiameter_property) // Stored property
+  //    newValue.isConnectedToSomePad_property.addEBObserversFrom (&self.mObserversOf_isConnectedToSomePad) // Transient property
+      newValue.isConnectedToSomePad_property.addEBObserver (self.isConnectedToSomePad_property) // Transient property
+  //    newValue.location_property.addEBObserversFrom (&self.mObserversOf_location) // Transient property
+      newValue.location_property.addEBObserver (self.location_property) // Transient property
+  //    newValue.netNameFromComponentPad_property.addEBObserversFrom (&self.mObserversOf_netNameFromComponentPad) // Transient property
+      newValue.netNameFromComponentPad_property.addEBObserver (self.netNameFromComponentPad_property) // Transient property
+  //    newValue.netNameAndPadLocation_property.addEBObserversFrom (&self.mObserversOf_netNameAndPadLocation) // Transient property
+      newValue.netNameAndPadLocation_property.addEBObserver (self.netNameAndPadLocation_property) // Transient property
+  //    newValue.side_property.addEBObserversFrom (&self.mObserversOf_side) // Transient property
+      newValue.side_property.addEBObserver (self.side_property) // Transient property
+  //    newValue.isVia_property.addEBObserversFrom (&self.mObserversOf_isVia) // Transient property
+      newValue.isVia_property.addEBObserver (self.isVia_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+  //    newValue.viaDefaultHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultHoleDiameter) // Transient property
+      newValue.viaDefaultHoleDiameter_property.addEBObserver (self.viaDefaultHoleDiameter_property) // Transient property
+  //    newValue.viaDefaultPadDiameter_property.addEBObserversFrom (&self.mObserversOf_viaDefaultPadDiameter) // Transient property
+      newValue.viaDefaultPadDiameter_property.addEBObserver (self.viaDefaultPadDiameter_property) // Transient property
+  //    newValue.netNameFromTracks_property.addEBObserversFrom (&self.mObserversOf_netNameFromTracks) // Transient property
+      newValue.netNameFromTracks_property.addEBObserver (self.netNameFromTracks_property) // Transient property
+  //    newValue.netClassName_property.addEBObserversFrom (&self.mObserversOf_netClassName) // Transient property
+      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
+  //    newValue.connectedToComponent_property.addEBObserversFrom (&self.mObserversOf_connectedToComponent) // Transient property
+      newValue.connectedToComponent_property.addEBObserver (self.connectedToComponent_property) // Transient property
+  //    newValue.actualHoleDiameter_property.addEBObserversFrom (&self.mObserversOf_actualHoleDiameter) // Transient property
+      newValue.actualHoleDiameter_property.addEBObserver (self.actualHoleDiameter_property) // Transient property
+  //    newValue.actualPadDiameter_property.addEBObserversFrom (&self.mObserversOf_actualPadDiameter) // Transient property
+      newValue.actualPadDiameter_property.addEBObserver (self.actualPadDiameter_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mComponentPadName' stored property
   //····················································································································
 
-  private final var mComponentPadName_property = EBGenericTransientProperty <String?> ()
+  final let mComponentPadName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mComponentPadName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mComponentPadName_property_selection : EBSelection <String?> { // §
     return self.mComponentPadName_property.selection
-/*    if let model = self.propval {
-      switch (model.mComponentPadName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +181,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mPadIndex' stored property
   //····················································································································
 
-  private final var mPadIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mPadIndex_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mPadIndex = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPadIndex_property_selection : EBSelection <Int?> { // §
     return self.mPadIndex_property.selection
-/*    if let model = self.propval {
-      switch (model.mPadIndex_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +220,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
   final var mX_property_selection : EBSelection <Int?> { // §
     return self.mX_property.selection
-/*    if let model = self.propval {
-      switch (model.mX_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +259,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
   final var mY_property_selection : EBSelection <Int?> { // §
     return self.mY_property.selection
-/*    if let model = self.propval {
-      switch (model.mY_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +298,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultHoleDiameterUnit' stored property
   //····················································································································
 
-  private final var mDefaultHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mDefaultHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mDefaultHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDefaultHoleDiameterUnit_property_selection : EBSelection <Int?> { // §
     return self.mDefaultHoleDiameterUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mDefaultHoleDiameterUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +337,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomHoleDiameter' stored property
   //····················································································································
 
-  private final var mCustomHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomHoleDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCustomHoleDiameter_property_selection : EBSelection <Int?> { // §
     return self.mCustomHoleDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.mCustomHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +376,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomHoleDiameterUnit' stored property
   //····················································································································
 
-  private final var mCustomHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomHoleDiameterUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCustomHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCustomHoleDiameterUnit_property_selection : EBSelection <Int?> { // §
     return self.mCustomHoleDiameterUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mCustomHoleDiameterUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +415,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mUsesCustomHoleDiameter' stored property
   //····················································································································
 
-  private final var mUsesCustomHoleDiameter_property = EBGenericTransientProperty <Bool?> ()
+  final let mUsesCustomHoleDiameter_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mUsesCustomHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var mUsesCustomHoleDiameter_property_selection : EBSelection <Bool?> { // §
     return self.mUsesCustomHoleDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.mUsesCustomHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +454,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mDefaultPadDiameterUnit' stored property
   //····················································································································
 
-  private final var mDefaultPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mDefaultPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mDefaultPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDefaultPadDiameterUnit_property_selection : EBSelection <Int?> { // §
     return self.mDefaultPadDiameterUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mDefaultPadDiameterUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +493,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomPadDiameter' stored property
   //····················································································································
 
-  private final var mCustomPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomPadDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCustomPadDiameter_property_selection : EBSelection <Int?> { // §
     return self.mCustomPadDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.mCustomPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +532,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mCustomPadDiameterUnit' stored property
   //····················································································································
 
-  private final var mCustomPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mCustomPadDiameterUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mCustomPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mCustomPadDiameterUnit_property_selection : EBSelection <Int?> { // §
     return self.mCustomPadDiameterUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mCustomPadDiameterUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +571,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'mUsesCustomPadDiameter' stored property
   //····················································································································
 
-  private final var mUsesCustomPadDiameter_property = EBGenericTransientProperty <Bool?> ()
+  final let mUsesCustomPadDiameter_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mUsesCustomPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var mUsesCustomPadDiameter_property_selection : EBSelection <Bool?> { // §
     return self.mUsesCustomPadDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.mUsesCustomPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +610,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'isConnectedToSomePad' transient property
   //····················································································································
 
-  private final var isConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
+  final let isConnectedToSomePad_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_isConnectedToSomePad = EBWeakEventSet ()
 
   //····················································································································
 
   final var isConnectedToSomePad_property_selection : EBSelection <Bool?> {
     return self.isConnectedToSomePad_property.selection
-/*    if let model = self.propval {
-      switch (model.isConnectedToSomePad_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -685,25 +649,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'location' transient property
   //····················································································································
 
-  private final var location_property = EBGenericTransientProperty <CanariPoint?> ()
+  final let location_property = EBGenericTransientProperty <CanariPoint?> ()
 //  private final var mObserversOf_location = EBWeakEventSet ()
 
   //····················································································································
 
   final var location_property_selection : EBSelection <CanariPoint?> {
     return self.location_property.selection
-/*    if let model = self.propval {
-      switch (model.location_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -736,25 +688,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameFromComponentPad' transient property
   //····················································································································
 
-  private final var netNameFromComponentPad_property = EBGenericTransientProperty <String?> ()
+  final let netNameFromComponentPad_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netNameFromComponentPad = EBWeakEventSet ()
 
   //····················································································································
 
   final var netNameFromComponentPad_property_selection : EBSelection <String?> {
     return self.netNameFromComponentPad_property.selection
-/*    if let model = self.propval {
-      switch (model.netNameFromComponentPad_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -787,25 +727,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private final var netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
+  final let netNameAndPadLocation_property = EBGenericTransientProperty <RastnetInfoArray?> ()
 //  private final var mObserversOf_netNameAndPadLocation = EBWeakEventSet ()
 
   //····················································································································
 
   final var netNameAndPadLocation_property_selection : EBSelection <RastnetInfoArray?> {
     return self.netNameAndPadLocation_property.selection
-/*    if let model = self.propval {
-      switch (model.netNameAndPadLocation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -838,25 +766,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'side' transient property
   //····················································································································
 
-  private final var side_property = EBGenericTransientProperty <ConnectorSide?> ()
+  final let side_property = EBGenericTransientProperty <ConnectorSide?> ()
 //  private final var mObserversOf_side = EBWeakEventSet ()
 
   //····················································································································
 
   final var side_property_selection : EBSelection <ConnectorSide?> {
     return self.side_property.selection
-/*    if let model = self.propval {
-      switch (model.side_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -889,25 +805,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private final var isVia_property = EBGenericTransientProperty <Bool?> ()
+  final let isVia_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_isVia = EBWeakEventSet ()
 
   //····················································································································
 
   final var isVia_property_selection : EBSelection <Bool?> {
     return self.isVia_property.selection
-/*    if let model = self.propval {
-      switch (model.isVia_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -940,25 +844,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -991,25 +883,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'viaDefaultHoleDiameter' transient property
   //····················································································································
 
-  private final var viaDefaultHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let viaDefaultHoleDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_viaDefaultHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var viaDefaultHoleDiameter_property_selection : EBSelection <Int?> {
     return self.viaDefaultHoleDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.viaDefaultHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1042,25 +922,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'viaDefaultPadDiameter' transient property
   //····················································································································
 
-  private final var viaDefaultPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let viaDefaultPadDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_viaDefaultPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var viaDefaultPadDiameter_property_selection : EBSelection <Int?> {
     return self.viaDefaultPadDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.viaDefaultPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1093,25 +961,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netNameFromTracks' transient property
   //····················································································································
 
-  private final var netNameFromTracks_property = EBGenericTransientProperty <String?> ()
+  final let netNameFromTracks_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netNameFromTracks = EBWeakEventSet ()
 
   //····················································································································
 
   final var netNameFromTracks_property_selection : EBSelection <String?> {
     return self.netNameFromTracks_property.selection
-/*    if let model = self.propval {
-      switch (model.netNameFromTracks_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1144,25 +1000,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var netClassName_property = EBGenericTransientProperty <String?> ()
+  final let netClassName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_netClassName = EBWeakEventSet ()
 
   //····················································································································
 
   final var netClassName_property_selection : EBSelection <String?> {
     return self.netClassName_property.selection
-/*    if let model = self.propval {
-      switch (model.netClassName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1195,25 +1039,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'connectedToComponent' transient property
   //····················································································································
 
-  private final var connectedToComponent_property = EBGenericTransientProperty <Bool?> ()
+  final let connectedToComponent_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_connectedToComponent = EBWeakEventSet ()
 
   //····················································································································
 
   final var connectedToComponent_property_selection : EBSelection <Bool?> {
     return self.connectedToComponent_property.selection
-/*    if let model = self.propval {
-      switch (model.connectedToComponent_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1246,25 +1078,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'actualHoleDiameter' transient property
   //····················································································································
 
-  private final var actualHoleDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let actualHoleDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_actualHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var actualHoleDiameter_property_selection : EBSelection <Int?> {
     return self.actualHoleDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.actualHoleDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1297,25 +1117,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'actualPadDiameter' transient property
   //····················································································································
 
-  private final var actualPadDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let actualPadDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_actualPadDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var actualPadDiameter_property_selection : EBSelection <Int?> {
     return self.actualPadDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.actualPadDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1348,25 +1156,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1399,25 +1195,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1450,25 +1234,13 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
 //  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     return self.signatureForERCChecking_property.selection
-/*    if let model = self.propval {
-      switch (model.signatureForERCChecking_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1507,7 +1279,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   final var mTracksP2_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
-      switch (model.mTracksP2_property_selection) {
+      switch (model.mTracksP2_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1548,7 +1320,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 
   final var mTracksP1_property_selection : EBSelection <[BoardTrack]> {
     if let model = self.propval {
-      switch (model.mTracksP1_property_selection) {
+      switch (model.mTracksP1_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -1600,7 +1372,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mComponentPadName_property)
   //--- Configure mPadIndex simple stored property
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1616,7 +1387,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPadIndex_property)
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1632,7 +1402,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mX_property)
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1648,7 +1417,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mY_property)
   //--- Configure mDefaultHoleDiameterUnit simple stored property
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1664,7 +1432,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDefaultHoleDiameterUnit_property)
   //--- Configure mCustomHoleDiameter simple stored property
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1680,7 +1447,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCustomHoleDiameter_property)
   //--- Configure mCustomHoleDiameterUnit simple stored property
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1696,7 +1462,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCustomHoleDiameterUnit_property)
   //--- Configure mUsesCustomHoleDiameter simple stored property
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1712,7 +1477,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mUsesCustomHoleDiameter_property)
   //--- Configure mDefaultPadDiameterUnit simple stored property
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1728,7 +1492,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDefaultPadDiameterUnit_property)
   //--- Configure mCustomPadDiameter simple stored property
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1744,7 +1507,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCustomPadDiameter_property)
   //--- Configure mCustomPadDiameterUnit simple stored property
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1760,7 +1522,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mCustomPadDiameterUnit_property)
   //--- Configure mUsesCustomPadDiameter simple stored property
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1776,7 +1537,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mUsesCustomPadDiameter_property)
   //--- Configure isConnectedToSomePad transient property
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1792,7 +1552,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.isConnectedToSomePad_property)
   //--- Configure location transient property
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1808,7 +1567,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.location_property)
   //--- Configure netNameFromComponentPad transient property
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1824,7 +1582,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netNameFromComponentPad_property)
   //--- Configure netNameAndPadLocation transient property
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1840,7 +1597,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netNameAndPadLocation_property)
   //--- Configure side transient property
     self.side_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1856,7 +1612,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.side_property)
   //--- Configure isVia transient property
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1872,7 +1627,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.isVia_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1888,7 +1642,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   //--- Configure viaDefaultHoleDiameter transient property
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1904,7 +1657,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.viaDefaultHoleDiameter_property)
   //--- Configure viaDefaultPadDiameter transient property
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1920,7 +1672,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.viaDefaultPadDiameter_property)
   //--- Configure netNameFromTracks transient property
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1936,7 +1687,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netNameFromTracks_property)
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1952,7 +1702,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.netClassName_property)
   //--- Configure connectedToComponent transient property
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1968,7 +1717,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.connectedToComponent_property)
   //--- Configure actualHoleDiameter transient property
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1984,7 +1732,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.actualHoleDiameter_property)
   //--- Configure actualPadDiameter transient property
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2000,7 +1747,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.actualPadDiameter_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2016,7 +1762,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2032,7 +1777,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2048,7 +1792,6 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.signatureForERCChecking_property)
   }
 
   //····················································································································

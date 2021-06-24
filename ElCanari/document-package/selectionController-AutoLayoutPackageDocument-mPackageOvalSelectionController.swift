@@ -379,7 +379,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y_property_selection {
+            switch object.y_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -448,7 +448,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.width_property_selection {
+            switch object.width_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -517,7 +517,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.height_property_selection {
+            switch object.height_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -586,7 +586,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xUnit_property_selection {
+            switch object.xUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -655,7 +655,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yUnit_property_selection {
+            switch object.yUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -724,7 +724,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.widthUnit_property_selection {
+            switch object.widthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -793,7 +793,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.heightUnit_property_selection {
+            switch object.heightUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -862,7 +862,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x_property_selection {
+            switch object.x_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -931,7 +931,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <NSBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.strokeBezierPath_property_selection {
+            switch object.strokeBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -970,7 +970,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1009,7 +1009,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1048,7 +1048,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :

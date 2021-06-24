@@ -461,7 +461,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var p2Xstring : String? {
-    switch self.p2Xstring_property_selection {
+    switch self.p2Xstring_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -484,7 +484,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var p2Ystring : String? {
-    switch self.p2Ystring_property_selection {
+    switch self.p2Ystring_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -507,7 +507,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var descriptor : BorderCurveDescriptor? {
-    switch self.descriptor_property_selection {
+    switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -530,7 +530,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var isLine : Bool? {
-    switch self.isLine_property_selection {
+    switch self.isLine_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -626,7 +626,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: p2Xstring
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNext_property.mX_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+        switch (unwSelf.mNext_property.mX_property.selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_BorderCurve_p2Xstring (v0, v1))
         case (.multiple, .multiple) :
@@ -643,7 +643,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: p2Ystring
     self.p2Ystring_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNext_property.mY_property_selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property_selection) {
+        switch (unwSelf.mNext_property.mY_property.selection, unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_BorderCurve_p2Ystring (v0, v1))
         case (.multiple, .multiple) :
@@ -660,7 +660,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection) {
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mNext_property.mX_property.selection, unwSelf.mNext_property.mY_property.selection, unwSelf.mCPX1_property.selection, unwSelf.mCPY1_property.selection, unwSelf.mCPX2_property.selection, unwSelf.mCPY2_property.selection, unwSelf.mShape_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_BorderCurve_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -684,7 +684,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardLimitsWidth_property_selection, unwSelf.mRoot_property.mBoardClearance_property_selection, unwSelf.mRoot_property.mBoardShape_property_selection) {
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mNext_property.mX_property.selection, unwSelf.mNext_property.mY_property.selection, unwSelf.mCPX1_property.selection, unwSelf.mCPY1_property.selection, unwSelf.mCPX2_property.selection, unwSelf.mCPY2_property.selection, unwSelf.mShape_property.selection, unwSelf.mRoot_property.mBoardLimitsWidth_property.selection, unwSelf.mRoot_property.mBoardClearance_property.selection, unwSelf.mRoot_property.mBoardShape_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
           return .single (transient_BorderCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -711,7 +711,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: isLine
     self.isLine_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mShape_property_selection) {
+        switch (unwSelf.mShape_property.selection) {
         case (.single (let v0)) :
           return .single (transient_BorderCurve_isLine (v0))
         case (.multiple) :
@@ -727,7 +727,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mNext_property.mX_property_selection, unwSelf.mNext_property.mY_property_selection, unwSelf.mCPX1_property_selection, unwSelf.mCPY1_property_selection, unwSelf.mCPX2_property_selection, unwSelf.mCPY2_property_selection, unwSelf.mShape_property_selection, unwSelf.mRoot_property.mBoardShape_property_selection) {
+        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mNext_property.mX_property.selection, unwSelf.mNext_property.mY_property.selection, unwSelf.mCPX1_property.selection, unwSelf.mCPY1_property.selection, unwSelf.mCPX2_property.selection, unwSelf.mCPY2_property.selection, unwSelf.mShape_property.selection, unwSelf.mRoot_property.mBoardShape_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
           return .single (transient_BorderCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

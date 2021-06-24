@@ -494,7 +494,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yCenter_property_selection {
+            switch object.yCenter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -563,7 +563,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.radius_property_selection {
+            switch object.radius_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -632,7 +632,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.startAngle_property_selection {
+            switch object.startAngle_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -701,7 +701,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.arcAngle_property_selection {
+            switch object.arcAngle_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -770,7 +770,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.startTangent_property_selection {
+            switch object.startTangent_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -839,7 +839,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.endTangent_property_selection {
+            switch object.endTangent_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -908,7 +908,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pathIsClosed_property_selection {
+            switch object.pathIsClosed_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -977,7 +977,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xCenterUnit_property_selection {
+            switch object.xCenterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1046,7 +1046,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yCenterUnit_property_selection {
+            switch object.yCenterUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1115,7 +1115,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.radiusUnit_property_selection {
+            switch object.radiusUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1184,7 +1184,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.startTangentUnit_property_selection {
+            switch object.startTangentUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1253,7 +1253,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.endTangentUnit_property_selection {
+            switch object.endTangentUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1322,7 +1322,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xCenter_property_selection {
+            switch object.xCenter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1391,7 +1391,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <EBBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.strokeBezierPath_property_selection {
+            switch object.strokeBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1430,7 +1430,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1469,7 +1469,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1508,7 +1508,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :

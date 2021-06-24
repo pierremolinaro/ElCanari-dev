@@ -15,32 +15,192 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : ComponentInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mSlavePadsShouldBeRouted_property.removeEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
+      oldValue.mSlavePadsShouldBeRouted_property.removeEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
+ //     oldValue.mX_property.removeEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
+ //     oldValue.mY_property.removeEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
+ //     oldValue.mRotation_property.removeEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+      oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
+ //     oldValue.mSide_property.removeEBObserversFrom (&self.mObserversOf_mSide) // Stored property
+      oldValue.mSide_property.removeEBObserver (self.mSide_property) // Stored property
+ //     oldValue.mDisplayLegend_property.removeEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
+      oldValue.mDisplayLegend_property.removeEBObserver (self.mDisplayLegend_property) // Stored property
+ //     oldValue.mNameIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
+      oldValue.mNameIsVisibleInBoard_property.removeEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
+ //     oldValue.mXName_property.removeEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
+ //     oldValue.mYName_property.removeEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
+ //     oldValue.mNameFontSize_property.removeEBObserversFrom (&self.mObserversOf_mNameFontSize) // Stored property
+      oldValue.mNameFontSize_property.removeEBObserver (self.mNameFontSize_property) // Stored property
+ //     oldValue.mNameRotation_property.removeEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
+      oldValue.mNameRotation_property.removeEBObserver (self.mNameRotation_property) // Stored property
+ //     oldValue.mValueIsVisibleInBoard_property.removeEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
+      oldValue.mValueIsVisibleInBoard_property.removeEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
+ //     oldValue.mXValue_property.removeEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
+      oldValue.mXValue_property.removeEBObserver (self.mXValue_property) // Stored property
+ //     oldValue.mYValue_property.removeEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
+      oldValue.mYValue_property.removeEBObserver (self.mYValue_property) // Stored property
+ //     oldValue.mValueFontSize_property.removeEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
+      oldValue.mValueFontSize_property.removeEBObserver (self.mValueFontSize_property) // Stored property
+ //     oldValue.mValueRotation_property.removeEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
+      oldValue.mValueRotation_property.removeEBObserver (self.mValueRotation_property) // Stored property
+ //     oldValue.mComponentValue_property.removeEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+      oldValue.mComponentValue_property.removeEBObserver (self.mComponentValue_property) // Stored property
+ //     oldValue.mNamePrefix_property.removeEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
+      oldValue.mNamePrefix_property.removeEBObserver (self.mNamePrefix_property) // Stored property
+ //     oldValue.mNameIndex_property.removeEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
+      oldValue.mNameIndex_property.removeEBObserver (self.mNameIndex_property) // Stored property
+ //     oldValue.mXUnit_property.removeEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
+      oldValue.mXUnit_property.removeEBObserver (self.mXUnit_property) // Stored property
+ //     oldValue.mYUnit_property.removeEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
+      oldValue.mYUnit_property.removeEBObserver (self.mYUnit_property) // Stored property
+ //     oldValue.deviceName_property.removeEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+      oldValue.deviceName_property.removeEBObserver (self.deviceName_property) // Transient property
+ //     oldValue.signatureForERCChecking_property.removeEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+ //     oldValue.packagePadDictionary_property.removeEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+      oldValue.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property) // Transient property
+ //     oldValue.selectedPackageName_property.removeEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
+      oldValue.selectedPackageName_property.removeEBObserver (self.selectedPackageName_property) // Transient property
+ //     oldValue.availablePackages_property.removeEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
+      oldValue.availablePackages_property.removeEBObserver (self.availablePackages_property) // Transient property
+ //     oldValue.issues_property.removeEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+ //     oldValue.componentIsPlacedInBoard_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
+      oldValue.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property) // Transient property
+ //     oldValue.componentIsPlacedInBoardString_property.removeEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
+      oldValue.componentIsPlacedInBoardString_property.removeEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
+ //     oldValue.strokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
+ //     oldValue.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
+ //     oldValue.hasSlavePads_property.removeEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
+      oldValue.hasSlavePads_property.removeEBObserver (self.hasSlavePads_property) // Transient property
+ //     oldValue.placementInSchematic_property.removeEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
+      oldValue.placementInSchematic_property.removeEBObserver (self.placementInSchematic_property) // Transient property
+ //     oldValue.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+      oldValue.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
+ //     oldValue.componentNameFontName_property.removeEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
+      oldValue.componentNameFontName_property.removeEBObserver (self.componentNameFontName_property) // Transient property
+ //     oldValue.componentValueFontName_property.removeEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
+      oldValue.componentValueFontName_property.removeEBObserver (self.componentValueFontName_property) // Transient property
+ //     oldValue.componentPadDictionary_property.removeEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
+      oldValue.componentPadDictionary_property.removeEBObserver (self.componentPadDictionary_property) // Transient property
+ //     oldValue.padNetDictionary_property.removeEBObserversFrom (&self.mObserversOf_padNetDictionary) // Transient property
+      oldValue.padNetDictionary_property.removeEBObserver (self.padNetDictionary_property) // Transient property
+ //     oldValue.componentName_property.removeEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
+ //     oldValue.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+ //     oldValue.unplacedSymbols_property.removeEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+      oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
+ //     oldValue.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mSlavePadsShouldBeRouted_property.addEBObserversFrom (&self.mObserversOf_mSlavePadsShouldBeRouted) // Stored property
+      newValue.mSlavePadsShouldBeRouted_property.addEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
+ //     newValue.mX_property.addEBObserversFrom (&self.mObserversOf_mX) // Stored property
+      newValue.mX_property.addEBObserver (self.mX_property) // Stored property
+ //     newValue.mY_property.addEBObserversFrom (&self.mObserversOf_mY) // Stored property
+      newValue.mY_property.addEBObserver (self.mY_property) // Stored property
+ //     newValue.mRotation_property.addEBObserversFrom (&self.mObserversOf_mRotation) // Stored property
+      newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
+ //     newValue.mSide_property.addEBObserversFrom (&self.mObserversOf_mSide) // Stored property
+      newValue.mSide_property.addEBObserver (self.mSide_property) // Stored property
+ //     newValue.mDisplayLegend_property.addEBObserversFrom (&self.mObserversOf_mDisplayLegend) // Stored property
+      newValue.mDisplayLegend_property.addEBObserver (self.mDisplayLegend_property) // Stored property
+ //     newValue.mNameIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mNameIsVisibleInBoard) // Stored property
+      newValue.mNameIsVisibleInBoard_property.addEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
+ //     newValue.mXName_property.addEBObserversFrom (&self.mObserversOf_mXName) // Stored property
+      newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
+ //     newValue.mYName_property.addEBObserversFrom (&self.mObserversOf_mYName) // Stored property
+      newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
+ //     newValue.mNameFontSize_property.addEBObserversFrom (&self.mObserversOf_mNameFontSize) // Stored property
+      newValue.mNameFontSize_property.addEBObserver (self.mNameFontSize_property) // Stored property
+ //     newValue.mNameRotation_property.addEBObserversFrom (&self.mObserversOf_mNameRotation) // Stored property
+      newValue.mNameRotation_property.addEBObserver (self.mNameRotation_property) // Stored property
+ //     newValue.mValueIsVisibleInBoard_property.addEBObserversFrom (&self.mObserversOf_mValueIsVisibleInBoard) // Stored property
+      newValue.mValueIsVisibleInBoard_property.addEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
+ //     newValue.mXValue_property.addEBObserversFrom (&self.mObserversOf_mXValue) // Stored property
+      newValue.mXValue_property.addEBObserver (self.mXValue_property) // Stored property
+ //     newValue.mYValue_property.addEBObserversFrom (&self.mObserversOf_mYValue) // Stored property
+      newValue.mYValue_property.addEBObserver (self.mYValue_property) // Stored property
+ //     newValue.mValueFontSize_property.addEBObserversFrom (&self.mObserversOf_mValueFontSize) // Stored property
+      newValue.mValueFontSize_property.addEBObserver (self.mValueFontSize_property) // Stored property
+ //     newValue.mValueRotation_property.addEBObserversFrom (&self.mObserversOf_mValueRotation) // Stored property
+      newValue.mValueRotation_property.addEBObserver (self.mValueRotation_property) // Stored property
+ //     newValue.mComponentValue_property.addEBObserversFrom (&self.mObserversOf_mComponentValue) // Stored property
+      newValue.mComponentValue_property.addEBObserver (self.mComponentValue_property) // Stored property
+ //     newValue.mNamePrefix_property.addEBObserversFrom (&self.mObserversOf_mNamePrefix) // Stored property
+      newValue.mNamePrefix_property.addEBObserver (self.mNamePrefix_property) // Stored property
+ //     newValue.mNameIndex_property.addEBObserversFrom (&self.mObserversOf_mNameIndex) // Stored property
+      newValue.mNameIndex_property.addEBObserver (self.mNameIndex_property) // Stored property
+ //     newValue.mXUnit_property.addEBObserversFrom (&self.mObserversOf_mXUnit) // Stored property
+      newValue.mXUnit_property.addEBObserver (self.mXUnit_property) // Stored property
+ //     newValue.mYUnit_property.addEBObserversFrom (&self.mObserversOf_mYUnit) // Stored property
+      newValue.mYUnit_property.addEBObserver (self.mYUnit_property) // Stored property
+  //    newValue.deviceName_property.addEBObserversFrom (&self.mObserversOf_deviceName) // Transient property
+      newValue.deviceName_property.addEBObserver (self.deviceName_property) // Transient property
+  //    newValue.signatureForERCChecking_property.addEBObserversFrom (&self.mObserversOf_signatureForERCChecking) // Transient property
+      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+  //    newValue.packagePadDictionary_property.addEBObserversFrom (&self.mObserversOf_packagePadDictionary) // Transient property
+      newValue.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property) // Transient property
+  //    newValue.selectedPackageName_property.addEBObserversFrom (&self.mObserversOf_selectedPackageName) // Transient property
+      newValue.selectedPackageName_property.addEBObserver (self.selectedPackageName_property) // Transient property
+  //    newValue.availablePackages_property.addEBObserversFrom (&self.mObserversOf_availablePackages) // Transient property
+      newValue.availablePackages_property.addEBObserver (self.availablePackages_property) // Transient property
+  //    newValue.issues_property.addEBObserversFrom (&self.mObserversOf_issues) // Transient property
+      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+  //    newValue.componentIsPlacedInBoard_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoard) // Transient property
+      newValue.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property) // Transient property
+  //    newValue.componentIsPlacedInBoardString_property.addEBObserversFrom (&self.mObserversOf_componentIsPlacedInBoardString) // Transient property
+      newValue.componentIsPlacedInBoardString_property.addEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
+  //    newValue.strokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_strokeBezierPath) // Transient property
+      newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
+  //    newValue.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
+  //    newValue.hasSlavePads_property.addEBObserversFrom (&self.mObserversOf_hasSlavePads) // Transient property
+      newValue.hasSlavePads_property.addEBObserver (self.hasSlavePads_property) // Transient property
+  //    newValue.placementInSchematic_property.addEBObserversFrom (&self.mObserversOf_placementInSchematic) // Transient property
+      newValue.placementInSchematic_property.addEBObserver (self.placementInSchematic_property) // Transient property
+  //    newValue.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+      newValue.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
+  //    newValue.componentNameFontName_property.addEBObserversFrom (&self.mObserversOf_componentNameFontName) // Transient property
+      newValue.componentNameFontName_property.addEBObserver (self.componentNameFontName_property) // Transient property
+  //    newValue.componentValueFontName_property.addEBObserversFrom (&self.mObserversOf_componentValueFontName) // Transient property
+      newValue.componentValueFontName_property.addEBObserver (self.componentValueFontName_property) // Transient property
+  //    newValue.componentPadDictionary_property.addEBObserversFrom (&self.mObserversOf_componentPadDictionary) // Transient property
+      newValue.componentPadDictionary_property.addEBObserver (self.componentPadDictionary_property) // Transient property
+  //    newValue.padNetDictionary_property.addEBObserversFrom (&self.mObserversOf_padNetDictionary) // Transient property
+      newValue.padNetDictionary_property.addEBObserver (self.padNetDictionary_property) // Transient property
+  //    newValue.componentName_property.addEBObserversFrom (&self.mObserversOf_componentName) // Transient property
+      newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
+  //    newValue.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay) // Transient property
+      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+  //    newValue.unplacedSymbols_property.addEBObserversFrom (&self.mObserversOf_unplacedSymbols) // Transient property
+      newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
+  //    newValue.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay) // Transient property
+      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSlavePadsShouldBeRouted' stored property
   //····················································································································
 
-  private final var mSlavePadsShouldBeRouted_property = EBGenericTransientProperty <Bool?> ()
+  final let mSlavePadsShouldBeRouted_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mSlavePadsShouldBeRouted = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSlavePadsShouldBeRouted_property_selection : EBSelection <Bool?> { // §
     return self.mSlavePadsShouldBeRouted_property.selection
-/*    if let model = self.propval {
-      switch (model.mSlavePadsShouldBeRouted_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +233,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mX_property = EBGenericTransientProperty <Int?> ()
+  final let mX_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
   final var mX_property_selection : EBSelection <Int?> { // §
     return self.mX_property.selection
-/*    if let model = self.propval {
-      switch (model.mX_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +272,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mY_property = EBGenericTransientProperty <Int?> ()
+  final let mY_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
   final var mY_property_selection : EBSelection <Int?> { // §
     return self.mY_property.selection
-/*    if let model = self.propval {
-      switch (model.mY_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +311,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mRotation' stored property
   //····················································································································
 
-  private final var mRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mRotation_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
 
   final var mRotation_property_selection : EBSelection <Int?> { // §
     return self.mRotation_property.selection
-/*    if let model = self.propval {
-      switch (model.mRotation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +350,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private final var mSide_property = EBGenericTransientProperty <ComponentSide?> ()
+  final let mSide_property = EBGenericTransientProperty <ComponentSide?> ()
 //  private final var mObserversOf_mSide = EBWeakEventSet ()
 
   //····················································································································
 
   final var mSide_property_selection : EBSelection <ComponentSide?> { // §
     return self.mSide_property.selection
-/*    if let model = self.propval {
-      switch (model.mSide_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +389,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mDisplayLegend' stored property
   //····················································································································
 
-  private final var mDisplayLegend_property = EBGenericTransientProperty <Bool?> ()
+  final let mDisplayLegend_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mDisplayLegend = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDisplayLegend_property_selection : EBSelection <Bool?> { // §
     return self.mDisplayLegend_property.selection
-/*    if let model = self.propval {
-      switch (model.mDisplayLegend_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -328,25 +428,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIsVisibleInBoard' stored property
   //····················································································································
 
-  private final var mNameIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let mNameIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mNameIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNameIsVisibleInBoard_property_selection : EBSelection <Bool?> { // §
     return self.mNameIsVisibleInBoard_property.selection
-/*    if let model = self.propval {
-      switch (model.mNameIsVisibleInBoard_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -379,25 +467,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXName' stored property
   //····················································································································
 
-  private final var mXName_property = EBGenericTransientProperty <Int?> ()
+  final let mXName_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mXName_property_selection : EBSelection <Int?> { // §
     return self.mXName_property.selection
-/*    if let model = self.propval {
-      switch (model.mXName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -430,25 +506,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYName' stored property
   //····················································································································
 
-  private final var mYName_property = EBGenericTransientProperty <Int?> ()
+  final let mYName_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mYName_property_selection : EBSelection <Int?> { // §
     return self.mYName_property.selection
-/*    if let model = self.propval {
-      switch (model.mYName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -481,25 +545,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameFontSize' stored property
   //····················································································································
 
-  private final var mNameFontSize_property = EBGenericTransientProperty <Double?> ()
+  final let mNameFontSize_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_mNameFontSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNameFontSize_property_selection : EBSelection <Double?> { // §
     return self.mNameFontSize_property.selection
-/*    if let model = self.propval {
-      switch (model.mNameFontSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -532,25 +584,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameRotation' stored property
   //····················································································································
 
-  private final var mNameRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mNameRotation_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mNameRotation = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNameRotation_property_selection : EBSelection <Int?> { // §
     return self.mNameRotation_property.selection
-/*    if let model = self.propval {
-      switch (model.mNameRotation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -583,25 +623,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueIsVisibleInBoard' stored property
   //····················································································································
 
-  private final var mValueIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let mValueIsVisibleInBoard_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_mValueIsVisibleInBoard = EBWeakEventSet ()
 
   //····················································································································
 
   final var mValueIsVisibleInBoard_property_selection : EBSelection <Bool?> { // §
     return self.mValueIsVisibleInBoard_property.selection
-/*    if let model = self.propval {
-      switch (model.mValueIsVisibleInBoard_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -634,25 +662,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXValue' stored property
   //····················································································································
 
-  private final var mXValue_property = EBGenericTransientProperty <Int?> ()
+  final let mXValue_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mXValue = EBWeakEventSet ()
 
   //····················································································································
 
   final var mXValue_property_selection : EBSelection <Int?> { // §
     return self.mXValue_property.selection
-/*    if let model = self.propval {
-      switch (model.mXValue_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -685,25 +701,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYValue' stored property
   //····················································································································
 
-  private final var mYValue_property = EBGenericTransientProperty <Int?> ()
+  final let mYValue_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mYValue = EBWeakEventSet ()
 
   //····················································································································
 
   final var mYValue_property_selection : EBSelection <Int?> { // §
     return self.mYValue_property.selection
-/*    if let model = self.propval {
-      switch (model.mYValue_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -736,25 +740,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueFontSize' stored property
   //····················································································································
 
-  private final var mValueFontSize_property = EBGenericTransientProperty <Double?> ()
+  final let mValueFontSize_property = EBGenericTransientProperty <Double?> ()
 //  private final var mObserversOf_mValueFontSize = EBWeakEventSet ()
 
   //····················································································································
 
   final var mValueFontSize_property_selection : EBSelection <Double?> { // §
     return self.mValueFontSize_property.selection
-/*    if let model = self.propval {
-      switch (model.mValueFontSize_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -787,25 +779,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mValueRotation' stored property
   //····················································································································
 
-  private final var mValueRotation_property = EBGenericTransientProperty <Int?> ()
+  final let mValueRotation_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mValueRotation = EBWeakEventSet ()
 
   //····················································································································
 
   final var mValueRotation_property_selection : EBSelection <Int?> { // §
     return self.mValueRotation_property.selection
-/*    if let model = self.propval {
-      switch (model.mValueRotation_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -838,25 +818,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mComponentValue' stored property
   //····················································································································
 
-  private final var mComponentValue_property = EBGenericTransientProperty <String?> ()
+  final let mComponentValue_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mComponentValue = EBWeakEventSet ()
 
   //····················································································································
 
   final var mComponentValue_property_selection : EBSelection <String?> { // §
     return self.mComponentValue_property.selection
-/*    if let model = self.propval {
-      switch (model.mComponentValue_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -889,25 +857,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNamePrefix' stored property
   //····················································································································
 
-  private final var mNamePrefix_property = EBGenericTransientProperty <String?> ()
+  final let mNamePrefix_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mNamePrefix = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNamePrefix_property_selection : EBSelection <String?> { // §
     return self.mNamePrefix_property.selection
-/*    if let model = self.propval {
-      switch (model.mNamePrefix_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -940,25 +896,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mNameIndex' stored property
   //····················································································································
 
-  private final var mNameIndex_property = EBGenericTransientProperty <Int?> ()
+  final let mNameIndex_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mNameIndex = EBWeakEventSet ()
 
   //····················································································································
 
   final var mNameIndex_property_selection : EBSelection <Int?> { // §
     return self.mNameIndex_property.selection
-/*    if let model = self.propval {
-      switch (model.mNameIndex_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -991,25 +935,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mXUnit' stored property
   //····················································································································
 
-  private final var mXUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mXUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mXUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mXUnit_property_selection : EBSelection <Int?> { // §
     return self.mXUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mXUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1042,25 +974,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'mYUnit' stored property
   //····················································································································
 
-  private final var mYUnit_property = EBGenericTransientProperty <Int?> ()
+  final let mYUnit_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mYUnit = EBWeakEventSet ()
 
   //····················································································································
 
   final var mYUnit_property_selection : EBSelection <Int?> { // §
     return self.mYUnit_property.selection
-/*    if let model = self.propval {
-      switch (model.mYUnit_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -1093,25 +1013,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'deviceName' transient property
   //····················································································································
 
-  private final var deviceName_property = EBGenericTransientProperty <String?> ()
+  final let deviceName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_deviceName = EBWeakEventSet ()
 
   //····················································································································
 
   final var deviceName_property_selection : EBSelection <String?> {
     return self.deviceName_property.selection
-/*    if let model = self.propval {
-      switch (model.deviceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1144,25 +1052,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
+  final let signatureForERCChecking_property = EBGenericTransientProperty <UInt32?> ()
 //  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
 
   //····················································································································
 
   final var signatureForERCChecking_property_selection : EBSelection <UInt32?> {
     return self.signatureForERCChecking_property.selection
-/*    if let model = self.propval {
-      switch (model.signatureForERCChecking_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1195,25 +1091,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private final var packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
+  final let packagePadDictionary_property = EBGenericTransientProperty <PackageMasterPadDictionary?> ()
 //  private final var mObserversOf_packagePadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var packagePadDictionary_property_selection : EBSelection <PackageMasterPadDictionary?> {
     return self.packagePadDictionary_property.selection
-/*    if let model = self.propval {
-      switch (model.packagePadDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1246,25 +1130,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'selectedPackageName' transient property
   //····················································································································
 
-  private final var selectedPackageName_property = EBGenericTransientProperty <String?> ()
+  final let selectedPackageName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_selectedPackageName = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectedPackageName_property_selection : EBSelection <String?> {
     return self.selectedPackageName_property.selection
-/*    if let model = self.propval {
-      switch (model.selectedPackageName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1297,25 +1169,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'availablePackages' transient property
   //····················································································································
 
-  private final var availablePackages_property = EBGenericTransientProperty <StringArray?> ()
+  final let availablePackages_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_availablePackages = EBWeakEventSet ()
 
   //····················································································································
 
   final var availablePackages_property_selection : EBSelection <StringArray?> {
     return self.availablePackages_property.selection
-/*    if let model = self.propval {
-      switch (model.availablePackages_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1348,25 +1208,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
+  final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
 //  private final var mObserversOf_issues = EBWeakEventSet ()
 
   //····················································································································
 
   final var issues_property_selection : EBSelection <CanariIssueArray?> {
     return self.issues_property.selection
-/*    if let model = self.propval {
-      switch (model.issues_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1399,25 +1247,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentIsPlacedInBoard' transient property
   //····················································································································
 
-  private final var componentIsPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
+  final let componentIsPlacedInBoard_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_componentIsPlacedInBoard = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentIsPlacedInBoard_property_selection : EBSelection <Bool?> {
     return self.componentIsPlacedInBoard_property.selection
-/*    if let model = self.propval {
-      switch (model.componentIsPlacedInBoard_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1450,25 +1286,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentIsPlacedInBoardString' transient property
   //····················································································································
 
-  private final var componentIsPlacedInBoardString_property = EBGenericTransientProperty <String?> ()
+  final let componentIsPlacedInBoardString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_componentIsPlacedInBoardString = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentIsPlacedInBoardString_property_selection : EBSelection <String?> {
     return self.componentIsPlacedInBoardString_property.selection
-/*    if let model = self.propval {
-      switch (model.componentIsPlacedInBoardString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1501,25 +1325,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var strokeBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
+  final let strokeBezierPath_property = EBGenericTransientProperty <EBBezierPath?> ()
 //  private final var mObserversOf_strokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var strokeBezierPath_property_selection : EBSelection <EBBezierPath?> {
     return self.strokeBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.strokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1552,25 +1364,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private final var pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
+  final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
 //  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
   final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
     return self.pinPadAssignments_property.selection
-/*    if let model = self.propval {
-      switch (model.pinPadAssignments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1603,25 +1403,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'hasSlavePads' transient property
   //····················································································································
 
-  private final var hasSlavePads_property = EBGenericTransientProperty <Bool?> ()
+  final let hasSlavePads_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_hasSlavePads = EBWeakEventSet ()
 
   //····················································································································
 
   final var hasSlavePads_property_selection : EBSelection <Bool?> {
     return self.hasSlavePads_property.selection
-/*    if let model = self.propval {
-      switch (model.hasSlavePads_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1654,25 +1442,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'placementInSchematic' transient property
   //····················································································································
 
-  private final var placementInSchematic_property = EBGenericTransientProperty <String?> ()
+  final let placementInSchematic_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_placementInSchematic = EBWeakEventSet ()
 
   //····················································································································
 
   final var placementInSchematic_property_selection : EBSelection <String?> {
     return self.placementInSchematic_property.selection
-/*    if let model = self.propval {
-      switch (model.placementInSchematic_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1705,25 +1481,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private final var deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
+  final let deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
 //  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
     return self.deviceSymbolDictionary_property.selection
-/*    if let model = self.propval {
-      switch (model.deviceSymbolDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1756,25 +1520,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentNameFontName' transient property
   //····················································································································
 
-  private final var componentNameFontName_property = EBGenericTransientProperty <String?> ()
+  final let componentNameFontName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_componentNameFontName = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentNameFontName_property_selection : EBSelection <String?> {
     return self.componentNameFontName_property.selection
-/*    if let model = self.propval {
-      switch (model.componentNameFontName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1807,25 +1559,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentValueFontName' transient property
   //····················································································································
 
-  private final var componentValueFontName_property = EBGenericTransientProperty <String?> ()
+  final let componentValueFontName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_componentValueFontName = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentValueFontName_property_selection : EBSelection <String?> {
     return self.componentValueFontName_property.selection
-/*    if let model = self.propval {
-      switch (model.componentValueFontName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1858,25 +1598,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentPadDictionary' transient property
   //····················································································································
 
-  private final var componentPadDictionary_property = EBGenericTransientProperty <ComponentPadDescriptorDictionary?> ()
+  final let componentPadDictionary_property = EBGenericTransientProperty <ComponentPadDescriptorDictionary?> ()
 //  private final var mObserversOf_componentPadDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentPadDictionary_property_selection : EBSelection <ComponentPadDescriptorDictionary?> {
     return self.componentPadDictionary_property.selection
-/*    if let model = self.propval {
-      switch (model.componentPadDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1909,25 +1637,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'padNetDictionary' transient property
   //····················································································································
 
-  private final var padNetDictionary_property = EBGenericTransientProperty <PadNetDictionary?> ()
+  final let padNetDictionary_property = EBGenericTransientProperty <PadNetDictionary?> ()
 //  private final var mObserversOf_padNetDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var padNetDictionary_property_selection : EBSelection <PadNetDictionary?> {
     return self.padNetDictionary_property.selection
-/*    if let model = self.propval {
-      switch (model.padNetDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -1960,25 +1676,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private final var componentName_property = EBGenericTransientProperty <String?> ()
+  final let componentName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_componentName = EBWeakEventSet ()
 
   //····················································································································
 
   final var componentName_property_selection : EBSelection <String?> {
     return self.componentName_property.selection
-/*    if let model = self.propval {
-      switch (model.componentName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -2011,25 +1715,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let selectionDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var selectionDisplay_property_selection : EBSelection <EBShape?> {
     return self.selectionDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.selectionDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -2062,25 +1754,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
-  private final var unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
+  final let unplacedSymbols_property = EBGenericTransientProperty <StringTagArray?> ()
 //  private final var mObserversOf_unplacedSymbols = EBWeakEventSet ()
 
   //····················································································································
 
   final var unplacedSymbols_property_selection : EBSelection <StringTagArray?> {
     return self.unplacedSymbols_property.selection
-/*    if let model = self.propval {
-      switch (model.unplacedSymbols_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -2113,25 +1793,13 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
+  final let objectDisplay_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
   final var objectDisplay_property_selection : EBSelection <EBShape?> {
     return self.objectDisplay_property.selection
-/*    if let model = self.propval {
-      switch (model.objectDisplay_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -2170,7 +1838,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   final var mConnectors_property_selection : EBSelection <[BoardConnector]> {
     if let model = self.propval {
-      switch (model.mConnectors_property_selection) {
+      switch (model.mConnectors_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -2211,7 +1879,7 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   final var mSymbols_property_selection : EBSelection <[ComponentSymbolInProject]> {
     if let model = self.propval {
-      switch (model.mSymbols_property_selection) {
+      switch (model.mSymbols_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -2263,7 +1931,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSlavePadsShouldBeRouted_property)
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2279,7 +1946,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mX_property)
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2295,7 +1961,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mY_property)
   //--- Configure mRotation simple stored property
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2311,7 +1976,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mRotation_property)
   //--- Configure mSide simple stored property
     self.mSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2327,7 +1991,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mSide_property)
   //--- Configure mDisplayLegend simple stored property
     self.mDisplayLegend_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2343,7 +2006,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDisplayLegend_property)
   //--- Configure mNameIsVisibleInBoard simple stored property
     self.mNameIsVisibleInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2359,7 +2021,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNameIsVisibleInBoard_property)
   //--- Configure mXName simple stored property
     self.mXName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2375,7 +2036,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mXName_property)
   //--- Configure mYName simple stored property
     self.mYName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2391,7 +2051,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mYName_property)
   //--- Configure mNameFontSize simple stored property
     self.mNameFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2407,7 +2066,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNameFontSize_property)
   //--- Configure mNameRotation simple stored property
     self.mNameRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2423,7 +2081,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNameRotation_property)
   //--- Configure mValueIsVisibleInBoard simple stored property
     self.mValueIsVisibleInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2439,7 +2096,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mValueIsVisibleInBoard_property)
   //--- Configure mXValue simple stored property
     self.mXValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2455,7 +2111,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mXValue_property)
   //--- Configure mYValue simple stored property
     self.mYValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2471,7 +2126,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mYValue_property)
   //--- Configure mValueFontSize simple stored property
     self.mValueFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2487,7 +2141,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mValueFontSize_property)
   //--- Configure mValueRotation simple stored property
     self.mValueRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2503,7 +2156,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mValueRotation_property)
   //--- Configure mComponentValue simple stored property
     self.mComponentValue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2519,7 +2171,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mComponentValue_property)
   //--- Configure mNamePrefix simple stored property
     self.mNamePrefix_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2535,7 +2186,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNamePrefix_property)
   //--- Configure mNameIndex simple stored property
     self.mNameIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2551,7 +2201,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mNameIndex_property)
   //--- Configure mXUnit simple stored property
     self.mXUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2567,7 +2216,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mXUnit_property)
   //--- Configure mYUnit simple stored property
     self.mYUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2583,7 +2231,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mYUnit_property)
   //--- Configure deviceName transient property
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2599,7 +2246,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.deviceName_property)
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2615,7 +2261,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Configure packagePadDictionary transient property
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2631,7 +2276,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.packagePadDictionary_property)
   //--- Configure selectedPackageName transient property
     self.selectedPackageName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2647,7 +2291,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectedPackageName_property)
   //--- Configure availablePackages transient property
     self.availablePackages_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2663,7 +2306,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.availablePackages_property)
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2679,7 +2321,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.issues_property)
   //--- Configure componentIsPlacedInBoard transient property
     self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2695,7 +2336,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentIsPlacedInBoard_property)
   //--- Configure componentIsPlacedInBoardString transient property
     self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2711,7 +2351,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentIsPlacedInBoardString_property)
   //--- Configure strokeBezierPath transient property
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2727,7 +2366,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.strokeBezierPath_property)
   //--- Configure pinPadAssignments transient property
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2743,7 +2381,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.pinPadAssignments_property)
   //--- Configure hasSlavePads transient property
     self.hasSlavePads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2759,7 +2396,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.hasSlavePads_property)
   //--- Configure placementInSchematic transient property
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2775,7 +2411,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.placementInSchematic_property)
   //--- Configure deviceSymbolDictionary transient property
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2791,7 +2426,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.deviceSymbolDictionary_property)
   //--- Configure componentNameFontName transient property
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2807,7 +2441,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentNameFontName_property)
   //--- Configure componentValueFontName transient property
     self.componentValueFontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2823,7 +2456,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentValueFontName_property)
   //--- Configure componentPadDictionary transient property
     self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2839,7 +2471,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentPadDictionary_property)
   //--- Configure padNetDictionary transient property
     self.padNetDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2855,7 +2486,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.padNetDictionary_property)
   //--- Configure componentName transient property
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2871,7 +2501,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.componentName_property)
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2887,7 +2516,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.selectionDisplay_property)
   //--- Configure unplacedSymbols transient property
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2903,7 +2531,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.unplacedSymbols_property)
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -2919,7 +2546,6 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.objectDisplay_property)
   }
 
   //····················································································································

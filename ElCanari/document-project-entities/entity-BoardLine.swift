@@ -374,7 +374,7 @@ final class BoardLine : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, preferences_frontSideLegendColorForBoard_property_selection, preferences_backSideLegendColorForBoard_property_selection) {
+        switch (unwSelf.mX1_property.selection, unwSelf.mY1_property.selection, unwSelf.mX2_property.selection, unwSelf.mY2_property.selection, unwSelf.mWidth_property.selection, unwSelf.mLayer_property.selection, preferences_frontSideLegendColorForBoard_property.selection, preferences_backSideLegendColorForBoard_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
           return .single (transient_BoardLine_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -397,7 +397,7 @@ final class BoardLine : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX1_property_selection, unwSelf.mY1_property_selection, unwSelf.mX2_property_selection, unwSelf.mY2_property_selection, unwSelf.mWidth_property_selection, unwSelf.mLayer_property_selection, preferences_hiliteWidthMultipliedByTen_property_selection) {
+        switch (unwSelf.mX1_property.selection, unwSelf.mY1_property.selection, unwSelf.mX2_property.selection, unwSelf.mY2_property.selection, unwSelf.mWidth_property.selection, unwSelf.mLayer_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
           return .single (transient_BoardLine_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

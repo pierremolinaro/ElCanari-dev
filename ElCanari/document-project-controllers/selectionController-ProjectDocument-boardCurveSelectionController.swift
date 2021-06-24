@@ -445,7 +445,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <BorderCurveDescriptor> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.descriptor_property_selection {
+            switch object.descriptor_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -485,7 +485,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.isLine_property_selection {
+            switch object.isLine_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -525,7 +525,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCPX1_property_selection {
+            switch object.mCPX1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -595,7 +595,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCPX2_property_selection {
+            switch object.mCPX2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -665,7 +665,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCPY1_property_selection {
+            switch object.mCPY1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -735,7 +735,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCPY2_property_selection {
+            switch object.mCPY2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -805,7 +805,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNextX_property_selection {
+            switch object.mNextX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -875,7 +875,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mNextY_property_selection {
+            switch object.mNextY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -945,7 +945,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <BorderCurveShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mShape_property_selection {
+            switch object.mShape_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1015,7 +1015,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1085,7 +1085,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1155,7 +1155,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1195,7 +1195,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2Xstring_property_selection {
+            switch object.p2Xstring_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1235,7 +1235,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2Ystring_property_selection {
+            switch object.p2Ystring_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1275,7 +1275,7 @@ final class SelectionController_ProjectDocument_boardCurveSelectionController : 
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

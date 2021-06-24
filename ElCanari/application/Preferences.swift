@@ -2932,7 +2932,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_mValueRevealInFinder_packages : CanariMenuItemListClass? {
-    switch preferences_mValueRevealInFinder_packages_property_selection {
+    switch preferences_mValueRevealInFinder_packages_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2955,7 +2955,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_mValueRevealInFinder_devices : CanariMenuItemListClass? {
-    switch preferences_mValueRevealInFinder_devices_property_selection {
+    switch preferences_mValueRevealInFinder_devices_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -2978,7 +2978,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_mValueRevealInFinder_fonts : CanariMenuItemListClass? {
-    switch preferences_mValueRevealInFinder_fonts_property_selection {
+    switch preferences_mValueRevealInFinder_fonts_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3001,7 +3001,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_mValueRevealInFinder_artworks : CanariMenuItemListClass? {
-    switch preferences_mValueRevealInFinder_artworks_property_selection {
+    switch preferences_mValueRevealInFinder_artworks_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3024,7 +3024,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //····················································································································
 
   var preferences_mValueRevealInFinder_symbols : CanariMenuItemListClass? {
-    switch preferences_mValueRevealInFinder_symbols_property_selection {
+    switch preferences_mValueRevealInFinder_symbols_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3200,7 +3200,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -3214,7 +3214,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
     preferences_mValueRevealInFinder_devices_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -3228,7 +3228,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
     preferences_mValueRevealInFinder_fonts_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -3242,7 +3242,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
     preferences_mValueRevealInFinder_artworks_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -3256,7 +3256,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
     preferences_mValueRevealInFinder_symbols_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property_selection, preferences_additionnalLibraryArray_property_selection, preferences_additionnalLibraryArray_property_selection) {
+        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :

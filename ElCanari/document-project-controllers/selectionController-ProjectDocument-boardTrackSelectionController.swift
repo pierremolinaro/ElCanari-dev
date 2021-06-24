@@ -728,7 +728,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <TrackSide> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSide_property_selection {
+            switch object.mSide_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -797,7 +797,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDefaultTrackWidthUnit_property_selection {
+            switch object.mDefaultTrackWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -866,7 +866,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomTrackWidth_property_selection {
+            switch object.mCustomTrackWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -935,7 +935,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCustomTrackWidthUnit_property_selection {
+            switch object.mCustomTrackWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1004,7 +1004,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mUsesCustomTrackWidth_property_selection {
+            switch object.mUsesCustomTrackWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1073,7 +1073,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mIsPreservedByAutoRouter_property_selection {
+            switch object.mIsPreservedByAutoRouter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1142,7 +1142,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mP1XUnit_property_selection {
+            switch object.mP1XUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1211,7 +1211,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mP1YUnit_property_selection {
+            switch object.mP1YUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1280,7 +1280,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mP2XUnit_property_selection {
+            switch object.mP2XUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1349,7 +1349,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mP2YUnit_property_selection {
+            switch object.mP2YUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1418,7 +1418,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mManualLockP1_property_selection {
+            switch object.mManualLockP1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1487,7 +1487,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mManualLockP2_property_selection {
+            switch object.mManualLockP2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1556,7 +1556,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <TrackLockDirection> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDirectionLockOnKnobDragging_property_selection {
+            switch object.mDirectionLockOnKnobDragging_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1625,7 +1625,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.actualTrackWidth_property_selection {
+            switch object.actualTrackWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1664,7 +1664,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netName_property_selection {
+            switch object.netName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1703,7 +1703,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassName_property_selection {
+            switch object.netClassName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1742,7 +1742,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassTrackWidth_property_selection {
+            switch object.netClassTrackWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1781,7 +1781,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassViaHoleDiameter_property_selection {
+            switch object.netClassViaHoleDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1820,7 +1820,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassViaPadDiameter_property_selection {
+            switch object.netClassViaPadDiameter_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1859,7 +1859,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.trackLengthInCanariUnit_property_selection {
+            switch object.trackLengthInCanariUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1898,7 +1898,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <UInt32> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.signatureForERCChecking_property_selection {
+            switch object.signatureForERCChecking_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1937,7 +1937,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.trackDirectionInDegrees_property_selection {
+            switch object.trackDirectionInDegrees_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2006,7 +2006,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p1ConnectedToSomePad_property_selection {
+            switch object.p1ConnectedToSomePad_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2045,7 +2045,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2ConnectedToSomePad_property_selection {
+            switch object.p2ConnectedToSomePad_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2084,7 +2084,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.computedP1X_property_selection {
+            switch object.computedP1X_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2153,7 +2153,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.computedP1Y_property_selection {
+            switch object.computedP1Y_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2222,7 +2222,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.computedP2X_property_selection {
+            switch object.computedP2X_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2291,7 +2291,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.computedP2Y_property_selection {
+            switch object.computedP2Y_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2360,7 +2360,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2399,7 +2399,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p1CanMove_property_selection {
+            switch object.p1CanMove_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2438,7 +2438,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2CanMove_property_selection {
+            switch object.p2CanMove_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2477,7 +2477,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.trackCanRotate_property_selection {
+            switch object.trackCanRotate_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2516,7 +2516,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

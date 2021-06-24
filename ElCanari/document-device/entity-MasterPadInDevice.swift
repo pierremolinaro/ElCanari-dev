@@ -335,7 +335,7 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property_selection {
+    switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -358,7 +358,7 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var frontSideFilledBezierPathArray : BezierPathArray? {
-    switch self.frontSideFilledBezierPathArray_property_selection {
+    switch self.frontSideFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -381,7 +381,7 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   final var backSideFilledBezierPathArray : BezierPathArray? {
-    switch self.backSideFilledBezierPathArray_property_selection {
+    switch self.backSideFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -413,7 +413,7 @@ final class MasterPadInDevice : EBManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, preferences_padNumberColor_property_selection, unwSelf.mName_property_selection, preferences_padNumberFont_property_selection) {
+        switch (unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, preferences_padNumberColor_property.selection, unwSelf.mName_property.selection, preferences_padNumberFont_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_MasterPadInDevice_padNumberDisplay (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -433,7 +433,7 @@ final class MasterPadInDevice : EBManagedObject,
   //--- Atomic property: frontSideFilledBezierPathArray
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection, unwSelf.mSlavePads_property_selection) {
+        switch (unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mHoleWidth_property.selection, unwSelf.mHoleHeight_property.selection, unwSelf.mShape_property.selection, unwSelf.mStyle_property.selection, unwSelf.mSlavePads_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_MasterPadInDevice_frontSideFilledBezierPathArray (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -457,7 +457,7 @@ final class MasterPadInDevice : EBManagedObject,
   //--- Atomic property: backSideFilledBezierPathArray
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property_selection, unwSelf.mCenterY_property_selection, unwSelf.mWidth_property_selection, unwSelf.mHeight_property_selection, unwSelf.mHoleWidth_property_selection, unwSelf.mHoleHeight_property_selection, unwSelf.mShape_property_selection, unwSelf.mStyle_property_selection, unwSelf.mSlavePads_property_selection) {
+        switch (unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mHoleWidth_property.selection, unwSelf.mHoleHeight_property.selection, unwSelf.mShape_property.selection, unwSelf.mStyle_property.selection, unwSelf.mSlavePads_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_MasterPadInDevice_backSideFilledBezierPathArray (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

@@ -167,7 +167,7 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var isConnected : Bool? {
-    switch self.isConnected_property_selection {
+    switch self.isConnected_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -190,7 +190,7 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var symbolName : String? {
-    switch self.symbolName_property_selection {
+    switch self.symbolName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -224,7 +224,7 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mIsNC_property_selection, unwSelf.mPinInstance_none_selection) {
+        switch (unwSelf.mIsNC_property.selection, unwSelf.mPinInstance_none.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_PadProxyInDevice_isConnected (v0, v1))
         case (.multiple, .multiple) :
@@ -241,7 +241,7 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinInstance_property.symbolName_property_selection) {
+        switch (unwSelf.mPinInstance_property.symbolName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PadProxyInDevice_symbolName (v0))
         case (.multiple) :

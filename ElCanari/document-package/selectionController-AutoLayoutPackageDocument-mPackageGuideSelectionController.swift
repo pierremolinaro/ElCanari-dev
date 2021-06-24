@@ -365,7 +365,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y1_property_selection {
+            switch object.y1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -434,7 +434,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x2_property_selection {
+            switch object.x2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -503,7 +503,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y2_property_selection {
+            switch object.y2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -572,7 +572,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x1Unit_property_selection {
+            switch object.x1Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -641,7 +641,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y1Unit_property_selection {
+            switch object.y1Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -710,7 +710,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x2Unit_property_selection {
+            switch object.x2Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -779,7 +779,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y2Unit_property_selection {
+            switch object.y2Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -848,7 +848,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x1_property_selection {
+            switch object.x1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -917,7 +917,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -956,7 +956,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -995,7 +995,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageGuideSelection
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :

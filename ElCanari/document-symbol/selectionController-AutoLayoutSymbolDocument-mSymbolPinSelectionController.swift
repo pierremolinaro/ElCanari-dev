@@ -439,7 +439,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yPin_property_selection {
+            switch object.yPin_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -508,7 +508,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xName_property_selection {
+            switch object.xName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -577,7 +577,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yName_property_selection {
+            switch object.yName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -646,7 +646,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xNumber_property_selection {
+            switch object.xNumber_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -715,7 +715,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yNumber_property_selection {
+            switch object.yNumber_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -784,7 +784,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.name_property_selection {
+            switch object.name_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -853,7 +853,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.nameHorizontalAlignment_property_selection {
+            switch object.nameHorizontalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -922,7 +922,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.numberHorizontalAlignment_property_selection {
+            switch object.numberHorizontalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -991,7 +991,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pinNameIsDisplayedInSchematics_property_selection {
+            switch object.pinNameIsDisplayedInSchematics_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1060,7 +1060,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xPin_property_selection {
+            switch object.xPin_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1129,7 +1129,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <NSBezierPath> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.filledBezierPath_property_selection {
+            switch object.filledBezierPath_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1168,7 +1168,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1207,7 +1207,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1246,7 +1246,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1285,7 +1285,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
           var s = Set <NSRect> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.nameRect_property_selection {
+            switch object.nameRect_property.selection {
             case .empty :
               return .empty
             case .multiple :

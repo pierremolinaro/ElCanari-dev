@@ -319,7 +319,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -388,7 +388,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWidth_property_selection {
+            switch object.mWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -457,7 +457,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mHeight_property_selection {
+            switch object.mHeight_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -526,7 +526,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mIsInFrontLayer_property_selection {
+            switch object.mIsInFrontLayer_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -595,7 +595,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mIsInBackLayer_property_selection {
+            switch object.mIsInBackLayer_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -664,7 +664,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -733,7 +733,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -772,7 +772,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -811,7 +811,7 @@ final class SelectionController_ProjectDocument_restrictRectangleSelectionContro
           var s = Set <UInt32> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.signatureForERCChecking_property_selection {
+            switch object.signatureForERCChecking_property.selection {
             case .empty :
               return .empty
             case .multiple :

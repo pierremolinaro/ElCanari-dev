@@ -443,7 +443,7 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   final var strokeBezierPath : EBBezierPath? {
-    switch self.strokeBezierPath_property_selection {
+    switch self.strokeBezierPath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -473,7 +473,7 @@ final class PackageArc : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.radius_property.selection, unwSelf.startAngle_property.selection, unwSelf.arcAngle_property.selection, unwSelf.pathIsClosed_property.selection, unwSelf.startTangent_property.selection, unwSelf.endTangent_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
           return .single (transient_PackageArc_strokeBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -496,7 +496,7 @@ final class PackageArc : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
+        switch (unwSelf.strokeBezierPath_property.selection, preferences_packageColor_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_PackageArc_objectDisplay (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -514,7 +514,7 @@ final class PackageArc : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.knobSize_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.radius_property.selection, unwSelf.startAngle_property.selection, unwSelf.arcAngle_property.selection, unwSelf.startTangent_property.selection, unwSelf.endTangent_property.selection, unwSelf.pathIsClosed_property.selection, unwSelf.knobSize_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -538,7 +538,7 @@ final class PackageArc : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection) {
+        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.radius_property.selection, unwSelf.startAngle_property.selection, unwSelf.arcAngle_property.selection, unwSelf.pathIsClosed_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
           return .single (transient_PackageArc_issues (v0, v1, v2, v3, v4, v5))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

@@ -111,7 +111,7 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   final var packagePadDictionary : PackageMasterPadDictionary? {
-    switch self.packagePadDictionary_property_selection {
+    switch self.packagePadDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -132,7 +132,7 @@ final class DevicePackageInProject : EBManagedObject,
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_DevicePackageInProject_packagePadDictionary (v0))
         case (.multiple) :

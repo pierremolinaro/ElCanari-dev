@@ -420,7 +420,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWidthUnit_property_selection {
+            switch object.mWidthUnit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -489,7 +489,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX1_property_selection {
+            switch object.mX1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -558,7 +558,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX1Unit_property_selection {
+            switch object.mX1Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -627,7 +627,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY1_property_selection {
+            switch object.mY1_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -696,7 +696,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY1Unit_property_selection {
+            switch object.mY1Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -765,7 +765,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX2_property_selection {
+            switch object.mX2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -834,7 +834,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX2Unit_property_selection {
+            switch object.mX2Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -903,7 +903,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY2_property_selection {
+            switch object.mY2_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -972,7 +972,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY2Unit_property_selection {
+            switch object.mY2Unit_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1041,7 +1041,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <BoardLineLayer> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mLayer_property_selection {
+            switch object.mLayer_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1110,7 +1110,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mWidth_property_selection {
+            switch object.mWidth_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1179,7 +1179,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1218,7 +1218,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

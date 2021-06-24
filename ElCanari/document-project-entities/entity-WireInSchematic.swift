@@ -136,7 +136,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   final var netName : String? {
-    switch self.netName_property_selection {
+    switch self.netName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -159,7 +159,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property_selection {
+    switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -182,7 +182,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   final var hasNet : Bool? {
-    switch self.hasNet_property_selection {
+    switch self.hasNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -227,7 +227,7 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mP1_property.wireColor_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mP1_property.location_property_selection, unwSelf.mP2_property.location_property_selection) {
+        switch (unwSelf.mP1_property.wireColor_property.selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection, unwSelf.mP1_property.location_property.selection, unwSelf.mP2_property.location_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -246,7 +246,7 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mP1_property.location_property_selection, unwSelf.mP1_property.canMove_property_selection, unwSelf.mP2_property.location_property_selection, unwSelf.mP2_property.canMove_property_selection) {
+        switch (unwSelf.mP1_property.location_property.selection, unwSelf.mP1_property.canMove_property.selection, unwSelf.mP2_property.location_property.selection, unwSelf.mP2_property.canMove_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_WireInSchematic_selectionDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -265,7 +265,7 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mP1_property.netName_property_selection) {
+        switch (unwSelf.mP1_property.netName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_WireInSchematic_netName (v0))
         case (.multiple) :
@@ -281,7 +281,7 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mP1_property.netClassName_property_selection) {
+        switch (unwSelf.mP1_property.netClassName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_WireInSchematic_netClassName (v0))
         case (.multiple) :
@@ -297,7 +297,7 @@ final class WireInSchematic : SchematicObject,
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mP1_property.hasNet_property_selection) {
+        switch (unwSelf.mP1_property.hasNet_property.selection) {
         case (.single (let v0)) :
           return .single (transient_WireInSchematic_hasNet (v0))
         case (.multiple) :

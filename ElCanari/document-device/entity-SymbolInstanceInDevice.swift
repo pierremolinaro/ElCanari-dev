@@ -207,7 +207,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolQualifiedName : String? {
-    switch self.symbolQualifiedName_property_selection {
+    switch self.symbolQualifiedName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -230,7 +230,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolTypeName : String? {
-    switch self.symbolTypeName_property_selection {
+    switch self.symbolTypeName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -253,7 +253,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
-    switch self.unconnectedPins_property_selection {
+    switch self.unconnectedPins_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -293,7 +293,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: symbolQualifiedName
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mInstanceName_property_selection, unwSelf.mType_property.mTypeName_property_selection) {
+        switch (unwSelf.mInstanceName_property.selection, unwSelf.mType_property.mTypeName_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_SymbolInstanceInDevice_symbolQualifiedName (v0, v1))
         case (.multiple, .multiple) :
@@ -310,7 +310,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mTypeName_property_selection) {
+        switch (unwSelf.mType_property.mTypeName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_SymbolInstanceInDevice_symbolTypeName (v0))
         case (.multiple) :
@@ -326,7 +326,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, preferences_symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        switch (unwSelf.mType_property.mStrokeBezierPath_property.selection, unwSelf.mType_property.mFilledBezierPath_property.selection, unwSelf.mType_property.pinNameShape_property.selection, unwSelf.mPinInstances_property.selection, unwSelf.symbolQualifiedName_property.selection, preferences_symbolDrawingWidthMultipliedByTen_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
           return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -349,7 +349,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinInstances_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.mInstanceName_property_selection) {
+        switch (unwSelf.mPinInstances_property.selection, unwSelf.mPinInstances_property.selection, unwSelf.mInstanceName_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_SymbolInstanceInDevice_unconnectedPins (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -367,7 +367,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.symbolQualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, preferences_symbolDrawingWidthMultipliedByTen_property_selection, preferences_symbolColor_property_selection) {
+        switch (unwSelf.mType_property.mStrokeBezierPath_property.selection, unwSelf.mType_property.mFilledBezierPath_property.selection, unwSelf.mType_property.pinNameShape_property.selection, unwSelf.mPinInstances_property.selection, unwSelf.symbolQualifiedName_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection, preferences_symbolDrawingWidthMultipliedByTen_property.selection, preferences_symbolColor_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
           return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

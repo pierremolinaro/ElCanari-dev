@@ -328,7 +328,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <NSColor> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mColor_property_selection {
+            switch object.mColor_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -397,7 +397,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSize_property_selection {
+            switch object.mSize_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -466,7 +466,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mHorizontalAlignment_property_selection {
+            switch object.mHorizontalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -535,7 +535,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <VerticalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mVerticalAlignment_property_selection {
+            switch object.mVerticalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -604,7 +604,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mX_property_selection {
+            switch object.mX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -673,7 +673,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mY_property_selection {
+            switch object.mY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -742,7 +742,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mComment_property_selection {
+            switch object.mComment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -811,7 +811,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -850,7 +850,7 @@ final class SelectionController_ProjectDocument_commentInSchematicSelectionContr
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

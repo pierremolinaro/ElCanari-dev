@@ -15,32 +15,36 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : BoardModelVia?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.y_property.removeEBObserversFrom (&self.mObserversOf_y) // Stored property
+      oldValue.y_property.removeEBObserver (self.y_property) // Stored property
+ //     oldValue.padDiameter_property.removeEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+      oldValue.padDiameter_property.removeEBObserver (self.padDiameter_property) // Stored property
+ //     oldValue.x_property.removeEBObserversFrom (&self.mObserversOf_x) // Stored property
+      oldValue.x_property.removeEBObserver (self.x_property) // Stored property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.y_property.addEBObserversFrom (&self.mObserversOf_y) // Stored property
+      newValue.y_property.addEBObserver (self.y_property) // Stored property
+ //     newValue.padDiameter_property.addEBObserversFrom (&self.mObserversOf_padDiameter) // Stored property
+      newValue.padDiameter_property.addEBObserver (self.padDiameter_property) // Stored property
+ //     newValue.x_property.addEBObserversFrom (&self.mObserversOf_x) // Stored property
+      newValue.x_property.addEBObserver (self.x_property) // Stored property
+    }
   }
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var y_property = EBGenericTransientProperty <Int?> ()
+  final let y_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
   final var y_property_selection : EBSelection <Int?> { // §
     return self.y_property.selection
-/*    if let model = self.propval {
-      switch (model.y_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +77,13 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
-  private final var padDiameter_property = EBGenericTransientProperty <Int?> ()
+  final let padDiameter_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_padDiameter = EBWeakEventSet ()
 
   //····················································································································
 
   final var padDiameter_property_selection : EBSelection <Int?> { // §
     return self.padDiameter_property.selection
-/*    if let model = self.propval {
-      switch (model.padDiameter_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +116,13 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var x_property = EBGenericTransientProperty <Int?> ()
+  final let x_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
   final var x_property_selection : EBSelection <Int?> { // §
     return self.x_property.selection
-/*    if let model = self.propval {
-      switch (model.x_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -192,7 +172,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.y_property)
   //--- Configure padDiameter simple stored property
     self.padDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -208,7 +187,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.padDiameter_property)
   //--- Configure x simple stored property
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -224,7 +202,6 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.x_property)
   }
 
   //····················································································································

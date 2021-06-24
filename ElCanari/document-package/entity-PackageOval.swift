@@ -293,7 +293,7 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   final var strokeBezierPath : NSBezierPath? {
-    switch self.strokeBezierPath_property_selection {
+    switch self.strokeBezierPath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -318,7 +318,7 @@ final class PackageOval : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageOval_strokeBezierPath (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -337,7 +337,7 @@ final class PackageOval : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.strokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection) {
+        switch (unwSelf.strokeBezierPath_property.selection, preferences_packageColor_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_PackageOval_objectDisplay (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -355,7 +355,7 @@ final class PackageOval : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.knobSize_property_selection) {
+        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.knobSize_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_PackageOval_selectionDisplay (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -375,7 +375,7 @@ final class PackageOval : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_PackageOval_issues (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :

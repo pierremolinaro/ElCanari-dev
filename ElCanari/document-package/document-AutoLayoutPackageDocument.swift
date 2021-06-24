@@ -89,7 +89,7 @@ import Cocoa
   //····················································································································
 
   final var addSegmentButtonImage : NSImage? {
-    switch self.addSegmentButtonImage_property_selection {
+    switch self.addSegmentButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -112,7 +112,7 @@ import Cocoa
   //····················································································································
 
   final var addBezierButtonImage : NSImage? {
-    switch self.addBezierButtonImage_property_selection {
+    switch self.addBezierButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -135,7 +135,7 @@ import Cocoa
   //····················································································································
 
   final var addOvalButtonImage : NSImage? {
-    switch self.addOvalButtonImage_property_selection {
+    switch self.addOvalButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -158,7 +158,7 @@ import Cocoa
   //····················································································································
 
   final var addArcButtonImage : NSImage? {
-    switch self.addArcButtonImage_property_selection {
+    switch self.addArcButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -181,7 +181,7 @@ import Cocoa
   //····················································································································
 
   final var addMasterPadButtonImage : NSImage? {
-    switch self.addMasterPadButtonImage_property_selection {
+    switch self.addMasterPadButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -204,7 +204,7 @@ import Cocoa
   //····················································································································
 
   final var addSlavePadButtonImage : NSImage? {
-    switch self.addSlavePadButtonImage_property_selection {
+    switch self.addSlavePadButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -227,7 +227,7 @@ import Cocoa
   //····················································································································
 
   final var addGuideButtonImage : NSImage? {
-    switch self.addGuideButtonImage_property_selection {
+    switch self.addGuideButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -250,7 +250,7 @@ import Cocoa
   //····················································································································
 
   final var addDimensionButtonImage : NSImage? {
-    switch self.addDimensionButtonImage_property_selection {
+    switch self.addDimensionButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -273,7 +273,7 @@ import Cocoa
   //····················································································································
 
   final var addZoneButtonImage : NSImage? {
-    switch self.addZoneButtonImage_property_selection {
+    switch self.addZoneButtonImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -296,7 +296,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -319,7 +319,7 @@ import Cocoa
   //····················································································································
 
   final var statusMessage : String? {
-    switch self.statusMessage_property_selection {
+    switch self.statusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -342,7 +342,7 @@ import Cocoa
   //····················································································································
 
   final var metadataStatus : MetadataStatus? {
-    switch self.metadataStatus_property_selection {
+    switch self.metadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -365,7 +365,7 @@ import Cocoa
   //····················································································································
 
   final var statusImage : NSImage? {
-    switch self.statusImage_property_selection {
+    switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -3697,7 +3697,7 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property_selection) {
+        switch (preferences_packageColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
         case (.multiple) :
@@ -3713,7 +3713,7 @@ import Cocoa
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property_selection) {
+        switch (preferences_packageColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
         case (.multiple) :
@@ -3729,7 +3729,7 @@ import Cocoa
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property_selection) {
+        switch (preferences_packageColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
         case (.multiple) :
@@ -3745,7 +3745,7 @@ import Cocoa
     }
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property_selection) {
+        switch (preferences_packageColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
         case (.multiple) :
@@ -3761,7 +3761,7 @@ import Cocoa
     }
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
-        switch (preferences_frontSidePadColor_property_selection) {
+        switch (preferences_frontSidePadColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
         case (.multiple) :
@@ -3777,7 +3777,7 @@ import Cocoa
     }
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
-        switch (preferences_frontSidePadColor_property_selection) {
+        switch (preferences_frontSidePadColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
         case (.multiple) :
@@ -3793,7 +3793,7 @@ import Cocoa
     }
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageGuideColor_property_selection) {
+        switch (preferences_packageGuideColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
         case (.multiple) :
@@ -3809,7 +3809,7 @@ import Cocoa
     }
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageDimensionColor_property_selection) {
+        switch (preferences_packageDimensionColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
         case (.multiple) :
@@ -3825,7 +3825,7 @@ import Cocoa
     }
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
-        switch (preferences_padZoneColor_property_selection) {
+        switch (preferences_padZoneColor_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
         case (.multiple) :
@@ -3846,7 +3846,7 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
         case (.multiple) :
@@ -3866,7 +3866,7 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_metadataStatus (v0))
         case (.multiple) :
@@ -3886,7 +3886,7 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property_selection) {
+        switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
         case (.multiple) :

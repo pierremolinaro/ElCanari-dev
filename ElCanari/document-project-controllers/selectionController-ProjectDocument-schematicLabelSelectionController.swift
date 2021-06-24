@@ -232,7 +232,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mOrientation_property_selection {
+            switch object.mOrientation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -301,7 +301,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <CanariPoint> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.location_property_selection {
+            switch object.location_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -340,7 +340,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netName_property_selection {
+            switch object.netName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -379,7 +379,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -418,7 +418,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassName_property_selection {
+            switch object.netClassName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -457,7 +457,7 @@ final class SelectionController_ProjectDocument_schematicLabelSelectionControlle
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

@@ -157,7 +157,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_SegmentForFontCharacter_selectionDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -176,7 +176,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_SegmentForFontCharacter_objectDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :

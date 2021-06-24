@@ -311,7 +311,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property_selection {
+    switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -334,7 +334,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var documentSizeString : String? {
-    switch self.documentSizeString_property_selection {
+    switch self.documentSizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -357,7 +357,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var frontSidePadFilledBezierPathArray : BezierPathArray? {
-    switch self.frontSidePadFilledBezierPathArray_property_selection {
+    switch self.frontSidePadFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -380,7 +380,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var backSidePadFilledBezierPathArray : BezierPathArray? {
-    switch self.backSidePadFilledBezierPathArray_property_selection {
+    switch self.backSidePadFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -403,7 +403,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var padNameSet : StringSet? {
-    switch self.padNameSet_property_selection {
+    switch self.padNameSet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -442,7 +442,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mVersion_property_selection) {
+        switch (unwSelf.mVersion_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_versionString (v0))
         case (.multiple) :
@@ -458,7 +458,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: documentSizeString
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFileData_property_selection) {
+        switch (unwSelf.mFileData_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_documentSizeString (v0))
         case (.multiple) :
@@ -474,7 +474,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_frontSidePadFilledBezierPathArray (v0))
         case (.multiple) :
@@ -490,7 +490,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: backSidePadFilledBezierPathArray
     self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_backSidePadFilledBezierPathArray (v0))
         case (.multiple) :
@@ -506,7 +506,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, unwSelf.mStrokeBezierPath_property_selection, preferences_packageColor_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, preferences_frontSidePadColor_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, preferences_backSidePadColor_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection, unwSelf.mRoot_property.mShowPackages_property.selection, unwSelf.mRoot_property.mShowPackageFrontPads_property.selection, unwSelf.mRoot_property.mShowPackageBackPads_property.selection, unwSelf.mStrokeBezierPath_property.selection, preferences_packageColor_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection, unwSelf.frontSidePadFilledBezierPathArray_property.selection, preferences_frontSidePadColor_property.selection, unwSelf.backSidePadFilledBezierPathArray_property.selection, preferences_backSidePadColor_property.selection, unwSelf.mName_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
           return .single (transient_PackageInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -536,7 +536,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, unwSelf.mStrokeBezierPath_property_selection, preferences_packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection, unwSelf.mRoot_property.mShowPackages_property.selection, unwSelf.mRoot_property.mShowPackageFrontPads_property.selection, unwSelf.mRoot_property.mShowPackageBackPads_property.selection, unwSelf.mStrokeBezierPath_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection, unwSelf.frontSidePadFilledBezierPathArray_property.selection, unwSelf.backSidePadFilledBezierPathArray_property.selection, unwSelf.mName_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
           return .single (transient_PackageInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -563,7 +563,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: padNameSet
     self.padNameSet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property_selection) {
+        switch (unwSelf.mMasterPads_property.selection) {
         case (.single (let v0)) :
           return .single (transient_PackageInDevice_padNameSet (v0))
         case (.multiple) :

@@ -128,7 +128,7 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var location : CanariPoint? {
-    switch self.location_property_selection {
+    switch self.location_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -151,7 +151,7 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var netName : String? {
-    switch self.netName_property_selection {
+    switch self.netName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -174,7 +174,7 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property_selection {
+    switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -206,7 +206,7 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property_selection) {
+        switch (unwSelf.mPoint_property.location_property.selection) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_location (v0))
         case (.multiple) :
@@ -222,7 +222,7 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.netName_property_selection) {
+        switch (unwSelf.mPoint_property.netName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_netName (v0))
         case (.multiple) :
@@ -238,7 +238,7 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, preferences_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+        switch (unwSelf.mPoint_property.location_property.selection, unwSelf.netName_property.selection, preferences_pinNameFont_property.selection, unwSelf.mOrientation_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -257,7 +257,7 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.netClassName_property_selection) {
+        switch (unwSelf.mPoint_property.netClassName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_netClassName (v0))
         case (.multiple) :
@@ -273,7 +273,7 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_symbolColorForSchematic_property_selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property_selection, unwSelf.mPoint_property.location_property_selection, unwSelf.netName_property_selection, preferences_pinNameFont_property_selection, unwSelf.mOrientation_property_selection) {
+        switch (preferences_symbolColorForSchematic_property.selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection, unwSelf.mPoint_property.location_property.selection, unwSelf.netName_property.selection, preferences_pinNameFont_property.selection, unwSelf.mOrientation_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
           return .single (transient_LabelInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5))
         case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :

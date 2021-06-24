@@ -190,7 +190,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mOrientation_property_selection {
+            switch object.mOrientation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -259,7 +259,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -298,7 +298,7 @@ final class SelectionController_ProjectDocument_ncInSchematicSelectionController
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :

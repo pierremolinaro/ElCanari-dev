@@ -15,32 +15,60 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolTypeInDevice?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+      oldValue.mTypeName_property.removeEBObserver (self.mTypeName_property) // Stored property
+ //     oldValue.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      oldValue.mVersion_property.removeEBObserver (self.mVersion_property) // Stored property
+ //     oldValue.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      oldValue.mFileData_property.removeEBObserver (self.mFileData_property) // Stored property
+ //     oldValue.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
+ //     oldValue.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+      oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
+ //     oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
+ //     oldValue.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+      oldValue.instanceCount_property.removeEBObserver (self.instanceCount_property) // Transient property
+ //     oldValue.documentSizeString_property.removeEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      oldValue.documentSizeString_property.removeEBObserver (self.documentSizeString_property) // Transient property
+ //     oldValue.pinNameShape_property.removeEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+      oldValue.pinNameShape_property.removeEBObserver (self.pinNameShape_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName) // Stored property
+      newValue.mTypeName_property.addEBObserver (self.mTypeName_property) // Stored property
+ //     newValue.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion) // Stored property
+      newValue.mVersion_property.addEBObserver (self.mVersion_property) // Stored property
+ //     newValue.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData) // Stored property
+      newValue.mFileData_property.addEBObserver (self.mFileData_property) // Stored property
+ //     newValue.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath) // Stored property
+      newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
+ //     newValue.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath) // Stored property
+      newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
+  //    newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
+  //    newValue.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount) // Transient property
+      newValue.instanceCount_property.addEBObserver (self.instanceCount_property) // Transient property
+  //    newValue.documentSizeString_property.addEBObserversFrom (&self.mObserversOf_documentSizeString) // Transient property
+      newValue.documentSizeString_property.addEBObserver (self.documentSizeString_property) // Transient property
+  //    newValue.pinNameShape_property.addEBObserversFrom (&self.mObserversOf_pinNameShape) // Transient property
+      newValue.pinNameShape_property.addEBObserver (self.pinNameShape_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mTypeName' stored property
   //····················································································································
 
-  private final var mTypeName_property = EBGenericTransientProperty <String?> ()
+  final let mTypeName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mTypeName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mTypeName_property_selection : EBSelection <String?> { // §
     return self.mTypeName_property.selection
-/*    if let model = self.propval {
-      switch (model.mTypeName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +101,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-  private final var mVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mVersion_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
 
   final var mVersion_property_selection : EBSelection <Int?> { // §
     return self.mVersion_property.selection
-/*    if let model = self.propval {
-      switch (model.mVersion_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +140,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private final var mFileData_property = EBGenericTransientProperty <Data?> ()
+  final let mFileData_property = EBGenericTransientProperty <Data?> ()
 //  private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
   final var mFileData_property_selection : EBSelection <Data?> { // §
     return self.mFileData_property.selection
-/*    if let model = self.propval {
-      switch (model.mFileData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +179,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private final var mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mStrokeBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 //  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> { // §
     return self.mStrokeBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.mStrokeBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +218,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  private final var mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
+  final let mFilledBezierPath_property = EBGenericTransientProperty <NSBezierPath?> ()
 //  private final var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
   final var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> { // §
     return self.mFilledBezierPath_property.selection
-/*    if let model = self.propval {
-      switch (model.mFilledBezierPath_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -277,25 +257,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var versionString_property = EBGenericTransientProperty <String?> ()
+  final let versionString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
   final var versionString_property_selection : EBSelection <String?> {
     return self.versionString_property.selection
-/*    if let model = self.propval {
-      switch (model.versionString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +296,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  private final var instanceCount_property = EBGenericTransientProperty <Int?> ()
+  final let instanceCount_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_instanceCount = EBWeakEventSet ()
 
   //····················································································································
 
   final var instanceCount_property_selection : EBSelection <Int?> {
     return self.instanceCount_property.selection
-/*    if let model = self.propval {
-      switch (model.instanceCount_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +335,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'documentSizeString' transient property
   //····················································································································
 
-  private final var documentSizeString_property = EBGenericTransientProperty <String?> ()
+  final let documentSizeString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_documentSizeString = EBWeakEventSet ()
 
   //····················································································································
 
   final var documentSizeString_property_selection : EBSelection <String?> {
     return self.documentSizeString_property.selection
-/*    if let model = self.propval {
-      switch (model.documentSizeString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -430,25 +374,13 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observers of 'pinNameShape' transient property
   //····················································································································
 
-  private final var pinNameShape_property = EBGenericTransientProperty <EBShape?> ()
+  final let pinNameShape_property = EBGenericTransientProperty <EBShape?> ()
 //  private final var mObserversOf_pinNameShape = EBWeakEventSet ()
 
   //····················································································································
 
   final var pinNameShape_property_selection : EBSelection <EBShape?> {
     return self.pinNameShape_property.selection
-/*    if let model = self.propval {
-      switch (model.pinNameShape_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -487,7 +419,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   final var mInstances_property_selection : EBSelection <[SymbolInstanceInDevice]> {
     if let model = self.propval {
-      switch (model.mInstances_property_selection) {
+      switch (model.mInstances_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -528,7 +460,7 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   final var mPinTypes_property_selection : EBSelection <[SymbolPinTypeInDevice]> {
     if let model = self.propval {
-      switch (model.mPinTypes_property_selection) {
+      switch (model.mPinTypes_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -580,7 +512,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mTypeName_property)
   //--- Configure mVersion simple stored property
     self.mVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -596,7 +527,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mVersion_property)
   //--- Configure mFileData simple stored property
     self.mFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -612,7 +542,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mFileData_property)
   //--- Configure mStrokeBezierPath simple stored property
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -628,7 +557,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mStrokeBezierPath_property)
   //--- Configure mFilledBezierPath simple stored property
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -644,7 +572,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mFilledBezierPath_property)
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -660,7 +587,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.versionString_property)
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -676,7 +602,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.instanceCount_property)
   //--- Configure documentSizeString transient property
     self.documentSizeString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -692,7 +617,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.documentSizeString_property)
   //--- Configure pinNameShape transient property
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -708,7 +632,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.pinNameShape_property)
   }
 
   //····················································································································

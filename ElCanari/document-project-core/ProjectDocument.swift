@@ -149,7 +149,7 @@ import Cocoa
   //····················································································································
 
   final var netCount : Int? {
-    switch self.netCount_property_selection {
+    switch self.netCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -172,7 +172,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetDisplayComponentNet : Bool? {
-    switch self.rastnetDisplayComponentNet_property_selection {
+    switch self.rastnetDisplayComponentNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -195,7 +195,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
+    switch self.documentFilePath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -218,7 +218,7 @@ import Cocoa
   //····················································································································
 
   final var componentCount : String? {
-    switch self.componentCount_property_selection {
+    switch self.componentCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -241,7 +241,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveNetClasses : Bool? {
-    switch self.canRemoveNetClasses_property_selection {
+    switch self.canRemoveNetClasses_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -264,7 +264,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDevicePackageNames : StringArray? {
-    switch self.selectedDevicePackageNames_property_selection {
+    switch self.selectedDevicePackageNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -287,7 +287,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDeviceSymbols : DeviceSymbolDictionary? {
-    switch self.selectedDeviceSymbols_property_selection {
+    switch self.selectedDeviceSymbols_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -310,7 +310,7 @@ import Cocoa
   //····················································································································
 
   final var selectedDeviceSymbolNames : TwoStringArray? {
-    switch self.selectedDeviceSymbolNames_property_selection {
+    switch self.selectedDeviceSymbolNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -333,7 +333,7 @@ import Cocoa
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property_selection {
+    switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -356,7 +356,7 @@ import Cocoa
   //····················································································································
 
   final var schematicSheetOrientationIsCustom : Bool? {
-    switch self.schematicSheetOrientationIsCustom_property_selection {
+    switch self.schematicSheetOrientationIsCustom_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -379,7 +379,7 @@ import Cocoa
   //····················································································································
 
   final var netCountString : String? {
-    switch self.netCountString_property_selection {
+    switch self.netCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -402,7 +402,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetShape : EBShape? {
-    switch self.rastnetShape_property_selection {
+    switch self.rastnetShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -425,7 +425,7 @@ import Cocoa
   //····················································································································
 
   final var rastnetDisplayOneNet : Bool? {
-    switch self.rastnetDisplayOneNet_property_selection {
+    switch self.rastnetDisplayOneNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -448,7 +448,7 @@ import Cocoa
   //····················································································································
 
   final var artworlImportButtonTitle : String? {
-    switch self.artworlImportButtonTitle_property_selection {
+    switch self.artworlImportButtonTitle_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -471,7 +471,7 @@ import Cocoa
   //····················································································································
 
   final var documentFilePathOk : Bool? {
-    switch self.documentFilePathOk_property_selection {
+    switch self.documentFilePathOk_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -494,7 +494,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveSelectedFonts : Bool? {
-    switch self.canRemoveSelectedFonts_property_selection {
+    switch self.canRemoveSelectedFonts_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -517,7 +517,7 @@ import Cocoa
   //····················································································································
 
   final var canRemoveSelectedDevices : Bool? {
-    switch self.canRemoveSelectedDevices_property_selection {
+    switch self.canRemoveSelectedDevices_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -540,7 +540,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedSymbolsCount : Int? {
-    switch self.unplacedSymbolsCount_property_selection {
+    switch self.unplacedSymbolsCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -563,7 +563,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedSymbolsCountString : String? {
-    switch self.unplacedSymbolsCountString_property_selection {
+    switch self.unplacedSymbolsCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -586,7 +586,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedPackageCount : Int? {
-    switch self.unplacedPackageCount_property_selection {
+    switch self.unplacedPackageCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -609,7 +609,7 @@ import Cocoa
   //····················································································································
 
   final var unplacedPackagesCountString : String? {
-    switch self.unplacedPackagesCountString_property_selection {
+    switch self.unplacedPackagesCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -632,7 +632,7 @@ import Cocoa
   //····················································································································
 
   final var overDisplay : EBShape? {
-    switch self.overDisplay_property_selection {
+    switch self.overDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -655,7 +655,7 @@ import Cocoa
   //····················································································································
 
   final var canChangePackage : Bool? {
-    switch self.canChangePackage_property_selection {
+    switch self.canChangePackage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1854,7 +1854,7 @@ import Cocoa
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property_selection) {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_netCount (v0))
         case (.multiple) :
@@ -1874,7 +1874,7 @@ import Cocoa
   //--- Atomic property: rastnetDisplayComponentNet
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_rastnetDisplayComponentNet (v0))
         case (.multiple) :
@@ -1898,7 +1898,7 @@ import Cocoa
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
+        switch (unwSelf.rootObject.mComponents_property.count_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_componentCount (v0))
         case (.multiple) :
@@ -1918,7 +1918,7 @@ import Cocoa
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mNetClasses_property.count_property_selection, unwSelf.netClassController.selectedArray_property_selection) {
+        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection, unwSelf.netClassController.selectedArray_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_ProjectDocument_canRemoveNetClasses (v0, v1))
         case (.multiple, .multiple) :
@@ -1939,7 +1939,7 @@ import Cocoa
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
         case (.multiple) :
@@ -1959,7 +1959,7 @@ import Cocoa
   //--- Atomic property: selectedDeviceSymbols
     self.selectedDeviceSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_selectedDeviceSymbols (v0))
         case (.multiple) :
@@ -1979,7 +1979,7 @@ import Cocoa
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_selectedDeviceSymbolNames (v0))
         case (.multiple) :
@@ -1999,7 +1999,7 @@ import Cocoa
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_pinPadAssignments (v0))
         case (.multiple) :
@@ -2019,7 +2019,7 @@ import Cocoa
   //--- Atomic property: schematicSheetOrientationIsCustom
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mSchematicSheetOrientation_property_selection) {
+        switch (unwSelf.rootObject.mSchematicSheetOrientation_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_schematicSheetOrientationIsCustom (v0))
         case (.multiple) :
@@ -2039,7 +2039,7 @@ import Cocoa
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property_selection) {
+        switch (unwSelf.rootObject.netsDescription_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_netCountString (v0))
         case (.multiple) :
@@ -2059,7 +2059,7 @@ import Cocoa
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property_selection, unwSelf.rootObject.mRastnetDisplayedNetName_property_selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property_selection, unwSelf.rootObject.mBoardObjects_property_selection, unwSelf.boardObjectsController.selectedArray_property_selection) {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection, unwSelf.rootObject.mRastnetDisplayedNetName_property.selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection, unwSelf.rootObject.mBoardObjects_property.selection, unwSelf.boardObjectsController.selectedArray_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
           return .single (transient_ProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
         case (.multiple, .multiple, .multiple, .multiple, .multiple) :
@@ -2083,7 +2083,7 @@ import Cocoa
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property_selection) {
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_rastnetDisplayOneNet (v0))
         case (.multiple) :
@@ -2103,7 +2103,7 @@ import Cocoa
   //--- Atomic property: artworlImportButtonTitle
     self.artworlImportButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mArtwork_none_selection) {
+        switch (unwSelf.rootObject.mArtwork_none.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_artworlImportButtonTitle (v0))
         case (.multiple) :
@@ -2123,7 +2123,7 @@ import Cocoa
   //--- Atomic property: documentFilePathOk
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property_selection) {
+        switch (unwSelf.documentFilePath_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_documentFilePathOk (v0))
         case (.multiple) :
@@ -2143,7 +2143,7 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedFonts
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectFontController.selectedArray_property_selection) {
+        switch (unwSelf.projectFontController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_canRemoveSelectedFonts (v0))
         case (.multiple) :
@@ -2163,7 +2163,7 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property_selection) {
+        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
         case (.multiple) :
@@ -2183,7 +2183,7 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unplacedSymbols_property_selection) {
+        switch (unwSelf.rootObject.unplacedSymbols_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_unplacedSymbolsCount (v0))
         case (.multiple) :
@@ -2203,7 +2203,7 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCountString
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedSymbolsCount_property_selection) {
+        switch (unwSelf.unplacedSymbolsCount_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_unplacedSymbolsCountString (v0))
         case (.multiple) :
@@ -2223,7 +2223,7 @@ import Cocoa
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unplacedPackages_property_selection) {
+        switch (unwSelf.rootObject.unplacedPackages_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_unplacedPackageCount (v0))
         case (.multiple) :
@@ -2243,7 +2243,7 @@ import Cocoa
   //--- Atomic property: unplacedPackagesCountString
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedPackageCount_property_selection) {
+        switch (unwSelf.unplacedPackageCount_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_unplacedPackagesCountString (v0))
         case (.multiple) :
@@ -2263,7 +2263,7 @@ import Cocoa
   //--- Atomic property: overDisplay
     self.overDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rastnetShape_property_selection, unwSelf.rootObject.boardIssues_property_selection) {
+        switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_ProjectDocument_overDisplay (v0, v1))
         case (.multiple, .multiple) :
@@ -2284,7 +2284,7 @@ import Cocoa
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.componentController.selectedArray_property_selection) {
+        switch (unwSelf.componentController.selectedArray_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_canChangePackage (v0))
         case (.multiple) :

@@ -273,7 +273,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.y_property_selection {
+            switch object.y_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -342,7 +342,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.text_property_selection {
+            switch object.text_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -411,7 +411,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.horizontalAlignment_property_selection {
+            switch object.horizontalAlignment_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -480,7 +480,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.x_property_selection {
+            switch object.x_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -549,7 +549,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -588,7 +588,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -627,7 +627,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
           var s = Set <CanariIssueArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.issues_property_selection {
+            switch object.issues_property.selection {
             case .empty :
               return .empty
             case .multiple :

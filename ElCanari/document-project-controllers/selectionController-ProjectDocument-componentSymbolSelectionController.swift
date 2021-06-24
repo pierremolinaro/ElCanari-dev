@@ -501,7 +501,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCenterX_property_selection {
+            switch object.mCenterX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -570,7 +570,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mCenterY_property_selection {
+            switch object.mCenterY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -639,7 +639,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mRotation_property_selection {
+            switch object.mRotation_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -708,7 +708,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mMirror_property_selection {
+            switch object.mMirror_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -777,7 +777,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSymbolInstanceName_property_selection {
+            switch object.mSymbolInstanceName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -846,7 +846,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mSymbolTypeName_property_selection {
+            switch object.mSymbolTypeName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -915,7 +915,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayComponentNameOffsetX_property_selection {
+            switch object.mDisplayComponentNameOffsetX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -984,7 +984,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayComponentNameOffsetY_property_selection {
+            switch object.mDisplayComponentNameOffsetY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1053,7 +1053,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayComponentValue_property_selection {
+            switch object.mDisplayComponentValue_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1122,7 +1122,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayComponentValueOffsetX_property_selection {
+            switch object.mDisplayComponentValueOffsetX_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1191,7 +1191,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.mDisplayComponentValueOffsetY_property_selection {
+            switch object.mDisplayComponentValueOffsetY_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1260,7 +1260,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentValueProxy_property_selection {
+            switch object.componentValueProxy_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1329,7 +1329,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.componentName_property_selection {
+            switch object.componentName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1368,7 +1368,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.deviceName_property_selection {
+            switch object.deviceName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1407,7 +1407,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <ComponentSymbolInfo> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.symbolInfo_property_selection {
+            switch object.symbolInfo_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1446,7 +1446,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <ThreeStringArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pinPadAssignments_property_selection {
+            switch object.pinPadAssignments_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1485,7 +1485,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1524,7 +1524,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1563,7 +1563,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.symbolInSchematic_property_selection {
+            switch object.symbolInSchematic_property.selection {
             case .empty :
               return .empty
             case .multiple :

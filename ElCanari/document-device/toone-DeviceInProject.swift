@@ -15,32 +15,76 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   internal override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceInProject?) {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
+    if let oldValue = inOldValue {
+ //     oldValue.mDeviceName_property.removeEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
+      oldValue.mDeviceName_property.removeEBObserver (self.mDeviceName_property) // Stored property
+ //     oldValue.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      oldValue.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
+ //     oldValue.mDeviceVersion_property.removeEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
+      oldValue.mDeviceVersion_property.removeEBObserver (self.mDeviceVersion_property) // Stored property
+ //     oldValue.mDeviceFileData_property.removeEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
+      oldValue.mDeviceFileData_property.removeEBObserver (self.mDeviceFileData_property) // Stored property
+ //     oldValue.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
+ //     oldValue.sizeString_property.removeEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      oldValue.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
+ //     oldValue.canExport_property.removeEBObserversFrom (&self.mObserversOf_canExport) // Transient property
+      oldValue.canExport_property.removeEBObserver (self.canExport_property) // Transient property
+ //     oldValue.packageNames_property.removeEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+      oldValue.packageNames_property.removeEBObserver (self.packageNames_property) // Transient property
+ //     oldValue.deviceComponentCountString_property.removeEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
+      oldValue.deviceComponentCountString_property.removeEBObserver (self.deviceComponentCountString_property) // Transient property
+ //     oldValue.canRemove_property.removeEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      oldValue.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
+ //     oldValue.symbolAndTypesNames_property.removeEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
+      oldValue.symbolAndTypesNames_property.removeEBObserver (self.symbolAndTypesNames_property) // Transient property
+ //     oldValue.pinPadAssignments_property.removeEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
+ //     oldValue.deviceSymbolDictionary_property.removeEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+      oldValue.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
+    }
   //--- Add observers to added objects
+    if let newValue = self.mInternalValue {
+ //     newValue.mDeviceName_property.addEBObserversFrom (&self.mObserversOf_mDeviceName) // Stored property
+      newValue.mDeviceName_property.addEBObserver (self.mDeviceName_property) // Stored property
+ //     newValue.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix) // Stored property
+      newValue.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
+ //     newValue.mDeviceVersion_property.addEBObserversFrom (&self.mObserversOf_mDeviceVersion) // Stored property
+      newValue.mDeviceVersion_property.addEBObserver (self.mDeviceVersion_property) // Stored property
+ //     newValue.mDeviceFileData_property.addEBObserversFrom (&self.mObserversOf_mDeviceFileData) // Stored property
+      newValue.mDeviceFileData_property.addEBObserver (self.mDeviceFileData_property) // Stored property
+  //    newValue.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString) // Transient property
+      newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
+  //    newValue.sizeString_property.addEBObserversFrom (&self.mObserversOf_sizeString) // Transient property
+      newValue.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
+  //    newValue.canExport_property.addEBObserversFrom (&self.mObserversOf_canExport) // Transient property
+      newValue.canExport_property.addEBObserver (self.canExport_property) // Transient property
+  //    newValue.packageNames_property.addEBObserversFrom (&self.mObserversOf_packageNames) // Transient property
+      newValue.packageNames_property.addEBObserver (self.packageNames_property) // Transient property
+  //    newValue.deviceComponentCountString_property.addEBObserversFrom (&self.mObserversOf_deviceComponentCountString) // Transient property
+      newValue.deviceComponentCountString_property.addEBObserver (self.deviceComponentCountString_property) // Transient property
+  //    newValue.canRemove_property.addEBObserversFrom (&self.mObserversOf_canRemove) // Transient property
+      newValue.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
+  //    newValue.symbolAndTypesNames_property.addEBObserversFrom (&self.mObserversOf_symbolAndTypesNames) // Transient property
+      newValue.symbolAndTypesNames_property.addEBObserver (self.symbolAndTypesNames_property) // Transient property
+  //    newValue.pinPadAssignments_property.addEBObserversFrom (&self.mObserversOf_pinPadAssignments) // Transient property
+      newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
+  //    newValue.deviceSymbolDictionary_property.addEBObserversFrom (&self.mObserversOf_deviceSymbolDictionary) // Transient property
+      newValue.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-  private final var mDeviceName_property = EBGenericTransientProperty <String?> ()
+  final let mDeviceName_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mDeviceName = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDeviceName_property_selection : EBSelection <String?> { // §
     return self.mDeviceName_property.selection
-/*    if let model = self.propval {
-      switch (model.mDeviceName_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -73,25 +117,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  private final var mPrefix_property = EBGenericTransientProperty <String?> ()
+  final let mPrefix_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_mPrefix = EBWeakEventSet ()
 
   //····················································································································
 
   final var mPrefix_property_selection : EBSelection <String?> { // §
     return self.mPrefix_property.selection
-/*    if let model = self.propval {
-      switch (model.mPrefix_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -124,25 +156,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
 
-  private final var mDeviceVersion_property = EBGenericTransientProperty <Int?> ()
+  final let mDeviceVersion_property = EBGenericTransientProperty <Int?> ()
 //  private final var mObserversOf_mDeviceVersion = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDeviceVersion_property_selection : EBSelection <Int?> { // §
     return self.mDeviceVersion_property.selection
-/*    if let model = self.propval {
-      switch (model.mDeviceVersion_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -175,25 +195,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
 
-  private final var mDeviceFileData_property = EBGenericTransientProperty <Data?> ()
+  final let mDeviceFileData_property = EBGenericTransientProperty <Data?> ()
 //  private final var mObserversOf_mDeviceFileData = EBWeakEventSet ()
 
   //····················································································································
 
   final var mDeviceFileData_property_selection : EBSelection <Data?> { // §
     return self.mDeviceFileData_property.selection
-/*    if let model = self.propval {
-      switch (model.mDeviceFileData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    } */
   }
 
   //····················································································································
@@ -226,25 +234,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var versionString_property = EBGenericTransientProperty <String?> ()
+  final let versionString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
   final var versionString_property_selection : EBSelection <String?> {
     return self.versionString_property.selection
-/*    if let model = self.propval {
-      switch (model.versionString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -277,25 +273,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private final var sizeString_property = EBGenericTransientProperty <String?> ()
+  final let sizeString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_sizeString = EBWeakEventSet ()
 
   //····················································································································
 
   final var sizeString_property_selection : EBSelection <String?> {
     return self.sizeString_property.selection
-/*    if let model = self.propval {
-      switch (model.sizeString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -328,25 +312,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'canExport' transient property
   //····················································································································
 
-  private final var canExport_property = EBGenericTransientProperty <Bool?> ()
+  final let canExport_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_canExport = EBWeakEventSet ()
 
   //····················································································································
 
   final var canExport_property_selection : EBSelection <Bool?> {
     return self.canExport_property.selection
-/*    if let model = self.propval {
-      switch (model.canExport_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -379,25 +351,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'packageNames' transient property
   //····················································································································
 
-  private final var packageNames_property = EBGenericTransientProperty <StringArray?> ()
+  final let packageNames_property = EBGenericTransientProperty <StringArray?> ()
 //  private final var mObserversOf_packageNames = EBWeakEventSet ()
 
   //····················································································································
 
   final var packageNames_property_selection : EBSelection <StringArray?> {
     return self.packageNames_property.selection
-/*    if let model = self.propval {
-      switch (model.packageNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -430,25 +390,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'deviceComponentCountString' transient property
   //····················································································································
 
-  private final var deviceComponentCountString_property = EBGenericTransientProperty <String?> ()
+  final let deviceComponentCountString_property = EBGenericTransientProperty <String?> ()
 //  private final var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
 
   //····················································································································
 
   final var deviceComponentCountString_property_selection : EBSelection <String?> {
     return self.deviceComponentCountString_property.selection
-/*    if let model = self.propval {
-      switch (model.deviceComponentCountString_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -481,25 +429,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  private final var canRemove_property = EBGenericTransientProperty <Bool?> ()
+  final let canRemove_property = EBGenericTransientProperty <Bool?> ()
 //  private final var mObserversOf_canRemove = EBWeakEventSet ()
 
   //····················································································································
 
   final var canRemove_property_selection : EBSelection <Bool?> {
     return self.canRemove_property.selection
-/*    if let model = self.propval {
-      switch (model.canRemove_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -532,25 +468,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  private final var symbolAndTypesNames_property = EBGenericTransientProperty <SymbolInProjectIdentifierArray?> ()
+  final let symbolAndTypesNames_property = EBGenericTransientProperty <SymbolInProjectIdentifierArray?> ()
 //  private final var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
 
   //····················································································································
 
   final var symbolAndTypesNames_property_selection : EBSelection <SymbolInProjectIdentifierArray?> {
     return self.symbolAndTypesNames_property.selection
-/*    if let model = self.propval {
-      switch (model.symbolAndTypesNames_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -583,25 +507,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private final var pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
+  final let pinPadAssignments_property = EBGenericTransientProperty <ThreeStringArray?> ()
 //  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
 
   //····················································································································
 
   final var pinPadAssignments_property_selection : EBSelection <ThreeStringArray?> {
     return self.pinPadAssignments_property.selection
-/*    if let model = self.propval {
-      switch (model.pinPadAssignments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -634,25 +546,13 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private final var deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
+  final let deviceSymbolDictionary_property = EBGenericTransientProperty <DeviceSymbolDictionary?> ()
 //  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
 
   //····················································································································
 
   final var deviceSymbolDictionary_property_selection : EBSelection <DeviceSymbolDictionary?> {
     return self.deviceSymbolDictionary_property.selection
-/*    if let model = self.propval {
-      switch (model.deviceSymbolDictionary_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }*/
   }
 
   //····················································································································
@@ -691,7 +591,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   final var mPackages_property_selection : EBSelection <[DevicePackageInProject]> {
     if let model = self.propval {
-      switch (model.mPackages_property_selection) {
+      switch (model.mPackages_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -732,7 +632,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   final var mSymbols_property_selection : EBSelection <[DeviceSymbolInstanceInProject]> {
     if let model = self.propval {
-      switch (model.mSymbols_property_selection) {
+      switch (model.mSymbols_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -773,7 +673,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   final var mComponents_property_selection : EBSelection <[ComponentInProject]> {
     if let model = self.propval {
-      switch (model.mComponents_property_selection) {
+      switch (model.mComponents_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -814,7 +714,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   final var mPadAssignments_property_selection : EBSelection <[DevicePadAssignmentInProject]> {
     if let model = self.propval {
-      switch (model.mPadAssignments_property_selection) {
+      switch (model.mPadAssignments_property.selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -866,7 +766,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDeviceName_property)
   //--- Configure mPrefix simple stored property
     self.mPrefix_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -882,7 +781,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mPrefix_property)
   //--- Configure mDeviceVersion simple stored property
     self.mDeviceVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -898,7 +796,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDeviceVersion_property)
   //--- Configure mDeviceFileData simple stored property
     self.mDeviceFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -914,7 +811,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.mDeviceFileData_property)
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -930,7 +826,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.versionString_property)
   //--- Configure sizeString transient property
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -946,7 +841,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.sizeString_property)
   //--- Configure canExport transient property
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -962,7 +856,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.canExport_property)
   //--- Configure packageNames transient property
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -978,7 +871,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.packageNames_property)
   //--- Configure deviceComponentCountString transient property
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -994,7 +886,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.deviceComponentCountString_property)
   //--- Configure canRemove transient property
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1010,7 +901,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.canRemove_property)
   //--- Configure symbolAndTypesNames transient property
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1026,7 +916,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.symbolAndTypesNames_property)
   //--- Configure pinPadAssignments transient property
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1042,7 +931,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.pinPadAssignments_property)
   //--- Configure deviceSymbolDictionary transient property
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -1058,7 +946,6 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
         return .single (nil)
       }
     }
-    self.none_property.addEBObserver (self.deviceSymbolDictionary_property)
   }
 
   //····················································································································

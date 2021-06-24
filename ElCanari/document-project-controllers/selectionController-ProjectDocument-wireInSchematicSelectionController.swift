@@ -209,7 +209,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.objectDisplay_property_selection {
+            switch object.objectDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -248,7 +248,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var s = Set <EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionDisplay_property_selection {
+            switch object.selectionDisplay_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -287,7 +287,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netName_property_selection {
+            switch object.netName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -326,7 +326,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.netClassName_property_selection {
+            switch object.netClassName_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -365,7 +365,7 @@ final class SelectionController_ProjectDocument_wireInSchematicSelectionControll
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.hasNet_property_selection {
+            switch object.hasNet_property.selection {
             case .empty :
               return .empty
             case .multiple :

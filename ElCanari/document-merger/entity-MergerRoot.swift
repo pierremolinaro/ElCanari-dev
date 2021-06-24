@@ -1055,7 +1055,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var modelNames : StringTagArray? {
-    switch self.modelNames_property_selection {
+    switch self.modelNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1078,7 +1078,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardRect : CanariRect? {
-    switch self.boardRect_property_selection {
+    switch self.boardRect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1101,7 +1101,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardDisplayRect : CanariRect? {
-    switch self.boardDisplayRect_property_selection {
+    switch self.boardDisplayRect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1124,7 +1124,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardWidth : Int? {
-    switch self.boardWidth_property_selection {
+    switch self.boardWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1147,7 +1147,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardHeight : Int? {
-    switch self.boardHeight_property_selection {
+    switch self.boardHeight_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1208,7 +1208,7 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardOutlineRectDisplay : EBShape? {
-    switch self.boardOutlineRectDisplay_property_selection {
+    switch self.boardOutlineRectDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1423,7 +1423,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
+        switch (unwSelf.boardModels_property.selection, unwSelf.boardModels_property.selection) {
         case (.single (let v0), .single (let v1)) :
           return .single (transient_MergerRoot_modelNames (v0, v1))
         case (.multiple, .multiple) :
@@ -1440,7 +1440,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+        switch (unwSelf.automaticBoardSize_property.selection, unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
@@ -1459,7 +1459,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardDisplayRect
     self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+        switch (unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2)) :
           return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2))
         case (.multiple, .multiple, .multiple) :
@@ -1477,7 +1477,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardWidth
     self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardRect_property_selection) {
+        switch (unwSelf.boardRect_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerRoot_boardWidth (v0))
         case (.multiple) :
@@ -1493,7 +1493,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardHeight
     self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardRect_property_selection) {
+        switch (unwSelf.boardRect_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerRoot_boardHeight (v0))
         case (.multiple) :
@@ -1511,7 +1511,7 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, preferences_mergerBoardViewDisplayBoardLimits_property_selection, preferences_mergerColorBoardLimits_property_selection) {
+        switch (unwSelf.boardRect_property.selection, unwSelf.boardLimitWidth_property.selection, preferences_mergerBoardViewDisplayBoardLimits_property.selection, preferences_mergerColorBoardLimits_property.selection) {
         case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
           return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
         case (.multiple, .multiple, .multiple, .multiple) :
