@@ -56,6 +56,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mSymbolPinName' stored property
   //····················································································································
 
+//  private final var mSymbolPinName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mSymbolPinName = EBWeakEventSet ()
 
   //····················································································································
@@ -105,6 +106,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -154,6 +156,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -249,26 +252,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_location_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_location.apply { (_ observer : EBEvent) in
-        managedObject.location_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_location.apply { (_ observer : EBEvent) in
-        managedObject.location_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netName' transient property
   //····················································································································
 
@@ -314,26 +297,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.netName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
-        managedObject.netName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netName.apply { (_ observer : EBEvent) in
-        managedObject.netName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -387,26 +350,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
-        managedObject.netClassName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netClassName.apply { (_ observer : EBEvent) in
-        managedObject.netClassName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'hasNet' transient property
   //····················································································································
 
@@ -452,26 +395,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.hasNet_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_hasNet_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_hasNet.apply { (_ observer : EBEvent) in
-        managedObject.hasNet_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_hasNet_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_hasNet.apply { (_ observer : EBEvent) in
-        managedObject.hasNet_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -525,26 +448,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
-        managedObject.canMove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_canMove.apply { (_ observer : EBEvent) in
-        managedObject.canMove_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
@@ -590,26 +493,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.wireColor_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
-        managedObject.wireColor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_wireColor.apply { (_ observer : EBEvent) in
-        managedObject.wireColor_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -663,26 +546,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_symbolRotation_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolRotation.apply { (_ observer : EBEvent) in
-        managedObject.symbolRotation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolRotation_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolRotation.apply { (_ observer : EBEvent) in
-        managedObject.symbolRotation_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'symbolNameNetName' transient property
   //····················································································································
 
@@ -728,26 +591,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.symbolNameNetName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolNameNetName_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBEvent) in
-        managedObject.symbolNameNetName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolNameNetName_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBEvent) in
-        managedObject.symbolNameNetName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -801,26 +644,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'status' transient property
   //····················································································································
 
@@ -866,26 +689,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.status_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_status_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_status.apply { (_ observer : EBEvent) in
-        managedObject.status_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_status.apply { (_ observer : EBEvent) in
-        managedObject.status_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -939,26 +742,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   }
 
   //····················································································································
-
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netInfoForPoint' transient property
   //····················································································································
 
@@ -1004,26 +787,6 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       break
     case .single (let v) :
       v?.netInfoForPoint_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netInfoForPoint_toElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netInfoForPoint.apply { (_ observer : EBEvent) in
-        managedObject.netInfoForPoint_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netInfoForPoint_fromElementsOfSet (_ inSet : Set<PointInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_netInfoForPoint.apply { (_ observer : EBEvent) in
-        managedObject.netInfoForPoint_property.removeEBObserver (observer)
-      }
     }
   }
 

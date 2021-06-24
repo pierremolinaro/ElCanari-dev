@@ -32,6 +32,7 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
+//  private final var mPadName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
@@ -127,26 +128,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
   }
 
   //····················································································································
-
-  final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
-        managedObject.pinPadAssignment_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBEvent) in
-        managedObject.pinPadAssignment_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
@@ -192,26 +173,6 @@ class ReadOnlyObject_DevicePadAssignmentInProject : ReadOnlyAbstractObjectProper
       break
     case .single (let v) :
       v?.descriptor_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<DevicePadAssignmentInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.removeEBObserver (observer)
-      }
     }
   }
 

@@ -56,6 +56,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yPin' stored property
   //····················································································································
 
+//  private final var yPin_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yPin = EBWeakEventSet ()
 
   //····················································································································
@@ -105,6 +106,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xName' stored property
   //····················································································································
 
+//  private final var xName_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
@@ -154,6 +156,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yName' stored property
   //····················································································································
 
+//  private final var yName_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
@@ -203,6 +206,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xNumber' stored property
   //····················································································································
 
+//  private final var xNumber_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xNumber = EBWeakEventSet ()
 
   //····················································································································
@@ -252,6 +256,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'yNumber' stored property
   //····················································································································
 
+//  private final var yNumber_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yNumber = EBWeakEventSet ()
 
   //····················································································································
@@ -301,6 +306,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'name' stored property
   //····················································································································
 
+//  private final var name_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
@@ -350,6 +356,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'nameHorizontalAlignment' stored property
   //····················································································································
 
+//  private final var nameHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment?> ()
   private final var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -399,6 +406,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'numberHorizontalAlignment' stored property
   //····················································································································
 
+//  private final var numberHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment?> ()
   private final var mObserversOf_numberHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -448,6 +456,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'pinNameIsDisplayedInSchematics' stored property
   //····················································································································
 
+//  private final var pinNameIsDisplayedInSchematics_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_pinNameIsDisplayedInSchematics = EBWeakEventSet ()
 
   //····················································································································
@@ -497,6 +506,7 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   //   Observers of 'xPin' stored property
   //····················································································································
 
+//  private final var xPin_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xPin = EBWeakEventSet ()
 
   //····················································································································
@@ -592,26 +602,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -657,26 +647,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -730,26 +700,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -799,26 +749,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'nameRect' transient property
   //····················································································································
 
@@ -864,26 +794,6 @@ class ReadOnlyObject_SymbolPin : ReadOnlyAbstractObjectProperty <SymbolPin> {
       break
     case .single (let v) :
       v?.nameRect_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_nameRect.apply { (_ observer : EBEvent) in
-        managedObject.nameRect_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for managedObject in inSet {
-      self.mObserversOf_nameRect.apply { (_ observer : EBEvent) in
-        managedObject.nameRect_property.removeEBObserver (observer)
-      }
     }
   }
 

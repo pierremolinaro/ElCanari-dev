@@ -54,6 +54,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -103,6 +104,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -152,6 +154,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mFontSize' stored property
   //····················································································································
 
+//  private final var mFontSize_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mFontSize = EBWeakEventSet ()
 
   //····················································································································
@@ -201,6 +204,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
+//  private final var mLayer_property = EBGenericPropertyProxy <BoardTextLayer?> ()
   private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -250,6 +254,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mText' stored property
   //····················································································································
 
+//  private final var mText_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mText = EBWeakEventSet ()
 
   //····················································································································
@@ -299,6 +304,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
+//  private final var mHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment?> ()
   private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -348,6 +354,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
+//  private final var mVerticalAlignment_property = EBGenericPropertyProxy <BoardTextVerticalAlignment?> ()
   private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -397,6 +404,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mRotation' stored property
   //····················································································································
 
+//  private final var mRotation_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mRotation = EBWeakEventSet ()
 
   //····················································································································
@@ -446,6 +454,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mWeight' stored property
   //····················································································································
 
+//  private final var mWeight_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mWeight = EBWeakEventSet ()
 
   //····················································································································
@@ -495,6 +504,7 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   //   Observers of 'mOblique' stored property
   //····················································································································
 
+//  private final var mOblique_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mOblique = EBWeakEventSet ()
 
   //····················································································································
@@ -590,26 +600,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -655,26 +645,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -728,26 +698,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_fontName_toElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_fontName.apply { (_ observer : EBEvent) in
-        managedObject.fontName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_fontName_fromElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_fontName.apply { (_ observer : EBEvent) in
-        managedObject.fontName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
@@ -793,26 +743,6 @@ class ReadOnlyObject_BoardText : ReadOnlyAbstractObjectProperty <BoardText> {
       break
     case .single (let v) :
       v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardText>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
-      }
     }
   }
 

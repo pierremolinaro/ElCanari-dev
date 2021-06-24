@@ -76,6 +76,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
+//  private final var selectedPageIndex_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -125,6 +126,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
+//  private final var zoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
@@ -174,6 +176,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'automaticBoardSize' stored property
   //····················································································································
 
+//  private final var automaticBoardSize_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_automaticBoardSize = EBWeakEventSet ()
 
   //····················································································································
@@ -223,6 +226,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardManualWidth' stored property
   //····················································································································
 
+//  private final var boardManualWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardManualWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -272,6 +276,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardManualHeight' stored property
   //····················································································································
 
+//  private final var boardManualHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardManualHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -321,6 +326,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardWidthUnit' stored property
   //····················································································································
 
+//  private final var boardWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -370,6 +376,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardHeightUnit' stored property
   //····················································································································
 
+//  private final var boardHeightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -419,6 +426,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'overlapingArrangment' stored property
   //····················································································································
 
+//  private final var overlapingArrangment_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_overlapingArrangment = EBWeakEventSet ()
 
   //····················································································································
@@ -468,6 +476,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedBoardXUnit' stored property
   //····················································································································
 
+//  private final var selectedBoardXUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -517,6 +526,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'selectedBoardYUnit' stored property
   //····················································································································
 
+//  private final var selectedBoardYUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -566,6 +576,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
+//  private final var boardLimitWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -615,6 +626,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'boardLimitWidthUnit' stored property
   //····················································································································
 
+//  private final var boardLimitWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -664,6 +676,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'arrowMagnitude' stored property
   //····················································································································
 
+//  private final var arrowMagnitude_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_arrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
@@ -713,6 +726,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'arrowMagnitudeUnit' stored property
   //····················································································································
 
+//  private final var arrowMagnitudeUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -762,6 +776,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitude' stored property
   //····················································································································
 
+//  private final var shiftArrowMagnitude_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
 
   //····················································································································
@@ -811,6 +826,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'shiftArrowMagnitudeUnit' stored property
   //····················································································································
 
+//  private final var shiftArrowMagnitudeUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -860,6 +876,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
+//  private final var mPDFBoardBackgroundColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
@@ -909,6 +926,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
+//  private final var mArtworkName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
@@ -958,6 +976,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
+//  private final var mArtworkVersion_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -1053,26 +1072,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_modelNames_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_modelNames.apply { (_ observer : EBEvent) in
-        managedObject.modelNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_modelNames_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_modelNames.apply { (_ observer : EBEvent) in
-        managedObject.modelNames_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardRect' transient property
   //····················································································································
 
@@ -1118,26 +1117,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       break
     case .single (let v) :
       v?.boardRect_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardRect_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardRect.apply { (_ observer : EBEvent) in
-        managedObject.boardRect_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardRect_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardRect.apply { (_ observer : EBEvent) in
-        managedObject.boardRect_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1191,26 +1170,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardDisplayRect_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardDisplayRect.apply { (_ observer : EBEvent) in
-        managedObject.boardDisplayRect_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardDisplayRect_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardDisplayRect.apply { (_ observer : EBEvent) in
-        managedObject.boardDisplayRect_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardWidth' transient property
   //····················································································································
 
@@ -1256,26 +1215,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       break
     case .single (let v) :
       v?.boardWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardWidth.apply { (_ observer : EBEvent) in
-        managedObject.boardWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardWidth.apply { (_ observer : EBEvent) in
-        managedObject.boardWidth_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1329,26 +1268,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardHeight_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardHeight.apply { (_ observer : EBEvent) in
-        managedObject.boardHeight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardHeight_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardHeight.apply { (_ observer : EBEvent) in
-        managedObject.boardHeight_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardOutlineRectDisplay' transient property
   //····················································································································
 
@@ -1394,26 +1313,6 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       break
     case .single (let v) :
       v?.boardOutlineRectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardOutlineRectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.boardOutlineRectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardOutlineRectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.boardOutlineRectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

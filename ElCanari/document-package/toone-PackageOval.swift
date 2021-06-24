@@ -50,6 +50,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -99,6 +100,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'width' stored property
   //····················································································································
 
+//  private final var width_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
@@ -148,6 +150,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'height' stored property
   //····················································································································
 
+//  private final var height_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -197,6 +200,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'xUnit' stored property
   //····················································································································
 
+//  private final var xUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -246,6 +250,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
+//  private final var yUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -295,6 +300,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
+//  private final var widthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -344,6 +350,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
+//  private final var heightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -393,6 +400,7 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
@@ -488,26 +496,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -553,26 +541,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -626,26 +594,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -691,26 +639,6 @@ class ReadOnlyObject_PackageOval : ReadOnlyAbstractObjectProperty <PackageOval> 
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

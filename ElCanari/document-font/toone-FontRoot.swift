@@ -50,6 +50,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
+//  private final var comments_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -99,6 +100,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'nominalSize' stored property
   //····················································································································
 
+//  private final var nominalSize_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_nominalSize = EBWeakEventSet ()
 
   //····················································································································
@@ -148,6 +150,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
+//  private final var selectedTab_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
@@ -197,6 +200,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
+//  private final var selectedInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -246,6 +250,7 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
 
+//  private final var currentCharacterCodePoint_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 
   //····················································································································
@@ -341,26 +346,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_currentCharacterCodePointString.apply { (_ observer : EBEvent) in
-        managedObject.currentCharacterCodePointString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_currentCharacterCodePointString.apply { (_ observer : EBEvent) in
-        managedObject.currentCharacterCodePointString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'sampleStringBezierPath' transient property
   //····················································································································
 
@@ -406,26 +391,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       break
     case .single (let v) :
       v?.sampleStringBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sampleStringBezierPath_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPath_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -479,26 +444,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathWidth.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathWidth_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathWidth.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathWidth_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'sampleStringBezierPathAscent' transient property
   //····················································································································
 
@@ -544,26 +489,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       break
     case .single (let v) :
       v?.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathAscent.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathAscent_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathAscent.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathAscent_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -617,26 +542,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathDescent.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathDescent_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sampleStringBezierPathDescent.apply { (_ observer : EBEvent) in
-        managedObject.sampleStringBezierPathDescent_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'definedCharacters' transient property
   //····················································································································
 
@@ -686,26 +591,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_definedCharacters_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_definedCharacters.apply { (_ observer : EBEvent) in
-        managedObject.definedCharacters_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_definedCharacters_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_definedCharacters.apply { (_ observer : EBEvent) in
-        managedObject.definedCharacters_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -751,26 +636,6 @@ class ReadOnlyObject_FontRoot : ReadOnlyAbstractObjectProperty <FontRoot> {
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

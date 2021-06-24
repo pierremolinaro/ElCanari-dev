@@ -38,6 +38,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -87,6 +88,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'width' stored property
   //····················································································································
 
+//  private final var width_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
@@ -136,6 +138,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'height' stored property
   //····················································································································
 
+//  private final var height_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -185,6 +188,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'shape' stored property
   //····················································································································
 
+//  private final var shape_property = EBGenericPropertyProxy <PadShape?> ()
   private final var mObserversOf_shape = EBWeakEventSet ()
 
   //····················································································································
@@ -234,6 +238,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'rotation' stored property
   //····················································································································
 
+//  private final var rotation_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_rotation = EBWeakEventSet ()
 
   //····················································································································
@@ -283,6 +288,7 @@ class ReadOnlyObject_BoardModelPad : ReadOnlyAbstractObjectProperty <BoardModelP
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································

@@ -32,6 +32,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -81,6 +82,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
+//  private final var padDiameter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_padDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -130,6 +132,7 @@ class ReadOnlyObject_BoardModelVia : ReadOnlyAbstractObjectProperty <BoardModelV
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································

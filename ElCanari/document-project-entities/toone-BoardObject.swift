@@ -92,26 +92,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isPlacedInBoard_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInBoard_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isPlacedInBoard.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInBoard_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -157,26 +137,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -230,26 +190,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
-        managedObject.isVia_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isVia.apply { (_ observer : EBEvent) in
-        managedObject.isVia_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
@@ -295,26 +235,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       break
     case .single (let v) :
       v?.trackLengthInCanariUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
-        managedObject.trackLengthInCanariUnit_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
-        managedObject.trackLengthInCanariUnit_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -368,26 +288,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
@@ -433,26 +333,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       break
     case .single (let v) :
       v?.netNameAndPadLocation_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
-        managedObject.netNameAndPadLocation_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netNameAndPadLocation.apply { (_ observer : EBEvent) in
-        managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -506,26 +386,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
-        managedObject.componentName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_componentName.apply { (_ observer : EBEvent) in
-        managedObject.componentName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -571,26 +431,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -644,26 +484,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'errorOrWarningIssueSize' transient property
   //····················································································································
 
@@ -709,26 +529,6 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       break
     case .single (let v) :
       v?.errorOrWarningIssueSize_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
-        managedObject.errorOrWarningIssueSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (_ inSet : Set<BoardObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
-        managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
-      }
     }
   }
 

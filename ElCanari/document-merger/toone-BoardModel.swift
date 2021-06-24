@@ -130,6 +130,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'name' stored property
   //····················································································································
 
+//  private final var name_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
@@ -179,6 +180,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelWidth' stored property
   //····················································································································
 
+//  private final var modelWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -228,6 +230,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
+//  private final var modelWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -277,6 +280,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelHeight' stored property
   //····················································································································
 
+//  private final var modelHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -326,6 +330,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
+//  private final var modelHeightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -375,6 +380,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
+//  private final var zoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
@@ -424,6 +430,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
+//  private final var modelLimitWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelLimitWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -473,6 +480,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
+//  private final var modelLimitWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -522,6 +530,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   //   Observers of 'artworkName' stored property
   //····················································································································
 
+//  private final var artworkName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_artworkName = EBWeakEventSet ()
 
   //····················································································································
@@ -617,26 +626,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendLinesSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendLinesSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backLegendLinesSegments' transient property
   //····················································································································
 
@@ -682,26 +671,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backLegendLinesSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendLinesSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLegendLinesSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendLinesSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLegendLinesSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -755,26 +724,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendLinesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLegendLinesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendLinesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLegendLinesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontLegendTextsSegments' transient property
   //····················································································································
 
@@ -820,26 +769,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontLegendTextsSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendTextsSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendTextsSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -893,26 +822,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendTextsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendTextsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontLayoutTextsSegments' transient property
   //····················································································································
 
@@ -958,26 +867,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontLayoutTextsSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLayoutTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLayoutTextsSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLayoutTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontLayoutTextsSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1031,26 +920,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLayoutTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLayoutTextsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLayoutTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLayoutTextsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backLegendTextsSegments' transient property
   //····················································································································
 
@@ -1096,26 +965,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backLegendTextsSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backLegendTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLegendTextsSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLegendTextsSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1169,26 +1018,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLegendTextsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLegendTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLegendTextsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backLayoutTextsSegments' transient property
   //····················································································································
 
@@ -1234,26 +1063,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backLayoutTextsSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLayoutTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLayoutTextsSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLayoutTextsSegments.apply { (_ observer : EBEvent) in
-        managedObject.backLayoutTextsSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1307,26 +1116,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLayoutTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLayoutTextsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backLayoutTextsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backLayoutTextsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'internalBoardsLimitsSegments' transient property
   //····················································································································
 
@@ -1372,26 +1161,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_internalBoardsLimitsSegments.apply { (_ observer : EBEvent) in
-        managedObject.internalBoardsLimitsSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_internalBoardsLimitsSegments.apply { (_ observer : EBEvent) in
-        managedObject.internalBoardsLimitsSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1445,26 +1214,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_internalBoardsLimitsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.internalBoardsLimitsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_internalBoardsLimitsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.internalBoardsLimitsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drillSegments' transient property
   //····················································································································
 
@@ -1510,26 +1259,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.drillSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_drillSegments.apply { (_ observer : EBEvent) in
-        managedObject.drillSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_drillSegments.apply { (_ observer : EBEvent) in
-        managedObject.drillSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1583,26 +1312,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_holesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_holesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.holesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_holesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.holesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'viaShapes' transient property
   //····················································································································
 
@@ -1648,26 +1357,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.viaShapes_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viaShapes_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaShapes.apply { (_ observer : EBEvent) in
-        managedObject.viaShapes_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaShapes_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaShapes.apply { (_ observer : EBEvent) in
-        managedObject.viaShapes_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1721,26 +1410,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_viasBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_viasBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.viasBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viasBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_viasBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.viasBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontPadArray' transient property
   //····················································································································
 
@@ -1786,26 +1455,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontPadArray_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPadArray.apply { (_ observer : EBEvent) in
-        managedObject.frontPadArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPadArray.apply { (_ observer : EBEvent) in
-        managedObject.frontPadArray_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1859,26 +1508,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPadsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontPadsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPadsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontPadsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backPadArray' transient property
   //····················································································································
 
@@ -1924,26 +1553,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backPadArray_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPadArray.apply { (_ observer : EBEvent) in
-        managedObject.backPadArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPadArray.apply { (_ observer : EBEvent) in
-        managedObject.backPadArray_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1997,26 +1606,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backPadsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPadsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backPadsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPadsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backPadsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardLimits' transient property
   //····················································································································
 
@@ -2062,26 +1651,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.boardLimits_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimits_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimits.apply { (_ observer : EBEvent) in
-        managedObject.boardLimits_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimits_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimits.apply { (_ observer : EBEvent) in
-        managedObject.boardLimits_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2135,26 +1704,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitsBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitsBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitsBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backComponentNameSegments' transient property
   //····················································································································
 
@@ -2200,26 +1749,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backComponentNameSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentNameSegments.apply { (_ observer : EBEvent) in
-        managedObject.backComponentNameSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentNameSegments.apply { (_ observer : EBEvent) in
-        managedObject.backComponentNameSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2273,26 +1802,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentNamesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backComponentNamesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentNamesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backComponentNamesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontComponentNameSegments' transient property
   //····················································································································
 
@@ -2338,26 +1847,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontComponentNameSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentNameSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentNameSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentNameSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentNameSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2411,26 +1900,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentNamesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentNamesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentNamesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentNamesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontComponentValueSegments' transient property
   //····················································································································
 
@@ -2476,26 +1945,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontComponentValueSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontComponentValueSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentValueSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentValueSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentValueSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentValueSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2549,26 +1998,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentValuesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentValuesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontComponentValuesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontComponentValuesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backComponentValueSegments' transient property
   //····················································································································
 
@@ -2614,26 +2043,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backComponentValueSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backComponentValueSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentValueSegments.apply { (_ observer : EBEvent) in
-        managedObject.backComponentValueSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentValueSegments.apply { (_ observer : EBEvent) in
-        managedObject.backComponentValueSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2687,26 +2096,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentValuesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backComponentValuesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backComponentValuesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backComponentValuesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backTrackSegments' transient property
   //····················································································································
 
@@ -2752,26 +2141,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backTrackSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backTrackSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backTrackSegments.apply { (_ observer : EBEvent) in
-        managedObject.backTrackSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backTrackSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backTrackSegments.apply { (_ observer : EBEvent) in
-        managedObject.backTrackSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2825,26 +2194,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backTracksBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backTracksBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backTracksBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backTracksBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontTrackSegments' transient property
   //····················································································································
 
@@ -2890,26 +2239,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontTrackSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontTrackSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontTrackSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontTrackSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontTrackSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontTrackSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontTrackSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2963,26 +2292,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontTracksBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontTracksBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontTracksBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontTracksBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontPackagesSegments' transient property
   //····················································································································
 
@@ -3028,26 +2337,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.frontPackagesSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontPackagesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPackagesSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontPackagesSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPackagesSegments.apply { (_ observer : EBEvent) in
-        managedObject.frontPackagesSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -3101,26 +2390,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPackagesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontPackagesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontPackagesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontPackagesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backPackagesSegments' transient property
   //····················································································································
 
@@ -3166,26 +2435,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.backPackagesSegments_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backPackagesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPackagesSegments.apply { (_ observer : EBEvent) in
-        managedObject.backPackagesSegments_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPackagesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPackagesSegments.apply { (_ observer : EBEvent) in
-        managedObject.backPackagesSegments_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -3239,26 +2488,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPackagesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backPackagesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_backPackagesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.backPackagesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
@@ -3304,26 +2533,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.instanceCount_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
-        managedObject.instanceCount_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
-        managedObject.instanceCount_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -3377,26 +2586,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendLinesBezierPaths_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesBezierPaths.apply { (_ observer : EBEvent) in
-        managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'imageForModel' transient property
   //····················································································································
 
@@ -3446,26 +2635,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_imageForModel_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageForModel.apply { (_ observer : EBEvent) in
-        managedObject.imageForModel_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_imageForModel_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageForModel.apply { (_ observer : EBEvent) in
-        managedObject.imageForModel_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'imageForInstances' transient property
   //····················································································································
 
@@ -3511,26 +2680,6 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       break
     case .single (let v) :
       v?.imageForInstances_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_imageForInstances_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageForInstances.apply { (_ observer : EBEvent) in
-        managedObject.imageForInstances_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_imageForInstances_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageForInstances.apply { (_ observer : EBEvent) in
-        managedObject.imageForInstances_property.removeEBObserver (observer)
-      }
     }
   }
 

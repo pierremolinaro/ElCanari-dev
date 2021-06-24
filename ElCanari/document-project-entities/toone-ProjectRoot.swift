@@ -256,6 +256,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkName' stored property
   //····················································································································
 
+//  private final var mArtworkName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mArtworkName = EBWeakEventSet ()
 
   //····················································································································
@@ -305,6 +306,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mArtworkVersion' stored property
   //····················································································································
 
+//  private final var mArtworkVersion_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mArtworkVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -354,6 +356,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mPDFBoardBackgroundColor' stored property
   //····················································································································
 
+//  private final var mPDFBoardBackgroundColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mPDFBoardBackgroundColor = EBWeakEventSet ()
 
   //····················································································································
@@ -403,6 +406,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mCheckClearanceBetweenPadsOfSameNet' stored property
   //····················································································································
 
+//  private final var mCheckClearanceBetweenPadsOfSameNet_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mCheckClearanceBetweenPadsOfSameNet = EBWeakEventSet ()
 
   //····················································································································
@@ -452,6 +456,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingIsSuccess' stored property
   //····················································································································
 
+//  private final var mLastERCCheckingIsSuccess_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mLastERCCheckingIsSuccess = EBWeakEventSet ()
 
   //····················································································································
@@ -501,6 +506,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLastERCCheckingSignature' stored property
   //····················································································································
 
+//  private final var mLastERCCheckingSignature_property = EBGenericPropertyProxy <UInt32?> ()
   private final var mObserversOf_mLastERCCheckingSignature = EBWeakEventSet ()
 
   //····················································································································
@@ -550,6 +556,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewTrack' stored property
   //····················································································································
 
+//  private final var mBoardSideForNewTrack_property = EBGenericPropertyProxy <TrackSide?> ()
   private final var mObserversOf_mBoardSideForNewTrack = EBWeakEventSet ()
 
   //····················································································································
@@ -599,6 +606,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDirectionForNewTrack' stored property
   //····················································································································
 
+//  private final var mDirectionForNewTrack_property = EBGenericPropertyProxy <TrackCreationDirection?> ()
   private final var mObserversOf_mDirectionForNewTrack = EBWeakEventSet ()
 
   //····················································································································
@@ -648,6 +656,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewText' stored property
   //····················································································································
 
+//  private final var mBoardLayerForNewText_property = EBGenericPropertyProxy <BoardTextLayer?> ()
   private final var mObserversOf_mBoardLayerForNewText = EBWeakEventSet ()
 
   //····················································································································
@@ -697,6 +706,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLayerForNewLine' stored property
   //····················································································································
 
+//  private final var mBoardLayerForNewLine_property = EBGenericPropertyProxy <BoardLineLayer?> ()
   private final var mObserversOf_mBoardLayerForNewLine = EBWeakEventSet ()
 
   //····················································································································
@@ -746,6 +756,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSideForNewRestrictRectangle' stored property
   //····················································································································
 
+//  private final var mBoardSideForNewRestrictRectangle_property = EBGenericPropertyProxy <RestrictRectangleLayer?> ()
   private final var mObserversOf_mBoardSideForNewRestrictRectangle = EBWeakEventSet ()
 
   //····················································································································
@@ -795,6 +806,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutoRouterPreferredDirections' stored property
   //····················································································································
 
+//  private final var mAutoRouterPreferredDirections_property = EBGenericPropertyProxy <AutorouterPreferredDirections?> ()
   private final var mObserversOf_mAutoRouterPreferredDirections = EBWeakEventSet ()
 
   //····················································································································
@@ -844,6 +856,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterSnapAngle' stored property
   //····················································································································
 
+//  private final var mAutorouterSnapAngle_property = EBGenericPropertyProxy <AutorouterSnapAngle?> ()
   private final var mObserversOf_mAutorouterSnapAngle = EBWeakEventSet ()
 
   //····················································································································
@@ -893,6 +906,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteDirection' stored property
   //····················································································································
 
+//  private final var mRouteDirection_property = EBGenericPropertyProxy <RouteDirection?> ()
   private final var mObserversOf_mRouteDirection = EBWeakEventSet ()
 
   //····················································································································
@@ -942,6 +956,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRouteOrigin' stored property
   //····················································································································
 
+//  private final var mRouteOrigin_property = EBGenericPropertyProxy <RouteOrigin?> ()
   private final var mObserversOf_mRouteOrigin = EBWeakEventSet ()
 
   //····················································································································
@@ -991,6 +1006,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mAutorouterInterfaceMode' stored property
   //····················································································································
 
+//  private final var mAutorouterInterfaceMode_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mAutorouterInterfaceMode = EBWeakEventSet ()
 
   //····················································································································
@@ -1040,6 +1056,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mExportExistingTracksAndVias' stored property
   //····················································································································
 
+//  private final var mExportExistingTracksAndVias_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mExportExistingTracksAndVias = EBWeakEventSet ()
 
   //····················································································································
@@ -1089,6 +1106,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mTrackLengthUnit' stored property
   //····················································································································
 
+//  private final var mTrackLengthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mTrackLengthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1138,6 +1156,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearance' stored property
   //····················································································································
 
+//  private final var mLayoutClearance_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mLayoutClearance = EBWeakEventSet ()
 
   //····················································································································
@@ -1187,6 +1206,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mLayoutClearanceUnit' stored property
   //····················································································································
 
+//  private final var mLayoutClearanceUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mLayoutClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1236,6 +1256,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedInspector' stored property
   //····················································································································
 
+//  private final var mBoardSelectedInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -1285,6 +1306,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardHorizontalFlip' stored property
   //····················································································································
 
+//  private final var mBoardHorizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mBoardHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -1334,6 +1356,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardVerticalFlip' stored property
   //····················································································································
 
+//  private final var mBoardVerticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mBoardVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -1383,6 +1406,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStyle' stored property
   //····················································································································
 
+//  private final var mBoardGridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_mBoardGridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -1432,6 +1456,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridDisplayFactor' stored property
   //····················································································································
 
+//  private final var mBoardGridDisplayFactor_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -1481,6 +1506,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardZoom' stored property
   //····················································································································
 
+//  private final var mBoardZoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -1530,6 +1556,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStep' stored property
   //····················································································································
 
+//  private final var mBoardGridStep_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardGridStep = EBWeakEventSet ()
 
   //····················································································································
@@ -1579,6 +1606,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardGridStepUnit' stored property
   //····················································································································
 
+//  private final var mBoardGridStepUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1628,6 +1656,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mErrorOrWarningIssueSize' stored property
   //····················································································································
 
+//  private final var mErrorOrWarningIssueSize_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mErrorOrWarningIssueSize = EBWeakEventSet ()
 
   //····················································································································
@@ -1677,6 +1706,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mControlKeyHiliteDiameter' stored property
   //····················································································································
 
+//  private final var mControlKeyHiliteDiameter_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mControlKeyHiliteDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -1726,6 +1756,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDSNFileProposedName' stored property
   //····················································································································
 
+//  private final var mDSNFileProposedName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mDSNFileProposedName = EBWeakEventSet ()
 
   //····················································································································
@@ -1775,6 +1806,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidth' stored property
   //····················································································································
 
+//  private final var mBoardLimitsWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -1824,6 +1856,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsWidthUnit' stored property
   //····················································································································
 
+//  private final var mBoardLimitsWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1873,6 +1906,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearance' stored property
   //····················································································································
 
+//  private final var mBoardClearance_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardClearance = EBWeakEventSet ()
 
   //····················································································································
@@ -1922,6 +1956,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardClearanceUnit' stored property
   //····················································································································
 
+//  private final var mBoardClearanceUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardClearanceUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1971,6 +2006,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsSelectedInspector' stored property
   //····················································································································
 
+//  private final var mBoardLimitsSelectedInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsSelectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -2020,6 +2056,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsHorizontalFlip' stored property
   //····················································································································
 
+//  private final var mBoardLimitsHorizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mBoardLimitsHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -2069,6 +2106,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsVerticalFlip' stored property
   //····················································································································
 
+//  private final var mBoardLimitsVerticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mBoardLimitsVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -2118,6 +2156,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStyle' stored property
   //····················································································································
 
+//  private final var mBoardLimitsGridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_mBoardLimitsGridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -2167,6 +2206,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridDisplayFactor' stored property
   //····················································································································
 
+//  private final var mBoardLimitsGridDisplayFactor_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -2216,6 +2256,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsZoom' stored property
   //····················································································································
 
+//  private final var mBoardLimitsZoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -2265,6 +2306,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStep' stored property
   //····················································································································
 
+//  private final var mBoardLimitsGridStep_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsGridStep = EBWeakEventSet ()
 
   //····················································································································
@@ -2314,6 +2356,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsGridStepUnit' stored property
   //····················································································································
 
+//  private final var mBoardLimitsGridStepUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2363,6 +2406,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitsBoundingBoxUnit' stored property
   //····················································································································
 
+//  private final var mBoardLimitsBoundingBoxUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2412,6 +2456,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardPointsBoundingBoxUnit' stored property
   //····················································································································
 
+//  private final var mBoardPointsBoundingBoxUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardPointsBoundingBoxUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2461,6 +2506,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardSelectedCurveDisplayUnit' stored property
   //····················································································································
 
+//  private final var mBoardSelectedCurveDisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardSelectedCurveDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2510,6 +2556,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardLimitControlPointsDisplayUnit' stored property
   //····················································································································
 
+//  private final var mBoardLimitControlPointsDisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mBoardLimitControlPointsDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2559,6 +2606,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mBoardShape' stored property
   //····················································································································
 
+//  private final var mBoardShape_property = EBGenericPropertyProxy <BoardShape?> ()
   private final var mObserversOf_mBoardShape = EBWeakEventSet ()
 
   //····················································································································
@@ -2608,6 +2656,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidth' stored property
   //····················································································································
 
+//  private final var mRectangularBoardWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mRectangularBoardWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -2657,6 +2706,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardWidthUnit' stored property
   //····················································································································
 
+//  private final var mRectangularBoardWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mRectangularBoardWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2706,6 +2756,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeight' stored property
   //····················································································································
 
+//  private final var mRectangularBoardHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mRectangularBoardHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -2755,6 +2806,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRectangularBoardHeightUnit' stored property
   //····················································································································
 
+//  private final var mRectangularBoardHeightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mRectangularBoardHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2804,6 +2856,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mDefaultNetClassName' stored property
   //····················································································································
 
+//  private final var mDefaultNetClassName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mDefaultNetClassName = EBWeakEventSet ()
 
   //····················································································································
@@ -2853,6 +2906,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedPageIndex' stored property
   //····················································································································
 
+//  private final var mSelectedPageIndex_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -2902,6 +2956,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSelectedSchematicInspector' stored property
   //····················································································································
 
+//  private final var mSelectedSchematicInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSelectedSchematicInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -2951,6 +3006,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicTitle' stored property
   //····················································································································
 
+//  private final var mSchematicTitle_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mSchematicTitle = EBWeakEventSet ()
 
   //····················································································································
@@ -3000,6 +3056,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVersion' stored property
   //····················································································································
 
+//  private final var mSchematicVersion_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mSchematicVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -3049,6 +3106,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicDate' stored property
   //····················································································································
 
+//  private final var mSchematicDate_property = EBGenericPropertyProxy <Date?> ()
   private final var mObserversOf_mSchematicDate = EBWeakEventSet ()
 
   //····················································································································
@@ -3098,6 +3156,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicHorizontalFlip' stored property
   //····················································································································
 
+//  private final var mSchematicHorizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mSchematicHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -3147,6 +3206,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicVerticalFlip' stored property
   //····················································································································
 
+//  private final var mSchematicVerticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mSchematicVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -3196,6 +3256,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicZoom' stored property
   //····················································································································
 
+//  private final var mSchematicZoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -3245,6 +3306,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridStyle' stored property
   //····················································································································
 
+//  private final var mSchematicGridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_mSchematicGridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -3294,6 +3356,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicGridDisplayFactor' stored property
   //····················································································································
 
+//  private final var mSchematicGridDisplayFactor_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -3343,6 +3406,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidth' stored property
   //····················································································································
 
+//  private final var mSchematicCustomWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicCustomWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -3392,6 +3456,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomWidthUnit' stored property
   //····················································································································
 
+//  private final var mSchematicCustomWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicCustomWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -3441,6 +3506,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeight' stored property
   //····················································································································
 
+//  private final var mSchematicCustomHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicCustomHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -3490,6 +3556,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicCustomHeightUnit' stored property
   //····················································································································
 
+//  private final var mSchematicCustomHeightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSchematicCustomHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -3539,6 +3606,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mSchematicSheetOrientation' stored property
   //····················································································································
 
+//  private final var mSchematicSheetOrientation_property = EBGenericPropertyProxy <SchematicSheetOrientation?> ()
   private final var mObserversOf_mSchematicSheetOrientation = EBWeakEventSet ()
 
   //····················································································································
@@ -3588,6 +3656,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplay' stored property
   //····················································································································
 
+//  private final var mRastnetDisplay_property = EBGenericPropertyProxy <RastnetDisplay?> ()
   private final var mObserversOf_mRastnetDisplay = EBWeakEventSet ()
 
   //····················································································································
@@ -3637,6 +3706,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedNetName' stored property
   //····················································································································
 
+//  private final var mRastnetDisplayedNetName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mRastnetDisplayedNetName = EBWeakEventSet ()
 
   //····················································································································
@@ -3686,6 +3756,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //   Observers of 'mRastnetDisplayedComponentName' stored property
   //····················································································································
 
+//  private final var mRastnetDisplayedComponentName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mRastnetDisplayedComponentName = EBWeakEventSet ()
 
   //····················································································································
@@ -3781,26 +3852,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardGridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.boardGridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardGridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.boardGridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardLimitsGridStepMultipliedByDisplayFactor' transient property
   //····················································································································
 
@@ -3846,26 +3897,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitsGridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitsGridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitsGridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -3919,26 +3950,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardShapeIsRectangular_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
-        managedObject.boardShapeIsRectangular_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardShapeIsRectangular_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardShapeIsRectangular.apply { (_ observer : EBEvent) in
-        managedObject.boardShapeIsRectangular_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectedSheetIssues' transient property
   //····················································································································
 
@@ -3984,26 +3995,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.selectedSheetIssues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectedSheetIssues_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
-        managedObject.selectedSheetIssues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectedSheetIssues_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectedSheetIssues.apply { (_ observer : EBEvent) in
-        managedObject.selectedSheetIssues_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4057,26 +4048,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'connexionWarningString' transient property
   //····················································································································
 
@@ -4122,26 +4093,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.connexionWarningString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_connexionWarningString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
-        managedObject.connexionWarningString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connexionWarningString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionWarningString.apply { (_ observer : EBEvent) in
-        managedObject.connexionWarningString_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4195,26 +4146,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_connexionErrorString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
-        managedObject.connexionErrorString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connexionErrorString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionErrorString.apply { (_ observer : EBEvent) in
-        managedObject.connexionErrorString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'sheetIndexes' transient property
   //····················································································································
 
@@ -4260,26 +4191,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.sheetIndexes_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sheetIndexes_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
-        managedObject.sheetIndexes_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sheetIndexes_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetIndexes.apply { (_ observer : EBEvent) in
-        managedObject.sheetIndexes_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4333,26 +4244,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
-        managedObject.netsDescription_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
-        managedObject.netsDescription_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardIssues' transient property
   //····················································································································
 
@@ -4398,26 +4289,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardIssues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardIssues_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
-        managedObject.boardIssues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardIssues_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardIssues.apply { (_ observer : EBEvent) in
-        managedObject.boardIssues_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4471,26 +4342,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'ercStatusImage' transient property
   //····················································································································
 
@@ -4536,26 +4387,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.ercStatusImage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_ercStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.ercStatusImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_ercStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_ercStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.ercStatusImage_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4609,26 +4440,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_ercStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.ercStatusMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_ercStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_ercStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.ercStatusMessage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'viaCountString' transient property
   //····················································································································
 
@@ -4674,26 +4485,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.viaCountString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viaCountString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaCountString.apply { (_ observer : EBEvent) in
-        managedObject.viaCountString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaCountString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaCountString.apply { (_ observer : EBEvent) in
-        managedObject.viaCountString_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4747,26 +4538,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_trackCountString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackCountString.apply { (_ observer : EBEvent) in
-        managedObject.trackCountString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_trackCountString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackCountString.apply { (_ observer : EBEvent) in
-        managedObject.trackCountString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'trackLengthString' transient property
   //····················································································································
 
@@ -4812,26 +4583,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.trackLengthString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_trackLengthString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackLengthString.apply { (_ observer : EBEvent) in
-        managedObject.trackLengthString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_trackLengthString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackLengthString.apply { (_ observer : EBEvent) in
-        managedObject.trackLengthString_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -4885,26 +4636,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.boardStatusImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.boardStatusImage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardStatusMessage' transient property
   //····················································································································
 
@@ -4950,26 +4681,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardStatusMessage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.boardStatusMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.boardStatusMessage_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5023,26 +4734,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_interiorBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.interiorBoundBox_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_interiorBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_interiorBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.interiorBoundBox_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardBoundBox' transient property
   //····················································································································
 
@@ -5088,26 +4779,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardBoundBox_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardBoundBox_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.boardBoundBox_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardBoundBox_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardBoundBox.apply { (_ observer : EBEvent) in
-        managedObject.boardBoundBox_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5161,26 +4832,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardInteriorTop_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorTop_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardInteriorTop_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorTop.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorTop_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardInteriorBottom' transient property
   //····················································································································
 
@@ -5226,26 +4877,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardInteriorBottom_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardInteriorBottom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorBottom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardInteriorBottom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorBottom_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5299,26 +4930,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardInteriorLeft_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorLeft_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardInteriorLeft_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorLeft_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardInteriorRight' transient property
   //····················································································································
 
@@ -5364,26 +4975,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardInteriorRight_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardInteriorRight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorRight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardInteriorRight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardInteriorRight.apply { (_ observer : EBEvent) in
-        managedObject.boardInteriorRight_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5437,26 +5028,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardLimitBorderTop_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderTop_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitBorderTop_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderTop.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderTop_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardLimitBorderBottom' transient property
   //····················································································································
 
@@ -5502,26 +5073,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardLimitBorderBottom_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimitBorderBottom_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderBottom_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitBorderBottom_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderBottom.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderBottom_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5575,26 +5126,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_boardLimitBorderLeft_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderLeft_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitBorderLeft_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderLeft.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderLeft_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardLimitBorderRight' transient property
   //····················································································································
 
@@ -5640,26 +5171,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.boardLimitBorderRight_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimitBorderRight_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderRight_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitBorderRight_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_boardLimitBorderRight.apply { (_ observer : EBEvent) in
-        managedObject.boardLimitBorderRight_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5713,26 +5224,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_borderElementCountString_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderElementCountString.apply { (_ observer : EBEvent) in
-        managedObject.borderElementCountString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_borderElementCountString_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderElementCountString.apply { (_ observer : EBEvent) in
-        managedObject.borderElementCountString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'borderOutlineBackground' transient property
   //····················································································································
 
@@ -5778,26 +5269,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.borderOutlineBackground_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_borderOutlineBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBEvent) in
-        managedObject.borderOutlineBackground_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_borderOutlineBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderOutlineBackground.apply { (_ observer : EBEvent) in
-        managedObject.borderOutlineBackground_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5851,26 +5322,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_borderViewBackground_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
-        managedObject.borderViewBackground_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_borderViewBackground_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_borderViewBackground.apply { (_ observer : EBEvent) in
-        managedObject.borderViewBackground_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'deviceNames' transient property
   //····················································································································
 
@@ -5916,26 +5367,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.deviceNames_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_deviceNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_deviceNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_deviceNames.apply { (_ observer : EBEvent) in
-        managedObject.deviceNames_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -5989,26 +5420,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_allClassNames_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
-        managedObject.allClassNames_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_allClassNames_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_allClassNames.apply { (_ observer : EBEvent) in
-        managedObject.allClassNames_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'sheetGeometry' transient property
   //····················································································································
 
@@ -6054,26 +5465,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.sheetGeometry_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sheetGeometry_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
-        managedObject.sheetGeometry_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sheetGeometry_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetGeometry.apply { (_ observer : EBEvent) in
-        managedObject.sheetGeometry_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -6127,26 +5518,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_schematicBackgroundDisplay_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.schematicBackgroundDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_schematicBackgroundDisplay_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.schematicBackgroundDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
@@ -6192,26 +5563,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.netWarningCount_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
-        managedObject.netWarningCount_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
-        managedObject.netWarningCount_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -6265,26 +5616,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_netNamesArray_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netNamesArray.apply { (_ observer : EBEvent) in
-        managedObject.netNamesArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netNamesArray_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_netNamesArray.apply { (_ observer : EBEvent) in
-        managedObject.netNamesArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'unplacedSymbols' transient property
   //····················································································································
 
@@ -6330,26 +5661,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.unplacedSymbols_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_unplacedSymbols_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedSymbols_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedSymbols.apply { (_ observer : EBEvent) in
-        managedObject.unplacedSymbols_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -6403,26 +5714,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_unplacedPackages_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_unplacedPackages_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_unplacedPackages.apply { (_ observer : EBEvent) in
-        managedObject.unplacedPackages_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'componentsPlacedInBoard' transient property
   //····················································································································
 
@@ -6468,26 +5759,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.componentsPlacedInBoard_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_componentsPlacedInBoard_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBEvent) in
-        managedObject.componentsPlacedInBoard_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_componentsPlacedInBoard_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_componentsPlacedInBoard.apply { (_ observer : EBEvent) in
-        managedObject.componentsPlacedInBoard_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -6541,26 +5812,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_placedComponentNameArray_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBEvent) in
-        managedObject.placedComponentNameArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_placedComponentNameArray_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_placedComponentNameArray.apply { (_ observer : EBEvent) in
-        managedObject.placedComponentNameArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'schematicHasErrorOrWarning' transient property
   //····················································································································
 
@@ -6606,26 +5857,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.schematicHasErrorOrWarning_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_schematicHasErrorOrWarning_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
-        managedObject.schematicHasErrorOrWarning_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_schematicHasErrorOrWarning_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicHasErrorOrWarning.apply { (_ observer : EBEvent) in
-        managedObject.schematicHasErrorOrWarning_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -6679,26 +5910,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_schematicStatusMessage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_schematicStatusMessage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicStatusMessage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusMessage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'schematicStatusImage' transient property
   //····················································································································
 
@@ -6744,26 +5955,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       break
     case .single (let v) :
       v?.schematicStatusImage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_schematicStatusImage_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_schematicStatusImage_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_schematicStatusImage.apply { (_ observer : EBEvent) in
-        managedObject.schematicStatusImage_property.removeEBObserver (observer)
-      }
     }
   }
 

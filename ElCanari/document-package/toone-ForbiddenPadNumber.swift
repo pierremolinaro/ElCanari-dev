@@ -28,6 +28,7 @@ class ReadOnlyObject_ForbiddenPadNumber : ReadOnlyAbstractObjectProperty <Forbid
   //   Observers of 'padNumber' stored property
   //····················································································································
 
+//  private final var padNumber_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_padNumber = EBWeakEventSet ()
 
   //····················································································································

@@ -44,6 +44,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -93,6 +94,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mWidth' stored property
   //····················································································································
 
+//  private final var mWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -142,6 +144,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mHeight' stored property
   //····················································································································
 
+//  private final var mHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -191,6 +194,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
 
+//  private final var mIsInFrontLayer_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -240,6 +244,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
 
+//  private final var mIsInBackLayer_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -289,6 +294,7 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -384,26 +390,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -453,26 +439,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
@@ -518,26 +484,6 @@ class ReadOnlyObject_BoardRestrictRectangle : ReadOnlyAbstractObjectProperty <Bo
       break
     case .single (let v) :
       v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<BoardRestrictRectangle>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
-      }
     }
   }
 

@@ -82,26 +82,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_pinName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
-        managedObject.pinName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinName.apply { (_ observer : EBEvent) in
-        managedObject.pinName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
@@ -147,26 +127,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
       break
     case .single (let v) :
       v?.symbolName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
-        managedObject.symbolName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
-        managedObject.symbolName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -220,26 +180,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_pinQualifiedName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
-        managedObject.pinQualifiedName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_pinQualifiedName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBEvent) in
-        managedObject.pinQualifiedName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
@@ -289,26 +229,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'numberShape' transient property
   //····················································································································
 
@@ -354,26 +274,6 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
       break
     case .single (let v) :
       v?.numberShape_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_numberShape_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
-        managedObject.numberShape_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_numberShape_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_numberShape.apply { (_ observer : EBEvent) in
-        managedObject.numberShape_property.removeEBObserver (observer)
-      }
     }
   }
 

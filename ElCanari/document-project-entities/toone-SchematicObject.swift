@@ -84,26 +84,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   }
 
   //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
@@ -149,26 +129,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
       break
     case .single (let v) :
       v?.connectedPoints_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -222,26 +182,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   }
 
   //····················································································································
-
-  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
-        managedObject.sheetDescriptor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
-        managedObject.sheetDescriptor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -287,26 +227,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -360,26 +280,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'isPlacedInSchematic' transient property
   //····················································································································
 
@@ -425,26 +325,6 @@ class ReadOnlyObject_SchematicObject : ReadOnlyAbstractObjectProperty <Schematic
       break
     case .single (let v) :
       v?.isPlacedInSchematic_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_isPlacedInSchematic_toElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInSchematic_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isPlacedInSchematic_fromElementsOfSet (_ inSet : Set<SchematicObject>) {
-    for managedObject in inSet {
-      self.mObserversOf_isPlacedInSchematic.apply { (_ observer : EBEvent) in
-        managedObject.isPlacedInSchematic_property.removeEBObserver (observer)
-      }
     }
   }
 

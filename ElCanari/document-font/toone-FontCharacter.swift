@@ -42,6 +42,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'codePoint' stored property
   //····················································································································
 
+//  private final var codePoint_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_codePoint = EBWeakEventSet ()
 
   //····················································································································
@@ -91,6 +92,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'advance' stored property
   //····················································································································
 
+//  private final var advance_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_advance = EBWeakEventSet ()
 
   //····················································································································
@@ -140,6 +142,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenNoSegment' stored property
   //····················································································································
 
+//  private final var mWarnsWhenNoSegment_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
 
   //····················································································································
@@ -189,6 +192,7 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
   //····················································································································
 
+//  private final var mWarnsWhenAdvanceIsZero_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
 
   //····················································································································
@@ -284,26 +288,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   }
 
   //····················································································································
-
-  final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply { (_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
@@ -349,26 +333,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       break
     case .single (let v) :
       v?.gerberCode_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
-        managedObject.gerberCode_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply { (_ observer : EBEvent) in
-        managedObject.gerberCode_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -422,26 +386,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   }
 
   //····················································································································
-
-  final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply { (_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -487,26 +431,6 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

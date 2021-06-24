@@ -138,6 +138,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
+//  private final var selectedPageIndex_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -187,6 +188,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
+//  private final var selectedInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -236,6 +238,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'comments' stored property
   //····················································································································
 
+//  private final var comments_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -285,6 +288,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'program' stored property
   //····················································································································
 
+//  private final var program_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_program = EBWeakEventSet ()
 
   //····················································································································
@@ -334,6 +338,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
+//  private final var horizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -383,6 +388,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
+//  private final var verticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -432,6 +438,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
+//  private final var gridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -481,6 +488,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'gridStep' stored property
   //····················································································································
 
+//  private final var gridStep_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_gridStep = EBWeakEventSet ()
 
   //····················································································································
@@ -530,6 +538,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'gridStepUnit' stored property
   //····················································································································
 
+//  private final var gridStepUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_gridStepUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -579,6 +588,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'gridDisplayFactor' stored property
   //····················································································································
 
+//  private final var gridDisplayFactor_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_gridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -628,6 +638,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'zoom' stored property
   //····················································································································
 
+//  private final var zoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
@@ -677,6 +688,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageOpacity' stored property
   //····················································································································
 
+//  private final var mModelImageOpacity_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mModelImageOpacity = EBWeakEventSet ()
 
   //····················································································································
@@ -726,6 +738,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageHorizontalFlip' stored property
   //····················································································································
 
+//  private final var mModelImagePageHorizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mModelImagePageHorizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -775,6 +788,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageVerticalFlip' stored property
   //····················································································································
 
+//  private final var mModelImagePageVerticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mModelImagePageVerticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -824,6 +838,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStyle' stored property
   //····················································································································
 
+//  private final var mModelImagePageGridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_mModelImagePageGridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -873,6 +888,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStep' stored property
   //····················································································································
 
+//  private final var mModelImagePageGridStep_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageGridStep = EBWeakEventSet ()
 
   //····················································································································
@@ -922,6 +938,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridStepUnit' stored property
   //····················································································································
 
+//  private final var mModelImagePageGridStepUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageGridStepUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -971,6 +988,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageGridDisplayFactor' stored property
   //····················································································································
 
+//  private final var mModelImagePageGridDisplayFactor_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageGridDisplayFactor = EBWeakEventSet ()
 
   //····················································································································
@@ -1020,6 +1038,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageZoom' stored property
   //····················································································································
 
+//  private final var mModelImagePageZoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageZoom = EBWeakEventSet ()
 
   //····················································································································
@@ -1069,6 +1088,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageXPlacardUnit' stored property
   //····················································································································
 
+//  private final var mModelImagePageXPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageXPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1118,6 +1138,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePageYPlacardUnit' stored property
   //····················································································································
 
+//  private final var mModelImagePageYPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePageYPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1167,6 +1188,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageSecondPointXUnit' stored property
   //····················································································································
 
+//  private final var mModelImageSecondPointXUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImageSecondPointXUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1216,6 +1238,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageSecondPointYUnit' stored property
   //····················································································································
 
+//  private final var mModelImageSecondPointYUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImageSecondPointYUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -1265,6 +1288,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointXOnLock' stored property
   //····················································································································
 
+//  private final var mModelImageFirstPointXOnLock_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImageFirstPointXOnLock = EBWeakEventSet ()
 
   //····················································································································
@@ -1314,6 +1338,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageFirstPointYOnLock' stored property
   //····················································································································
 
+//  private final var mModelImageFirstPointYOnLock_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImageFirstPointYOnLock = EBWeakEventSet ()
 
   //····················································································································
@@ -1363,6 +1388,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePointsDxOnLock' stored property
   //····················································································································
 
+//  private final var mModelImagePointsDxOnLock_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePointsDxOnLock = EBWeakEventSet ()
 
   //····················································································································
@@ -1412,6 +1438,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImagePointsDyOnLock' stored property
   //····················································································································
 
+//  private final var mModelImagePointsDyOnLock_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelImagePointsDyOnLock = EBWeakEventSet ()
 
   //····················································································································
@@ -1461,6 +1488,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageScale' stored property
   //····················································································································
 
+//  private final var mModelImageScale_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mModelImageScale = EBWeakEventSet ()
 
   //····················································································································
@@ -1510,6 +1538,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageRotationInRadians' stored property
   //····················································································································
 
+//  private final var mModelImageRotationInRadians_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mModelImageRotationInRadians = EBWeakEventSet ()
 
   //····················································································································
@@ -1559,6 +1588,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitFirstModelPointX' stored property
   //····················································································································
 
+//  private final var mDimensionUnitFirstModelPointX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mDimensionUnitFirstModelPointX = EBWeakEventSet ()
 
   //····················································································································
@@ -1608,6 +1638,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitFirstModelPointY' stored property
   //····················································································································
 
+//  private final var mDimensionUnitFirstModelPointY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mDimensionUnitFirstModelPointY = EBWeakEventSet ()
 
   //····················································································································
@@ -1657,6 +1688,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitSecondModelPointDx' stored property
   //····················································································································
 
+//  private final var mDimensionUnitSecondModelPointDx_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mDimensionUnitSecondModelPointDx = EBWeakEventSet ()
 
   //····················································································································
@@ -1706,6 +1738,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mDimensionUnitSecondModelPointDy' stored property
   //····················································································································
 
+//  private final var mDimensionUnitSecondModelPointDy_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mDimensionUnitSecondModelPointDy = EBWeakEventSet ()
 
   //····················································································································
@@ -1755,6 +1788,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelPointsCircleRadius' stored property
   //····················································································································
 
+//  private final var mModelPointsCircleRadius_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mModelPointsCircleRadius = EBWeakEventSet ()
 
   //····················································································································
@@ -1804,6 +1838,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mPointsAreLocked' stored property
   //····················································································································
 
+//  private final var mPointsAreLocked_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mPointsAreLocked = EBWeakEventSet ()
 
   //····················································································································
@@ -1853,6 +1888,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'knobSizeMultpliedByTen' stored property
   //····················································································································
 
+//  private final var knobSizeMultpliedByTen_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_knobSizeMultpliedByTen = EBWeakEventSet ()
 
   //····················································································································
@@ -1902,6 +1938,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'padNumbering' stored property
   //····················································································································
 
+//  private final var padNumbering_property = EBGenericPropertyProxy <PadNumbering?> ()
   private final var mObserversOf_padNumbering = EBWeakEventSet ()
 
   //····················································································································
@@ -1951,6 +1988,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'counterClockNumberingStartAngle' stored property
   //····················································································································
 
+//  private final var counterClockNumberingStartAngle_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_counterClockNumberingStartAngle = EBWeakEventSet ()
 
   //····················································································································
@@ -2000,6 +2038,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
+//  private final var xPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2049,6 +2088,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
+//  private final var yPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -2098,6 +2138,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observers of 'mModelImageData' stored property
   //····················································································································
 
+//  private final var mModelImageData_property = EBGenericPropertyProxy <Data?> ()
   private final var mObserversOf_mModelImageData = EBWeakEventSet ()
 
   //····················································································································
@@ -2193,26 +2234,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_freePadNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_freePadNumbering.apply { (_ observer : EBEvent) in
-        managedObject.freePadNumbering_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_freePadNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_freePadNumbering.apply { (_ observer : EBEvent) in
-        managedObject.freePadNumbering_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'counterClockNumbering' transient property
   //····················································································································
 
@@ -2258,26 +2279,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.counterClockNumbering_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_counterClockNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
-        managedObject.counterClockNumbering_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_counterClockNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_counterClockNumbering.apply { (_ observer : EBEvent) in
-        managedObject.counterClockNumbering_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2331,26 +2332,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply { (_ observer : EBEvent) in
-        managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'secondPointX' transient property
   //····················································································································
 
@@ -2396,26 +2377,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.secondPointX_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_secondPointX_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_secondPointX.apply { (_ observer : EBEvent) in
-        managedObject.secondPointX_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_secondPointX_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_secondPointX.apply { (_ observer : EBEvent) in
-        managedObject.secondPointX_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2469,26 +2430,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_secondPointY_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
-        managedObject.secondPointY_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_secondPointY_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_secondPointY.apply { (_ observer : EBEvent) in
-        managedObject.secondPointY_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'lockImageView' transient property
   //····················································································································
 
@@ -2534,26 +2475,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.lockImageView_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_lockImageView_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
-        managedObject.lockImageView_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_lockImageView_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_lockImageView.apply { (_ observer : EBEvent) in
-        managedObject.lockImageView_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2607,26 +2528,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backgroundImagePageBackgroundDisplay' transient property
   //····················································································································
 
@@ -2672,26 +2573,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.backgroundImagePageBackgroundDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backgroundImagePageBackgroundDisplay_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.backgroundImagePageBackgroundDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backgroundImagePageBackgroundDisplay_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_backgroundImagePageBackgroundDisplay.apply { (_ observer : EBEvent) in
-        managedObject.backgroundImagePageBackgroundDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2745,26 +2626,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_modelImageSizeString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
-        managedObject.modelImageSizeString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_modelImageSizeString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_modelImageSizeString.apply { (_ observer : EBEvent) in
-        managedObject.modelImageSizeString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'hasModelImage' transient property
   //····················································································································
 
@@ -2810,26 +2671,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.hasModelImage_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_hasModelImage_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
-        managedObject.hasModelImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_hasModelImage_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_hasModelImage.apply { (_ observer : EBEvent) in
-        managedObject.hasModelImage_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -2883,26 +2724,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_masterPadObjectIndexArray_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
-        managedObject.masterPadObjectIndexArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_masterPadObjectIndexArray_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_masterPadObjectIndexArray.apply { (_ observer : EBEvent) in
-        managedObject.masterPadObjectIndexArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -2948,26 +2769,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -3021,26 +2822,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
-        managedObject.noIssue_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
-        managedObject.noIssue_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'segmentedControlSegmentIssueImage' transient property
   //····················································································································
 
@@ -3090,26 +2871,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_segmentedControlSegmentIssueImage_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentedControlSegmentIssueImage_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueImage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'segmentedControlSegmentIssueString' transient property
   //····················································································································
 
@@ -3155,26 +2916,6 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       break
     case .single (let v) :
       v?.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_segmentedControlSegmentIssueString_toElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentedControlSegmentIssueString_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueString_property.removeEBObserver (observer)
-      }
     }
   }
 

@@ -48,6 +48,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mCenterX' stored property
   //····················································································································
 
+//  private final var mCenterX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCenterX = EBWeakEventSet ()
 
   //····················································································································
@@ -97,6 +98,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mCenterY' stored property
   //····················································································································
 
+//  private final var mCenterY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCenterY = EBWeakEventSet ()
 
   //····················································································································
@@ -146,6 +148,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mWidth' stored property
   //····················································································································
 
+//  private final var mWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -195,6 +198,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mHeight' stored property
   //····················································································································
 
+//  private final var mHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -244,6 +248,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mHoleWidth' stored property
   //····················································································································
 
+//  private final var mHoleWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mHoleWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -293,6 +298,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mHoleHeight' stored property
   //····················································································································
 
+//  private final var mHoleHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mHoleHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -342,6 +348,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mShape' stored property
   //····················································································································
 
+//  private final var mShape_property = EBGenericPropertyProxy <PadShape?> ()
   private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
@@ -391,6 +398,7 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   //   Observers of 'mStyle' stored property
   //····················································································································
 
+//  private final var mStyle_property = EBGenericPropertyProxy <SlavePadStyle?> ()
   private final var mObserversOf_mStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -486,26 +494,6 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.frontSideFilledBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.frontSideFilledBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backSideFilledBezierPath' transient property
   //····················································································································
 
@@ -555,26 +543,6 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
   }
 
   //····················································································································
-
-  final func addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.backSideFilledBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.backSideFilledBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
@@ -620,26 +588,6 @@ class ReadOnlyObject_SlavePadInDevice : ReadOnlyAbstractObjectProperty <SlavePad
       break
     case .single (let v) :
       v?.padNumberDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

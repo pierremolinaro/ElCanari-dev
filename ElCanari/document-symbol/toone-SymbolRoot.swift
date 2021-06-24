@@ -54,6 +54,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
+//  private final var selectedInspector_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
@@ -103,6 +104,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'comments' stored property
   //····················································································································
 
+//  private final var comments_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -152,6 +154,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'horizontalFlip' stored property
   //····················································································································
 
+//  private final var horizontalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_horizontalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -201,6 +204,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'verticalFlip' stored property
   //····················································································································
 
+//  private final var verticalFlip_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_verticalFlip = EBWeakEventSet ()
 
   //····················································································································
@@ -250,6 +254,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'gridStyle' stored property
   //····················································································································
 
+//  private final var gridStyle_property = EBGenericPropertyProxy <GridStyle?> ()
   private final var mObserversOf_gridStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -299,6 +304,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'gridDisplay' stored property
   //····················································································································
 
+//  private final var gridDisplay_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_gridDisplay = EBWeakEventSet ()
 
   //····················································································································
@@ -348,6 +354,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'zoom' stored property
   //····················································································································
 
+//  private final var zoom_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_zoom = EBWeakEventSet ()
 
   //····················································································································
@@ -397,6 +404,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
+//  private final var xPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -446,6 +454,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'yPlacardUnit' stored property
   //····················································································································
 
+//  private final var yPlacardUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yPlacardUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -495,6 +504,7 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
+//  private final var selectedPageIndex_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedPageIndex = EBWeakEventSet ()
 
   //····················································································································
@@ -590,26 +600,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'noIssue' transient property
   //····················································································································
 
@@ -655,26 +645,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       break
     case .single (let v) :
       v?.noIssue_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
-        managedObject.noIssue_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_noIssue.apply { (_ observer : EBEvent) in
-        managedObject.noIssue_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -728,26 +698,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_segmentedControlSegmentIssueImage_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueImage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentedControlSegmentIssueImage_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueImage.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueImage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'segmentedControlSegmentIssueString' transient property
   //····················································································································
 
@@ -793,26 +743,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       break
     case .single (let v) :
       v?.segmentedControlSegmentIssueString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_segmentedControlSegmentIssueString_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentedControlSegmentIssueString_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_segmentedControlSegmentIssueString.apply { (_ observer : EBEvent) in
-        managedObject.segmentedControlSegmentIssueString_property.removeEBObserver (observer)
-      }
     }
   }
 

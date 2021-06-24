@@ -42,6 +42,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstX' stored property
   //····················································································································
 
+//  private final var mFirstX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mFirstX = EBWeakEventSet ()
 
   //····················································································································
@@ -91,6 +92,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstY' stored property
   //····················································································································
 
+//  private final var mFirstY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mFirstY = EBWeakEventSet ()
 
   //····················································································································
@@ -140,6 +142,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mFirstColor' stored property
   //····················································································································
 
+//  private final var mFirstColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mFirstColor = EBWeakEventSet ()
 
   //····················································································································
@@ -189,6 +192,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondDx' stored property
   //····················································································································
 
+//  private final var mSecondDx_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSecondDx = EBWeakEventSet ()
 
   //····················································································································
@@ -238,6 +242,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondDy' stored property
   //····················································································································
 
+//  private final var mSecondDy_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mSecondDy = EBWeakEventSet ()
 
   //····················································································································
@@ -287,6 +292,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   //   Observers of 'mSecondColor' stored property
   //····················································································································
 
+//  private final var mSecondColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mSecondColor = EBWeakEventSet ()
 
   //····················································································································
@@ -382,26 +388,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -447,26 +433,6 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageModelImageDoublePoint>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

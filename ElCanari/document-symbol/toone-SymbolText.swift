@@ -40,6 +40,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -89,6 +90,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'text' stored property
   //····················································································································
 
+//  private final var text_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_text = EBWeakEventSet ()
 
   //····················································································································
@@ -138,6 +140,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'horizontalAlignment' stored property
   //····················································································································
 
+//  private final var horizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment?> ()
   private final var mObserversOf_horizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -187,6 +190,7 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
@@ -282,26 +286,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -351,26 +335,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -416,26 +380,6 @@ class ReadOnlyObject_SymbolText : ReadOnlyAbstractObjectProperty <SymbolText> {
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

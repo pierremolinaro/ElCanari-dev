@@ -50,6 +50,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'y1' stored property
   //····················································································································
 
+//  private final var y1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -99,6 +100,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'x2' stored property
   //····················································································································
 
+//  private final var x2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
@@ -148,6 +150,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'y2' stored property
   //····················································································································
 
+//  private final var y2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
@@ -197,6 +200,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'cpx1' stored property
   //····················································································································
 
+//  private final var cpx1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_cpx1 = EBWeakEventSet ()
 
   //····················································································································
@@ -246,6 +250,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'cpy1' stored property
   //····················································································································
 
+//  private final var cpy1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_cpy1 = EBWeakEventSet ()
 
   //····················································································································
@@ -295,6 +300,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'cpx2' stored property
   //····················································································································
 
+//  private final var cpx2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_cpx2 = EBWeakEventSet ()
 
   //····················································································································
@@ -344,6 +350,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'cpy2' stored property
   //····················································································································
 
+//  private final var cpy2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_cpy2 = EBWeakEventSet ()
 
   //····················································································································
@@ -393,6 +400,7 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   //   Observers of 'x1' stored property
   //····················································································································
 
+//  private final var x1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
@@ -488,26 +496,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   }
 
   //····················································································································
-
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -553,26 +541,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -626,26 +594,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -691,26 +639,6 @@ class ReadOnlyObject_SymbolBezierCurve : ReadOnlyAbstractObjectProperty <SymbolB
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

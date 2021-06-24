@@ -72,6 +72,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
+//  private final var drawBoardLimits_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawBoardLimits = EBWeakEventSet ()
 
   //····················································································································
@@ -121,6 +122,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawInternalBoardLimits' stored property
   //····················································································································
 
+//  private final var drawInternalBoardLimits_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
 
   //····················································································································
@@ -170,6 +172,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentNamesTopSide' stored property
   //····················································································································
 
+//  private final var drawComponentNamesTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawComponentNamesTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -219,6 +222,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentNamesBottomSide' stored property
   //····················································································································
 
+//  private final var drawComponentNamesBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawComponentNamesBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -268,6 +272,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentValuesTopSide' stored property
   //····················································································································
 
+//  private final var drawComponentValuesTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawComponentValuesTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -317,6 +322,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawComponentValuesBottomSide' stored property
   //····················································································································
 
+//  private final var drawComponentValuesBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawComponentValuesBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -366,6 +372,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPackageLegendTopSide' stored property
   //····················································································································
 
+//  private final var drawPackageLegendTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawPackageLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -415,6 +422,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPackageLegendBottomSide' stored property
   //····················································································································
 
+//  private final var drawPackageLegendBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawPackageLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -464,6 +472,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadHolesInPDF' stored property
   //····················································································································
 
+//  private final var drawPadHolesInPDF_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawPadHolesInPDF = EBWeakEventSet ()
 
   //····················································································································
@@ -513,6 +522,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadsTopSide' stored property
   //····················································································································
 
+//  private final var drawPadsTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawPadsTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -562,6 +572,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawPadsBottomSide' stored property
   //····················································································································
 
+//  private final var drawPadsBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawPadsBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -611,6 +622,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLayoutTopSide' stored property
   //····················································································································
 
+//  private final var drawTextsLayoutTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTextsLayoutTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -660,6 +672,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLayoutBottomSide' stored property
   //····················································································································
 
+//  private final var drawTextsLayoutBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTextsLayoutBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -709,6 +722,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLegendTopSide' stored property
   //····················································································································
 
+//  private final var drawTextsLegendTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTextsLegendTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -758,6 +772,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTextsLegendBottomSide' stored property
   //····················································································································
 
+//  private final var drawTextsLegendBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTextsLegendBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -807,6 +822,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTracksTopSide' stored property
   //····················································································································
 
+//  private final var drawTracksTopSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTracksTopSide = EBWeakEventSet ()
 
   //····················································································································
@@ -856,6 +872,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawTracksBottomSide' stored property
   //····················································································································
 
+//  private final var drawTracksBottomSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawTracksBottomSide = EBWeakEventSet ()
 
   //····················································································································
@@ -905,6 +922,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'drawVias' stored property
   //····················································································································
 
+//  private final var drawVias_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_drawVias = EBWeakEventSet ()
 
   //····················································································································
@@ -954,6 +972,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'fileExtension' stored property
   //····················································································································
 
+//  private final var fileExtension_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_fileExtension = EBWeakEventSet ()
 
   //····················································································································
@@ -1003,6 +1022,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'horizontalMirror' stored property
   //····················································································································
 
+//  private final var horizontalMirror_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_horizontalMirror = EBWeakEventSet ()
 
   //····················································································································
@@ -1052,6 +1072,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'name' stored property
   //····················································································································
 
+//  private final var name_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
@@ -1101,6 +1122,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'measurementUnitForPadHoleInPDF' stored property
   //····················································································································
 
+//  private final var measurementUnitForPadHoleInPDF_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_measurementUnitForPadHoleInPDF = EBWeakEventSet ()
 
   //····················································································································
@@ -1150,6 +1172,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //   Observers of 'padHoleDiameterInPDF' stored property
   //····················································································································
 
+//  private final var padHoleDiameterInPDF_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_padHoleDiameterInPDF = EBWeakEventSet ()
 
   //····················································································································

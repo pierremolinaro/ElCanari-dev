@@ -36,6 +36,7 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   //   Observers of 'mSymbolInstanceName' stored property
   //····················································································································
 
+//  private final var mSymbolInstanceName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mSymbolInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -131,26 +132,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   }
 
   //····················································································································
-
-  final func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
-        managedObject.symbolAndTypeName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolAndTypeName.apply { (_ observer : EBEvent) in
-        managedObject.symbolAndTypeName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'symbolTypeName' transient property
   //····················································································································
 
@@ -196,26 +177,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
       break
     case .single (let v) :
       v?.symbolTypeName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
-        managedObject.symbolTypeName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolTypeName.apply { (_ observer : EBEvent) in
-        managedObject.symbolTypeName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -269,26 +230,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
   }
 
   //····················································································································
-
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
@@ -334,26 +275,6 @@ class ReadOnlyObject_DeviceSymbolInstanceInProject : ReadOnlyAbstractObjectPrope
       break
     case .single (let v) :
       v?.strokeBezierPath_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<DeviceSymbolInstanceInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      }
     }
   }
 

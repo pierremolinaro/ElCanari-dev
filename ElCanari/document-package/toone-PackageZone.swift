@@ -68,6 +68,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'x' stored property
   //····················································································································
 
+//  private final var x_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
@@ -117,6 +118,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'y' stored property
   //····················································································································
 
+//  private final var y_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
@@ -166,6 +168,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'width' stored property
   //····················································································································
 
+//  private final var width_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
@@ -215,6 +218,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'height' stored property
   //····················································································································
 
+//  private final var height_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -264,6 +268,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xUnit' stored property
   //····················································································································
 
+//  private final var xUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -313,6 +318,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yUnit' stored property
   //····················································································································
 
+//  private final var yUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -362,6 +368,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
+//  private final var widthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -411,6 +418,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
+//  private final var heightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -460,6 +468,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'zoneName' stored property
   //····················································································································
 
+//  private final var zoneName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_zoneName = EBWeakEventSet ()
 
   //····················································································································
@@ -509,6 +518,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'displayZoneName' stored property
   //····················································································································
 
+//  private final var displayZoneName_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_displayZoneName = EBWeakEventSet ()
 
   //····················································································································
@@ -558,6 +568,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xName' stored property
   //····················································································································
 
+//  private final var xName_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
@@ -607,6 +618,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yName' stored property
   //····················································································································
 
+//  private final var yName_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
@@ -656,6 +668,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'xNameUnit' stored property
   //····················································································································
 
+//  private final var xNameUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xNameUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -705,6 +718,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'yNameUnit' stored property
   //····················································································································
 
+//  private final var yNameUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yNameUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -754,6 +768,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
+//  private final var zoneNumbering_property = EBGenericPropertyProxy <PadNumbering?> ()
   private final var mObserversOf_zoneNumbering = EBWeakEventSet ()
 
   //····················································································································
@@ -849,26 +864,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -914,26 +909,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -987,26 +962,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_rect_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_rect.apply { (_ observer : EBEvent) in
-        managedObject.rect_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_rect_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_rect.apply { (_ observer : EBEvent) in
-        managedObject.rect_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -1052,26 +1007,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1125,26 +1060,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_forbiddenPadArray_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_forbiddenPadArray.apply { (_ observer : EBEvent) in
-        managedObject.forbiddenPadArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_forbiddenPadArray_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_forbiddenPadArray.apply { (_ observer : EBEvent) in
-        managedObject.forbiddenPadArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'emptyForbiddenPadArray' transient property
   //····················································································································
 
@@ -1190,26 +1105,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       break
     case .single (let v) :
       v?.emptyForbiddenPadArray_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_emptyForbiddenPadArray_toElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_emptyForbiddenPadArray.apply { (_ observer : EBEvent) in
-        managedObject.emptyForbiddenPadArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_emptyForbiddenPadArray_fromElementsOfSet (_ inSet : Set<PackageZone>) {
-    for managedObject in inSet {
-      self.mObserversOf_emptyForbiddenPadArray.apply { (_ observer : EBEvent) in
-        managedObject.emptyForbiddenPadArray_property.removeEBObserver (observer)
-      }
     }
   }
 

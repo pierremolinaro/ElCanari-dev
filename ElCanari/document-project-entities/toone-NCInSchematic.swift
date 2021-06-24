@@ -32,6 +32,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
   //   Observers of 'mOrientation' stored property
   //····················································································································
 
+//  private final var mOrientation_property = EBGenericPropertyProxy <QuadrantRotation?> ()
   private final var mObserversOf_mOrientation = EBWeakEventSet ()
 
   //····················································································································
@@ -127,26 +128,6 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -192,26 +173,6 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<NCInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<NCInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

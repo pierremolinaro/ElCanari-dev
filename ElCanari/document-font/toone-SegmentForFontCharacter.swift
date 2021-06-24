@@ -38,6 +38,7 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   //   Observers of 'x1' stored property
   //····················································································································
 
+//  private final var x1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
@@ -87,6 +88,7 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   //   Observers of 'y1' stored property
   //····················································································································
 
+//  private final var y1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
@@ -136,6 +138,7 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   //   Observers of 'x2' stored property
   //····················································································································
 
+//  private final var x2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
@@ -185,6 +188,7 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   //   Observers of 'y2' stored property
   //····················································································································
 
+//  private final var y2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
@@ -280,26 +284,6 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -345,26 +329,6 @@ class ReadOnlyObject_SegmentForFontCharacter : ReadOnlyAbstractObjectProperty <S
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

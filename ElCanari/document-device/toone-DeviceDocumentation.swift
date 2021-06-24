@@ -32,6 +32,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileName' stored property
   //····················································································································
 
+//  private final var mFileName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
@@ -81,6 +82,7 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
   //   Observers of 'mFileData' stored property
   //····················································································································
 
+//  private final var mFileData_property = EBGenericPropertyProxy <Data?> ()
   private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
@@ -172,26 +174,6 @@ class ReadOnlyObject_DeviceDocumentation : ReadOnlyAbstractObjectProperty <Devic
       break
     case .single (let v) :
       v?.fileSize_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
-    for managedObject in inSet {
-      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
-        managedObject.fileSize_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
-    for managedObject in inSet {
-      self.mObserversOf_fileSize.apply { (_ observer : EBEvent) in
-        managedObject.fileSize_property.removeEBObserver (observer)
-      }
     }
   }
 

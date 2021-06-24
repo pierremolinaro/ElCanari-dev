@@ -52,6 +52,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mFileData' stored property
   //····················································································································
 
+//  private final var mFileData_property = EBGenericPropertyProxy <Data?> ()
   private final var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
@@ -101,6 +102,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mName' stored property
   //····················································································································
 
+//  private final var mName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
@@ -150,6 +152,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mVersion' stored property
   //····················································································································
 
+//  private final var mVersion_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
@@ -199,6 +202,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
+//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath?> ()
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
@@ -248,6 +252,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -297,6 +302,7 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -392,26 +398,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   }
 
   //····················································································································
-
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_versionString.apply { (_ observer : EBEvent) in
-        managedObject.versionString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'documentSizeString' transient property
   //····················································································································
 
@@ -457,26 +443,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       break
     case .single (let v) :
       v?.documentSizeString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_documentSizeString_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
-        managedObject.documentSizeString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_documentSizeString_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
-        managedObject.documentSizeString_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -530,26 +496,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   }
 
   //····················································································································
-
-  final func addEBObserversOf_frontSidePadFilledBezierPathArray_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
-        managedObject.frontSidePadFilledBezierPathArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontSidePadFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
-        managedObject.frontSidePadFilledBezierPathArray_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backSidePadFilledBezierPathArray' transient property
   //····················································································································
 
@@ -595,26 +541,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       break
     case .single (let v) :
       v?.backSidePadFilledBezierPathArray_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_backSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
-        managedObject.backSidePadFilledBezierPathArray_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_backSidePadFilledBezierPathArray.apply { (_ observer : EBEvent) in
-        managedObject.backSidePadFilledBezierPathArray_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -668,26 +594,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -737,26 +643,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padNameSet' transient property
   //····················································································································
 
@@ -802,26 +688,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       break
     case .single (let v) :
       v?.padNameSet_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padNameSet_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameSet.apply { (_ observer : EBEvent) in
-        managedObject.padNameSet_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNameSet_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameSet.apply { (_ observer : EBEvent) in
-        managedObject.padNameSet_property.removeEBObserver (observer)
-      }
     }
   }
 

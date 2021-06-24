@@ -50,6 +50,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
+//  private final var selectedTab_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
@@ -99,6 +100,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'comments' stored property
   //····················································································································
 
+//  private final var comments_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
@@ -148,6 +150,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
+//  private final var minPPTPTTTWdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -197,6 +200,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
+//  private final var minPPTPTTTW_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
@@ -246,6 +250,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARdisplayUnit' stored property
   //····················································································································
 
+//  private final var minValueForOARdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -295,6 +300,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForOARinEBUnit' stored property
   //····················································································································
 
+//  private final var minValueForOARinEBUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -344,6 +350,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDdisplayUnit' stored property
   //····················································································································
 
+//  private final var minValueForPHDdisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -393,6 +400,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForPHDinEBUnit' stored property
   //····················································································································
 
+//  private final var minValueForPHDinEBUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -442,6 +450,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
   //····················································································································
 
+//  private final var minValueForBoardLimitWidthDisplayUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -491,6 +500,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'minValueForBoardLimitWidth' stored property
   //····················································································································
 
+//  private final var minValueForBoardLimitWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -540,6 +550,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
+//  private final var drillDataFileExtension_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
 
   //····················································································································
@@ -631,26 +642,6 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       break
     case .single (let v) :
       v?.signatureForERCChecking_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBEvent) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
-      }
     }
   }
 

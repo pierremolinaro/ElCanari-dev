@@ -44,6 +44,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mColor' stored property
   //····················································································································
 
+//  private final var mColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mColor = EBWeakEventSet ()
 
   //····················································································································
@@ -93,6 +94,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mSize' stored property
   //····················································································································
 
+//  private final var mSize_property = EBGenericPropertyProxy <Double?> ()
   private final var mObserversOf_mSize = EBWeakEventSet ()
 
   //····················································································································
@@ -142,6 +144,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mHorizontalAlignment' stored property
   //····················································································································
 
+//  private final var mHorizontalAlignment_property = EBGenericPropertyProxy <HorizontalAlignment?> ()
   private final var mObserversOf_mHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -191,6 +194,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mVerticalAlignment' stored property
   //····················································································································
 
+//  private final var mVerticalAlignment_property = EBGenericPropertyProxy <VerticalAlignment?> ()
   private final var mObserversOf_mVerticalAlignment = EBWeakEventSet ()
 
   //····················································································································
@@ -240,6 +244,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -289,6 +294,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -338,6 +344,7 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   //   Observers of 'mComment' stored property
   //····················································································································
 
+//  private final var mComment_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mComment = EBWeakEventSet ()
 
   //····················································································································
@@ -433,26 +440,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -498,26 +485,6 @@ class ReadOnlyObject_CommentInSchematic : ReadOnlyAbstractObjectProperty <Commen
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<CommentInSchematic>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

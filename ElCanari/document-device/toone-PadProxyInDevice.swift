@@ -36,6 +36,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
+//  private final var mPinInstanceName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mPinInstanceName = EBWeakEventSet ()
 
   //····················································································································
@@ -85,6 +86,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mPadName' stored property
   //····················································································································
 
+//  private final var mPadName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
@@ -134,6 +136,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
+//  private final var mIsNC_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mIsNC = EBWeakEventSet ()
 
   //····················································································································
@@ -229,26 +232,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_isConnected.apply { (_ observer : EBEvent) in
-        managedObject.isConnected_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
@@ -294,26 +277,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       break
     case .single (let v) :
       v?.symbolName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
-        managedObject.symbolName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_symbolName.apply { (_ observer : EBEvent) in
-        managedObject.symbolName_property.removeEBObserver (observer)
-      }
     }
   }
 

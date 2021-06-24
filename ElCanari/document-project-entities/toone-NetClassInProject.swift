@@ -64,6 +64,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mNetClassName' stored property
   //····················································································································
 
+//  private final var mNetClassName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mNetClassName = EBWeakEventSet ()
 
   //····················································································································
@@ -113,6 +114,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mNetClassColor' stored property
   //····················································································································
 
+//  private final var mNetClassColor_property = EBGenericPropertyProxy <NSColor?> ()
   private final var mObserversOf_mNetClassColor = EBWeakEventSet ()
 
   //····················································································································
@@ -162,6 +164,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mTrackWidth' stored property
   //····················································································································
 
+//  private final var mTrackWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mTrackWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -211,6 +214,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mTrackWidthUnit' stored property
   //····················································································································
 
+//  private final var mTrackWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mTrackWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -260,6 +264,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaHoleDiameter' stored property
   //····················································································································
 
+//  private final var mViaHoleDiameter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mViaHoleDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -309,6 +314,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaHoleDiameterUnit' stored property
   //····················································································································
 
+//  private final var mViaHoleDiameterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mViaHoleDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -358,6 +364,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaPadDiameter' stored property
   //····················································································································
 
+//  private final var mViaPadDiameter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mViaPadDiameter = EBWeakEventSet ()
 
   //····················································································································
@@ -407,6 +414,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mViaPadDiameterUnit' stored property
   //····················································································································
 
+//  private final var mViaPadDiameterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mViaPadDiameterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -456,6 +464,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mAllowTracksOnFrontSide' stored property
   //····················································································································
 
+//  private final var mAllowTracksOnFrontSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mAllowTracksOnFrontSide = EBWeakEventSet ()
 
   //····················································································································
@@ -505,6 +514,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observers of 'mAllowTracksOnBackSide' stored property
   //····················································································································
 
+//  private final var mAllowTracksOnBackSide_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_mAllowTracksOnBackSide = EBWeakEventSet ()
 
   //····················································································································
@@ -600,26 +610,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   }
 
   //····················································································································
-
-  final func addEBObserversOf_trackWidthString_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackWidthString.apply { (_ observer : EBEvent) in
-        managedObject.trackWidthString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_trackWidthString_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_trackWidthString.apply { (_ observer : EBEvent) in
-        managedObject.trackWidthString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'viaHoleDiameter' transient property
   //····················································································································
 
@@ -665,26 +655,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       break
     case .single (let v) :
       v?.viaHoleDiameter_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viaHoleDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
-        managedObject.viaHoleDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaHoleDiameter.apply { (_ observer : EBEvent) in
-        managedObject.viaHoleDiameter_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -738,26 +708,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   }
 
   //····················································································································
-
-  final func addEBObserversOf_viaPadDiameter_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
-        managedObject.viaPadDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaPadDiameter_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_viaPadDiameter.apply { (_ observer : EBEvent) in
-        managedObject.viaPadDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'allowTracksOnFrontSideString' transient property
   //····················································································································
 
@@ -803,26 +753,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       break
     case .single (let v) :
       v?.allowTracksOnFrontSideString_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_allowTracksOnFrontSideString_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
-        managedObject.allowTracksOnFrontSideString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_allowTracksOnFrontSideString_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_allowTracksOnFrontSideString.apply { (_ observer : EBEvent) in
-        managedObject.allowTracksOnFrontSideString_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -876,26 +806,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   }
 
   //····················································································································
-
-  final func addEBObserversOf_allowTracksOnBackSideString_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
-        managedObject.allowTracksOnBackSideString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_allowTracksOnBackSideString_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_allowTracksOnBackSideString.apply { (_ observer : EBEvent) in
-        managedObject.allowTracksOnBackSideString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'canRemove' transient property
   //····················································································································
 
@@ -941,26 +851,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       break
     case .single (let v) :
       v?.canRemove_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_canRemove.apply { (_ observer : EBEvent) in
-        managedObject.canRemove_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1014,26 +904,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   }
 
   //····················································································································
-
-  final func addEBObserversOf_netUsage_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
-        managedObject.netUsage_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netUsage_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netUsage.apply { (_ observer : EBEvent) in
-        managedObject.netUsage_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netsDescription' transient property
   //····················································································································
 
@@ -1083,26 +953,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   }
 
   //····················································································································
-
-  final func addEBObserversOf_netsDescription_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
-        managedObject.netsDescription_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netsDescription_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netsDescription.apply { (_ observer : EBEvent) in
-        managedObject.netsDescription_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'netWarningCount' transient property
   //····················································································································
 
@@ -1148,26 +998,6 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       break
     case .single (let v) :
       v?.netWarningCount_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_netWarningCount_toElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
-        managedObject.netWarningCount_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_netWarningCount_fromElementsOfSet (_ inSet : Set<NetClassInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_netWarningCount.apply { (_ observer : EBEvent) in
-        managedObject.netWarningCount_property.removeEBObserver (observer)
-      }
     }
   }
 

@@ -74,6 +74,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'xCenter' stored property
   //····················································································································
 
+//  private final var xCenter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -123,6 +124,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'yCenter' stored property
   //····················································································································
 
+//  private final var yCenter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -172,6 +174,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'width' stored property
   //····················································································································
 
+//  private final var width_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
@@ -221,6 +224,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'height' stored property
   //····················································································································
 
+//  private final var height_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
@@ -270,6 +274,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeWidth' stored property
   //····················································································································
 
+//  private final var holeWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_holeWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -319,6 +324,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeHeight' stored property
   //····················································································································
 
+//  private final var holeHeight_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_holeHeight = EBWeakEventSet ()
 
   //····················································································································
@@ -368,6 +374,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padShape' stored property
   //····················································································································
 
+//  private final var padShape_property = EBGenericPropertyProxy <PadShape?> ()
   private final var mObserversOf_padShape = EBWeakEventSet ()
 
   //····················································································································
@@ -417,6 +424,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'padStyle' stored property
   //····················································································································
 
+//  private final var padStyle_property = EBGenericPropertyProxy <SlavePadStyle?> ()
   private final var mObserversOf_padStyle = EBWeakEventSet ()
 
   //····················································································································
@@ -466,6 +474,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
+//  private final var xCenterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -515,6 +524,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
+//  private final var yCenterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -564,6 +574,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
+//  private final var widthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -613,6 +624,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
+//  private final var heightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -662,6 +674,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeWidthUnit' stored property
   //····················································································································
 
+//  private final var holeWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_holeWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -711,6 +724,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'holeHeightUnit' stored property
   //····················································································································
 
+//  private final var holeHeightUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_holeHeightUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -760,6 +774,7 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   //   Observers of 'annularRingUnit' stored property
   //····················································································································
 
+//  private final var annularRingUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_annularRingUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -855,26 +870,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -920,26 +915,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -993,26 +968,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padIsTraversing' transient property
   //····················································································································
 
@@ -1058,26 +1013,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       break
     case .single (let v) :
       v?.padIsTraversing_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
-        managedObject.padIsTraversing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padIsTraversing.apply { (_ observer : EBEvent) in
-        managedObject.padIsTraversing_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1131,26 +1066,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
-        managedObject.annularRing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_annularRing.apply { (_ observer : EBEvent) in
-        managedObject.annularRing_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padNameWithZoneName' transient property
   //····················································································································
 
@@ -1196,26 +1111,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       break
     case .single (let v) :
       v?.padNameWithZoneName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padNameWithZoneName_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameWithZoneName.apply { (_ observer : EBEvent) in
-        managedObject.padNameWithZoneName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNameWithZoneName_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameWithZoneName.apply { (_ observer : EBEvent) in
-        managedObject.padNameWithZoneName_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -1269,26 +1164,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_masterPadNameWithZoneName_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_masterPadNameWithZoneName.apply { (_ observer : EBEvent) in
-        managedObject.masterPadNameWithZoneName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_masterPadNameWithZoneName_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_masterPadNameWithZoneName.apply { (_ observer : EBEvent) in
-        managedObject.masterPadNameWithZoneName_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padNameForDisplay' transient property
   //····················································································································
 
@@ -1338,26 +1213,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
   }
 
   //····················································································································
-
-  final func addEBObserversOf_padNameForDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameForDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNameForDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNameForDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNameForDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNameForDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padNumberDisplay' transient property
   //····················································································································
 
@@ -1403,26 +1258,6 @@ class ReadOnlyObject_PackageSlavePad : ReadOnlyAbstractObjectProperty <PackageSl
       break
     case .single (let v) :
       v?.padNumberDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for managedObject in inSet {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBEvent) in
-        managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

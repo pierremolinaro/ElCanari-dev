@@ -52,6 +52,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mWidthUnit' stored property
   //····················································································································
 
+//  private final var mWidthUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mWidthUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -101,6 +102,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX1' stored property
   //····················································································································
 
+//  private final var mX1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX1 = EBWeakEventSet ()
 
   //····················································································································
@@ -150,6 +152,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX1Unit' stored property
   //····················································································································
 
+//  private final var mX1Unit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX1Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -199,6 +202,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY1' stored property
   //····················································································································
 
+//  private final var mY1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY1 = EBWeakEventSet ()
 
   //····················································································································
@@ -248,6 +252,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY1Unit' stored property
   //····················································································································
 
+//  private final var mY1Unit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY1Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -297,6 +302,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX2' stored property
   //····················································································································
 
+//  private final var mX2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX2 = EBWeakEventSet ()
 
   //····················································································································
@@ -346,6 +352,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mX2Unit' stored property
   //····················································································································
 
+//  private final var mX2Unit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX2Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -395,6 +402,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY2' stored property
   //····················································································································
 
+//  private final var mY2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY2 = EBWeakEventSet ()
 
   //····················································································································
@@ -444,6 +452,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mY2Unit' stored property
   //····················································································································
 
+//  private final var mY2Unit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY2Unit = EBWeakEventSet ()
 
   //····················································································································
@@ -493,6 +502,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mLayer' stored property
   //····················································································································
 
+//  private final var mLayer_property = EBGenericPropertyProxy <BoardLineLayer?> ()
   private final var mObserversOf_mLayer = EBWeakEventSet ()
 
   //····················································································································
@@ -542,6 +552,7 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   //   Observers of 'mWidth' stored property
   //····················································································································
 
+//  private final var mWidth_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mWidth = EBWeakEventSet ()
 
   //····················································································································
@@ -637,26 +648,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -702,26 +693,6 @@ class ReadOnlyObject_BoardLine : ReadOnlyAbstractObjectProperty <BoardLine> {
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BoardLine>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

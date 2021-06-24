@@ -38,6 +38,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
+//  private final var mSheetTitle_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
 
   //····················································································································
@@ -133,26 +134,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
@@ -198,26 +179,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       break
     case .single (let v) :
       v?.connectedPoints_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBEvent) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -271,26 +232,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
-        managedObject.connexionWarnings_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionWarnings.apply { (_ observer : EBEvent) in
-        managedObject.connexionWarnings_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
@@ -340,26 +281,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   }
 
   //····················································································································
-
-  final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
-        managedObject.connexionErrors_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_connexionErrors.apply { (_ observer : EBEvent) in
-        managedObject.connexionErrors_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
@@ -405,26 +326,6 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       break
     case .single (let v) :
       v?.sheetDescriptor_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
-        managedObject.sheetDescriptor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : Set<SheetInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBEvent) in
-        managedObject.sheetDescriptor_property.removeEBObserver (observer)
-      }
     }
   }
 

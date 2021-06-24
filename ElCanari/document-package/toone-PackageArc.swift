@@ -60,6 +60,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'yCenter' stored property
   //····················································································································
 
+//  private final var yCenter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -109,6 +110,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'radius' stored property
   //····················································································································
 
+//  private final var radius_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_radius = EBWeakEventSet ()
 
   //····················································································································
@@ -158,6 +160,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'startAngle' stored property
   //····················································································································
 
+//  private final var startAngle_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_startAngle = EBWeakEventSet ()
 
   //····················································································································
@@ -207,6 +210,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'arcAngle' stored property
   //····················································································································
 
+//  private final var arcAngle_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_arcAngle = EBWeakEventSet ()
 
   //····················································································································
@@ -256,6 +260,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'startTangent' stored property
   //····················································································································
 
+//  private final var startTangent_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_startTangent = EBWeakEventSet ()
 
   //····················································································································
@@ -305,6 +310,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'endTangent' stored property
   //····················································································································
 
+//  private final var endTangent_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_endTangent = EBWeakEventSet ()
 
   //····················································································································
@@ -354,6 +360,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'pathIsClosed' stored property
   //····················································································································
 
+//  private final var pathIsClosed_property = EBGenericPropertyProxy <Bool?> ()
   private final var mObserversOf_pathIsClosed = EBWeakEventSet ()
 
   //····················································································································
@@ -403,6 +410,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'xCenterUnit' stored property
   //····················································································································
 
+//  private final var xCenterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xCenterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -452,6 +460,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'yCenterUnit' stored property
   //····················································································································
 
+//  private final var yCenterUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_yCenterUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -501,6 +510,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'radiusUnit' stored property
   //····················································································································
 
+//  private final var radiusUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_radiusUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -550,6 +560,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'startTangentUnit' stored property
   //····················································································································
 
+//  private final var startTangentUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_startTangentUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -599,6 +610,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'endTangentUnit' stored property
   //····················································································································
 
+//  private final var endTangentUnit_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_endTangentUnit = EBWeakEventSet ()
 
   //····················································································································
@@ -648,6 +660,7 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   //   Observers of 'xCenter' stored property
   //····················································································································
 
+//  private final var xCenter_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_xCenter = EBWeakEventSet ()
 
   //····················································································································
@@ -743,26 +756,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_strokeBezierPath.apply { (_ observer : EBEvent) in
-        managedObject.strokeBezierPath_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -808,26 +801,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -881,26 +854,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
   }
 
   //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -946,26 +899,6 @@ class ReadOnlyObject_PackageArc : ReadOnlyAbstractObjectProperty <PackageArc> {
       break
     case .single (let v) :
       v?.issues_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply { (_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      }
     }
   }
 

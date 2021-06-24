@@ -52,6 +52,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mX' stored property
   //····················································································································
 
+//  private final var mX_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
@@ -101,6 +102,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mY' stored property
   //····················································································································
 
+//  private final var mY_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
@@ -150,6 +152,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
+//  private final var mCPX1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCPX1 = EBWeakEventSet ()
 
   //····················································································································
@@ -199,6 +202,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPY1' stored property
   //····················································································································
 
+//  private final var mCPY1_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCPY1 = EBWeakEventSet ()
 
   //····················································································································
@@ -248,6 +252,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
+//  private final var mCPX2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCPX2 = EBWeakEventSet ()
 
   //····················································································································
@@ -297,6 +302,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
+//  private final var mCPY2_property = EBGenericPropertyProxy <Int?> ()
   private final var mObserversOf_mCPY2 = EBWeakEventSet ()
 
   //····················································································································
@@ -346,6 +352,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   //   Observers of 'mShape' stored property
   //····················································································································
 
+//  private final var mShape_property = EBGenericPropertyProxy <BorderCurveShape?> ()
   private final var mObserversOf_mShape = EBWeakEventSet ()
 
   //····················································································································
@@ -441,26 +448,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_p2Xstring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
-        managedObject.p2Xstring_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_p2Xstring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p2Xstring.apply { (_ observer : EBEvent) in
-        managedObject.p2Xstring_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'p2Ystring' transient property
   //····················································································································
 
@@ -506,26 +493,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       break
     case .single (let v) :
       v?.p2Ystring_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_p2Ystring_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
-        managedObject.p2Ystring_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_p2Ystring_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_p2Ystring.apply { (_ observer : EBEvent) in
-        managedObject.p2Ystring_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -579,26 +546,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_descriptor.apply { (_ observer : EBEvent) in
-        managedObject.descriptor_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -644,26 +591,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       break
     case .single (let v) :
       v?.objectDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBEvent) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 
@@ -717,26 +644,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   }
 
   //····················································································································
-
-  final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
-        managedObject.isLine_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_isLine.apply { (_ observer : EBEvent) in
-        managedObject.isLine_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -782,26 +689,6 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       break
     case .single (let v) :
       v?.selectionDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<BorderCurve>) {
-    for managedObject in inSet {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBEvent) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
     }
   }
 

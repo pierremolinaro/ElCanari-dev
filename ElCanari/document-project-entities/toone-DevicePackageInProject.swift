@@ -32,6 +32,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
+//  private final var mPackageName_property = EBGenericPropertyProxy <String?> ()
   private final var mObserversOf_mPackageName = EBWeakEventSet ()
 
   //····················································································································
@@ -81,6 +82,7 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
+//  private final var mStrokeBezierPath_property = EBGenericPropertyProxy <NSBezierPath?> ()
   private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
 
   //····················································································································
@@ -172,26 +174,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
       break
     case .single (let v) :
       v?.packagePadDictionary_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_packagePadDictionary_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
-        managedObject.packagePadDictionary_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_packagePadDictionary_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
-    for managedObject in inSet {
-      self.mObserversOf_packagePadDictionary.apply { (_ observer : EBEvent) in
-        managedObject.packagePadDictionary_property.removeEBObserver (observer)
-      }
     }
   }
 
