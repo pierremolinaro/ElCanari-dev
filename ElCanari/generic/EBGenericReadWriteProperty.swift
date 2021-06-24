@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericReadWriteProperty <T> (abstract class)
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBGenericReadWriteProperty <T> : EBGenericReadOnlyProperty <T> where T : Equatable {
+class EBGenericReadWriteProperty <T : Equatable> : EBGenericReadOnlyProperty <T> {
 
   //····················································································································
 

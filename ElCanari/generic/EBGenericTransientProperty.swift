@@ -8,7 +8,7 @@ import Cocoa
 //   EBGenericTransientProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-class EBGenericTransientProperty <T> : EBGenericReadOnlyProperty <T> where T : Equatable {
+class EBGenericTransientProperty <T : Equatable> : EBGenericReadOnlyProperty <T> {
 
   //····················································································································
 
