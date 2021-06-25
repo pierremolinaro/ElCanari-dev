@@ -1,32 +1,3 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//     A R T W O R K    D O C U M E N T
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity ArtworkRoot {
-  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
-  property Int selectedTab default 0 ;
-  property @signature String comments default "" ;
-
-  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
-  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
-
-  property Int minValueForOARdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
-
-  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
-
-  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
-  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
-
-//--- Excellon drill data
-  property @signature String drillDataFileExtension default "drf" ;
-  
-//--- For artwork embedded in document
-  transient UInt32 signatureForERCChecking dependsFrom
-     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 //     A R T W O R K    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
@@ -128,7 +99,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //  Data Page
 //······················································································································
 
-  tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
+  autolayout tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
      column "name" sort name EBTextField $value self.name (sendContinously:no)
   }
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
@@ -136,6 +107,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mDataPage hStack set (leftMargin: 8) set (rightMargin: 8) {
     vStack set (topMargin: 8) {
       Label (bold: yes, small: yes) { $title self.mGeneratedFileCountString }
+      TableView (small: yes) { $tableValue #mDataController }
       space
     }
     separator
@@ -177,57 +149,17 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   }
 
   transient String mGeneratedFileCountString dependsFrom #mDataController.sortedArray.count ;
-//  outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
 
-//  outlet CanariViewWithKeyView mDataPageView ;
-  outlet EBTableView mDataTableView $tableValue #mDataController ;
+//  outlet EBTableView mDataTableView $tableValue #mDataController ;
 
   outlet EBButton mAddGenerationFileButton $run #mDataController.add ;
   outlet EBButton mRemoveGenerationFileButton $run #mDataController.remove $enabled #mDataController.selectedArray.count > 0 ;
-
-
-//  outlet EBTextField mExtensionTextField $value #mDataSelection.fileExtension (sendContinously:no) ;
-//  outlet EBSwitch mDrawBoardInternalLimitsSwitch $value #mDataSelection.drawInternalBoardLimits ;
-//  outlet EBSwitch mDrawBoardLimitsSwitch $value #mDataSelection.drawBoardLimits ;
-//  outlet EBSwitch mDrawComponentValuesTopSideSwitch $value #mDataSelection.drawComponentValuesTopSide ;
-//  outlet EBSwitch mDrawComponentValuesBottomSideSwitch $value #mDataSelection.drawComponentValuesBottomSide ;
-//  outlet EBSwitch mDrawComponentNamesTopSideSwitch $value #mDataSelection.drawComponentNamesTopSide ;
-//  outlet EBSwitch mDrawComponentNamesBottomSideSwitch $value #mDataSelection.drawComponentNamesBottomSide ;
-//  outlet EBSwitch mDrawPackageLegendTopSideSwitch $value #mDataSelection.drawPackageLegendTopSide ;
-//  outlet EBSwitch mDrawPackageLegendBottomSideSwitch $value #mDataSelection.drawPackageLegendBottomSide ;
-//  outlet EBSwitch mDrawPadHolesInPDFSwitch $value #mDataSelection.drawPadHolesInPDF ;
-//  outlet EBSwitch mDrawPadsTopSideSwitch $value #mDataSelection.drawPadsTopSide ;
-//  outlet EBSwitch mDrawPadsBottomSideSwitch $value #mDataSelection.drawPadsBottomSide ;
-//  outlet EBSwitch mDrawTextsLayoutTopSideSwitch $value #mDataSelection.drawTextsLayoutTopSide ;
-//  outlet EBSwitch mDrawTextsLayoutBottomSideSwitch $value #mDataSelection.drawTextsLayoutBottomSide ;
-//  outlet EBSwitch mDrawTextsLegendTopSideSwitch $value #mDataSelection.drawTextsLegendTopSide ;
-//  outlet EBSwitch mDrawTextsLegendBottomSideSwitch $value #mDataSelection.drawTextsLegendBottomSide ;
-//  outlet EBSwitch mDrawTracksTopSideSwitch $value #mDataSelection.drawTracksTopSide ;
-//  outlet EBSwitch mDrawTracksBottomSidSwitche $value #mDataSelection.drawTracksBottomSide ;
-//  outlet EBSwitch mDrawViasSwitch $value #mDataSelection.drawVias ;
-//  outlet EBSwitch mHorizontalMirrorSwitch $value #mDataSelection.horizontalMirror ;
-
-//  outlet EBPopUpButton mMeasurementUnitForPadHoleInPDFPopUp $selectedTag #mDataSelection.measurementUnitForPadHoleInPDF ;
-//  outlet CanariDimensionTextField mDimensionForPadHoleInPDFTextField
-//     $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
-//  ;
-//  outlet NSView mPadHoleDefinitionView $hidden !#mDataSelection.drawPadHolesInPDF ;
-
 
 //······················································································································
 //  Info Tab
 //······················································································································
 
-//  outlet CanariViewWithKeyView mInfosPageView ;
-//  outlet EBTextView mCommentTextView $value root.comments ;
-//  outlet CanariSignatureField mSignatureTextField $signature signature ;
-//  outlet CanariSignatureField mOtherSignatureTextField $signature signature ;
-//
-//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
-
-//--- Reset
   action resetVersionAndSignatureAction ;
-//  outlet EBButton resetVersionAndSignatureButton $run resetVersionAndSignatureAction ;
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
@@ -242,7 +174,36 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------
+//     A R T W O R K    R O O T
+//----------------------------------------------------------------------------------------------------------------------
+
+entity ArtworkRoot {
+  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
+  property Int selectedTab default 0 ;
+  property @signature String comments default "" ;
+
+  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
+  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
+
+  property Int minValueForOARdisplayUnit default 90 ; // 1µm
+  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
+
+  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
+  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
+
+  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+
+//--- Excellon drill data
+  property @signature String drillDataFileExtension default "drf" ;
+  
+//--- For artwork embedded in document
+  transient UInt32 signatureForERCChecking dependsFrom
+     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 
 entity ArtworkFileGenerationParameters {
   property @signature Bool drawBoardLimits default no ;
@@ -270,4 +231,4 @@ entity ArtworkFileGenerationParameters {
   property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//----------------------------------------------------------------------------------------------------------------------

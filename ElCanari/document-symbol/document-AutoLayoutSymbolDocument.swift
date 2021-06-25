@@ -671,7 +671,7 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: true, small: false)
+        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, small: false)
         view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutFlexibleSpace ()
         view_1_0.appendView (view_1_0_1)

@@ -5,7 +5,7 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    Table View Controller AutoLayoutArtworkDocument mDataController
+//    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //----------------------------------------------------------------------------------------------------------------------
 
 final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
@@ -62,14 +62,15 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
   //--- Set sort descriptors
     self.mSortDescriptorArray = []    
+  //--- Column 0
     self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     for tableView in self.mTableViewArray {
       for sortDescriptor in self.mSortDescriptorArray {
-        if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-          column.sortDescriptorPrototype = sortDescriptor
-        }
+   //     if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
+  //        column.sortDescriptorPrototype = sortDescriptor
+  //      }
       }
-      tableView.sortDescriptors = self.mSortDescriptorArray
+  //    tableView.sortDescriptors = self.mSortDescriptorArray
     }
   //---
     self.mModel = inModel
@@ -201,45 +202,45 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
+  private var mTableViewArray = [AutoLayoutTableView] ()
 
   //····················································································································
 
-  final func bind_tableView (_ inTableView : EBTableView?) {
-    if let tableView = inTableView {
-      tableView.allowsEmptySelection = allowsEmptySelection
-      tableView.allowsMultipleSelection = allowsMultipleSelection
-      tableView.dataSource = self
-      tableView.delegate = self
-    //--- Set table view data source controller
-      let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-      self.sortedArray_property.addEBObserver (dataSourceTableViewController)
-      self.mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
-    //--- Set table view selection controller
-      let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-      self.mInternalSelectedArrayProperty.addEBObserver (selectionTableViewController)
-      self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Check 'name' column
-      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
-        column.sortDescriptorPrototype = nil
-      }else{
-        presentErrorWindow (#file, #line, "\"name\" column view unknown")
-      }
-    //--- Set table view sort descriptors
-      for sortDescriptor in self.mSortDescriptorArray {
-        if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-          column.sortDescriptorPrototype = sortDescriptor
-        }
-      }
-      tableView.sortDescriptors = self.mSortDescriptorArray
-    //---
-      self.mTableViewArray.append (tableView)
+  final func bind_tableView (_ inTableView : AutoLayoutTableView) {
+    inTableView.configure (
+      allowsEmptySelection: allowsEmptySelection,
+      allowsMultipleSelection: allowsMultipleSelection,
+      dataSourceDelegate: self,
+      tableViewDelegate: self
+    )
+  //--- Set table view data source controller
+/*    let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
+    self.sortedArray_property.addEBObserver (dataSourceTableViewController)
+    self.mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
+  //--- Set table view selection controller
+    let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
+    self.mInternalSelectedArrayProperty.addEBObserver (selectionTableViewController)
+    self.mTableViewSelectionControllerArray.append (selectionTableViewController)
+  //--- Check 'name' column
+    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
+      column.sortDescriptorPrototype = nil
+    }else{
+      presentErrorWindow (#file, #line, "\"name\" column view unknown")
     }
+  //--- Set table view sort descriptors
+    for sortDescriptor in self.mSortDescriptorArray {
+      if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
+        column.sortDescriptorPrototype = sortDescriptor
+      }
+    }
+    tableView.sortDescriptors = self.mSortDescriptorArray */
+  //---
+    self.mTableViewArray.append (inTableView)
   }
 
   //····················································································································
  
-  final func unbind_tableView (_ inTableView : EBTableView?) {
+/*  final func unbind_tableView (_ inTableView : EBTableView?) {
     if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
       self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
@@ -247,7 +248,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
       self.mTableViewDataSourceControllerArray.remove (at: idx)
       self.mTableViewSelectionControllerArray.remove (at: idx)
     }
-  }
+  } */
 
  //····················································································································
 
@@ -306,16 +307,13 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+/*  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.mSortDescriptorArray = tableView.sortDescriptors
-/*    for s in tableView.sortDescriptors {
-      Swift.print ("key \(s.key), ascending \(s.ascending)")
-    } */
     for tableView in self.mTableViewArray {
       tableView.sortDescriptors = self.mSortDescriptorArray
     }
     self.sortedArray_property.notifyModelDidChange ()
-  }
+  } */
 
   //····················································································································
   //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:

@@ -98,7 +98,6 @@ import Cocoa
   //····················································································································
 
   @IBOutlet final var mAddGenerationFileButton : EBButton? = nil
-  @IBOutlet final var mDataTableView : EBTableView? = nil
   @IBOutlet final var mRemoveGenerationFileButton : EBButton? = nil
 
   //····················································································································
@@ -331,8 +330,11 @@ import Cocoa
       let view_0_0 = AutoLayoutLabel (bold: true, small: true)
         .bind_title (self.mGeneratedFileCountString_property)
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
+      let view_0_1 = AutoLayoutTableView (small: true)
+      self.mDataController.bind_tableView (view_0_1)
       view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_2)
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -611,7 +613,7 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: true, small: false)
+        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, small: false)
         view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutFlexibleSpace ()
         view_1_0.appendView (view_1_0_1)
@@ -746,7 +748,6 @@ import Cocoa
 //  private func checkOutletConnections () {
 //    let start = Date ()
 //    checkOutletConnection (self.mAddGenerationFileButton, "mAddGenerationFileButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mDataTableView, "mDataTableView", EBTableView.self, #file, #line)
 //    checkOutletConnection (self.mRemoveGenerationFileButton, "mRemoveGenerationFileButton", EBButton.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
@@ -848,7 +849,6 @@ import Cocoa
 /*  final private func installBindings () {
     let start = Date ()
   //--------------------------- Install table view bindings
-    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
   //--------------------------- Install multiple bindings
@@ -900,7 +900,6 @@ import Cocoa
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
-    self.mDataController.unbind_tableView (self.mDataTableView)
   //--- Array controller property: mDataController
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
@@ -915,11 +914,9 @@ import Cocoa
     self.mRemoveGenerationFileButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddGenerationFileButton?.ebCleanUp ()
-    self.mDataTableView?.ebCleanUp ()
     self.mRemoveGenerationFileButton?.ebCleanUp ()
   //--------------------------- Detach outlets
     self.mAddGenerationFileButton = nil
-    self.mDataTableView = nil
     self.mRemoveGenerationFileButton = nil
   }
 
