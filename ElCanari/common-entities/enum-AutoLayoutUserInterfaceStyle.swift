@@ -71,7 +71,7 @@ enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIte
   }
 
   //····················································································································
-  //  EBPropertyProtocol
+  //  EBStoredPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {

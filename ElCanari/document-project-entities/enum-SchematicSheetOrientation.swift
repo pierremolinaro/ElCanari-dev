@@ -57,7 +57,7 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
   }
 
   //····················································································································
-  //  EBPropertyProtocol
+  //  EBStoredPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {

@@ -8,7 +8,7 @@ import Cocoa
 //    BezierPathArray
 //----------------------------------------------------------------------------------------------------------------------
 
-struct BezierPathArray : Hashable, Comparable, EBPropertyProtocol {
+struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 

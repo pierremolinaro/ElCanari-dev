@@ -174,6 +174,7 @@
 		CF0EE34422C8C478008CB4A7 /* enum-ComponentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EE34322C8C478008CB4A7 /* enum-ComponentSide.swift */; };
 		CF0EE34522C8C478008CB4A7 /* enum-ComponentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EE34322C8C478008CB4A7 /* enum-ComponentSide.swift */; };
 		CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */; };
+		CF110901268528BF00381B9F /* EBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */; };
 		CF116B82224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF116B81224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift */; };
 		CF116B83224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF116B81224BE9460098EE15 /* validation-FontRoot-currentCharacterCodePoint.swift */; };
 		CF11892620FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11892520FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift */; };
@@ -3380,7 +3381,6 @@
 		CFB89B4E267DF0C20026734B /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB89B4C267DF0C20026734B /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift */; };
 		CFB89B4F267DF0C20026734B /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB89B4C267DF0C20026734B /* AutoLayoutCanariHorizontalAlignmentSegmentedControl.swift */; };
 		CFB8BADE214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8BADD214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift */; };
-		CFB8E4571B4978FE00D4B8AD /* EBTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */; };
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFBA87C42365B30200B35753 /* transient-ProjectDocument-selectedDeviceSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA87C32365B30200B35753 /* transient-ProjectDocument-selectedDeviceSymbols.swift */; };
@@ -8246,6 +8246,7 @@
 				CFA7A77820E17E03002302C2 /* class-MergerViaShapeArray.swift in Sources */,
 				CFE652D81DD4B22600BAC27A /* transient-FontCharacter-segmentArrayForDrawing.swift in Sources */,
 				CFCC4BF120EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift in Sources */,
+				CF110901268528BF00381B9F /* EBTextView.swift in Sources */,
 				CF144832227AF4240004E7ED /* extension-QuadrantRotation.swift in Sources */,
 				CF452DD820F0C5FA007AC21F /* extension-MergerDocument-importArtworkAction.swift in Sources */,
 				CF4C32C020FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift in Sources */,
@@ -8502,7 +8503,6 @@
 				CFDDD4E321BB1529007D2F14 /* EBGraphicView-binding-gridCrossColor.swift in Sources */,
 				CFA4306B229AEB96000AA8C8 /* toone-DeviceSlavePadInProject.swift in Sources */,
 				CFA4D55422D36B6A007992CD /* tomany-BoardLine.swift in Sources */,
-				CFB8E4571B4978FE00D4B8AD /* EBTextView.swift in Sources */,
 				CFB1DB152282D31F005F9811 /* entity-DevicePinInProject.swift in Sources */,
 				CF41CCA92360CA2B0025D7BC /* CanariBoardComponentValueFontPopUpButton.swift in Sources */,
 				CFBCE78022D3ACA300DC3505 /* extension-BorderCurve.swift in Sources */,

@@ -8,7 +8,7 @@ import Cocoa
 //   EBTextView
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBTextView : NSTextView, EBUserClassNameProtocol {
+final class EBTextView : NSTextView, NSTextViewDelegate, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -49,12 +49,18 @@ final class EBTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mValueController : Controller_EBTextView_value? = nil
+  private var mValueController : EBReadOnlyPropertyController? = nil
+  private var mModel : EBReadWriteProperty_String? = nil
 
   //····················································································································
 
-  final func bind_value (_ object : EBReadWriteProperty_String) {
-    self.mValueController = Controller_EBTextView_value (object: object, outlet: self)
+  final func bind_value (_ inObject : EBReadWriteProperty_String) {
+    self.mModel = inObject
+    self.delegate = self
+    self.mValueController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
+      callBack: { self.updateValue (inObject) }
+    )
   }
 
   //····················································································································
@@ -62,41 +68,13 @@ final class EBTextView : NSTextView, EBUserClassNameProtocol {
   final func unbind_value () {
     self.mValueController?.unregister ()
     self.mValueController = nil
-  }
-
-  //····················································································································
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Controller Controller_EBTextView_value
-//----------------------------------------------------------------------------------------------------------------------
-
-final class Controller_EBTextView_value : EBReadOnlyPropertyController, NSTextViewDelegate {
-
-  private let mOutlet : EBTextView
-  private let mObject : EBReadWriteProperty_String
-
-  //····················································································································
-
-  init (object : EBReadWriteProperty_String, outlet : EBTextView) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateValue (object) })
-    outlet.delegate = self
-  }
-
-  //····················································································································
-
-  override func unregister () {
-    super.unregister ()
-    self.mOutlet.delegate = nil
+    self.mModel = nil
   }
 
   //····················································································································
 
   func textDidChange (_ notification : Notification) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.string, windowForSheet: self.mOutlet.window)
+    _ = self.mModel?.validateAndSetProp (self.string, windowForSheet: self.window)
   }
 
   //····················································································································

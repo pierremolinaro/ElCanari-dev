@@ -14,16 +14,43 @@ let WINDOW_HEIGHT_METADATADICTIONARY_KEY = "WindowHeight"
 let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 //----------------------------------------------------------------------------------------------------------------------
-
-//var gDebugMenuItemsAdded = false
-
-//----------------------------------------------------------------------------------------------------------------------
 //    EBEvent class
 //----------------------------------------------------------------------------------------------------------------------
 
 class EBEvent : EBObject {
   func postEvent () {} // Abstract method
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//fileprivate var gEventObjectIndex = 0
+//
+////----------------------------------------------------------------------------------------------------------------------
+//
+//class EBEvent : Hashable, EBUserClassNameProtocol {
+//
+//  let ebObjectIndex : Int
+//
+//  init () {
+//    self.ebObjectIndex = gEventObjectIndex
+//    gEventObjectIndex += 1
+//    noteObjectAllocation (self)
+//  }
+//
+//  deinit {
+//    noteObjectDeallocation (self)
+//  }
+//
+//  public static func == (lhs: EBEvent, rhs: EBEvent) -> Bool {
+//    return lhs.ebObjectIndex == rhs.ebObjectIndex
+//  }
+//
+//  public func hash (into hasher: inout Hasher) {
+//    self.ebObjectIndex.hash (into: &hasher)
+//  }
+//
+//  func postEvent () {} // Abstract method
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 //    A P P L I C A T I O N    C L A S S

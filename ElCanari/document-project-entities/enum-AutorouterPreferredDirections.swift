@@ -54,7 +54,7 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
   }
 
   //····················································································································
-  //  EBPropertyProtocol
+  //  EBStoredPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {

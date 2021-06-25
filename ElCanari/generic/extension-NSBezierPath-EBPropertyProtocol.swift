@@ -5,10 +5,10 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    extension NSBezierPath : EBPropertyProtocol
+//    extension NSBezierPath : EBStoredPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 
-extension NSBezierPath : EBPropertyProtocol {
+extension NSBezierPath : EBStoredPropertyProtocol {
 
   //····················································································································
 

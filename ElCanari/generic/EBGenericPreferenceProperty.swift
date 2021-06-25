@@ -8,29 +8,17 @@ import Cocoa
 //   EBGenericPreferenceProperty <T>
 //----------------------------------------------------------------------------------------------------------------------
 
-final class EBGenericPreferenceProperty <T : EBPropertyProtocol> : EBGenericStoredProperty <T> {
+final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBGenericStoredProperty <T> {
 
   //····················································································································
 
-  // let façade = EBGenericPropertyProxy <T> ()
-  private var mPreferenceKey : String
+  private let mPreferenceKey : String
 
   //····················································································································
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     self.mPreferenceKey = inPreferenceKey
     super.init (defaultValue: inValue, undoManager: nil)
-  //--- Configure façade
-//    self.façade.mReadModelFunction = { [weak self] in
-//      if let uwSelf = self {
-//        return .single (uwSelf.propval)
-//      }else{
-//        return .empty
-//      }
-//    }
-//    self.façade.mWriteModelFunction = { [weak self] in
-//      self?.setProp ($0)
-//    }
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
     if let value = possibleValue as? NSObject {

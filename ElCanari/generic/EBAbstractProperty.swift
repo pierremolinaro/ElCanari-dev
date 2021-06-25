@@ -73,7 +73,7 @@ class EBAbstractProperty : EBEvent {
       observerExplorer.addItem (withTitle: String (observerCount))
       observerExplorer.isEnabled = observerCount > 0
       self.mObservers.apply ( {(_ observer : EBEvent) in
-        let stringValue = explorerIndexString (observer.ebObjectIndex) + " - " + observer.className
+        let stringValue = explorerIndexString (observer.ebObjectIndex) + " - " + String (describing: type (of: observer))
         observerExplorer.addItem (withTitle: stringValue)
       })
     }

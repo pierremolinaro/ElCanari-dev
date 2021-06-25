@@ -54,7 +54,7 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   }
 
   //····················································································································
-  //  EBPropertyProtocol
+  //  EBStoredPropertyProtocol
   //····················································································································
 
   func ebHashValue () -> UInt32 {
