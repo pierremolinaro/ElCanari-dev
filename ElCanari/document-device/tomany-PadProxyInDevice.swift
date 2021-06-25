@@ -440,7 +440,10 @@ final class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice
 
   //····················································································································
 
-  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
+  override var propval : [PadProxyInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

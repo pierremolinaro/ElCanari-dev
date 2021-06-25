@@ -623,7 +623,10 @@ final class TransientArrayOf_PackageModelImageDoublePoint : ReadOnlyArrayOf_Pack
 
   //····················································································································
 
-  override var propval : [PackageModelImageDoublePoint] { return self.mInternalArrayValue }
+  override var propval : [PackageModelImageDoublePoint] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

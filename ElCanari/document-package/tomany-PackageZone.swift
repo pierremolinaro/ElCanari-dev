@@ -1404,7 +1404,10 @@ final class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
 
-  override var propval : [PackageZone] { return self.mInternalArrayValue }
+  override var propval : [PackageZone] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

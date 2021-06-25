@@ -803,7 +803,10 @@ final class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
 
-  override var propval : [PackageGuide] { return self.mInternalArrayValue }
+  override var propval : [PackageGuide] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

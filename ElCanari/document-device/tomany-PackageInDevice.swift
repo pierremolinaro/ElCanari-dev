@@ -913,7 +913,10 @@ final class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
 
-  override var propval : [PackageInDevice] { return self.mInternalArrayValue }
+  override var propval : [PackageInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

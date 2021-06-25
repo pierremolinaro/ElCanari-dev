@@ -1859,7 +1859,10 @@ final class TransientArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
 
   //····················································································································
 
-  override var propval : [BoardConnector] { return self.mInternalArrayValue }
+  override var propval : [BoardConnector] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

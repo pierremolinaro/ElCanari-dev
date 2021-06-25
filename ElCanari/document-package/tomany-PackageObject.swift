@@ -373,7 +373,10 @@ final class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
 
-  override var propval : [PackageObject] { return self.mInternalArrayValue }
+  override var propval : [PackageObject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

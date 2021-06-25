@@ -204,7 +204,7 @@ import Cocoa
           .bind_signature (self.signatureObserver_property)
         view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
-          .setCenterAlignment ()
+          .set (alignment: .center)
           .makeWidthExpandable ()
         view_0_1.appendView (view_0_1_1)
       }
@@ -216,7 +216,7 @@ import Cocoa
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
         view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, small: true)
-          .setCenterAlignment ()
+          .set (alignment: .center)
           .makeWidthExpandable ()
         view_0_2.appendView (view_0_2_1)
       }
@@ -238,7 +238,7 @@ import Cocoa
         }
         view_0_4.appendView (view_0_4_0)
         let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
-          .setCenterAlignment ()
+          .set (alignment: .center)
         view_0_4.appendView (view_0_4_1)
       }
       view_0.appendView (view_0_4)

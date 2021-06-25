@@ -202,7 +202,10 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
 
   //····················································································································
 
-  override var propval : [ForbiddenPadNumber] { return self.mInternalArrayValue }
+  override var propval : [ForbiddenPadNumber] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

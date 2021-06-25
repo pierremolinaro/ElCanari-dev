@@ -2094,7 +2094,10 @@ final class TransientArrayOf_BoardTrack : ReadOnlyArrayOf_BoardTrack {
 
   //····················································································································
 
-  override var propval : [BoardTrack] { return self.mInternalArrayValue }
+  override var propval : [BoardTrack] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

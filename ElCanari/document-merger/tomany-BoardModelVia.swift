@@ -324,7 +324,10 @@ final class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
-  override var propval : [BoardModelVia] { return self.mInternalArrayValue }
+  override var propval : [BoardModelVia] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

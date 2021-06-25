@@ -492,7 +492,10 @@ final class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic
 
   //····················································································································
 
-  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

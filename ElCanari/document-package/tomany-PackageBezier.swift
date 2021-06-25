@@ -1349,7 +1349,10 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  override var propval : [PackageBezier] { return self.mInternalArrayValue }
+  override var propval : [PackageBezier] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstractGenericRelationshipProperty, EBTableViewDelegate, NSTableViewDataSource {
+final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstractGenericRelationshipProperty {
  
   //····················································································································
   //    Constant properties
@@ -26,10 +26,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //····················································································································
 
   var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
-
-  //····················································································································
-
-  private var mSortDescriptorArray = [NSSortDescriptor] ()
 
   //····················································································································
   //    Model
@@ -60,29 +56,14 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //····················································································································
 
   final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
-  //--- Set sort descriptors
-    self.mSortDescriptorArray = []    
-  //--- Column 0
-    self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
-    for tableView in self.mTableViewArray {
-      for sortDescriptor in self.mSortDescriptorArray {
-   //     if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-  //        column.sortDescriptorPrototype = sortDescriptor
-  //      }
-      }
-  //    tableView.sortDescriptors = self.mSortDescriptorArray
-    }
-  //---
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_name (observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_name (observer)
       }
     )
     inModel.attachClient (self)
@@ -93,12 +74,12 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
-    for tvc in self.mTableViewDataSourceControllerArray {
-      self.sortedArray_property.removeEBObserver (tvc)
-    }
-    for tvc in self.mTableViewSelectionControllerArray {
-      self.mInternalSelectedArrayProperty.removeEBObserver (tvc)
-    }
+//    for tvc in self.mTableViewDataSourceControllerArray {
+//      self.sortedArray_property.removeEBObserver (tvc)
+//    }
+//    for tvc in self.mTableViewSelectionControllerArray {
+//      self.mInternalSelectedArrayProperty.removeEBObserver (tvc)
+//    }
   //---
     self.mModel = nil
     self.mUndoManager = nil
@@ -110,15 +91,18 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
 
   override func notifyModelDidChange () {
     super.notifyModelDidChange ()
-    // NSLog ("self.sortedArray \(self.sortedArray.count)")
-    let oldSelectionSet = self.selectedSet
-    var newSelectedArray = [ArtworkFileGenerationParameters] ()
-    for object in self.sortedArray {
-      if oldSelectionSet.contains (object) {
-        newSelectedArray.append (object)
-      }
+ //   NSLog ("self.sortedArray \(self.sortedArray.count)")
+//    let oldSelectionSet = self.selectedSet
+//    var newSelectedArray = [ArtworkFileGenerationParameters] ()
+//    for object in self.sortedArray {
+//      if oldSelectionSet.contains (object) {
+//        newSelectedArray.append (object)
+//      }
+//    }
+//    self.mInternalSelectedArrayProperty.setProp (newSelectedArray)
+    for tableView in self.mTableViewArray {
+      tableView.reloadData ()
     }
-    self.mInternalSelectedArrayProperty.setProp (newSelectedArray)
   }
 
   //····················································································································
@@ -162,32 +146,9 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
 
   //····················································································································
 
-  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
+/*  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
-  }
-
-  //····················································································································
-
-  func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray {
-      if sortDescriptor.key == "name" {
-        order = compare_String_properties (left.name_property, right.name_property)
-      }
-      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
-      if !sortDescriptor.ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedSame : ()
-        case .orderedDescending : order = .orderedAscending
-        }
-      }
-      if order != .orderedSame {
-        break // Exit from for
-      }
-    }
-    return order == .orderedAscending
-  }
+  } */
 
   //····················································································································
   //    Explorer
@@ -200,8 +161,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //    bind_tableView
   //····················································································································
 
-  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
+//  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
+//  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [AutoLayoutTableView] ()
 
   //····················································································································
@@ -210,8 +171,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
-      dataSourceDelegate: self,
-      tableViewDelegate: self
+      rowCountDelegate: { [weak self] in return self?.sortedArray.count },
+      selectionDidChangeDelegate: { [weak self] in self?.tableViewSelectionDidChange (selectedRows: $0) }
     )
   //--- Set table view data source controller
 /*    let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
@@ -220,22 +181,16 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //--- Set table view selection controller
     let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
     self.mInternalSelectedArrayProperty.addEBObserver (selectionTableViewController)
-    self.mTableViewSelectionControllerArray.append (selectionTableViewController)
-  //--- Check 'name' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
-      column.sortDescriptorPrototype = nil
-    }else{
-      presentErrorWindow (#file, #line, "\"name\" column view unknown")
-    }
-  //--- Set table view sort descriptors
-    for sortDescriptor in self.mSortDescriptorArray {
-      if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-        column.sortDescriptorPrototype = sortDescriptor
-      }
-    }
-    tableView.sortDescriptors = self.mSortDescriptorArray */
+    self.mTableViewSelectionControllerArray.append (selectionTableViewController) */
+  //--- Check 'name' column (0)
+    _ = inTableView.addTextColumn (valueDelegate: { [weak self] in return self?.sortedArray [$0].name },
+                                   title: "Name",
+                                   headerAlignment: .left,
+                                   contentAlignment: .left)
   //---
     self.mTableViewArray.append (inTableView)
+  //---
+    inTableView.reloadData ()
   }
 
   //····················································································································
@@ -273,80 +228,18 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   }
 
   //····················································································································
-  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
-  //····················································································································
-
-  func numberOfRows (in _ : NSTableView) -> Int {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return 0
-    case .single (let v) :
-      return v.count
-    }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
-  //····················································································································
-
-  func tableViewSelectionDidChange (_ notification : Notification) {
+ 
+  private func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
-      let tableView = notification.object as! EBTableView
       var newSelectedObjects = [ArtworkFileGenerationParameters] ()
-      for index in tableView.selectedRowIndexes {
+      for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
       self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
     }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    S O U R C E : tableView:sortDescriptorsDidChange:
-  //····················································································································
-
-/*  func tableView (_ tableView : NSTableView, sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.mSortDescriptorArray = tableView.sortDescriptors
-    for tableView in self.mTableViewArray {
-      tableView.sortDescriptors = self.mSortDescriptorArray
-    }
-    self.sortedArray_property.notifyModelDidChange ()
-  } */
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
-  //····················································································································
-
-  func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn: NSTableColumn?,
-                  row inRowIndex: Int) -> NSView? {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      if let tableColumnIdentifier = inTableColumn?.identifier,
-         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
-        if !reuseTableViewCells () {
-          result.identifier = nil // So result cannot be reused, will be freed
-        }
-        let object = v [inRowIndex]
-        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_value ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name_property, sendContinously:false)
-          cell.update ()
-        }else{
-          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-        }
-        return result
-      }else{
-        return nil
-      } 
-    } 
   }
  
   //····················································································································

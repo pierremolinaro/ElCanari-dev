@@ -870,7 +870,10 @@ final class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
+  override var propval : [ArtworkRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -2277,7 +2277,10 @@ final class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  override var propval : [MergerRoot] { return self.mInternalArrayValue }
+  override var propval : [MergerRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

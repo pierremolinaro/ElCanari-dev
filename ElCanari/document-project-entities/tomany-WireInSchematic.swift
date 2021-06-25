@@ -431,7 +431,10 @@ final class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
 
   //····················································································································
 
-  override var propval : [WireInSchematic] { return self.mInternalArrayValue }
+  override var propval : [WireInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -1871,7 +1871,10 @@ final class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 
   //····················································································································
 
-  override var propval : [PackagePad] { return self.mInternalArrayValue }
+  override var propval : [PackagePad] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

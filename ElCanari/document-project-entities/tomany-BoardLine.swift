@@ -928,7 +928,10 @@ final class TransientArrayOf_BoardLine : ReadOnlyArrayOf_BoardLine {
 
   //····················································································································
 
-  override var propval : [BoardLine] { return self.mInternalArrayValue }
+  override var propval : [BoardLine] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

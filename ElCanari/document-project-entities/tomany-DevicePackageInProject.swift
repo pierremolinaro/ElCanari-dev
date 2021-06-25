@@ -321,7 +321,10 @@ final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePack
 
   //····················································································································
 
-  override var propval : [DevicePackageInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePackageInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

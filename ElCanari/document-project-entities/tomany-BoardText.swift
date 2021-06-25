@@ -983,7 +983,10 @@ final class TransientArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 
   //····················································································································
 
-  override var propval : [BoardText] { return self.mInternalArrayValue }
+  override var propval : [BoardText] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -617,7 +617,10 @@ final class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 
   //····················································································································
 
-  override var propval : [SymbolSolidRect] { return self.mInternalArrayValue }
+  override var propval : [SymbolSolidRect] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

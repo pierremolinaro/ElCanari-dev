@@ -321,7 +321,10 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
 
   //····················································································································
 
-  override var propval : [DeviceDocumentation] { return self.mInternalArrayValue }
+  override var propval : [DeviceDocumentation] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

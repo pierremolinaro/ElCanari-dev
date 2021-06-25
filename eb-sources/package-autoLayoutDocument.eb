@@ -45,16 +45,16 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
       vStack {
         SignatureField { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
       }
       vStack {
         VersionField { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
       }
       space
       vStack {
         hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
+        StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
       }
     }
     separator

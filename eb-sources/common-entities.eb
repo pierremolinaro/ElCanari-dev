@@ -12,6 +12,10 @@ func enum AutoLayoutUserInterfaceStyle.popupTitles {
   shadowlessSquare : "Shadowless Square" ;
 }
 
+enum TextAlignment {
+  left, right, center
+}
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum MetadataStatus {

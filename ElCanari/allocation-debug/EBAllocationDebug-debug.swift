@@ -265,13 +265,13 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
             right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, small: true)
-              .setLeftAlignment().makeWidthExpandable()
+              .set (alignment: .left).makeWidthExpandable()
           )
           .addSeparator ()
           .addFirstBaseLineAligned (
             left: self.mReuseTableViewCellsCheckbox,
             right: AutoLayoutStaticLabel (title: "If Checked, table view cells may be not released.", bold: true, small: true)
-              .setLeftAlignment().makeWidthExpandable()
+              .set (alignment: .left).makeWidthExpandable()
           )
           .addSeparator ()
         mainVStack.appendView (hStack)

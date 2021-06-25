@@ -1544,7 +1544,10 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
 
   //····················································································································
 
-  override var propval : [ArtworkFileGenerationParameters] { return self.mInternalArrayValue }
+  override var propval : [ArtworkFileGenerationParameters] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

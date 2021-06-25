@@ -2699,7 +2699,10 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
 
   //····················································································································
 
-  override var propval : [ComponentInProject] { return self.mInternalArrayValue }
+  override var propval : [ComponentInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -980,7 +980,10 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
   //····················································································································
 
-  override var propval : [PackageSegment] { return self.mInternalArrayValue }
+  override var propval : [PackageSegment] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

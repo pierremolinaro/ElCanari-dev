@@ -803,7 +803,10 @@ final class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice
 
   //····················································································································
 
-  override var propval : [SlavePadInDevice] { return self.mInternalArrayValue }
+  override var propval : [SlavePadInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

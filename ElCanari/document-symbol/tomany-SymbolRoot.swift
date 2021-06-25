@@ -983,7 +983,10 @@ final class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  override var propval : [SymbolRoot] { return self.mInternalArrayValue }
+  override var propval : [SymbolRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -748,7 +748,10 @@ final class TransientArrayOf_DeviceMasterPadInProject : ReadOnlyArrayOf_DeviceMa
 
   //····················································································································
 
-  override var propval : [DeviceMasterPadInProject] { return self.mInternalArrayValue }
+  override var propval : [DeviceMasterPadInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

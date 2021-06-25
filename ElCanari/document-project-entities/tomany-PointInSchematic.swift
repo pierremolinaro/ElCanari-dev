@@ -1020,7 +1020,10 @@ final class TransientArrayOf_PointInSchematic : ReadOnlyArrayOf_PointInSchematic
 
   //····················································································································
 
-  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
+  override var propval : [PointInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

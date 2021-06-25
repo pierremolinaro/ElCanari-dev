@@ -852,7 +852,10 @@ final class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  override var propval : [FontRoot] { return self.mInternalArrayValue }
+  override var propval : [FontRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

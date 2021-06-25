@@ -7769,7 +7769,10 @@ final class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  override var propval : [ProjectRoot] { return self.mInternalArrayValue }
+  override var propval : [ProjectRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

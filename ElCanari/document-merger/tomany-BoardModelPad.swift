@@ -507,7 +507,10 @@ final class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
-  override var propval : [BoardModelPad] { return self.mInternalArrayValue }
+  override var propval : [BoardModelPad] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

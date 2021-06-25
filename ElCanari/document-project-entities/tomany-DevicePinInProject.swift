@@ -989,7 +989,10 @@ final class TransientArrayOf_DevicePinInProject : ReadOnlyArrayOf_DevicePinInPro
 
   //····················································································································
 
-  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePinInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

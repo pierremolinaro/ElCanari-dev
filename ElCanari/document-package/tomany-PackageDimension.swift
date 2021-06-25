@@ -1227,7 +1227,10 @@ final class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension
 
   //····················································································································
 
-  override var propval : [PackageDimension] { return self.mInternalArrayValue }
+  override var propval : [PackageDimension] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

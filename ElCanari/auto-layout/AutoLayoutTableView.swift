@@ -62,29 +62,29 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
-                        dataSourceDelegate inDataSourceDelegate : NSTableViewDataSource,
-                        tableViewDelegate inTableViewDelegate : NSTableViewDelegate) {
+                        rowCountDelegate inRowCountDelegate : @escaping () -> Int?,
+                        selectionDidChangeDelegate inTableViewSelectionDidChangeDelegate : @escaping (IndexSet) -> Void) {
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
-    self.mTableView.dataSource = inDataSourceDelegate
-    self.mTableView.delegate = inTableViewDelegate
+    self.mNumberOfRowsDelegate = inRowCountDelegate
+    self.mTableViewSelectionDidChangeDelegate = inTableViewSelectionDidChangeDelegate
   }
 
   //····················································································································
 
-  final func addTextObserverColumn (title inTitle : String,
-                                    sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
-                                    headerAlignment inHeaderAlignment : NSTextAlignment,
-                                    contentAlignment inContentAlignment : NSTextAlignment,
-                                    valueDelegate inCallBack : Optional < (_ inRow : Int) -> String >) -> Self {
+  final func addTextColumn (valueDelegate inCallBack : Optional < (_ inRow : Int) -> String? >,
+                            title inTitle : String,
+//                            sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
+                            headerAlignment inHeaderAlignment : TextAlignment,
+                            contentAlignment inContentAlignment : TextAlignment) -> Self {
     let column = InternalTextObserverTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
-      sort: inSortCallBack,
-      contentAlignment: inContentAlignment,
+      sort: nil, // inSortCallBack,
+      contentAlignment: inContentAlignment.cocoaAlignment,
       valueDelegate: inCallBack
     )
     column.title = inTitle
-    column.headerCell.alignment = inHeaderAlignment
+    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = 60.0
     column.maxWidth = 400.0
     column.width = 60.0
@@ -143,19 +143,13 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //   NSTableViewDataSource protocol
   //····················································································································
 
-  func setRowCountDelegate (_ inCallBack : Optional < () -> Int >) -> Self {
-    self.mNumberOfRowsDelegate = inCallBack
-    return self
-  }
-
-  //····················································································································
-
-  private var mNumberOfRowsDelegate : Optional < () -> Int > = nil
+  private var mNumberOfRowsDelegate : () -> Int? = { return nil }
 
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mNumberOfRowsDelegate? () ?? 0
+    let n = self.mNumberOfRowsDelegate () ?? 0
+    return n
   }
 
   //····················································································································
@@ -198,6 +192,18 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   func tableView (_ tableView : NSTableView,
                   sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.reloadData ()
+  }
+
+  //····················································································································
+  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
+  //····················································································································
+
+  private var mTableViewSelectionDidChangeDelegate : (IndexSet) -> Void = { (IndexSet) in () }
+
+  //····················································································································
+
+  func tableViewSelectionDidChange (_ notification : Notification) {
+    self.mTableViewSelectionDidChangeDelegate (self.mTableView.selectedRowIndexes)
   }
 
   //····················································································································
@@ -256,7 +262,7 @@ fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  private let mValueDelegate : Optional < (_ inRow : Int) -> String >
+  private let mValueDelegate : Optional < (_ inRow : Int) -> String? >
 
   //····················································································································
   // INIT
@@ -265,7 +271,7 @@ fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
   init (withIdentifierNamed inName : String,
         sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueDelegate inCallBack : Optional < (_ inRow : Int) -> String >) {
+        valueDelegate inCallBack : Optional < (_ inRow : Int) -> String? >) {
     self.mValueDelegate = inCallBack
     super.init (withIdentifierNamed: inName, sort: inSortCallBack, contentAlignment: inContentAlignment)
   }

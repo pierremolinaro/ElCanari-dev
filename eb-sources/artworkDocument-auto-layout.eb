@@ -24,16 +24,16 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       }
       vStack {
         SignatureField { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
       }
       vStack {
         VersionField { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
       }
       space
       vStack {
         hStack { space ImageObserverView (small: no) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
-        StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
+        StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
       }
     }
     separator
@@ -99,9 +99,10 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //  Data Page
 //······················································································································
 
-  autolayout tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
-     column "name" sort name EBTextField $value self.name (sendContinously:no)
+  autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
+     column name (title: "Name", headerAlignment: .left, contentAlignment: .left) EBTextField $value self.name (sendContinously:no)
   }
+
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
 
   stackView mDataPage hStack set (leftMargin: 8) set (rightMargin: 8) {

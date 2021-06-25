@@ -617,7 +617,10 @@ final class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 
   //····················································································································
 
-  override var propval : [SymbolSolidOval] { return self.mInternalArrayValue }
+  override var propval : [SymbolSolidOval] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

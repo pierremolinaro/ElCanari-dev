@@ -614,7 +614,10 @@ final class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardIn
 
   //····················································································································
 
-  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
+  override var propval : [MergerBoardInstance] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

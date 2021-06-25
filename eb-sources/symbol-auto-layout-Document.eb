@@ -20,16 +20,16 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       }
       vStack {
         SignatureField { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { setCenterAlignment ()  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
       }
       vStack {
         VersionField { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { setCenterAlignment () makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
       }
       space
       vStack {
         hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, small: yes) {  setCenterAlignment () }
+        StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
       }
     }
     separator
@@ -190,7 +190,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Step", bold: no, small: yes),
-        right: StaticLabel (title: "25 mils", bold: yes, small: yes) { setLeftAlignment () }
+        right: StaticLabel (title: "25 mils", bold: yes, small: yes) { set (alignment: .left) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Flip", bold: no, small: yes),

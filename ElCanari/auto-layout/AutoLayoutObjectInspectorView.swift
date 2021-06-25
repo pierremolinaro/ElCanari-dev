@@ -11,7 +11,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   //····················································································································
 
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
-  private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, small: true).makeWidthExpandable ().setCenterAlignment()
+  private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, small: true).makeWidthExpandable ().set (alignment: .center)
   private var mGraphicController : EBGraphicViewControllerProtocol? = nil
   private var mInspectors = [(EBManagedObject.Type, AutoLayoutAbstractStackView)] ()
   private let mObserver = EBOutletEvent ()
@@ -22,10 +22,6 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   override init () {
   //--- Define default View
-//    let hStack = AutoLayoutHorizontalStackView ()
-//    hStack.appendView (AutoLayoutFlexibleSpace ())
-//    hStack.appendView (mDefaultLabel)
-//    hStack.appendView (AutoLayoutFlexibleSpace ())
     self.mDefaultInspectorView.appendView (mDefaultLabel)
     self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
   //---

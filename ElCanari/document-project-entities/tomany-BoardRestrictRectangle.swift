@@ -681,7 +681,10 @@ final class TransientArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestr
 
   //····················································································································
 
-  override var propval : [BoardRestrictRectangle] { return self.mInternalArrayValue }
+  override var propval : [BoardRestrictRectangle] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

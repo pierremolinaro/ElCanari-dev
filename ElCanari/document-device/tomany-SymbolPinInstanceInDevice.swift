@@ -431,7 +431,10 @@ final class TransientArrayOf_SymbolPinInstanceInDevice : ReadOnlyArrayOf_SymbolP
 
   //····················································································································
 
-  override var propval : [SymbolPinInstanceInDevice] { return self.mInternalArrayValue }
+  override var propval : [SymbolPinInstanceInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

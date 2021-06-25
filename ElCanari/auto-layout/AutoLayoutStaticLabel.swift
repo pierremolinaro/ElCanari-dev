@@ -66,15 +66,8 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func setCenterAlignment () -> Self {
-    self.alignment = .center
-    return self
-  }
-
-  //····················································································································
-
-  final func setLeftAlignment () -> Self {
-    self.alignment = .left
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
     return self
   }
 

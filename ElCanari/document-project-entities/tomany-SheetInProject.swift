@@ -492,7 +492,10 @@ final class TransientArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 
   //····················································································································
 
-  override var propval : [SheetInProject] { return self.mInternalArrayValue }
+  override var propval : [SheetInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

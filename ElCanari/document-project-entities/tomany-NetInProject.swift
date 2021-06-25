@@ -608,7 +608,10 @@ final class TransientArrayOf_NetInProject : ReadOnlyArrayOf_NetInProject {
 
   //····················································································································
 
-  override var propval : [NetInProject] { return self.mInternalArrayValue }
+  override var propval : [NetInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

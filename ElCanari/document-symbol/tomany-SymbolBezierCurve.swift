@@ -861,7 +861,10 @@ final class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCur
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
+  override var propval : [SymbolBezierCurve] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

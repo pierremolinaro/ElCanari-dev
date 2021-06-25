@@ -1636,7 +1636,10 @@ final class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
+  override var propval : [DeviceRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

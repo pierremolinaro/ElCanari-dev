@@ -443,7 +443,10 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+  override var propval : [CanariLibraryEntry] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

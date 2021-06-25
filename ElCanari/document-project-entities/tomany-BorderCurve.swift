@@ -1030,7 +1030,10 @@ final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
 
   //····················································································································
 
-  override var propval : [BorderCurve] { return self.mInternalArrayValue }
+  override var propval : [BorderCurve] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

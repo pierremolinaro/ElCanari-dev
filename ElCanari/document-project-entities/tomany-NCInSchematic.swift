@@ -318,7 +318,10 @@ final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
 
   //····················································································································
 
-  override var propval : [NCInSchematic] { return self.mInternalArrayValue }
+  override var propval : [NCInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -678,7 +678,10 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
 
   //····················································································································
 
-  override var propval : [SymbolTypeInDevice] { return self.mInternalArrayValue }
+  override var propval : [SymbolTypeInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

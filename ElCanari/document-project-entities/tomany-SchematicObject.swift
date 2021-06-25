@@ -489,7 +489,10 @@ final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 
   //····················································································································
 
-  override var propval : [SchematicObject] { return self.mInternalArrayValue }
+  override var propval : [SchematicObject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -446,7 +446,10 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  override var propval : [SegmentEntity] { return self.mInternalArrayValue }
+  override var propval : [SegmentEntity] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

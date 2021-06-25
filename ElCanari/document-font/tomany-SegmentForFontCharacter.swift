@@ -501,7 +501,10 @@ final class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentFo
 
   //····················································································································
 
-  override var propval : [SegmentForFontCharacter] { return self.mInternalArrayValue }
+  override var propval : [SegmentForFontCharacter] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

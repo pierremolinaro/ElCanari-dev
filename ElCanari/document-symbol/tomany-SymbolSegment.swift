@@ -617,7 +617,10 @@ final class TransientArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 
   //····················································································································
 
-  override var propval : [SymbolSegment] { return self.mInternalArrayValue }
+  override var propval : [SymbolSegment] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 
