@@ -14,9 +14,12 @@ import Cocoa
 
 final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
+  private let mWidth : CGFloat
+
   //····················································································································
 
-  init (small inSmall : Bool) {
+  init (width inWidth : Int, small inSmall : Bool) {
+    self.mWidth = CGFloat (inWidth)
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -43,9 +46,14 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   }
 
   //····················································································································
+  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
+  //  So we need to define intrinsicContentSize.width explicitly
+  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
+  //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: 19.0)
+    let s = super.intrinsicContentSize
+    return NSSize (width: self.mWidth, height: s.height)
   }
 
   //····················································································································

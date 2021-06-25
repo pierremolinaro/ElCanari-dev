@@ -2,30 +2,30 @@
 //     A R T W O R K    D O C U M E N T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ArtworkRoot {
-  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
-  property Int selectedTab default 0 ;
-  property @signature String comments default "" ;
-
-  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
-  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
-
-  property Int minValueForOARdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
-
-  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
-  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
-
-  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
-  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
-
-//--- Excellon drill data
-  property @signature String drillDataFileExtension default "drf" ;
-  
-//--- For artwork embedded in document
-  transient UInt32 signatureForERCChecking dependsFrom
-     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
-}
+//entity ArtworkRoot {
+//  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
+//  property Int selectedTab default 0 ;
+//  property @signature String comments default "" ;
+//
+//  property Int minPPTPTTTWdisplayUnit default 90 ; // 1µm
+//  property @signature Int minPPTPTTTW default 18_000 ; // 200µm
+//
+//  property Int minValueForOARdisplayUnit default 90 ; // 1µm
+//  property @signature Int minValueForOARinEBUnit default 18_000 ; // 200µm
+//
+//  property Int minValueForPHDdisplayUnit default 90 ; // 1µm
+//  property @signature Int minValueForPHDinEBUnit default 18_000 ; // 200µm
+//
+//  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
+//  property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+//
+////--- Excellon drill data
+//  property @signature String drillDataFileExtension default "drf" ;
+//  
+////--- For artwork embedded in document
+//  transient UInt32 signatureForERCChecking dependsFrom
+//     self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
+//}
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -126,30 +126,30 @@ xibdocument ArtworkDocument root ArtworkRoot {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ArtworkFileGenerationParameters {
-  property @signature Bool drawBoardLimits default no ;
-  property @signature Bool drawInternalBoardLimits default no ;
-  property @signature Bool drawComponentNamesTopSide default no ;
-  property @signature Bool drawComponentNamesBottomSide default no ;
-  property @signature Bool drawComponentValuesTopSide default no ;
-  property @signature Bool drawComponentValuesBottomSide default no ;
-  property @signature Bool drawPackageLegendTopSide default no ;
-  property @signature Bool drawPackageLegendBottomSide default no ;
-  property @signature Bool drawPadHolesInPDF default no ;
-  property @signature Bool drawPadsTopSide default no ;
-  property @signature Bool drawPadsBottomSide default no ;
-  property @signature Bool drawTextsLayoutTopSide default no ;
-  property @signature Bool drawTextsLayoutBottomSide default no ;
-  property @signature Bool drawTextsLegendTopSide default no ;
-  property @signature Bool drawTextsLegendBottomSide default no ;
-  property @signature Bool drawTracksTopSide default no ;
-  property @signature Bool drawTracksBottomSide default no ;
-  property @signature Bool drawVias default no ;
-  property @signature String fileExtension default "?" ;
-  property @signature Bool horizontalMirror default no ;
-  property @signature String name default "Unnamed" ;
-  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
-  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
-}
+//entity ArtworkFileGenerationParameters {
+//  property @signature Bool drawBoardLimits default no ;
+//  property @signature Bool drawInternalBoardLimits default no ;
+//  property @signature Bool drawComponentNamesTopSide default no ;
+//  property @signature Bool drawComponentNamesBottomSide default no ;
+//  property @signature Bool drawComponentValuesTopSide default no ;
+//  property @signature Bool drawComponentValuesBottomSide default no ;
+//  property @signature Bool drawPackageLegendTopSide default no ;
+//  property @signature Bool drawPackageLegendBottomSide default no ;
+//  property @signature Bool drawPadHolesInPDF default no ;
+//  property @signature Bool drawPadsTopSide default no ;
+//  property @signature Bool drawPadsBottomSide default no ;
+//  property @signature Bool drawTextsLayoutTopSide default no ;
+//  property @signature Bool drawTextsLayoutBottomSide default no ;
+//  property @signature Bool drawTextsLegendTopSide default no ;
+//  property @signature Bool drawTextsLegendBottomSide default no ;
+//  property @signature Bool drawTracksTopSide default no ;
+//  property @signature Bool drawTracksBottomSide default no ;
+//  property @signature Bool drawVias default no ;
+//  property @signature String fileExtension default "?" ;
+//  property @signature Bool horizontalMirror default no ;
+//  property @signature String name default "Unnamed" ;
+//  property @signature Int measurementUnitForPadHoleInPDF default 90_000 ; // mm
+//  property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
+//}
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -18,6 +18,7 @@ hStack func set (rightMargin: Int) ;
 hStack func set (topMargin: Int) ;
 hStack func set (bottomMargin: Int) ;
 hStack func set (height: Int) ;
+hStack func setFirstBaselineAlignment () ;
 
 func enum GridStyle.popupTitles {
   cross : "Cross Grid" ;
@@ -55,7 +56,7 @@ extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $e
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
 }
 
-extern autolayout class Label (small: Bool) {
+extern autolayout class Label (bold: Bool, small: Bool) {
   $title transient String
   func setRedTextColor ()
 }
@@ -125,7 +126,7 @@ extern autolayout class Button (title: String, small: Bool) $enabled $run $hidde
   func set (height: Int)
 }
 
-extern autolayout class TextField (small: Bool) $enabled {
+extern autolayout class TextField (width: Int, small: Bool) $enabled {
   $value property String (sendContinously : Bool)
   func makeWidthExpandable ()
 }
@@ -232,6 +233,9 @@ extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $h
 extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) {
   func makeWidthExpandable ()
   $alignment property HorizontalAlignment
+}
+
+extern autolayout class StaticImageView (name: String) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

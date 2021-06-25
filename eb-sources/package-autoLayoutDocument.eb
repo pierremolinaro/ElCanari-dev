@@ -139,7 +139,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
             add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
             add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
           },
-          right: Label (small: yes) { $title root.modelImageSizeString }
+          right: Label (bold: no, small: yes) { $title root.modelImageSizeString }
         )
         add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $hidden !root.hasModelImage $setter6
            root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
@@ -325,7 +325,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mIssuesInspectorView vStack {
-    hStack { space Label (small: yes) { $title self.statusMessage} space }
+    hStack { space Label (bold: no, small: yes) { $title self.statusMessage} space }
     CanariIssueTableView [outlet mPackageIssueTableView] { $issues root.issues }
   }
 
@@ -698,7 +698,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name", bold: no, small: yes),
-        right: TextField (small: yes) {
+        right: TextField (width: 56, small: yes) {
           $value #mPackageZoneSelectionController.zoneName (sendContinously: yes)
         }
       )
@@ -1043,7 +1043,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       Button (title: "Load from Design", small: yes) { $run loadFromDesignAction }
       Button (title: "Run", small: yes) { $run runProgramAction }
       Button (title: "Clear Error", small: yes) { $run clearProgramErrorAction  }
-      Label (small: yes) [outlet mProgramErrorTextField] { setRedTextColor () }
+      Label (bold: no, small: yes) [outlet mProgramErrorTextField] { setRedTextColor () }
       space
       HelpButton (small: yes) { $run programHelpAction }
     }
@@ -1065,7 +1065,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       space
     }
     hStack {
-      vStack { StaticLabel (title: "Comments", bold: yes, small: no) space }
+      vStack { StaticLabel (title: "Comments", bold: no, small: no) space }
       TextView (editable: yes) { $value root.comments }
     }
   }

@@ -5,22 +5,6 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//   Protocol EBPreferencesPropertyProtocol
-//----------------------------------------------------------------------------------------------------------------------
-
-//protocol EBPreferencesPropertyProtocol : Equatable {
-//
-// // func ebHashValue () -> UInt32
-//
-//  func convertToNSObject () -> NSObject
-//
-//  static func convertFromNSObject (object : NSObject) -> Self
-//
-////  func appendPropertyValueTo (_ ioData : inout Data)
-//
-//}
-
-//----------------------------------------------------------------------------------------------------------------------
 //   Protocol EBStoredPropertyProtocol
 //----------------------------------------------------------------------------------------------------------------------
 

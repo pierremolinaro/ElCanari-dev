@@ -13,19 +13,19 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func transient_ArtworkDocument_mGeneratedFileCountString (
+func transient_AutoLayoutArtworkDocument_mGeneratedFileCountString (
        _ self_mDataController_sortedArray_count : Int
 ) -> String {
 //--- START OF USER ZONE 2
-          var s : String
-          if 0 == self_mDataController_sortedArray_count {
-            s = "This artwork generates no data file"
-          }else if 1 == self_mDataController_sortedArray_count {
-            s = "This artwork generates 1 data file"
-          }else{
-            s = "This artwork generates \(self_mDataController_sortedArray_count) data files"
-          }
-          return s
+        var s : String
+        if 0 == self_mDataController_sortedArray_count {
+          s = "This artwork generates no data file"
+        }else if 1 == self_mDataController_sortedArray_count {
+          s = "This artwork generates 1 data file"
+        }else{
+          s = "This artwork generates \(self_mDataController_sortedArray_count) data files"
+        }
+        return s
 //--- END OF USER ZONE 2
 }
 

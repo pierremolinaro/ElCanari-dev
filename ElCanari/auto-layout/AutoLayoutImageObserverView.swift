@@ -1,6 +1,5 @@
 //
 //  AutoLayoutImageObserverView.swift
-//  ElCanari
 //
 //  Created by Pierre Molinaro on 05/02/2021.
 //

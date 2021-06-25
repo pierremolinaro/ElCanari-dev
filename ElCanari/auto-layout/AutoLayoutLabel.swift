@@ -10,17 +10,19 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // INIT
   //····················································································································
 
-  init (small inSmall : Bool) {
+  init (bold inBold : Bool, small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
+
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
     self.isEnabled = true
     self.isEditable = false
     self.controlSize = inSmall ? .small : .regular
-    self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+    let fontSize = NSFont.systemFontSize (for: self.controlSize)
+    self.font = inBold ? NSFont.boldSystemFont (ofSize: fontSize) : NSFont.systemFont (ofSize: fontSize)
   }
 
   //····················································································································

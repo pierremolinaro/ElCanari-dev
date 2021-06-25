@@ -91,7 +91,7 @@ extension AutoLayoutPackageDocument {
         }
       //--- Error message
         do{
-          let errorMessage = AutoLayoutLabel (small: false)
+          let errorMessage = AutoLayoutLabel (bold: false, small: false)
             .bind_title (errorMessage_property)
             .setRedTextColor ()
           contentsVStack.appendView (errorMessage)

@@ -703,7 +703,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutLabel (small: true)
+      let view_0_1 = AutoLayoutLabel (bold: false, small: true)
         .bind_title (self.statusMessage_property)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
@@ -1174,7 +1174,7 @@ import Cocoa
           selector: #selector (AutoLayoutPackageDocument.clearProgramErrorAction (_:))
         )
       view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutLabel (small: true)
+      let view_0_3 = AutoLayoutLabel (bold: false, small: true)
         .setRedTextColor ()
       self.mProgramErrorTextField = view_0_3 // Outlet
       view_0.appendView (view_0_3)
@@ -1398,7 +1398,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutLabel (small: true)
+    let view = AutoLayoutLabel (bold: false, small: true)
       .bind_title (self.rootObject.modelImageSizeString_property)
     return view
   }
@@ -2518,7 +2518,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_128 () -> NSView {
-    let view = AutoLayoutTextField (small: true)
+    let view = AutoLayoutTextField (width: 56, small: true)
       .bind_value (self.mPackageZoneSelectionController.zoneName_property, sendContinously:true)
     return view
   }

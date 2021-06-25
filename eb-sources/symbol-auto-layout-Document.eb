@@ -130,7 +130,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pin Name", bold: no, small: yes),
-        right: TextField (small: yes) { makeWidthExpandable () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
+        right: TextField (width: 56, small: yes) { makeWidthExpandable () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Alignment", bold: no, small: yes),
@@ -148,7 +148,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Value", bold: no, small: yes),
-        right: TextField (small: yes) { makeWidthExpandable () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
+        right: TextField (width: 56, small: yes) { makeWidthExpandable () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name Alignment", bold: no, small: yes),
@@ -275,7 +275,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       space
     }
     hStack {
-      vStack { StaticLabel (title: "Comments", bold: yes, small: no) space }
+      vStack { StaticLabel (title: "Comments", bold: no, small: no) space }
       TextView (editable: yes) { $value root.comments }
     }
   }
