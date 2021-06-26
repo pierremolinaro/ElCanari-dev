@@ -9,21 +9,14 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-// https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
-//----------------------------------------------------------------------------------------------------------------------
 
 protocol AutoLayoutTableViewDelegate : AnyObject {
 
   func rowCount () -> Int
-
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
-
   func indexesOfSelectedObjects () -> IndexSet
-
   func addEntry ()
-
   func removeSelectedEntries ()
-
   func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor])
 }
 
@@ -171,17 +164,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //····················································································································
 
   func reloadData () {
-    Swift.print ("AutoLayoutTableView reloads data")
+    // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
-  //--- Sort Objects
-//    for sortDescriptor in self.mTableView.sortDescriptors.reversed () {
-//      for column in self.mTableView.tableColumns {
-//        if sortDescriptor === column.sortDescriptorPrototype, let c = column as? InternalTableColumn {
-//          c.mSortCallBack? (sortDescriptor.ascending)
-//        }
-//      }
-//    }
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
     self.mTransmitSelectionChangeToDelegate = false
     self.mTableView.reloadData ()

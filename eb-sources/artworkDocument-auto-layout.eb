@@ -100,8 +100,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //······················································································································
 
   autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
-     editableColumn name (title: "Name", headerAlignment: .left, contentAlignment: .left)
-         EBTextField $value self.name (sendContinously:no)
+     sort editableColumn name (title: "Name", headerAlignment: .left, contentAlignment: .left)
+         EBTextField { $value self.name (sendContinously:no) }
   }
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;

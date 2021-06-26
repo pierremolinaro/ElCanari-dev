@@ -19,6 +19,13 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   private let allowsMultipleSelection = false
 
   //····················································································································
+  //    Undo manager
+  //····················································································································
+
+  private var mUndoManager : EBUndoManager? = nil
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+
+  //····················································································································
   //   Sorted Array
   //····················································································································
 
@@ -40,32 +47,29 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   //····················································································································
 
-//  var objects : [ArtworkFileGenerationParameters] {
-//    if let objects = self.mModel?.propval {
-//      return objects
-//    }else{
-//      return []
-//    }
-//  }
+/*   var objects : [ArtworkFileGenerationParameters] {
+    if let objects = self.mModel?.propval {
+      return objects
+    }else{
+      return []
+    }
+  } */
 
   //····················································································································
 
-//  var objectCount : Int {
-//    if let objects = self.mModel?.propval {
-//      return objects.count
-//    }else{
-//      return 0
-//    }
-//  }
+/*  var objectCount : Int {
+    if let objects = self.mModel?.propval {
+      return objects.count
+    }else{
+      return 0
+    }
+  } */
 
   //····················································································································
 
   final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
-  //--- Sort descriptors
-//    self.mSortDescriptorArray = []
-//    self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     self.sortedArray_property.setDataProvider (
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
@@ -83,9 +87,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
     var order = ComparisonResult.orderedSame
-    Swift.print ("BEGIN SORT")
     for sortDescriptor in self.mSortDescriptorArray {
-      Swift.print ("  \(sortDescriptor.key) \(sortDescriptor.ascending)")
       if sortDescriptor.key == "name" {
         order = compare_String_properties (left.name_property, right.name_property)
       }
@@ -101,7 +103,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
         break // Exit from for
       }
     }
-    Swift.print ("END SORT")
     return order == .orderedAscending
   }
 
@@ -110,12 +111,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel?.detachClient (self)
-//    for tvc in self.mTableViewDataSourceControllerArray {
-//      self.sortedArray_property.removeEBObserver (tvc)
-//    }
-//    for tvc in self.mTableViewSelectionControllerArray {
-//      self.mInternalSelectedArrayProperty.removeEBObserver (tvc)
-//    }
   //---
     self.mModel = nil
     self.mUndoManager = nil
@@ -140,13 +135,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
       tableView.reloadData ()
     }
   }
-
-  //····················································································································
-  //    Undo manager
-  //····················································································································
-
-  private var mUndoManager : EBUndoManager? = nil
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Selected Array
