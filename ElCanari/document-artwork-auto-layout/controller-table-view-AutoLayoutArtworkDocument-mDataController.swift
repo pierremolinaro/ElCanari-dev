@@ -29,6 +29,10 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
 
   //····················································································································
+
+  private var mSortDescriptorArray = [NSSortDescriptor] ()
+
+  //····················································································································
   //    Model
   //····················································································································
 
@@ -36,38 +40,69 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   //····················································································································
 
-  var objects : [ArtworkFileGenerationParameters] {
-    if let objects = self.mModel?.propval {
-      return objects
-    }else{
-      return []
-    }
-  }
+//  var objects : [ArtworkFileGenerationParameters] {
+//    if let objects = self.mModel?.propval {
+//      return objects
+//    }else{
+//      return []
+//    }
+//  }
 
   //····················································································································
 
-  var objectCount : Int {
-    if let objects = self.mModel?.propval {
-      return objects.count
-    }else{
-      return 0
-    }
-  }
+//  var objectCount : Int {
+//    if let objects = self.mModel?.propval {
+//      return objects.count
+//    }else{
+//      return 0
+//    }
+//  }
 
   //····················································································································
 
   final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
+  //--- Sort descriptors
+//    self.mSortDescriptorArray = []
+//    self.mSortDescriptorArray.append (NSSortDescriptor (key: "name", ascending: true))
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: nil,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_name (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_name (observer)
       }
     )
     inModel.attachClient (self)
+  }
+
+  //····················································································································
+
+  func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
+    var order = ComparisonResult.orderedSame
+    Swift.print ("BEGIN SORT")
+    for sortDescriptor in self.mSortDescriptorArray {
+      Swift.print ("  \(sortDescriptor.key) \(sortDescriptor.ascending)")
+      if sortDescriptor.key == "name" {
+        order = compare_String_properties (left.name_property, right.name_property)
+      }
+      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
+      if !sortDescriptor.ascending {
+        switch order {
+        case .orderedAscending : order = .orderedDescending
+        case .orderedSame : ()
+        case .orderedDescending : order = .orderedAscending
+        }
+      }
+      if order != .orderedSame {
+        break // Exit from for
+      }
+    }
+    Swift.print ("END SORT")
+    return order == .orderedAscending
   }
 
   //····················································································································
@@ -136,7 +171,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
-    for object in self.objects {
+    for object in self.mModel?.propval ?? [] {
       if self.selectedSet.contains (object) {
         result.insert (idx)
       }
@@ -176,16 +211,16 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   //--- Configure 'name' column
     _ = inTableView.addTextColumn (valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
                                    valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
+                                   sortDescriptor: NSSortDescriptor (key: "name", ascending: true),
                                    title: "Name",
                                    headerAlignment: .left,
-                                   contentAlignment: .left)
-      self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
+                                   contentAlignment: .left
+    )
+    self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
     self.mColumnObserver_name.mEventCallBack = { [weak self] in
-      // NSLog ("BEGIN reloadData \(self?.selectedArray)")
       for tableView in self?.mTableViewArray ?? [] {
         tableView.reloadData ()
       }
-      // NSLog ("END reloadData \(self?.selectedArray)")
     }
   //---
     self.mTableViewArray.append (inTableView)
@@ -246,6 +281,14 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
       }
       self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
     }
+  }
+
+  //····················································································································
+
+  func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor]) {
+    self.mSortDescriptorArray = inSortDescriptors
+ //   self.sortedArray_property.notifyModelDidChange ()
+    self.mModel?.notifyModelDidChange ()
   }
 
   //····················································································································
