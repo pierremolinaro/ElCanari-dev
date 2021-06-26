@@ -236,7 +236,7 @@ extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) 
 extern autolayout class StaticImageView (name: String) {
 }
 
-extern autolayout class TableView (small: Bool) $tableValue {
+extern autolayout class TableView (small: Bool, addControlButtons: Bool) $tableValue {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

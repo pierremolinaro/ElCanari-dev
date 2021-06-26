@@ -92,6 +92,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  weak final var mDataTableView : AutoLayoutTableView? = nil
 
   //····················································································································
   //    Outlets
@@ -330,8 +331,9 @@ import Cocoa
       let view_0_0 = AutoLayoutLabel (bold: true, small: true)
         .bind_title (self.mGeneratedFileCountString_property)
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTableView (small: true)
+      let view_0_1 = AutoLayoutTableView (small: true, addControlButtons: true)
       self.mDataController.bind_tableView (view_0_1)
+      self.mDataTableView = view_0_1 // Outlet
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)

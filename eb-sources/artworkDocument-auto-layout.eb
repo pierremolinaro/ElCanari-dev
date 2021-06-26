@@ -109,7 +109,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mDataPage hStack set (leftMargin: 8) set (rightMargin: 8) {
     vStack set (topMargin: 8) {
       Label (bold: yes, small: yes) { $title self.mGeneratedFileCountString }
-      TableView (small: yes) { $tableValue #mDataController }
+      TableView (small: yes, addControlButtons: yes) [outlet mDataTableView] { $tableValue #mDataController }
       space
     }
     separator

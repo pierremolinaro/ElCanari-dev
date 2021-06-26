@@ -163,7 +163,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
-  private var mColumnObserver = EBOutletEvent ()
+  private var mColumnObserver_name = EBOutletEvent ()
 
   //····················································································································
 
@@ -179,14 +179,14 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
                                    title: "Name",
                                    headerAlignment: .left,
                                    contentAlignment: .left)
-    self.mModel?.addEBObserverOf_name (self.mColumnObserver)
-    self.mColumnObserver.mEventCallBack = { [weak self] in
+      self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
+    self.mColumnObserver_name.mEventCallBack = { [weak self] in
       // NSLog ("BEGIN reloadData \(self?.selectedArray)")
       for tableView in self?.mTableViewArray ?? [] {
         tableView.reloadData ()
       }
       // NSLog ("END reloadData \(self?.selectedArray)")
-   }
+    }
   //---
     self.mTableViewArray.append (inTableView)
   //---
@@ -205,54 +205,71 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
     }
   } */
 
- //····················································································································
-
-//  func selectedObjectIndexSet () -> NSIndexSet {
-//    switch self.sortedArray_property.selection {
-//    case .empty, .multiple :
-//       return NSIndexSet ()
-//    case .single (let v) :
-//    //--- Dictionary of object indexes
-//      var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
-//      for (index, object) in v.enumerated () {
-//        objectDictionary [object] = index
-//      }
-//      let indexSet = NSMutableIndexSet ()
-//      for object in self.selectedSet {
-//        if let index = objectDictionary [object] {
-//          indexSet.add (index)
-//        }
-//      }
-//      return indexSet
-//    }
-//  }
- 
   //····················································································································
   //   Select a single object
   //····················································································································
 
-  func select (object inObject: ArtworkFileGenerationParameters) {
+/*  func select (object inObject: ArtworkFileGenerationParameters) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        break
+        ()
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
           self.mInternalSelectedArrayProperty.setProp ([inObject])
         }
       }
     }
+  } */
+
+  //····················································································································
+
+
+  //····················································································································
+  // IMPLEMENTATION OF AutoLayoutTableViewDelegate
+  //····················································································································
+
+  func rowCount () -> Int {
+    return self.sortedArray.count
   }
 
   //····················································································································
-  //    add
+
+  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+    switch self.sortedArray_property.selection {
+    case .empty, .multiple :
+      ()
+    case .single (let v) :
+      var newSelectedObjects = [ArtworkFileGenerationParameters] ()
+      for index in inSelectedRows {
+        newSelectedObjects.append (v [index])
+      }
+      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
+    }
+  }
+
   //····················································································································
 
-   @objc func add (_ sender : Any) {
+  func indexesOfSelectedObjects () -> IndexSet {
+    var indexSet = IndexSet ()
+    var idx = 0
+    let selectedObjectSet = Set (self.selectedArray)
+    for object in self.sortedArray {
+      if selectedObjectSet.contains (object) {
+        indexSet.insert (idx)
+      }
+      idx += 1
+    }
+    return indexSet
+  }
+
+  //····················································································································
+
+  final func addEntry () {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        break
+        ()
       case .single (let v) :
         let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
         var array = v
@@ -265,18 +282,16 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   }
 
   //····················································································································
-  //    remove
-  //····················································································································
 
-  @objc func remove (_ sender : Any) {
+  func removeSelectedEntries () {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
-        break
+        ()
       case .single (let model_prop) :
         switch self.sortedArray_property.selection {
         case .empty, .multiple :
-          break
+          ()
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
@@ -297,7 +312,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
           var newSelectionIndex = indexArrayOfSelectedObjects [0] + 1
           for index in indexArrayOfSelectedObjects {
             if newSelectionIndex < index {
-              break
+              ()
             }else{
               newSelectionIndex = index + 1
             }
@@ -338,45 +353,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
         }
       }
     }
-  }
-
-  //····················································································································
-  // IMPLEMENTATION OF AutoLayoutTableViewDelegate
-  //····················································································································
-
-  func rowCount () -> Int {
-    return self.sortedArray.count
-  }
-
-  //····················································································································
-
-  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
-    NSLog ("tableViewSelectionDidChange \(inSelectedRows)")
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      var newSelectedObjects = [ArtworkFileGenerationParameters] ()
-      for index in inSelectedRows {
-        newSelectedObjects.append (v [index])
-      }
-      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
-    }
-  }
-
-  //····················································································································
-
-  func indexesOfSelectedObjects () -> IndexSet {
-    var indexSet = IndexSet ()
-    var idx = 0
-    let selectedObjectSet = Set (self.selectedArray)
-    for object in self.sortedArray {
-      if selectedObjectSet.contains (object) {
-        indexSet.insert (idx)
-      }
-      idx += 1
-    }
-    return indexSet
   }
 
   //····················································································································

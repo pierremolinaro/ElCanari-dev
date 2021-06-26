@@ -19,25 +19,30 @@ protocol AutoLayoutTableViewDelegate : AnyObject {
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
 
   func indexesOfSelectedObjects () -> IndexSet
+
+  func addEntry ()
+
+  func removeSelectedEntries ()
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
+  private let mScrollView = NSScrollView (frame: NSRect ())
   private let mTableView = NSTableView (frame: NSRect ())
+  private var mAddButton : AutoLayoutButton? = nil
+  private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
   private var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    super.init (frame: NSRect ())
-    noteObjectAllocation (self)
-    self.translatesAutoresizingMaskIntoConstraints = false
-
+  init (small inSmall : Bool, addControlButtons inAddControlButtons : Bool) {
+    super.init ()
+  //--- Configure table view
     self.mTableView.controlSize = inSmall ? .small : .regular
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
@@ -46,22 +51,31 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
-
-    self.hasVerticalScroller = true
-    self.borderType = .bezelBorder
-    self.documentView = self.mTableView
+  //--- Configure scroll view
+    self.mScrollView.hasVerticalScroller = true
+    self.mScrollView.borderType = .bezelBorder
+    self.mScrollView.documentView = self.mTableView
+  //---
+    self.appendView (self.mScrollView)
+    if inAddControlButtons {
+      let hStack = AutoLayoutHorizontalStackView ()
+      let addButton = AutoLayoutButton (title: "+", small: inSmall)
+        .bind_run (target: self, selector: #selector (Self.addEntryAction (_:)))
+      self.mAddButton = addButton
+      hStack.appendView (addButton)
+      let removeButton = AutoLayoutButton (title: "-", small: inSmall)
+        .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
+      self.mRemoveButton = removeButton
+      hStack.appendView (removeButton)
+      hStack.appendFlexibleSpace ()
+      self.appendView (hStack)
+    }
   }
 
   //····················································································································
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
   }
 
   //····················································································································
@@ -76,9 +90,22 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
                         delegate inDelegate : AutoLayoutTableViewDelegate) {
+    // Swift.print ("inAllowsEmptySelection \(inAllowsEmptySelection) inAllowsMultipleSelection \(inAllowsMultipleSelection)")
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
     self.mDelegate = inDelegate
+  }
+
+  //····················································································································
+
+  @objc func addEntryAction (_ inUnusedSender : Any?) {
+    self.mDelegate?.addEntry ()
+  }
+
+  //····················································································································
+
+  @objc func removeSelectedEntriesAction (_ inUnusedSender : Any?) {
+    self.mDelegate?.removeSelectedEntries ()
   }
 
   //····················································································································
@@ -141,6 +168,8 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //····················································································································
 
   func reloadData () {
+  //--- Current selected row
+    let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
   //--- Sort Objects
     for sortDescriptor in self.mTableView.sortDescriptors.reversed () {
       for column in self.mTableView.tableColumns {
@@ -156,6 +185,18 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //--- Restore Selection
     if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
       self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
+    }
+  //--- Ensure selection non empty ?
+    if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mDelegate?.rowCount (), rowCount > 0 {
+      if currentSelectedRow >= 0 {
+        if currentSelectedRow < rowCount {
+          self.mTableView.selectRowIndexes (IndexSet (integer: currentSelectedRow), byExtendingSelection: false)
+        }else{
+          self.mTableView.selectRowIndexes (IndexSet (integer: rowCount - 1), byExtendingSelection: false)
+        }
+      }else{
+        self.mTableView.selectRowIndexes (IndexSet (integer: 0), byExtendingSelection: false)
+      }
     }
   }
 
@@ -219,12 +260,15 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
     if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
     }
+    self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty)
   }
 
   //····················································································································
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+// InternalTableColumn
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
@@ -272,6 +316,8 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+// InternalTextTableColumn
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate class InternalTextTableColumn : InternalTableColumn {
@@ -334,6 +380,8 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
 
 }
 
+//----------------------------------------------------------------------------------------------------------------------
+// InternalIntObserverTableColumn
 //----------------------------------------------------------------------------------------------------------------------
 
 fileprivate class InternalIntObserverTableColumn : InternalTableColumn {

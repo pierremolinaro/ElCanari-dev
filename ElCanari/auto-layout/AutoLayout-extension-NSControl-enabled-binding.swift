@@ -68,7 +68,7 @@ extension NSControl {
 
   //····················································································································
 
-  fileprivate func enable (fromEnableBinding inValue : Bool) {
+  func enable (fromEnableBinding inValue : Bool) {
     gEnabledBindingValueDictionary [self] = inValue
     self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
