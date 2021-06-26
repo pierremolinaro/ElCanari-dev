@@ -2281,7 +2281,6 @@
 		CF9C63CC25CABE5C00A00D5C /* controller-table-view-DeviceDocument-symbolTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD642231807A00F69A12 /* controller-table-view-DeviceDocument-symbolTypeController.swift */; };
 		CF9C63CD25CABE5C00A00D5C /* ProjectRoot-customized-connectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBCE77E22D3ACA300DC3505 /* ProjectRoot-customized-connectors.swift */; };
 		CF9C63CE25CABE5C00A00D5C /* action-ProjectDocument-addNetClassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D4B13227F796B006E2035 /* action-ProjectDocument-addNetClassAction.swift */; };
-		CF9C63CF25CABE5C00A00D5C /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */; };
 		CF9C63D025CABE5C00A00D5C /* transient-BoardRestrictRectangle-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7AEB233A247F0060A97A /* transient-BoardRestrictRectangle-selectionDisplay.swift */; };
 		CF9C63D225CABE5C00A00D5C /* EnumPropertyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */; };
 		CF9C63D325CABE5C00A00D5C /* transient-BoardTrack-signatureForERCChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B01233A24BD0060A97A /* transient-BoardTrack-signatureForERCChecking.swift */; };
@@ -11615,7 +11614,6 @@
 				CF9C63CC25CABE5C00A00D5C /* controller-table-view-DeviceDocument-symbolTypeController.swift in Sources */,
 				CF9C63CD25CABE5C00A00D5C /* ProjectRoot-customized-connectors.swift in Sources */,
 				CF9C63CE25CABE5C00A00D5C /* action-ProjectDocument-addNetClassAction.swift in Sources */,
-				CF9C63CF25CABE5C00A00D5C /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */,
 				CF49C12925D13A030082271E /* transient-SymbolPin-filledBezierPath.swift in Sources */,
 				CF9C63D025CABE5C00A00D5C /* transient-BoardRestrictRectangle-selectionDisplay.swift in Sources */,
 				CF9C63D225CABE5C00A00D5C /* EnumPropertyProtocol.swift in Sources */,

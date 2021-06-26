@@ -8,8 +8,7 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutArtworkDocument_mDataController
-                                       : ReadOnlyAbstractGenericRelationshipProperty, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, AutoLayoutTableViewDelegate {
  
   //····················································································································
   //    Constant properties
@@ -80,12 +79,12 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
         inModel.removeEBObserverOf_name (observer)
       }
     )
-    inModel.attachClient (self)
+//    inModel.attachClient (self)
   }
 
   //····················································································································
 
-  func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
+  final func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
@@ -110,7 +109,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
-    self.mModel?.detachClient (self)
+//    self.mModel?.detachClient (self)
   //---
     self.mModel = nil
     self.mUndoManager = nil
@@ -120,7 +119,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   //    Observing model change
   //····················································································································
 
-  override func notifyModelDidChange () {
+/*  override func notifyModelDidChange () {
     super.notifyModelDidChange ()
  //   NSLog ("self.sortedArray \(self.sortedArray.count)")
 //    let oldSelectionSet = self.selectedSet
@@ -134,7 +133,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
     for tableView in self.mTableViewArray {
       tableView.reloadData ()
     }
-  }
+  } */
 
   //····················································································································
   //   Selected Array
@@ -252,13 +251,13 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  func rowCount () -> Int {
+  final func rowCount () -> Int {
     return self.sortedArray.count
   }
 
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+  final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :
       ()
@@ -273,7 +272,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   //····················································································································
 
-  func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor]) {
+  final func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor]) {
     self.mSortDescriptorArray = inSortDescriptors
  //   self.sortedArray_property.notifyModelDidChange ()
     self.mModel?.notifyModelDidChange ()
@@ -281,7 +280,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   //····················································································································
 
-  func indexesOfSelectedObjects () -> IndexSet {
+  final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
     let selectedObjectSet = Set (self.selectedArray)
@@ -314,7 +313,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
 
   //····················································································································
 
-  func removeSelectedEntries () {
+  final func removeSelectedEntries () {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
