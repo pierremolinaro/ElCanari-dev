@@ -17,6 +17,8 @@ protocol AutoLayoutTableViewDelegate : AnyObject {
   func rowCount () -> Int
 
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
+
+  func indexesOfSelectedObjects () -> IndexSet
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -27,6 +29,7 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
 
   private let mTableView = NSTableView (frame: NSRect ())
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
+  private var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
 
@@ -138,6 +141,7 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //····················································································································
 
   func reloadData () {
+  //--- Sort Objects
     for sortDescriptor in self.mTableView.sortDescriptors.reversed () {
       for column in self.mTableView.tableColumns {
         if sortDescriptor === column.sortDescriptorPrototype, let c = column as? InternalTableColumn {
@@ -145,7 +149,14 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
         }
       }
     }
+  //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
+    self.mTransmitSelectionChangeToDelegate = false
     self.mTableView.reloadData ()
+    self.mTransmitSelectionChangeToDelegate = true
+  //--- Restore Selection
+    if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
+      self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
+    }
   }
 
   //····················································································································
@@ -205,7 +216,9 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
+    if mTransmitSelectionChangeToDelegate {
+      self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
+    }
   }
 
   //····················································································································
