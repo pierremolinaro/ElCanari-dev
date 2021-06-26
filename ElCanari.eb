@@ -10,7 +10,6 @@ include "eb-sources/font-SegmentForFontCharacter.eb" ;
 include "eb-sources/font-FontRoot.eb" ;
 include "eb-sources/font-FontDocument.eb" ;
 //--- Artwork
-include "eb-sources/artworkDocument.eb" ;
 include "eb-sources/artworkDocument-auto-layout.eb" ;
 //--- Merger
 include "eb-sources/BoardModelPad.eb" ;
