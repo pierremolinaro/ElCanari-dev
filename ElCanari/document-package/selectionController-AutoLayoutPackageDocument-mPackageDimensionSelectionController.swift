@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageDimensionSelectionController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController : EBObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController : BaseObject {
 
   //····················································································································
   //   Selection observable property: y1
@@ -249,7 +249,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -389,7 +389,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

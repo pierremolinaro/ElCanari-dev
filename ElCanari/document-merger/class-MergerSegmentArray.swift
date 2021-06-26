@@ -13,7 +13,7 @@ import Cocoa
 //   MergerSegmentArray
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerSegmentArray : EBObject {
+final class MergerSegmentArray : HashableBaseObject {
 
   //····················································································································
 
@@ -22,14 +22,14 @@ final class MergerSegmentArray : EBObject {
   //····················································································································
 
   init (_ inArray : [CanariSegment]) {
-    segmentArray = inArray
+    self.segmentArray = inArray
     super.init ()
   }
 
   //····················································································································
 
   override init () {
-    segmentArray = []
+    self.segmentArray = []
     super.init ()
   }
 
@@ -50,9 +50,9 @@ final class MergerSegmentArray : EBObject {
 
   //····················································································································
 
-  override var description : String {
-    return "MergerSegmentArray " + String (self.segmentArray.count)
-  }
+//  override var description : String {
+//    return "MergerSegmentArray " + String (self.segmentArray.count)
+//  }
 
   //····················································································································
 

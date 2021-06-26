@@ -351,7 +351,7 @@ fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogIt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate final class OpenInLibraryDialogItem : EBObject {
+fileprivate final class OpenInLibraryDialogItem : BaseObject {
 
   let mPartName : String
   let mIsDuplicated : Bool
@@ -368,12 +368,11 @@ fileprivate final class OpenInLibraryDialogItem : EBObject {
         _ inIsDuplicated : Bool,
         _ inIsAlreadyLoaded : Bool,
         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
-    mPartName = inPartName
-    mFullPath = inFullPath
-    mIsDuplicated = inIsDuplicated
-    mIsAlreadyLoaded = inIsAlreadyLoaded
-    mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
-    super.init ()
+    self.mPartName = inPartName
+    self.mFullPath = inFullPath
+    self.mIsDuplicated = inIsDuplicated
+    self.mIsAlreadyLoaded = inIsAlreadyLoaded
+    self.mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
   }
 
   //····················································································································

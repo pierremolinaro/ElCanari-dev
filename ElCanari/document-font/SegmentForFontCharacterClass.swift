@@ -3,7 +3,7 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class SegmentForFontCharacterClass : EBObject {
+final class SegmentForFontCharacterClass : HashableBaseObject {
 
   let x1 : Int
   let y1 : Int

@@ -13,7 +13,7 @@ import Cocoa
 //   MergerViaShapeArray
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerViaShapeArray : EBObject {
+final class MergerViaShapeArray : HashableBaseObject {
 
   //····················································································································
 
@@ -22,17 +22,17 @@ final class MergerViaShapeArray : EBObject {
   //····················································································································
 
   init (_ inArray : [MergerViaShape]) {
-    viaShapeArray = inArray
+    self.viaShapeArray = inArray
     super.init ()
   }
 
   //····················································································································
 
-  override var description : String {
-    get {
-      return "MergerViaShapeArray " + String (viaShapeArray.count)
-    }
-  }
+//  override var description : String {
+//    get {
+//      return "MergerViaShapeArray " + String (viaShapeArray.count)
+//    }
+//  }
 
   //····················································································································
 
@@ -170,26 +170,11 @@ final class MergerViaShapeArray : EBObject {
 //   MergerViaShape
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerViaShape : EBObject {
-
-  //····················································································································
+struct MergerViaShape {
 
   let x : Int
   let y : Int
   let padDiameter : Int
-
-  //····················································································································
-
-  init (x inX : Int,
-        y inY : Int,
-        padDiameter inPadDiameter : Int) {
-    x = inX
-    y = inY
-    padDiameter = inPadDiameter
-    super.init ()
-  }
-
-  //····················································································································
 
 }
 

@@ -11,7 +11,7 @@ import Foundation
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class CharacterSegmentListClass : EBObject {
+final class CharacterSegmentListClass : HashableBaseObject {
 
   //····················································································································
 

@@ -13,7 +13,7 @@ import Foundation
 //   MergerBoardLimits
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerBoardLimits : EBObject {
+final class MergerBoardLimits : HashableBaseObject {
 
   //····················································································································
 
@@ -24,28 +24,28 @@ final class MergerBoardLimits : EBObject {
   //····················································································································
 
   init (boardWidth inBoardWidth : Int, boardHeight inBoardHeight : Int, lineWidth inLineWidth : Int) {
-    boardWidth = inBoardWidth
-    boardHeight = inBoardHeight
-    lineWidth = inLineWidth
+    self.boardWidth = inBoardWidth
+    self.boardHeight = inBoardHeight
+    self.lineWidth = inLineWidth
     super.init ()
   }
 
   //····················································································································
 
   override init () {
-    boardWidth = 0
-    boardHeight = 0
-    lineWidth = 0
+    self.boardWidth = 0
+    self.boardHeight = 0
+    self.lineWidth = 0
     super.init ()
   }
 
   //····················································································································
 
-  override var description : String {
-    get {
-      return "MergerBoardLimits " + String (boardWidth) + " " + String (boardHeight) + " " + String (lineWidth)
-    }
-  }
+//  override var description : String {
+//    get {
+//      return "MergerBoardLimits " + String (boardWidth) + " " + String (boardHeight) + " " + String (lineWidth)
+//    }
+//  }
 
   //····················································································································
 

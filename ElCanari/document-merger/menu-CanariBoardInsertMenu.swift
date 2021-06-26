@@ -107,11 +107,11 @@ final class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class InsertBoardMenuRepresentedObject : EBObject {
+final class InsertBoardMenuRepresentedObject : BaseObject {
   let boardModelName : String
 
   init (boardModelName inName : String) {
-    boardModelName = inName
+    self.boardModelName = inName
     super.init ()
   }
 }

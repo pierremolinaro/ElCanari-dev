@@ -232,7 +232,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc final class ObjcCanariPoint : EBObject {
+@objc final class ObjcCanariPoint : EBObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 
@@ -294,7 +294,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc final class ObjcCanariPointSet : EBObject {
+@objc final class ObjcCanariPointSet : EBObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 
@@ -334,7 +334,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc final class ObjcObjectSet : EBObject {
+@objc final class ObjcObjectSet : EBObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 

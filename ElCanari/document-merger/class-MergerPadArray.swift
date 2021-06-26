@@ -13,7 +13,7 @@ import Cocoa
 //   MergerPad
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerPad : EBObject {
+struct MergerPad {
 
   //····················································································································
 
@@ -23,23 +23,6 @@ final class MergerPad : EBObject {
   let height : Int
   let shape : PadShape
   let rotation : Int
-
-  //····················································································································
-
-  init (x inX : Int,
-        y inY : Int,
-        width inWidth : Int,
-        height inHeight : Int,
-        shape inShape : PadShape,
-        rotation inRotation : Int) {
-    x = inX
-    y = inY
-    width = inWidth
-    height = inHeight
-    shape = inShape
-    rotation = inRotation
-    super.init ()
-  }
 
   //····················································································································
 
@@ -60,7 +43,7 @@ final class MergerPad : EBObject {
 //   MergerPadArray
 //----------------------------------------------------------------------------------------------------------------------
 
-final class MergerPadArray : EBObject {
+final class MergerPadArray : HashableBaseObject {
 
   //····················································································································
 
@@ -69,17 +52,17 @@ final class MergerPadArray : EBObject {
   //····················································································································
 
   init (_ inArray : [MergerPad]) {
-    padArray = inArray
+    self.padArray = inArray
     super.init ()
   }
 
   //····················································································································
 
-  override var description : String {
-    get {
-      return "MergerPadArray " + String (padArray.count)
-    }
-  }
+//  override var description : String {
+//    get {
+//      return "MergerPadArray " + String (padArray.count)
+//    }
+//  }
 
   //····················································································································
 

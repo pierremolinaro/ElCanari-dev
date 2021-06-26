@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument boardLineSelectionController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class SelectionController_ProjectDocument_boardLineSelectionController : EBObject {
+final class SelectionController_ProjectDocument_boardLineSelectionController : BaseObject {
 
   //····················································································································
   //   Selection observable property: mWidthUnit
@@ -196,7 +196,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_ProjectDocument_boardLineSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -312,7 +312,7 @@ final class SelectionController_ProjectDocument_boardLineSelectionController : E
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_ProjectDocument_boardLineSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

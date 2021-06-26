@@ -35,7 +35,7 @@ fileprivate var gDebugAutoLayout = DebugAutoLayout ()
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate final class DebugAutoLayout : EBObject {
+fileprivate final class DebugAutoLayout : BaseObject {
 
   //····················································································································
   //  Properties
@@ -44,7 +44,7 @@ fileprivate final class DebugAutoLayout : EBObject {
   var debugAutoLayout = false
   let menuItem = NSMenuItem (
     title: "Debug Auto Layout",
-    action: #selector (DebugAutoLayout.toggleDebugAutoLayout (_:)),
+    action: #selector (Self.toggleDebugAutoLayout (_:)),
     keyEquivalent: ""
   )
 

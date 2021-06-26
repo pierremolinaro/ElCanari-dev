@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument componentSymbolSelectionController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class SelectionController_ProjectDocument_componentSymbolSelectionController : EBObject {
+final class SelectionController_ProjectDocument_componentSymbolSelectionController : BaseObject {
 
   //····················································································································
   //   Selection observable property: mCenterX
@@ -253,7 +253,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
     view.addSubview (tf)
     let valueExplorer = NSButton (frame: thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -369,7 +369,7 @@ final class SelectionController_ProjectDocument_componentSymbolSelectionControll
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_ProjectDocument_componentSymbolSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)

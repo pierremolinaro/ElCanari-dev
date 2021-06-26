@@ -26,7 +26,7 @@ enum LibraryOperation {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class LibraryOperationElement : EBObject {
+final class LibraryOperationElement : EBObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //   Properties
@@ -57,13 +57,13 @@ final class LibraryOperationElement : EBObject {
         operation inOperation : LibraryOperation,
         logTextView inLogTextView: NSTextView,
         proxy inProxy: [String]) {
-    mRelativePath = inRelativePath
-    mCommit = commit
-    mOperation = inOperation
-    mSizeInRepository = inSizeInRepository
-    mFileSHA = inFileSHA
-    mLogTextView = inLogTextView
-    mProxy = inProxy
+    self.mRelativePath = inRelativePath
+    self.mCommit = commit
+    self.mOperation = inOperation
+    self.mSizeInRepository = inSizeInRepository
+    self.mFileSHA = inFileSHA
+    self.mLogTextView = inLogTextView
+    self.mProxy = inProxy
     super.init ()
   }
 

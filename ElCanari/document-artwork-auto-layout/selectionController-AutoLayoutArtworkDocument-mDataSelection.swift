@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller AutoLayoutArtworkDocument mDataSelection
 //----------------------------------------------------------------------------------------------------------------------
 
-final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : EBObject {
+final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseObject {
 
   //····················································································································
   //   Selection observable property: drawBoardLimits
@@ -326,7 +326,7 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : EBObj
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_AutoLayoutArtworkDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -538,7 +538,7 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : EBObj
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_AutoLayoutArtworkDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (ebObjectIndex) + " " + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + " " + String (describing: type (of: self))
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

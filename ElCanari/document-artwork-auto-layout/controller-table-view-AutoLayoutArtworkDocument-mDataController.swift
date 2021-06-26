@@ -172,7 +172,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
-  //--- Check 'name' column (0)
+  //--- Configure 'name' column
     _ = inTableView.addTextColumn (valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
                                    valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
                                    title: "Name",
