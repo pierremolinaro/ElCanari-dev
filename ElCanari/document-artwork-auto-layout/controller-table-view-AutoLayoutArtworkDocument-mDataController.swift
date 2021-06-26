@@ -8,7 +8,8 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstractGenericRelationshipProperty {
+final class Controller_AutoLayoutArtworkDocument_mDataController
+                                       : ReadOnlyAbstractGenericRelationshipProperty, AutoLayoutTableViewDelegate {
  
   //····················································································································
   //    Constant properties
@@ -161,8 +162,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
   //    bind_tableView
   //····················································································································
 
-//  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-//  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [AutoLayoutTableView] ()
 
   //····················································································································
@@ -171,19 +170,11 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
     inTableView.configure (
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
-      rowCountDelegate: { [weak self] in return self?.sortedArray.count },
-      selectionDidChangeDelegate: { [weak self] in self?.tableViewSelectionDidChange (selectedRows: $0) }
+      delegate: self
     )
-  //--- Set table view data source controller
-/*    let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-    self.sortedArray_property.addEBObserver (dataSourceTableViewController)
-    self.mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
-  //--- Set table view selection controller
-    let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-    self.mInternalSelectedArrayProperty.addEBObserver (selectionTableViewController)
-    self.mTableViewSelectionControllerArray.append (selectionTableViewController) */
   //--- Check 'name' column (0)
-    _ = inTableView.addTextColumn (valueDelegate: { [weak self] in return self?.sortedArray [$0].name },
+    _ = inTableView.addTextColumn (valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
+                                   valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
                                    title: "Name",
                                    headerAlignment: .left,
                                    contentAlignment: .left)
@@ -224,21 +215,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
         }
       }
       return indexSet
-    }
-  }
-
-  //····················································································································
- 
-  private func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
-    switch self.sortedArray_property.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      var newSelectedObjects = [ArtworkFileGenerationParameters] ()
-      for index in inSelectedRows {
-        newSelectedObjects.append (v [index])
-      }
-      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
     }
   }
  
@@ -352,6 +328,29 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : ReadOnlyAbstr
           }
         }
       }
+    }
+  }
+
+  //····················································································································
+  // IMPLEMENTATION OF AutoLayoutTableViewDelegate
+  //····················································································································
+
+  func rowCount () -> Int {
+    return self.sortedArray.count
+  }
+
+  //····················································································································
+
+  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+    switch self.sortedArray_property.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      var newSelectedObjects = [ArtworkFileGenerationParameters] ()
+      for index in inSelectedRows {
+        newSelectedObjects.append (v [index])
+      }
+      self.mInternalSelectedArrayProperty.setProp (newSelectedObjects)
     }
   }
 

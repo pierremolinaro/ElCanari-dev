@@ -557,6 +557,7 @@ import Cocoa
         view_2_21.appendView (view_2_21_0)
         let view_2_21_1 = AutoLayoutCanariDimensionAndPopUp (small: true)
           .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
+          .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
         view_2_21.appendView (view_2_21_1)
         let view_2_21_2 = AutoLayoutFlexibleSpace ()
         view_2_21.appendView (view_2_21_2)

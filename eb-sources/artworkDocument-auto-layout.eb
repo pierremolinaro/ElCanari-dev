@@ -100,7 +100,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //······················································································································
 
   autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
-     column name (title: "Name", headerAlignment: .left, contentAlignment: .left) EBTextField $value self.name (sendContinously:no)
+     editableColumn name (title: "Name", headerAlignment: .left, contentAlignment: .left)
+         EBTextField $value self.name (sendContinously:no)
   }
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
@@ -140,7 +141,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       hStack set (leftMargin: 20) { Switch (title: "Board Limits", small: yes) { $value #mDataSelection.drawBoardLimits } space }
       hStack set (leftMargin: 20) setFirstBaselineAlignment () {
         Switch (title: "Pad Holes in PDF file, with diameter", small: yes) { $value #mDataSelection.drawPadHolesInPDF }
-        CanariDimensionAndPopUp (small: yes) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF }
+        CanariDimensionAndPopUp (small: yes) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
         space
       }
       hStack { StaticLabel (title: "Option", bold: yes, small: yes) space }

@@ -66,14 +66,6 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
 
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) {
-    if self.mSendContinously {
-      self.ebAction (nil)
-    }
-  }
-
-  //····················································································································
-
   @objc func ebAction (_ inUnusedSender : Any?) {
     _ = self.mValueController?.updateModel (withCandidateValue: self.stringValue, windowForSheet: self.window)
   }
@@ -83,6 +75,16 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
+  }
+
+  //····················································································································
+  // IMPLEMENTATION OF NSTextFieldDelegate
+  //····················································································································
+
+  func controlTextDidChange (_ inNotification : Notification) {
+    if self.mSendContinously {
+      self.ebAction (nil)
+    }
   }
 
   //····················································································································

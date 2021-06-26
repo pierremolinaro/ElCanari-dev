@@ -12,11 +12,21 @@ import Cocoa
 // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol AutoLayoutTableViewDelegate : AnyObject {
+
+  func rowCount () -> Int
+
+  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
   private let mTableView = NSTableView (frame: NSRect ())
+  private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
 
   //····················································································································
 
@@ -62,26 +72,25 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
 
   final func configure (allowsEmptySelection inAllowsEmptySelection : Bool,
                         allowsMultipleSelection inAllowsMultipleSelection : Bool,
-                        rowCountDelegate inRowCountDelegate : @escaping () -> Int?,
-                        selectionDidChangeDelegate inTableViewSelectionDidChangeDelegate : @escaping (IndexSet) -> Void) {
+                        delegate inDelegate : AutoLayoutTableViewDelegate) {
     self.mTableView.allowsEmptySelection = inAllowsEmptySelection
     self.mTableView.allowsMultipleSelection = inAllowsMultipleSelection
-    self.mNumberOfRowsDelegate = inRowCountDelegate
-    self.mTableViewSelectionDidChangeDelegate = inTableViewSelectionDidChangeDelegate
+    self.mDelegate = inDelegate
   }
 
   //····················································································································
 
-  final func addTextColumn (valueDelegate inCallBack : Optional < (_ inRow : Int) -> String? >,
+  final func addTextColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?,
+                            valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
                             title inTitle : String,
-//                            sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
                             headerAlignment inHeaderAlignment : TextAlignment,
                             contentAlignment inContentAlignment : TextAlignment) -> Self {
-    let column = InternalTextObserverTableColumn (
+    let column = InternalTextTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sort: nil, // inSortCallBack,
       contentAlignment: inContentAlignment.cocoaAlignment,
-      valueDelegate: inCallBack
+      valueSetterDelegate: inSetterDelegate,
+      valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
@@ -143,12 +152,8 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //   NSTableViewDataSource protocol
   //····················································································································
 
-  private var mNumberOfRowsDelegate : () -> Int? = { return nil }
-
-  //····················································································································
-
   func numberOfRows (in tableView: NSTableView) -> Int {
-    let n = self.mNumberOfRowsDelegate () ?? 0
+    let n = self.mDelegate?.rowCount () ?? 0
     return n
   }
 
@@ -164,10 +169,11 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
     let textField = NSTextField (frame: NSRect ())
     textField.translatesAutoresizingMaskIntoConstraints = false
 
+    textField.tag = inRowIndex
     textField.isBezeled = false
     textField.isBordered = false
     textField.drawsBackground = false
-    textField.isEditable = false
+    textField.isEnabled = true
     textField.controlSize = .small
     textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
 
@@ -198,12 +204,8 @@ final class AutoLayoutTableView : NSScrollView, EBUserClassNameProtocol, NSTable
   //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
   //····················································································································
 
-  private var mTableViewSelectionDidChangeDelegate : (IndexSet) -> Void = { (IndexSet) in () }
-
-  //····················································································································
-
   func tableViewSelectionDidChange (_ notification : Notification) {
-    self.mTableViewSelectionDidChangeDelegate (self.mTableView.selectedRowIndexes)
+    self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
   }
 
   //····················································································································
@@ -230,6 +232,7 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
     self.mSortCallBack = inSortCallBack
     super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: inName))
     noteObjectAllocation (self)
+
     if inSortCallBack != nil {
       self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
     }
@@ -258,11 +261,12 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
+fileprivate class InternalTextTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  private let mValueDelegate : Optional < (_ inRow : Int) -> String? >
+  private let mValueGetterDelegate : (_ inRow : Int) -> String?
+  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >
 
   //····················································································································
   // INIT
@@ -271,8 +275,10 @@ fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
   init (withIdentifierNamed inName : String,
         sort inSortCallBack : Optional < (_ inAscending : Bool) -> Void >,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueDelegate inCallBack : Optional < (_ inRow : Int) -> String? >) {
-    self.mValueDelegate = inCallBack
+        valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
+    self.mValueGetterDelegate = inGetterDelegate
+    self.mValueSetterDelegate = inSetterGelegate
     super.init (withIdentifierNamed: inName, sort: inSortCallBack, contentAlignment: inContentAlignment)
   }
 
@@ -286,7 +292,29 @@ fileprivate class InternalTextObserverTableColumn : InternalTableColumn {
 
   override func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
     inTextField.alignment = self.mContentAlignment
-    inTextField.stringValue = self.mValueDelegate? (inRow) ?? ""
+    inTextField.stringValue = self.mValueGetterDelegate (inRow) ?? ""
+    inTextField.isEditable = self.mValueSetterDelegate != nil
+//    inTextField.delegate = self
+    inTextField.target = self
+    inTextField.action = #selector (Self.ebAction(_:))
+  }
+
+  //····················································································································
+  // IMPLEMENTATION OF NSTextFieldDelegate
+  //····················································································································
+
+//  @objc func controlTextDidChange (_ inNotification : Notification) {
+//    NSSound.beep ()
+//  }
+
+  //····················································································································
+
+  @objc func ebAction (_ inSender : Any?) {
+    if let textField = inSender as? NSTextField {
+      let rowIndex = textField.tag
+      let newValue = textField.stringValue
+      self.mValueSetterDelegate? (rowIndex, newValue)
+    }
   }
 
   //····················································································································
