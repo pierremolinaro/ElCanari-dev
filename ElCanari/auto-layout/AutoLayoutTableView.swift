@@ -33,13 +33,14 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   private var mAddButton : AutoLayoutButton? = nil
   private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
-  private var mTransmitSelectionChangeToDelegate = true
+//  private var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
 
   init (small inSmall : Bool, addControlButtons inAddControlButtons : Bool) {
     super.init ()
   //--- Configure table view
+    self.mTableView.translatesAutoresizingMaskIntoConstraints = false
     self.mTableView.controlSize = inSmall ? .small : .regular
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
@@ -50,6 +51,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
   //--- Configure scroll view
+    self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
     self.mScrollView.hasVerticalScroller = true
     self.mScrollView.borderType = .bezelBorder
     self.mScrollView.documentView = self.mTableView
@@ -134,8 +136,6 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     if let s = column.sortDescriptorPrototype {
       self.mTableView.sortDescriptors.append (s)
     }
-  //---
-//    return self
   }
 
   //····················································································································
@@ -166,8 +166,6 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     if let s = column.sortDescriptorPrototype {
       self.mTableView.sortDescriptors.append (s)
     }
-  //---
-//    return self
   }
 
   //····················································································································
@@ -177,7 +175,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
-    self.mTransmitSelectionChangeToDelegate = false
+//    self.mTransmitSelectionChangeToDelegate = false
     self.mDelegate?.beginSorting ()
     for descriptor in self.mTableView.sortDescriptors.reversed () {
       for tableColumn in self.mTableView.tableColumns {
@@ -188,7 +186,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     }
     self.mDelegate?.endSorting ()
     self.mTableView.reloadData ()
-    self.mTransmitSelectionChangeToDelegate = true
+//    self.mTransmitSelectionChangeToDelegate = true
   //--- Restore Selection
     if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
       self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
@@ -234,7 +232,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     textField.drawsBackground = false
     textField.isEnabled = true
     textField.controlSize = self.mTableView.controlSize
-    textField.font = self.mTableView.font // NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
+    textField.font = self.mTableView.font
 
     if let tableColumn = inTableColumn as? InternalTableColumn {
       tableColumn.configureTextField (textField, inRowIndex)
@@ -264,9 +262,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-    if mTransmitSelectionChangeToDelegate {
+//    if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
-    }
+//    }
     self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty)
   }
 
@@ -299,8 +297,6 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
     if inSortDelegate != nil {
       self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
-    }else{
-      self.sortDescriptorPrototype = nil
     }
   }
 
