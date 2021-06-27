@@ -66,6 +66,18 @@ typealias EBPreferencesProperty_Int = EBGenericPreferenceProperty <Int>
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func compare_Int_values (_ left : Int, _ right : Int) -> ComparisonResult {
+  if left < right {
+    return .orderedAscending
+  }else if left > right {
+    return .orderedDescending
+  }else{
+    return .orderedSame
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOnlyProperty_Int) -> ComparisonResult {
   switch left.selection {
   case .empty :
@@ -207,6 +219,20 @@ typealias EBPropertyProxy_String       = EBGenericPropertyProxy <String>
 typealias EBComputedProperty_String    = EBGenericComputedProperty <String>
 typealias EBStoredProperty_String      = EBGenericStoredProperty <String>
 typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func compare_String_values (_ left : String, _ inAscending : Bool, _ right : String) -> ComparisonResult {
+  let order = left.localizedStandardCompare (right)
+  switch order {
+  case .orderedAscending :
+    return inAscending ? .orderedAscending : .orderedDescending
+  case .orderedSame :
+    return .orderedSame
+  case .orderedDescending :
+    return inAscending ? .orderedDescending : .orderedAscending
+  }
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 

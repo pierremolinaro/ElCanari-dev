@@ -1435,7 +1435,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
   //   Sort
   //····················································································································
 
-  private var mIsOrderedBefore : Optional < (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool > = nil 
+  private var mSortDelegate : Optional < (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool > = nil
   private var mSortObserver : EBModelNotifierEvent? = nil
   private var mModelEvent = EBModelEvent ()
 
@@ -1465,7 +1465,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = inProvider
-      self.mIsOrderedBefore = inSortCallBack
+      self.mSortDelegate = inSortCallBack
       self.mDataProvider?.attachClient (self)
       if inSortCallBack != nil {
         self.mSortObserver = EBModelNotifierEvent (
@@ -1486,7 +1486,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
       self.mSortObserver = nil
       self.mDataProvider?.detachClient (self)
       self.mDataProvider = nil
-      self.mIsOrderedBefore = nil
+      self.mSortDelegate = nil
     }
   }
 
@@ -1510,7 +1510,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
           newArray = []
           self.mTransientKind = .empty
         case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
+          if let sortFunction = self.mSortDelegate {
             newArray = v.sorted { sortFunction ($0, $1) }
           }else{
             newArray = v

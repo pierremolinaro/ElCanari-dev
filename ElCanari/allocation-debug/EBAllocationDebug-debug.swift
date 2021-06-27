@@ -240,7 +240,9 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
     self.mStatsTableView.addTextColumn (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" },
       valueSetterDelegate: nil,
-      sortDescriptor: NSSortDescriptor (key: "className", ascending: true),
+      sortDelegate: { [weak self] (ascending) in
+        self?.mAllocationStatsDataSource.sort { ascending ? ($0.className < $1.className) : ($0.className > $1.className) }
+      },
       title: "Class Name",
       headerAlignment: .center,
       contentAlignment: .left
@@ -248,7 +250,9 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
     self.mStatsTableView.addIntColumn (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 },
       valueSetterDelegate: nil,
-      sortDescriptor: NSSortDescriptor (key: "snapShot", ascending: true),
+      sortDelegate: { [weak self] (ascending) in
+        self?.mAllocationStatsDataSource.sort { ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
+      },
       title: "Snap Shot",
       headerAlignment: .center,
       contentAlignment: .right
@@ -256,7 +260,9 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
     self.mStatsTableView.addIntColumn (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 },
       valueSetterDelegate: nil,
-      sortDescriptor: NSSortDescriptor (key: "live", ascending: true),
+      sortDelegate: { [weak self] (ascending) in
+        self?.mAllocationStatsDataSource.sort { ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
+      },
       title: "Live",
       headerAlignment: .center,
       contentAlignment: .right
@@ -264,7 +270,9 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
     self.mStatsTableView.addIntColumn (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 },
       valueSetterDelegate: nil,
-      sortDescriptor: NSSortDescriptor (key: "allCount", ascending: true),
+      sortDelegate: { [weak self] (ascending) in
+        self?.mAllocationStatsDataSource.sort { ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
+      },
       title: "Total",
       headerAlignment: .center,
       contentAlignment: .right
@@ -434,8 +442,7 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
       self.mTotalAllocated.setProp (totalObjectCount)
     //---
       self.mAllocationStatsDataSource = array
-      self.mAllocationStatsDataSource.sort { return isOrderedBefore ($0, $1) }
-      self.mStatsTableView.reloadData () // Will sort mAllocationStatsDataSource
+      self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
     }
   }
 
@@ -470,33 +477,12 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
 
   //····················································································································
 
-  func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor]) {
-    self.mAllocationStatsDataSource.sort { return isOrderedBefore ($0, $1) }
-    self.mStatsTableView.reloadData ()
+  func beginSorting () {
   }
 
   //····················································································································
 
-  fileprivate func isOrderedBefore (_ left : EBAllocationItemDisplay, _ right : EBAllocationItemDisplay) -> Bool {
-    return left.className < right.className
-//    var order = ComparisonResult.orderedSame
-//    for sortDescriptor in self.mSortDescriptorArray {
-//      if sortDescriptor.key == "name" {
-//        order = compare_String_properties (left.name_property, right.name_property)
-//      }
-//      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
-//      if !sortDescriptor.ascending {
-//        switch order {
-//        case .orderedAscending : order = .orderedDescending
-//        case .orderedSame : ()
-//        case .orderedDescending : order = .orderedAscending
-//        }
-//      }
-//      if order != .orderedSame {
-//        break // Exit from for
-//      }
-//    }
-//    return order == .orderedAscending
+  func endSorting () {
   }
 
   //····················································································································

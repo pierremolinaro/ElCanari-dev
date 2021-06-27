@@ -17,7 +17,9 @@ protocol AutoLayoutTableViewDelegate : AnyObject {
   func indexesOfSelectedObjects () -> IndexSet
   func addEntry ()
   func removeSelectedEntries ()
-  func sortDescriptorsDidChangeTo (_ inSortDescriptors : [NSSortDescriptor])
+
+  func beginSorting ()
+  func endSorting ()
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -107,13 +109,13 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   final func addTextColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?,
                             valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
-                            sortDescriptor inSortDescriptor : NSSortDescriptor?,
+                            sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
                             title inTitle : String,
                             headerAlignment inHeaderAlignment : TextAlignment,
                             contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalTextTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
-      sortDescriptor: inSortDescriptor,
+      sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment.cocoaAlignment,
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
@@ -128,7 +130,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //--- Add Column
     self.mTableView.addTableColumn (column)
   //--- Update table view sort descriptors
-    if let s = inSortDescriptor {
+    if let s = column.sortDescriptorPrototype {
       self.mTableView.sortDescriptors.append (s)
     }
   //---
@@ -139,13 +141,13 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   final func addIntColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
                            valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
-                           sortDescriptor inSortDescriptor : NSSortDescriptor?,
+                           sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
                            title inTitle : String,
                            headerAlignment inHeaderAlignment : TextAlignment,
                            contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalIntTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
-      sortDescriptor: inSortDescriptor,
+      sortDelegate: inSortDelegate,
       contentAlignment: inContentAlignment.cocoaAlignment,
       valueSetterDelegate: inSetterDelegate,
       valueGetterDelegate: inGetterDelegate
@@ -169,12 +171,21 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
-  func reloadData () {
+  func sortAndReloadData () {
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
     self.mTransmitSelectionChangeToDelegate = false
+    self.mDelegate?.beginSorting ()
+    for descriptor in self.mTableView.sortDescriptors.reversed () {
+      for tableColumn in self.mTableView.tableColumns {
+        if let column = tableColumn as? InternalTableColumn, column.identifier.rawValue == descriptor.key {
+          column.mSortDelegate? (descriptor.ascending)
+        }
+      }
+    }
+    self.mDelegate?.endSorting ()
     self.mTableView.reloadData ()
     self.mTransmitSelectionChangeToDelegate = true
   //--- Restore Selection
@@ -244,8 +255,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   func tableView (_ tableView : NSTableView,
                   sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.mDelegate?.sortDescriptorsDidChangeTo (self.mTableView.sortDescriptors)
-//    self.reloadData ()
+    self.sortAndReloadData ()
   }
 
   //····················································································································
@@ -272,19 +282,26 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
   //····················································································································
 
   let mContentAlignment : NSTextAlignment
+  let mSortDelegate : Optional < (_ inAscending : Bool) -> Void>
 
   //····················································································································
   // INIT
   //····················································································································
 
   init (withIdentifierNamed inName : String,
-        sortDescriptor inSortDescriptor : NSSortDescriptor?,
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment) {
     self.mContentAlignment = inContentAlignment
+    self.mSortDelegate = inSortDelegate
     super.init (identifier: NSUserInterfaceItemIdentifier (rawValue: inName))
     noteObjectAllocation (self)
 
-    self.sortDescriptorPrototype = inSortDescriptor
+    if inSortDelegate != nil {
+ //     self.sortDescriptorPrototype = InternalSortDescriptor (columnIdentifierName: inName, sorterDelegate: sortDelegate)
+      self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
+    }else{
+      self.sortDescriptorPrototype = nil
+    }
   }
 
   //····················································································································
@@ -324,13 +341,13 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
   //····················································································································
 
   init (withIdentifierNamed inName : String,
-        sortDescriptor inSortDescriptor : NSSortDescriptor?,
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
         valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mValueSetterDelegate = inSetterGelegate
-    super.init (withIdentifierNamed: inName, sortDescriptor: inSortDescriptor, contentAlignment: inContentAlignment)
+    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
   }
 
   //····················································································································
@@ -390,13 +407,13 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
   //····················································································································
 
   init (withIdentifierNamed inName : String,
-        sortDescriptor inSortDescriptor : NSSortDescriptor?,
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
         valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?) {
     self.mValueGetterDelegate = inGetterDelegate
     self.mValueSetterDelegate = inSetterGelegate
-    super.init (withIdentifierNamed: inName, sortDescriptor: inSortDescriptor, contentAlignment: inContentAlignment)
+    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
   //--- Configure number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -454,8 +471,25 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
 
 //fileprivate class InternalSortDescriptor : NSSortDescriptor {
 //
+//  //····················································································································
 //
-//  
+//  let mSorterDelegate : () -> Void
+//
+//  //····················································································································
+//
+//  init (columnIdentifierName inName : String, sorterDelegate inSorterDelegate : @escaping () -> Void) {
+//    self.mSorterDelegate = inSorterDelegate
+//    super.init (key: inName, ascending: true, selector: nil)
+//  }
+//
+//  //····················································································································
+//
+//  required init (coder inCoder : NSCoder) {
+//    fatalError ("init(coder:) has not been implemented")
+//  }
+//
+//  //····················································································································
+//
 //}
 
 //----------------------------------------------------------------------------------------------------------------------
