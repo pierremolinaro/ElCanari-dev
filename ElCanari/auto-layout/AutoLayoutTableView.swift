@@ -201,6 +201,10 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
         self.mTableView.selectRowIndexes (IndexSet (integer: 0), byExtendingSelection: false)
       }
     }
+  //--- Scroll to make selection visible
+    if self.mTableView.selectedRow >= 0 {
+      self.mTableView.scrollRowToVisible (self.mTableView.selectedRow)
+    }
   }
 
   //····················································································································

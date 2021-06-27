@@ -52,9 +52,22 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mMinimaPage vStack set (margins: 8) {
     hStack {
       space
+      vStack {
+        space
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "TW: Track Width", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        space
+      }
+      space
       StaticImageView (name: "artwork")
       space
     }
+    space
     hStack {
       space
       TwoColumnsGridView {
