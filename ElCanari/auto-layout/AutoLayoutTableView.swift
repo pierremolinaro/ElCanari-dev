@@ -33,7 +33,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   private var mAddButton : AutoLayoutButton? = nil
   private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
-//  private var mTransmitSelectionChangeToDelegate = true
+  private var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
 
@@ -124,8 +124,6 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
-    column.headerCell.controlSize = self.mTableView.controlSize
-    column.headerCell.font = self.mTableView.font
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = 60.0
     column.maxWidth = 400.0
@@ -175,7 +173,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
   //--- Reload; reloading change selection, so we temporary disable transmitting selection change to delegate
-//    self.mTransmitSelectionChangeToDelegate = false
+    self.mTransmitSelectionChangeToDelegate = false
     self.mDelegate?.beginSorting ()
     for descriptor in self.mTableView.sortDescriptors.reversed () {
       for tableColumn in self.mTableView.tableColumns {
@@ -186,7 +184,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     }
     self.mDelegate?.endSorting ()
     self.mTableView.reloadData ()
-//    self.mTransmitSelectionChangeToDelegate = true
+    self.mTransmitSelectionChangeToDelegate = true
   //--- Restore Selection
     if let selectedObjectIndexes = self.mDelegate?.indexesOfSelectedObjects () {
       self.mTableView.selectRowIndexes (selectedObjectIndexes, byExtendingSelection: false)
@@ -231,8 +229,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     textField.isBordered = false
     textField.drawsBackground = false
     textField.isEnabled = true
-    textField.controlSize = self.mTableView.controlSize
-    textField.font = self.mTableView.font
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+//    textField.controlSize = self.mTableView.controlSize
+//    textField.font = self.mTableView.font
 
     if let tableColumn = inTableColumn as? InternalTableColumn {
       tableColumn.configureTextField (textField, inRowIndex)
@@ -262,9 +261,9 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification : Notification) {
-//    if mTransmitSelectionChangeToDelegate {
+    if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
-//    }
+    }
     self.mRemoveButton?.enable (fromEnableBinding: !self.mTableView.selectedRowIndexes.isEmpty)
   }
 
