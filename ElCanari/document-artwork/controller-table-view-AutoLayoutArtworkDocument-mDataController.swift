@@ -147,7 +147,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
       valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
       sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_values (left.name, ascending, right.name) })
+        self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_properties (left.name_property, ascending, right.name_property) })
       },
       title: "Name",
       headerAlignment: .left,

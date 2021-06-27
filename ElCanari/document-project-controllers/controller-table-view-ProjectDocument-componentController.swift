@@ -186,25 +186,17 @@ final class Controller_ProjectDocument_componentController : ReadOnlyAbstractGen
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
-        order = compare_String_properties (left.componentName_property, right.componentName_property)
+        order = compare_String_properties (left.componentName_property, sortDescriptor.ascending, right.componentName_property)
       }else if sortDescriptor.key == "device" {
-        order = compare_String_properties (left.deviceName_property, right.deviceName_property)
+        order = compare_String_properties (left.deviceName_property, sortDescriptor.ascending, right.deviceName_property)
       }else if sortDescriptor.key == "package" {
-        order = compare_String_properties (left.selectedPackageName_property, right.selectedPackageName_property)
+        order = compare_String_properties (left.selectedPackageName_property, sortDescriptor.ascending, right.selectedPackageName_property)
       }else if sortDescriptor.key == "value" {
-        order = compare_String_properties (left.mComponentValue_property, right.mComponentValue_property)
+        order = compare_String_properties (left.mComponentValue_property, sortDescriptor.ascending, right.mComponentValue_property)
       }else if sortDescriptor.key == "inSchematics" {
-        order = compare_String_properties (left.placementInSchematic_property, right.placementInSchematic_property)
+        order = compare_String_properties (left.placementInSchematic_property, sortDescriptor.ascending, right.placementInSchematic_property)
       }else if sortDescriptor.key == "inBoard" {
-        order = compare_String_properties (left.componentIsPlacedInBoardString_property, right.componentIsPlacedInBoardString_property)
-      }
-      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
-      if !sortDescriptor.ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedSame : ()
-        case .orderedDescending : order = .orderedAscending
-        }
+        order = compare_String_properties (left.componentIsPlacedInBoardString_property, sortDescriptor.ascending, right.componentIsPlacedInBoardString_property)
       }
       if order != .orderedSame {
         break // Exit from for

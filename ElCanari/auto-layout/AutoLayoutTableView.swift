@@ -43,6 +43,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.controlSize = inSmall ? .small : .regular
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
+    self.mTableView.isEnabled = true
     self.mTableView.delegate = self
     self.mTableView.dataSource = self
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
@@ -236,7 +237,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     textField.font = self.mTableView.font // NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
 
     if let tableColumn = inTableColumn as? InternalTableColumn {
-      tableColumn.setValueToTextField (textField, inRowIndex)
+      tableColumn.configureTextField (textField, inRowIndex)
     }else{
       textField.stringValue = "?col?"
     }
@@ -297,7 +298,6 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
     noteObjectAllocation (self)
 
     if inSortDelegate != nil {
- //     self.sortDescriptorPrototype = InternalSortDescriptor (columnIdentifierName: inName, sorterDelegate: sortDelegate)
       self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
     }else{
       self.sortDescriptorPrototype = nil
@@ -318,7 +318,7 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
+  func configureTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
   }
 
   //····················································································································
@@ -343,11 +343,12 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
   init (withIdentifierNamed inName : String,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
+        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?) {
     self.mValueGetterDelegate = inGetterDelegate
-    self.mValueSetterDelegate = inSetterGelegate
+    self.mValueSetterDelegate = inSetterDelegate
     super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = inSetterDelegate != nil
   }
 
   //····················································································································
@@ -358,14 +359,17 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
-
+  override func configureTextField (_ inTextField : NSTextField, _ inRow : Int) {
     inTextField.alignment = self.mContentAlignment
     inTextField.stringValue = self.mValueGetterDelegate (inRow) ?? ""
-    inTextField.isEditable = self.mValueSetterDelegate != nil
+
+    let editable = self.mValueSetterDelegate != nil
+    inTextField.isEditable = editable
+    if editable {
 //    inTextField.delegate = self
-    inTextField.target = self
-    inTextField.action = #selector (Self.ebAction(_:))
+      inTextField.target = self
+      inTextField.action = #selector (Self.ebAction (_:))
+    }
   }
 
   //····················································································································
@@ -409,11 +413,12 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
   init (withIdentifierNamed inName : String,
         sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+        valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
         valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?) {
     self.mValueGetterDelegate = inGetterDelegate
-    self.mValueSetterDelegate = inSetterGelegate
+    self.mValueSetterDelegate = inSetterDelegate
     super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = inSetterDelegate != nil
   //--- Configure number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -431,14 +436,18 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
+  override func configureTextField (_ inTextField : NSTextField, _ inRow : Int) {
     inTextField.formatter = self.mNumberFormatter
     inTextField.alignment = self.mContentAlignment
     inTextField.integerValue = self.mValueGetterDelegate (inRow) ?? -1
-    inTextField.isEditable = self.mValueSetterDelegate != nil
+
+    let editable = self.mValueSetterDelegate != nil
+    inTextField.isEditable = editable
+    if editable {
 //    inTextField.delegate = self
-    inTextField.target = self
-    inTextField.action = #selector (Self.ebAction(_:))
+      inTextField.target = self
+      inTextField.action = #selector (Self.ebAction(_:))
+    }
   }
 
   //····················································································································
@@ -464,32 +473,5 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
   //····················································································································
 
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-// InternalSortDescriptor
-//----------------------------------------------------------------------------------------------------------------------
-
-//fileprivate class InternalSortDescriptor : NSSortDescriptor {
-//
-//  //····················································································································
-//
-//  let mSorterDelegate : () -> Void
-//
-//  //····················································································································
-//
-//  init (columnIdentifierName inName : String, sorterDelegate inSorterDelegate : @escaping () -> Void) {
-//    self.mSorterDelegate = inSorterDelegate
-//    super.init (key: inName, ascending: true, selector: nil)
-//  }
-//
-//  //····················································································································
-//
-//  required init (coder inCoder : NSCoder) {
-//    fatalError ("init(coder:) has not been implemented")
-//  }
-//
-//  //····················································································································
-//
-//}
 
 //----------------------------------------------------------------------------------------------------------------------

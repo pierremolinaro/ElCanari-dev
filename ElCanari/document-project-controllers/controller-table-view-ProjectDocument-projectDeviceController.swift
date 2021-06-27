@@ -180,21 +180,13 @@ final class Controller_ProjectDocument_projectDeviceController : ReadOnlyAbstrac
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
-        order = compare_String_properties (left.mDeviceName_property, right.mDeviceName_property)
+        order = compare_String_properties (left.mDeviceName_property, sortDescriptor.ascending, right.mDeviceName_property)
       }else if sortDescriptor.key == "version" {
-        order = compare_String_properties (left.versionString_property, right.versionString_property)
+        order = compare_String_properties (left.versionString_property, sortDescriptor.ascending, right.versionString_property)
       }else if sortDescriptor.key == "size" {
-        order = compare_String_properties (left.sizeString_property, right.sizeString_property)
+        order = compare_String_properties (left.sizeString_property, sortDescriptor.ascending, right.sizeString_property)
       }else if sortDescriptor.key == "componentCount" {
-        order = compare_String_properties (left.deviceComponentCountString_property, right.deviceComponentCountString_property)
-      }
-      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
-      if !sortDescriptor.ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedSame : ()
-        case .orderedDescending : order = .orderedAscending
-        }
+        order = compare_String_properties (left.deviceComponentCountString_property, sortDescriptor.ascending, right.deviceComponentCountString_property)
       }
       if order != .orderedSame {
         break // Exit from for

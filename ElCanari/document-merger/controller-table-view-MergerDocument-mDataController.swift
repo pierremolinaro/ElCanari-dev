@@ -171,15 +171,7 @@ final class Controller_MergerDocument_mDataController : ReadOnlyAbstractGenericR
     var order = ComparisonResult.orderedSame
     for sortDescriptor in self.mSortDescriptorArray {
       if sortDescriptor.key == "name" {
-        order = compare_String_properties (left.name_property, right.name_property)
-      }
-      // Swift.print ("key \(sortDescriptor.key), ascending \(sortDescriptor.ascending), order \(order.rawValue)")
-      if !sortDescriptor.ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedSame : ()
-        case .orderedDescending : order = .orderedAscending
-        }
+        order = compare_String_properties (left.name_property, sortDescriptor.ascending, right.name_property)
       }
       if order != .orderedSame {
         break // Exit from for

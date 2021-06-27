@@ -18,19 +18,9 @@ typealias EBPreferencesProperty_UInt32 = EBGenericPreferenceProperty <UInt32>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_UInt32_values (_ left : UInt32, _ inAscending : Bool, _ right : UInt32) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_UInt32_properties (_ left : EBReadOnlyProperty_UInt32, _ right : EBReadOnlyProperty_UInt32) -> ComparisonResult {
+func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -78,19 +68,9 @@ typealias EBPreferencesProperty_Int = EBGenericPreferenceProperty <Int>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_Int_values (_ left : Int, _ inAscending : Bool, _ right : Int) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_Int_properties (_ left : EBReadOnlyProperty_Int, _ right : EBReadOnlyProperty_Int) -> ComparisonResult {
+func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Int) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -138,19 +118,9 @@ typealias EBPreferencesProperty_Bool = EBGenericPreferenceProperty <Bool>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_Bool_values (_ left : Bool, _ inAscending : Bool, _ right : Bool) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_Bool_properties (_ left : EBReadOnlyProperty_Bool, _ right : EBReadOnlyProperty_Bool) -> ComparisonResult {
+func compare_Bool_properties (_ inLeft : EBReadOnlyProperty_Bool, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Bool) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -198,19 +168,9 @@ typealias EBPreferencesProperty_Double = EBGenericPreferenceProperty <Double>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_Double_values (_ left : Double, _ inAscending : Bool, _ right : Double) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_Double_properties (_ left : EBReadOnlyProperty_Double, _ right : EBReadOnlyProperty_Double) -> ComparisonResult {
+func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Double) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -258,21 +218,9 @@ typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_String_values (_ left : String, _ inAscending : Bool, _ right : String) -> ComparisonResult {
-  let order = left.localizedStandardCompare (right)
-  switch order {
-  case .orderedAscending :
-    return inAscending ? .orderedAscending : .orderedDescending
-  case .orderedSame :
-    return .orderedSame
-  case .orderedDescending :
-    return inAscending ? .orderedDescending : .orderedAscending
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_String_properties (_ left : EBReadOnlyProperty_String, _ right : EBReadOnlyProperty_String) -> ComparisonResult {
+func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -314,19 +262,9 @@ typealias EBPreferencesProperty_Data = EBGenericPreferenceProperty <Data>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_Data_values (_ left : Data, _ inAscending : Bool, _ right : Data) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_Data_properties (_ left : EBReadOnlyProperty_Data, _ right : EBReadOnlyProperty_Data) -> ComparisonResult {
+func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Data) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -374,19 +312,9 @@ typealias EBPreferencesProperty_Date = EBGenericPreferenceProperty <Date>
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_Date_values (_ left : Date, _ inAscending : Bool, _ right : Date) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_Date_properties (_ left : EBReadOnlyProperty_Date, _ right : EBReadOnlyProperty_Date) -> ComparisonResult {
+func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
@@ -434,19 +362,9 @@ typealias EBPreferencesProperty_BezierPathArray = EBGenericPreferenceProperty <B
 
 //----------------------------------------------------------------------------------------------------------------------
 
-func compare_BezierPathArray_values (_ left : BezierPathArray, _ inAscending : Bool, _ right : BezierPathArray) -> ComparisonResult {
-  if left < right {
-    return inAscending ? .orderedAscending : .orderedDescending
-  }else if left > right {
-    return inAscending ? .orderedDescending : .orderedAscending
-  }else{
-    return .orderedSame
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-func compare_BezierPathArray_properties (_ left : EBReadOnlyProperty_BezierPathArray, _ right : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+func compare_BezierPathArray_properties (_ inLeft : EBReadOnlyProperty_BezierPathArray, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
   switch left.selection {
   case .empty :
     switch right.selection {
