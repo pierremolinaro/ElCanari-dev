@@ -78,7 +78,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
 
   final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
-  //---
     self.mModel = nil
     self.mUndoManager = nil
  }
