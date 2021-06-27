@@ -196,12 +196,12 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       delegate: self
     )
   //--- Configure 'name' column
-    _ = inTableView.addTextColumn (valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
-                                   valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
-                                   sortDescriptor: NSSortDescriptor (key: "name", ascending: true),
-                                   title: "Name",
-                                   headerAlignment: .left,
-                                   contentAlignment: .left
+    inTableView.addTextColumn (valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
+                               valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
+                               sortDescriptor: NSSortDescriptor (key: "name", ascending: true),
+                               title: "Name",
+                               headerAlignment: .left,
+                               contentAlignment: .left
     )
     self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
     self.mColumnObserver_name.mEventCallBack = { [weak self] in

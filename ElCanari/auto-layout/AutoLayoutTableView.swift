@@ -110,7 +110,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
                             sortDescriptor inSortDescriptor : NSSortDescriptor?,
                             title inTitle : String,
                             headerAlignment inHeaderAlignment : TextAlignment,
-                            contentAlignment inContentAlignment : TextAlignment) -> Self {
+                            contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalTextTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sortDescriptor: inSortDescriptor,
@@ -119,6 +119,8 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
       valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
+    column.headerCell.controlSize = self.mTableView.controlSize
+    column.headerCell.font = self.mTableView.font
     column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = 60.0
     column.maxWidth = 400.0
@@ -130,24 +132,28 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
       self.mTableView.sortDescriptors.append (s)
     }
   //---
-    return self
+//    return self
   }
 
   //····················································································································
 
-  final func addIntObserverColumn (title inTitle : String,
-                                   sortDescriptor inSortDescriptor : NSSortDescriptor?,
-                                   headerAlignment inHeaderAlignment : NSTextAlignment,
-                                   contentAlignment inContentAlignment : NSTextAlignment,
-                                   valueDelegate inCallBack : Optional < (_ inRow : Int) -> Int >) -> Self {
-    let column = InternalIntObserverTableColumn (
+  final func addIntColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
+                           valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+                           sortDescriptor inSortDescriptor : NSSortDescriptor?,
+                           title inTitle : String,
+                           headerAlignment inHeaderAlignment : TextAlignment,
+                           contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalIntTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sortDescriptor: inSortDescriptor,
-      contentAlignment: inContentAlignment,
-      valueDelegate: inCallBack
+      contentAlignment: inContentAlignment.cocoaAlignment,
+      valueSetterDelegate: inSetterDelegate,
+      valueGetterDelegate: inGetterDelegate
     )
     column.title = inTitle
-    column.headerCell.alignment = inHeaderAlignment
+    column.headerCell.controlSize = self.mTableView.controlSize
+    column.headerCell.font = self.mTableView.font
+    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
     column.minWidth = 80.0
     column.maxWidth = 400.0
     column.width = 80.0
@@ -158,7 +164,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
       self.mTableView.sortDescriptors.append (s)
     }
   //---
-    return self
+//    return self
   }
 
   //····················································································································
@@ -215,8 +221,8 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     textField.isBordered = false
     textField.drawsBackground = false
     textField.isEnabled = true
-    textField.controlSize = .small
-    textField.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
+    textField.controlSize = self.mTableView.controlSize
+    textField.font = self.mTableView.font // NSFont.systemFont (ofSize: NSFont.systemFontSize (for: textField.controlSize))
 
     if let tableColumn = inTableColumn as? InternalTableColumn {
       tableColumn.setValueToTextField (textField, inRowIndex)
@@ -266,7 +272,6 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
   //····················································································································
 
   let mContentAlignment : NSTextAlignment
-//  let mSortCallBack : Optional < (_ inAscending : Bool) -> Void >
 
   //····················································································································
   // INIT
@@ -280,9 +285,6 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
     noteObjectAllocation (self)
 
     self.sortDescriptorPrototype = inSortDescriptor
-//    if inSortCallBack != nil {
-//      self.sortDescriptorPrototype = NSSortDescriptor (key: inName, ascending: true)
-//    }
   }
 
   //····················································································································
@@ -340,6 +342,7 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
   //····················································································································
 
   override func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
+
     inTextField.alignment = self.mContentAlignment
     inTextField.stringValue = self.mValueGetterDelegate (inRow) ?? ""
     inTextField.isEditable = self.mValueSetterDelegate != nil
@@ -371,14 +374,15 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-// InternalIntObserverTableColumn
+// InternalIntTableColumn
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate class InternalIntObserverTableColumn : InternalTableColumn {
+fileprivate class InternalIntTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  private let mValueDelegate : Optional < (_ inRow : Int) -> Int >
+  private let mValueGetterDelegate : (_ inRow : Int) -> Int?
+  private let mValueSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >
   private let mNumberFormatter = NumberFormatter ()
 
   //····················································································································
@@ -388,8 +392,10 @@ fileprivate class InternalIntObserverTableColumn : InternalTableColumn {
   init (withIdentifierNamed inName : String,
         sortDescriptor inSortDescriptor : NSSortDescriptor?,
         contentAlignment inContentAlignment : NSTextAlignment,
-        valueDelegate inCallBack : Optional < (_ inRow : Int) -> Int >) {
-    self.mValueDelegate = inCallBack
+        valueSetterDelegate inSetterGelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?) {
+    self.mValueGetterDelegate = inGetterDelegate
+    self.mValueSetterDelegate = inSetterGelegate
     super.init (withIdentifierNamed: inName, sortDescriptor: inSortDescriptor, contentAlignment: inContentAlignment)
   //--- Configure number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
@@ -409,14 +415,47 @@ fileprivate class InternalIntObserverTableColumn : InternalTableColumn {
   //····················································································································
 
   override func setValueToTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
-    inTextField.alignment = self.mContentAlignment
-    inTextField.integerValue = self.mValueDelegate? (inRow) ?? -1
-  //--- Number formatter
     inTextField.formatter = self.mNumberFormatter
+    inTextField.alignment = self.mContentAlignment
+    inTextField.integerValue = self.mValueGetterDelegate (inRow) ?? -1
+    inTextField.isEditable = self.mValueSetterDelegate != nil
+//    inTextField.delegate = self
+    inTextField.target = self
+    inTextField.action = #selector (Self.ebAction(_:))
+  }
+
+  //····················································································································
+  // IMPLEMENTATION OF NSTextFieldDelegate
+  //····················································································································
+
+//  @objc func controlTextDidChange (_ inNotification : Notification) {
+//    NSSound.beep ()
+//  }
+
+  //····················································································································
+
+  @objc func ebAction (_ inSender : Any?) {
+    if let textField = inSender as? NSTextField,
+       let formatter = textField.formatter as? NumberFormatter,
+       let outletValueNumber = formatter.number (from: textField.stringValue) {
+      let newValue = Int (outletValueNumber.doubleValue.rounded ())
+      let rowIndex = textField.tag
+      self.mValueSetterDelegate? (rowIndex, newValue)
+    }
   }
 
   //····················································································································
 
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+// InternalSortDescriptor
+//----------------------------------------------------------------------------------------------------------------------
+
+//fileprivate class InternalSortDescriptor : NSSortDescriptor {
+//
+//
+//  
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
