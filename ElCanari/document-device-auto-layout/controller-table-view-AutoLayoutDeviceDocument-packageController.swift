@@ -14,8 +14,8 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
+  private let allowsEmptySelection = false
+  private let allowsMultipleSelection = false
 
   //····················································································································
   //    Undo manager
@@ -51,14 +51,30 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: nil,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_mName (observer)
+        inModel.addEBObserverOf_versionString (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_mName (observer)
+        inModel.removeEBObserverOf_versionString (observer)
       }
     )
   }
 
+  //····················································································································
+
+  final func isOrderedBefore (_ left : PackageInDevice, _ right : PackageInDevice) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for sortDescriptor in self.mSortDescriptorArray {
+      order = sortDescriptor (left, right)
+      if order != .orderedSame {
+        break // Exit from for loop
+      }
+    }
+    return order == .orderedAscending
+  }
 
   //····················································································································
 
@@ -118,6 +134,9 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
+  private var mColumnObserver_versionString = EBOutletEvent ()
+  private var mColumnObserver_mName = EBOutletEvent ()
+  private var mColumnObserver_documentSizeString = EBOutletEvent ()
 
   //····················································································································
 
@@ -127,6 +146,61 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
+  //--- Configure 'versionString' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].versionString },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
+      },
+      title: "Version",
+      minWidth: 60,
+      maxWidth: 60,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
+    self.mModel?.addEBObserverOf_versionString (self.mColumnObserver_versionString)
+    self.mColumnObserver_versionString.mEventCallBack = { [weak self] in
+      for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  //--- Configure 'mName' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].mName },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.mName_property, ascending, right.mName_property) })
+      },
+      title: "Package",
+      minWidth: 100,
+      maxWidth: 4000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mModel?.addEBObserverOf_mName (self.mColumnObserver_mName)
+    self.mColumnObserver_mName.mEventCallBack = { [weak self] in
+      for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  //--- Configure 'documentSizeString' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].documentSizeString },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Size",
+      minWidth: 100,
+      maxWidth: 100,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+    self.mModel?.addEBObserverOf_documentSizeString (self.mColumnObserver_documentSizeString)
+    self.mColumnObserver_documentSizeString.mEventCallBack = { [weak self] in
+      for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
   //---
     self.mTableViewArray.append (inTableView)
   //---

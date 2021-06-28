@@ -185,9 +185,25 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action resetSymbolsAndPackagesVersion ;
   action updateSymbolsAndPackagesAction ;
 
-  stackView mLibraryPage vStack {
+  autolayout
+  tableViewController #symbolTypeController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mSymbolTypes {
+    column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
+    column instanceCount (title: "Instances", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
+    column mTypeName (title: "Symbol", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mTypeName
+    column documentSizeString (title: "Size", minWidth: 100, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
+  }
+
+  selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
+
+  autolayout
+  tableViewController #packageController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mPackages {
+    column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
+    column mName (title: "Package", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mName
+    column documentSizeString (title: "Size", minWidth: 100, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
+  }
+
+  stackView mLibraryPage vStack set (margins: 20) {
     hStack {
-      space
       Button (title: "Reset Symbols and Packages Version and Signature", small: yes) {
         $run resetSymbolsAndPackagesVersion
         $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
@@ -198,91 +214,85 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       }
       space
     }
-  
-  
+    vStack equalHeight () {
+      vStack {
+        hStack { StaticLabel (title: "Embedded Symbols", bold: yes, small: yes) space }
+        hStack {
+          TableView (small: yes, addControlButtons: no) { $tableValue #symbolTypeController }
+          vStack {
+            Button (title: "Reset Version", small: yes) {
+              makeWidthExpandable ()
+              $run resetSelectedSymbolVersion
+              $enabled #symbolTypeController.selectedArray.count > 0
+            }
+            Button (title: "Update", small: yes) {
+              makeWidthExpandable ()
+              $run updateSelectedSymbols
+              $enabled #symbolTypeController.selectedArray.count > 0
+            }
+            Button (title: "Export…", small: yes) {
+              makeWidthExpandable ()
+              $run exportSelectedSymbols
+              $enabled #symbolTypeController.selectedArray.count > 0
+            }
+            Button (title: "Edit", small: yes) {
+              makeWidthExpandable ()
+              $run editSelectedSymbols
+              $enabled #symbolTypeController.selectedArray.count > 0
+            }
+            Button (title: "Remove", small: yes) {
+              makeWidthExpandable ()
+              $run removeUselessSymbolTypeAction
+              $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
+            }
+            space
+          }
+        }
+      }
+      vStack {
+        hStack { StaticLabel (title: "Embedded Packages", bold: yes, small: yes) space }
+        hStack { 
+          TableView (small: yes, addControlButtons: no) { $tableValue #packageController }
+          vStack {
+            Button (title: "Reset Version", small: yes) {
+              makeWidthExpandable ()
+              $run resetSelectedPackageVersion         
+              $enabled #packageController.selectedArray.count > 0
+            }
+            Button (title: "Update", small: yes) {
+              makeWidthExpandable ()
+              $run updateSelectedPackages
+              $enabled #packageController.selectedArray.count > 0
+            }
+            Button (title: "Export…", small: yes) {
+              makeWidthExpandable ()
+              $run exportSelectedPackages
+              $enabled #packageController.selectedArray.count > 0
+            }
+            Button (title: "Edit", small: yes) {
+              makeWidthExpandable ()
+              $run editSelectedPackages
+              $enabled #packageController.selectedArray.count > 0
+            }
+            space
+          }
+        }
+      }
+    }
   }
-
-//  outlet EBButton mResetSymbolAndPackagesVersionButton
-//    $run resetSymbolsAndPackagesVersion
-//    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
-//  ;
-
-//  outlet EBButton mUpdateSymbolAndPackagesButton
-//    $run updateSymbolsAndPackagesAction
-//    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
-//  ;
 
 //--- Symbols
-  autolayout tableViewController #symbolTypeController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mSymbolTypes {
-//     column "symbol" EBTextObserverField $valueObserver self.mTypeName
-//     column "version" EBTextObserverField $valueObserver self.versionString
-//     column "count" EBIntObserverField $valueObserver self.instanceCount (autoFormatter : yes)
-//     column "size" EBTextObserverField $valueObserver self.documentSizeString
-  }
-//  outlet EBTableView mSymbolTableView $tableValue #symbolTypeController ;
-  selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
-
   action resetSelectedSymbolVersion ;
-  outlet EBButton mResetSelectedSymbolVersionButton
-    $run resetSelectedSymbolVersion
-    $enabled #symbolTypeController.selectedArray.count > 0
-  ;
-
   action editSelectedSymbols ;
-  outlet EBButton mEditSelectedSymbolsButton
-    $run editSelectedSymbols
-    $enabled #symbolTypeController.selectedArray.count > 0
-  ;
-
   action exportSelectedSymbols ;
-  outlet EBButton mExportSelectedSymbolsButton
-    $run exportSelectedSymbols
-    $enabled #symbolTypeController.selectedArray.count > 0
-  ;
-
   action updateSelectedSymbols ;
-  outlet EBButton mUpdateSelectedSymbolsButton
-    $run updateSelectedSymbols
-    $enabled #symbolTypeController.selectedArray.count > 0
-  ;
-
   action removeUselessSymbolTypeAction ;
-  outlet EBButton mRemoveUselessSymbolTypeButton
-    $run removeUselessSymbolTypeAction
-    $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
-  ;
 
 //--- Packages
-  autolayout tableViewController #packageController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mPackages {
-//     column "package" EBTextObserverField $valueObserver self.mName
-//     column "version" EBTextObserverField $valueObserver self.versionString
-//     column "size" EBTextObserverField $valueObserver self.documentSizeString
-  }
-//  outlet EBTableView mPackageTableView $tableValue #packageController ;
-
   action resetSelectedPackageVersion ;
-  outlet EBButton mResetSelectedPackageVersionButton
-    $run resetSelectedPackageVersion
-    $enabled #packageController.selectedArray.count > 0
-  ;
-
   action editSelectedPackages ;
-  outlet EBButton mEditSelectedPackagesButton
-    $run editSelectedPackages
-    $enabled #packageController.selectedArray.count > 0
-  ;
-
   action exportSelectedPackages ;
-  outlet EBButton mExportSelectedPackagesButton
-    $run exportSelectedPackages
-    $enabled #packageController.selectedArray.count > 0
-  ;
-
   action updateSelectedPackages ;
-  outlet EBButton mUpdateSelectedPackagesButton
-    $run updateSelectedPackages
-    $enabled #packageController.selectedArray.count > 0
-  ;
 
 //······················································································································
 //   ASSIGNMENTS

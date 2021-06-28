@@ -113,7 +113,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //······················································································································
 
   autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
-     editableColumn name (title: "Name", headerAlignment: .left, contentAlignment: .left) sortkey name
+     editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
   }
 
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;

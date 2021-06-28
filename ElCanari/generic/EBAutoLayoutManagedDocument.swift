@@ -166,7 +166,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
       contentRect: NSRect(x: 0.0, y: 0.0, width: windowWidth, height: windowHeight),
       styleMask: self.windowStyleMask (),
       backing: .buffered,
-      defer: false
+      defer: true
     )
     window.isReleasedWhenClosed = false
     window.center ()

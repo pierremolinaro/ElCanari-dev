@@ -244,6 +244,8 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
         self?.mAllocationStatsDataSource.sort { ascending ? ($0.className < $1.className) : ($0.className > $1.className) }
       },
       title: "Class Name",
+      minWidth: 80,
+      maxWidth: 1000,
       headerAlignment: .center,
       contentAlignment: .left
     )
@@ -254,6 +256,8 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
         self?.mAllocationStatsDataSource.sort { ascending ? ($0.snapShot < $1.snapShot) : ($0.snapShot > $1.snapShot) }
       },
       title: "Snap Shot",
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .right
     )
@@ -264,6 +268,8 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
         self?.mAllocationStatsDataSource.sort { ascending ? ($0.live < $1.live) : ($0.live > $1.live) }
       },
       title: "Live",
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .right
     )
@@ -274,6 +280,8 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
         self?.mAllocationStatsDataSource.sort { ascending ? ($0.allCount < $1.allCount) : ($0.allCount > $1.allCount) }
       },
       title: "Total",
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .right
     )

@@ -150,6 +150,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
         self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_properties (left.name_property, ascending, right.name_property) })
       },
       title: "Name",
+      minWidth: 60,
+      maxWidth: 200,
       headerAlignment: .left,
       contentAlignment: .left
     )
