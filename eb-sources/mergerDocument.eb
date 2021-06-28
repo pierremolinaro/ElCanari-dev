@@ -146,7 +146,7 @@ xibdocument MergerDocument root MergerRoot {
 
 //--- Model table view
   tableViewController #mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
-     column "name" sort name EBTextField $value self.name (sendContinously:no)
+     column "name" sortkey name EBTextField $value self.name (sendContinously:no)
   }
 
   outlet EBTableView mBoardModelTableView $tableValue #mBoardModelController ;
@@ -368,7 +368,7 @@ xibdocument MergerDocument root MergerRoot {
   outlet EBTableView mDataTableView $tableValue #mDataController ;
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
   tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
-     column "name" sort name EBTextObserverField $valueObserver self.name
+     column "name" sortkey name EBTextObserverField $valueObserver self.name
   }
 
   outlet EBTextObserverField mExtensionTextField $valueObserver #mDataSelection.fileExtension ;

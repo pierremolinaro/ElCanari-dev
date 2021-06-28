@@ -79,12 +79,12 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet NSButton mRenameComponentValidationButton ;
 
   tableViewController #componentController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mComponents {
-     column "name" sort componentName EBTextObserverField $valueObserver self.componentName
-     column "device" sort deviceName EBTextObserverField $valueObserver self.deviceName
-     column "package" sort selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
-     column "value" sort mComponentValue EBTextField $value self.mComponentValue (sendContinously : no)
-     column "inSchematics" sort placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
-     column "inBoard" sort componentIsPlacedInBoardString EBTextObserverField $valueObserver self.componentIsPlacedInBoardString
+     column "name" sortkey componentName EBTextObserverField $valueObserver self.componentName
+     column "device" sortkey deviceName EBTextObserverField $valueObserver self.deviceName
+     column "package" sortkey selectedPackageName EBTextObserverField $valueObserver self.selectedPackageName
+     column "value" sortkey mComponentValue EBTextField $value self.mComponentValue (sendContinously : no)
+     column "inSchematics" sortkey placementInSchematic EBTextObserverField $valueObserver self.placementInSchematic
+     column "inBoard" sortkey componentIsPlacedInBoardString EBTextObserverField $valueObserver self.componentIsPlacedInBoardString
   }
   outlet EBTableView mComponentTableView $tableValue #componentController ;
 
@@ -214,10 +214,10 @@ xibdocument ProjectDocument root ProjectRoot {
 
 
   tableViewController #projectDeviceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mDevices {
-     column "name" sort mDeviceName EBTextObserverField $valueObserver self.mDeviceName
-     column "version" sort versionString EBTextObserverField $valueObserver self.versionString
-     column "size" sort sizeString EBTextObserverField $valueObserver self.sizeString
-     column "componentCount" sort deviceComponentCountString EBTextObserverField $valueObserver self.deviceComponentCountString
+     column "name" sortkey mDeviceName EBTextObserverField $valueObserver self.mDeviceName
+     column "version" sortkey versionString EBTextObserverField $valueObserver self.versionString
+     column "size" sortkey sizeString EBTextObserverField $valueObserver self.sizeString
+     column "componentCount" sortkey deviceComponentCountString EBTextObserverField $valueObserver self.deviceComponentCountString
   }
   outlet EBTableView mDeviceLibraryTableView $tableValue #projectDeviceController ;
 
@@ -1153,7 +1153,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBTableView mDataTableView $tableValue #mDataController ;
   selectionController ArtworkFileGenerationParameters #mDataSelection : #mDataController.selectedArray ;
   tableViewController #mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
-     column "name" sort name EBTextObserverField $valueObserver self.name
+     column "name" sortkey name EBTextObserverField $valueObserver self.name
   }
 
   outlet EBTextObserverField mExtensionTextField $valueObserver #mDataSelection.fileExtension ;

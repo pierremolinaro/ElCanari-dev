@@ -237,7 +237,7 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
       allowsMultipleSelection: false,
       delegate: self
     )
-    self.mStatsTableView.addTextColumn (
+    self.mStatsTableView.addColumn_String (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].className ?? "" },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
@@ -247,7 +247,7 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
       headerAlignment: .center,
       contentAlignment: .left
     )
-    self.mStatsTableView.addIntColumn (
+    self.mStatsTableView.addColumn_Int (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].snapShot ?? -1 },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
@@ -257,7 +257,7 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
       headerAlignment: .center,
       contentAlignment: .right
     )
-    self.mStatsTableView.addIntColumn (
+    self.mStatsTableView.addColumn_Int (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].live ?? -1 },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
@@ -267,7 +267,7 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
       headerAlignment: .center,
       contentAlignment: .right
     )
-    self.mStatsTableView.addIntColumn (
+    self.mStatsTableView.addColumn_Int (
       valueGetterDelegate: { [weak self] in return self?.mAllocationStatsDataSource [$0].allCount ?? -1 },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in

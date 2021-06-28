@@ -110,12 +110,12 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
-  final func addTextColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?,
-                            valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
-                            sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                            title inTitle : String,
-                            headerAlignment inHeaderAlignment : TextAlignment,
-                            contentAlignment inContentAlignment : TextAlignment) {
+  final func addColumn_String (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?,
+                               valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
+                               sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                               title inTitle : String,
+                               headerAlignment inHeaderAlignment : TextAlignment,
+                               contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalTextTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sortDelegate: inSortDelegate,
@@ -138,12 +138,12 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
-  final func addIntColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
-                           valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
-                           sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
-                           title inTitle : String,
-                           headerAlignment inHeaderAlignment : TextAlignment,
-                           contentAlignment inContentAlignment : TextAlignment) {
+  final func addColumn_Int (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> Int?,
+                            valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : Int) -> Void >,
+                            sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                            title inTitle : String,
+                            headerAlignment inHeaderAlignment : TextAlignment,
+                            contentAlignment inContentAlignment : TextAlignment) {
     let column = InternalIntTableColumn (
       withIdentifierNamed: String (self.mTableView.tableColumns.count),
       sortDelegate: inSortDelegate,
