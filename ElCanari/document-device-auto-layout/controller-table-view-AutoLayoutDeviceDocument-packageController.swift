@@ -5,17 +5,17 @@
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-//    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
+//    Auto Layout Table View Controller AutoLayoutDeviceDocument packageController
 //----------------------------------------------------------------------------------------------------------------------
 
-final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, AutoLayoutTableViewDelegate {
  
   //····················································································································
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
 
   //····················································································································
   //    Undo manager
@@ -28,51 +28,37 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   //   Sorted Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
+  let sortedArray_property = TransientArrayOf_PackageInDevice ()
 
   //····················································································································
 
-  var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
+  var sortedArray : [PackageInDevice] { return self.sortedArray_property.propval }
 
   //····················································································································
 
-  private var mSortDescriptorArray = [(ArtworkFileGenerationParameters, ArtworkFileGenerationParameters) -> ComparisonResult] ()
+  private var mSortDescriptorArray = [(PackageInDevice, PackageInDevice) -> ComparisonResult] ()
 
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
+  private var mModel : ReadWriteArrayOf_PackageInDevice? = nil
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_ArtworkFileGenerationParameters, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_PackageInDevice, _ inUndoManager : EBUndoManager) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      sortCallback: nil,
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_name (observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_name (observer)
       }
     )
   }
 
-  //····················································································································
-
-  final func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray {
-      order = sortDescriptor (left, right)
-      if order != .orderedSame {
-        break // Exit from for loop
-      }
-    }
-    return order == .orderedAscending
-  }
 
   //····················································································································
 
@@ -86,19 +72,19 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ArtworkFileGenerationParameters ()
+  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
 
   //····················································································································
 
-  var selectedArray_property : ReadOnlyArrayOf_ArtworkFileGenerationParameters { return self.mInternalSelectedArrayProperty }
+  var selectedArray_property : ReadOnlyArrayOf_PackageInDevice { return self.mInternalSelectedArrayProperty }
 
   //····················································································································
 
-  var selectedArray : [ArtworkFileGenerationParameters] { return self.selectedArray_property.propval }
+  var selectedArray : [PackageInDevice] { return self.selectedArray_property.propval }
  
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return Set (self.selectedArray) }
+  var selectedSet : Set <PackageInDevice> { return Set (self.selectedArray) }
 
   //····················································································································
 
@@ -116,7 +102,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
 
   //····················································································································
 
-/*  func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
+/*  func setSelection (_ inObjects : [PackageInDevice]) {
     self.mInternalSelectedArrayProperty.setProp (inObjects)
   } */
 
@@ -132,7 +118,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
-  private var mColumnObserver_name = EBOutletEvent ()
 
   //····················································································································
 
@@ -142,23 +127,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
     )
-  //--- Configure 'name' column
-    inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
-      valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
-      sortDelegate: { [weak self] (ascending) in
-        self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_properties (left.name_property, ascending, right.name_property) })
-      },
-      title: "Name",
-      headerAlignment: .left,
-      contentAlignment: .left
-    )
-    self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
-    self.mColumnObserver_name.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //---
     self.mTableViewArray.append (inTableView)
   //---
@@ -181,7 +149,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   //   Select a single object
   //····················································································································
 
-/*  func select (object inObject: ArtworkFileGenerationParameters) {
+/*  func select (object inObject: PackageInDevice) {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -212,7 +180,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
     case .empty, .multiple :
       ()
     case .single (let v) :
-      var newSelectedObjects = [ ArtworkFileGenerationParameters] ()
+      var newSelectedObjects = [ PackageInDevice] ()
       for index in inSelectedRows {
         newSelectedObjects.append (v [index])
       }
@@ -243,7 +211,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
+        let newObject = PackageInDevice (self.ebUndoManager)
         var array = v
         array.append (newObject)
         model.setProp (array)
@@ -267,7 +235,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var sortedObjectDictionary = [PackageInDevice : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -289,13 +257,13 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : ArtworkFileGenerationParameters? = nil
+          var newSelectedObject : PackageInDevice? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [ArtworkFileGenerationParameters : Int] ()
+          var objectDictionary = [PackageInDevice : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }

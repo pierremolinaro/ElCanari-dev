@@ -8,7 +8,7 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -18,7 +18,9 @@ final class AutoLayoutVersionField : NSTextField, EBUserClassNameProtocol {
     self.drawsBackground = false
     self.isBordered = false
     self.alignment = .center
-    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize, weight: .semibold)
+
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
   //····················································································································

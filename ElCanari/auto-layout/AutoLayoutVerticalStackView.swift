@@ -44,6 +44,15 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
+  //   equalHeight
+  //····················································································································
+
+  final func equalHeight () -> Self {
+    self.distribution = .fillEqually
+    return self
+  }
+
+  //····················································································································
 
   override var intrinsicContentSize : NSSize {
     return NSSize (width: self.mWidth, height: NSView.noIntrinsicMetric)

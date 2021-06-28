@@ -6,49 +6,49 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@objc(DeviceDocument) class DeviceDocument : EBManagedXibDocument {
-
-  //····················································································································
-  //   Array controller: documentationController
-  //····················································································································
-
-  var documentationController = Controller_DeviceDocument_documentationController ()
-
-  //····················································································································
-  //   Array controller: symbolDisplayController
-  //····················································································································
-
-  var symbolDisplayController = Controller_DeviceDocument_symbolDisplayController ()
-
-  //····················································································································
-  //   Selection controller: symbolInstanceSelection
-  //····················································································································
-
-  var symbolInstanceSelection = SelectionController_DeviceDocument_symbolInstanceSelection ()
-
-  //····················································································································
-  //   Array controller: packageDisplayController
-  //····················································································································
-
-  var packageDisplayController = Controller_DeviceDocument_packageDisplayController ()
-
-  //····················································································································
-  //   Array controller: symbolTypeController
-  //····················································································································
-
-  var symbolTypeController = Controller_DeviceDocument_symbolTypeController ()
-
-  //····················································································································
-  //   Selection controller: symbolTypeSelection
-  //····················································································································
-
-  var symbolTypeSelection = SelectionController_DeviceDocument_symbolTypeSelection ()
+@objc(AutoLayoutDeviceDocument) class AutoLayoutDeviceDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
 
   //····················································································································
   //   Array controller: packageController
   //····················································································································
 
-  var packageController = Controller_DeviceDocument_packageController ()
+  var packageController = Controller_AutoLayoutDeviceDocument_packageController ()
+
+  //····················································································································
+  //   Array controller: documentationController
+  //····················································································································
+
+  var documentationController = Controller_AutoLayoutDeviceDocument_documentationController ()
+
+  //····················································································································
+  //   Array controller: symbolDisplayController
+  //····················································································································
+
+  var symbolDisplayController = Controller_AutoLayoutDeviceDocument_symbolDisplayController ()
+
+  //····················································································································
+  //   Selection controller: symbolInstanceSelection
+  //····················································································································
+
+  var symbolInstanceSelection = SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection ()
+
+  //····················································································································
+  //   Array controller: packageDisplayController
+  //····················································································································
+
+  var packageDisplayController = Controller_AutoLayoutDeviceDocument_packageDisplayController ()
+
+  //····················································································································
+  //   Array controller: symbolTypeController
+  //····················································································································
+
+  var symbolTypeController = Controller_AutoLayoutDeviceDocument_symbolTypeController ()
+
+  //····················································································································
+  //   Selection controller: symbolTypeSelection
+  //····················································································································
+
+  var symbolTypeSelection = SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -94,6 +94,40 @@ import Cocoa
 
   final var hasUnconnectedPin : Bool? {
     switch self.hasUnconnectedPin_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  final let mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var mStatusMessage : String? {
+    switch self.mStatusMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mMetadataStatus
+  //····················································································································
+
+  final let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  final var mMetadataStatus : MetadataStatus? {
+    switch self.mMetadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -153,38 +187,8 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusMessage
+  //    Outlets
   //····················································································································
-
-  final let mStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mStatusMessage : String? {
-    switch self.mStatusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: mMetadataStatus
-  //····················································································································
-
-  final let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
-
-  //····················································································································
-
-  final var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
 
 
   //····················································································································
@@ -193,17 +197,12 @@ import Cocoa
 
   @IBOutlet final var mAddPackageFromLibraryButton : EBButton? = nil
   @IBOutlet final var mAddSymbolFromLibraryButton : EBButton? = nil
-  @IBOutlet final var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton? = nil
   @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
-  @IBOutlet final var mAssignmentPageView : CanariViewWithKeyView? = nil
   @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
   @IBOutlet final var mBindButton : EBButton? = nil
-  @IBOutlet final var mCommentTextView : EBTextView? = nil
   @IBOutlet final var mComposedPackageView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mComposedSymbolView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mCopyImageButton : EBButton? = nil
-  @IBOutlet final var mDescriptionPageView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mDocumentationTableView : DeviceDocumentationTableView? = nil
   @IBOutlet final var mEditSelectedPackagesButton : EBButton? = nil
   @IBOutlet final var mEditSelectedSymbolsButton : EBButton? = nil
   @IBOutlet final var mExportSelectedPackagesButton : EBButton? = nil
@@ -213,22 +212,14 @@ import Cocoa
   @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
   @IBOutlet final var mInconsistentSymbolNameMessageScrollView : NSScrollView? = nil
   @IBOutlet final var mInconsistentSymbolNameMessageTextView : EBTextObserverView? = nil
-  @IBOutlet final var mInfosPageView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mIssueTextView : EBTextObserverView? = nil
-  @IBOutlet final var mLibraryPageView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mMasterView : NSView? = nil
   @IBOutlet final var mNCButton : EBButton? = nil
   @IBOutlet final var mPackageBackPadsColorWell : EBColorWell? = nil
   @IBOutlet final var mPackageDisplayHorizontalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mPackageDisplayVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mPackageFrontPadsColorWell : EBColorWell? = nil
   @IBOutlet final var mPackageNumbersColorWell : EBColorWell? = nil
-  @IBOutlet final var mPackagePageView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mPackageTableView : EBTableView? = nil
   @IBOutlet final var mPackagesColorWell : EBColorWell? = nil
-  @IBOutlet final var mPageSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet final var mPasteImageButton : EBButton? = nil
-  @IBOutlet final var mPrefixTextField : EBTextField? = nil
   @IBOutlet final var mRemoveImageButton : EBButton? = nil
   @IBOutlet final var mRemoveSelectedDocButton : EBButton? = nil
   @IBOutlet final var mRemoveUselessSymbolTypeButton : EBButton? = nil
@@ -236,21 +227,16 @@ import Cocoa
   @IBOutlet final var mResetSelectedPackageVersionButton : EBButton? = nil
   @IBOutlet final var mResetSelectedSymbolVersionButton : EBButton? = nil
   @IBOutlet final var mResetSymbolAndPackagesVersionButton : EBButton? = nil
-  @IBOutlet final var mResetVersionButton : EBButton? = nil
   @IBOutlet final var mSaveDocButton : EBButton? = nil
   @IBOutlet final var mShowDocButton : EBButton? = nil
   @IBOutlet final var mShowPackageBackPadsSwitch : EBSwitch? = nil
   @IBOutlet final var mShowPackageFrontPadsSwitch : EBSwitch? = nil
   @IBOutlet final var mShowPackagePadNumbersSwitch : EBSwitch? = nil
   @IBOutlet final var mShowPackagesSwitch : EBSwitch? = nil
-  @IBOutlet final var mSignatureTextField : CanariSignatureField? = nil
-  @IBOutlet final var mStatusImageViewInToolbar : EBImageObserverView? = nil
   @IBOutlet final var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mSymbolDisplayVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mSymbolErrorMessageTitleTextField : NSTextField? = nil
   @IBOutlet final var mSymbolNameTextField : EBTextField? = nil
-  @IBOutlet final var mSymbolPageView : CanariViewWithKeyView? = nil
-  @IBOutlet final var mSymbolTableView : EBTableView? = nil
   @IBOutlet final var mSymbolTypeTextField : EBTextObserverField? = nil
   @IBOutlet final var mTitleTextField : EBTextField? = nil
   @IBOutlet final var mUnbindAllButton : EBButton? = nil
@@ -260,38 +246,36 @@ import Cocoa
   @IBOutlet final var mUpdateSelectedPackagesButton : EBButton? = nil
   @IBOutlet final var mUpdateSelectedSymbolsButton : EBButton? = nil
   @IBOutlet final var mUpdateSymbolAndPackagesButton : EBButton? = nil
-  @IBOutlet final var mVersionField : CanariVersionField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-  final var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
-  final var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
-  final var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
-  final var mController_mResetSymbolAndPackagesVersionButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mUpdateSymbolAndPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mRemoveUselessSymbolTypeButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
-  final var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
-  final var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
-  final var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+//  var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
+//  var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+//  var mController_mResetSymbolAndPackagesVersionButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mUpdateSymbolAndPackagesButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mRemoveUselessSymbolTypeButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
+//  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
+//  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
+//  var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -323,6 +307,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: packageController
+    self.packageController.addExplorer (name: "packageController", y:&y, view:view)
   //--- Array controller property: documentationController
     self.documentationController.addExplorer (name: "documentationController", y:&y, view:view)
   //--- Array controller property: symbolDisplayController
@@ -335,20 +321,10 @@ import Cocoa
     self.symbolTypeController.addExplorer (name: "symbolTypeController", y:&y, view:view)
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.addExplorer (name: "symbolTypeSelection", y:&y, view:view)
-  //--- Array controller property: packageController
-    self.packageController.addExplorer (name: "packageController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
 
-  //····················································································································
-  //    windowNibName
-  //····················································································································
-
-  override final var windowNibName : NSNib.Name? {
-    return NSNib.Name ("DeviceDocument")
-  }
-  
   //····················································································································
   //    rootEntityClassName
   //····················································································································
@@ -364,92 +340,328 @@ import Cocoa
   final var rootObject : DeviceRoot { return self.mRootObject as! DeviceRoot }
 
   //····················································································································
+  //    VIEW mPageMasterView
+  //····················································································································
+
+  lazy var mPageMasterView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDocumentMainView
+  //····················································································································
+
+  lazy var mDocumentMainView : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: 0)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
+    do{
+      let view_0_0 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, small: false)
+          .addPage (title: "Description", tooltip: "Device Description", pageView: self.mDescriptionPage)
+          .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: self.mSymbolsPage)
+          .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: self.mPackagesPage)
+          .addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: self.mAssignmentsPage)
+          .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: self.mLibraryPage)
+          .addPage (title: "Infos", tooltip: "Device Informations", pageView: self.mInfosPage)
+          .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_0)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, small: true)
+          view_0_0_1.appendView (view_0_0_1_1)
+          let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
+          view_0_0_1.appendView (view_0_0_1_2)
+        }
+        view_0_0.appendView (view_0_0_1)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_1_0 = AutoLayoutSignatureField (small: false)
+          .bind_signature (self.signatureObserver_property)
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
+          .set (alignment: .center)
+          .makeWidthExpandable ()
+        view_0_1.appendView (view_0_1_1)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutVersionField (small: false)
+          .bind_version (self.versionObserver_property)
+          .bind_versionShouldChange (self.versionShouldChangeObserver_property)
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, small: true)
+          .set (alignment: .center)
+          .makeWidthExpandable ()
+        view_0_2.appendView (view_0_2_1)
+      }
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_4_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
+          view_0_4_0.appendView (view_0_4_0_0)
+          let view_0_4_0_1 = AutoLayoutImageObserverView (small: false)
+            .bind_image (self.mStatusImage_property)
+            .bind_tooltip (self.mStatusMessage_property)
+          view_0_4_0.appendView (view_0_4_0_1)
+          let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
+          view_0_4_0.appendView (view_0_4_0_2)
+        }
+        view_0_4.appendView (view_0_4_0)
+        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+          .set (alignment: .center)
+        view_0_4.appendView (view_0_4_1)
+      }
+      view_0.appendView (view_0_4)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = mPageMasterView
+    vStackView.appendView (view_2)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mDescriptionPage
+  //····················································································································
+
+  lazy var mDescriptionPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mSymbolsPage
+  //····················································································································
+
+  lazy var mSymbolsPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mPackagesPage
+  //····················································································································
+
+  lazy var mPackagesPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mLibraryPage
+  //····················································································································
+
+  lazy var mLibraryPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mAssignmentsPage
+  //····················································································································
+
+  lazy var mAssignmentsPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    VIEW mInfosPage
+  //····················································································································
+
+  lazy var mInfosPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (leftMargin: 20)
+      .set (rightMargin: 20)
+      .set (bottomMargin: 20)
+      .set (topMargin: 8)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .setFirstBaselineAlignment ()
+    do{
+      let view_0_0 = AutoLayoutStaticLabel (title: "Device Prefix", bold: false, small: true)
+        .set (width: 84)
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutTextField (width: 56, small: true)
+        .bind_value (self.rootObject.mPrefix_property, sendContinously:true)
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: false, small: true)
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "Reset Version and Signature", small: true)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.resetVersionAction (_:))
+        )
+      view_0.appendView (view_0_4)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
+      .equalHeight ()
+    do{
+      let view_1_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_0_0 = AutoLayoutVerticalStackView ()
+          .set (width: 84)
+        do{
+          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+          view_1_0_0.appendView (view_1_0_0_0)
+          let view_1_0_0_1 = AutoLayoutFlexibleSpace ()
+          view_1_0_0.appendView (view_1_0_0_1)
+        }
+        view_1_0.appendView (view_1_0_0)
+        let view_1_0_1 = AutoLayoutTextObserverView ()
+          .bind_observedValue (self.mStatusMessage_property)
+        view_1_0.appendView (view_1_0_1)
+      }
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutVerticalStackView ()
+          .set (width: 84)
+        do{
+          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, small: true)
+          view_1_1_0.appendView (view_1_1_0_0)
+          let view_1_1_0_1 = AutoLayoutFlexibleSpace ()
+          view_1_1_0.appendView (view_1_1_0_1)
+        }
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutTextView ()
+          .bind_value (self.rootObject.mComments_property)
+        view_1_1.appendView (view_1_1_1)
+      }
+      view_1.appendView (view_1_1)
+    }
+    vStackView.appendView (view_1)
+    return vStackView
+  } ()
+
+  //····················································································································
+  //    Build User Interface
+  //····················································································································
+
+  override func ebBuildUserInterface () {
+  //--- Build window content view
+    self.configureProperties ()
+    let mainView = self.mDocumentMainView
+  //--- Call outlet linkers
+  //--- Assign main view to window
+    self.windowForSheet?.contentView = mainView
+  }
+  
+  //····················································································································
+  //    Toolbar
+  //····················································································································
+  
+  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    return self.toolbarDefaultItemIdentifiers (toolbar)
+  }
+
+  //····················································································································
+
+  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    return []
+  }
+
+  //····················································································································
+
+  final func toolbar (_ toolbar: NSToolbar,
+                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+    switch itemIdentifier.rawValue {
+    default :
+      return nil
+    }
+  }
+
+  //····················································································································
   //    check outlet connections
   //····················································································································
 
-  private func checkOutletConnections () {
-    let start = Date ()
-    checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mAddSymbolFromLibraryButton, "mAddSymbolFromLibraryButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mAddSymbolInstancePullDownButton, "mAddSymbolInstancePullDownButton", AddSymbolInstancePullDownButton.self, #file, #line)
-    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
-    checkOutletConnection (self.mAssignmentPageView, "mAssignmentPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
-    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
-    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
-    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
-    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mDescriptionPageView, "mDescriptionPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mDocumentationTableView, "mDocumentationTableView", DeviceDocumentationTableView.self, #file, #line)
-    checkOutletConnection (self.mEditSelectedPackagesButton, "mEditSelectedPackagesButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mEditSelectedSymbolsButton, "mEditSelectedSymbolsButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mExportSelectedPackagesButton, "mExportSelectedPackagesButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mExportSelectedSymbolsButton, "mExportSelectedSymbolsButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageScrollView, "mInconsistentPackagePadNameSetsMessageScrollView", NSScrollView.self, #file, #line)
-    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageTextView, "mInconsistentPackagePadNameSetsMessageTextView", EBTextObserverView.self, #file, #line)
-    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mInconsistentSymbolNameMessageScrollView, "mInconsistentSymbolNameMessageScrollView", NSScrollView.self, #file, #line)
-    checkOutletConnection (self.mInconsistentSymbolNameMessageTextView, "mInconsistentSymbolNameMessageTextView", EBTextObserverView.self, #file, #line)
-    checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mIssueTextView, "mIssueTextView", EBTextObserverView.self, #file, #line)
-    checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
-    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mPackageBackPadsColorWell, "mPackageBackPadsColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPackageDisplayHorizontalFlipSwitch, "mPackageDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mPackageDisplayVerticalFlipSwitch, "mPackageDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mPackageFrontPadsColorWell, "mPackageFrontPadsColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPackageNumbersColorWell, "mPackageNumbersColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPackagePageView, "mPackagePageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mPackageTableView, "mPackageTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mPackagesColorWell, "mPackagesColorWell", EBColorWell.self, #file, #line)
-    checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mPasteImageButton, "mPasteImageButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mPrefixTextField, "mPrefixTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRemoveUselessSymbolTypeButton, "mRemoveUselessSymbolTypeButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
-    checkOutletConnection (self.mResetSelectedPackageVersionButton, "mResetSelectedPackageVersionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mResetSelectedSymbolVersionButton, "mResetSelectedSymbolVersionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mResetSymbolAndPackagesVersionButton, "mResetSymbolAndPackagesVersionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mSaveDocButton, "mSaveDocButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mShowDocButton, "mShowDocButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mShowPackageBackPadsSwitch, "mShowPackageBackPadsSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mShowPackageFrontPadsSwitch, "mShowPackageFrontPadsSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mShowPackagePadNumbersSwitch, "mShowPackagePadNumbersSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mShowPackagesSwitch, "mShowPackagesSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSignatureTextField, "mSignatureTextField", CanariSignatureField.self, #file, #line)
-    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
-    checkOutletConnection (self.mSymbolDisplayHorizontalFlipSwitch, "mSymbolDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSymbolDisplayVerticalFlipSwitch, "mSymbolDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
-    checkOutletConnection (self.mSymbolErrorMessageTitleTextField, "mSymbolErrorMessageTitleTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mSymbolNameTextField, "mSymbolNameTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mSymbolPageView, "mSymbolPageView", CanariViewWithKeyView.self, #file, #line)
-    checkOutletConnection (self.mSymbolTableView, "mSymbolTableView", EBTableView.self, #file, #line)
-    checkOutletConnection (self.mSymbolTypeTextField, "mSymbolTypeTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
-    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mUnconnectedPadsInDeviceTableView, "mUnconnectedPadsInDeviceTableView", UnconnectedPadsInDeviceTableView.self, #file, #line)
-    checkOutletConnection (self.mUnconnectedSymbolPinsInDeviceTableView, "mUnconnectedSymbolPinsInDeviceTableView", UnconnectedSymbolPinsInDeviceTableView.self, #file, #line)
-    checkOutletConnection (self.mUpdateSelectedPackagesButton, "mUpdateSelectedPackagesButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mUpdateSelectedSymbolsButton, "mUpdateSelectedSymbolsButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mUpdateSymbolAndPackagesButton, "mUpdateSymbolAndPackagesButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Check outlet connections \(durationMS) ms")
-    }
-  }
+//  private func checkOutletConnections () {
+//    let start = Date ()
+//    checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mAddSymbolFromLibraryButton, "mAddSymbolFromLibraryButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
+//    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
+//    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
+//    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
+//    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mEditSelectedPackagesButton, "mEditSelectedPackagesButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mEditSelectedSymbolsButton, "mEditSelectedSymbolsButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mExportSelectedPackagesButton, "mExportSelectedPackagesButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mExportSelectedSymbolsButton, "mExportSelectedSymbolsButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageScrollView, "mInconsistentPackagePadNameSetsMessageScrollView", NSScrollView.self, #file, #line)
+//    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageTextView, "mInconsistentPackagePadNameSetsMessageTextView", EBTextObserverView.self, #file, #line)
+//    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
+//    checkOutletConnection (self.mInconsistentSymbolNameMessageScrollView, "mInconsistentSymbolNameMessageScrollView", NSScrollView.self, #file, #line)
+//    checkOutletConnection (self.mInconsistentSymbolNameMessageTextView, "mInconsistentSymbolNameMessageTextView", EBTextObserverView.self, #file, #line)
+//    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mPackageBackPadsColorWell, "mPackageBackPadsColorWell", EBColorWell.self, #file, #line)
+//    checkOutletConnection (self.mPackageDisplayHorizontalFlipSwitch, "mPackageDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mPackageDisplayVerticalFlipSwitch, "mPackageDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mPackageFrontPadsColorWell, "mPackageFrontPadsColorWell", EBColorWell.self, #file, #line)
+//    checkOutletConnection (self.mPackageNumbersColorWell, "mPackageNumbersColorWell", EBColorWell.self, #file, #line)
+//    checkOutletConnection (self.mPackagesColorWell, "mPackagesColorWell", EBColorWell.self, #file, #line)
+//    checkOutletConnection (self.mPasteImageButton, "mPasteImageButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mRemoveUselessSymbolTypeButton, "mRemoveUselessSymbolTypeButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
+//    checkOutletConnection (self.mResetSelectedPackageVersionButton, "mResetSelectedPackageVersionButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mResetSelectedSymbolVersionButton, "mResetSelectedSymbolVersionButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mResetSymbolAndPackagesVersionButton, "mResetSymbolAndPackagesVersionButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mSaveDocButton, "mSaveDocButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mShowDocButton, "mShowDocButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mShowPackageBackPadsSwitch, "mShowPackageBackPadsSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mShowPackageFrontPadsSwitch, "mShowPackageFrontPadsSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mShowPackagePadNumbersSwitch, "mShowPackagePadNumbersSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mShowPackagesSwitch, "mShowPackagesSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mSymbolDisplayHorizontalFlipSwitch, "mSymbolDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mSymbolDisplayVerticalFlipSwitch, "mSymbolDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
+//    checkOutletConnection (self.mSymbolErrorMessageTitleTextField, "mSymbolErrorMessageTitleTextField", NSTextField.self, #file, #line)
+//    checkOutletConnection (self.mSymbolNameTextField, "mSymbolNameTextField", EBTextField.self, #file, #line)
+//    checkOutletConnection (self.mSymbolTypeTextField, "mSymbolTypeTextField", EBTextObserverField.self, #file, #line)
+//    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
+//    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mUnconnectedPadsInDeviceTableView, "mUnconnectedPadsInDeviceTableView", UnconnectedPadsInDeviceTableView.self, #file, #line)
+//    checkOutletConnection (self.mUnconnectedSymbolPinsInDeviceTableView, "mUnconnectedSymbolPinsInDeviceTableView", UnconnectedSymbolPinsInDeviceTableView.self, #file, #line)
+//    checkOutletConnection (self.mUpdateSelectedPackagesButton, "mUpdateSelectedPackagesButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mUpdateSelectedSymbolsButton, "mUpdateSelectedSymbolsButton", EBButton.self, #file, #line)
+//    checkOutletConnection (self.mUpdateSymbolAndPackagesButton, "mUpdateSymbolAndPackagesButton", EBButton.self, #file, #line)
+//    if LOG_OPERATION_DURATION {
+//      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
+//      Swift.print ("Check outlet connections \(durationMS) ms")
+//    }
+//  }
   
   //····················································································································
   
   final private func configureProperties () {
     let start = Date ()
     var opIdx = 0
+  //--- Array controller property: packageController
+    self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Array controller property: documentationController
     self.documentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
     if LOG_OPERATION_DURATION {
@@ -486,12 +698,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Array controller property: packageController
-    self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -501,7 +707,7 @@ import Cocoa
       if let unwSelf = self {
         switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection) {
         case (.single (let v0), .single (let v1)) :
-          return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
+          return .single (transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (v0, v1))
         case (.multiple, .multiple) :
           return .multiple
         default :
@@ -522,7 +728,7 @@ import Cocoa
       if let unwSelf = self {
         switch (unwSelf.rootObject.unconnectedPins_property.selection) {
         case (.single (let v0)) :
-          return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
+          return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPin (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -537,72 +743,12 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: hasUnconnectedPad
-    self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPads_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: hasAssignedPadProxies
-    self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.assignedPadProxies_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: mStatusImage
-    self.mStatusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_DeviceDocument_mStatusImage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
-          return .single (transient_DeviceDocument_mStatusMessage (v0))
+          return .single (transient_AutoLayoutDeviceDocument_mStatusMessage (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -622,7 +768,7 @@ import Cocoa
       if let unwSelf = self {
         switch (unwSelf.rootObject.issues_property.selection) {
         case (.single (let v0)) :
-          return .single (transient_DeviceDocument_mMetadataStatus (v0))
+          return .single (transient_AutoLayoutDeviceDocument_mMetadataStatus (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -637,6 +783,66 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: hasUnconnectedPad
+    self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.unconnectedPads_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPad (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: hasAssignedPadProxies
+    self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.assignedPadProxies_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_hasAssignedPadProxies (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_mStatusImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Configure properties \(durationMS) ms")
@@ -645,233 +851,213 @@ import Cocoa
 
   //····················································································································
   
-  final private func installBindings () {
+/*  final private func installBindings () {
     let start = Date ()
   //--------------------------- Install table view bindings
-    self.documentationController.bind_tableView (self.mDocumentationTableView)
-    self.symbolTypeController.bind_tableView (self.mSymbolTableView)
-    self.packageController.bind_tableView (self.mPackageTableView)
   //--------------------------- Install ebView bindings
     self.symbolDisplayController.bind_ebView (self.mComposedSymbolView)
     self.packageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
-    self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
-    self.mSignatureTextField?.bind_signature (self.signatureObserver_property)
-    self.mVersionField?.bind_version (self.versionObserver_property)
-    self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property)
-    self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property)
-    self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property)
-    self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property)
-    self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, sendContinously:true)
-    self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property)
-    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property)
-    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property)
-    self.mComposedSymbolView?.bind_zoom (self.rootObject.mSymbolDisplayZoom_property)
-    self.mSymbolDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property)
-    self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property)
-    self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property)
-    self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property)
-    self.mSymbolTypeTextField?.bind_valueObserver (self.symbolInstanceSelection.symbolTypeName_property)
-    self.mSymbolNameTextField?.bind_value (self.symbolInstanceSelection.mInstanceName_property, sendContinously:true)
-    self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property)
-    self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property)
-    self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property)
-    self.mPackageDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
-    self.mPackageDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayVerticalFlip_property)
-    self.mShowPackagesSwitch?.bind_value (self.rootObject.mShowPackages_property)
-    self.mPackagesColorWell?.bind_color (preferences_packageColor_property, sendContinously:false)
-    self.mShowPackagePadNumbersSwitch?.bind_value (self.rootObject.mShowPackagePadNumbers_property)
-    self.mPackageNumbersColorWell?.bind_color (preferences_padNumberColor_property, sendContinously:false)
-    self.mShowPackageFrontPadsSwitch?.bind_value (self.rootObject.mShowPackageFrontPads_property)
-    self.mPackageFrontPadsColorWell?.bind_color (preferences_frontSidePadColor_property, sendContinously:false)
-    self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property)
-    self.mPackageBackPadsColorWell?.bind_color (preferences_backSidePadColor_property, sendContinously:false)
-    self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property)
-    self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property)
-    self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property)
-    self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property)
-    self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property)
-    self.mPrefixTextField?.bind_value (self.rootObject.mPrefix_property, sendContinously:true)
-    self.mCommentTextView?.bind_value (self.rootObject.mComments_property)
+    self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_zoom (self.rootObject.mSymbolDisplayZoom_property, file: #file, line: #line)
+    self.mSymbolDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
+    self.mSymbolTypeTextField?.bind_valueObserver (self.symbolInstanceSelection.symbolTypeName_property, file: #file, line: #line)
+    self.mSymbolNameTextField?.bind_value (self.symbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
+    self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
+    self.mPackageDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mPackageDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mShowPackagesSwitch?.bind_value (self.rootObject.mShowPackages_property, file: #file, line: #line)
+    self.mPackagesColorWell?.bind_color (preferences_packageColor_property, file: #file, line: #line, sendContinously:false)
+    self.mShowPackagePadNumbersSwitch?.bind_value (self.rootObject.mShowPackagePadNumbers_property, file: #file, line: #line)
+    self.mPackageNumbersColorWell?.bind_color (preferences_padNumberColor_property, file: #file, line: #line, sendContinously:false)
+    self.mShowPackageFrontPadsSwitch?.bind_value (self.rootObject.mShowPackageFrontPads_property, file: #file, line: #line)
+    self.mPackageFrontPadsColorWell?.bind_color (preferences_frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
+    self.mPackageBackPadsColorWell?.bind_color (preferences_backSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property, file: #file, line: #line)
+    self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
+    self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
+    self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
+    self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.rootObject.imageIsValid_property),
+        computeFunction: .id (self.rootObject.imageIsValid_property)ø}
         outlet: self.mCopyImageButton
       )
       self.mController_mCopyImageButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.rootObject.imageIsValid_property),
+        computeFunction: .id (self.rootObject.imageIsValid_property)ø}
         outlet: self.mRemoveImageButton
       )
       self.mController_mRemoveImageButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mRemoveSelectedDocButton
       )
       self.mController_mRemoveSelectedDocButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mShowDocButton
       )
       self.mController_mShowDocButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mSaveDocButton
       )
       self.mController_mSaveDocButton_enabled = controller
     }
     do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)),
-        outlet: self.mAddSymbolInstancePullDownButton
-      )
-      self.mController_mAddSymbolInstancePullDownButton_enabled = controller
-    }
-    do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
+        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property)ø}
         outlet: self.mInconsistentSymbolNameMessageScrollView
       )
       self.mController_mInconsistentSymbolNameMessageScrollView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property),
+        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property)ø}
         outlet: self.mSymbolErrorMessageTitleTextField
       )
       self.mController_mSymbolErrorMessageTitleTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.packagePadNameSetsAreConsistent_property),
+        computeFunction: .id (self.rootObject.packagePadNameSetsAreConsistent_property)ø}
         outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
       )
       self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))ø}
         outlet: self.mResetSymbolAndPackagesVersionButton
       )
       self.mController_mResetSymbolAndPackagesVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))),
+        computeFunction: .boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))ø}
         outlet: self.mUpdateSymbolAndPackagesButton
       )
       self.mController_mUpdateSymbolAndPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mResetSelectedSymbolVersionButton
       )
       self.mController_mResetSelectedSymbolVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mEditSelectedSymbolsButton
       )
       self.mController_mEditSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mExportSelectedSymbolsButton
       )
       self.mController_mExportSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mUpdateSelectedSymbolsButton
       )
       self.mController_mUpdateSelectedSymbolsButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .boolcmp (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.id (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))),
+        computeFunction: .boolcmp (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.id (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0)))ø}
         outlet: self.mRemoveUselessSymbolTypeButton
       )
       self.mController_mRemoveUselessSymbolTypeButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mResetSelectedPackageVersionButton
       )
       self.mController_mResetSelectedPackageVersionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mEditSelectedPackagesButton
       )
       self.mController_mEditSelectedPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mExportSelectedPackagesButton
       )
       self.mController_mExportSelectedPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)),
+        computeFunction: .intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
         outlet: self.mUpdateSelectedPackagesButton
       )
       self.mController_mUpdateSelectedPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property)),
+        computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property))ø}
         outlet: self.mInconsistentPadNameSetTextField
       )
       self.mController_mInconsistentPadNameSetTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction: .boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property))),
+        computeFunction: .boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property)))ø}
         outlet: self.mAssignmentSplitView
       )
       self.mController_mAssignmentSplitView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)),
+        computeFunction: .boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property))ø}
         outlet: self.mBindButton
       )
       self.mController_mBindButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasUnconnectedPad_property),
+        computeFunction: .id (self.hasUnconnectedPad_property)ø}
         outlet: self.mNCButton
       )
       self.mController_mNCButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasAssignedPadProxies_property),
+        computeFunction: .id (self.hasAssignedPadProxies_property)ø}
         outlet: self.mUnbindButton
       )
       self.mController_mUnbindButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasAssignedPadProxies_property),
+        computeFunction: .id (self.hasAssignedPadProxies_property)ø}
         outlet: self.mUnbindAllButton
       )
       self.mController_mUnbindAllButton_enabled = controller
@@ -880,86 +1066,64 @@ import Cocoa
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
     }
-  }
+  } */
 
   //····················································································································
   
-  final private func setTargetsAndActions () {
+/*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
-    self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
+    self.mPasteImageButton?.action = #selector (AutoLayoutDeviceDocument.pasteImageAction (_:))
     self.mCopyImageButton?.target = self
-    self.mCopyImageButton?.action = #selector (DeviceDocument.copyImageAction (_:))
+    self.mCopyImageButton?.action = #selector (AutoLayoutDeviceDocument.copyImageAction (_:))
     self.mRemoveImageButton?.target = self
-    self.mRemoveImageButton?.action = #selector (DeviceDocument.removeImageAction (_:))
+    self.mRemoveImageButton?.action = #selector (AutoLayoutDeviceDocument.removeImageAction (_:))
     self.mRemoveSelectedDocButton?.target = documentationController
-    self.mRemoveSelectedDocButton?.action = #selector (Controller_DeviceDocument_documentationController.remove (_:))
+    self.mRemoveSelectedDocButton?.action = #selector (Controller_AutoLayoutDeviceDocument_documentationController.remove (_:))
     self.mShowDocButton?.target = self
-    self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
+    self.mShowDocButton?.action = #selector (AutoLayoutDeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
-    self.mSaveDocButton?.action = #selector (DeviceDocument.saveDocAction (_:))
+    self.mSaveDocButton?.action = #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
     self.mAddSymbolFromLibraryButton?.target = self
-    self.mAddSymbolFromLibraryButton?.action = #selector (DeviceDocument.addSymbolFromLibraryAction (_:))
+    self.mAddSymbolFromLibraryButton?.action = #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
     self.mAddPackageFromLibraryButton?.target = self
-    self.mAddPackageFromLibraryButton?.action = #selector (DeviceDocument.addPackageFromLibraryAction (_:))
+    self.mAddPackageFromLibraryButton?.action = #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
     self.mResetSymbolAndPackagesVersionButton?.target = self
-    self.mResetSymbolAndPackagesVersionButton?.action = #selector (DeviceDocument.resetSymbolsAndPackagesVersion (_:))
+    self.mResetSymbolAndPackagesVersionButton?.action = #selector (AutoLayoutDeviceDocument.resetSymbolsAndPackagesVersion (_:))
     self.mUpdateSymbolAndPackagesButton?.target = self
-    self.mUpdateSymbolAndPackagesButton?.action = #selector (DeviceDocument.updateSymbolsAndPackagesAction (_:))
+    self.mUpdateSymbolAndPackagesButton?.action = #selector (AutoLayoutDeviceDocument.updateSymbolsAndPackagesAction (_:))
     self.mResetSelectedSymbolVersionButton?.target = self
-    self.mResetSelectedSymbolVersionButton?.action = #selector (DeviceDocument.resetSelectedSymbolVersion (_:))
+    self.mResetSelectedSymbolVersionButton?.action = #selector (AutoLayoutDeviceDocument.resetSelectedSymbolVersion (_:))
     self.mEditSelectedSymbolsButton?.target = self
-    self.mEditSelectedSymbolsButton?.action = #selector (DeviceDocument.editSelectedSymbols (_:))
+    self.mEditSelectedSymbolsButton?.action = #selector (AutoLayoutDeviceDocument.editSelectedSymbols (_:))
     self.mExportSelectedSymbolsButton?.target = self
-    self.mExportSelectedSymbolsButton?.action = #selector (DeviceDocument.exportSelectedSymbols (_:))
+    self.mExportSelectedSymbolsButton?.action = #selector (AutoLayoutDeviceDocument.exportSelectedSymbols (_:))
     self.mUpdateSelectedSymbolsButton?.target = self
-    self.mUpdateSelectedSymbolsButton?.action = #selector (DeviceDocument.updateSelectedSymbols (_:))
+    self.mUpdateSelectedSymbolsButton?.action = #selector (AutoLayoutDeviceDocument.updateSelectedSymbols (_:))
     self.mRemoveUselessSymbolTypeButton?.target = self
-    self.mRemoveUselessSymbolTypeButton?.action = #selector (DeviceDocument.removeUselessSymbolTypeAction (_:))
+    self.mRemoveUselessSymbolTypeButton?.action = #selector (AutoLayoutDeviceDocument.removeUselessSymbolTypeAction (_:))
     self.mResetSelectedPackageVersionButton?.target = self
-    self.mResetSelectedPackageVersionButton?.action = #selector (DeviceDocument.resetSelectedPackageVersion (_:))
+    self.mResetSelectedPackageVersionButton?.action = #selector (AutoLayoutDeviceDocument.resetSelectedPackageVersion (_:))
     self.mEditSelectedPackagesButton?.target = self
-    self.mEditSelectedPackagesButton?.action = #selector (DeviceDocument.editSelectedPackages (_:))
+    self.mEditSelectedPackagesButton?.action = #selector (AutoLayoutDeviceDocument.editSelectedPackages (_:))
     self.mExportSelectedPackagesButton?.target = self
-    self.mExportSelectedPackagesButton?.action = #selector (DeviceDocument.exportSelectedPackages (_:))
+    self.mExportSelectedPackagesButton?.action = #selector (AutoLayoutDeviceDocument.exportSelectedPackages (_:))
     self.mUpdateSelectedPackagesButton?.target = self
-    self.mUpdateSelectedPackagesButton?.action = #selector (DeviceDocument.updateSelectedPackages (_:))
+    self.mUpdateSelectedPackagesButton?.action = #selector (AutoLayoutDeviceDocument.updateSelectedPackages (_:))
     self.mBindButton?.target = self
-    self.mBindButton?.action = #selector (DeviceDocument.performBindAction (_:))
+    self.mBindButton?.action = #selector (AutoLayoutDeviceDocument.performBindAction (_:))
     self.mNCButton?.target = self
-    self.mNCButton?.action = #selector (DeviceDocument.performNCAction (_:))
+    self.mNCButton?.action = #selector (AutoLayoutDeviceDocument.performNCAction (_:))
     self.mUnbindButton?.target = self
-    self.mUnbindButton?.action = #selector (DeviceDocument.performUnbindAction (_:))
+    self.mUnbindButton?.action = #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
     self.mUnbindAllButton?.target = self
-    self.mUnbindAllButton?.action = #selector (DeviceDocument.performUnbindAllAction (_:))
-    self.mResetVersionButton?.target = self
-    self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
+    self.mUnbindAllButton?.action = #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")
     }
-  }
-
-  //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-    self.checkOutletConnections ()
-    self.configureProperties ()
-    self.installBindings ()
-    self.setTargetsAndActions ()
-  //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.mReadModelFunction = { [weak self] in
-      if let r = self?.computeTransient_documentFilePath () {
-        return .single (r)
-      }else{
-        return .empty
-      }
-    }
-  }
+  } */
 
   //····················································································································
   //   removeUserInterface
@@ -967,14 +1131,20 @@ import Cocoa
 
   override func removeUserInterface () {
     super.removeUserInterface ()
+  //--------------------------- Clean up auto layout views
+    self.mPageMasterView.ebCleanUp ()
+    self.mDocumentMainView.ebCleanUp ()
+    self.mDescriptionPage.ebCleanUp ()
+    self.mSymbolsPage.ebCleanUp ()
+    self.mPackagesPage.ebCleanUp ()
+    self.mLibraryPage.ebCleanUp ()
+    self.mAssignmentsPage.ebCleanUp ()
+    self.mInfosPage.ebCleanUp ()
+    let toolbarItems = self.windowForSheet?.toolbar?.items ?? []
+    for item in toolbarItems {
+      item.view?.ebCleanUp ()
+    }
   //--------------------------- Unbind regular bindings
-    self.mPageSegmentedControl?.unbind_selectedPage ()
-    self.mSignatureTextField?.unbind_signature ()
-    self.mVersionField?.unbind_version ()
-    self.mVersionField?.unbind_versionShouldChange ()
-    self.mStatusImageViewInToolbar?.unbind_image ()
-    self.mStatusImageViewInToolbar?.unbind_tooltip ()
-    self.mIssueTextView?.unbind_valueObserver ()
     self.mTitleTextField?.unbind_value ()
     self.mRepresentationImageView?.unbind_imageData ()
     self.mComposedSymbolView?.unbind_horizontalFlip ()
@@ -982,7 +1152,6 @@ import Cocoa
     self.mComposedSymbolView?.unbind_zoom ()
     self.mSymbolDisplayHorizontalFlipSwitch?.unbind_value ()
     self.mSymbolDisplayVerticalFlipSwitch?.unbind_value ()
-    self.mAddSymbolInstancePullDownButton?.unbind_symbolTypeNames ()
     self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
     self.mSymbolTypeTextField?.unbind_valueObserver ()
     self.mSymbolNameTextField?.unbind_value ()
@@ -1004,41 +1173,12 @@ import Cocoa
     self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
     self.mAssignedPadProxyTableView?.unbind_assignedPadProxies ()
-    self.mPrefixTextField?.unbind_value ()
-    self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.mController_mCopyImageButton_enabled = nil
-    self.mController_mRemoveImageButton_enabled = nil
-    self.mController_mRemoveSelectedDocButton_enabled = nil
-    self.mController_mShowDocButton_enabled = nil
-    self.mController_mSaveDocButton_enabled = nil
-    self.mController_mAddSymbolInstancePullDownButton_enabled = nil
-    self.mController_mInconsistentSymbolNameMessageScrollView_hidden = nil
-    self.mController_mSymbolErrorMessageTitleTextField_hidden = nil
-    self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
-    self.mController_mResetSymbolAndPackagesVersionButton_enabled = nil
-    self.mController_mUpdateSymbolAndPackagesButton_enabled = nil
-    self.mController_mResetSelectedSymbolVersionButton_enabled = nil
-    self.mController_mEditSelectedSymbolsButton_enabled = nil
-    self.mController_mExportSelectedSymbolsButton_enabled = nil
-    self.mController_mUpdateSelectedSymbolsButton_enabled = nil
-    self.mController_mRemoveUselessSymbolTypeButton_enabled = nil
-    self.mController_mResetSelectedPackageVersionButton_enabled = nil
-    self.mController_mEditSelectedPackagesButton_enabled = nil
-    self.mController_mExportSelectedPackagesButton_enabled = nil
-    self.mController_mUpdateSelectedPackagesButton_enabled = nil
-    self.mController_mInconsistentPadNameSetTextField_hidden = nil
-    self.mController_mAssignmentSplitView_hidden = nil
-    self.mController_mBindButton_enabled = nil
-    self.mController_mNCButton_enabled = nil
-    self.mController_mUnbindButton_enabled = nil
-    self.mController_mUnbindAllButton_enabled = nil
   //--------------------------- Unbind array controllers
-    self.documentationController.unbind_tableView (self.mDocumentationTableView)
-    self.symbolTypeController.unbind_tableView (self.mSymbolTableView)
-    self.packageController.unbind_tableView (self.mPackageTableView)
     self.symbolDisplayController.unbind_ebView (self.mComposedSymbolView)
     self.packageDisplayController.unbind_ebView (self.mComposedPackageView)
+  //--- Array controller property: packageController
+    self.packageController.unbind_model ()
   //--- Array controller property: documentationController
     self.documentationController.unbind_model ()
   //--- Array controller property: symbolDisplayController
@@ -1051,16 +1191,14 @@ import Cocoa
     self.symbolTypeController.unbind_model ()
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.unbind_selection ()
-  //--- Array controller property: packageController
-    self.packageController.unbind_model ()
     // self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     // self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     // self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
+    // self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     // self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
     // self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
     // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
   //--------------------------- Remove targets / actions
     self.mPasteImageButton?.target = nil
     self.mCopyImageButton?.target = nil
@@ -1085,21 +1223,15 @@ import Cocoa
     self.mNCButton?.target = nil
     self.mUnbindButton?.target = nil
     self.mUnbindAllButton?.target = nil
-    self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAddSymbolFromLibraryButton?.ebCleanUp ()
-    self.mAddSymbolInstancePullDownButton?.ebCleanUp ()
     self.mAssignedPadProxyTableView?.ebCleanUp ()
-    self.mAssignmentPageView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mBindButton?.ebCleanUp ()
-    self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
-    self.mDescriptionPageView?.ebCleanUp ()
-    self.mDocumentationTableView?.ebCleanUp ()
     self.mEditSelectedPackagesButton?.ebCleanUp ()
     self.mEditSelectedSymbolsButton?.ebCleanUp ()
     self.mExportSelectedPackagesButton?.ebCleanUp ()
@@ -1109,22 +1241,14 @@ import Cocoa
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
     self.mInconsistentSymbolNameMessageScrollView?.ebCleanUp ()
     self.mInconsistentSymbolNameMessageTextView?.ebCleanUp ()
-    self.mInfosPageView?.ebCleanUp ()
-    self.mIssueTextView?.ebCleanUp ()
-    self.mLibraryPageView?.ebCleanUp ()
-    self.mMasterView?.ebCleanUp ()
     self.mNCButton?.ebCleanUp ()
     self.mPackageBackPadsColorWell?.ebCleanUp ()
     self.mPackageDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mPackageDisplayVerticalFlipSwitch?.ebCleanUp ()
     self.mPackageFrontPadsColorWell?.ebCleanUp ()
     self.mPackageNumbersColorWell?.ebCleanUp ()
-    self.mPackagePageView?.ebCleanUp ()
-    self.mPackageTableView?.ebCleanUp ()
     self.mPackagesColorWell?.ebCleanUp ()
-    self.mPageSegmentedControl?.ebCleanUp ()
     self.mPasteImageButton?.ebCleanUp ()
-    self.mPrefixTextField?.ebCleanUp ()
     self.mRemoveImageButton?.ebCleanUp ()
     self.mRemoveSelectedDocButton?.ebCleanUp ()
     self.mRemoveUselessSymbolTypeButton?.ebCleanUp ()
@@ -1132,21 +1256,16 @@ import Cocoa
     self.mResetSelectedPackageVersionButton?.ebCleanUp ()
     self.mResetSelectedSymbolVersionButton?.ebCleanUp ()
     self.mResetSymbolAndPackagesVersionButton?.ebCleanUp ()
-    self.mResetVersionButton?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
     self.mShowPackageBackPadsSwitch?.ebCleanUp ()
     self.mShowPackageFrontPadsSwitch?.ebCleanUp ()
     self.mShowPackagePadNumbersSwitch?.ebCleanUp ()
     self.mShowPackagesSwitch?.ebCleanUp ()
-    self.mSignatureTextField?.ebCleanUp ()
-    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mSymbolDisplayVerticalFlipSwitch?.ebCleanUp ()
     self.mSymbolErrorMessageTitleTextField?.ebCleanUp ()
     self.mSymbolNameTextField?.ebCleanUp ()
-    self.mSymbolPageView?.ebCleanUp ()
-    self.mSymbolTableView?.ebCleanUp ()
     self.mSymbolTypeTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
     self.mUnbindAllButton?.ebCleanUp ()
@@ -1156,21 +1275,15 @@ import Cocoa
     self.mUpdateSelectedPackagesButton?.ebCleanUp ()
     self.mUpdateSelectedSymbolsButton?.ebCleanUp ()
     self.mUpdateSymbolAndPackagesButton?.ebCleanUp ()
-    self.mVersionField?.ebCleanUp ()
   //--------------------------- Detach outlets
     self.mAddPackageFromLibraryButton = nil
     self.mAddSymbolFromLibraryButton = nil
-    self.mAddSymbolInstancePullDownButton = nil
     self.mAssignedPadProxyTableView = nil
-    self.mAssignmentPageView = nil
     self.mAssignmentSplitView = nil
     self.mBindButton = nil
-    self.mCommentTextView = nil
     self.mComposedPackageView = nil
     self.mComposedSymbolView = nil
     self.mCopyImageButton = nil
-    self.mDescriptionPageView = nil
-    self.mDocumentationTableView = nil
     self.mEditSelectedPackagesButton = nil
     self.mEditSelectedSymbolsButton = nil
     self.mExportSelectedPackagesButton = nil
@@ -1180,22 +1293,14 @@ import Cocoa
     self.mInconsistentPadNameSetTextField = nil
     self.mInconsistentSymbolNameMessageScrollView = nil
     self.mInconsistentSymbolNameMessageTextView = nil
-    self.mInfosPageView = nil
-    self.mIssueTextView = nil
-    self.mLibraryPageView = nil
-    self.mMasterView = nil
     self.mNCButton = nil
     self.mPackageBackPadsColorWell = nil
     self.mPackageDisplayHorizontalFlipSwitch = nil
     self.mPackageDisplayVerticalFlipSwitch = nil
     self.mPackageFrontPadsColorWell = nil
     self.mPackageNumbersColorWell = nil
-    self.mPackagePageView = nil
-    self.mPackageTableView = nil
     self.mPackagesColorWell = nil
-    self.mPageSegmentedControl = nil
     self.mPasteImageButton = nil
-    self.mPrefixTextField = nil
     self.mRemoveImageButton = nil
     self.mRemoveSelectedDocButton = nil
     self.mRemoveUselessSymbolTypeButton = nil
@@ -1203,21 +1308,16 @@ import Cocoa
     self.mResetSelectedPackageVersionButton = nil
     self.mResetSelectedSymbolVersionButton = nil
     self.mResetSymbolAndPackagesVersionButton = nil
-    self.mResetVersionButton = nil
     self.mSaveDocButton = nil
     self.mShowDocButton = nil
     self.mShowPackageBackPadsSwitch = nil
     self.mShowPackageFrontPadsSwitch = nil
     self.mShowPackagePadNumbersSwitch = nil
     self.mShowPackagesSwitch = nil
-    self.mSignatureTextField = nil
-    self.mStatusImageViewInToolbar = nil
     self.mSymbolDisplayHorizontalFlipSwitch = nil
     self.mSymbolDisplayVerticalFlipSwitch = nil
     self.mSymbolErrorMessageTitleTextField = nil
     self.mSymbolNameTextField = nil
-    self.mSymbolPageView = nil
-    self.mSymbolTableView = nil
     self.mSymbolTypeTextField = nil
     self.mTitleTextField = nil
     self.mUnbindAllButton = nil
@@ -1227,7 +1327,6 @@ import Cocoa
     self.mUpdateSelectedPackagesButton = nil
     self.mUpdateSelectedSymbolsButton = nil
     self.mUpdateSymbolAndPackagesButton = nil
-    self.mVersionField = nil
   }
 
   //····················································································································

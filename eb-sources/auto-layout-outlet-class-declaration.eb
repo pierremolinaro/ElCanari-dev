@@ -9,6 +9,7 @@ vStack func set (rightMargin: Int) ;
 vStack func set (topMargin: Int) ;
 vStack func set (bottomMargin: Int) ;
 vStack func set (width: Int) ;
+vStack func equalHeight () ;
 
 hStack func set (spacing: Int) ;
 hStack func equalSpacing () ;
@@ -48,6 +49,7 @@ extern autolayout class StaticMiniLabel (title : String) $enabled $hidden {
 
 extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
   func set (alignment: TextAlignment)
+  func set (width: Int)
   func makeWidthExpandable ()
 }
 
@@ -67,11 +69,11 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
   $segmentTitle transient String (segmentIndex : Int)
 }
 
-extern autolayout class SignatureField {
+extern autolayout class SignatureField (small : Bool) {
   $signature transient Int
 }
 
-extern autolayout class VersionField {
+extern autolayout class VersionField (small : Bool) {
   $version transient Int
   $versionShouldChange transient Bool
 }
@@ -190,8 +192,12 @@ extern autolayout class CanariIssueTableView {
   $issues transient CanariIssueArray
 }
 
-extern autolayout class TextView (editable: Bool) {
+extern autolayout class TextView {
   $value property String
+}
+
+extern autolayout class TextObserverView {
+  $observedValue transient String
 }
 
 extern autolayout class ObjectInspectorView $graphicController {

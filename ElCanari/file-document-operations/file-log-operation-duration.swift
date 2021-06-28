@@ -47,7 +47,7 @@ fileprivate final class LogFileOperation : EBObject { // SHOULD INHERIT FROM NSO
     defer: true
   )
 
-  private let mTextView = AutoLayoutTextView (editable: false)
+  private let mTextView = AutoLayoutTextObserverView ()
 
   //····················································································································
   //  Init

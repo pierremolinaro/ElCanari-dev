@@ -8,7 +8,7 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (small inSmall : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -16,9 +16,10 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
-    self.controlSize = .small
-    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
     self.alignment = .center
+
+    self.controlSize = inSmall ? .small : .regular
+    self.font = NSFont.monospacedDigitSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize), weight: .semibold)
   }
 
   //····················································································································

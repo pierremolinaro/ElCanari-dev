@@ -427,7 +427,7 @@ import Cocoa
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutSignatureField ()
+        let view_0_1_0 = AutoLayoutSignatureField (small: false)
           .bind_signature (self.signatureObserver_property)
         view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
@@ -438,7 +438,7 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutVersionField ()
+        let view_0_2_0 = AutoLayoutVersionField (small: false)
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
         view_0_2.appendView (view_0_2_0)
@@ -1188,7 +1188,7 @@ import Cocoa
       view_0.appendView (view_0_5)
     }
     vStackView.appendView (view_0)
-    let view_1 = AutoLayoutTextView (editable: true)
+    let view_1 = AutoLayoutTextView ()
       .bind_value (self.rootObject.program_property)
     self.mProgramTextView = view_1 // Outlet
     vStackView.appendView (view_1)
@@ -1227,7 +1227,7 @@ import Cocoa
         view_1_0.appendView (view_1_0_1)
       }
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutTextView (editable: true)
+      let view_1_1 = AutoLayoutTextView ()
         .bind_value (self.rootObject.comments_property)
       view_1.appendView (view_1_1)
     }

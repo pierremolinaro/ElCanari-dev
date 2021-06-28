@@ -1,10 +1,16 @@
+//
+//  AutoLayoutTextObserverView.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 28/06/2021.
+//
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -17,14 +23,13 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
 
-    self.mTextView.isEditable = true
+    self.mTextView.isEditable = false
     self.mTextView.isSelectable = true
     self.mTextView.isVerticallyResizable = true
     self.mTextView.isHorizontallyResizable = true
     self.mTextView.isRichText = false
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
-    self.mTextView.mTextDidChangeCallBack = { [weak self] in self?.ebTextDidChange () }
 //    self.mTextView.backgroundColor = .yellow
 //    self.mTextView.drawsBackground = true
 
@@ -77,12 +82,6 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
   var textStorage : NSTextStorage? { self.mTextView.textStorage }
 
   //····················································································································
-
-  fileprivate func ebTextDidChange () {
-    _ = self.mValueController?.updateModel (withCandidateValue: self.string, windowForSheet: self.window)
-  }
-
-  //····················································································································
   //  value binding
   //····················································································································
 
@@ -90,27 +89,24 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
     switch inObject.selection {
     case .empty, .multiple :
       self.mTextView.string = ""
-      self.mTextView.isEditable = false
       self.mTextView.invalidateIntrinsicContentSize ()
     case .single (let propertyValue) :
       let currentSelectedRangeValues = self.mTextView.selectedRanges
       self.mTextView.string = propertyValue
       self.mTextView.selectedRanges = currentSelectedRangeValues
-      self.mTextView.isEditable = true
       self.mTextView.invalidateIntrinsicContentSize ()
-//      self.mTextView.sizeToFit ()
     }
   }
 
   //····················································································································
 
-  private var mValueController : EBGenericReadWritePropertyController <String>? = nil
+  private var mValueController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
-  final func bind_value (_ inObject : EBReadWriteProperty_String) -> Self {
-    self.mValueController = EBGenericReadWritePropertyController <String> (
-      observedObject: inObject,
+  final func bind_observedValue (_ inObject : EBReadOnlyProperty_String) -> Self {
+    self.mValueController = EBReadOnlyPropertyController (
+      observedObjects: [inObject],
       callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self

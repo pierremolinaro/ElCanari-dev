@@ -19,7 +19,7 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
- //   self.enable (fromValueBinding: true)
+
     self.isEditable = false
     self.alignment = .right
     self.controlSize = inSmall ? .small : .regular
@@ -73,9 +73,30 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
+  private var mWidth : CGFloat? = nil
+  
+  //····················································································································
+
   final func makeWidthExpandable () -> Self {
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
+  }
+
+  //····················································································································
+
+  final func set (width inWidth : Int) -> Self {
+    self.mWidth = CGFloat (inWidth)
+    return self
+  }
+
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    if let w = self.mWidth {
+      s.width = w
+    }
+    return s
   }
 
   //····················································································································

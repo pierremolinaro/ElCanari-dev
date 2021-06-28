@@ -19,11 +19,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
       }
       vStack {
-        SignatureField { $signature signature }
+        SignatureField (small : no) { $signature signature }
         StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
       }
       vStack {
-        VersionField { $version version $versionShouldChange versionShouldChange }
+        VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
         StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
       }
       space
@@ -276,7 +276,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     }
     hStack {
       vStack { StaticLabel (title: "Comments", bold: no, small: no) space }
-      TextView (editable: yes) { $value root.comments }
+      TextView { $value root.comments }
     }
   }
 

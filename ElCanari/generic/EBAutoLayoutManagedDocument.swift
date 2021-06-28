@@ -151,7 +151,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //   makeWindowControllers
   //····················································································································
 
-  override func makeWindowControllers () {
+  override final func makeWindowControllers () {
   //--- Signature observer
     self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
     self.mSignatureObserver.setRootObject (self.mRootObject!)
@@ -183,15 +183,10 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     vStackView.appendView (AutoLayoutFlexibleSpace ())
     window.contentView = vStackView
   //--- Build user interface
-//    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
-//    DispatchQueue.main.asyncAfter (deadline: deadline) {
-//      self.ebBuildUserInterface ()
-//      flushOutletEvents ()
-//    }
-    DispatchQueue.main.async {
+//    DispatchQueue.main.async {
       self.ebBuildUserInterface ()
       flushOutletEvents ()
-    }
+//    }
   }
 
   //····················································································································
