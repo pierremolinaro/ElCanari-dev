@@ -97,14 +97,11 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAddGenerationFileButton : EBButton? = nil
-  @IBOutlet final var mRemoveGenerationFileButton : EBButton? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -788,8 +785,6 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAddGenerationFileButton, "mAddGenerationFileButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mRemoveGenerationFileButton, "mRemoveGenerationFileButton", EBButton.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
 //      Swift.print ("Check outlet connections \(durationMS) ms")
@@ -893,13 +888,6 @@ import Cocoa
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.mDataController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
-        outlet: self.mRemoveGenerationFileButton
-      )
-      self.mController_mRemoveGenerationFileButton_enabled = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -911,10 +899,6 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
-    self.mAddGenerationFileButton?.target = mDataController
-    self.mAddGenerationFileButton?.action = #selector (Controller_AutoLayoutArtworkDocument_mDataController.add (_:))
-    self.mRemoveGenerationFileButton?.target = mDataController
-    self.mRemoveGenerationFileButton?.action = #selector (Controller_AutoLayoutArtworkDocument_mDataController.remove (_:))
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")
@@ -951,14 +935,8 @@ import Cocoa
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
-    self.mAddGenerationFileButton?.target = nil
-    self.mRemoveGenerationFileButton?.target = nil
   //--------------------------- Clean up outlets
-    self.mAddGenerationFileButton?.ebCleanUp ()
-    self.mRemoveGenerationFileButton?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAddGenerationFileButton = nil
-    self.mRemoveGenerationFileButton = nil
   }
 
   //····················································································································

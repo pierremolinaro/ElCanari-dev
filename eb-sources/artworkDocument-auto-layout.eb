@@ -166,8 +166,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
 //  outlet EBTableView mDataTableView $tableValue #mDataController ;
 
-  outlet EBButton mAddGenerationFileButton $run #mDataController.add ;
-  outlet EBButton mRemoveGenerationFileButton $run #mDataController.remove $enabled #mDataController.selectedArray.count > 0 ;
+//  outlet EBButton mAddGenerationFileButton $run #mDataController.add ;
+//  outlet EBButton mRemoveGenerationFileButton $run #mDataController.remove $enabled #mDataController.selectedArray.count > 0 ;
 
 //······················································································································
 //  Info Tab

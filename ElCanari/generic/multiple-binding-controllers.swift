@@ -27,14 +27,14 @@ final class MultipleBindingController_hidden : EBOutletEvent {
 
   init (computeFunction inExpression : EBMultipleBindingBooleanExpression,
         outlet inOutlet : HiddenEBProtocol?) {
-    mOutlet = inOutlet
+    self.mOutlet = inOutlet
     super.init ()
-     var modelArray = [EBObservableObjectProtocol] ()
+    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
+    var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
     for observedModel in modelArray {
       observedModel.addEBObserver (self)
     }
-    self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
   }
 
   //····················································································································
@@ -181,7 +181,7 @@ indirect enum EBMultipleBindingBooleanExpression {
         case .le :
           return .single (v <= w)
         case .gt :
-          return .single (v < w)
+          return .single (v > w)
         case .ge :
           return .single (v >= w)
         }
@@ -227,4 +227,5 @@ enum EBMultipleBindingIntegerExpression {
     }
   }
 }
+
 //----------------------------------------------------------------------------------------------------------------------

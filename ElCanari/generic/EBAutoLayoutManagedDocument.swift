@@ -151,7 +151,7 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
   //   makeWindowControllers
   //····················································································································
 
-  override final func makeWindowControllers () {
+  override func makeWindowControllers () {
   //--- Signature observer
     self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
     self.mSignatureObserver.setRootObject (self.mRootObject!)
@@ -174,15 +174,20 @@ class EBAutoLayoutManagedDocument : EBManagedDocument {
     let windowController = NSWindowController (window: window)
     self.addWindowController (windowController)
   //--- Build temporary view
-    let vStackView = AutoLayoutVerticalStackView ()
-    vStackView.appendView (AutoLayoutFlexibleSpace ())
-    let hStackView = AutoLayoutHorizontalStackView ()
-    hStackView.appendView (AutoLayoutFlexibleSpace ())
-    hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
-    hStackView.appendView (AutoLayoutFlexibleSpace ())
-    vStackView.appendView (AutoLayoutFlexibleSpace ())
-    window.contentView = vStackView
+//    let vStackView = AutoLayoutVerticalStackView ()
+//    vStackView.appendView (AutoLayoutFlexibleSpace ())
+//    let hStackView = AutoLayoutHorizontalStackView ()
+//    hStackView.appendView (AutoLayoutFlexibleSpace ())
+//    hStackView.appendView (AutoLayoutSpinningProgressIndicator ())
+//    hStackView.appendView (AutoLayoutFlexibleSpace ())
+//    vStackView.appendView (AutoLayoutFlexibleSpace ())
+//    window.contentView = vStackView
   //--- Build user interface
+//    let deadline = DispatchTime.now () + DispatchTimeInterval.seconds (3)
+//    DispatchQueue.main.asyncAfter (deadline: deadline) {
+//      self.ebBuildUserInterface ()
+//      flushOutletEvents ()
+//    }
 //    DispatchQueue.main.async {
       self.ebBuildUserInterface ()
       flushOutletEvents ()

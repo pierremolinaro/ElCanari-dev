@@ -47,29 +47,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
 
 //······················································································································
-//   MAIN VIEW
-//······················································································································
-
-//--- Selected Page
-//  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.mSelectedPageIndex ;
-//  outlet NSView mMasterView ;
-//  outlet CanariViewWithKeyView mDescriptionPageView ;
-//  outlet CanariViewWithKeyView mSymbolPageView ;
-//  outlet CanariViewWithKeyView mPackagePageView ;
-//  outlet CanariViewWithKeyView mAssignmentPageView ;
-//  outlet CanariViewWithKeyView mLibraryPageView ;
-//  outlet CanariViewWithKeyView mInfosPageView ;
-
-//--- Signature
-//  outlet CanariSignatureField mSignatureTextField $signature signature ;
-
-//--- Version
-//  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
-
-//--- Issues
-//  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
-
-//······················································································································
 //   DESCRIPTION
 //······················································································································
 
@@ -205,19 +182,35 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   LIBRARY
 //······················································································································
 
-  stackView mLibraryPage vStack { }
-
   action resetSymbolsAndPackagesVersion ;
-  outlet EBButton mResetSymbolAndPackagesVersionButton
-    $run resetSymbolsAndPackagesVersion
-    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
-  ;
-
   action updateSymbolsAndPackagesAction ;
-  outlet EBButton mUpdateSymbolAndPackagesButton
-    $run updateSymbolsAndPackagesAction
-    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
-  ;
+
+  stackView mLibraryPage vStack {
+    hStack {
+      space
+      Button (title: "Reset Symbols and Packages Version and Signature", small: yes) {
+        $run resetSymbolsAndPackagesVersion
+        $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+      }
+      Button (title: "Update Symbols and Packages", small: yes) {
+        $run updateSymbolsAndPackagesAction
+        $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+      }
+      space
+    }
+  
+  
+  }
+
+//  outlet EBButton mResetSymbolAndPackagesVersionButton
+//    $run resetSymbolsAndPackagesVersion
+//    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+//  ;
+
+//  outlet EBButton mUpdateSymbolAndPackagesButton
+//    $run updateSymbolsAndPackagesAction
+//    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+//  ;
 
 //--- Symbols
   autolayout tableViewController #symbolTypeController (allowsEmptySelection:yes, allowsMultipleSelection:yes) root.mSymbolTypes {
@@ -343,28 +336,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   INFOS
 //······················································································································
 
-//  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
-//    TwoColumnsGridView {
-//      set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "Device Prefix", bold: no, small: yes),
-//        right: hStack setFirstBaselineAlignment () {
-//          TextField (width: 56, small: yes) { $value root.mPrefix (sendContinously : yes) }
-//          StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, small: yes)
-//          space
-//          Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
-//        }
-//      )
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "Status", bold: no, small: yes),
-//        right: TextObserverView { $observedValue self.mStatusMessage }
-//      )
-//      addFirstBaseLineAligned (
-//        left: StaticLabel (title: "Comment", bold: no, small: yes),
-//        right: TextView { $value root.mComments }
-//      )
-//    }
-//  }
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack setFirstBaselineAlignment () {
       StaticLabel (title: "Device Prefix", bold: no, small: yes) { set (width: 84) }
@@ -387,17 +358,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   action resetVersionAction ;
 
-
-//--- Prefix
-//  outlet EBTextField mPrefixTextField $value root.mPrefix (sendContinously : yes) ;
-
-//--- Prefix
-//  outlet EBTextView mCommentTextView $value root.mComments ;
-
-//--- Reset
-//  outlet EBButton mResetVersionButton $run resetVersionAction ;
-
-//  outlet EBTextObserverView mIssueTextView $valueObserver self.mStatusMessage ;
 }
 
 //----------------------------------------------------------------------------*
