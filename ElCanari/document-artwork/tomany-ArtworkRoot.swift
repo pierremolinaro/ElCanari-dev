@@ -967,7 +967,10 @@ final class TransientArrayOfSuperOf_ArtworkRoot <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [ArtworkRoot] { return self.mInternalArrayValue }
+  override var propval : [ArtworkRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

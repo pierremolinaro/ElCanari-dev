@@ -1446,7 +1446,10 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [PackageBezier] { return self.mInternalArrayValue }
+  override var propval : [PackageBezier] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

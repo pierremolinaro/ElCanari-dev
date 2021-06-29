@@ -958,7 +958,10 @@ final class TransientArrayOfSuperOf_SymbolBezierCurve <SUPER : EBManagedObject> 
 
   //····················································································································
 
-  override var propval : [SymbolBezierCurve] { return self.mInternalArrayValue }
+  override var propval : [SymbolBezierCurve] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

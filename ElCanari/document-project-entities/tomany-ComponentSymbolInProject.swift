@@ -1372,7 +1372,10 @@ final class TransientArrayOfSuperOf_ComponentSymbolInProject <SUPER : EBManagedO
 
   //····················································································································
 
-  override var propval : [ComponentSymbolInProject] { return self.mInternalArrayValue }
+  override var propval : [ComponentSymbolInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -543,7 +543,10 @@ final class TransientArrayOfSuperOf_SegmentEntity <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [SegmentEntity] { return self.mInternalArrayValue }
+  override var propval : [SegmentEntity] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

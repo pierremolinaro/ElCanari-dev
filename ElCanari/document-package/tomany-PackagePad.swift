@@ -1968,7 +1968,10 @@ final class TransientArrayOfSuperOf_PackagePad <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [PackagePad] { return self.mInternalArrayValue }
+  override var propval : [PackagePad] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -711,7 +711,10 @@ final class TransientArrayOfSuperOf_SymbolInstanceInDevice <SUPER : EBManagedObj
 
   //····················································································································
 
-  override var propval : [SymbolInstanceInDevice] { return self.mInternalArrayValue }
+  override var propval : [SymbolInstanceInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

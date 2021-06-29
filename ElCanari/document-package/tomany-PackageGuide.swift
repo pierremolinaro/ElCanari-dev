@@ -900,7 +900,10 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [PackageGuide] { return self.mInternalArrayValue }
+  override var propval : [PackageGuide] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -656,7 +656,10 @@ final class TransientArrayOfSuperOf_SymbolText <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [SymbolText] { return self.mInternalArrayValue }
+  override var propval : [SymbolText] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

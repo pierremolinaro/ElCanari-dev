@@ -818,7 +818,10 @@ final class TransientArrayOfSuperOf_BoardObject <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [BoardObject] { return self.mInternalArrayValue }
+  override var propval : [BoardObject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -412,7 +412,10 @@ final class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [SymbolObject] { return self.mInternalArrayValue }
+  override var propval : [SymbolObject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

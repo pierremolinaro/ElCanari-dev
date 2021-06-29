@@ -720,7 +720,10 @@ final class TransientArrayOfSuperOf_PackageModelImageDoublePoint <SUPER : EBMana
 
   //····················································································································
 
-  override var propval : [PackageModelImageDoublePoint] { return self.mInternalArrayValue }
+  override var propval : [PackageModelImageDoublePoint] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

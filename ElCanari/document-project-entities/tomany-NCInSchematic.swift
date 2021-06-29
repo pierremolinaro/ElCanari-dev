@@ -415,7 +415,10 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [NCInSchematic] { return self.mInternalArrayValue }
+  override var propval : [NCInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -415,7 +415,10 @@ final class TransientArrayOfSuperOf_DevicePadAssignmentInProject <SUPER : EBMana
 
   //····················································································································
 
-  override var propval : [DevicePadAssignmentInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePadAssignmentInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

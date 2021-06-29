@@ -540,7 +540,10 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] { return self.mInternalArrayValue }
+  override var propval : [CanariLibraryEntry] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

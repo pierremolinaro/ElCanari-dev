@@ -32,10 +32,6 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
 
   //····················································································································
 
-  var sortedArray : [PackageInDevice] { return self.sortedArray_property.propval }
-
-  //····················································································································
-
   private var mSortDescriptorArray = [(PackageInDevice, PackageInDevice) -> ComparisonResult] ()
 
   //····················································································································
@@ -67,7 +63,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
 
   final func isOrderedBefore (_ left : PackageInDevice, _ right : PackageInDevice) -> Bool {
     var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray {
+    for sortDescriptor in self.mSortDescriptorArray.reversed () {
       order = sortDescriptor (left, right)
       if order != .orderedSame {
         break // Exit from for loop
@@ -100,15 +96,16 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
  
   //····················································································································
 
-  var selectedSet : Set <PackageInDevice> { return Set (self.selectedArray) }
+  var selectedSet : Set <PackageInDevice> { return Set (self.selectedArray_property.propval) }
 
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
+    let selectedObjectSet = self.selectedSet
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.selectedSet.contains (object) {
+      if selectedObjectSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -130,13 +127,35 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
   }
 
   //····················································································································
+  //    sorted array observer
+  //····················································································································
+
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+  //--- Observe 'versionString' column
+    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
+  //--- Observe 'mName' column
+    self.sortedArray_property.addEBObserverOf_mName (self.mSortedArrayValuesObserver)
+  //--- Observe 'documentSizeString' column
+    self.sortedArray_property.addEBObserverOf_documentSizeString (self.mSortedArrayValuesObserver)
+  //---
+    self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
+       for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  }
+
+  //····················································································································
   //    bind_tableView
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
-  private var mColumnObserver_versionString = EBOutletEvent ()
-  private var mColumnObserver_mName = EBOutletEvent ()
-  private var mColumnObserver_documentSizeString = EBOutletEvent ()
 
   //····················································································································
 
@@ -148,7 +167,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
     )
   //--- Configure 'versionString' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].versionString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].versionString },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
@@ -159,15 +178,9 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
       headerAlignment: .center,
       contentAlignment: .center
     )
-    self.mModel?.addEBObserverOf_versionString (self.mColumnObserver_versionString)
-    self.mColumnObserver_versionString.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //--- Configure 'mName' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].mName },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mName },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : PackageInDevice, _ right : PackageInDevice) in return compare_String_properties (left.mName_property, ascending, right.mName_property) })
@@ -178,15 +191,9 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mModel?.addEBObserverOf_mName (self.mColumnObserver_mName)
-    self.mColumnObserver_mName.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //--- Configure 'documentSizeString' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].documentSizeString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].documentSizeString },
       valueSetterDelegate: nil,
       sortDelegate: nil,
       title: "Size",
@@ -195,16 +202,10 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mModel?.addEBObserverOf_documentSizeString (self.mColumnObserver_documentSizeString)
-    self.mColumnObserver_documentSizeString.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //---
     self.mTableViewArray.append (inTableView)
   //---
-    inTableView.sortAndReloadData ()
+//    inTableView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -244,7 +245,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
   //····················································································································
 
   final func rowCount () -> Int {
-    return self.sortedArray.count
+    return self.sortedArray_property.propval.count
   }
 
   //····················································································································
@@ -267,8 +268,8 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray)
-    for object in self.sortedArray {
+    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
       }

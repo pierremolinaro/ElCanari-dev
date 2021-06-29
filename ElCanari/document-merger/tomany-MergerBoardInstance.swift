@@ -711,7 +711,10 @@ final class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject
 
   //····················································································································
 
-  override var propval : [MergerBoardInstance] { return self.mInternalArrayValue }
+  override var propval : [MergerBoardInstance] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

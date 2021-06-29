@@ -781,7 +781,10 @@ final class TransientArrayOfSuperOf_CommentInSchematic <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [CommentInSchematic] { return self.mInternalArrayValue }
+  override var propval : [CommentInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

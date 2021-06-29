@@ -214,13 +214,6 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
   //    init
   //····················································································································
 
-//  final func addTextColumn (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> String?,
-//                            valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : String) -> Void >,
-//                            sortDescriptor inSortDescriptor : NSSortDescriptor?,
-//                            title inTitle : String,
-//                            headerAlignment inHeaderAlignment : TextAlignment,
-//                            contentAlignment inContentAlignment : TextAlignment) -> Self {
-
    override init () {
      super.init ()
    //--- Bindings

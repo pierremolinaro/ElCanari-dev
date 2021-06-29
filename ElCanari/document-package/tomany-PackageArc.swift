@@ -1263,7 +1263,10 @@ final class TransientArrayOfSuperOf_PackageArc <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [PackageArc] { return self.mInternalArrayValue }
+  override var propval : [PackageArc] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

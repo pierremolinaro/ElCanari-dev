@@ -1086,7 +1086,10 @@ final class TransientArrayOfSuperOf_DevicePinInProject <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [DevicePinInProject] { return self.mInternalArrayValue }
+  override var propval : [DevicePinInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

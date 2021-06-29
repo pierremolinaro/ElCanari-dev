@@ -598,7 +598,10 @@ final class TransientArrayOfSuperOf_SegmentForFontCharacter <SUPER : EBManagedOb
 
   //····················································································································
 
-  override var propval : [SegmentForFontCharacter] { return self.mInternalArrayValue }
+  override var propval : [SegmentForFontCharacter] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

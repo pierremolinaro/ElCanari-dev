@@ -949,7 +949,10 @@ final class TransientArrayOfSuperOf_FontRoot <SUPER : EBManagedObject> : ReadOnl
 
   //····················································································································
 
-  override var propval : [FontRoot] { return self.mInternalArrayValue }
+  override var propval : [FontRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

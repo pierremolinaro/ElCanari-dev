@@ -449,14 +449,14 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", small: true)
-        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.resetSymbolsAndPackagesVersion (_:))
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Update Symbols and Packages", small: true)
-        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
+        .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.updateSymbolsAndPackagesAction (_:))

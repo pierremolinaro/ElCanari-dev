@@ -1117,7 +1117,10 @@ final class TransientArrayOfSuperOf_PointInSchematic <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [PointInSchematic] { return self.mInternalArrayValue }
+  override var propval : [PointInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

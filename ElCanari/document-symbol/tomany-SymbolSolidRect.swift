@@ -714,7 +714,10 @@ final class TransientArrayOfSuperOf_SymbolSolidRect <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [SymbolSolidRect] { return self.mInternalArrayValue }
+  override var propval : [SymbolSolidRect] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

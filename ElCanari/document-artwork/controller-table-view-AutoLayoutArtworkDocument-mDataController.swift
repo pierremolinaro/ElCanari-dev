@@ -32,10 +32,6 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
 
   //····················································································································
 
-  var sortedArray : [ArtworkFileGenerationParameters] { return self.sortedArray_property.propval }
-
-  //····················································································································
-
   private var mSortDescriptorArray = [(ArtworkFileGenerationParameters, ArtworkFileGenerationParameters) -> ComparisonResult] ()
 
   //····················································································································
@@ -65,7 +61,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
 
   final func isOrderedBefore (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) -> Bool {
     var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray {
+    for sortDescriptor in self.mSortDescriptorArray.reversed () {
       order = sortDescriptor (left, right)
       if order != .orderedSame {
         break // Exit from for loop
@@ -98,15 +94,16 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
  
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return Set (self.selectedArray) }
+  var selectedSet : Set <ArtworkFileGenerationParameters> { return Set (self.selectedArray_property.propval) }
 
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
+    let selectedObjectSet = self.selectedSet
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.selectedSet.contains (object) {
+      if selectedObjectSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -128,11 +125,31 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   }
 
   //····················································································································
+  //    sorted array observer
+  //····················································································································
+
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+  //--- Observe 'name' column
+    self.sortedArray_property.addEBObserverOf_name (self.mSortedArrayValuesObserver)
+  //---
+    self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
+       for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  }
+
+  //····················································································································
   //    bind_tableView
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
-  private var mColumnObserver_name = EBOutletEvent ()
 
   //····················································································································
 
@@ -144,8 +161,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
     )
   //--- Configure 'name' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].name },
-      valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray [inRowIndex].name = inNewValue },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].name },
+      valueSetterDelegate: { [weak self] (inRowIndex, inNewValue) in self?.sortedArray_property.propval [inRowIndex].name = inNewValue },
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : ArtworkFileGenerationParameters, _ right : ArtworkFileGenerationParameters) in return compare_String_properties (left.name_property, ascending, right.name_property) })
       },
@@ -155,16 +172,10 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mModel?.addEBObserverOf_name (self.mColumnObserver_name)
-    self.mColumnObserver_name.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //---
     self.mTableViewArray.append (inTableView)
   //---
-    inTableView.sortAndReloadData ()
+//    inTableView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -204,7 +215,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   //····················································································································
 
   final func rowCount () -> Int {
-    return self.sortedArray.count
+    return self.sortedArray_property.propval.count
   }
 
   //····················································································································
@@ -227,8 +238,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray)
-    for object in self.sortedArray {
+    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
       }

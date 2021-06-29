@@ -604,7 +604,10 @@ final class TransientArrayOfSuperOf_BoardModelPad <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [BoardModelPad] { return self.mInternalArrayValue }
+  override var propval : [BoardModelPad] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

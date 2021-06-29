@@ -1733,7 +1733,10 @@ final class TransientArrayOfSuperOf_DeviceRoot <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [DeviceRoot] { return self.mInternalArrayValue }
+  override var propval : [DeviceRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -589,7 +589,10 @@ final class TransientArrayOfSuperOf_SheetInProject <SUPER : EBManagedObject> : R
 
   //····················································································································
 
-  override var propval : [SheetInProject] { return self.mInternalArrayValue }
+  override var propval : [SheetInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

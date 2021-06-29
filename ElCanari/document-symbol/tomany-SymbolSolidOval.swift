@@ -714,7 +714,10 @@ final class TransientArrayOfSuperOf_SymbolSolidOval <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [SymbolSolidOval] { return self.mInternalArrayValue }
+  override var propval : [SymbolSolidOval] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

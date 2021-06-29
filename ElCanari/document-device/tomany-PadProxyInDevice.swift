@@ -537,7 +537,10 @@ final class TransientArrayOfSuperOf_PadProxyInDevice <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [PadProxyInDevice] { return self.mInternalArrayValue }
+  override var propval : [PadProxyInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

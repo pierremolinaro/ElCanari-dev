@@ -528,7 +528,10 @@ final class TransientArrayOfSuperOf_SymbolPinInstanceInDevice <SUPER : EBManaged
 
   //····················································································································
 
-  override var propval : [SymbolPinInstanceInDevice] { return self.mInternalArrayValue }
+  override var propval : [SymbolPinInstanceInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

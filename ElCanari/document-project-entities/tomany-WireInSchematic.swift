@@ -528,7 +528,10 @@ final class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [WireInSchematic] { return self.mInternalArrayValue }
+  override var propval : [WireInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

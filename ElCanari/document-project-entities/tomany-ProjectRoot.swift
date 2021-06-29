@@ -7866,7 +7866,10 @@ final class TransientArrayOfSuperOf_ProjectRoot <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [ProjectRoot] { return self.mInternalArrayValue }
+  override var propval : [ProjectRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

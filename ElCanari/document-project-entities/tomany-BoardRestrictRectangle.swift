@@ -778,7 +778,10 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
 
   //····················································································································
 
-  override var propval : [BoardRestrictRectangle] { return self.mInternalArrayValue }
+  override var propval : [BoardRestrictRectangle] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

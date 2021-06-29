@@ -32,10 +32,6 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
 
   //····················································································································
 
-  var sortedArray : [DeviceDocumentation] { return self.sortedArray_property.propval }
-
-  //····················································································································
-
   private var mSortDescriptorArray = [(DeviceDocumentation, DeviceDocumentation) -> ComparisonResult] ()
 
   //····················································································································
@@ -84,15 +80,16 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
  
   //····················································································································
 
-  var selectedSet : Set <DeviceDocumentation> { return Set (self.selectedArray) }
+  var selectedSet : Set <DeviceDocumentation> { return Set (self.selectedArray_property.propval) }
 
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
+    let selectedObjectSet = self.selectedSet
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.selectedSet.contains (object) {
+      if selectedObjectSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -114,6 +111,25 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   }
 
   //····················································································································
+  //    sorted array observer
+  //····················································································································
+
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+  //---
+    self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
+       for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  }
+
+  //····················································································································
   //    bind_tableView
   //····················································································································
 
@@ -130,7 +146,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   //---
     self.mTableViewArray.append (inTableView)
   //---
-    inTableView.sortAndReloadData ()
+//    inTableView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -170,7 +186,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   //····················································································································
 
   final func rowCount () -> Int {
-    return self.sortedArray.count
+    return self.sortedArray_property.propval.count
   }
 
   //····················································································································
@@ -193,8 +209,8 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray)
-    for object in self.sortedArray {
+    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
       }

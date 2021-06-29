@@ -32,10 +32,6 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
 
   //····················································································································
 
-  var sortedArray : [SymbolTypeInDevice] { return self.sortedArray_property.propval }
-
-  //····················································································································
-
   private var mSortDescriptorArray = [(SymbolTypeInDevice, SymbolTypeInDevice) -> ComparisonResult] ()
 
   //····················································································································
@@ -69,7 +65,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
 
   final func isOrderedBefore (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) -> Bool {
     var order = ComparisonResult.orderedSame
-    for sortDescriptor in self.mSortDescriptorArray {
+    for sortDescriptor in self.mSortDescriptorArray.reversed () {
       order = sortDescriptor (left, right)
       if order != .orderedSame {
         break // Exit from for loop
@@ -102,15 +98,16 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
  
   //····················································································································
 
-  var selectedSet : Set <SymbolTypeInDevice> { return Set (self.selectedArray) }
+  var selectedSet : Set <SymbolTypeInDevice> { return Set (self.selectedArray_property.propval) }
 
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
+    let selectedObjectSet = self.selectedSet
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.selectedSet.contains (object) {
+      if selectedObjectSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -132,14 +129,37 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
   }
 
   //····················································································································
+  //    sorted array observer
+  //····················································································································
+
+  private var mSortedArrayValuesObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+  //--- Observe 'versionString' column
+    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
+  //--- Observe 'instanceCount' column
+    self.sortedArray_property.addEBObserverOf_instanceCount (self.mSortedArrayValuesObserver)
+  //--- Observe 'mTypeName' column
+    self.sortedArray_property.addEBObserverOf_mTypeName (self.mSortedArrayValuesObserver)
+  //--- Observe 'documentSizeString' column
+    self.sortedArray_property.addEBObserverOf_documentSizeString (self.mSortedArrayValuesObserver)
+  //---
+    self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
+       for tableView in self?.mTableViewArray ?? [] {
+        tableView.sortAndReloadData ()
+      }
+    }
+  }
+
+  //····················································································································
   //    bind_tableView
   //····················································································································
 
   private var mTableViewArray = [AutoLayoutTableView] ()
-  private var mColumnObserver_versionString = EBOutletEvent ()
-  private var mColumnObserver_instanceCount = EBOutletEvent ()
-  private var mColumnObserver_mTypeName = EBOutletEvent ()
-  private var mColumnObserver_documentSizeString = EBOutletEvent ()
 
   //····················································································································
 
@@ -151,7 +171,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
     )
   //--- Configure 'versionString' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].versionString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].versionString },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.versionString_property, ascending, right.versionString_property) })
@@ -162,34 +182,22 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
       headerAlignment: .center,
       contentAlignment: .center
     )
-    self.mModel?.addEBObserverOf_versionString (self.mColumnObserver_versionString)
-    self.mColumnObserver_versionString.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //--- Configure 'instanceCount' column
     inTableView.addColumn_Int (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].instanceCount },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].instanceCount },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_Int_properties (left.instanceCount_property, ascending, right.instanceCount_property) })
       },
       title: "Instances",
-      minWidth: 60,
-      maxWidth: 60,
+      minWidth: 80,
+      maxWidth: 80,
       headerAlignment: .center,
       contentAlignment: .center
     )
-    self.mModel?.addEBObserverOf_instanceCount (self.mColumnObserver_instanceCount)
-    self.mColumnObserver_instanceCount.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //--- Configure 'mTypeName' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].mTypeName },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mTypeName },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
         self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_String_properties (left.mTypeName_property, ascending, right.mTypeName_property) })
@@ -200,15 +208,9 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mModel?.addEBObserverOf_mTypeName (self.mColumnObserver_mTypeName)
-    self.mColumnObserver_mTypeName.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //--- Configure 'documentSizeString' column
     inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray [$0].documentSizeString },
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].documentSizeString },
       valueSetterDelegate: nil,
       sortDelegate: nil,
       title: "Size",
@@ -217,16 +219,10 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.mModel?.addEBObserverOf_documentSizeString (self.mColumnObserver_documentSizeString)
-    self.mColumnObserver_documentSizeString.mEventCallBack = { [weak self] in
-      for tableView in self?.mTableViewArray ?? [] {
-        tableView.sortAndReloadData ()
-      }
-    }
   //---
     self.mTableViewArray.append (inTableView)
   //---
-    inTableView.sortAndReloadData ()
+//    inTableView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -266,7 +262,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
   //····················································································································
 
   final func rowCount () -> Int {
-    return self.sortedArray.count
+    return self.sortedArray_property.propval.count
   }
 
   //····················································································································
@@ -289,8 +285,8 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
   final func indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
-    let selectedObjectSet = Set (self.selectedArray)
-    for object in self.sortedArray {
+    let selectedObjectSet = Set (self.selectedArray_property.propval)
+    for object in self.sortedArray_property.propval {
       if selectedObjectSet.contains (object) {
         indexSet.insert (idx)
       }

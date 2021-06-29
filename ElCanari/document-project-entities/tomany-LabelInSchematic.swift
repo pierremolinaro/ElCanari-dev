@@ -589,7 +589,10 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [LabelInSchematic] { return self.mInternalArrayValue }
+  override var propval : [LabelInSchematic] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

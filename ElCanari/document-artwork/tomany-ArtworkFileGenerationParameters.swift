@@ -1641,7 +1641,10 @@ final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBM
 
   //····················································································································
 
-  override var propval : [ArtworkFileGenerationParameters] { return self.mInternalArrayValue }
+  override var propval : [ArtworkFileGenerationParameters] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

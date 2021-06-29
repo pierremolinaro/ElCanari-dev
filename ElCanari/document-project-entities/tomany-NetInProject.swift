@@ -705,7 +705,10 @@ final class TransientArrayOfSuperOf_NetInProject <SUPER : EBManagedObject> : Rea
 
   //····················································································································
 
-  override var propval : [NetInProject] { return self.mInternalArrayValue }
+  override var propval : [NetInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

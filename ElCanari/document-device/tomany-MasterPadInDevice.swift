@@ -961,7 +961,10 @@ final class TransientArrayOfSuperOf_MasterPadInDevice <SUPER : EBManagedObject> 
 
   //····················································································································
 
-  override var propval : [MasterPadInDevice] { return self.mInternalArrayValue }
+  override var propval : [MasterPadInDevice] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

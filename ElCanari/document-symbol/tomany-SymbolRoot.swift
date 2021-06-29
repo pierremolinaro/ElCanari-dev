@@ -1080,7 +1080,10 @@ final class TransientArrayOfSuperOf_SymbolRoot <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [SymbolRoot] { return self.mInternalArrayValue }
+  override var propval : [SymbolRoot] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

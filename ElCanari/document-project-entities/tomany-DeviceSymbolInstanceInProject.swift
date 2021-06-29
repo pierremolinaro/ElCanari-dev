@@ -531,7 +531,10 @@ final class TransientArrayOfSuperOf_DeviceSymbolInstanceInProject <SUPER : EBMan
 
   //····················································································································
 
-  override var propval : [DeviceSymbolInstanceInProject] { return self.mInternalArrayValue }
+  override var propval : [DeviceSymbolInstanceInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

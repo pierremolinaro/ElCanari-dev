@@ -1127,7 +1127,10 @@ final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [BorderCurve] { return self.mInternalArrayValue }
+  override var propval : [BorderCurve] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

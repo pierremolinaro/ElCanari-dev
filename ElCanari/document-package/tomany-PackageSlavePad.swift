@@ -1675,7 +1675,10 @@ final class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : 
 
   //····················································································································
 
-  override var propval : [PackageSlavePad] { return self.mInternalArrayValue }
+  override var propval : [PackageSlavePad] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

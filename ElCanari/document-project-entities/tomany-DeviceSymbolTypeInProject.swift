@@ -421,7 +421,10 @@ final class TransientArrayOfSuperOf_DeviceSymbolTypeInProject <SUPER : EBManaged
 
   //····················································································································
 
-  override var propval : [DeviceSymbolTypeInProject] { return self.mInternalArrayValue }
+  override var propval : [DeviceSymbolTypeInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

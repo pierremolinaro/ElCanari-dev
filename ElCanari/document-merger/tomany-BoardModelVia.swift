@@ -421,7 +421,10 @@ final class TransientArrayOfSuperOf_BoardModelVia <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [BoardModelVia] { return self.mInternalArrayValue }
+  override var propval : [BoardModelVia] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

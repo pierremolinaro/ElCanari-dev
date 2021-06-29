@@ -2191,7 +2191,10 @@ final class TransientArrayOfSuperOf_BoardTrack <SUPER : EBManagedObject> : ReadO
 
   //····················································································································
 
-  override var propval : [BoardTrack] { return self.mInternalArrayValue }
+  override var propval : [BoardTrack] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

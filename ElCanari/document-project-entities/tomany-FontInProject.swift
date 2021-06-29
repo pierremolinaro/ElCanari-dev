@@ -714,7 +714,10 @@ final class TransientArrayOfSuperOf_FontInProject <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [FontInProject] { return self.mInternalArrayValue }
+  override var propval : [FontInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

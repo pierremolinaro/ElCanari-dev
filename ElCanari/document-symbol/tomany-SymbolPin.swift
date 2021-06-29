@@ -1138,7 +1138,10 @@ final class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOn
 
   //····················································································································
 
-  override var propval : [SymbolPin] { return self.mInternalArrayValue }
+  override var propval : [SymbolPin] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

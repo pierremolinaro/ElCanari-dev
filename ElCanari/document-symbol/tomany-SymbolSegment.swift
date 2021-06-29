@@ -714,7 +714,10 @@ final class TransientArrayOfSuperOf_SymbolSegment <SUPER : EBManagedObject> : Re
 
   //····················································································································
 
-  override var propval : [SymbolSegment] { return self.mInternalArrayValue }
+  override var propval : [SymbolSegment] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

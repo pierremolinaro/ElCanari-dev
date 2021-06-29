@@ -299,7 +299,10 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [ForbiddenPadNumber] { return self.mInternalArrayValue }
+  override var propval : [ForbiddenPadNumber] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

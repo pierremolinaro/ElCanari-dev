@@ -1324,7 +1324,10 @@ final class TransientArrayOfSuperOf_PackageDimension <SUPER : EBManagedObject> :
 
   //····················································································································
 
-  override var propval : [PackageDimension] { return self.mInternalArrayValue }
+  override var propval : [PackageDimension] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

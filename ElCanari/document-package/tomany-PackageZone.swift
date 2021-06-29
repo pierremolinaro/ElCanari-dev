@@ -1501,7 +1501,10 @@ final class TransientArrayOfSuperOf_PackageZone <SUPER : EBManagedObject> : Read
 
   //····················································································································
 
-  override var propval : [PackageZone] { return self.mInternalArrayValue }
+  override var propval : [PackageZone] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -188,7 +188,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   autolayout
   tableViewController #symbolTypeController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mSymbolTypes {
     column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
-    column instanceCount (title: "Instances", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
+    column instanceCount (title: "Instances", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
     column mTypeName (title: "Symbol", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mTypeName
     column documentSizeString (title: "Size", minWidth: 100, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
   }
@@ -206,11 +206,11 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     hStack {
       Button (title: "Reset Symbols and Packages Version and Signature", small: yes) {
         $run resetSymbolsAndPackagesVersion
-        $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+        $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
       Button (title: "Update Symbols and Packages", small: yes) {
         $run updateSymbolsAndPackagesAction
-        $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+        $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
       space
     }

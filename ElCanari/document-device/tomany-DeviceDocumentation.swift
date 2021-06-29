@@ -418,7 +418,10 @@ final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject
 
   //····················································································································
 
-  override var propval : [DeviceDocumentation] { return self.mInternalArrayValue }
+  override var propval : [DeviceDocumentation] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

@@ -1956,7 +1956,10 @@ final class TransientArrayOfSuperOf_BoardConnector <SUPER : EBManagedObject> : R
 
   //····················································································································
 
-  override var propval : [BoardConnector] { return self.mInternalArrayValue }
+  override var propval : [BoardConnector] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 

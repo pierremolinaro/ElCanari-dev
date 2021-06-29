@@ -2796,7 +2796,10 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
 
   //····················································································································
 
-  override var propval : [ComponentInProject] { return self.mInternalArrayValue }
+  override var propval : [ComponentInProject] {
+    self.computeModelArray ()
+    return self.mInternalArrayValue
+  }
 
   //····················································································································
 
