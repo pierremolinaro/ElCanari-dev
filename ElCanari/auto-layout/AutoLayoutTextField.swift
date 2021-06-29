@@ -46,6 +46,13 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
   }
 
   //····················································································································
+
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
+    return self
+  }
+
+  //····················································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-

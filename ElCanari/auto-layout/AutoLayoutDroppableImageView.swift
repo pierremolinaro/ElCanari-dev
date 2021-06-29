@@ -1,49 +1,37 @@
 //
-//  view-droppable-image-view.swift
+//  AutoLayoutDroppableImageView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 26/02/2019.
+//  Created by Pierre Molinaro on 29/06/2021.
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
-// https://forums.developer.apple.com/thread/79144
-// https://stackoverflow.com/questions/24343216/drag-and-drop-in-swift-issues-with-registering-for-dragged-types/39330243
-//----------------------------------------------------------------------------------------------------------------------
 
-fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
-  var result = [NSPasteboard.PasteboardType] ()
-  for s in NSImage.imageTypes {
-    // NSLog ("\(s)")
-    result.append (NSPasteboard.PasteboardType (rawValue: s))
-  }
-  return result
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// https://stackoverflow.com/questions/44537356/swift-4-nsfilenamespboardtype-not-available-what-to-use-instead-for-registerfo
-//----------------------------------------------------------------------------------------------------------------------
-
-final class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
-  // MARK: -
+
+  private let mImageWidth : CGFloat
+  private var mDroppedImageCallBack : Optional < (Data) -> Void> = nil
+
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+   init (width inWidth : Int) {
+    self.mImageWidth = CGFloat (inWidth)
+    super.init (frame: NSRect ())
     noteObjectAllocation (self)
-    self.registerDraggedTypes ()
+    self.translatesAutoresizingMaskIntoConstraints = false
+
+    self.registerForDraggedTypes (myPasteboardImageTypes ())
   }
 
-  //····················································································································
+ //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
-    noteObjectAllocation (self)
-    self.registerDraggedTypes ()
+  required init? (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
   }
 
   //····················································································································
@@ -54,8 +42,16 @@ final class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private func registerDraggedTypes () {
-    self.registerForDraggedTypes (myPasteboardImageTypes ())
+  override var intrinsicContentSize : NSSize {
+    let s = super.intrinsicContentSize
+    return NSSize (width: self.mImageWidth, height: s.height)
+  }
+
+
+  //····················································································································
+
+  func set (droppedImageCallBack inCallBack : @escaping (Data) -> Void) {
+    self.mDroppedImageCallBack = inCallBack
   }
 
   //····················································································································
@@ -78,8 +74,12 @@ final class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
-    let draggingPasteboard = inSender.draggingPasteboard
-    return NSImage.canInit (with: draggingPasteboard) ? .copy : []
+    var accepts = self.mDroppedImageCallBack != nil
+    if accepts {
+      let draggingPasteboard = inSender.draggingPasteboard
+      accepts = NSImage.canInit (with: draggingPasteboard)
+    }
+    return accepts ? .copy : []
   }
 
   //····················································································································
@@ -110,77 +110,34 @@ final class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let pboard = inSender?.draggingPasteboard {
       if let pdfData = pboard.data (forType: .pdf) {
-        self.mImageDataController?.setModel (pdfData)
+        self.mDroppedImageCallBack? (pdfData)
       }else if let pngData = pboard.data (forType: .png) {
-        self.mImageDataController?.setModel (pngData)
+        self.mDroppedImageCallBack? (pngData)
       }else if let tiffData = pboard.data (forType: .tiff) {
-        self.mImageDataController?.setModel (tiffData)
+        self.mDroppedImageCallBack? (tiffData)
       }else if let tiffData = NSImage (pasteboard: pboard)?.tiffRepresentation {
-        self.mImageDataController?.setModel (tiffData)
+        self.mDroppedImageCallBack? (tiffData)
       }
     }
-  }
-
-  //····················································································································
-  //  $imageData binding
-  //····················································································································
-
-  func updateImageData (_ object : EBReadOnlyProperty_Data) {
-    switch object.selection {
-    case .empty, .multiple :
-      self.image = nil
-    case .single (let data) :
-      self.image = NSImage (data: data)
-    }
-  }
-
-  //····················································································································
-
-  private var mImageDataController : Controller_DeviceDroppableImageView_imageData? = nil
-
-  //····················································································································
-
-  final func bind_imageData (_ model : EBStoredProperty_Data) {
-    self.mImageDataController = Controller_DeviceDroppableImageView_imageData (
-      object: model,
-      outlet: self
-     )
-  }
-
-  //····················································································································
-
-  final func unbind_imageData () {
-    self.mImageDataController?.unregister ()
-    self.mImageDataController = nil
   }
 
   //····················································································································
 
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------
-//   Controller Controller_DeviceDroppableImageView_imageData
+// https://forums.developer.apple.com/thread/79144
+// https://stackoverflow.com/questions/24343216/drag-and-drop-in-swift-issues-with-registering-for-dragged-types/39330243
 //----------------------------------------------------------------------------------------------------------------------
 
-fileprivate final class Controller_DeviceDroppableImageView_imageData : EBReadOnlyPropertyController {
-
-  private let mOutlet : DeviceDroppableImageView
-  private let mObject : EBStoredProperty_Data
-
-  //····················································································································
-
-  init (object : EBStoredProperty_Data, outlet : DeviceDroppableImageView) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects: [object], callBack: { outlet.updateImageData (object) })
+fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
+  var result = [NSPasteboard.PasteboardType] ()
+  for s in NSImage.imageTypes {
+//    NSLog ("image type: \(s)")
+    result.append (NSPasteboard.PasteboardType (rawValue: s))
   }
-
-  //····················································································································
-
-  func setModel (_ data : Data) {
-    _ = mObject.validateAndSetProp (data, windowForSheet: nil)
-  }
+  return result
+//  return [NSPasteboard.PasteboardType.png]
 }
 
 //----------------------------------------------------------------------------------------------------------------------

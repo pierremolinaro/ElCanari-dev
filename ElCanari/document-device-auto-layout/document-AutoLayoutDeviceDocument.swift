@@ -198,16 +198,8 @@ import Cocoa
   @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
   @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
   @IBOutlet final var mBindButton : EBButton? = nil
-  @IBOutlet final var mCopyImageButton : EBButton? = nil
   @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
   @IBOutlet final var mNCButton : EBButton? = nil
-  @IBOutlet final var mPasteImageButton : EBButton? = nil
-  @IBOutlet final var mRemoveImageButton : EBButton? = nil
-  @IBOutlet final var mRemoveSelectedDocButton : EBButton? = nil
-  @IBOutlet final var mRepresentationImageView : DeviceDroppableImageView? = nil
-  @IBOutlet final var mSaveDocButton : EBButton? = nil
-  @IBOutlet final var mShowDocButton : EBButton? = nil
-  @IBOutlet final var mTitleTextField : EBTextField? = nil
   @IBOutlet final var mUnbindAllButton : EBButton? = nil
   @IBOutlet final var mUnbindButton : EBButton? = nil
   @IBOutlet final var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? = nil
@@ -217,11 +209,6 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
@@ -392,6 +379,63 @@ import Cocoa
 
   lazy var mDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
+      .set (margins: 16)
+      .set (spacing: 12)
+    let view_0 = AutoLayoutTextField (width: 70, small: false)
+      .makeWidthExpandable ()
+      .set (alignment: .left)
+      .bind_value (self.rootObject.mTitle_property, sendContinously:true)
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .set (spacing: 12)
+    do{
+      let view_1_0 = AutoLayoutCanariDeviceDroppableImageView (width: 240)
+        .bind_imageData (self.rootObject.mImageData_property)
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, small: false)
+          view_1_1_0.appendView (view_1_1_0_0)
+          let view_1_1_0_1 = AutoLayoutFlexibleSpace ()
+          view_1_1_0.appendView (view_1_1_0_1)
+        }
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutTableView (small: false, addControlButtons: false)
+        self.documentationController.bind_tableView (view_1_1_1)
+        view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_1_1_2_0 = AutoLayoutButton (title: "-", small: true)
+            .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutDeviceDocument.removeDocumentationAction (_:))
+            )
+          view_1_1_2.appendView (view_1_1_2_0)
+          let view_1_1_2_1 = AutoLayoutButton (title: "Show Documentation", small: true)
+            .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutDeviceDocument.showDocAction (_:))
+            )
+          view_1_1_2.appendView (view_1_1_2_1)
+          let view_1_1_2_2 = AutoLayoutButton (title: "Save as…", small: true)
+            .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
+            .bind_run (
+              target: self,
+              selector: #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
+            )
+          view_1_1_2.appendView (view_1_1_2_2)
+          let view_1_1_2_3 = AutoLayoutFlexibleSpace ()
+          view_1_1_2.appendView (view_1_1_2_3)
+        }
+        view_1_1.appendView (view_1_1_2)
+      }
+      view_1.appendView (view_1_1)
+    }
+    vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -872,16 +916,8 @@ import Cocoa
 //    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
 //    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
 //    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mPasteImageButton, "mPasteImageButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
-//    checkOutletConnection (self.mSaveDocButton, "mSaveDocButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mShowDocButton, "mShowDocButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
 //    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mUnconnectedPadsInDeviceTableView, "mUnconnectedPadsInDeviceTableView", UnconnectedPadsInDeviceTableView.self, #file, #line)
@@ -1097,48 +1133,11 @@ import Cocoa
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
-    self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, file: #file, line: #line, sendContinously:true)
-    self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property, file: #file, line: #line)
     self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
     self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
     self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
     self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.rootObject.imageIsValid_property)ø}
-        outlet: self.mCopyImageButton
-      )
-      self.mController_mCopyImageButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.rootObject.imageIsValid_property)ø}
-        outlet: self.mRemoveImageButton
-      )
-      self.mController_mRemoveImageButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
-        outlet: self.mRemoveSelectedDocButton
-      )
-      self.mController_mRemoveSelectedDocButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
-        outlet: self.mShowDocButton
-      )
-      self.mController_mShowDocButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0))ø}
-        outlet: self.mSaveDocButton
-      )
-      self.mController_mSaveDocButton_enabled = controller
-    }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property))ø}
@@ -1192,18 +1191,6 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
-    self.mPasteImageButton?.target = self
-    self.mPasteImageButton?.action = #selector (AutoLayoutDeviceDocument.pasteImageAction (_:))
-    self.mCopyImageButton?.target = self
-    self.mCopyImageButton?.action = #selector (AutoLayoutDeviceDocument.copyImageAction (_:))
-    self.mRemoveImageButton?.target = self
-    self.mRemoveImageButton?.action = #selector (AutoLayoutDeviceDocument.removeImageAction (_:))
-    self.mRemoveSelectedDocButton?.target = documentationController
-    self.mRemoveSelectedDocButton?.action = #selector (Controller_AutoLayoutDeviceDocument_documentationController.remove (_:))
-    self.mShowDocButton?.target = self
-    self.mShowDocButton?.action = #selector (AutoLayoutDeviceDocument.showDocAction (_:))
-    self.mSaveDocButton?.target = self
-    self.mSaveDocButton?.action = #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
     self.mBindButton?.target = self
     self.mBindButton?.action = #selector (AutoLayoutDeviceDocument.performBindAction (_:))
     self.mNCButton?.target = self
@@ -1238,8 +1225,6 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mTitleTextField?.unbind_value ()
-    self.mRepresentationImageView?.unbind_imageData ()
     self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
     self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
@@ -1269,12 +1254,6 @@ import Cocoa
     // self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
     // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
-    self.mPasteImageButton?.target = nil
-    self.mCopyImageButton?.target = nil
-    self.mRemoveImageButton?.target = nil
-    self.mRemoveSelectedDocButton?.target = nil
-    self.mShowDocButton?.target = nil
-    self.mSaveDocButton?.target = nil
     self.mBindButton?.target = nil
     self.mNCButton?.target = nil
     self.mUnbindButton?.target = nil
@@ -1283,16 +1262,8 @@ import Cocoa
     self.mAssignedPadProxyTableView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mBindButton?.ebCleanUp ()
-    self.mCopyImageButton?.ebCleanUp ()
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
     self.mNCButton?.ebCleanUp ()
-    self.mPasteImageButton?.ebCleanUp ()
-    self.mRemoveImageButton?.ebCleanUp ()
-    self.mRemoveSelectedDocButton?.ebCleanUp ()
-    self.mRepresentationImageView?.ebCleanUp ()
-    self.mSaveDocButton?.ebCleanUp ()
-    self.mShowDocButton?.ebCleanUp ()
-    self.mTitleTextField?.ebCleanUp ()
     self.mUnbindAllButton?.ebCleanUp ()
     self.mUnbindButton?.ebCleanUp ()
     self.mUnconnectedPadsInDeviceTableView?.ebCleanUp ()
@@ -1301,16 +1272,8 @@ import Cocoa
     self.mAssignedPadProxyTableView = nil
     self.mAssignmentSplitView = nil
     self.mBindButton = nil
-    self.mCopyImageButton = nil
     self.mInconsistentPadNameSetTextField = nil
     self.mNCButton = nil
-    self.mPasteImageButton = nil
-    self.mRemoveImageButton = nil
-    self.mRemoveSelectedDocButton = nil
-    self.mRepresentationImageView = nil
-    self.mSaveDocButton = nil
-    self.mShowDocButton = nil
-    self.mTitleTextField = nil
     self.mUnbindAllButton = nil
     self.mUnbindButton = nil
     self.mUnconnectedPadsInDeviceTableView = nil

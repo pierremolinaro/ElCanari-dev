@@ -49,11 +49,13 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
       inModel,
       sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_documentSize (observer)
         inModel.addEBObserverOf_instanceCount (observer)
         inModel.addEBObserverOf_mTypeName (observer)
         inModel.addEBObserverOf_versionString (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_documentSize (observer)
         inModel.removeEBObserverOf_instanceCount (observer)
         inModel.removeEBObserverOf_mTypeName (observer)
         inModel.removeEBObserverOf_versionString (observer)
@@ -145,8 +147,8 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
     self.sortedArray_property.addEBObserverOf_instanceCount (self.mSortedArrayValuesObserver)
   //--- Observe 'mTypeName' column
     self.sortedArray_property.addEBObserverOf_mTypeName (self.mSortedArrayValuesObserver)
-  //--- Observe 'documentSizeString' column
-    self.sortedArray_property.addEBObserverOf_documentSizeString (self.mSortedArrayValuesObserver)
+  //--- Observe 'documentSize' column
+    self.sortedArray_property.addEBObserverOf_documentSize (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -208,16 +210,18 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : BaseObjec
       headerAlignment: .left,
       contentAlignment: .left
     )
-  //--- Configure 'documentSizeString' column
-    inTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].documentSizeString },
+  //--- Configure 'documentSize' column
+    inTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].documentSize },
       valueSetterDelegate: nil,
-      sortDelegate: nil,
-      title: "Size",
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : SymbolTypeInDevice, _ right : SymbolTypeInDevice) in return compare_Int_properties (left.documentSize_property, ascending, right.documentSize_property) })
+      },
+      title: "Size (bytes)",
       minWidth: 100,
       maxWidth: 100,
-      headerAlignment: .left,
-      contentAlignment: .left
+      headerAlignment: .center,
+      contentAlignment: .right
     )
   //---
     self.mTableViewArray.append (inTableView)

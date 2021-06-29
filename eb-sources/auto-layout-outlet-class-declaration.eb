@@ -128,8 +128,9 @@ extern autolayout class Button (title: String, small: Bool) $enabled $run $hidde
 }
 
 extern autolayout class TextField (width: Int, small: Bool) $enabled {
-  $value property String (sendContinously : Bool)
+  func set (alignment: TextAlignment)
   func makeWidthExpandable ()
+  $value property String (sendContinously : Bool)
 }
 
 extern autolayout class TextObserverField (bold: Bool, small: Bool) $enabled {
@@ -251,6 +252,10 @@ extern autolayout class TableView (small: Bool, addControlButtons: Bool) $tableV
 
 extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
   $symbolTypeNames transient StringArray
+}
+
+extern autolayout class CanariDeviceDroppableImageView (width: Int) {
+  $imageData property Data
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

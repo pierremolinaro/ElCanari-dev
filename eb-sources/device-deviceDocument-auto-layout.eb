@@ -50,45 +50,62 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   DESCRIPTION
 //······················································································································
 
-  stackView mDescriptionPage vStack { }
-
-  outlet EBTextField mTitleTextField $value root.mTitle (sendContinously: yes) ;
-
-  outlet DeviceDroppableImageView mRepresentationImageView $imageData root.mImageData ;
-
-  action pasteImageAction ;
-  outlet EBButton mPasteImageButton $run pasteImageAction ;
-
-  action copyImageAction ;
-  outlet EBButton mCopyImageButton $run copyImageAction $enabled root.imageIsValid ;
-
-  action removeImageAction ;
-  outlet EBButton mRemoveImageButton $run removeImageAction $enabled root.imageIsValid ;
-
-  autolayout tableViewController #documentationController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mDocs {
-//     column "name" EBTextObserverField $valueObserver self.mFileName
-//     column "size" EBIntObserverField $valueObserver self.fileSize (autoFormatter : yes)
+  stackView mDescriptionPage vStack set (margins: 16) set (spacing: 12) {
+    TextField (width: 70, small: no) {
+      makeWidthExpandable ()
+      set (alignment: .left)
+      $value root.mTitle (sendContinously: yes)
+    }
+    hStack set (spacing: 12) {
+      CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
+      vStack {
+        hStack { StaticLabel (title: "PDF Documentation", bold: no, small: no) space }
+        TableView (small: no, addControlButtons: no) { $tableValue #documentationController }
+        hStack {
+          Button (title: "-", small: yes) {
+            $run removeDocumentationAction
+            $enabled #documentationController.selectedArray.count > 0
+          }
+          Button (title: "Show Documentation", small: yes) {
+            $run showDocAction
+            $enabled #documentationController.selectedArray.count > 0
+          }
+          Button (title: "Save as…", small: yes) {
+            $run saveDocAction
+            $enabled #documentationController.selectedArray.count > 0
+          }
+          space
+        }
+      }
+    }
   }
 
 
+  autolayout
+  tableViewController #documentationController (allowsEmptySelection:yes, allowsMultipleSelection:no) root.mDocs {
+    column mFileName (title: "File Name", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mFileName
+    column fileSize (title: "Size (bytes)", minWidth: 120, maxWidth: 120, headerAlignment: .right, contentAlignment: .right) sortkey fileSize
+  }
+
+  action removeDocumentationAction ;
 //  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue #documentationController ;
 
-  outlet EBButton mRemoveSelectedDocButton
-    $run #documentationController.remove
-    $enabled #documentationController.selectedArray.count > 0
-  ;
+//  outlet EBButton mRemoveSelectedDocButton
+//    $run #documentationController.remove
+//    $enabled #documentationController.selectedArray.count > 0
+//  ;
 
   action showDocAction ;
-  outlet EBButton mShowDocButton
-    $run showDocAction
-    $enabled #documentationController.selectedArray.count > 0
-  ;
+//  outlet EBButton mShowDocButton
+//    $run showDocAction
+//    $enabled #documentationController.selectedArray.count > 0
+//  ;
 
   action saveDocAction ;
-  outlet EBButton mSaveDocButton
-    $run saveDocAction
-    $enabled #documentationController.selectedArray.count > 0
-  ;
+//  outlet EBButton mSaveDocButton
+//    $run saveDocAction
+//    $enabled #documentationController.selectedArray.count > 0
+//  ;
 
 
 //······················································································································
@@ -196,39 +213,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action addPackageFromLibraryAction ;
   arrayController #packageDisplayController : root.mPackages ;
 
-//  outlet EBButton mAddPackageFromLibraryButton $run addPackageFromLibraryAction ;
-
-
-//  outlet EBEnclosingGraphicView mComposedPackageView
-//    $horizontalFlip root.mPackageDisplayHorizontalFlip
-//    $verticalFlip root.mPackageDisplayVerticalFlip
-//    $graphicController #packageDisplayController
-//    $zoom root.mPackageDisplayZoom
-//  ;
-
-//  outlet EBSwitch mPackageDisplayHorizontalFlipSwitch $value root.mPackageDisplayHorizontalFlip ;
-//  outlet EBSwitch mPackageDisplayVerticalFlipSwitch $value root.mPackageDisplayVerticalFlip ;
-
-//  outlet EBSwitch mShowPackagesSwitch $value root.mShowPackages ;
-//  outlet EBColorWell mPackagesColorWell $color prefs.packageColor (sendContinously:no) ;
-
-//  outlet EBSwitch mShowPackagePadNumbersSwitch $value root.mShowPackagePadNumbers ;
-//  outlet EBColorWell mPackageNumbersColorWell $color prefs.padNumberColor (sendContinously:no) ;
-
-//  outlet EBSwitch mShowPackageFrontPadsSwitch $value root.mShowPackageFrontPads ;
-//  outlet EBColorWell mPackageFrontPadsColorWell $color prefs.frontSidePadColor (sendContinously:no) ;
-//
-//  outlet EBSwitch mShowPackageBackPadsSwitch $value root.mShowPackageBackPads ;
-//  outlet EBColorWell mPackageBackPadsColorWell $color prefs.backSidePadColor (sendContinously:no) ;
-
-//  outlet EBTextObserverView mInconsistentPackagePadNameSetsMessageTextView
-//    $valueObserver root.inconsistentPackagePadNameSetsMessage
-//  ;
-//
-//  outlet NSScrollView mInconsistentPackagePadNameSetsMessageScrollView
-//    $hidden root.packagePadNameSetsAreConsistent
-//  ;
-
 //······················································································································
 //   LIBRARY
 //······················································································································
@@ -241,7 +225,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column instanceCount (title: "Instances", minWidth: 80, maxWidth: 80, headerAlignment: .center, contentAlignment: .center) sortkey instanceCount
     column mTypeName (title: "Symbol", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mTypeName
-    column documentSizeString (title: "Size", minWidth: 100, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
+    column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
   selectionController SymbolTypeInDevice #symbolTypeSelection : #symbolTypeController.selectedArray ;
@@ -250,7 +234,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   tableViewController #packageController (allowsEmptySelection:no, allowsMultipleSelection:no) root.mPackages {
     column versionString (title: "Version", minWidth: 60, maxWidth: 60, headerAlignment: .center, contentAlignment: .center) sortkey versionString
     column mName (title: "Package", minWidth: 100, maxWidth: 4000, headerAlignment: .left, contentAlignment: .left) sortkey mName
-    column documentSizeString (title: "Size", minWidth: 100, maxWidth: 100, headerAlignment: .left, contentAlignment: .left)
+    column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
   stackView mLibraryPage vStack set (margins: 20) {

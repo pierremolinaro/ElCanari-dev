@@ -105,6 +105,8 @@ graphic entity PackageInDevice {
 
   transient String documentSizeString dependsFrom self.mFileData ;
 
+  transient Int documentSize dependsFrom self.mFileData ;
+
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
     self.mMasterPads.all.frontSideFilledBezierPathArray
   ;
@@ -225,6 +227,8 @@ entity SymbolTypeInDevice {
   transient Int instanceCount dependsFrom self.mInstances.count ;
 
   transient String documentSizeString dependsFrom self.mFileData ;
+
+  transient Int documentSize dependsFrom self.mFileData ;
 
   transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 }

@@ -14,7 +14,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   //    Constant properties
   //····················································································································
 
-  private let allowsEmptySelection = false
+  private let allowsEmptySelection = true
   private let allowsMultipleSelection = false
 
   //····················································································································
@@ -47,14 +47,30 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: nil,
+      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
       addSortObserversCallback: { (observer) in
+        inModel.addEBObserverOf_fileSize (observer)
+        inModel.addEBObserverOf_mFileName (observer)
       },
       removeSortObserversCallback: {(observer) in
+        inModel.removeEBObserverOf_fileSize (observer)
+        inModel.removeEBObserverOf_mFileName (observer)
       }
     )
   }
 
+  //····················································································································
+
+  final func isOrderedBefore (_ left : DeviceDocumentation, _ right : DeviceDocumentation) -> Bool {
+    var order = ComparisonResult.orderedSame
+    for sortDescriptor in self.mSortDescriptorArray.reversed () {
+      order = sortDescriptor (left, right)
+      if order != .orderedSame {
+        break // Exit from for loop
+      }
+    }
+    return order == .orderedAscending
+  }
 
   //····················································································································
 
@@ -121,6 +137,10 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
   override init () {
     super.init ()
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+  //--- Observe 'mFileName' column
+    self.sortedArray_property.addEBObserverOf_mFileName (self.mSortedArrayValuesObserver)
+  //--- Observe 'fileSize' column
+    self.sortedArray_property.addEBObserverOf_fileSize (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -142,6 +162,32 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : BaseOb
       allowsEmptySelection: allowsEmptySelection,
       allowsMultipleSelection: allowsMultipleSelection,
       delegate: self
+    )
+  //--- Configure 'mFileName' column
+    inTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].mFileName },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceDocumentation, _ right : DeviceDocumentation) in return compare_String_properties (left.mFileName_property, ascending, right.mFileName_property) })
+      },
+      title: "File Name",
+      minWidth: 100,
+      maxWidth: 4000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
+  //--- Configure 'fileSize' column
+    inTableView.addColumn_Int (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].fileSize },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mSortDescriptorArray.append ({ (_ left : DeviceDocumentation, _ right : DeviceDocumentation) in return compare_Int_properties (left.fileSize_property, ascending, right.fileSize_property) })
+      },
+      title: "Size (bytes)",
+      minWidth: 120,
+      maxWidth: 120,
+      headerAlignment: .right,
+      contentAlignment: .right
     )
   //---
     self.mTableViewArray.append (inTableView)
