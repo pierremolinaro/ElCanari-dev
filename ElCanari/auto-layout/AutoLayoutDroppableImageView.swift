@@ -137,7 +137,6 @@ fileprivate func myPasteboardImageTypes () -> [NSPasteboard.PasteboardType] {
     result.append (NSPasteboard.PasteboardType (rawValue: s))
   }
   return result
-//  return [NSPasteboard.PasteboardType.png]
 }
 
 //----------------------------------------------------------------------------------------------------------------------

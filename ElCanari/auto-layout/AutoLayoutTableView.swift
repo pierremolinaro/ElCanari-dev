@@ -29,7 +29,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   //····················································································································
 
   private let mScrollView = NSScrollView (frame: NSRect ())
-  private let mTableView = NSTableView (frame: NSRect ())
+  private let mTableView = InternalAutoLayoutTableView ()
   private var mAddButton : AutoLayoutButton? = nil
   private var mRemoveButton : AutoLayoutButton? = nil
   private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
@@ -277,6 +277,121 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
+  func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
+            dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
+            dragConcludeCallBack inCallBack : @escaping ([URL]) -> Void) {
+    self.mTableView.set (draggedTypes: inDraggedTypes, dragFilterCallBack: inFilterCallBack, dragConcludeCallBack: inCallBack)
+  }
+
+  //····················································································································
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// InternalAutoLayoutTableView
+//----------------------------------------------------------------------------------------------------------------------
+
+fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+
+  //····················································································································
+
+  private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
+  private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
+
+  //····················································································································
+  // INIT
+  //····················································································································
+
+  init () {
+    super.init (frame: NSRect ())
+    noteObjectAllocation (self)
+    self.translatesAutoresizingMaskIntoConstraints = false
+  }
+
+  //····················································································································
+
+  required init? (coder: NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+
+  func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
+            dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
+            dragConcludeCallBack inConcludeCallBack : @escaping ([URL]) -> Void) {
+    self.registerForDraggedTypes (inDraggedTypes)
+    self.mDragConcludeCallBack = inConcludeCallBack
+    self.mDragFilterCallBack = inFilterCallBack
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+    var dragOperation : NSDragOperation = []
+    if let array = inSender.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL],
+      let ok = self.mDragFilterCallBack? (array) {
+        dragOperation = ok ? .copy : []
+//      var idx = 0
+//      while (idx < array.count) && (dragOperation == []) {
+//        if array [idx].pathExtension == "pdf" {
+//          dragOperation = .copy
+//        }
+//        idx += 1
+//      }
+    }
+    return dragOperation
+  }
+
+  //····················································································································
+
+  override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
+    return self.draggingEntered (inSender)
+  }
+
+  //····················································································································
+
+  override func draggingExited (_ inSender : NSDraggingInfo?) {
+  }
+
+  //····················································································································
+
+  override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+    return self.draggingEntered (inSender) == .copy
+  }
+
+  //····················································································································
+
+  override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+    if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
+      self.mDragConcludeCallBack? (array)
+//      for sourceFileURL in array {
+//        if sourceFileURL.pathExtension == "pdf", let data = try? Data (contentsOf: sourceFileURL) {
+//          // NSLog ("sourceFileURL \(sourceFileURL), size \(data.count.stringWithSeparator) bytes") ;
+//          let doc = DeviceDocumentation (self.mDocument?.ebUndoManager)
+//          doc.mFileData = data
+//          doc.mFileName = sourceFileURL.path.lastPathComponent.deletingPathExtension
+//          self.mDocument?.rootObject.mDocs_property.add (doc)
+//        }
+//      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -321,7 +436,7 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func configureTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract value
+  func configureTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract method
   }
 
   //····················································································································

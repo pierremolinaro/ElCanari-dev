@@ -60,7 +60,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
       vStack {
         hStack { StaticLabel (title: "PDF Documentation", bold: no, small: no) space }
-        TableView (small: no, addControlButtons: no) { $tableValue #documentationController }
+        TableView (small: no, addControlButtons: no) [configurator documentationTableView] { $tableValue #documentationController }
         hStack {
           Button (title: "-", small: yes) {
             $run removeDocumentationAction

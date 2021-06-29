@@ -404,6 +404,7 @@ import Cocoa
         view_1_1.appendView (view_1_1_0)
         let view_1_1_1 = AutoLayoutTableView (small: false, addControlButtons: false)
         self.documentationController.bind_tableView (view_1_1_1)
+        self.configure_documentationTableView (view_1_1_1) // Configurator
         view_1_1.appendView (view_1_1_1)
         let view_1_1_2 = AutoLayoutHorizontalStackView ()
         do{
