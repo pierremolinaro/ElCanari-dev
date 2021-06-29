@@ -30,6 +30,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   //····················································································································
 
+  final func setCenterYAlignment () -> Self {
+    self.alignment = .centerY
+    return self
+  }
+
+  //····················································································································
+
   final func appendVerticalSeparator () {
     let separator = VerticalSeparator ()
     self.appendView (separator)

@@ -20,6 +20,7 @@ hStack func set (topMargin: Int) ;
 hStack func set (bottomMargin: Int) ;
 hStack func set (height: Int) ;
 hStack func setFirstBaselineAlignment () ;
+hStack func setCenterYAlignment () ;
 
 func enum GridStyle.popupTitles {
   cross : "Cross Grid" ;

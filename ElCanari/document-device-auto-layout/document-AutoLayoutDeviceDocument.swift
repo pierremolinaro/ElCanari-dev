@@ -195,35 +195,18 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAddPackageFromLibraryButton : EBButton? = nil
   @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
   @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
   @IBOutlet final var mBindButton : EBButton? = nil
-  @IBOutlet final var mComposedPackageView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mCopyImageButton : EBButton? = nil
-  @IBOutlet final var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? = nil
-  @IBOutlet final var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? = nil
   @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
-  @IBOutlet final var mInconsistentSymbolNameMessageScrollView : NSScrollView? = nil
-  @IBOutlet final var mInconsistentSymbolNameMessageTextView : EBTextObserverView? = nil
   @IBOutlet final var mNCButton : EBButton? = nil
-  @IBOutlet final var mPackageBackPadsColorWell : EBColorWell? = nil
-  @IBOutlet final var mPackageDisplayHorizontalFlipSwitch : EBSwitch? = nil
-  @IBOutlet final var mPackageDisplayVerticalFlipSwitch : EBSwitch? = nil
-  @IBOutlet final var mPackageFrontPadsColorWell : EBColorWell? = nil
-  @IBOutlet final var mPackageNumbersColorWell : EBColorWell? = nil
-  @IBOutlet final var mPackagesColorWell : EBColorWell? = nil
   @IBOutlet final var mPasteImageButton : EBButton? = nil
   @IBOutlet final var mRemoveImageButton : EBButton? = nil
   @IBOutlet final var mRemoveSelectedDocButton : EBButton? = nil
   @IBOutlet final var mRepresentationImageView : DeviceDroppableImageView? = nil
   @IBOutlet final var mSaveDocButton : EBButton? = nil
   @IBOutlet final var mShowDocButton : EBButton? = nil
-  @IBOutlet final var mShowPackageBackPadsSwitch : EBSwitch? = nil
-  @IBOutlet final var mShowPackageFrontPadsSwitch : EBSwitch? = nil
-  @IBOutlet final var mShowPackagePadNumbersSwitch : EBSwitch? = nil
-  @IBOutlet final var mShowPackagesSwitch : EBSwitch? = nil
-  @IBOutlet final var mSymbolErrorMessageTitleTextField : NSTextField? = nil
   @IBOutlet final var mTitleTextField : EBTextField? = nil
   @IBOutlet final var mUnbindAllButton : EBButton? = nil
   @IBOutlet final var mUnbindButton : EBButton? = nil
@@ -239,9 +222,6 @@ import Cocoa
 //  var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
 //  var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
@@ -506,9 +486,106 @@ import Cocoa
   //    VIEW mPackagesPage
   //····················································································································
 
-  lazy var mPackagesPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    return vStackView
+  lazy var mPackagesPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (width: 250)
+      .set (margins: 8)
+    do{
+      let view_0_0 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_0_0 = AutoLayoutButton (title: "Add Package From File Library…", small: true)
+          .makeWidthExpandable ()
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
+          )
+        view_0_0.appendView (view_0_0_0)
+      }
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_1_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+          .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutFlexibleSpace ()
+        view_0_1.appendView (view_0_1_1)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+          .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_1)
+      }
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutHorizontalStackView ()
+        .setCenterYAlignment ()
+      do{
+        let view_0_3_0 = AutoLayoutColorWell ()
+          .bind_color (preferences_packageColor_property, sendContinously:false)
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutSwitch (title: "Display Packages", small: true)
+          .bind_value (self.rootObject.mShowPackages_property)
+        view_0_3.appendView (view_0_3_1)
+        let view_0_3_2 = AutoLayoutFlexibleSpace ()
+        view_0_3.appendView (view_0_3_2)
+      }
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutHorizontalStackView ()
+        .setCenterYAlignment ()
+      do{
+        let view_0_4_0 = AutoLayoutColorWell ()
+          .bind_color (preferences_padNumberColor_property, sendContinously:false)
+        view_0_4.appendView (view_0_4_0)
+        let view_0_4_1 = AutoLayoutSwitch (title: "Display Pad Numbers", small: true)
+          .bind_value (self.rootObject.mShowPackagePadNumbers_property)
+        view_0_4.appendView (view_0_4_1)
+        let view_0_4_2 = AutoLayoutFlexibleSpace ()
+        view_0_4.appendView (view_0_4_2)
+      }
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutHorizontalStackView ()
+        .setCenterYAlignment ()
+      do{
+        let view_0_5_0 = AutoLayoutColorWell ()
+          .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
+        view_0_5.appendView (view_0_5_0)
+        let view_0_5_1 = AutoLayoutSwitch (title: "Display Front Side Pads", small: true)
+          .bind_value (self.rootObject.mShowPackageFrontPads_property)
+        view_0_5.appendView (view_0_5_1)
+        let view_0_5_2 = AutoLayoutFlexibleSpace ()
+        view_0_5.appendView (view_0_5_2)
+      }
+      view_0.appendView (view_0_5)
+      let view_0_6 = AutoLayoutHorizontalStackView ()
+        .setCenterYAlignment ()
+      do{
+        let view_0_6_0 = AutoLayoutColorWell ()
+          .bind_color (preferences_backSidePadColor_property, sendContinously:false)
+        view_0_6.appendView (view_0_6_0)
+        let view_0_6_1 = AutoLayoutSwitch (title: "Display Back Side Pads", small: true)
+          .bind_value (self.rootObject.mShowPackageBackPads_property)
+        view_0_6.appendView (view_0_6_1)
+        let view_0_6_2 = AutoLayoutFlexibleSpace ()
+        view_0_6.appendView (view_0_6_2)
+      }
+      view_0.appendView (view_0_6)
+      let view_0_7 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_7)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+    hStackView.appendView (view_1)
+    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+      .bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property)
+      .bind_zoom (self.rootObject.mPackageDisplayZoom_property)
+      .bind_graphic_controller (self.packageDisplayController)
+    hStackView.appendView (view_2)
+    return hStackView
   } ()
 
   //····················································································································
@@ -792,35 +869,18 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
 //    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
 //    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
 //    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageScrollView, "mInconsistentPackagePadNameSetsMessageScrollView", NSScrollView.self, #file, #line)
-//    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageTextView, "mInconsistentPackagePadNameSetsMessageTextView", EBTextObserverView.self, #file, #line)
 //    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mInconsistentSymbolNameMessageScrollView, "mInconsistentSymbolNameMessageScrollView", NSScrollView.self, #file, #line)
-//    checkOutletConnection (self.mInconsistentSymbolNameMessageTextView, "mInconsistentSymbolNameMessageTextView", EBTextObserverView.self, #file, #line)
 //    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mPackageBackPadsColorWell, "mPackageBackPadsColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mPackageDisplayHorizontalFlipSwitch, "mPackageDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mPackageDisplayVerticalFlipSwitch, "mPackageDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mPackageFrontPadsColorWell, "mPackageFrontPadsColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mPackageNumbersColorWell, "mPackageNumbersColorWell", EBColorWell.self, #file, #line)
-//    checkOutletConnection (self.mPackagesColorWell, "mPackagesColorWell", EBColorWell.self, #file, #line)
 //    checkOutletConnection (self.mPasteImageButton, "mPasteImageButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
 //    checkOutletConnection (self.mSaveDocButton, "mSaveDocButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mShowDocButton, "mShowDocButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mShowPackageBackPadsSwitch, "mShowPackageBackPadsSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mShowPackageFrontPadsSwitch, "mShowPackageFrontPadsSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mShowPackagePadNumbersSwitch, "mShowPackagePadNumbersSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mShowPackagesSwitch, "mShowPackagesSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mSymbolErrorMessageTitleTextField, "mSymbolErrorMessageTitleTextField", NSTextField.self, #file, #line)
 //    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
 //    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
@@ -1036,25 +1096,9 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.packageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, file: #file, line: #line, sendContinously:true)
     self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property, file: #file, line: #line)
-    self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
-    self.mPackageDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
-    self.mPackageDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
-    self.mShowPackagesSwitch?.bind_value (self.rootObject.mShowPackages_property, file: #file, line: #line)
-    self.mPackagesColorWell?.bind_color (preferences_packageColor_property, file: #file, line: #line, sendContinously:false)
-    self.mShowPackagePadNumbersSwitch?.bind_value (self.rootObject.mShowPackagePadNumbers_property, file: #file, line: #line)
-    self.mPackageNumbersColorWell?.bind_color (preferences_padNumberColor_property, file: #file, line: #line, sendContinously:false)
-    self.mShowPackageFrontPadsSwitch?.bind_value (self.rootObject.mShowPackageFrontPads_property, file: #file, line: #line)
-    self.mPackageFrontPadsColorWell?.bind_color (preferences_frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
-    self.mPackageBackPadsColorWell?.bind_color (preferences_backSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property, file: #file, line: #line)
     self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
     self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
     self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
@@ -1094,27 +1138,6 @@ import Cocoa
         outlet: self.mSaveDocButton
       )
       self.mController_mSaveDocButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property)ø}
-        outlet: self.mInconsistentSymbolNameMessageScrollView
-      )
-      self.mController_mInconsistentSymbolNameMessageScrollView_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.symbolNameAreConsistent_property)ø}
-        outlet: self.mSymbolErrorMessageTitleTextField
-      )
-      self.mController_mSymbolErrorMessageTitleTextField_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .id (self.rootObject.packagePadNameSetsAreConsistent_property)ø}
-        outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
-      )
-      self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1181,8 +1204,6 @@ import Cocoa
     self.mShowDocButton?.action = #selector (AutoLayoutDeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
     self.mSaveDocButton?.action = #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
-    self.mAddPackageFromLibraryButton?.target = self
-    self.mAddPackageFromLibraryButton?.action = #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
     self.mBindButton?.target = self
     self.mBindButton?.action = #selector (AutoLayoutDeviceDocument.performBindAction (_:))
     self.mNCButton?.target = self
@@ -1219,28 +1240,12 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     self.mTitleTextField?.unbind_value ()
     self.mRepresentationImageView?.unbind_imageData ()
-    self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
-    self.mComposedPackageView?.unbind_horizontalFlip ()
-    self.mComposedPackageView?.unbind_verticalFlip ()
-    self.mComposedPackageView?.unbind_zoom ()
-    self.mPackageDisplayHorizontalFlipSwitch?.unbind_value ()
-    self.mPackageDisplayVerticalFlipSwitch?.unbind_value ()
-    self.mShowPackagesSwitch?.unbind_value ()
-    self.mPackagesColorWell?.unbind_color ()
-    self.mShowPackagePadNumbersSwitch?.unbind_value ()
-    self.mPackageNumbersColorWell?.unbind_color ()
-    self.mShowPackageFrontPadsSwitch?.unbind_value ()
-    self.mPackageFrontPadsColorWell?.unbind_color ()
-    self.mShowPackageBackPadsSwitch?.unbind_value ()
-    self.mPackageBackPadsColorWell?.unbind_color ()
-    self.mInconsistentPackagePadNameSetsMessageTextView?.unbind_valueObserver ()
     self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
     self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
     self.mAssignedPadProxyTableView?.unbind_assignedPadProxies ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
-    self.packageDisplayController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: packageController
     self.packageController.unbind_model ()
   //--- Array controller property: documentationController
@@ -1270,76 +1275,41 @@ import Cocoa
     self.mRemoveSelectedDocButton?.target = nil
     self.mShowDocButton?.target = nil
     self.mSaveDocButton?.target = nil
-    self.mAddPackageFromLibraryButton?.target = nil
     self.mBindButton?.target = nil
     self.mNCButton?.target = nil
     self.mUnbindButton?.target = nil
     self.mUnbindAllButton?.target = nil
   //--------------------------- Clean up outlets
-    self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAssignedPadProxyTableView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mBindButton?.ebCleanUp ()
-    self.mComposedPackageView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
-    self.mInconsistentPackagePadNameSetsMessageScrollView?.ebCleanUp ()
-    self.mInconsistentPackagePadNameSetsMessageTextView?.ebCleanUp ()
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
-    self.mInconsistentSymbolNameMessageScrollView?.ebCleanUp ()
-    self.mInconsistentSymbolNameMessageTextView?.ebCleanUp ()
     self.mNCButton?.ebCleanUp ()
-    self.mPackageBackPadsColorWell?.ebCleanUp ()
-    self.mPackageDisplayHorizontalFlipSwitch?.ebCleanUp ()
-    self.mPackageDisplayVerticalFlipSwitch?.ebCleanUp ()
-    self.mPackageFrontPadsColorWell?.ebCleanUp ()
-    self.mPackageNumbersColorWell?.ebCleanUp ()
-    self.mPackagesColorWell?.ebCleanUp ()
     self.mPasteImageButton?.ebCleanUp ()
     self.mRemoveImageButton?.ebCleanUp ()
     self.mRemoveSelectedDocButton?.ebCleanUp ()
     self.mRepresentationImageView?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
-    self.mShowPackageBackPadsSwitch?.ebCleanUp ()
-    self.mShowPackageFrontPadsSwitch?.ebCleanUp ()
-    self.mShowPackagePadNumbersSwitch?.ebCleanUp ()
-    self.mShowPackagesSwitch?.ebCleanUp ()
-    self.mSymbolErrorMessageTitleTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
     self.mUnbindAllButton?.ebCleanUp ()
     self.mUnbindButton?.ebCleanUp ()
     self.mUnconnectedPadsInDeviceTableView?.ebCleanUp ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAddPackageFromLibraryButton = nil
     self.mAssignedPadProxyTableView = nil
     self.mAssignmentSplitView = nil
     self.mBindButton = nil
-    self.mComposedPackageView = nil
     self.mCopyImageButton = nil
-    self.mInconsistentPackagePadNameSetsMessageScrollView = nil
-    self.mInconsistentPackagePadNameSetsMessageTextView = nil
     self.mInconsistentPadNameSetTextField = nil
-    self.mInconsistentSymbolNameMessageScrollView = nil
-    self.mInconsistentSymbolNameMessageTextView = nil
     self.mNCButton = nil
-    self.mPackageBackPadsColorWell = nil
-    self.mPackageDisplayHorizontalFlipSwitch = nil
-    self.mPackageDisplayVerticalFlipSwitch = nil
-    self.mPackageFrontPadsColorWell = nil
-    self.mPackageNumbersColorWell = nil
-    self.mPackagesColorWell = nil
     self.mPasteImageButton = nil
     self.mRemoveImageButton = nil
     self.mRemoveSelectedDocButton = nil
     self.mRepresentationImageView = nil
     self.mSaveDocButton = nil
     self.mShowDocButton = nil
-    self.mShowPackageBackPadsSwitch = nil
-    self.mShowPackageFrontPadsSwitch = nil
-    self.mShowPackagePadNumbersSwitch = nil
-    self.mShowPackagesSwitch = nil
-    self.mSymbolErrorMessageTitleTextField = nil
     self.mTitleTextField = nil
     self.mUnbindAllButton = nil
     self.mUnbindButton = nil
