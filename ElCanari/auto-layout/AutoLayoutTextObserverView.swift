@@ -48,7 +48,6 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     self.documentView = self.mTextView
     self.hasHorizontalScroller = true
     self.hasVerticalScroller = true
-//    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
     self.automaticallyAdjustsContentInsets = true
   }
 
@@ -70,6 +69,15 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  // setRedTextColor
+  //····················································································································
+
+  final func setRedTextColor () -> Self {
+    self.mTextView.textColor = .red
+    return self
   }
 
   //····················································································································

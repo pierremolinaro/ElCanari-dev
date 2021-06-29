@@ -132,6 +132,8 @@ extern autolayout class TextField (width: Int, small: Bool) $enabled {
 }
 
 extern autolayout class TextObserverField (bold: Bool, small: Bool) $enabled {
+  func set (alignment: TextAlignment)
+  func makeWidthExpandable ()
   $observedValue transient String
 }
 
@@ -198,6 +200,7 @@ extern autolayout class TextView {
 
 extern autolayout class TextObserverView {
   $observedValue transient String
+  func setRedTextColor ()
 }
 
 extern autolayout class ObjectInspectorView $graphicController {
@@ -243,6 +246,10 @@ extern autolayout class StaticImageView (name: String) {
 }
 
 extern autolayout class TableView (small: Bool, addControlButtons: Bool) $tableValue {
+}
+
+extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
+  $symbolTypeNames transient StringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

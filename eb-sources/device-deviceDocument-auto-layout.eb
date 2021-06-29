@@ -95,23 +95,70 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   SYMBOLS
 //······················································································································
 
-  stackView mSymbolsPage vStack { }
-
-  action addSymbolFromLibraryAction ;
-  outlet EBButton mAddSymbolFromLibraryButton $run addSymbolFromLibraryAction ;
+  stackView mSymbolsPage hStack {
+    vStack set (width: 250) set (margins: 8) {
+      StaticLabel (title: "Add Symbol From", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      hStack {
+        Button (title: "File Library…", small: yes) { $run addSymbolFromLibraryAction }
+        CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
+          $enabled root.mSymbolTypes.count > 0
+          $symbolTypeNames root.symbolTypeNames
+        }
+        space
+      }
+      StaticLabel (title: "Flip", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      hStack {
+        Switch (title: "Horizontal Flip", small: yes) { $value root.mSymbolDisplayHorizontalFlip }
+        Switch (title: "Vertical Flip", small: yes) { $value root.mSymbolDisplayVerticalFlip }
+        space
+      }
+      StaticLabel (title: "Symbol Type", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      TextObserverField (bold: yes, small: yes) {
+        set (alignment: .center)
+        makeWidthExpandable ()
+        $observedValue #symbolInstanceSelection.symbolTypeName
+      }      
+      StaticLabel (title: "Symbol Name", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      TextField (width: 70, small: yes) {
+        makeWidthExpandable ()
+        $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
+      }
+      StaticLabel (title: "Symbol Errors", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      TextObserverView { setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
+      space
+    }
+    separator
+    GraphicView (minZoom: 10, maxZoom: 4000) {
+      $horizontalFlip root.mSymbolDisplayHorizontalFlip
+      $verticalFlip root.mSymbolDisplayVerticalFlip
+      $graphicController #symbolDisplayController
+      $zoom root.mSymbolDisplayZoom
+    }
+  }    
 
   arrayController #symbolDisplayController : root.mSymbolInstances ;
   selectionController SymbolInstanceInDevice #symbolInstanceSelection : #symbolDisplayController.selectedArray ;
 
-  outlet EBEnclosingGraphicView mComposedSymbolView
-    $horizontalFlip root.mSymbolDisplayHorizontalFlip
-    $verticalFlip root.mSymbolDisplayVerticalFlip
-    $graphicController #symbolDisplayController
-    $zoom root.mSymbolDisplayZoom
-  ;
+  action addSymbolFromLibraryAction ;
 
-  outlet EBSwitch mSymbolDisplayHorizontalFlipSwitch $value root.mSymbolDisplayHorizontalFlip ;
-  outlet EBSwitch mSymbolDisplayVerticalFlipSwitch $value root.mSymbolDisplayVerticalFlip ;
+
+
+
+
+
+
+//  outlet EBButton mAddSymbolFromLibraryButton $run addSymbolFromLibraryAction ;
+
+
+//  outlet EBEnclosingGraphicView mComposedSymbolView
+//    $horizontalFlip root.mSymbolDisplayHorizontalFlip
+//    $verticalFlip root.mSymbolDisplayVerticalFlip
+//    $graphicController #symbolDisplayController
+//    $zoom root.mSymbolDisplayZoom
+//  ;
+
+//  outlet EBSwitch mSymbolDisplayHorizontalFlipSwitch $value root.mSymbolDisplayHorizontalFlip ;
+//  outlet EBSwitch mSymbolDisplayVerticalFlipSwitch $value root.mSymbolDisplayVerticalFlip ;
 
 //  outlet AddSymbolInstancePullDownButton mAddSymbolInstancePullDownButton
 //    $enabled root.mSymbolTypes.count > 0
@@ -130,12 +177,12 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     $hidden root.symbolNameAreConsistent
   ;
 
-  outlet EBTextObserverField mSymbolTypeTextField
-//     $tooltip mSymbolInstanceSelection.symbolTypeName
-     $valueObserver #symbolInstanceSelection.symbolTypeName
-   ;
+//  outlet EBTextObserverField mSymbolTypeTextField
+////     $tooltip mSymbolInstanceSelection.symbolTypeName
+//     $valueObserver #symbolInstanceSelection.symbolTypeName
+//   ;
 
-  outlet EBTextField mSymbolNameTextField $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes) ;
+//  outlet EBTextField mSymbolNameTextField $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes) ;
 
 //······················································································································
 //   PACKAGES

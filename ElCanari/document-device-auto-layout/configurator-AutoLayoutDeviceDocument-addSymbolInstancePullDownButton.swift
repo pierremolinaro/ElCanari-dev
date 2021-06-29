@@ -17,14 +17,10 @@ import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extension AutoLayoutSymbolDocument {
-  final func configure_symbolGraphicView (_ inOutlet : AutoLayoutGraphicView) {
+extension AutoLayoutDeviceDocument {
+  final func configure_addSymbolInstancePullDownButton (_ inOutlet : AutoLayoutCanariAddSymbolInstancePullDownButton) {
 //--- START OF USER ZONE 2
-          inOutlet.mScrollView?.register (document: self)
-          inOutlet.mGraphicView.set (arrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT)
-          inOutlet.mGraphicView.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_CANARI_UNIT * 4)
-          inOutlet.mGraphicView.register (pasteboardType: symbolPasteboardType)
-          inOutlet.mGraphicView.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
+         inOutlet.register (deviceDocument: self)
 //--- END OF USER ZONE 2
   }
 }

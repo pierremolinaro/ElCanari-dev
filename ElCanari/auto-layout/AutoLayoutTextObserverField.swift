@@ -45,9 +45,17 @@ final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override var intrinsicContentSize : NSSize {
-//    return NSSize (width: 56.0, height: 19.0)
-//  }
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
+    return self
+  }
+
+  //····················································································································
+
+  final func makeWidthExpandable () -> Self {
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
+    return self
+  }
 
   //····················································································································
 

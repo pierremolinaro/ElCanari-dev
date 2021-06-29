@@ -134,7 +134,7 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
 
   override init () {
     super.init ()
-//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
   //--- Observe 'name' column
     self.sortedArray_property.addEBObserverOf_name (self.mSortedArrayValuesObserver)
   //---

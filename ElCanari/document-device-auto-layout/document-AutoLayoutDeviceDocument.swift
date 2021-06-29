@@ -196,12 +196,10 @@ import Cocoa
   //····················································································································
 
   @IBOutlet final var mAddPackageFromLibraryButton : EBButton? = nil
-  @IBOutlet final var mAddSymbolFromLibraryButton : EBButton? = nil
   @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
   @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
   @IBOutlet final var mBindButton : EBButton? = nil
   @IBOutlet final var mComposedPackageView : EBEnclosingGraphicView? = nil
-  @IBOutlet final var mComposedSymbolView : EBEnclosingGraphicView? = nil
   @IBOutlet final var mCopyImageButton : EBButton? = nil
   @IBOutlet final var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView? = nil
   @IBOutlet final var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView? = nil
@@ -225,11 +223,7 @@ import Cocoa
   @IBOutlet final var mShowPackageFrontPadsSwitch : EBSwitch? = nil
   @IBOutlet final var mShowPackagePadNumbersSwitch : EBSwitch? = nil
   @IBOutlet final var mShowPackagesSwitch : EBSwitch? = nil
-  @IBOutlet final var mSymbolDisplayHorizontalFlipSwitch : EBSwitch? = nil
-  @IBOutlet final var mSymbolDisplayVerticalFlipSwitch : EBSwitch? = nil
   @IBOutlet final var mSymbolErrorMessageTitleTextField : NSTextField? = nil
-  @IBOutlet final var mSymbolNameTextField : EBTextField? = nil
-  @IBOutlet final var mSymbolTypeTextField : EBTextObserverField? = nil
   @IBOutlet final var mTitleTextField : EBTextField? = nil
   @IBOutlet final var mUnbindAllButton : EBButton? = nil
   @IBOutlet final var mUnbindButton : EBButton? = nil
@@ -425,9 +419,87 @@ import Cocoa
   //    VIEW mSymbolsPage
   //····················································································································
 
-  lazy var mSymbolsPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    return vStackView
+  lazy var mSymbolsPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (width: 250)
+      .set (margins: 8)
+    do{
+      let view_0_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, small: true)
+        .set (alignment: .left)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_1_0 = AutoLayoutButton (title: "File Library…", small: true)
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
+          )
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutCanariAddSymbolInstancePullDownButton ()
+          .bind_symbolTypeNames (self.rootObject.symbolTypeNames_property)
+          .bind_enabled (.intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0)))
+        self.configure_addSymbolInstancePullDownButton (view_0_1_1) // Configurator
+        view_0_1.appendView (view_0_1_1)
+        let view_0_1_2 = AutoLayoutFlexibleSpace ()
+        view_0_1.appendView (view_0_1_2)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Flip", bold: true, small: true)
+        .set (alignment: .left)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutHorizontalStackView ()
+      do{
+        let view_0_3_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+          .bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property)
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutSwitch (title: "Vertical Flip", small: true)
+          .bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property)
+        view_0_3.appendView (view_0_3_1)
+        let view_0_3_2 = AutoLayoutFlexibleSpace ()
+        view_0_3.appendView (view_0_3_2)
+      }
+      view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutStaticLabel (title: "Symbol Type", bold: true, small: true)
+        .set (alignment: .left)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_4)
+      let view_0_5 = AutoLayoutTextObserverField (bold: true, small: true)
+        .set (alignment: .center)
+        .makeWidthExpandable ()
+        .bind_observedValue (self.symbolInstanceSelection.symbolTypeName_property)
+      view_0.appendView (view_0_5)
+      let view_0_6 = AutoLayoutStaticLabel (title: "Symbol Name", bold: true, small: true)
+        .set (alignment: .left)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_6)
+      let view_0_7 = AutoLayoutTextField (width: 70, small: true)
+        .makeWidthExpandable ()
+        .bind_value (self.symbolInstanceSelection.mInstanceName_property, sendContinously:true)
+      view_0.appendView (view_0_7)
+      let view_0_8 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, small: true)
+        .set (alignment: .left)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_8)
+      let view_0_9 = AutoLayoutTextObserverView ()
+        .setRedTextColor ()
+        .bind_observedValue (self.rootObject.inconsistentSymbolNameSetMessage_property)
+      view_0.appendView (view_0_9)
+      let view_0_10 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_10)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
+    hStackView.appendView (view_1)
+    let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
+      .bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property)
+      .bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property)
+      .bind_zoom (self.rootObject.mSymbolDisplayZoom_property)
+      .bind_graphic_controller (self.symbolDisplayController)
+    hStackView.appendView (view_2)
+    return hStackView
   } ()
 
   //····················································································································
@@ -721,12 +793,10 @@ import Cocoa
 //  private func checkOutletConnections () {
 //    let start = Date ()
 //    checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mAddSymbolFromLibraryButton, "mAddSymbolFromLibraryButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
 //    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
 //    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBEnclosingGraphicView.self, #file, #line)
-//    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBEnclosingGraphicView.self, #file, #line)
 //    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageScrollView, "mInconsistentPackagePadNameSetsMessageScrollView", NSScrollView.self, #file, #line)
 //    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageTextView, "mInconsistentPackagePadNameSetsMessageTextView", EBTextObserverView.self, #file, #line)
@@ -750,11 +820,7 @@ import Cocoa
 //    checkOutletConnection (self.mShowPackageFrontPadsSwitch, "mShowPackageFrontPadsSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mShowPackagePadNumbersSwitch, "mShowPackagePadNumbersSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mShowPackagesSwitch, "mShowPackagesSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mSymbolDisplayHorizontalFlipSwitch, "mSymbolDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
-//    checkOutletConnection (self.mSymbolDisplayVerticalFlipSwitch, "mSymbolDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
 //    checkOutletConnection (self.mSymbolErrorMessageTitleTextField, "mSymbolErrorMessageTitleTextField", NSTextField.self, #file, #line)
-//    checkOutletConnection (self.mSymbolNameTextField, "mSymbolNameTextField", EBTextField.self, #file, #line)
-//    checkOutletConnection (self.mSymbolTypeTextField, "mSymbolTypeTextField", EBTextObserverField.self, #file, #line)
 //    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
 //    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
@@ -970,19 +1036,11 @@ import Cocoa
     let start = Date ()
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
-    self.symbolDisplayController.bind_ebView (self.mComposedSymbolView)
     self.packageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, file: #file, line: #line, sendContinously:true)
     self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_zoom (self.rootObject.mSymbolDisplayZoom_property, file: #file, line: #line)
-    self.mSymbolDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
-    self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
-    self.mSymbolTypeTextField?.bind_valueObserver (self.symbolInstanceSelection.symbolTypeName_property, file: #file, line: #line)
-    self.mSymbolNameTextField?.bind_value (self.symbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -1123,8 +1181,6 @@ import Cocoa
     self.mShowDocButton?.action = #selector (AutoLayoutDeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
     self.mSaveDocButton?.action = #selector (AutoLayoutDeviceDocument.saveDocAction (_:))
-    self.mAddSymbolFromLibraryButton?.target = self
-    self.mAddSymbolFromLibraryButton?.action = #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
     self.mAddPackageFromLibraryButton?.target = self
     self.mAddPackageFromLibraryButton?.action = #selector (AutoLayoutDeviceDocument.addPackageFromLibraryAction (_:))
     self.mBindButton?.target = self
@@ -1163,14 +1219,7 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     self.mTitleTextField?.unbind_value ()
     self.mRepresentationImageView?.unbind_imageData ()
-    self.mComposedSymbolView?.unbind_horizontalFlip ()
-    self.mComposedSymbolView?.unbind_verticalFlip ()
-    self.mComposedSymbolView?.unbind_zoom ()
-    self.mSymbolDisplayHorizontalFlipSwitch?.unbind_value ()
-    self.mSymbolDisplayVerticalFlipSwitch?.unbind_value ()
     self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
-    self.mSymbolTypeTextField?.unbind_valueObserver ()
-    self.mSymbolNameTextField?.unbind_value ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -1191,7 +1240,6 @@ import Cocoa
     self.mAssignedPadProxyTableView?.unbind_assignedPadProxies ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
-    self.symbolDisplayController.unbind_ebView (self.mComposedSymbolView)
     self.packageDisplayController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: packageController
     self.packageController.unbind_model ()
@@ -1222,7 +1270,6 @@ import Cocoa
     self.mRemoveSelectedDocButton?.target = nil
     self.mShowDocButton?.target = nil
     self.mSaveDocButton?.target = nil
-    self.mAddSymbolFromLibraryButton?.target = nil
     self.mAddPackageFromLibraryButton?.target = nil
     self.mBindButton?.target = nil
     self.mNCButton?.target = nil
@@ -1230,12 +1277,10 @@ import Cocoa
     self.mUnbindAllButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
-    self.mAddSymbolFromLibraryButton?.ebCleanUp ()
     self.mAssignedPadProxyTableView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mBindButton?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
-    self.mComposedSymbolView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
     self.mInconsistentPackagePadNameSetsMessageScrollView?.ebCleanUp ()
     self.mInconsistentPackagePadNameSetsMessageTextView?.ebCleanUp ()
@@ -1259,11 +1304,7 @@ import Cocoa
     self.mShowPackageFrontPadsSwitch?.ebCleanUp ()
     self.mShowPackagePadNumbersSwitch?.ebCleanUp ()
     self.mShowPackagesSwitch?.ebCleanUp ()
-    self.mSymbolDisplayHorizontalFlipSwitch?.ebCleanUp ()
-    self.mSymbolDisplayVerticalFlipSwitch?.ebCleanUp ()
     self.mSymbolErrorMessageTitleTextField?.ebCleanUp ()
-    self.mSymbolNameTextField?.ebCleanUp ()
-    self.mSymbolTypeTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
     self.mUnbindAllButton?.ebCleanUp ()
     self.mUnbindButton?.ebCleanUp ()
@@ -1271,12 +1312,10 @@ import Cocoa
     self.mUnconnectedSymbolPinsInDeviceTableView?.ebCleanUp ()
   //--------------------------- Detach outlets
     self.mAddPackageFromLibraryButton = nil
-    self.mAddSymbolFromLibraryButton = nil
     self.mAssignedPadProxyTableView = nil
     self.mAssignmentSplitView = nil
     self.mBindButton = nil
     self.mComposedPackageView = nil
-    self.mComposedSymbolView = nil
     self.mCopyImageButton = nil
     self.mInconsistentPackagePadNameSetsMessageScrollView = nil
     self.mInconsistentPackagePadNameSetsMessageTextView = nil
@@ -1300,11 +1339,7 @@ import Cocoa
     self.mShowPackageFrontPadsSwitch = nil
     self.mShowPackagePadNumbersSwitch = nil
     self.mShowPackagesSwitch = nil
-    self.mSymbolDisplayHorizontalFlipSwitch = nil
-    self.mSymbolDisplayVerticalFlipSwitch = nil
     self.mSymbolErrorMessageTitleTextField = nil
-    self.mSymbolNameTextField = nil
-    self.mSymbolTypeTextField = nil
     self.mTitleTextField = nil
     self.mUnbindAllButton = nil
     self.mUnbindButton = nil

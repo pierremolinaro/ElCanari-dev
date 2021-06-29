@@ -136,7 +136,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
 
   override init () {
     super.init ()
-//    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
     self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
   //--- Observe 'mName' column

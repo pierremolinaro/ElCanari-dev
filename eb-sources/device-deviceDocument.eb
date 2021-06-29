@@ -99,6 +99,7 @@ xibdocument DeviceDocument root DeviceRoot {
 
   outlet NSTextField mSymbolErrorMessageTitleTextField
     $hidden root.symbolNameAreConsistent
+//    $enabled root.symbolNameAreConsistent
   ;
 
   outlet EBTextObserverField mSymbolTypeTextField

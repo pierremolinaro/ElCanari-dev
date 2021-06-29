@@ -10,17 +10,6 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
 
   init () {
     super.init (pullsDown: false, small: true)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//    if let cell = self.cell as? NSPopUpButtonCell {
-//      cell.arrowPosition = .arrowAtBottom
-//    }
-//
-//    self.controlSize = .small
-//    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
   }
 
   //····················································································································
@@ -28,12 +17,6 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
-
-  //····················································································································
-
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
 
   //····················································································································
 
@@ -45,20 +28,13 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
-
   final func add (title inTitle : String, withTag inTag : Int) -> Self {
-    self.addItem (withTitle: "")
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-    ]
-    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-    self.lastItem?.attributedTitle = attributedTitle
+    self.addItem (withTitle: inTitle)
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+//    ]
+//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
+//    self.lastItem?.attributedTitle = attributedTitle
     self.lastItem?.tag = inTag
     return self
   }

@@ -617,7 +617,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="216" height="162"/>
