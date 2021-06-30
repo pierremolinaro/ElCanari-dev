@@ -103,8 +103,6 @@ graphic entity PackageInDevice {
 
   transient String versionString dependsFrom self.mVersion ;
 
-  transient String documentSizeString dependsFrom self.mFileData ;
-
   transient Int documentSize dependsFrom self.mFileData ;
 
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
@@ -225,8 +223,6 @@ entity SymbolTypeInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient Int instanceCount dependsFrom self.mInstances.count ;
-
-  transient String documentSizeString dependsFrom self.mFileData ;
 
   transient Int documentSize dependsFrom self.mFileData ;
 

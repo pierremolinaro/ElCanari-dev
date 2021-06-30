@@ -27,7 +27,6 @@ include "eb-sources/package-autoLayoutDocument.eb" ;
 include "eb-sources/package-packageRoot.eb" ;
 //--- Device
 include "eb-sources/device-deviceDocument-auto-layout.eb" ;
-include "eb-sources/device-deviceDocument.eb" ;
 include "eb-sources/device-deviceRoot.eb" ;
 //--- Project
 include "eb-sources/project-document.eb" ;

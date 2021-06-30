@@ -48,12 +48,6 @@ protocol SymbolTypeInDevice_instanceCount : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_documentSizeString : AnyObject {
-  var documentSizeString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol SymbolTypeInDevice_documentSize : AnyObject {
   var documentSize : Int? { get }
 }
@@ -76,7 +70,6 @@ final class SymbolTypeInDevice : EBManagedObject,
          SymbolTypeInDevice_mFilledBezierPath,
          SymbolTypeInDevice_versionString,
          SymbolTypeInDevice_instanceCount,
-         SymbolTypeInDevice_documentSizeString,
          SymbolTypeInDevice_documentSize,
          SymbolTypeInDevice_pinNameShape {
 
@@ -240,23 +233,6 @@ final class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: documentSizeString
-  //····················································································································
-
-  final let documentSizeString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var documentSizeString : String? {
-    switch self.documentSizeString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: documentSize
   //····················································································································
 
@@ -341,22 +317,6 @@ final class SymbolTypeInDevice : EBManagedObject,
       }
     }
     self.mInstances_property.addEBObserver (self.instanceCount_property)
-  //--- Atomic property: documentSizeString
-    self.documentSizeString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mFileData_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_SymbolTypeInDevice_documentSizeString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: documentSize
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -410,7 +370,6 @@ final class SymbolTypeInDevice : EBManagedObject,
     super.removeAllObservers ()
     // self.mVersion_property.removeEBObserver (self.versionString_property)
     // self.mInstances_property.removeEBObserver (self.instanceCount_property)
-    // self.mFileData_property.removeEBObserver (self.documentSizeString_property)
     // self.mFileData_property.removeEBObserver (self.documentSize_property)
     // self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Unregister properties for handling signature
@@ -489,14 +448,6 @@ final class SymbolTypeInDevice : EBManagedObject,
       view: view,
       observerExplorer: &self.instanceCount_property.mObserverExplorer,
       valueExplorer: &self.instanceCount_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "documentSizeString",
-      idx: self.documentSizeString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.documentSizeString_property.mObserverExplorer,
-      valueExplorer: &self.documentSizeString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "documentSize",

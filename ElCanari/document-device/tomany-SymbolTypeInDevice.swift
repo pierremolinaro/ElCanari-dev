@@ -22,7 +22,6 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
     self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_instanceCount_fromElementsOfSet (inRemovedSet) // Transient property
-    self.removeEBObserversOf_documentSizeString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_pinNameShape_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
@@ -33,7 +32,6 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
     self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_instanceCount_toElementsOfSet (inAddedSet) // Transient property
-    self.addEBObserversOf_documentSizeString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_pinNameShape_toElementsOfSet (inAddedSet) // Transient property
   }
@@ -441,62 +439,6 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
     for managedObject in inSet {
       self.mObserversOf_instanceCount.apply { (_ observer : EBEvent) in
         managedObject.instanceCount_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'documentSizeString' transient property
-  //····················································································································
-
-  private final var mObserversOf_documentSizeString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_documentSizeString.insert (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.documentSizeString_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_documentSizeString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_documentSizeString.remove (inObserver)
-    switch self.selection {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.documentSizeString_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_documentSizeString_toElementsOfSet (_ inSet : Set <SymbolTypeInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
-        managedObject.documentSizeString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_documentSizeString_fromElementsOfSet (_ inSet : Set <SymbolTypeInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_documentSizeString.apply { (_ observer : EBEvent) in
-        managedObject.documentSizeString_property.removeEBObserver (observer)
       }
     }
   }

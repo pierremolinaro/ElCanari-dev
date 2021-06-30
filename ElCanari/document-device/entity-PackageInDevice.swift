@@ -48,12 +48,6 @@ protocol PackageInDevice_versionString : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_documentSizeString : AnyObject {
-  var documentSizeString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackageInDevice_documentSize : AnyObject {
   var documentSize : Int? { get }
 }
@@ -100,7 +94,6 @@ final class PackageInDevice : EBGraphicManagedObject,
          PackageInDevice_mX,
          PackageInDevice_mY,
          PackageInDevice_versionString,
-         PackageInDevice_documentSizeString,
          PackageInDevice_documentSize,
          PackageInDevice_frontSidePadFilledBezierPathArray,
          PackageInDevice_backSidePadFilledBezierPathArray,
@@ -281,23 +274,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: documentSizeString
-  //····················································································································
-
-  final let documentSizeString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var documentSizeString : String? {
-    switch self.documentSizeString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: documentSize
   //····················································································································
 
@@ -409,22 +385,6 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mVersion_property.addEBObserver (self.versionString_property)
-  //--- Atomic property: documentSizeString
-    self.documentSizeString_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mFileData_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_PackageInDevice_documentSizeString (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mFileData_property.addEBObserver (self.documentSizeString_property)
   //--- Atomic property: documentSize
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -561,7 +521,6 @@ final class PackageInDevice : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mVersion_property.removeEBObserver (self.versionString_property)
-    // self.mFileData_property.removeEBObserver (self.documentSizeString_property)
     // self.mFileData_property.removeEBObserver (self.documentSize_property)
     // self.mMasterPads_property.removeEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property)
     // self.mMasterPads_property.removeEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property)
@@ -668,14 +627,6 @@ final class PackageInDevice : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.versionString_property.mObserverExplorer,
       valueExplorer: &self.versionString_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "documentSizeString",
-      idx: self.documentSizeString_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.documentSizeString_property.mObserverExplorer,
-      valueExplorer: &self.documentSizeString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "documentSize",

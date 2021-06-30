@@ -23,7 +23,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
       oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
       oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
-      oldValue.documentSizeString_property.removeEBObserver (self.documentSizeString_property) // Transient property
       oldValue.documentSize_property.removeEBObserver (self.documentSize_property) // Transient property
       oldValue.frontSidePadFilledBezierPathArray_property.removeEBObserver (self.frontSidePadFilledBezierPathArray_property) // Transient property
       oldValue.backSidePadFilledBezierPathArray_property.removeEBObserver (self.backSidePadFilledBezierPathArray_property) // Transient property
@@ -40,7 +39,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
       newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-      newValue.documentSizeString_property.addEBObserver (self.documentSizeString_property) // Transient property
       newValue.documentSize_property.addEBObserver (self.documentSize_property) // Transient property
       newValue.frontSidePadFilledBezierPathArray_property.addEBObserver (self.frontSidePadFilledBezierPathArray_property) // Transient property
       newValue.backSidePadFilledBezierPathArray_property.addEBObserver (self.backSidePadFilledBezierPathArray_property) // Transient property
@@ -91,12 +89,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
   //····················································································································
 
   final let versionString_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'documentSizeString' transient property
-  //····················································································································
-
-  final let documentSizeString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'documentSize' transient property
@@ -258,21 +250,6 @@ class ReadOnlyObject_PackageInDevice : ReadOnlyAbstractObjectProperty <PackageIn
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.versionString_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure documentSizeString transient property
-    self.documentSizeString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.documentSizeString_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -28,13 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.1"
+let VERSION_CANARI = "1.4.2"
 let NOTES : [String] = []
 let BUGFIXES : [String] = [
-  "Some buttons were not activated correctly"
 ]
 let CHANGES : [String] = [
-  "Artwork document user interfaces is managed by auto layout"
+  "Device document user interfaces is managed by auto layout"
 ]
 let NEWS : [String] = [
 ]

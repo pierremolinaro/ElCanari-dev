@@ -23,7 +23,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
       oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
       oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
       oldValue.instanceCount_property.removeEBObserver (self.instanceCount_property) // Transient property
-      oldValue.documentSizeString_property.removeEBObserver (self.documentSizeString_property) // Transient property
       oldValue.documentSize_property.removeEBObserver (self.documentSize_property) // Transient property
       oldValue.pinNameShape_property.removeEBObserver (self.pinNameShape_property) // Transient property
     }
@@ -36,7 +35,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
       newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
       newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
       newValue.instanceCount_property.addEBObserver (self.instanceCount_property) // Transient property
-      newValue.documentSizeString_property.addEBObserver (self.documentSizeString_property) // Transient property
       newValue.documentSize_property.addEBObserver (self.documentSize_property) // Transient property
       newValue.pinNameShape_property.addEBObserver (self.pinNameShape_property) // Transient property
     }
@@ -83,12 +81,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //····················································································································
 
   final let instanceCount_property = EBGenericTransientProperty <Int?> ()
-
-  //····················································································································
-  //   Observers of 'documentSizeString' transient property
-  //····················································································································
-
-  final let documentSizeString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'documentSize' transient property
@@ -250,21 +242,6 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.instanceCount_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure documentSizeString transient property
-    self.documentSizeString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.documentSizeString_property.selection {
         case .empty :
           return .empty
         case .multiple :
