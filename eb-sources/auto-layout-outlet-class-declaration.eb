@@ -136,6 +136,7 @@ extern autolayout class TextField (width: Int, small: Bool) $enabled {
 
 extern autolayout class TextObserverField (bold: Bool, small: Bool) $enabled {
   func set (alignment: TextAlignment)
+  func setRedTextColor ()
   func makeWidthExpandable ()
   $observedValue transient String
 }

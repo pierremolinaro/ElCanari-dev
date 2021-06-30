@@ -58,6 +58,15 @@ final class AutoLayoutTextObserverField : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  // setRedTextColor
+  //····················································································································
+
+  final func setRedTextColor () -> Self {
+    self.textColor = .red
+    return self
+  }
+
+  //····················································································································
 
   override func ebCleanUp () {
     self.mValueController?.unregister ()

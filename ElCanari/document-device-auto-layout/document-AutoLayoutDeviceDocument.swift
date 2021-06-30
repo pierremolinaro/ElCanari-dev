@@ -198,15 +198,11 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
-  @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
-//  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -789,87 +785,113 @@ import Cocoa
   lazy var mAssignmentsPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutVerticalStackView ()
-      .set (minWidth: 100)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .bind_hidden (.boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property))))
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Unassigned Pads", bold: true, small: false)
-        .set (alignment: .center)
-        .makeWidthExpandable ()
+      let view_0_0 = AutoLayoutVerticalStackView ()
+        .set (minWidth: 100)
+      do{
+        let view_0_0_0 = AutoLayoutStaticLabel (title: "Unassigned Pads", bold: true, small: false)
+          .set (alignment: .center)
+          .makeWidthExpandable ()
+        view_0_0.appendView (view_0_0_0)
+        let view_0_0_1 = AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView ()
+          .bind_unconnectedPads (self.rootObject.unconnectedPads_property)
+        self.mUnconnectedPadsInDeviceTableView = view_0_0_1 // Outlet
+        view_0_0.appendView (view_0_0_1)
+      }
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView ()
-        .bind_unconnectedPads (self.rootObject.unconnectedPads_property)
-      self.mUnconnectedPadsInDeviceTableView = view_0_1 // Outlet
+      let view_0_1 = AutoLayoutVerticalStackView ()
+        .set (minWidth: 200)
+      do{
+        let view_0_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, small: false)
+          .set (alignment: .center)
+          .makeWidthExpandable ()
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView ()
+          .bind_unconnectedPins (self.rootObject.unconnectedPins_property)
+        self.mUnconnectedSymbolPinsInDeviceTableView = view_0_1_1 // Outlet
+        view_0_1.appendView (view_0_1_1)
+      }
       view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutVerticalStackView ()
+      do{
+        let view_0_2_0 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_0)
+        let view_0_2_1 = AutoLayoutButton (title: "- Bind →", small: false)
+          .makeWidthExpandable ()
+          .bind_enabled (.boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
+          )
+        view_0_2.appendView (view_0_2_1)
+        let view_0_2_2 = AutoLayoutButton (title: "- NC →", small: false)
+          .makeWidthExpandable ()
+          .bind_enabled (.id (self.hasUnconnectedPad_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.performNCAction (_:))
+          )
+        view_0_2.appendView (view_0_2_2)
+        let view_0_2_3 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_3)
+        let view_0_2_4 = AutoLayoutButton (title: "← Unbind -", small: false)
+          .makeWidthExpandable ()
+          .bind_enabled (.id (self.hasAssignedPadProxies_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
+          )
+        view_0_2.appendView (view_0_2_4)
+        let view_0_2_5 = AutoLayoutButton (title: "← Unbind All -", small: false)
+          .makeWidthExpandable ()
+          .bind_enabled (.id (self.hasAssignedPadProxies_property))
+          .bind_run (
+            target: self,
+            selector: #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
+          )
+        view_0_2.appendView (view_0_2_5)
+        let view_0_2_6 = AutoLayoutFlexibleSpace ()
+        view_0_2.appendView (view_0_2_6)
+      }
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutVerticalStackView ()
+        .set (minWidth: 300)
+      do{
+        let view_0_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, small: false)
+          .set (alignment: .center)
+          .makeWidthExpandable ()
+        view_0_3.appendView (view_0_3_0)
+        let view_0_3_1 = AutoLayoutCanariAssignedPadProxysInDeviceTableView ()
+          .bind_assignedPadProxies (self.rootObject.assignedPadProxies_property)
+        self.mAssignedPadProxyTableView = view_0_3_1 // Outlet
+        view_0_3.appendView (view_0_3_1)
+      }
+      view_0.appendView (view_0_3)
     }
     hStackView.appendView (view_0)
-    let view_1 = AutoLayoutVerticalStackView ()
-      .set (minWidth: 200)
+    let view_1 = AutoLayoutHorizontalStackView ()
+      .bind_hidden (.boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property)))
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, small: false)
-        .set (alignment: .center)
-        .makeWidthExpandable ()
+      let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView ()
-        .bind_unconnectedPins (self.rootObject.unconnectedPins_property)
-      self.mUnconnectedSymbolPinsInDeviceTableView = view_1_1 // Outlet
+      let view_1_1 = AutoLayoutVerticalStackView ()
+      do{
+        let view_1_1_0 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_0)
+        let view_1_1_1 = AutoLayoutTextObserverField (bold: true, small: false)
+          .setRedTextColor ()
+          .bind_observedValue (self.assignmentInhibitionMessage_property)
+        view_1_1.appendView (view_1_1_1)
+        let view_1_1_2 = AutoLayoutFlexibleSpace ()
+        view_1_1.appendView (view_1_1_2)
+      }
       view_1.appendView (view_1_1)
+      let view_1_2 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_2)
     }
     hStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView ()
-    do{
-      let view_2_0 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutButton (title: "- Bind →", small: false)
-        .makeWidthExpandable ()
-        .bind_enabled (.boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
-        )
-      view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutButton (title: "- NC →", small: false)
-        .makeWidthExpandable ()
-        .bind_enabled (.id (self.hasUnconnectedPad_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutDeviceDocument.performNCAction (_:))
-        )
-      view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_3)
-      let view_2_4 = AutoLayoutButton (title: "← Unbind -", small: false)
-        .makeWidthExpandable ()
-        .bind_enabled (.id (self.hasAssignedPadProxies_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
-        )
-      view_2.appendView (view_2_4)
-      let view_2_5 = AutoLayoutButton (title: "← Unbind All -", small: false)
-        .makeWidthExpandable ()
-        .bind_enabled (.id (self.hasAssignedPadProxies_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
-        )
-      view_2.appendView (view_2_5)
-      let view_2_6 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_6)
-    }
-    hStackView.appendView (view_2)
-    let view_3 = AutoLayoutVerticalStackView ()
-      .set (minWidth: 300)
-    do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, small: false)
-        .set (alignment: .center)
-        .makeWidthExpandable ()
-      view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutCanariAssignedPadProxysInDeviceTableView ()
-        .bind_assignedPadProxies (self.rootObject.assignedPadProxies_property)
-      self.mAssignedPadProxyTableView = view_3_1 // Outlet
-      view_3.appendView (view_3_1)
-    }
-    hStackView.appendView (view_3)
     return hStackView
   } ()
 
@@ -988,8 +1010,6 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
-//    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
 //      Swift.print ("Check outlet connections \(durationMS) ms")
@@ -1201,22 +1221,7 @@ import Cocoa
   //--------------------------- Install table view bindings
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
-    self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .boolcmp (.id (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .id (self.rootObject.symbolNameAreConsistent_property))ø}
-        outlet: self.mInconsistentPadNameSetTextField
-      )
-      self.mController_mInconsistentPadNameSetTextField_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction: .boolcmp (.not (.id (self.rootObject.packagePadNameSetsAreConsistent_property)), .or, .not (.id (self.rootObject.symbolNameAreConsistent_property)))ø}
-        outlet: self.mAssignmentSplitView
-      )
-      self.mController_mAssignmentSplitView_hidden = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -1254,7 +1259,6 @@ import Cocoa
       item.view?.ebCleanUp ()
     }
   //--------------------------- Unbind regular bindings
-    self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
   //--- Array controller property: packageController
@@ -1281,11 +1285,7 @@ import Cocoa
     // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
-    self.mAssignmentSplitView?.ebCleanUp ()
-    self.mInconsistentPadNameSetTextField?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAssignmentSplitView = nil
-    self.mInconsistentPadNameSetTextField = nil
   }
 
   //····················································································································
