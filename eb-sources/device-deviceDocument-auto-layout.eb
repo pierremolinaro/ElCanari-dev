@@ -88,25 +88,8 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   }
 
   action removeDocumentationAction ;
-//  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue #documentationController ;
-
-//  outlet EBButton mRemoveSelectedDocButton
-//    $run #documentationController.remove
-//    $enabled #documentationController.selectedArray.count > 0
-//  ;
-
   action showDocAction ;
-//  outlet EBButton mShowDocButton
-//    $run showDocAction
-//    $enabled #documentationController.selectedArray.count > 0
-//  ;
-
   action saveDocAction ;
-//  outlet EBButton mSaveDocButton
-//    $run saveDocAction
-//    $enabled #documentationController.selectedArray.count > 0
-//  ;
-
 
 //······················································································································
 //   SYMBOLS
@@ -333,7 +316,64 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   ASSIGNMENTS
 //······················································································································
 
-  stackView mAssignmentsPage vStack { }
+  stackView mAssignmentsPage hStack set (margins: 8) {
+    vStack set (minWidth: 100) {
+      StaticLabel (title: "Unassigned Pads", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+      CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {
+        $unconnectedPads root.unconnectedPads
+      }
+    }
+    vStack set (minWidth: 200) {
+      StaticLabel (title: "Unassigned Pins", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+      CanariUnconnectedSymbolPinsInDeviceTableView [outlet mUnconnectedSymbolPinsInDeviceTableView] {
+        $unconnectedPins root.unconnectedPins
+      }
+    }
+    vStack {
+      space
+      Button (title: "- Bind →", small: no) {
+        makeWidthExpandable ()
+        $run performBindAction
+        $enabled self.hasUnconnectedPad & self.hasUnconnectedPin
+      }
+      Button (title: "- NC →", small: no) {
+        makeWidthExpandable ()
+        $run performNCAction
+        $enabled self.hasUnconnectedPad
+      }
+      space
+      Button (title: "← Unbind -", small: no) {
+        makeWidthExpandable ()
+        $run performUnbindAction
+        $enabled self.hasAssignedPadProxies
+      }
+      Button (title: "← Unbind All -", small: no) {
+        makeWidthExpandable ()
+        $run performUnbindAllAction
+        $enabled self.hasAssignedPadProxies
+      }
+      space
+    }
+    vStack set (minWidth: 300) {
+      StaticLabel (title: "Assignments", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+      CanariAssignedPadProxysInDeviceTableView [outlet mAssignedPadProxyTableView] {
+        $assignedPadProxies root.assignedPadProxies
+      }
+    }
+  }
+
+  transient Bool hasUnconnectedPad dependsFrom root.unconnectedPads ;
+  transient Bool hasUnconnectedPin dependsFrom root.unconnectedPins ;
+  transient Bool hasAssignedPadProxies dependsFrom root.assignedPadProxies ;
+
+  action performBindAction ;
+  action performNCAction ;
+  action performUnbindAction ;
+  action performUnbindAllAction ;
+
+
+
+
 
   transient String assignmentInhibitionMessage
     dependsFrom root.inconsistentPackagePadNameSetsMessage, root.inconsistentSymbolNameSetMessage
@@ -348,34 +388,26 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent
   ;
 
-  outlet UnconnectedPadsInDeviceTableView mUnconnectedPadsInDeviceTableView
-    $unconnectedPads root.unconnectedPads
-  ;
+//  outlet UnconnectedPadsInDeviceTableView mUnconnectedPadsInDeviceTableView
+//    $unconnectedPads root.unconnectedPads
+//  ;
 
-  outlet UnconnectedSymbolPinsInDeviceTableView mUnconnectedSymbolPinsInDeviceTableView
-    $unconnectedPins root.unconnectedPins
-  ;
+//  outlet UnconnectedSymbolPinsInDeviceTableView mUnconnectedSymbolPinsInDeviceTableView
+//    $unconnectedPins root.unconnectedPins
+//  ;
 
-  outlet AssignedPadProxysInDeviceTableView mAssignedPadProxyTableView
-    $assignedPadProxies root.assignedPadProxies
-  ;
+//  outlet AssignedPadProxysInDeviceTableView mAssignedPadProxyTableView
+//    $assignedPadProxies root.assignedPadProxies
+//  ;
 
-  transient Bool hasUnconnectedPad dependsFrom root.unconnectedPads ;
-  transient Bool hasUnconnectedPin dependsFrom root.unconnectedPins ;
+//  outlet EBButton mBindButton $run performBindAction $enabled self.hasUnconnectedPad & self.hasUnconnectedPin ;
 
-  action performBindAction ;
-  outlet EBButton mBindButton $run performBindAction $enabled self.hasUnconnectedPad & self.hasUnconnectedPin ;
+//  outlet EBButton mNCButton $run performNCAction $enabled self.hasUnconnectedPad ;
 
-  action performNCAction ;
-  outlet EBButton mNCButton $run performNCAction $enabled self.hasUnconnectedPad ;
 
-  transient Bool hasAssignedPadProxies dependsFrom root.assignedPadProxies ;
+//  outlet EBButton mUnbindButton $run performUnbindAction $enabled self.hasAssignedPadProxies ;
 
-  action performUnbindAction ;
-  outlet EBButton mUnbindButton $run performUnbindAction $enabled self.hasAssignedPadProxies ;
-
-  action performUnbindAllAction ;
-  outlet EBButton mUnbindAllButton $run performUnbindAllAction $enabled self.hasAssignedPadProxies ;
+//  outlet EBButton mUnbindAllButton $run performUnbindAllAction $enabled self.hasAssignedPadProxies ;
 
 //······················································································································
 //   INFOS

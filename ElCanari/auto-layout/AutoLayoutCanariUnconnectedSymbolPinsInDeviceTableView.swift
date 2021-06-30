@@ -1,19 +1,57 @@
+//
+//  AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 30/06/2021.
+//
 //----------------------------------------------------------------------------------------------------------------------
 
 import Cocoa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
+final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutVerticalStackView, AutoLayoutTableViewDelegate {
 
   //····················································································································
-  //   INIT
+
+  private let mTableView = AutoLayoutTableView (small: false, addControlButtons: false)
+  private var mDataSource = UnconnectedSymbolPinsInDevice ()
+
   //····················································································································
 
-  init () {
-    super.init (orientation: .vertical)
-    self.alignment = .width
-    self.distribution = .fill
+  override init () {
+    super.init ()
+
+    self.mTableView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      delegate: self
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].symbolInstanceName ?? "" },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mDataSource.sort { return values_String_are_ordered ($0.symbolInstanceName, ascending, $1.symbolInstanceName) }
+      },
+      title: "Symbol",
+      minWidth: 60,
+      maxWidth: 250,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
+    self.mTableView.addColumn_String (
+      valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].pinName ?? "" },
+      valueSetterDelegate: nil,
+      sortDelegate: { [weak self] (ascending) in
+        self?.mDataSource.sort { return values_String_are_ordered ($0.pinName, ascending, $1.pinName) }
+      },
+      title: "Pin",
+      minWidth: 60,
+      maxWidth: 250,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
+    self.appendView (self.mTableView)
   }
 
   //····················································································································
@@ -23,102 +61,90 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
+  //  selectedSymbolPin
+  //····················································································································
 
-  final func appendHorizontalSeparator () {
-    let separator = HorizontalSeparator ()
-    self.appendView (separator)
+  var selectedSymbolPin : UnconnectedSymbolPinsInDevice.Element? {
+    if self.mTableView.selectedRow >= 0 {
+      return self.mDataSource [self.mTableView.selectedRow]
+    }else{
+      return nil
+    }
   }
 
   //····················································································································
-  // SET WIDTH
+  //  $unconnectedPins binding
   //····················································································································
 
-  private var mWidth = NSView.noIntrinsicMetric
+  private var mController : EBReadOnlyPropertyController? = nil
 
   //····················································································································
 
-  final func set (width inWidth : Int) -> Self {
-    self.mWidth = CGFloat (inWidth)
-    self.needsUpdateConstraints = true
-    return self
-  }
-
-  //····················································································································
-  //   equalHeight
-  //····················································································································
-
-  final func equalHeight () -> Self {
-    self.distribution = .fillEqually
-    return self
-  }
-
-  //····················································································································
-  //   minWidth
-  //····················································································································
-
-  final func set (minWidth inMinWidth : Int) -> Self {
-    let c = NSLayoutConstraint (
-      item: self,
-      attribute: .width,
-      relatedBy: .greaterThanOrEqual,
-      toItem: nil,
-      attribute: .notAnAttribute,
-      multiplier: 1.0,
-      constant: CGFloat (inMinWidth)
+  final func bind_unconnectedPins (_ model : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) -> Self {
+    self.mController = EBReadOnlyPropertyController (
+      observedObjects: [model],
+      callBack: { [weak self] in self?.updateUnconnectedPinList (from: model) }
     )
-    self.addConstraint (c)
     return self
   }
 
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
-    return NSSize (width: self.mWidth, height: NSView.noIntrinsicMetric)
+  final func unbind_assignedPadProxies () {
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
   //····················································································································
 
-  private var mConstraints = [NSLayoutConstraint] ()
-
-  override func updateConstraints () {
-    self.removeConstraints (self.mConstraints)
-    self.mConstraints.removeAll ()
-    var spaceViewArray = [AutoLayoutFlexibleSpace] ()
-    for view in self.subviews {
-      if let spaceView = view as? AutoLayoutFlexibleSpace {
-        spaceViewArray.append (spaceView)
-      }
+  func updateUnconnectedPinList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
+    switch inModel.selection {
+    case .empty, .multiple :
+      self.mDataSource = []
+      self.mTableView.sortAndReloadData ()
+    case .single (let unconnectedPadArray) :
+      self.mDataSource = unconnectedPadArray
+      self.mTableView.sortAndReloadData ()
     }
-    if let oneSpaceView = spaceViewArray.popLast () {
-      for spaceView in spaceViewArray {
-        let c = NSLayoutConstraint (item: oneSpaceView, attribute: .height, relatedBy: .equal, toItem: spaceView, attribute: .height, multiplier: 1.0, constant: 0.0)
-        self.mConstraints.append (c)
-      }
-      self.addConstraints (self.mConstraints)
-    }
-    super.updateConstraints ()
   }
 
   //····················································································································
-  // HorizontalSeparator internal class
+  // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-   final class HorizontalSeparator : NSBox, EBUserClassNameProtocol {
+  func rowCount() -> Int {
+    return self.mDataSource.count
+  }
 
-    init () {
-      let s = NSSize (width: 10, height: 0) // Zero size means horizontal separator
-      super.init (frame: NSRect (origin: NSPoint (), size: s))
-      noteObjectAllocation (self)
-      self.translatesAutoresizingMaskIntoConstraints = false
-      self.boxType = .separator
-    }
+  //····················································································································
 
-    required init? (coder inCoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-    }
+  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+  }
 
-    deinit { noteObjectDeallocation (self) }
+  //····················································································································
 
+  func indexesOfSelectedObjects () -> IndexSet {
+    return IndexSet ()
+  }
+
+  //····················································································································
+
+  func addEntry() {
+  }
+
+  //····················································································································
+
+  func removeSelectedEntries() {
+  }
+
+  //····················································································································
+
+  func beginSorting() {
+  }
+
+  //····················································································································
+
+  func endSorting() {
   }
 
   //····················································································································
@@ -126,3 +152,4 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+

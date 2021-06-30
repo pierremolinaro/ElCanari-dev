@@ -18,6 +18,14 @@ typealias EBPreferencesProperty_UInt32 = EBGenericPreferenceProperty <UInt32>
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func values_UInt32_are_ordered (_ inLeft : UInt32, _ inAscending : Bool, _ inRight : UInt32) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
@@ -65,6 +73,14 @@ typealias EBPropertyProxy_Int       = EBGenericPropertyProxy <Int>
 typealias EBComputedProperty_Int    = EBGenericComputedProperty <Int>
 typealias EBStoredProperty_Int      = EBGenericStoredProperty <Int>
 typealias EBPreferencesProperty_Int = EBGenericPreferenceProperty <Int>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func values_Int_are_ordered (_ inLeft : Int, _ inAscending : Bool, _ inRight : Int) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -118,6 +134,14 @@ typealias EBPreferencesProperty_Bool = EBGenericPreferenceProperty <Bool>
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func values_Bool_are_ordered (_ inLeft : Bool, _ inAscending : Bool, _ inRight : Bool) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func compare_Bool_properties (_ inLeft : EBReadOnlyProperty_Bool, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Bool) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
@@ -165,6 +189,14 @@ typealias EBPropertyProxy_Double       = EBGenericPropertyProxy <Double>
 typealias EBComputedProperty_Double    = EBGenericComputedProperty <Double>
 typealias EBStoredProperty_Double      = EBGenericStoredProperty <Double>
 typealias EBPreferencesProperty_Double = EBGenericPreferenceProperty <Double>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func values_Double_are_ordered (_ inLeft : Double, _ inAscending : Bool, _ inRight : Double) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -218,6 +250,14 @@ typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func values_String_are_ordered (_ inLeft : String, _ inAscending : Bool, _ inRight : String) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left.localizedStandardCompare (right) == .orderedAscending
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
@@ -259,6 +299,14 @@ typealias EBPropertyProxy_Data       = EBGenericPropertyProxy <Data>
 typealias EBComputedProperty_Data    = EBGenericComputedProperty <Data>
 typealias EBStoredProperty_Data      = EBGenericStoredProperty <Data>
 typealias EBPreferencesProperty_Data = EBGenericPreferenceProperty <Data>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func values_Data_are_ordered (_ inLeft : Data, _ inAscending : Bool, _ inRight : Data) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -312,6 +360,14 @@ typealias EBPreferencesProperty_Date = EBGenericPreferenceProperty <Date>
 
 //----------------------------------------------------------------------------------------------------------------------
 
+func values_Date_are_ordered (_ inLeft : Date, _ inAscending : Bool, _ inRight : Date) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
@@ -359,6 +415,14 @@ typealias EBPropertyProxy_BezierPathArray       = EBGenericPropertyProxy <Bezier
 typealias EBComputedProperty_BezierPathArray    = EBGenericComputedProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray      = EBGenericStoredProperty <BezierPathArray>
 typealias EBPreferencesProperty_BezierPathArray = EBGenericPreferenceProperty <BezierPathArray>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray, _ inAscending : Bool, _ inRight : BezierPathArray) -> Bool {
+  let left  = inAscending ? inLeft  : inRight
+  let right = inAscending ? inRight : inLeft
+  return left < right
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 

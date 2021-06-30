@@ -102,6 +102,12 @@ protocol DeviceRoot_imageIsValid : AnyObject {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+protocol DeviceRoot_unconnectedPins : AnyObject {
+  var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
   var inconsistentPackagePadNameSetsMessage : String? { get }
 }
@@ -110,12 +116,6 @@ protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
 
 protocol DeviceRoot_inconsistentSymbolNameSetMessage : AnyObject {
   var inconsistentSymbolNameSetMessage : String? { get }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-protocol DeviceRoot_unconnectedPins : AnyObject {
-  var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -175,9 +175,9 @@ final class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mSymbolDisplayHorizontalFlip,
          DeviceRoot_mSymbolDisplayVerticalFlip,
          DeviceRoot_imageIsValid,
+         DeviceRoot_unconnectedPins,
          DeviceRoot_inconsistentPackagePadNameSetsMessage,
          DeviceRoot_inconsistentSymbolNameSetMessage,
-         DeviceRoot_unconnectedPins,
          DeviceRoot_packagePadNameSetsAreConsistent,
          DeviceRoot_symbolNameAreConsistent,
          DeviceRoot_symbolTypeNames,
@@ -563,6 +563,23 @@ final class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unconnectedPins
+  //····················································································································
+
+  final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+
+  //····················································································································
+
+  final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
+    switch self.unconnectedPins_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
@@ -589,23 +606,6 @@ final class DeviceRoot : EBGraphicManagedObject,
 
   final var inconsistentSymbolNameSetMessage : String? {
     switch self.inconsistentSymbolNameSetMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: unconnectedPins
-  //····················································································································
-
-  final let unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
-
-  //····················································································································
-
-  final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
-    switch self.unconnectedPins_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -766,6 +766,22 @@ final class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mImageData_property.addEBObserver (self.imageIsValid_property)
+  //--- Atomic property: unconnectedPins
+    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSymbolInstances_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_DeviceRoot_unconnectedPins (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -799,22 +815,6 @@ final class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
-  //--- Atomic property: unconnectedPins
-    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.mSymbolInstances_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_DeviceRoot_unconnectedPins (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -948,10 +948,10 @@ final class DeviceRoot : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     // self.mImageData_property.removeEBObserver (self.imageIsValid_property)
+    // self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     // self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     // self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
     // self.mSymbolInstances_property.removeEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
-    // self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     // self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
     // self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     // self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
@@ -1125,6 +1125,14 @@ final class DeviceRoot : EBGraphicManagedObject,
       valueExplorer: &self.imageIsValid_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "unconnectedPins",
+      idx: self.unconnectedPins_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
+      valueExplorer: &self.unconnectedPins_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "inconsistentPackagePadNameSetsMessage",
       idx: self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
       y: &y,
@@ -1139,14 +1147,6 @@ final class DeviceRoot : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.inconsistentSymbolNameSetMessage_property.mObserverExplorer,
       valueExplorer: &self.inconsistentSymbolNameSetMessage_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "unconnectedPins",
-      idx: self.unconnectedPins_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      observerExplorer: &self.unconnectedPins_property.mObserverExplorer,
-      valueExplorer: &self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "packagePadNameSetsAreConsistent",

@@ -50,6 +50,7 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
     self.mScrollView.hasVerticalScroller = true
@@ -212,6 +213,10 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   }
 
   //····················································································································
+
+  var selectedRow : Int { return self.mTableView.selectedRow }
+
+  //····················································································································
   //   NSTableViewDataSource protocol
   //····················································································································
 
@@ -339,13 +344,6 @@ fileprivate class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProt
     if let array = inSender.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL],
       let ok = self.mDragFilterCallBack? (array) {
         dragOperation = ok ? .copy : []
-//      var idx = 0
-//      while (idx < array.count) && (dragOperation == []) {
-//        if array [idx].pathExtension == "pdf" {
-//          dragOperation = .copy
-//        }
-//        idx += 1
-//      }
     }
     return dragOperation
   }

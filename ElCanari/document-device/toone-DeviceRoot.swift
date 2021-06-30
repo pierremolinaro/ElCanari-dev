@@ -32,9 +32,9 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       oldValue.mSymbolDisplayHorizontalFlip_property.removeEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
       oldValue.mSymbolDisplayVerticalFlip_property.removeEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
       oldValue.imageIsValid_property.removeEBObserver (self.imageIsValid_property) // Transient property
+      oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
       oldValue.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
       oldValue.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.inconsistentSymbolNameSetMessage_property) // Transient property
-      oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
       oldValue.packagePadNameSetsAreConsistent_property.removeEBObserver (self.packagePadNameSetsAreConsistent_property) // Transient property
       oldValue.symbolNameAreConsistent_property.removeEBObserver (self.symbolNameAreConsistent_property) // Transient property
       oldValue.symbolTypeNames_property.removeEBObserver (self.symbolTypeNames_property) // Transient property
@@ -60,9 +60,9 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       newValue.mSymbolDisplayHorizontalFlip_property.addEBObserver (self.mSymbolDisplayHorizontalFlip_property) // Stored property
       newValue.mSymbolDisplayVerticalFlip_property.addEBObserver (self.mSymbolDisplayVerticalFlip_property) // Stored property
       newValue.imageIsValid_property.addEBObserver (self.imageIsValid_property) // Transient property
+      newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
       newValue.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.inconsistentPackagePadNameSetsMessage_property) // Transient property
       newValue.inconsistentSymbolNameSetMessage_property.addEBObserver (self.inconsistentSymbolNameSetMessage_property) // Transient property
-      newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
       newValue.packagePadNameSetsAreConsistent_property.addEBObserver (self.packagePadNameSetsAreConsistent_property) // Transient property
       newValue.symbolNameAreConsistent_property.addEBObserver (self.symbolNameAreConsistent_property) // Transient property
       newValue.symbolTypeNames_property.addEBObserver (self.symbolTypeNames_property) // Transient property
@@ -169,6 +169,12 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   final let imageIsValid_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
+  //   Observers of 'unconnectedPins' transient property
+  //····················································································································
+
+  final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
+
+  //····················································································································
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
   //····················································································································
 
@@ -179,12 +185,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //····················································································································
 
   final let inconsistentSymbolNameSetMessage_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
-  //   Observers of 'unconnectedPins' transient property
-  //····················································································································
-
-  final let unconnectedPins_property = EBGenericTransientProperty <UnconnectedSymbolPinsInDevice?> ()
 
   //····················································································································
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
@@ -588,6 +588,21 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
         return .single (nil)
       }
     }
+  //--- Configure unconnectedPins transient property
+    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.unconnectedPins_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure inconsistentPackagePadNameSetsMessage transient property
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -607,21 +622,6 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.inconsistentSymbolNameSetMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure unconnectedPins transient property
-    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.unconnectedPins_property.selection {
         case .empty :
           return .empty
         case .multiple :

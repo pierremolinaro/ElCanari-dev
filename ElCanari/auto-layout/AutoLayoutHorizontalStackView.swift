@@ -37,6 +37,13 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
 
   //····················································································································
 
+  final func equalWidth () -> Self {
+    self.distribution = .fillEqually
+    return self
+  }
+
+  //····················································································································
+
   final func appendVerticalSeparator () {
     let separator = VerticalSeparator ()
     self.appendView (separator)

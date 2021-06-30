@@ -68,23 +68,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: assignmentInhibitionMessage
-  //····················································································································
-
-  final let assignmentInhibitionMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var assignmentInhibitionMessage : String? {
-    switch self.assignmentInhibitionMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: hasUnconnectedPin
   //····················································································································
 
@@ -94,6 +77,23 @@ import Cocoa
 
   final var hasUnconnectedPin : Bool? {
     switch self.hasUnconnectedPin_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: assignmentInhibitionMessage
+  //····················································································································
+
+  final let assignmentInhibitionMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var assignmentInhibitionMessage : String? {
+    switch self.assignmentInhibitionMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -190,20 +190,16 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  weak final var mAssignedPadProxyTableView : AutoLayoutCanariAssignedPadProxysInDeviceTableView? = nil
+  weak final var mUnconnectedPadsInDeviceTableView : AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView? = nil
+  weak final var mUnconnectedSymbolPinsInDeviceTableView : AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView? = nil
 
   //····················································································································
   //    Outlets
   //····················································································································
 
-  @IBOutlet final var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView? = nil
   @IBOutlet final var mAssignmentSplitView : NSSplitView? = nil
-  @IBOutlet final var mBindButton : EBButton? = nil
   @IBOutlet final var mInconsistentPadNameSetTextField : EBTextObserverField? = nil
-  @IBOutlet final var mNCButton : EBButton? = nil
-  @IBOutlet final var mUnbindAllButton : EBButton? = nil
-  @IBOutlet final var mUnbindButton : EBButton? = nil
-  @IBOutlet final var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView? = nil
-  @IBOutlet final var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView? = nil
 
   //····················································································································
   //    Multiple bindings controllers
@@ -211,10 +207,6 @@ import Cocoa
 
 //  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
 //  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
-//  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
-//  var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -794,9 +786,91 @@ import Cocoa
   //    VIEW mAssignmentsPage
   //····················································································································
 
-  lazy var mAssignmentsPage : AutoLayoutVerticalStackView = {
-    let vStackView = AutoLayoutVerticalStackView ()
-    return vStackView
+  lazy var mAssignmentsPage : AutoLayoutHorizontalStackView = {
+    let hStackView = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
+    let view_0 = AutoLayoutVerticalStackView ()
+      .set (minWidth: 100)
+    do{
+      let view_0_0 = AutoLayoutStaticLabel (title: "Unassigned Pads", bold: true, small: false)
+        .set (alignment: .center)
+        .makeWidthExpandable ()
+      view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView ()
+        .bind_unconnectedPads (self.rootObject.unconnectedPads_property)
+      self.mUnconnectedPadsInDeviceTableView = view_0_1 // Outlet
+      view_0.appendView (view_0_1)
+    }
+    hStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView ()
+      .set (minWidth: 200)
+    do{
+      let view_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, small: false)
+        .set (alignment: .center)
+        .makeWidthExpandable ()
+      view_1.appendView (view_1_0)
+      let view_1_1 = AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView ()
+        .bind_unconnectedPins (self.rootObject.unconnectedPins_property)
+      self.mUnconnectedSymbolPinsInDeviceTableView = view_1_1 // Outlet
+      view_1.appendView (view_1_1)
+    }
+    hStackView.appendView (view_1)
+    let view_2 = AutoLayoutVerticalStackView ()
+    do{
+      let view_2_0 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_0)
+      let view_2_1 = AutoLayoutButton (title: "- Bind →", small: false)
+        .makeWidthExpandable ()
+        .bind_enabled (.boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
+        )
+      view_2.appendView (view_2_1)
+      let view_2_2 = AutoLayoutButton (title: "- NC →", small: false)
+        .makeWidthExpandable ()
+        .bind_enabled (.id (self.hasUnconnectedPad_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.performNCAction (_:))
+        )
+      view_2.appendView (view_2_2)
+      let view_2_3 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_3)
+      let view_2_4 = AutoLayoutButton (title: "← Unbind -", small: false)
+        .makeWidthExpandable ()
+        .bind_enabled (.id (self.hasAssignedPadProxies_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
+        )
+      view_2.appendView (view_2_4)
+      let view_2_5 = AutoLayoutButton (title: "← Unbind All -", small: false)
+        .makeWidthExpandable ()
+        .bind_enabled (.id (self.hasAssignedPadProxies_property))
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
+        )
+      view_2.appendView (view_2_5)
+      let view_2_6 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_6)
+    }
+    hStackView.appendView (view_2)
+    let view_3 = AutoLayoutVerticalStackView ()
+      .set (minWidth: 300)
+    do{
+      let view_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, small: false)
+        .set (alignment: .center)
+        .makeWidthExpandable ()
+      view_3.appendView (view_3_0)
+      let view_3_1 = AutoLayoutCanariAssignedPadProxysInDeviceTableView ()
+        .bind_assignedPadProxies (self.rootObject.assignedPadProxies_property)
+      self.mAssignedPadProxyTableView = view_3_1 // Outlet
+      view_3.appendView (view_3_1)
+    }
+    hStackView.appendView (view_3)
+    return hStackView
   } ()
 
   //····················································································································
@@ -914,15 +988,8 @@ import Cocoa
 
 //  private func checkOutletConnections () {
 //    let start = Date ()
-//    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
 //    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
-//    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
 //    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
-//    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
-//    checkOutletConnection (self.mUnconnectedPadsInDeviceTableView, "mUnconnectedPadsInDeviceTableView", UnconnectedPadsInDeviceTableView.self, #file, #line)
-//    checkOutletConnection (self.mUnconnectedSymbolPinsInDeviceTableView, "mUnconnectedSymbolPinsInDeviceTableView", UnconnectedSymbolPinsInDeviceTableView.self, #file, #line)
 //    if LOG_OPERATION_DURATION {
 //      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
 //      Swift.print ("Check outlet connections \(durationMS) ms")
@@ -980,6 +1047,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: hasUnconnectedPin
+    self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.unconnectedPins_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPin (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -997,26 +1084,6 @@ import Cocoa
     }
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: hasUnconnectedPin
-    self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPins_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPin (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1135,9 +1202,6 @@ import Cocoa
   //--------------------------- Install ebView bindings
   //--------------------------- Install regular bindings
     self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
-    self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
-    self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
-    self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
@@ -1153,34 +1217,6 @@ import Cocoa
       )
       self.mController_mAssignmentSplitView_hidden = controller
     }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property))ø}
-        outlet: self.mBindButton
-      )
-      self.mController_mBindButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasUnconnectedPad_property)ø}
-        outlet: self.mNCButton
-      )
-      self.mController_mNCButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasAssignedPadProxies_property)ø}
-        outlet: self.mUnbindButton
-      )
-      self.mController_mUnbindButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction: .id (self.hasAssignedPadProxies_property)ø}
-        outlet: self.mUnbindAllButton
-      )
-      self.mController_mUnbindAllButton_enabled = controller
-    }
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Install bindings \(durationMS) ms")
@@ -1192,14 +1228,6 @@ import Cocoa
 /*  final private func setTargetsAndActions () {
      let start = Date ()
    //--------------------------- Set targets / actions
-    self.mBindButton?.target = self
-    self.mBindButton?.action = #selector (AutoLayoutDeviceDocument.performBindAction (_:))
-    self.mNCButton?.target = self
-    self.mNCButton?.action = #selector (AutoLayoutDeviceDocument.performNCAction (_:))
-    self.mUnbindButton?.target = self
-    self.mUnbindButton?.action = #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
-    self.mUnbindAllButton?.target = self
-    self.mUnbindAllButton?.action = #selector (AutoLayoutDeviceDocument.performUnbindAllAction (_:))
     if LOG_OPERATION_DURATION {
       let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
       Swift.print ("Set target and actions \(durationMS) ms")
@@ -1227,9 +1255,6 @@ import Cocoa
     }
   //--------------------------- Unbind regular bindings
     self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
-    self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
-    self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
-    self.mAssignedPadProxyTableView?.unbind_assignedPadProxies ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
   //--- Array controller property: packageController
@@ -1246,39 +1271,21 @@ import Cocoa
     self.symbolTypeController.unbind_model ()
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.unbind_selection ()
+    // self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
     // self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     // self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
-    // self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
     // self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     // self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     // self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
     // self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
     // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
-    self.mBindButton?.target = nil
-    self.mNCButton?.target = nil
-    self.mUnbindButton?.target = nil
-    self.mUnbindAllButton?.target = nil
   //--------------------------- Clean up outlets
-    self.mAssignedPadProxyTableView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
-    self.mBindButton?.ebCleanUp ()
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
-    self.mNCButton?.ebCleanUp ()
-    self.mUnbindAllButton?.ebCleanUp ()
-    self.mUnbindButton?.ebCleanUp ()
-    self.mUnconnectedPadsInDeviceTableView?.ebCleanUp ()
-    self.mUnconnectedSymbolPinsInDeviceTableView?.ebCleanUp ()
   //--------------------------- Detach outlets
-    self.mAssignedPadProxyTableView = nil
     self.mAssignmentSplitView = nil
-    self.mBindButton = nil
     self.mInconsistentPadNameSetTextField = nil
-    self.mNCButton = nil
-    self.mUnbindAllButton = nil
-    self.mUnbindButton = nil
-    self.mUnconnectedPadsInDeviceTableView = nil
-    self.mUnconnectedSymbolPinsInDeviceTableView = nil
   }
 
   //····················································································································

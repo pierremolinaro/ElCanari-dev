@@ -9,10 +9,11 @@ vStack func set (rightMargin: Int) ;
 vStack func set (topMargin: Int) ;
 vStack func set (bottomMargin: Int) ;
 vStack func set (width: Int) ;
+vStack func set (minWidth: Int) ;
 vStack func equalHeight () ;
 
 hStack func set (spacing: Int) ;
-hStack func equalSpacing () ;
+hStack func equalWidth () ;
 hStack func set (margins: Int) ;
 hStack func set (leftMargin: Int) ;
 hStack func set (rightMargin: Int) ;
@@ -256,6 +257,18 @@ extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
 
 extern autolayout class CanariDeviceDroppableImageView (width: Int) {
   $imageData property Data
+}
+
+extern autolayout class CanariAssignedPadProxysInDeviceTableView {
+  $assignedPadProxies transient AssignedPadProxiesInDevice
+}
+
+extern autolayout class CanariUnconnectedSymbolPinsInDeviceTableView {
+  $unconnectedPins transient UnconnectedSymbolPinsInDevice
+}
+
+extern autolayout class CanariUnconnectedSymbolPadsInDeviceTableView {
+  $unconnectedPads transient StringArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
