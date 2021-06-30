@@ -631,8 +631,8 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTextObserverField (bold: false, small: true)
-        .bind_observedValue (self.statusMessage_property)
+      let view_0_1 = AutoLayoutLabel (bold: false, small: true)
+        .bind_title (self.statusMessage_property)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)

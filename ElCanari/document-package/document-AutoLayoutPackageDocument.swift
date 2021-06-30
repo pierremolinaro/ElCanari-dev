@@ -2759,8 +2759,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_152 () -> NSView {
-    let view = AutoLayoutTextObserverField (bold: true, small: true)
-      .bind_observedValue (self.mPackagePadSelectionController.zoneName_property)
+    let view = AutoLayoutLabel (bold: true, small: true)
+      .bind_title (self.mPackagePadSelectionController.zoneName_property)
     return view
   }
 

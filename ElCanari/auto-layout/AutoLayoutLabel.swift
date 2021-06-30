@@ -79,11 +79,16 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  // SET TITLE ALIGNMENT
+
+  final func set (alignment inAlignment : TextAlignment) -> Self {
+    self.alignment = inAlignment.cocoaAlignment
+    return self
+  }
+
   //····················································································································
 
-  final func setTitleAlignment (_ inAlignment : NSTextAlignment) -> Self {
-    self.alignment = inAlignment
+  final func makeWidthExpandable () -> Self {
+    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
     return self
   }
 

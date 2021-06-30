@@ -807,7 +807,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Zone", bold: no, small: yes),
-        right: TextObserverField (bold: yes, small: yes) { $observedValue #mPackagePadSelectionController.zoneName }
+        right: Label (bold: yes, small: yes) { $title #mPackagePadSelectionController.zoneName }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pad Number", bold: no, small: yes),

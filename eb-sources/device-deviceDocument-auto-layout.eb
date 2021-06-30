@@ -113,10 +113,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         space
       }
       StaticLabel (title: "Symbol Type", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
-      TextObserverField (bold: yes, small: yes) {
+      Label (bold: yes, small: yes) {
         set (alignment: .center)
         makeWidthExpandable ()
-        $observedValue #symbolInstanceSelection.symbolTypeName
+        $title #symbolInstanceSelection.symbolTypeName
       }      
       StaticLabel (title: "Symbol Name", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
       TextField (width: 70, small: yes) {
@@ -366,7 +366,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       space
       vStack {
         space
-        TextObserverField (bold: yes, small: no) { setRedTextColor () $observedValue self.assignmentInhibitionMessage }
+        Label (bold: yes, small: no) { setRedTextColor () $title self.assignmentInhibitionMessage }
         space
       }
       space

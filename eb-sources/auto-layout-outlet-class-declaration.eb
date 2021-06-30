@@ -58,9 +58,11 @@ extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $e
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
 }
 
-extern autolayout class Label (bold: Bool, small: Bool) {
+extern autolayout class Label (bold: Bool, small: Bool) $enabled {
   $title transient String
   func setRedTextColor ()
+  func makeWidthExpandable ()
+  func set (alignment: TextAlignment)
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, small : Bool) {
@@ -132,13 +134,6 @@ extern autolayout class TextField (width: Int, small: Bool) $enabled {
   func set (alignment: TextAlignment)
   func makeWidthExpandable ()
   $value property String (sendContinously : Bool)
-}
-
-extern autolayout class TextObserverField (bold: Bool, small: Bool) $enabled {
-  func set (alignment: TextAlignment)
-  func setRedTextColor ()
-  func makeWidthExpandable ()
-  $observedValue transient String
 }
 
 extern autolayout class HelpButton (small: Bool) $enabled $run {
