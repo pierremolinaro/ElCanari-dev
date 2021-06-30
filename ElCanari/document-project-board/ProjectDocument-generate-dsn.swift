@@ -4,20 +4,20 @@
 //
 //  Created by Pierre Molinaro on 21/07/2019.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let COMPONENT_SIDE = "ComponentSide"
 let SOLDER_SIDE    = "SolderSide"
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let DSN_SES_DIRECTORY_USER_DEFAULT_KEY = "dsn.ses.directory"
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CustomizedProjectDocument {
 
@@ -299,11 +299,11 @@ extension CustomizedProjectDocument {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum DSNUnit { case millimeter, micrometer}
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct CanariUnitToDSNUnitConverter {
 
@@ -365,7 +365,7 @@ struct CanariUnitToDSNUnitConverter {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func indexForPackage (_ inDevice : DeviceInProject,
                                   _ inRouteSlavePads : Bool,
@@ -439,7 +439,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func findOrAddPadType (canariWidth inWidth : Int,
                                    canariHeight inHeight : Int,
@@ -466,14 +466,14 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
   return newPad
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct PadNetDescriptorForDSNExport {
   let padString : String
   let netName : String?
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let device : DeviceInProject
@@ -481,7 +481,7 @@ fileprivate struct PackageDictionaryKeyForDSNExport : Hashable {
   let package : DevicePackageInProject
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct NetClassForDSNExport {
   let name : String
@@ -492,7 +492,7 @@ fileprivate struct NetClassForDSNExport {
   let allowTracksOnBackSide : Bool
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct RestrictRectangleForDSNExport {
   let rect : CanariRect
@@ -500,7 +500,7 @@ fileprivate struct RestrictRectangleForDSNExport {
   let backSide  : Bool
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct ComponentForDSNExport {
   let packageIndex : Int
@@ -513,14 +513,14 @@ fileprivate struct ComponentForDSNExport {
   let netList : [PadNetDescriptorForDSNExport]
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct PackageTypeForDSNExport {
   let typeName : String
   let padArray : [PadInstanceForDSNExport]
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct PadInstanceForDSNExport {
   let name : String
@@ -529,7 +529,7 @@ fileprivate struct PadInstanceForDSNExport {
   let centerY : Double // In DSN Unit
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct PadTypeForDSNExport {
   let name : String
@@ -608,7 +608,7 @@ fileprivate struct PadTypeForDSNExport {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addNetwork (_ ioString : inout String,
                              _ inComponentArrayForRouting : [ComponentForDSNExport]) {
@@ -632,7 +632,7 @@ fileprivate func addNetwork (_ ioString : inout String,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addViaPadStackLibrary (_ ioString : inout String,
                                         _ inNetClasses : [NetClassForDSNExport]) {
@@ -644,7 +644,7 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
                                               _ inPadTypeArrayForRouting : [PadTypeForDSNExport],
@@ -661,7 +661,7 @@ fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDeviceLibrary (_ ioString : inout String,
                                    _ inPackageArrayForRouting : [PackageTypeForDSNExport]) {
@@ -674,7 +674,7 @@ fileprivate func addDeviceLibrary (_ ioString : inout String,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addBoardBoundary (_ ioString : inout String,
                                    _ inBoardBoundBox : CanariRect,
@@ -694,7 +694,7 @@ fileprivate func addBoardBoundary (_ ioString : inout String,
   ioString += "    )\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addSnapAngle (_ ioString : inout String, _ inSnapAngle : AutorouterSnapAngle) {
   ioString += "    (snap_angle\n"
@@ -709,7 +709,7 @@ fileprivate func addSnapAngle (_ ioString : inout String, _ inSnapAngle : Autoro
   ioString += "    )\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func autorouteSettings (_ ioString : inout String,
                                     _ inRouterPreferredDirection : AutorouterPreferredDirections) {
@@ -746,7 +746,7 @@ fileprivate func autorouteSettings (_ ioString : inout String,
   ioString += "    )\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addViaClasses (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   ioString += "    (via"
@@ -756,7 +756,7 @@ fileprivate func addViaClasses (_ ioString : inout String, _ inNetClasses : [Net
   ioString += ")\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
@@ -766,7 +766,7 @@ fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetCl
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
   for netClass in inNetClasses {
@@ -793,7 +793,7 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDefaultRule (_ ioString : inout String,
                                  maxWidthInDSNUnit inTrackMaxWidth : Double,
@@ -804,7 +804,7 @@ fileprivate func addDefaultRule (_ ioString : inout String,
   ioString += "    )\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func componentComparison (_ inLeft : ComponentForDSNExport,
                                       _ inOrigin : CanariPoint,
@@ -818,7 +818,7 @@ fileprivate func componentComparison (_ inLeft : ComponentForDSNExport,
   return squareDistanceLeft < squareDistanceRight
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addComponentsPlacement (_ ioString : inout String,
                                          _ inComponents : [ComponentForDSNExport],
@@ -880,7 +880,7 @@ fileprivate func addComponentsPlacement (_ ioString : inout String,
   ioString += "  )\n"
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addRestrictRectangles (_ ioString : inout String,
                                         _ inRestrictRectangles : [RestrictRectangleForDSNExport],
@@ -905,4 +905,4 @@ fileprivate func addRestrictRectangles (_ ioString : inout String,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

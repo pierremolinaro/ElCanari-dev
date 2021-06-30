@@ -20,11 +20,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       }
       vStack {
         SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  expandableWidth () }
       }
       vStack {
         VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
@@ -79,7 +79,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
      vStack set (leftMargin: 20) set (rightMargin: 20) {
        SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorMasterView, equalWidth: yes, small: yes)
           [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
-          makeWidthExpandable ()
+          expandableWidth ()
           addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
           addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
@@ -130,11 +130,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pin Name", bold: no, small: yes),
-        right: TextField (width: 56, small: yes) { makeWidthExpandable () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
+        right: TextField (width: 56, small: yes) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Alignment", bold: no, small: yes),
-        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolTextSelectionController.horizontalAlignment}
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment}
       )
     }
   }
@@ -148,15 +148,15 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Value", bold: no, small: yes),
-        right: TextField (width: 56, small: yes) { makeWidthExpandable () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
+        right: TextField (width: 56, small: yes) { expandableWidth () $value #mSymbolPinSelectionController.name (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Name Alignment", bold: no, small: yes),
-        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolPinSelectionController.nameHorizontalAlignment}
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { expandableWidth () $alignment #mSymbolPinSelectionController.nameHorizontalAlignment}
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Number Alignment", bold: no, small: yes),
-        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { makeWidthExpandable () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment}
+        right: CanariHorizontalAlignmentSegmentedControl (small: yes) { expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment}
       )
       add (single: hStack {
         Switch (title : "Pin is visible in schematics", small: yes) { $value #mSymbolPinSelectionController.pinNameIsDisplayedInSchematics}

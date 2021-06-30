@@ -6,18 +6,18 @@
 //
 // See https://gist.github.com/wozuo/53a475e67dd11c60cfb1e4f62ea91d32
 //
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate let LEFT_COLUMN_IDENTIFIER  = NSUserInterfaceItemIdentifier (rawValue: "left")
 fileprivate let RIGHT_COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "right")
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   AutoLayoutCanariIssueTableView
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, NSTableViewDelegate {
 
@@ -38,7 +38,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   //····················································································································
 
   override init () {
-    self.mHideIssueButton = AutoLayoutButton (title: "Hide Issue", small: true).makeWidthExpandable ()
+    self.mHideIssueButton = AutoLayoutButton (title: "Hide Issue", small: true).expandableWidth ()
     super.init ()
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
@@ -234,7 +234,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final fileprivate class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
 
@@ -261,7 +261,7 @@ final fileprivate class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClass
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final fileprivate class EmbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
@@ -288,4 +288,4 @@ final fileprivate class EmbeddedAutoLayoutTableView : NSTableView, EBUserClassNa
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

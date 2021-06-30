@@ -24,11 +24,11 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       }
       vStack {
         SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  expandableWidth () }
       }
       vStack {
         VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
@@ -54,13 +54,13 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       space
       vStack {
         space
-        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "TP: Track to Pad Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "TT: Track to Track Distance", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "TW: Track Width", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
-        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, small: yes) { set (alignment: .left) makeWidthExpandable () }
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TW: Track Width", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
         space
       }
       space

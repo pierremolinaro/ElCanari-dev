@@ -1,8 +1,8 @@
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
@@ -11,7 +11,7 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
   //····················································································································
 
   private let mDefaultInspectorView = AutoLayoutVerticalStackView ()
-  private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, small: true).makeWidthExpandable ().set (alignment: .center)
+  private let mDefaultLabel = AutoLayoutStaticLabel (title: "", bold: true, small: true).expandableWidth ().set (alignment: .center)
   private var mGraphicController : EBGraphicViewControllerProtocol? = nil
   private var mInspectors = [(EBManagedObject.Type, AutoLayoutAbstractStackView)] ()
   private let mObserver = EBOutletEvent ()
@@ -113,4 +113,4 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 20/06/2021.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
@@ -55,13 +55,6 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
 
   //····················································································································
 
-  final func makeWidthExpandable () -> Self {
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    return self
-  }
-
-  //····················································································································
-
   override final func resizeSubviews (withOldSize oldSize : NSSize) {
     super.resizeSubviews (withOldSize: oldSize)
     //Swift.print ("\(self.bounds)")
@@ -80,4 +73,4 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

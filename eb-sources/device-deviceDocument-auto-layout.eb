@@ -26,11 +26,11 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       }
       vStack {
         SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  expandableWidth () }
       }
       vStack {
         VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
@@ -52,15 +52,17 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mDescriptionPage vStack set (margins: 16) set (spacing: 12) {
     TextField (width: 70, small: no) {
-      makeWidthExpandable ()
+      expandableWidth ()
       set (alignment: .left)
       $value root.mTitle (sendContinously: yes)
     }
-    hStack set (spacing: 12) {
+    hStack {
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
       vStack {
         hStack { StaticLabel (title: "PDF Documentation", bold: no, small: no) space }
-        TableView (small: no, addControlButtons: no) [configurator documentationTableView] { $tableValue #documentationController }
+        TableView (small: no, addControlButtons: no) [configurator documentationTableView] {
+          $tableValue #documentationController
+        }
         hStack {
           Button (title: "-", small: yes) {
             $run removeDocumentationAction
@@ -97,7 +99,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mSymbolsPage hStack {
     vStack set (width: 250) set (margins: 8) {
-      StaticLabel (title: "Add Symbol From", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      StaticLabel (title: "Add Symbol From", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
       hStack {
         Button (title: "File Library…", small: yes) { $run addSymbolFromLibraryAction }
         CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
@@ -106,24 +108,24 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
         space
       }
-      StaticLabel (title: "Flip", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      StaticLabel (title: "Flip", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
       hStack {
         Switch (title: "Horizontal Flip", small: yes) { $value root.mSymbolDisplayHorizontalFlip }
         Switch (title: "Vertical Flip", small: yes) { $value root.mSymbolDisplayVerticalFlip }
         space
       }
-      StaticLabel (title: "Symbol Type", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      StaticLabel (title: "Symbol Type", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
       Label (bold: yes, small: yes) {
         set (alignment: .center)
-        makeWidthExpandable ()
+        expandableWidth ()
         $title #symbolInstanceSelection.symbolTypeName
       }      
-      StaticLabel (title: "Symbol Name", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      StaticLabel (title: "Symbol Name", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
       TextField (width: 70, small: yes) {
-        makeWidthExpandable ()
+        expandableWidth ()
         $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
       }
-      StaticLabel (title: "Symbol Errors", bold: yes, small: yes) { set (alignment: .left) makeWidthExpandable () }
+      StaticLabel (title: "Symbol Errors", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
       TextObserverView { setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
       space
     }
@@ -149,7 +151,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     vStack set (width: 250) set (margins: 8) {
       hStack {
         Button (title: "Add Package From File Library…", small: yes) {
-          makeWidthExpandable ()
+          expandableWidth ()
           $run addPackageFromLibraryAction
         }
       }
@@ -239,27 +241,27 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
           TableView (small: yes, addControlButtons: no) { $tableValue #symbolTypeController }
           vStack {
             Button (title: "Reset Version", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run resetSelectedSymbolVersion
               $enabled #symbolTypeController.selectedArray.count > 0
             }
             Button (title: "Update", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run updateSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
             Button (title: "Export…", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run exportSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
             Button (title: "Edit", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run editSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
             Button (title: "Remove", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run removeUselessSymbolTypeAction
               $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
             }
@@ -273,22 +275,22 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
           TableView (small: yes, addControlButtons: no) { $tableValue #packageController }
           vStack {
             Button (title: "Reset Version", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run resetSelectedPackageVersion         
               $enabled #packageController.selectedArray.count > 0
             }
             Button (title: "Update", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run updateSelectedPackages
               $enabled #packageController.selectedArray.count > 0
             }
             Button (title: "Export…", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run exportSelectedPackages
               $enabled #packageController.selectedArray.count > 0
             }
             Button (title: "Edit", small: yes) {
-              makeWidthExpandable ()
+              expandableWidth ()
               $run editSelectedPackages
               $enabled #packageController.selectedArray.count > 0
             }
@@ -317,47 +319,51 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //······················································································································
 
   stackView mAssignmentsPage hStack set (margins: 8) {
-    hStack $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
+    hSplit $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
-        StaticLabel (title: "Unassigned Pads", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Unassigned Pads", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
         CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {
+          expandableWidth ()
           $unconnectedPads root.unconnectedPads
         }
       }
       vStack set (minWidth: 200) {
-        StaticLabel (title: "Unassigned Pins", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Unassigned Pins", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
         CanariUnconnectedSymbolPinsInDeviceTableView [outlet mUnconnectedSymbolPinsInDeviceTableView] {
+          expandableWidth ()
           $unconnectedPins root.unconnectedPins
         }
       }
       vStack {
+        StaticLabel (title: " ", bold: yes, small: no) { expandableWidth () }
         space
         Button (title: "- Bind →", small: no) {
-          makeWidthExpandable ()
+          expandableWidth ()
           $run performBindAction
           $enabled self.hasUnconnectedPad & self.hasUnconnectedPin
         }
         Button (title: "- NC →", small: no) {
-          makeWidthExpandable ()
+          expandableWidth ()
           $run performNCAction
           $enabled self.hasUnconnectedPad
         }
         space
         Button (title: "← Unbind -", small: no) {
-          makeWidthExpandable ()
+          expandableWidth ()
           $run performUnbindAction
           $enabled self.hasAssignedPadProxies
         }
         Button (title: "← Unbind All -", small: no) {
-          makeWidthExpandable ()
+          expandableWidth ()
           $run performUnbindAllAction
           $enabled self.hasAssignedPadProxies
         }
         space
       }
       vStack set (minWidth: 300) {
-        StaticLabel (title: "Assignments", bold: yes, small: no) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Assignments", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
         CanariAssignedPadProxysInDeviceTableView [outlet mAssignedPadProxyTableView] {
+          expandableWidth ()
           $assignedPadProxies root.assignedPadProxies
         }
       }

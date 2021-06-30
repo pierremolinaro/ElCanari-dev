@@ -46,13 +46,13 @@ extern autolayout class TwoColumnsGridView {
 
 extern autolayout class StaticMiniLabel (title : String) $enabled $hidden {
   func set (alignment: TextAlignment)
-  func makeWidthExpandable ()
+  func expandableWidth ()
 }
 
 extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
   func set (alignment: TextAlignment)
   func set (width: Int)
-  func makeWidthExpandable ()
+  func expandableWidth ()
 }
 
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
@@ -61,12 +61,12 @@ extern autolayout class StaticLabels (left : String, right : String, bold: Bool,
 extern autolayout class Label (bold: Bool, small: Bool) $enabled {
   $title transient String
   func setRedTextColor ()
-  func makeWidthExpandable ()
+  func expandableWidth ()
   func set (alignment: TextAlignment)
 }
 
 extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, small : Bool) {
-  func makeWidthExpandable ()
+  func expandableWidth ()
   func addPage (title: String, tooltip: String, pageView : view)
   $selectedPage property Int
   $segmentImage transient NSImage (segmentIndex : Int)
@@ -125,14 +125,14 @@ extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled $
 }
 
 extern autolayout class Button (title: String, small: Bool) $enabled $run $hidden {
-  func makeWidthExpandable ()
+  func expandableWidth ()
   func set (width: Int)
   func set (height: Int)
 }
 
 extern autolayout class TextField (width: Int, small: Bool) $enabled {
   func set (alignment: TextAlignment)
-  func makeWidthExpandable ()
+  func expandableWidth ()
   $value property String (sendContinously : Bool)
 }
 
@@ -237,7 +237,7 @@ extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $h
 }
 
 extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) {
-  func makeWidthExpandable ()
+  func expandableWidth ()
   $alignment property HorizontalAlignment
 }
 
@@ -256,14 +256,17 @@ extern autolayout class CanariDeviceDroppableImageView (width: Int) {
 }
 
 extern autolayout class CanariAssignedPadProxysInDeviceTableView {
+  func expandableWidth ()
   $assignedPadProxies transient AssignedPadProxiesInDevice
 }
 
 extern autolayout class CanariUnconnectedSymbolPinsInDeviceTableView {
+  func expandableWidth ()
   $unconnectedPins transient UnconnectedSymbolPinsInDevice
 }
 
 extern autolayout class CanariUnconnectedSymbolPadsInDeviceTableView {
+  func expandableWidth ()
   $unconnectedPads transient StringArray
 }
 

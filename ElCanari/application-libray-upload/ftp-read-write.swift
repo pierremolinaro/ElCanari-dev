@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 30/01/2019.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Foundation
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func readRemoteFile (_ inRemotePath : String, url : String, userPwd : String) -> ShellCommandStatus {
   let arguments = [
@@ -20,7 +20,7 @@ func readRemoteFile (_ inRemotePath : String, url : String, userPwd : String) ->
   return runShellCommandAndGetDataOutput (CURL, arguments)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func writeRemoteFile (_ inRemotePath : String, url : String, userPwd : String, _ inLocalFullPath : String) -> ShellCommandStatus {
   let arguments = [
@@ -34,7 +34,7 @@ func writeRemoteFile (_ inRemotePath : String, url : String, userPwd : String, _
   return runShellCommandAndGetDataOutput (CURL, arguments)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func writeRemoteData (_ inRemotePath : String, url : String, userPwd : String, _ inData : Data) -> ShellCommandStatus {
   let tempFilePath = NSTemporaryDirectory () + ProcessInfo ().globallyUniqueString
@@ -42,4 +42,4 @@ func writeRemoteData (_ inRemotePath : String, url : String, userPwd : String, _
   return writeRemoteFile (inRemotePath, url: url, userPwd: userPwd, tempFilePath)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

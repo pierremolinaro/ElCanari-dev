@@ -45,11 +45,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
       vStack {
         SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
       }
       vStack {
         VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) makeWidthExpandable () }
+        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
@@ -283,7 +283,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       vStack set (leftMargin: 20) set (rightMargin: 20) {
        SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, small: yes)
           [configurator packagePageSegmentedControl] {
-          makeWidthExpandable ()
+          expandableWidth ()
           addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
           addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
           addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
@@ -639,8 +639,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       Switch (title: "Draw Label Background", small: yes) { $value #mPackageDimensionSelectionController.drawDimensionBackground }
       space
     }
-    Button (title: "Set Label at Mid X", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidXAction }
-    Button (title: "Set Label at Mid Y", small: yes) { makeWidthExpandable () $run setDimensionTextOriginAtMidYAction }
+    Button (title: "Set Label at Mid X", small: yes) { expandableWidth () $run setDimensionTextOriginAtMidXAction }
+    Button (title: "Set Label at Mid Y", small: yes) { expandableWidth () $run setDimensionTextOriginAtMidYAction }
   }
 
 

@@ -4,11 +4,11 @@
 //
 //  Created by Pierre Molinaro on 01/08/2019.
 //
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
 
@@ -119,7 +119,7 @@ extension ProjectDocument {
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : Any],
                                              _ inPath : EBLinePath,
@@ -137,7 +137,7 @@ fileprivate func addBoardLimitPathToArchive (_ ioBoardArchive : inout [String : 
    ioBoardArchive ["INTERNAL-BOARDS-LIMITS"] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
                                 _ inDictionary : [CGFloat : [EBLinePath]],
@@ -162,7 +162,7 @@ fileprivate func addLinePathes (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
                              _ inOblongArray : [ProductOblong],
@@ -178,7 +178,7 @@ fileprivate func addOblongs (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
                             _ inTrackArray : [ProductOblong],
@@ -194,7 +194,7 @@ fileprivate func addTracks (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addCircles (_ ioBoardArchive : inout [String : Any],
                              _ inCircleArray : [ProductCircle],
@@ -209,7 +209,7 @@ fileprivate func addCircles (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive [inKey] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
                             _ inDrillDictionary : [CGFloat : [(NSPoint, NSPoint)]],
@@ -226,7 +226,7 @@ fileprivate func addDrills (_ ioBoardArchive : inout [String : Any],
    ioBoardArchive ["DRILLS"] = stringArray
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func padDictionary (_ inCenter : CanariPoint,
                                 _ inPadSize : CanariSize,
@@ -251,5 +251,5 @@ fileprivate func padDictionary (_ inCenter : CanariPoint,
   return padDict
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
