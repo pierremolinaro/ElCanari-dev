@@ -21,40 +21,6 @@ import Cocoa
   var mDataSelection = SelectionController_AutoLayoutArtworkDocument_mDataSelection ()
 
   //····················································································································
-  //   Transient property: mStatusMessage
-  //····················································································································
-
-  final let mStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mStatusMessage : String? {
-    switch self.mStatusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: mGeneratedFileCountString
-  //····················································································································
-
-  final let mGeneratedFileCountString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mGeneratedFileCountString : String? {
-    switch self.mGeneratedFileCountString_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: documentFileName
   //····················································································································
 
@@ -72,15 +38,49 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusImage
+  //   Transient property: statusMessage
   //····················································································································
 
-  final let mStatusImage_property = EBTransientProperty_NSImage ()
+  final let statusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property.selection {
+  final var statusMessage : String? {
+    switch self.statusMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: generatedFileCountString
+  //····················································································································
+
+  final let generatedFileCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var generatedFileCountString : String? {
+    switch self.generatedFileCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusImage
+  //····················································································································
+
+  final let statusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var statusImage : NSImage? {
+    switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -214,8 +214,8 @@ import Cocoa
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           view_0_4_0.appendView (view_0_4_0_0)
           let view_0_4_0_1 = AutoLayoutImageObserverView (small: false)
-            .bind_image (self.mStatusImage_property)
-            .bind_tooltip (self.mStatusMessage_property)
+            .bind_image (self.statusImage_property)
+            .bind_tooltip (self.statusMessage_property)
           view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
           view_0_4_0.appendView (view_0_4_0_2)
@@ -352,7 +352,7 @@ import Cocoa
       .set (topMargin: 8)
     do{
       let view_0_0 = AutoLayoutLabel (bold: true, small: true)
-        .bind_title (self.mGeneratedFileCountString_property)
+        .bind_title (self.generatedFileCountString_property)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutTableView (small: true, addControlButtons: true)
       self.mDataController.bind_tableView (view_0_1)
@@ -793,13 +793,17 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusMessage
+    self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection) {
-        case (.single (let v0), .single (let v1)) :
-          return .single (transient_AutoLayoutArtworkDocument_mStatusMessage (v0, v1))
-        case (.multiple, .multiple) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusMessage (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -808,18 +812,19 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusMessage_property)
+    self.documentFileName_property.addEBObserver (self.statusMessage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mGeneratedFileCountString
-    self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: generatedFileCountString
+    self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
         case (.single (let v0)) :
-          return .single (transient_AutoLayoutArtworkDocument_mGeneratedFileCountString (v0))
+          return .single (transient_AutoLayoutArtworkDocument_generatedFileCountString (v0))
         case (.multiple) :
           return .multiple
         default :
@@ -829,22 +834,18 @@ import Cocoa
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: mStatusImage
-    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: statusImage
+    self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection) {
-        case (.single (let v0), .single (let v1)) :
-          return .single (transient_AutoLayoutArtworkDocument_mStatusImage (v0, v1))
-        case (.multiple, .multiple) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusImage (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -853,8 +854,9 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusImage_property)
+    self.documentFileName_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -914,11 +916,13 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusMessage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusMessage_property)
-    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusMessage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusMessage_property)
+    // self.documentFileName_property.removeEBObserver (self.statusMessage_property)
+    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusImage_property)
+    // self.documentFileName_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

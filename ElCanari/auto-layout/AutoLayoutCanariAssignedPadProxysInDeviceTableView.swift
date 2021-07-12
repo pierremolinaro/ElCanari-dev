@@ -31,7 +31,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].padName ?? "" },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mDataSource.sort { ascending ? ($0.padName < $1.padName) : ($0.padName > $1.padName) }
+        self?.mDataSource.sort { values_String_are_ordered ($0.padName, ascending, $1.padName) }
       },
       title: "Pad",
       minWidth: 60,
@@ -43,7 +43,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].symbolInstanceName ?? "" },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mDataSource.sort { ascending ? ($0.symbolInstanceName < $1.symbolInstanceName) : ($0.symbolInstanceName > $1.symbolInstanceName) }
+        self?.mDataSource.sort { values_String_are_ordered ($0.symbolInstanceName, ascending, $1.symbolInstanceName) }
       },
       title: "Symbol",
       minWidth: 60,
@@ -55,7 +55,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
       valueGetterDelegate: { [weak self] in return self?.mDataSource [$0].pinName ?? "" },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (ascending) in
-        self?.mDataSource.sort { ascending ? ($0.pinName < $1.pinName) : ($0.pinName > $1.pinName) }
+        self?.mDataSource.sort { values_String_are_ordered ($0.pinName, ascending, $1.pinName) }
       },
       title: "Pin",
       minWidth: 60,

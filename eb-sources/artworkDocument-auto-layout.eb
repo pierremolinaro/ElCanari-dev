@@ -32,7 +32,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       }
       space
       vStack {
-        hStack { space ImageObserverView (small: no) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
+        hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
         StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
       }
     }
@@ -40,10 +40,17 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     stackViewRef mPageMasterView
   }
 
-  transient NSImage mStatusImage
-    dependsFrom root.fileGenerationParameterArray.all.fileExtension, root.fileGenerationParameterArray.all.name ;
-  transient String mStatusMessage
-    dependsFrom root.fileGenerationParameterArray.all.fileExtension, root.fileGenerationParameterArray.all.name ;
+  transient NSImage statusImage dependsFrom
+      root.fileGenerationParameterArray.all.fileExtension,
+      root.fileGenerationParameterArray.all.name,
+      self.documentFileName
+  ;
+
+  transient String statusMessage dependsFrom
+    root.fileGenerationParameterArray.all.fileExtension,
+    root.fileGenerationParameterArray.all.name,
+    self.documentFileName
+  ;
 
 //······················································································································
 //  Minima Page
@@ -120,7 +127,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   stackView mDataPage hStack set (leftMargin: 8) set (rightMargin: 8) {
     vStack set (topMargin: 8) {
-      Label (bold: yes, small: yes) { $title self.mGeneratedFileCountString }
+      Label (bold: yes, small: yes) { $title self.generatedFileCountString }
       TableView (small: yes, addControlButtons: yes) { $tableValue #mDataController }
       space
     }
@@ -162,7 +169,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     }
   }
 
-  transient String mGeneratedFileCountString dependsFrom #mDataController.sortedArray.count ;
+  transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
 //······················································································································
 //  Info Tab

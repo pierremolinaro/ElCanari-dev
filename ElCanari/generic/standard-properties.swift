@@ -284,6 +284,7 @@ func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscend
       return .orderedDescending
     case .single (let otherValue) :
       return currentValue.localizedStandardCompare (otherValue)
+//      return currentValue.compare (otherValue, options: [.numeric, .caseInsensitive])
     }
   }
 }
