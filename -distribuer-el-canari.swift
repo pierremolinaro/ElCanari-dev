@@ -29,14 +29,17 @@ let BUILD_KIND = ProductKind.release
 //--------------------------------------------------------------------------------------------------
 
 let VERSION_CANARI = "1.4.2"
-let NOTES : [String] = []
+let NOTES : [String] = [
+]
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Device document user interfaces is managed by auto layout"
-  "Symbol document file name is checked"
+
 ]
 let NEWS : [String] = [
+  "Symbol document file name is checked for acceptability in libraries",
+  "Package document file name is checked for acceptability in libraries"
 ]
 
 //--------------------------------------------------------------------------------------------------

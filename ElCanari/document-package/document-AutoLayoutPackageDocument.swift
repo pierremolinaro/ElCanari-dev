@@ -245,6 +245,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  final var issues : CanariIssueArray? {
+    switch self.issues_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: statusMessage
   //····················································································································
 
@@ -271,6 +288,57 @@ import Cocoa
 
   final var metadataStatus : MetadataStatus? {
     switch self.metadataStatus_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: noIssue
+  //····················································································································
+
+  final let noIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var noIssue : Bool? {
+    switch self.noIssue_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueImage
+  //····················································································································
+
+  final let segmentedControlSegmentIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage : NSImage? {
+    switch self.segmentedControlSegmentIssueImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueString
+  //····················································································································
+
+  final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString : String? {
+    switch self.segmentedControlSegmentIssueString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -636,8 +704,8 @@ import Cocoa
           .addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: self.mDisplayInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
-          .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
-          .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
+          .bind_segmentImage (self.segmentedControlSegmentIssueImage_property, segmentIndex:3)
+          .bind_segmentTitle (self.segmentedControlSegmentIssueString_property, segmentIndex:3)
         self.configure_packagePageSegmentedControl (view_0_2_0) // Configurator
         view_0_2.appendView (view_0_2_0)
       }
@@ -698,7 +766,7 @@ import Cocoa
     }
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariIssueTableView ()
-      .bind_issues (self.rootObject.issues_property)
+      .bind_issues (self.issues_property)
     self.mPackageIssueTableView = view_1 // Outlet
     vStackView.appendView (view_1)
     return vStackView
@@ -3750,10 +3818,31 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.issues_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_AutoLayoutPackageDocument_issues (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.issues_property)
+    self.documentFileName_property.addEBObserver (self.issues_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
         case (.multiple) :
@@ -3765,7 +3854,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusMessage_property)
+    self.issues_property.addEBObserver (self.statusMessage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3773,7 +3862,7 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_metadataStatus (v0))
         case (.multiple) :
@@ -3785,7 +3874,67 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
+    self.issues_property.addEBObserver (self.metadataStatus_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: noIssue
+    self.noIssue_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_noIssue (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.noIssue_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: segmentedControlSegmentIssueImage
+    self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_segmentedControlSegmentIssueImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: segmentedControlSegmentIssueString
+    self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutPackageDocument_segmentedControlSegmentIssueString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3793,7 +3942,7 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
         case (.multiple) :
@@ -3805,7 +3954,7 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
+    self.issues_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3906,9 +4055,14 @@ import Cocoa
     // preferences_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
     // preferences_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
     // preferences_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
+    // self.documentFileName_property.removeEBObserver (self.issues_property)
+    // self.issues_property.removeEBObserver (self.statusMessage_property)
+    // self.issues_property.removeEBObserver (self.metadataStatus_property)
+    // self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
+    // self.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

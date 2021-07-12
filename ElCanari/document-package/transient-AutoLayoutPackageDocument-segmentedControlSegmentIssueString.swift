@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_segmentedControlSegmentIssueString (
+func transient_AutoLayoutPackageDocument_segmentedControlSegmentIssueString (
        _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

@@ -61,9 +61,9 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
     stackViewRef mPageMasterView
   }
 
-  transient NSImage statusImage dependsFrom root.issues ;
-  transient String statusMessage dependsFrom root.issues ;
-  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+  transient NSImage statusImage dependsFrom self.issues ;
+  transient String statusMessage dependsFrom self.issues ;
+  transient MetadataStatus metadataStatus dependsFrom self.issues ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE    MODEL IMAGE
@@ -289,8 +289,8 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
-          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
-          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
+          $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
+          $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
         }
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (spacing: 12) {
@@ -326,8 +326,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
   stackView mIssuesInspectorView vStack {
     hStack { space Label (bold: no, small: yes) { $title self.statusMessage} space }
-    CanariIssueTableView [outlet mPackageIssueTableView] { $issues root.issues }
+    CanariIssueTableView [outlet mPackageIssueTableView] { $issues self.issues }
   }
+
+  transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
+  transient Bool noIssue dependsFrom self.issues ;
+  transient NSImage segmentedControlSegmentIssueImage dependsFrom self.issues ;
+  transient String segmentedControlSegmentIssueString dependsFrom self.issues ;
 
   linker issueTableViewToGraphicView (mPackageIssueTableView, mPackageGraphicView)
 

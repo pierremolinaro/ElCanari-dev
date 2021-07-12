@@ -13,32 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_statusMessage (
-       _ self_issues : CanariIssueArray
-) -> String {
+func transient_AutoLayoutPackageDocument_issues (
+       _ root_issues : CanariIssueArray,         
+       _ self_documentFileName : String
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  var s = "No error, no warning"
-  if self_issues.count > 0 {
-    let errorCount = self_issues.errorCount
-    let warningCount = self_issues.warningCount
-    if errorCount == 0 {
-      s = "No error"
-    }else if errorCount == 1 {
-      s = "1 error"
-    }else {
-      s = "\(errorCount) errors"
-    }
-    s += ", "
-    if warningCount == 0 {
-      s += "no warning"
-    }else if warningCount == 1 {
-      s += "1 warning"
-    }else {
-      s += "\(warningCount) warnings"
-    }
-    s += "."
-  }
-  return s
+       var result = CanariIssueArray ()
+       if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
+         result.append (issue)
+       }
+       result += root_issues
+       return result
 //--- END OF USER ZONE 2
 }
 

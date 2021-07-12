@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_AutoLayoutPackageDocument_statusImage (
-       _ root_issues : CanariIssueArray
+       _ self_issues : CanariIssueArray
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  if root_issues.count == 0 {
+  if self_issues.count == 0 {
     return NSImage (named: okStatusImageName)!
-  }else if root_issues.errorCount != 0 {
+  }else if self_issues.errorCount != 0 {
     return NSImage (named: errorStatusImageName)!
   }else{
     return NSImage (named: warningStatusImageName)!
