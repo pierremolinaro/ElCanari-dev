@@ -363,6 +363,9 @@
 		CF379168269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF379167269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift */; };
 		CF379169269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF379167269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift */; };
 		CF37916A269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF379167269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift */; };
+		CF37916C269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */; };
+		CF37916D269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */; };
+		CF37916E269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */; };
 		CF3817A2225CA79400E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A1225CA79300E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift */; };
 		CF3817A3225CA79400E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A1225CA79300E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift */; };
 		CF3817A5225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3817A4225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift */; };
@@ -4469,6 +4472,7 @@
 		CF37915F269C979200FA083F /* transient-AutoLayoutSymbolDocument-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutSymbolDocument-issues.swift"; sourceTree = "<group>"; };
 		CF379163269C97F000FA083F /* check-el-canari-file-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "check-el-canari-file-path.swift"; sourceTree = "<group>"; };
 		CF379167269CBAFD00FA083F /* transient-AutoLayoutPackageDocument-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutPackageDocument-issues.swift"; sourceTree = "<group>"; };
+		CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutDeviceDocument-issues.swift"; sourceTree = "<group>"; };
 		CF3817A1225CA79300E75A96 /* transient-SymbolPinInstanceInDevice-pinQualifiedName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPinInstanceInDevice-pinQualifiedName.swift"; sourceTree = "<group>"; };
 		CF3817A4225CAD9200E75A96 /* struct-PinQualifiedNameStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "struct-PinQualifiedNameStruct.swift"; sourceTree = "<group>"; };
 		CF39C4EC22A0526700EE75CD /* ProjectDocument-customized-net-class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectDocument-customized-net-class.swift"; sourceTree = "<group>"; };
@@ -6689,6 +6693,7 @@
 				CF39CC8B268CC0B0004971F9 /* transient-AutoLayoutDeviceDocument-hasAssignedPadProxies.swift */,
 				CF39CC94268CC0B1004971F9 /* transient-AutoLayoutDeviceDocument-hasUnconnectedPad.swift */,
 				CF39CC8C268CC0B0004971F9 /* transient-AutoLayoutDeviceDocument-hasUnconnectedPin.swift */,
+				CF37916B269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift */,
 				CF39CCA0268CC0B2004971F9 /* transient-AutoLayoutDeviceDocument-mMetadataStatus.swift */,
 				CF39CC9D268CC0B2004971F9 /* transient-AutoLayoutDeviceDocument-mStatusImage.swift */,
 				CF39CC9B268CC0B2004971F9 /* transient-AutoLayoutDeviceDocument-mStatusMessage.swift */,
@@ -8421,6 +8426,7 @@
 				CF39CCDB268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSymbolsAndPackagesAction.swift in Sources */,
 				CFEB7CDB233A28860060A97A /* transient-ProjectRoot-boardBoundBox.swift in Sources */,
 				CFEAAD6122317E5D00F69A12 /* transient-SymbolSegment-strokeBezierPath.swift in Sources */,
+				CF37916C269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */,
 				CF87A87E20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift in Sources */,
 				CF13FDD6267BB28C00EFD0BB /* AutoLayoutCanariDimensionUnitSetterPullDownButton.swift in Sources */,
 				CFB1DB1F2282D31F005F9811 /* entity-NetClassInProject.swift in Sources */,
@@ -9783,6 +9789,7 @@
 				CFA42FBF229AEB0A000AA8C8 /* tomany-BoardModel.swift in Sources */,
 				CFB1DB3C2282D31F005F9811 /* entity-ComponentSymbolInProject.swift in Sources */,
 				CF13FDD7267BB28C00EFD0BB /* AutoLayoutCanariDimensionUnitSetterPullDownButton.swift in Sources */,
+				CF37916D269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */,
 				CF5C4D07219F04D600EAC52A /* entity-SegmentForFontCharacter.swift in Sources */,
 				CF23B1B221A48A4300DE1AD8 /* entity-SymbolObject.swift in Sources */,
 				CFF858902687C201001B868C /* action-AutoLayoutArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
@@ -11145,6 +11152,7 @@
 				CFB7D8C42683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-addPackageMasterPad.swift in Sources */,
 				CF9C620825CABE5C00A00D5C /* extension-ProjectDocument-add-components.swift in Sources */,
 				CF9C620925CABE5C00A00D5C /* transient-PackageOval-strokeBezierPath.swift in Sources */,
+				CF37916E269CBDBE00FA083F /* transient-AutoLayoutDeviceDocument-issues.swift in Sources */,
 				CF9C620B25CABE5C00A00D5C /* ProjectDocument-mouse-moved-flags-changed.swift in Sources */,
 				CF9C620C25CABE5C00A00D5C /* class-LibraryOperationElement.swift in Sources */,
 				CF9C620D25CABE5C00A00D5C /* transient-ProjectDocument-canRemoveSelectedDevices.swift in Sources */,

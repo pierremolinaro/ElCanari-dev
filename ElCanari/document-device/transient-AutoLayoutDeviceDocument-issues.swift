@@ -13,17 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_mMetadataStatus (
-       _ self_issues : CanariIssueArray
-) -> MetadataStatus {
+func transient_AutoLayoutDeviceDocument_issues (
+       _ root_issues : CanariIssueArray,        
+       _ self_documentFileName : String
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  if self_issues.count == 0 {
-    return .ok
-  }else if self_issues.errorCount != 0 {
-    return .warning
-  }else{
-    return .error
-  }
+       var result = CanariIssueArray ()
+       if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
+         result.append (issue)
+       }
+       result += root_issues
+       return result
 //--- END OF USER ZONE 2
 }
 

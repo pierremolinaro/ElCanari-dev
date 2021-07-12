@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_AutoLayoutDeviceDocument_mStatusMessage (
-       _ root_issues : CanariIssueArray
+       _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
   var s = "No error, no warning"
-  if root_issues.count > 0 {
-    let errorCount = root_issues.errorCount
-    let warningCount = root_issues.warningCount
+  if self_issues.count > 0 {
+    let errorCount = self_issues.errorCount
+    let warningCount = self_issues.warningCount
     if errorCount == 0 {
       s = "No error"
     }else if errorCount == 1 {
@@ -38,7 +38,7 @@ func transient_AutoLayoutDeviceDocument_mStatusMessage (
     }
     s += "."
   }
-  for issue in root_issues {
+  for issue in self_issues {
     s += "\n"
     switch issue.kind {
     case .error   : s += "Error"

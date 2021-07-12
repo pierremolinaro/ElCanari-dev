@@ -39,7 +39,8 @@ let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
   "Symbol document file name is checked for acceptability in libraries",
-  "Package document file name is checked for acceptability in libraries"
+  "Package document file name is checked for acceptability in libraries",
+  "Device document file name is checked for acceptability in libraries"
 ]
 
 //--------------------------------------------------------------------------------------------------

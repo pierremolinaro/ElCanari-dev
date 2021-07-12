@@ -102,40 +102,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusMessage
-  //····················································································································
-
-  final let mStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var mStatusMessage : String? {
-    switch self.mStatusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: mMetadataStatus
-  //····················································································································
-
-  final let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
-
-  //····················································································································
-
-  final var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: hasUnconnectedPad
   //····················································································································
 
@@ -170,6 +136,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  final var issues : CanariIssueArray? {
+    switch self.issues_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -179,6 +162,40 @@ import Cocoa
 
   final var mStatusImage : NSImage? {
     switch self.mStatusImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  final let mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var mStatusMessage : String? {
+    switch self.mStatusMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mMetadataStatus
+  //····················································································································
+
+  final let mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  final var mMetadataStatus : MetadataStatus? {
+    switch self.mMetadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1098,46 +1115,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutDeviceDocument_mStatusMessage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: mMetadataStatus
-    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutDeviceDocument_mMetadataStatus (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1178,10 +1155,31 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.issues_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_AutoLayoutDeviceDocument_issues (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.issues_property)
+    self.documentFileName_property.addEBObserver (self.issues_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_mStatusImage (v0))
         case (.multiple) :
@@ -1193,7 +1191,47 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.issues_property.addEBObserver (self.mStatusImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_mStatusMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.mStatusMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: mMetadataStatus
+    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutDeviceDocument_mMetadataStatus (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.mMetadataStatus_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1268,11 +1306,13 @@ import Cocoa
     // self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
     // self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     // self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     // self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
     // self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
-    // self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
+    // self.documentFileName_property.removeEBObserver (self.issues_property)
+    // self.issues_property.removeEBObserver (self.mStatusImage_property)
+    // self.issues_property.removeEBObserver (self.mStatusMessage_property)
+    // self.issues_property.removeEBObserver (self.mMetadataStatus_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

@@ -42,9 +42,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     stackViewRef mPageMasterView
   }
 
-  transient NSImage mStatusImage dependsFrom root.issues ;
-  transient String mStatusMessage dependsFrom root.issues ;
-  transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
+  transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
+  transient NSImage mStatusImage dependsFrom self.issues ;
+  transient String mStatusMessage dependsFrom self.issues ;
+  transient MetadataStatus mMetadataStatus dependsFrom self.issues ;
 
 //······················································································································
 //   DESCRIPTION
