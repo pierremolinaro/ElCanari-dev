@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_documentIsUnnamed (
-       _ self_documentFilePath : String
+       _ self_documentFileName : String
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_documentFilePath == ""
+        return self_documentFileName == ""
 //--- END OF USER ZONE 2
 }
 

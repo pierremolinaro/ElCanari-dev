@@ -36,9 +36,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     stackViewRef mPageMasterView
   }
 
-  transient NSImage statusImage dependsFrom root.issues ;
-  transient String statusMessage dependsFrom root.issues ;
-  transient MetadataStatus metadataStatus dependsFrom root.issues ;
+  transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
+  transient NSImage statusImage dependsFrom self.issues ;
+  transient String statusMessage dependsFrom self.issues ;
+  transient MetadataStatus metadataStatus dependsFrom self.issues ;
+
+  transient Bool noIssue dependsFrom self.issues ;
+  transient NSImage segmentedControlSegmentIssueImage dependsFrom self.issues ;
+  transient String segmentedControlSegmentIssueString dependsFrom self.issues ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //   PAGE   SYMBOL
@@ -85,8 +90,8 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
           addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
           addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
           $selectedPage root.selectedInspector
-          $segmentImage root.segmentedControlSegmentIssueImage (segmentIndex : 3)
-          $segmentTitle root.segmentedControlSegmentIssueString (segmentIndex : 3)
+          $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
+          $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
          }
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
@@ -260,7 +265,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 
   stackView mIssuesInspectorView vStack {
    hStack { space Label (bold: no, small: yes) { $title self.statusMessage } space }
-   CanariIssueTableView [outlet mSymbolIssueTableView] { $issues root.issues }
+   CanariIssueTableView [outlet mSymbolIssueTableView] { $issues self.issues }
   }
 
   linker issueTableViewToGraphicView (mSymbolIssueTableView, mSymbolGraphicView)

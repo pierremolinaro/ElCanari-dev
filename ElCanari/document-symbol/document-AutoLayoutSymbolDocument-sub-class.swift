@@ -56,6 +56,12 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
   }
 
   //····················································································································
+
+  override final func defaultDraftName () -> String {
+    return "untitled"
+  }
+
+  //····················································································································
   //    windowControllerDidLoadNib: customization of interface
   //····················································································································
 

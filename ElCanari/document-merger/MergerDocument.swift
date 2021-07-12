@@ -45,15 +45,15 @@ import Cocoa
   var mDataSelection = SelectionController_MergerDocument_mDataSelection ()
 
   //····················································································································
-  //   Transient property: documentFilePath
+  //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var documentFilePath : String? {
-    switch self.documentFilePath_property.selection {
+  final var documentFileName : String? {
+    switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -394,18 +394,18 @@ import Cocoa
     }
     set{
       super.fileModificationDate = newValue
-      self.documentFilePath_property.postEvent ()
+      self.documentFileName_property.postEvent ()
     }
   }
 
   //····················································································································
 
-  final func computeTransient_documentFilePath () -> String {
-    var documentFilePath = ""
+  final func computeTransient_documentFileName () -> String {
+    var documentFileName = ""
     if let url = self.fileURL {
-      documentFilePath = url.path
+      documentFileName = url.path
     }
-    return documentFilePath
+    return documentFileName
   }
 
   //····················································································································
@@ -686,7 +686,7 @@ import Cocoa
   //--- Atomic property: documentFileNameOk
     self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property.selection) {
+        switch (unwSelf.documentFileName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_documentFileNameOk (v0))
         case (.multiple) :
@@ -698,7 +698,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
+    self.documentFileName_property.addEBObserver (self.documentFileNameOk_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -706,7 +706,7 @@ import Cocoa
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property.selection) {
+        switch (unwSelf.documentFileName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_documentIsUnnamed (v0))
         case (.multiple) :
@@ -718,7 +718,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
+    self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -810,7 +810,7 @@ import Cocoa
   //--- Atomic property: incorrectDocumentFileErrorMessage
     self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property.selection) {
+        switch (unwSelf.documentFileName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
         case (.multiple) :
@@ -822,7 +822,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFileName_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1159,12 +1159,12 @@ import Cocoa
     self.configureProperties ()
     self.installBindings ()
     self.setTargetsAndActions ()
-  //--------------------------- Read documentFilePath model
-    self.documentFilePath_property.mReadModelFunction = { [weak self] in
-      if let r = self?.computeTransient_documentFilePath () {
+  //--------------------------- Read documentFileName model
+    self.documentFileName_property.mReadModelFunction = { [weak self] in
+      if let r = self?.displayName {
         return .single (r)
       }else{
-        return .empty
+        return .single ("")
       }
     }
   }
@@ -1355,8 +1355,8 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
-    // self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
+    // self.documentFileName_property.removeEBObserver (self.documentFileNameOk_property)
+    // self.documentFileName_property.removeEBObserver (self.documentIsUnnamed_property)
     // self.rootObject.mArtworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
     // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
     // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
@@ -1365,7 +1365,7 @@ import Cocoa
     // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
     // self.issues_property.removeEBObserver (self.mStatusImage_property)
     // self.issues_property.removeEBObserver (self.mStatusMessage_property)
-    // self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    // self.documentFileName_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
   //--------------------------- Remove targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = nil
     self.dismissPrefsForSettingMergerDisplayButton?.target = nil

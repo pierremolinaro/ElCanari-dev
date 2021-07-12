@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_documentFileNameOk (
-       _ self_documentFilePath : String
+       _ self_documentFileName : String
 ) -> Bool {
 //--- START OF USER ZONE 2
-  var ok = self_documentFilePath != ""
+  var ok = self_documentFileName != ""
   if ok {
-    let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
+    let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
     for char in baseName.unicodeScalars {
       ok = (char >= "A") && (char <= "Z")
       if !ok {

@@ -27,9 +27,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       oldValue.yPlacardUnit_property.removeEBObserver (self.yPlacardUnit_property) // Stored property
       oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
-      oldValue.noIssue_property.removeEBObserver (self.noIssue_property) // Transient property
-      oldValue.segmentedControlSegmentIssueImage_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property) // Transient property
-      oldValue.segmentedControlSegmentIssueString_property.removeEBObserver (self.segmentedControlSegmentIssueString_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
@@ -44,9 +41,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
       newValue.yPlacardUnit_property.addEBObserver (self.yPlacardUnit_property) // Stored property
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-      newValue.noIssue_property.addEBObserver (self.noIssue_property) // Transient property
-      newValue.segmentedControlSegmentIssueImage_property.addEBObserver (self.segmentedControlSegmentIssueImage_property) // Transient property
-      newValue.segmentedControlSegmentIssueString_property.addEBObserver (self.segmentedControlSegmentIssueString_property) // Transient property
     }
   }
 
@@ -115,24 +109,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
   //····················································································································
 
   final let issues_property = EBGenericTransientProperty <CanariIssueArray?> ()
-
-  //····················································································································
-  //   Observers of 'noIssue' transient property
-  //····················································································································
-
-  final let noIssue_property = EBGenericTransientProperty <Bool?> ()
-
-  //····················································································································
-  //   Observers of 'segmentedControlSegmentIssueImage' transient property
-  //····················································································································
-
-  final let segmentedControlSegmentIssueImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-  //   Observers of 'segmentedControlSegmentIssueString' transient property
-  //····················································································································
-
-  final let segmentedControlSegmentIssueString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observable toMany property: symbolObjects
@@ -342,51 +318,6 @@ class ReadOnlyObject_SymbolRoot : ReadOnlyAbstractObjectProperty <SymbolRoot> {
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.issues_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure noIssue transient property
-    self.noIssue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.noIssue_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure segmentedControlSegmentIssueImage transient property
-    self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.segmentedControlSegmentIssueImage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure segmentedControlSegmentIssueString transient property
-    self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.segmentedControlSegmentIssueString_property.selection {
         case .empty :
           return .empty
         case .multiple :

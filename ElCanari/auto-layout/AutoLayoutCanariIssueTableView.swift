@@ -51,7 +51,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     self.mTableView.dataSource = self
     self.mTableView.delegate = self
     self.mTableView.headerView = nil
-    self.mTableView.gridStyleMask = .dashedHorizontalGridLineMask // [.dashedHorizontalGridLineMask, .solidVerticalGridLineMask]
+    self.mTableView.gridStyleMask = .dashedHorizontalGridLineMask
     self.mTableView.controlSize = .small
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
 
@@ -120,22 +120,23 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
         let cell = NSTableCellView ()
         cell.addSubview (imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        cell.addConstraint (NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: imageView, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }else if tableColumn.identifier == RIGHT_COLUMN_IDENTIFIER {
         let text = NSTextField ()
         text.alignment = .left
         text.stringValue = self.mModelArray [inRow].message
+        text.toolTip = text.stringValue
         let cell = NSTableCellView ()
-        cell.addSubview(text)
+        cell.addSubview (text)
         text.drawsBackground = false
         text.isBordered = false
         text.translatesAutoresizingMaskIntoConstraints = false
-        cell.addConstraint (NSLayoutConstraint(item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint(item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
-        cell.addConstraint (NSLayoutConstraint(item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 0))
+        cell.addConstraint (NSLayoutConstraint (item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: 0))
         result = cell
       }
     }

@@ -34,6 +34,7 @@ let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Device document user interfaces is managed by auto layout"
+  "Symbol document file name is checked"
 ]
 let NEWS : [String] = [
 ]

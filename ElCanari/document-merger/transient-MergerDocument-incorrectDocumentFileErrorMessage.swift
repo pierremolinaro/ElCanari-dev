@@ -14,15 +14,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_incorrectDocumentFileErrorMessage (
-       _ self_documentFilePath : String
+       _ self_documentFileName : String
 ) -> String {
 //--- START OF USER ZONE 2
   var message = ""
-  if self_documentFilePath == "" {
+  if self_documentFileName == "" {
     message = "The document is unnamed."
   }else{
     var ok = true
-    let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
+    let baseName = self_documentFileName.lastPathComponent.deletingPathExtension
     for char in baseName.unicodeScalars {
       ok = (char >= "A") && (char <= "Z")
       if !ok {

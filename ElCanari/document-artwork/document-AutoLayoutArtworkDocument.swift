@@ -55,15 +55,15 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: documentFilePath
+  //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var documentFilePath : String? {
-    switch self.documentFilePath_property.selection {
+  final var documentFileName : String? {
+    switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -104,28 +104,15 @@ import Cocoa
 
 
   //····················································································································
-  //    Document file path
-  //····················································································································
-  // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
-
-  override final var fileModificationDate : Date? {
-    get {
-      return super.fileModificationDate
-    }
-    set{
-      super.fileModificationDate = newValue
-      self.documentFilePath_property.postEvent ()
-    }
-  }
-
+  //    displayName
   //····················································································································
 
-  final func computeTransient_documentFilePath () -> String {
-    var documentFilePath = ""
-    if let url = self.fileURL {
-      documentFilePath = url.path
+  override var displayName : String? {
+    get { return super.displayName }
+    set {
+      super.displayName = newValue
+      self.documentFileName_property.postEvent ()
     }
-    return documentFilePath
   }
 
   //····················································································································
@@ -746,6 +733,14 @@ import Cocoa
   //····················································································································
 
   override func ebBuildUserInterface () {
+    //--------------------------- Read documentFileName model
+    self.documentFileName_property.mReadModelFunction = { [weak self] in
+      if let r = self?.displayName {
+        return .single (r)
+      }else{
+        return .single ("")
+      }
+    }
   //--- Build window content view
     self.configureProperties ()
     let mainView = self.mDocumentMainView
@@ -780,17 +775,7 @@ import Cocoa
   }
 
   //····················································································································
-  //    check outlet connections
-  //····················································································································
-
-//  private func checkOutletConnections () {
-//    let start = Date ()
-//    if LOG_OPERATION_DURATION {
-//      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-//      Swift.print ("Check outlet connections \(durationMS) ms")
-//    }
-//  }
-
+  //    configureProperties
   //····················································································································
 
   final private func configureProperties () {

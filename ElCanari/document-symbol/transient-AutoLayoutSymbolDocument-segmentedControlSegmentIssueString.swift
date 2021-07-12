@@ -13,32 +13,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutSymbolDocument_statusMessage (
+func transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (
        _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
-  var s = "No error, no warning"
-  if self_issues.count > 0 {
-    let errorCount = self_issues.errorCount
-    let warningCount = self_issues.warningCount
-    if errorCount == 0 {
-      s = "No error"
-    }else if errorCount == 1 {
-      s = "1 error"
-    }else {
-      s = "\(errorCount) errors"
+   var errorCount = 0
+    var warningCount = 0
+    for issue in self_issues {
+      switch issue.kind {
+      case .error :
+        errorCount += 1
+      case .warning :
+        warningCount += 1
+      }
     }
-    s += ", "
-    if warningCount == 0 {
-      s += "no warning"
-    }else if warningCount == 1 {
-      s += "1 warning"
-    }else {
-      s += "\(warningCount) warnings"
+    var title = ""
+    if errorCount > 0 {
+      title = "\(errorCount)"
+    }else if warningCount > 0 {
+      title = "\(warningCount)"
     }
-    s += "."
-  }
-  return s
+    return title
 //--- END OF USER ZONE 2
 }
 

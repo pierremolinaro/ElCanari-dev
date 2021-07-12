@@ -169,15 +169,15 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: documentFilePath
+  //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var documentFilePath : String? {
-    switch self.documentFilePath_property.selection {
+  final var documentFileName : String? {
+    switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1047,18 +1047,18 @@ import Cocoa
     }
     set{
       super.fileModificationDate = newValue
-      self.documentFilePath_property.postEvent ()
+      self.documentFileName_property.postEvent ()
     }
   }
 
   //····················································································································
 
-  final func computeTransient_documentFilePath () -> String {
-    var documentFilePath = ""
+  final func computeTransient_documentFileName () -> String {
+    var documentFileName = ""
     if let url = self.fileURL {
-      documentFilePath = url.path
+      documentFileName = url.path
     }
-    return documentFilePath
+    return documentFileName
   }
 
   //····················································································································
@@ -1985,7 +1985,7 @@ import Cocoa
   //--- Atomic property: documentFilePathOk
     self.documentFilePathOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFilePath_property.selection) {
+        switch (unwSelf.documentFileName_property.selection) {
         case (.single (let v0)) :
           return .single (transient_ProjectDocument_documentFilePathOk (v0))
         case (.multiple) :
@@ -1997,7 +1997,7 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.addEBObserver (self.documentFilePathOk_property)
+    self.documentFileName_property.addEBObserver (self.documentFilePathOk_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -3022,12 +3022,12 @@ import Cocoa
     self.configureProperties ()
     self.installBindings ()
     self.setTargetsAndActions ()
-  //--------------------------- Read documentFilePath model
-    self.documentFilePath_property.mReadModelFunction = { [weak self] in
-      if let r = self?.computeTransient_documentFilePath () {
+  //--------------------------- Read documentFileName model
+    self.documentFileName_property.mReadModelFunction = { [weak self] in
+      if let r = self?.displayName {
         return .single (r)
       }else{
-        return .empty
+        return .single ("")
       }
     }
   }
@@ -3473,7 +3473,7 @@ import Cocoa
     // self.boardObjectsController.selectedArray_property.removeEBObserverOf_componentName (self.rastnetShape_property)
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
-    // self.documentFilePath_property.removeEBObserver (self.documentFilePathOk_property)
+    // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)

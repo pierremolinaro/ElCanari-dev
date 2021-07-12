@@ -157,8 +157,7 @@ xibdocument ProjectDocument root ProjectRoot {
   action removeFontAction ;
   transient Bool canRemoveSelectedFonts dependsFrom #projectFontController.selectedArray.all.canRemoveFont ;
   outlet EBButton mRemoveFontButton $run removeFontAction
-    $enabled #projectFontController.selectedArray.count > 0
-    & self.canRemoveSelectedFonts
+    $enabled #projectFontController.selectedArray.count > 0 & self.canRemoveSelectedFonts
   ;
 
   action resetFontVersionAction ;
@@ -350,8 +349,6 @@ xibdocument ProjectDocument root ProjectRoot {
     $zoom root.mSchematicZoom
     $backColor prefs.schematicBackColor
   ;
-
-//  outlet EBScrollView mSchematicsScrollView ;
 
 //--- Selected Wire In schematics
   outlet CanariViewWithKeyView mSchematicsWireInspectorView ;
@@ -1120,7 +1117,7 @@ xibdocument ProjectDocument root ProjectRoot {
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton $run generateProductFilesAction $enabled !root.mArtwork.none ;
   
-  transient Bool documentFilePathOk dependsFrom self.documentFilePath ;
+  transient Bool documentFilePathOk dependsFrom self.documentFileName ;
   outlet NSView mIncorrectFileNameMessageView $hidden self.documentFilePathOk ;
 
   outlet EBColorWell mPDFBoardBackgroundColorWell $color root.mPDFBoardBackgroundColor (sendContinously : no) ;

@@ -168,7 +168,7 @@ extension CustomizedProjectDocument {
     }
   //--- Generate
     var s = ""
-    s += "(pcb \"\(self.documentFilePath ?? "")\"\n"
+    s += "(pcb \"\(self.documentFileName ?? "")\"\n"
     s += "  (parser\n"
     s += "    (string_quote \")\n"
     s += "    (space_in_quoted_tokens on)\n"

@@ -21,15 +21,15 @@ import Cocoa
   var mCharacterSelection = SelectionController_FontDocument_mCharacterSelection ()
 
   //····················································································································
-  //   Transient property: documentFilePath
+  //   Transient property: documentFileName
   //····················································································································
 
-  final let documentFilePath_property = EBTransientProperty_String ()
+  final let documentFileName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var documentFilePath : String? {
-    switch self.documentFilePath_property.selection {
+  final var documentFileName : String? {
+    switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -188,18 +188,18 @@ import Cocoa
     }
     set{
       super.fileModificationDate = newValue
-      self.documentFilePath_property.postEvent ()
+      self.documentFileName_property.postEvent ()
     }
   }
 
   //····················································································································
 
-  final func computeTransient_documentFilePath () -> String {
-    var documentFilePath = ""
+  final func computeTransient_documentFileName () -> String {
+    var documentFileName = ""
     if let url = self.fileURL {
-      documentFilePath = url.path
+      documentFileName = url.path
     }
-    return documentFilePath
+    return documentFileName
   }
 
   //····················································································································
@@ -511,12 +511,12 @@ import Cocoa
     self.configureProperties ()
     self.installBindings ()
     self.setTargetsAndActions ()
-  //--------------------------- Read documentFilePath model
-    self.documentFilePath_property.mReadModelFunction = { [weak self] in
-      if let r = self?.computeTransient_documentFilePath () {
+  //--------------------------- Read documentFileName model
+    self.documentFileName_property.mReadModelFunction = { [weak self] in
+      if let r = self?.displayName {
         return .single (r)
       }else{
-        return .empty
+        return .single ("")
       }
     }
   }

@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_AutoLayoutSymbolDocument_metadataStatus (
-       _ root_issues : CanariIssueArray
+       _ self_issues : CanariIssueArray
 ) -> MetadataStatus {
 //--- START OF USER ZONE 2
-  if root_issues.count == 0 {
+  if self_issues.count == 0 {
     return .ok
-  }else if root_issues.errorCount != 0 {
+  }else if self_issues.errorCount != 0 {
     return .warning
   }else{
     return .error

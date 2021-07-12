@@ -315,13 +315,13 @@ xibdocument MergerDocument root MergerRoot {
 
   outlet EBTextField mNoArtworkMessage $hidden !root.mArtwork.none ;
 
-  transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFilePath ;
+  transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFileName ;
   outlet EBTextObserverField mIncorrectDocumentNameTextField $valueObserver self.incorrectDocumentFileErrorMessage ;
 
   outlet EBTextObserverField mArtwortNameTextField $valueObserver root.mArtworkName ;
 
-  transient Bool documentFileNameOk dependsFrom self.documentFilePath ;
-  transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
+  transient Bool documentFileNameOk dependsFrom self.documentFileName ;
+  transient Bool documentIsUnnamed dependsFrom self.documentFileName ;
   outlet NSView mDangerView $hidden self.documentFileNameOk ;
 
   action generateProductFilesAction ;

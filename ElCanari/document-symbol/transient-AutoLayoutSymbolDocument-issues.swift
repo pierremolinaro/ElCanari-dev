@@ -13,27 +13,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolRoot_segmentedControlSegmentIssueImage (
-       _ self_issues : CanariIssueArray
-) -> NSImage {
+func transient_AutoLayoutSymbolDocument_issues (
+       _ root_issues : CanariIssueArray,        
+       _ self_documentFileName : String
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-    var errorCount = 0
-    var warningCount = 0
-    for issue in self_issues {
-      switch issue.kind {
-      case .error :
-        errorCount += 1
-      case .warning :
-        warningCount += 1
-      }
-    }
-    var image = NSImage (named: okStatusImageName)!
-    if errorCount > 0 {
-      image = NSImage (named: errorStatusImageName)!
-    }else if warningCount > 0 {
-      image = NSImage (named: warningStatusImageName)!
-    }
-    return image//--- END OF USER ZONE 2
+       var result = CanariIssueArray ()
+       if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
+         result.append (issue)
+       }
+       result += root_issues
+       return result
+//--- END OF USER ZONE 2
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

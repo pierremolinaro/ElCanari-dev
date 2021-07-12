@@ -27,32 +27,15 @@ import Cocoa
   var mSymbolPinSelectionController = SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController ()
 
   //····················································································································
-  //   Transient property: statusMessage
+  //   Transient property: documentFileName
   //····················································································································
 
-  final let statusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var statusMessage : String? {
-    switch self.statusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: metadataStatus
-  //····················································································································
-
-  final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
+  final let documentFileName_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  final var metadataStatus : MetadataStatus? {
-    switch self.metadataStatus_property.selection {
+  final var documentFileName : String? {
+    switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -180,15 +163,15 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: documentFilePath
+  //   Transient property: issues
   //····················································································································
 
-  final let documentFilePath_property = EBTransientProperty_String ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  final var documentFilePath : String? {
-    switch self.documentFilePath_property.selection {
+  final var issues : CanariIssueArray? {
+    switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -206,6 +189,91 @@ import Cocoa
 
   final var statusImage : NSImage? {
     switch self.statusImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: statusMessage
+  //····················································································································
+
+  final let statusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var statusMessage : String? {
+    switch self.statusMessage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: metadataStatus
+  //····················································································································
+
+  final let metadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  final var metadataStatus : MetadataStatus? {
+    switch self.metadataStatus_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: noIssue
+  //····················································································································
+
+  final let noIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var noIssue : Bool? {
+    switch self.noIssue_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueImage
+  //····················································································································
+
+  final let segmentedControlSegmentIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueImage : NSImage? {
+    switch self.segmentedControlSegmentIssueImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlSegmentIssueString
+  //····················································································································
+
+  final let segmentedControlSegmentIssueString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var segmentedControlSegmentIssueString : String? {
+    switch self.segmentedControlSegmentIssueString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -232,28 +300,15 @@ import Cocoa
 
 
   //····················································································································
-  //    Document file path
-  //····················································································································
-  // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
-
-  override final var fileModificationDate : Date? {
-    get {
-      return super.fileModificationDate
-    }
-    set{
-      super.fileModificationDate = newValue
-      self.documentFilePath_property.postEvent ()
-    }
-  }
-
+  //    displayName
   //····················································································································
 
-  final func computeTransient_documentFilePath () -> String {
-    var documentFilePath = ""
-    if let url = self.fileURL {
-      documentFilePath = url.path
+  override var displayName : String? {
+    get { return super.displayName }
+    set {
+      super.displayName = newValue
+      self.documentFileName_property.postEvent ()
     }
-    return documentFilePath
   }
 
   //····················································································································
@@ -459,8 +514,8 @@ import Cocoa
           .addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: self.mDisplayInspectorView)
           .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
-          .bind_segmentImage (self.rootObject.segmentedControlSegmentIssueImage_property, segmentIndex:3)
-          .bind_segmentTitle (self.rootObject.segmentedControlSegmentIssueString_property, segmentIndex:3)
+          .bind_segmentImage (self.segmentedControlSegmentIssueImage_property, segmentIndex:3)
+          .bind_segmentTitle (self.segmentedControlSegmentIssueString_property, segmentIndex:3)
         self.mSymbolInspectorSegmentedControl = view_0_2_0 // Outlet
         self.configure_symbolPageSegmentedControl (view_0_2_0) // Configurator
         view_0_2.appendView (view_0_2_0)
@@ -639,7 +694,7 @@ import Cocoa
     }
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariIssueTableView ()
-      .bind_issues (self.rootObject.issues_property)
+      .bind_issues (self.issues_property)
     self.mSymbolIssueTableView = view_1 // Outlet
     vStackView.appendView (view_1)
     return vStackView
@@ -1088,6 +1143,14 @@ import Cocoa
   //····················································································································
 
   override func ebBuildUserInterface () {
+    //--------------------------- Read documentFileName model
+    self.documentFileName_property.mReadModelFunction = { [weak self] in
+      if let r = self?.displayName {
+        return .single (r)
+      }else{
+        return .single ("")
+      }
+    }
   //--- Build window content view
     self.configureProperties ()
     let mainView = self.mDocumentMainView
@@ -1123,17 +1186,7 @@ import Cocoa
   }
 
   //····················································································································
-  //    check outlet connections
-  //····················································································································
-
-//  private func checkOutletConnections () {
-//    let start = Date ()
-//    if LOG_OPERATION_DURATION {
-//      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-//      Swift.print ("Check outlet connections \(durationMS) ms")
-//    }
-//  }
-
+  //    configureProperties
   //····················································································································
 
   final private func configureProperties () {
@@ -1157,42 +1210,6 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
-  //--- Atomic property: statusMessage
-    self.statusMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutSymbolDocument_statusMessage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-  //--- Atomic property: metadataStatus
-    self.metadataStatus_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
-        case (.single (let v0)) :
-          return .single (transient_AutoLayoutSymbolDocument_metadataStatus (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1309,6 +1326,23 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.issues_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_AutoLayoutSymbolDocument_issues (v0, v1))
+        case (.multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.issues_property)
+    self.documentFileName_property.addEBObserver (self.issues_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1316,7 +1350,7 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        switch (unwSelf.issues_property.selection) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusImage (v0))
         case (.multiple) :
@@ -1328,7 +1362,107 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
+    self.issues_property.addEBObserver (self.statusImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: statusMessage
+    self.statusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_statusMessage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.statusMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: metadataStatus
+    self.metadataStatus_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_metadataStatus (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.metadataStatus_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: noIssue
+    self.noIssue_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_noIssue (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.noIssue_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: segmentedControlSegmentIssueImage
+    self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: segmentedControlSegmentIssueString
+    self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.issues_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -1395,8 +1529,6 @@ import Cocoa
     self.mSymbolTextSelectionController.unbind_selection ()
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.unbind_selection ()
-    // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
     // preferences_symbolColor_property.removeEBObserver (self.addSegmentButtonImage_property)
     // preferences_symbolColor_property.removeEBObserver (self.addBezierButtonImage_property)
     // preferences_symbolColor_property.removeEBObserver (self.addOvalButtonImage_property)
@@ -1404,7 +1536,14 @@ import Cocoa
     // preferences_symbolColor_property.removeEBObserver (self.addSolidRectButtonImage_property)
     // preferences_symbolColor_property.removeEBObserver (self.addTextButtonImage_property)
     // preferences_symbolColor_property.removeEBObserver (self.addPinButtonImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
+    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
+    // self.documentFileName_property.removeEBObserver (self.issues_property)
+    // self.issues_property.removeEBObserver (self.statusImage_property)
+    // self.issues_property.removeEBObserver (self.statusMessage_property)
+    // self.issues_property.removeEBObserver (self.metadataStatus_property)
+    // self.issues_property.removeEBObserver (self.noIssue_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
+    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets
