@@ -46,10 +46,10 @@ func libraryDocumentFileNameIssue (_ inDocumentFilePath : String) -> CanariIssue
         ok = (char >= "0") && (char <= "9")
       }
       if !ok {
-        ok = (char == "-")
+        ok = (char == "-") || (char == "_")
       }
       if !ok {
-        return CanariIssue (kind: .error, message: "File name should be a sequence of lowercase ASCII letters, digits or '-'")
+        return CanariIssue (kind: .error, message: "File name should be a sequence of lowercase ASCII letters, digits, '-' or '_'")
       }
     }
   }

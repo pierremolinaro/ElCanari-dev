@@ -229,15 +229,15 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
   logView?.appendMessageString ("\nChecking devices library...\n")
   for path in existingLibraryPathArray () {
     let deviceLibraryPath = deviceLibraryPathForPath (path)
-    logView?.appendMessageString (String (format:"  Handling path %@...\n", deviceLibraryPath))
+    logView?.appendMessageString ("  Directory \(deviceLibraryPath)...\n")
     try performDeviceLibraryEnumerationAtPath (deviceLibraryPath, deviceDict:&deviceDict, logView:logView)
   }
 //--- Display duplicate device count
   let foundDevices = deviceDict.count
   if foundDevices <= 1 {
-    logView?.appendSuccessString (String (format:"  Found %lu part\n", foundDevices))
+    logView?.appendSuccessString ("  Found \(foundDevices) part\n")
   }else{
-    logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundDevices))
+    logView?.appendSuccessString ("  Found \(foundDevices) parts\n")
   }
 //--- Display duplicate entries and invalid entries
   for (deviceName, entry) in deviceDict {
@@ -245,24 +245,24 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
     if entry.mPathArray.count > 1 {
-      var errorString = String (format:"  Error; several files for '%@' device:\n", deviceName)
+      var errorString = "  Error; several files for '\(deviceName)' device:\n"
       for path in entry.mPathArray {
-        errorString += String (format:"    - %@\n", path)
+        errorString += "    - \(path)\n"
       }
       logView?.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString (String (format:"  Error; '%@' device has unknown status\n", deviceName))
+      logView?.appendErrorString ("  Error; '\(deviceName)' device has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString (String (format:"  Error; '%@' device has an invalid name\n", deviceName))
+      logView?.appendErrorString ("  Error; '\(deviceName)' device has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString (String (format:"  Error; '%@' device contains error(s)\n", deviceName))
+      logView?.appendErrorString ("  Error; '\(deviceName)' device contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString (String (format:"  Error; '%@' device contains warning(s)\n", deviceName))
+      logView?.appendErrorString ("  Error; '\(deviceName)' device contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
     //--- Check imported symbols
@@ -412,39 +412,39 @@ private func checkSymbolLibrary (_ logView : NSTextView?,
   logView?.appendMessageString ("Checking symbols library...\n")
   for path in existingLibraryPathArray () {
     let symbolLibraryPath = symbolLibraryPathForPath (path)
-    logView?.appendMessageString (String (format:"  Handling path %@...\n", symbolLibraryPath))
+    logView?.appendMessageString ("  Directory \(symbolLibraryPath)...\n")
     try performSymbolLibraryEnumerationAtPath (symbolLibraryPath, symbolDict:&symbolDict, logView:logView)
   }
 //--- Display duplicate symbol count
   let foundSymbols = symbolDict.count
   if foundSymbols <= 1 {
-    logView?.appendSuccessString (String (format:"  Found %lu part\n", foundSymbols))
+    logView?.appendSuccessString ("  Found \(foundSymbols) part\n")
   }else{
-    logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundSymbols))
+    logView?.appendSuccessString ("  Found \(foundSymbols) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (symbolName, entry) in symbolDict {
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
     if entry.mPathArray.count > 1 {
-      var errorString = String (format:"  Error; several files for '%@' symbol:\n", symbolName)
+      var errorString = "  Error; several files for '\(symbolName)' symbol:\n"
       for path in entry.mPathArray {
-        errorString += String (format:"    - %@\n", path)
+        errorString += "    - \(path)\n"
       }
       logView?.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString (String (format:"  Error; '%@' symbol has unknown status\n", symbolName))
+      logView?.appendErrorString ("  Error; '\(symbolName)' symbol has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString (String (format:"  Error; '%@' symbol has an invalid name\n", symbolName))
+      logView?.appendErrorString ("  Error; '\(symbolName)' symbol has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString (String (format:"  Error; '%@' symbol contains error(s)\n", symbolName))
+      logView?.appendErrorString ("  Error; '\(symbolName)' symbol contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString (String (format:"  Error; '%@' symbol contains warning(s)\n", symbolName))
+      logView?.appendErrorString ("  Error; '\(symbolName)' symbol contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -543,39 +543,39 @@ private func checkPackageLibrary (_ logView : NSTextView?,
   logView?.appendMessageString ("\nChecking packages library...\n")
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
-    logView?.appendMessageString (String (format:"  Handling path %@...\n", packageLibraryPath))
-    try performPackageLibraryEnumerationAtPath (packageLibraryPath, packageDict:&packageDict, logView:logView)
+    logView?.appendMessageString ("  Directory \(packageLibraryPath)...\n")
+    try performPackageLibraryEnumerationAtPath (packageLibraryPath, packageDict: &packageDict, logView: logView)
   }
 //--- Display duplicate package count
   let foundPackages = packageDict.count
   if foundPackages <= 1 {
-    logView?.appendSuccessString (String (format:"  Found %lu part\n", foundPackages))
+    logView?.appendSuccessString ("  Found \(foundPackages) part\n")
   }else{
-    logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundPackages))
+    logView?.appendSuccessString ("  Found \(foundPackages) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (packageName, entry) in packageDict {
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
     if entry.mPathArray.count > 1 {
-      var errorString = String (format:"  Error; several files for '%@' package:\n", packageName)
+      var errorString = "  Error; several files for '\(packageName)' package:\n"
       for path in entry.mPathArray {
-        errorString += String (format:"    - %@\n", path)
+        errorString += "    - \(path)\n"
       }
       logView?.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString (String (format:"  Error; '%@' package has unknown status\n", packageName))
+      logView?.appendErrorString ("  Error; '\(packageName)' package has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString (String (format:"  Error; '%@' package has an invalid name\n", packageName))
+      logView?.appendErrorString ("  Error; '\(packageName)' package has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString (String (format:"  Error; '%@' package contains error(s)\n", packageName))
+      logView?.appendErrorString ("  Error; '\(packageName)' package contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString (String (format:"  Error; '%@' package contains warning(s)\n", packageName))
+      logView?.appendErrorString ("  Error; '\(packageName)' package contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -675,39 +675,39 @@ private func checkFontLibrary (_ logView : NSTextView?,
   logView?.appendMessageString ("\nChecking font library...\n")
   for path in existingLibraryPathArray () {
     let fontLibraryPath = fontLibraryPathForPath (path)
-    logView?.appendMessageString (String (format:"  Handling path %@...\n", fontLibraryPath))
-    try performFontLibraryEnumerationAtPath (fontLibraryPath, fontDict:&fontDict, logView:logView)
+    logView?.appendMessageString ("  Directory \(fontLibraryPath)...\n")
+    try performFontLibraryEnumerationAtPath (fontLibraryPath, fontDict: &fontDict, logView: logView)
   }
 //--- Display duplicate font count
   let foundFonts = fontDict.count
   if foundFonts <= 1 {
-    logView?.appendSuccessString (String (format:"  Found %lu part\n", foundFonts))
+    logView?.appendSuccessString ("  Found \(foundFonts) part\n")
   }else{
-    logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundFonts))
+    logView?.appendSuccessString ("  Found \(foundFonts) parts\n")
   }
 //--- Display duplicate entries for font, invalid entries
   for (fontName, entry) in fontDict {
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
     if entry.mPathArray.count > 1 {
-      var errorString = String (format:"  Error; several files for '%@' font:\n", fontName)
+      var errorString = "  Error; several files for '\(fontName)' font:\n"
       for path in entry.mPathArray {
-        errorString += String (format:"    - %@\n", path)
+        errorString += "    - \(path)\n"
       }
       logView?.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString (String (format:"  Error; '%@' font has unknown status\n", fontName))
+      logView?.appendErrorString ("  Error; '\(fontName)' font has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString (String (format:"  Error; '%@' font has an invalid name\n", fontName))
+      logView?.appendErrorString ("  Error; '\(fontName)' font has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString (String (format:"  Error; '%@' font contains error(s)\n", fontName))
+      logView?.appendErrorString ("  Error; '\(fontName)' font contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString (String (format:"  Error; '%@' font contains warning(s)\n", fontName))
+      logView?.appendErrorString ("  Error; '\(fontName)' font contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break
@@ -796,39 +796,39 @@ private func checkArtworkLibrary (_ logView : NSTextView?,
   logView?.appendMessageString ("\nChecking artworks library...\n")
   for path in existingLibraryPathArray () {
     let artworkLibraryPath = artworkLibraryPathForPath (path)
-    logView?.appendMessageString (String (format:"  Handling path %@...\n", artworkLibraryPath))
+    logView?.appendMessageString ("  Directory \(artworkLibraryPath)...\n")
     try performArtworkLibraryEnumerationAtPath (artworkLibraryPath, artworkDict:&artworkDict, logView:logView)
   }
 //--- Display duplicate package count
   let foundPackages = artworkDict.count
   if foundPackages <= 1 {
-    logView?.appendSuccessString (String (format:"  Found %lu part\n", foundPackages))
+    logView?.appendSuccessString ("  Found \(foundPackages) part\n")
   }else{
-    logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundPackages))
+    logView?.appendSuccessString ("  Found \(foundPackages) parts\n")
   }
 //--- Display duplicate entries for symbols, invalid entries
   for (artworkName, entry) in artworkDict {
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
     if entry.mPathArray.count > 1 {
-      var errorString = String (format:"  Error; several files for '%@' artwork:\n", artworkName)
+      var errorString = "  Error; several files for '\(artworkName)' artwork:\n"
       for path in entry.mPathArray {
-        errorString += String (format:"    - %@\n", path)
+        errorString += "    - \(path)\n"
       }
       logView?.appendErrorString (errorString)
       errorCount += 1
     }
     case .pmPartHasUnknownStatus :
-      logView?.appendErrorString (String (format:"  Error; '%@' artwork has unknown status\n", artworkName))
+      logView?.appendErrorString ("  Error; '\(artworkName)' artwork has unknown status\n")
       errorCount += 1
     case .pmPartHasInvalidName :
-      logView?.appendErrorString (String (format:"  Error; '%@' artwork has an invalid name\n", artworkName))
+      logView?.appendErrorString ("  Error; '\(artworkName)' artwork has an invalid name\n")
       errorCount += 1
     case .pmPartHasError :
-      logView?.appendErrorString (String (format:"  Error; '%@' artwork contains error(s)\n", artworkName))
+      logView?.appendErrorString ("  Error; '\(artworkName)' artwork contains error(s)\n")
       errorCount += 1
     case .pmPartHasWarning :
-      logView?.appendErrorString (String (format:"  Error; '%@' artwork contains warning(s)\n", artworkName))
+      logView?.appendErrorString ("  Error; '\(artworkName)' artwork contains warning(s)\n")
       errorCount += 1
     case .pmPartIsValid :
       break

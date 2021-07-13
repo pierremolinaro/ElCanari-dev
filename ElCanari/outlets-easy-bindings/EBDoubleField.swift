@@ -44,7 +44,7 @@ final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
           _ = control (
             self,
             didFailToFormatString: inputString,
-            errorDescription: String (format:"The value “%@” is invalid.", inputString)
+            errorDescription: "The value “\(inputString)” is invalid."
           )
         }else if let unwAction = self.action {
           NSApp.sendAction (unwAction, to: self.target, from: self)
@@ -57,9 +57,9 @@ final class EBDoubleField : NSTextField, EBUserClassNameProtocol, NSTextFieldDel
   //    NSTextFieldDelegate delegate function
   //····················································································································
 
-  func control (_ control: NSControl,
-                didFailToFormatString string: String,
-                errorDescription error: String?) -> Bool {
+  func control (_ control : NSControl,
+                didFailToFormatString string : String,
+                errorDescription error : String?) -> Bool {
     let alert = NSAlert ()
     if let window = control.window {
       alert.messageText = error!
