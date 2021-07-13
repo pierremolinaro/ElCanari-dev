@@ -56,7 +56,7 @@ func userLibraryPath () -> String {
                                                true) ;
   // NSLog (@"%@", a) ;
   if a.count != 1 {
-    presentErrorWindow (#file, #line, "\"(a.count) entries for NSSearchPathForDirectoriesInDomains")
+    presentErrorWindow (#file, #line, "\(a.count) entries for NSSearchPathForDirectoriesInDomains")
   }
   return a [0] + "/ElCanariLibrary"
 }
