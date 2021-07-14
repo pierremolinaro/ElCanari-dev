@@ -62,7 +62,7 @@ class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
 
   private var mTransientEventExplorerWindow : NSWindow? = nil
 
-  var mTransientEventExplorerTextView : AutoLayoutTextObserverView? = nil
+  fileprivate var mTransientEventExplorerTextView : AutoLayoutTextObserverView? = nil
 
   //····················································································································
 
@@ -146,6 +146,20 @@ func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
   item.keyEquivalentModifierMask = [.command, .control]
   item.target = NSApp
   inMenu.addItem (item)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func appendMessageString (_ message : String) {
+  let theApp = NSApp as! EBApplication
+  theApp.mTransientEventExplorerTextView?.appendMessageString (message)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func appendMessageString (_ message : String, color : NSColor) {
+  let theApp = NSApp as! EBApplication
+  theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

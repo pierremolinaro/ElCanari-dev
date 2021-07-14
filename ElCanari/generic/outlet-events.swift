@@ -129,17 +129,3 @@ func appendToTransientEventLog (_ message : String) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendMessageString (_ message : String) {
-  let theApp = NSApp as! EBApplication
-  theApp.mTransientEventExplorerTextView?.appendMessageString (message)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendMessageString (_ message : String, color : NSColor) {
-  let theApp = NSApp as! EBApplication
-  theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
