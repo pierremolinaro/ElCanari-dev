@@ -1649,8 +1649,19 @@ final class PackageRoot : EBGraphicManagedObject,
     )
   //--- Atomic proxy property: mModelImageFirstPointX
     self.mModelImageFirstPointX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageDoublePoint {
-        return .single (object.mFirstX)
+      if let object = self?.mModelImageDoublePoint_property {
+        switch object.mFirstX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -1664,8 +1675,19 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImageDoublePoint_property.mFirstX_property.addEBObserver (self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageDoublePoint {
-        return .single (object.mFirstY)
+      if let object = self?.mModelImageDoublePoint_property {
+        switch object.mFirstY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -1679,8 +1701,19 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImageDoublePoint_property.mFirstY_property.addEBObserver (self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageDoublePoint {
-        return .single (object.mSecondDx)
+      if let object = self?.mModelImageDoublePoint_property {
+        switch object.mSecondDx_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -1694,8 +1727,19 @@ final class PackageRoot : EBGraphicManagedObject,
     self.mModelImageDoublePoint_property.mSecondDx_property.addEBObserver (self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mModelImageDoublePoint {
-        return .single (object.mSecondDy)
+      if let object = self?.mModelImageDoublePoint_property {
+        switch object.mSecondDy_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }

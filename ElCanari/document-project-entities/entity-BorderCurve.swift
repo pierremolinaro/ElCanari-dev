@@ -481,8 +481,19 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mPrevious_property.addEBObserver (self.mPrevious_none)
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mNext {
-        return .single (object.mX)
+      if let object = self?.mNext_property {
+        switch object.mX_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -496,8 +507,19 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mNext_property.mX_property.addEBObserver (self.mNextX_property)
   //--- Atomic proxy property: mNextY
     self.mNextY_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mNext {
-        return .single (object.mY)
+      if let object = self?.mNext_property {
+        switch object.mY_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }

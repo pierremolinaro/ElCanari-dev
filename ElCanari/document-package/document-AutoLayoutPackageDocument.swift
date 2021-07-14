@@ -1443,6 +1443,7 @@ import Cocoa
     let view = AutoLayoutPullDownButton (title: "Action", small: true)
       .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
       .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), expression: .not (.id (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Copy Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.copyModelImageAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
       .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
       .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), expression: .id (self.rootObject.hasModelImage_property)))
     return view

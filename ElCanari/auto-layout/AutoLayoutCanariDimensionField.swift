@@ -40,7 +40,7 @@ final class AutoLayoutCanariDimensionField : NSTextField, EBUserClassNameProtoco
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: 56.0, height: 19.0)
+    return NSSize (width: 64.0, height: 19.0)
   }
 
   //····················································································································
@@ -112,7 +112,7 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadO
     )
   //--- Target
     self.mOutlet.target = self
-    self.mOutlet.action = #selector(Controller_AutoLayoutCanariDimensionField_dimensionAndUnit.action(_:))
+    self.mOutlet.action = #selector (Self.textFieldAction(_:))
   //--- Number formatter
     let numberFormatter = NumberFormatter ()
     numberFormatter.formatterBehavior = .behavior10_4
@@ -134,16 +134,16 @@ final class Controller_AutoLayoutCanariDimensionField_dimensionAndUnit : EBReadO
 
   //····················································································································
 
-  @objc func action (_ sender : AutoLayoutCanariDimensionField) {
+  @objc func textFieldAction (_ inSender : AutoLayoutCanariDimensionField) {
     switch self.mUnit.selection {
     case .empty, .multiple :
       break
     case .single (let unit) :
       if let formatter = self.mOutlet.formatter as? NumberFormatter, let outletValueNumber = formatter.number (from: self.mOutlet.stringValue) {
         let value = Int ((outletValueNumber.doubleValue * Double (unit)).rounded ())
-        _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
+        _ = self.mDimension.validateAndSetProp (value, windowForSheet: inSender.window)
       }else{
-        __NSBeep ()
+        NSSound.beep ()
       }
     }
   }

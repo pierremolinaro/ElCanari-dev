@@ -535,8 +535,19 @@ final class ComponentSymbolInProject : SchematicObject,
     )
   //--- Atomic proxy property: componentValueProxy
     self.componentValueProxy_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mComponent {
-        return .single (object.mComponentValue)
+      if let object = self?.mComponent_property {
+        switch object.mComponentValue_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }

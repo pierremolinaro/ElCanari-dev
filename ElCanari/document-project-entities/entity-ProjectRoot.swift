@@ -3579,8 +3579,19 @@ final class ProjectRoot : EBManagedObject,
     self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minPPTPTTTWdisplayUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minPPTPTTTWdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3594,8 +3605,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property)
   //--- Atomic proxy property: minPPTPTTTW
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minPPTPTTTW)
+      if let object = self?.mArtwork_property {
+        switch object.minPPTPTTTW_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3609,8 +3631,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property)
   //--- Atomic proxy property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForOARdisplayUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForOARdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3624,8 +3657,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property)
   //--- Atomic proxy property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForOARinEBUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForOARinEBUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3639,8 +3683,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property)
   //--- Atomic proxy property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForPHDdisplayUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForPHDdisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3654,8 +3709,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property)
   //--- Atomic proxy property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForPHDinEBUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForPHDinEBUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3669,8 +3735,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property)
   //--- Atomic proxy property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForBoardLimitWidth)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForBoardLimitWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3684,8 +3761,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property)
   //--- Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.minValueForBoardLimitWidthDisplayUnit)
+      if let object = self?.mArtwork_property {
+        switch object.minValueForBoardLimitWidthDisplayUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3699,8 +3787,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property)
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.drillDataFileExtension)
+      if let object = self?.mArtwork_property {
+        switch object.drillDataFileExtension_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3714,8 +3813,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
   //--- Atomic proxy property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mArtwork {
-        return .single (object.comments)
+      if let object = self?.mArtwork_property {
+        switch object.comments_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }
@@ -3729,8 +3839,19 @@ final class ProjectRoot : EBManagedObject,
     self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
-      if let object = self?.mSelectedSheet {
-        return .single (object.mSheetTitle)
+      if let object = self?.mSelectedSheet_property {
+        switch object.mSheetTitle_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
       }else{
         return .empty
       }

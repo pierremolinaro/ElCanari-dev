@@ -35,18 +35,6 @@ extension NSView {
   //  $hidden binding
   //····················································································································
 
-//  final func bind_hidden (observedObjects inObjects : [EBObservableObjectProtocol],
-//                          computeFunction inFunction : @escaping () -> EBSelection <Bool>) -> Self {
-//    let controller = EBReadOnlyPropertyController (
-//      observedObjects: inObjects,
-//      callBack: { [weak self] in self?.updateHiddenState (from: inFunction ()) }
-//    )
-//    gHiddenBindingDictionary [self] = controller
-//    return self
-//  }
-
- //····················································································································
-
   final func bind_hidden (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
