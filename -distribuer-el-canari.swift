@@ -32,6 +32,7 @@ let VERSION_CANARI = "1.4.2"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Fixed Model Image Management in Package Document"
 ]
 let CHANGES : [String] = [
   "Device document user interfaces is managed by auto layout"
