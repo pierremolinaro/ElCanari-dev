@@ -42,6 +42,10 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
   @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
 
+//  @IBOutlet var mTransientEventExplorerWindow : NSWindow? = nil
+//
+//  @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil
+
   //····················································································································
   //  Theses outlets are used in ApplicationDelegate-maintenance.swift
   //····················································································································

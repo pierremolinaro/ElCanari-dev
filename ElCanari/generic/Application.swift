@@ -58,19 +58,45 @@ class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
 
 @objc(EBApplication) final class EBApplication : NSApplication {
 
-  @IBOutlet var mTransientEventExplorerWindow : NSWindow? = nil
-  @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil
+  //····················································································································
+
+  private var mTransientEventExplorerWindow : NSWindow? = nil
+
+  var mTransientEventExplorerTextView : AutoLayoutTextObserverView? = nil
 
   //····················································································································
 
   @objc func showTransientEventLogWindow (_ inSender : Any?) {
+    if self.mTransientEventExplorerWindow == nil {
+      self.mTransientEventExplorerWindow = NSWindow (
+        contentRect: NSRect (x: 0.0, y: 0.0, width: 600.0, height: 400.0),
+        styleMask: [.titled, .closable, .resizable, .miniaturizable],
+        backing: .buffered,
+        defer: true
+      )
+      self.mTransientEventExplorerWindow?.title = "Transient Event Log"
+      self.mTransientEventExplorerWindow?.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+  //    self.mTransientEventExplorerWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
+      let mainVStack = AutoLayoutVerticalStackView ()
+      let hStack = AutoLayoutHorizontalStackView ()
+      let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", small: false)
+        .bind_run (target: self, selector: #selector (Self.clearTransientEventLogWindow (_:)))
+      hStack.appendView (clearTransientEventLogButton)
+      hStack.appendFlexibleSpace ()
+      mainVStack.appendView (hStack)
+      let textView = AutoLayoutTextObserverView ()
+      self.mTransientEventExplorerTextView = textView
+      mainVStack.appendView (textView)
+   //--- Assign main view to window
+      self.mTransientEventExplorerWindow?.contentView = mainVStack
+    }
     self.mTransientEventExplorerTextView?.string = ""
     self.mTransientEventExplorerWindow?.makeKeyAndOrderFront (inSender)
   }
 
   //····················································································································
 
-  @IBAction func clearTransientEventLogWindow (_ sender : Any?) {
+  @objc private func clearTransientEventLogWindow (_ sender : Any?) {
     self.mTransientEventExplorerTextView?.string = ""
   }
 
