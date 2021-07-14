@@ -306,7 +306,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         yBy: canariUnitToCocoa (-self.rootObject.mModelImageFirstPointYOnLock)
       )
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (af)
-      self.mPackageObjectsController.setBackgroundImageAffineTransform (af)
+      self.mPackageObjectsController.setForegroundImageAffineTransform (af)
     }
   }
 

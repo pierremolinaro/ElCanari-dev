@@ -1465,6 +1465,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_16 () -> NSView {
     let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (small: true)
+      .expandableWidth ()
       .bind_setter6 (self.rootObject.mDimensionUnitFirstModelPointX_property, self.rootObject.mDimensionUnitFirstModelPointY_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, self.rootObject.mModelImageSecondPointXUnit_property, self.rootObject.mModelImageSecondPointYUnit_property)
       .bind_hidden (.not (.id (self.rootObject.hasModelImage_property)))
     return view

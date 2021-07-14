@@ -229,6 +229,7 @@ extern autolayout class OneStringArrayTableView {
 }
 
 extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $hidden {
+  func expandableWidth ()
   $setter4 property Int, property Int, property Int, property Int
   $setter5 property Int, property Int, property Int, property Int, property Int
   $setter6 property Int, property Int, property Int, property Int, property Int, property Int

@@ -6,26 +6,6 @@
 autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
-//   TOOL BAR
-//----------------------------------------------------------------------------------------------------------------------
-
-//  toolbarItem "Page" : SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no) {
-//    addPage (title: "Model Image", pageView: stackView mModelImagePage)
-//    addPage (title: "Package", pageView: stackView mPackagePage)
-//    addPage (title: "Program", pageView: stackView mProgramPage)
-//    addPage (title: "Infos", pageView: stackView mInfosPage)
-//    $selectedPage root.selectedPageIndex
-//  }
-//
-//  toolbarItem "Signature" : SignatureField { $signature signature }
-//  
-//  toolbarItem "Version" : VersionField { $version version $versionShouldChange versionShouldChange }
-//
-//  toolbarItem space ;
-// 
-//  toolbarItem "Status" : ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage }
-
-//----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
  
@@ -143,10 +123,12 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           },
           right: Label (bold: no, small: yes) { $title root.modelImageSizeString }
         )
-        add (single: CanariDimensionUnitSetterPullDownButton (small: yes) { $hidden !root.hasModelImage $setter6
-           root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
-           root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
-           root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
+        add (single: CanariDimensionUnitSetterPullDownButton (small: yes) {
+           expandableWidth ()
+           $hidden !root.hasModelImage
+           $setter6 root.mDimensionUnitFirstModelPointX, root.mDimensionUnitFirstModelPointY,
+             root.mDimensionUnitSecondModelPointDx, root.mDimensionUnitSecondModelPointDy,
+             root.mModelImageSecondPointXUnit, root.mModelImageSecondPointYUnit
           }
         )
         addFirstBaseLineAligned (

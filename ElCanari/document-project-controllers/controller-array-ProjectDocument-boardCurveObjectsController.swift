@@ -359,6 +359,14 @@ final class Controller_ProjectDocument_boardCurveObjectsController : ReadOnlyAbs
 
   //····················································································································
 
+  final func setForegroundImageAffineTransform (_ inAffineTransform : NSAffineTransform) {
+     for ebView in self.mEBGraphicViews {
+       ebView.mForegroundImageAffineTransform = inAffineTransform
+     }
+  }
+
+  //····················································································································
+
   final func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       ebView.ebRegister (draggedTypes: Array (self.mPasteboardTypes))

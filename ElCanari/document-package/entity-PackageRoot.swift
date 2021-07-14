@@ -627,7 +627,7 @@ final class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   final func reset_mModelImageOpacity_toDefaultValue () {
-    self.mModelImageOpacity = 0.1
+    self.mModelImageOpacity = 0.5
   }
 
   //····················································································································
@@ -1596,7 +1596,7 @@ final class PackageRoot : EBGraphicManagedObject,
     self.gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
     self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: ebUndoManager)
-    self.mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 0.1, undoManager: ebUndoManager)
+    self.mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: ebUndoManager)
     self.mModelImagePageHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid, undoManager: ebUndoManager)
