@@ -30,6 +30,16 @@ class AutoLayoutVerticalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
+
+  @discardableResult final func appendFlexibleSpace (followedByView inView : NSView) -> Self {
+    let hStack = AutoLayoutHorizontalStackView ()
+    hStack.appendFlexibleSpace ()
+    hStack.appendView (inView)
+    self.addView (hStack, in: .leading)
+    return self
+  }
+
+  //····················································································································
   // SET WIDTH
   //····················································································································
 

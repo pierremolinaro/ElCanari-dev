@@ -784,8 +784,6 @@ import Cocoa
   @IBOutlet final var mImportSESPanel : NSPanel? = nil
   @IBOutlet final var mImportSESProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet final var mImportSESTextField : NSTextField? = nil
-  @IBOutlet final var mInconsistentSchematicErrorPanel : NSPanel? = nil
-  @IBOutlet final var mInconsistentSchematicErrorTextView : NSTextView? = nil
   @IBOutlet final var mIncorrectFileNameMessageView : NSView? = nil
   @IBOutlet final var mIsPreservedByAutoRouterSwitch : EBSwitch? = nil
   @IBOutlet final var mLaunchFreeRouterWithDocumentButton : EBButton? = nil
@@ -1394,8 +1392,6 @@ import Cocoa
     checkOutletConnection (self.mImportSESPanel, "mImportSESPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.mImportSESProgressIndicator, "mImportSESProgressIndicator", EBProgressIndicator.self, #file, #line)
     checkOutletConnection (self.mImportSESTextField, "mImportSESTextField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mInconsistentSchematicErrorPanel, "mInconsistentSchematicErrorPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mInconsistentSchematicErrorTextView, "mInconsistentSchematicErrorTextView", NSTextView.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
     checkOutletConnection (self.mIsPreservedByAutoRouterSwitch, "mIsPreservedByAutoRouterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterWithDocumentButton, "mLaunchFreeRouterWithDocumentButton", EBButton.self, #file, #line)
@@ -3770,8 +3766,6 @@ import Cocoa
     self.mImportSESPanel?.ebCleanUp ()
     self.mImportSESProgressIndicator?.ebCleanUp ()
     self.mImportSESTextField?.ebCleanUp ()
-    self.mInconsistentSchematicErrorPanel?.ebCleanUp ()
-    self.mInconsistentSchematicErrorTextView?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
     self.mIsPreservedByAutoRouterSwitch?.ebCleanUp ()
     self.mLaunchFreeRouterWithDocumentButton?.ebCleanUp ()
@@ -4207,8 +4201,6 @@ import Cocoa
     self.mImportSESPanel = nil
     self.mImportSESProgressIndicator = nil
     self.mImportSESTextField = nil
-    self.mInconsistentSchematicErrorPanel = nil
-    self.mInconsistentSchematicErrorTextView = nil
     self.mIncorrectFileNameMessageView = nil
     self.mIsPreservedByAutoRouterSwitch = nil
     self.mLaunchFreeRouterWithDocumentButton = nil

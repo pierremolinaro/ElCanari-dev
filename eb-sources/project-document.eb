@@ -262,8 +262,8 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBPopUpButton mExchangeSymbolPopUpButton ;
   
 //--- Schematic inconsistent error
-  outlet NSPanel mInconsistentSchematicErrorPanel ;
-  outlet NSTextView mInconsistentSchematicErrorTextView ;
+//  outlet NSPanel mInconsistentSchematicErrorPanel ;
+//  outlet NSTextView mInconsistentSchematicErrorTextView ;
 
 //--- Hot keys inspector
   outlet NSTextField mConnectSchematicHotKeyTextField ;

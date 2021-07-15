@@ -21,6 +21,7 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     self.setButtonType (.momentaryPushIn)
     self.bezelStyle = .rounded
     self.title = inTitle
+//    self.keyEquivalent = "\r" // String (utf16CodeUnits: [unichar (NSEnterCharacter)], count: 1)
     self.controlSize = inSmall ? .small : .regular
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     if let cell = self.cell as? NSButtonCell {
