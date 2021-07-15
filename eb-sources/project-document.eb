@@ -664,9 +664,9 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariChoiceMenu mBoardSideForNewTrackMenu $selectedIndex root.mBoardSideForNewTrack ;
   outlet CanariChoiceMenu mBoardDirectionForNewTrackMenu $selectedIndex root.mDirectionForNewTrack ;
   
-  outlet NSPanel mImportSESPanel ;
-  outlet NSTextField mImportSESTextField ;
-  outlet EBProgressIndicator mImportSESProgressIndicator ;
+//  outlet NSPanel mImportSESPanel ;
+//  outlet NSTextField mImportSESTextField ;
+//  outlet EBProgressIndicator mImportSESProgressIndicator ;
   
   outlet CanariDragSourceTableView mUnplacedPackageTableView $models root.unplacedPackages ;
   transient Int unplacedPackageCount dependsFrom root.unplacedPackages ;

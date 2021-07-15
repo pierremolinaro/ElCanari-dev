@@ -28,13 +28,9 @@ extension CustomizedProjectDocument {
     openPanel.allowedFileTypes = ["ses"]
     openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
       openPanel.orderOut (nil)
-      if inReturnCode == .OK,
-         let s = try? String (contentsOf: openPanel.urls [0]),
-         let panel = self.mImportSESPanel,
-         let textField = self.mImportSESTextField,
-         let progressIndicator = self.mImportSESProgressIndicator {
+      if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
         ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
-        self.handleSESFileContents (s, panel, textField, progressIndicator)
+        self.handleSESFileContents (s)
       }
       openPanel.directoryURL = savedDirectoryURL
     }
@@ -42,16 +38,39 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func handleSESFileContents (_ inFileContents : String,
-                                       _ inPanel : NSPanel,
-                                       _ inTextField : NSTextField,
-                                       _ inProgressIndicator : EBProgressIndicator) {
+  internal func handleSESFileContents (_ inFileContents : String) {
+  //--- Build Panel
+    let panel = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 250, height: 100),
+      styleMask: [.docModalWindow],
+      backing: .buffered,
+      defer: false
+    )
+    let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+    let leftColumn = AutoLayoutVerticalStackView ()
+    leftColumn.appendFlexibleSpace ()
+    leftColumn.appendView (AutoLayoutApplicationImage ())
+    leftColumn.appendFlexibleSpace ()
+    mainView.appendView (leftColumn)
+    let rightColumn = AutoLayoutVerticalStackView ()
+    let title = AutoLayoutStaticLabel (title: "Importing SES File…", bold: true, small: false)
+      .set (alignment: .left)
+      .expandableWidth ()
+    rightColumn.appendView (title)
+    let importSESTextField = AutoLayoutStaticLabel (title: "", bold: false, small: false)
+      .set (width: 250)
+      .set (alignment: .left)
+    rightColumn.appendView (importSESTextField)
+    let importSESProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
+    rightColumn.appendView (importSESProgressIndicator)
+    mainView.appendView (rightColumn)
+    panel.contentView = mainView
   //--- Display sheet
-    inTextField.stringValue = "Extracting Tracks…"
-    inProgressIndicator.minValue = 0.0
-    inProgressIndicator.doubleValue = 0.0
-    inProgressIndicator.maxValue = 5.0
-    self.windowForSheet?.beginSheet (inPanel)
+    importSESTextField.stringValue = "Extracting Tracks…"
+    importSESProgressIndicator.minValue = 0.0
+    importSESProgressIndicator.doubleValue = 0.0
+    importSESProgressIndicator.maxValue = 5.0
+    self.windowForSheet?.beginSheet (panel)
   //--- Build net class array
     var netClassArray = [NetClassSESImporting] ()
     for netClass in self.rootObject.mNetClasses {
@@ -114,8 +133,8 @@ extension CustomizedProjectDocument {
         }
       }
     //--- Extract vias
-      inTextField.stringValue = "Extracting Vias…"
-      inProgressIndicator.doubleValue += 1.0
+      importSESTextField.stringValue = "Extracting Vias…"
+      importSESProgressIndicator.doubleValue += 1.0
       _ = RunLoop.main.run (mode: .default, before: Date ())
       if components.count > 0 {
         let stopSet = CharacterSet (charactersIn: " ")
@@ -155,10 +174,10 @@ extension CustomizedProjectDocument {
       }
     //--- Send to canari
       if errorMessage == "" {
-        self.enterResults (routedTracks, routedVias, inTextField, inProgressIndicator)
+        self.enterResults (routedTracks, routedVias, importSESTextField, importSESProgressIndicator)
       }
     }
-    self.windowForSheet?.endSheet (inPanel)
+    self.windowForSheet?.endSheet (panel)
   //---
     if errorMessage == "" {
       self.performERCCheckingAction (nil)
@@ -222,10 +241,10 @@ extension CustomizedProjectDocument {
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                              _ inRoutedViaArray : [BoardConnector],
-                             _ inTextField : NSTextField,
-                             _ inProgressIndicator : EBProgressIndicator) {
-    inTextField.stringValue = "Remove Current Tracks and Vias…"
-    inProgressIndicator.doubleValue += 1.0
+                             _ importSESTextField : AutoLayoutStaticLabel,
+                             _ importSESProgressIndicator : AutoLayoutProgressIndicator) {
+    importSESTextField.stringValue = "Remove Current Tracks and Vias…"
+    importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     self.removeAllViasAndTracks ()
   //---
@@ -241,8 +260,8 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Write tracks
-    inTextField.stringValue = "Add Tracks and Vias…"
-    inProgressIndicator.doubleValue += 1.0
+    importSESTextField.stringValue = "Add Tracks and Vias…"
+    importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for t in routedTracksArray {
      let track = BoardTrack (self.ebUndoManager)
@@ -269,8 +288,8 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Propagate net reference from pads to connected tracks
-    inTextField.stringValue = "Propagate Net References…"
-    inProgressIndicator.doubleValue += 1.0
+    importSESTextField.stringValue = "Propagate Net References…"
+    importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for object in self.rootObject.mBoardObjects {
       if let pad = object as? BoardConnector, let component = pad.mComponent {

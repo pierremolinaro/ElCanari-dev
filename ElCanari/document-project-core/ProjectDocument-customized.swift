@@ -124,13 +124,6 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
   internal var mPossibleDraggedSymbol : ComponentSymbolInProject? = nil
 
   //····················································································································
-  //  Schematic inconsistent error panel
-  //····················································································································
-
-  private var mInconsistentSchematicErrorPanel : NSPanel? = nil
-  private var mInconsistentSchematicErrorTextView : AutoLayoutTextObserverView? = nil
-
-  //····················································································································
   //  Property for dragging package in board
   //····················································································································
 
@@ -453,40 +446,33 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.removeUnusedNets ()
     self.updateSelectedNetForRastnetDisplay ()
     if errorList.count > 0, let window = self.windowForSheet {
-      let dialog : NSPanel
-      if let d = self.mInconsistentSchematicErrorPanel {
-        dialog = d
-      }else{
-        dialog = NSPanel (
-          contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),
-          styleMask: [.docModalWindow],
-          backing: .buffered,
-          defer: false
-        )
-        self.mInconsistentSchematicErrorPanel = dialog
-        let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-        let leftColumn = AutoLayoutVerticalStackView ()
-        leftColumn.appendFlexibleSpace ()
-        leftColumn.appendView (AutoLayoutApplicationImage ())
-        leftColumn.appendFlexibleSpace ()
-        mainView.appendView (leftColumn)
-        let rightColumn = AutoLayoutVerticalStackView ()
-        let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, small: false)
-          .set (alignment: .left)
-          .setTextColor (.red)
-          .expandableWidth ()
-        rightColumn.appendView (title)
-        let text = AutoLayoutTextObserverView ().expandableWidth ()
-        self.mInconsistentSchematicErrorTextView = text
-        rightColumn.appendView (text)
-        let okButton = AutoLayoutSheetDefaultOkButton (title: "Perform Undo to restore consistent state", small: false, sheet: dialog)
-        rightColumn.appendFlexibleSpace (followedByView: okButton)
-        mainView.appendView (rightColumn)
-        dialog.contentView = mainView
-      }
+      let panel = NSPanel (
+        contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),
+        styleMask: [.docModalWindow],
+        backing: .buffered,
+        defer: false
+      )
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+      let leftColumn = AutoLayoutVerticalStackView ()
+      leftColumn.appendFlexibleSpace ()
+      leftColumn.appendView (AutoLayoutApplicationImage ())
+      leftColumn.appendFlexibleSpace ()
+      mainView.appendView (leftColumn)
+      let rightColumn = AutoLayoutVerticalStackView ()
+      let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, small: false)
+        .set (alignment: .left)
+        .setTextColor (.red)
+        .expandableWidth ()
+      rightColumn.appendView (title)
+      let text = AutoLayoutTextObserverView ().expandableWidth ()
+      rightColumn.appendView (text)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Perform Undo to restore consistent state", small: false, sheet: panel)
+      rightColumn.appendFlexibleSpace (followedByView: okButton)
+      mainView.appendView (rightColumn)
+      panel.contentView = mainView
       let message = errorList.joined (separator: "\n")
-      self.mInconsistentSchematicErrorTextView?.string = message
-      window.beginSheet (dialog) { [weak self] (inModalResponse) in self?.ebUndoManager.undo () }
+      text.string = message
+      window.beginSheet (panel) { [weak self] (inModalResponse) in self?.ebUndoManager.undo () }
     }
   }
 
