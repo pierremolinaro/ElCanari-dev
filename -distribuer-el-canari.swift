@@ -28,15 +28,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.2"
+let VERSION_CANARI = "1.4.3"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
   "Fixed Model Image Management in Package Document"
 ]
 let CHANGES : [String] = [
-  "Device document user interfaces is managed by auto layout"
-
+  "Symbol document user interface is managed by auto layout",
+  "SPackage document user interface is managed by auto layout",
+  "Device document user interface is managed by auto layout",
+  "Artwork document user interfaces is managed by auto layout"
 ]
 let NEWS : [String] = [
   "Symbol document file name is checked for acceptability in libraries",

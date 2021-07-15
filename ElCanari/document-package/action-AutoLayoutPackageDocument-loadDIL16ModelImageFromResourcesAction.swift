@@ -15,7 +15,7 @@ extension AutoLayoutPackageDocument {
 //--- START OF USER ZONE 2
     if let tiffData = NSImage (named: "model-image-dil16")?.tiffRepresentation {
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
-      self.mPackageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
+      self.mPackageObjectsController.setForegroundImageAffineTransform (NSAffineTransform ())
       self.rootObject.mModelImageData = tiffData
       self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()
       self.rootObject.reset_mModelImageFirstPointYOnLock_toDefaultValue ()

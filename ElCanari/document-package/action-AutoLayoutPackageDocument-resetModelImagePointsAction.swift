@@ -22,7 +22,7 @@ extension AutoLayoutPackageDocument {
       self.rootObject.reset_mPointsAreLocked_toDefaultValue ()
       self.rootObject.reset_mModelPointsCircleRadius_toDefaultValue ()
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
-      self.mPackageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())
+      self.mPackageObjectsController.setForegroundImageAffineTransform (NSAffineTransform ())
     //---
       self.buildModelPoints ()
 //--- END OF USER ZONE 2
