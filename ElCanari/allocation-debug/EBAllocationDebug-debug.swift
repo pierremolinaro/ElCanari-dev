@@ -184,31 +184,31 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
 
   fileprivate var mAllocationStatsWindowVisibleAtLaunchCheckbox = AutoLayoutSwitch (
     title: "Visible At Launch",
-    small: true
+    size: .small
   )
 
   fileprivate var mEnableAllocationDebugCheckbox = AutoLayoutSwitch (
     title: "Enable Allocation Debug",
-    small: true
+    size: .small
   )
 
   fileprivate var mReuseTableViewCellsCheckbox = AutoLayoutSwitch (
     title: "Reuse TableView Cells",
-    small: true
+    size: .small
   )
 
-  fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (small: true)
+  fileprivate var mTotalAllocatedLabel = AutoLayoutIntObserverField (size: .small)
 
-  fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (small: true)
+  fileprivate var mCurrentlyAllocatedLabel = AutoLayoutIntObserverField (size: .small)
 
-  fileprivate var mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", small: true)
+  fileprivate var mPerformSnapShotButton = AutoLayoutButton (title: "Snap Shot", size: .small)
 
   fileprivate var mFilterPopUpButton = AutoLayoutTaggedPopUpButton ()
     .add (title: "All Classes", withTag: 0)
     .add (title: "Allocated Classes", withTag: 1)
     .add (title: "Differences with Snap Shot", withTag: 2)
 
-  fileprivate var mStatsTableView = AutoLayoutTableView (small: true, addControlButtons: false)
+  fileprivate var mStatsTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
 
   //····················································································································
   //    init
@@ -288,13 +288,13 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
         let hStack = AutoLayoutTwoColumnsGridView ().set (margins: 20).set (bottomMargin: 0)
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
-            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, small: true)
+            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small)
               .set (alignment: .left).expandableWidth ()
           )
           .addSeparator ()
           .addFirstBaseLineAligned (
             left: self.mReuseTableViewCellsCheckbox,
-            right: AutoLayoutStaticLabel (title: "If Checked, table view cells may be not released.", bold: true, small: true)
+            right: AutoLayoutStaticLabel (title: "If Checked, table view cells may be not released.", bold: true, size: .small)
               .set (alignment: .left).expandableWidth ()
           )
           .addSeparator ()
@@ -308,17 +308,17 @@ final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewD
               .appendFlexibleSpace (),
             right: AutoLayoutHorizontalStackView ()
               .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, small: true))
+              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small))
               .appendView (self.mTotalAllocatedLabel)
           )
           .addFirstBaseLineAligned (
             left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
               .appendView (self.mPerformSnapShotButton)
-              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, small: true))
+              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small))
               .appendView (self.mFilterPopUpButton),
             right: AutoLayoutHorizontalStackView ()
               .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, small: true))
+              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small))
               .appendView (self.mCurrentlyAllocatedLabel)
           )
           .appendView (self.mStatsTableView)

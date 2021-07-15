@@ -19,12 +19,8 @@ final class AutoLayoutFontButton : InternalAutoLayoutButton {
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    super.init (title: "", small: inSmall)
-//    noteObjectAllocation (self)
-//    self.controlSize = inSmall ? .small : .regular
-//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+  init (size inSize : EBControlSize) {
+    super.init (title: "", size: inSize)
   }
 
   //····················································································································

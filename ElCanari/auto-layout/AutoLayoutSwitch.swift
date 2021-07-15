@@ -16,13 +16,13 @@ final class AutoLayoutSwitch : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, small inSmall : Bool) {
+  init (title inTitle : String, size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setButtonType (.switch)
     self.title = inTitle
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
   }
 

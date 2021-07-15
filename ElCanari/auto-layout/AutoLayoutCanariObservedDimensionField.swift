@@ -16,12 +16,12 @@ final class AutoLayoutCanariObservedDimensionField : NSTextField, EBUserClassNam
 
   //····················································································································
 
-  init (small inSmall : Bool) {
+  init (size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
     self.isEditable = false

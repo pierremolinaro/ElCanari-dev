@@ -13,7 +13,7 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, small inSmall : Bool, sheet inPanel : NSPanel) {
+  init (title inTitle : String, size inSize : EBControlSize, sheet inPanel : NSPanel) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -21,12 +21,12 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     self.setButtonType (.momentaryPushIn)
     self.bezelStyle = .rounded
     self.title = inTitle
-//    self.keyEquivalent = "\r" // String (utf16CodeUnits: [unichar (NSEnterCharacter)], count: 1)
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
-    if let cell = self.cell as? NSButtonCell {
-      inPanel.defaultButtonCell = cell
+    if let buttonCell = self.cell as? NSButtonCell {
+      inPanel.defaultButtonCell = buttonCell
     }
+    inPanel.initialFirstResponder = self
     self.target = self
     self.action = #selector (Self.dismissSheetAction (_:))
   }
@@ -51,7 +51,6 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
       parent.endSheet (mySheet, returnCode: .stop)
     }
   }
-
 
   //····················································································································
 

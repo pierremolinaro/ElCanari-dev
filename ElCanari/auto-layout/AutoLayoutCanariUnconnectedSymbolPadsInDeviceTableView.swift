@@ -14,7 +14,7 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  private let mTableView = AutoLayoutTableView (small: false, addControlButtons: false)
+  private let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
   private var mDataSource = [String] ()
 
   //····················································································································

@@ -16,6 +16,11 @@ enum TextAlignment {
   left, right, center
 }
 
+
+enum EBControlSize {
+  mini, small, regular
+}
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum MetadataStatus {

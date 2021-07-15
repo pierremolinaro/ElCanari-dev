@@ -291,7 +291,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, small: false)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
           .addPage (title: "Description", tooltip: "Device Description", pageView: self.mDescriptionPage)
           .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: self.mSymbolsPage)
           .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: self.mPackagesPage)
@@ -304,7 +304,7 @@ import Cocoa
         do{
           let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
           view_0_0_1.appendView (view_0_0_1_0)
-          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, small: true)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small)
           view_0_0_1.appendView (view_0_0_1_1)
           let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
           view_0_0_1.appendView (view_0_0_1_2)
@@ -314,10 +314,10 @@ import Cocoa
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutSignatureField (small: false)
+        let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
           .bind_signature (self.signatureObserver_property)
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_1)
@@ -325,11 +325,11 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutVersionField (small: false)
+        let view_0_2_0 = AutoLayoutVersionField (size: .regular)
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
         view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, small: true)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_2.appendView (view_0_2_1)
@@ -343,7 +343,7 @@ import Cocoa
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (small: false)
+          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
             .bind_image (self.mStatusImage_property)
             .bind_tooltip (self.mStatusMessage_property)
           view_0_4_0.appendView (view_0_4_0_1)
@@ -351,7 +351,7 @@ import Cocoa
           view_0_4_0.appendView (view_0_4_0_2)
         }
         view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small)
           .set (alignment: .center)
         view_0_4.appendView (view_0_4_1)
       }
@@ -373,7 +373,7 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 16)
       .set (spacing: 12)
-    let view_0 = AutoLayoutTextField (width: 70, small: false)
+    let view_0 = AutoLayoutTextField (width: 70, size: .regular)
       .expandableWidth ()
       .set (alignment: .left)
       .bind_value (self.rootObject.mTitle_property, sendContinously:true)
@@ -387,33 +387,33 @@ import Cocoa
       do{
         let view_1_1_0 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, small: false)
+          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, size: .regular)
           view_1_1_0.appendView (view_1_1_0_0)
           let view_1_1_0_1 = AutoLayoutFlexibleSpace ()
           view_1_1_0.appendView (view_1_1_0_1)
         }
         view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutTableView (small: false, addControlButtons: false)
+        let view_1_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         self.documentationController.bind_tableView (view_1_1_1)
         self.configure_documentationTableView (view_1_1_1) // Configurator
         view_1_1.appendView (view_1_1_1)
         let view_1_1_2 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_2_0 = AutoLayoutButton (title: "-", small: true)
+          let view_1_1_2_0 = AutoLayoutButton (title: "-", size: .small)
             .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.removeDocumentationAction (_:))
             )
           view_1_1_2.appendView (view_1_1_2_0)
-          let view_1_1_2_1 = AutoLayoutButton (title: "Show Documentation", small: true)
+          let view_1_1_2_1 = AutoLayoutButton (title: "Show Documentation", size: .small)
             .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
               selector: #selector (AutoLayoutDeviceDocument.showDocAction (_:))
             )
           view_1_1_2.appendView (view_1_1_2_1)
-          let view_1_1_2_2 = AutoLayoutButton (title: "Save as…", small: true)
+          let view_1_1_2_2 = AutoLayoutButton (title: "Save as…", size: .small)
             .bind_enabled (.intcmp (.id (self.documentationController.selectedArray_property.count_property), .gt, .literalInt (0)))
             .bind_run (
               target: self,
@@ -441,13 +441,13 @@ import Cocoa
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, small: true)
+      let view_0_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small)
         .set (alignment: .left)
         .expandableWidth ()
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutButton (title: "File Library…", small: true)
+        let view_0_1_0 = AutoLayoutButton (title: "File Library…", size: .small)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.addSymbolFromLibraryAction (_:))
@@ -462,40 +462,40 @@ import Cocoa
         view_0_1.appendView (view_0_1_2)
       }
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "Flip", bold: true, small: true)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Flip", bold: true, size: .small)
         .set (alignment: .left)
         .expandableWidth ()
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_3_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+        let view_0_3_0 = AutoLayoutSwitch (title: "Horizontal Flip", size: .small)
           .bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property)
         view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutSwitch (title: "Vertical Flip", small: true)
+        let view_0_3_1 = AutoLayoutSwitch (title: "Vertical Flip", size: .small)
           .bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property)
         view_0_3.appendView (view_0_3_1)
         let view_0_3_2 = AutoLayoutFlexibleSpace ()
         view_0_3.appendView (view_0_3_2)
       }
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutStaticLabel (title: "Symbol Type", bold: true, small: true)
+      let view_0_4 = AutoLayoutStaticLabel (title: "Symbol Type", bold: true, size: .small)
         .set (alignment: .left)
         .expandableWidth ()
       view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutLabel (bold: true, small: true)
+      let view_0_5 = AutoLayoutLabel (bold: true, size: .small)
         .set (alignment: .center)
         .expandableWidth ()
         .bind_title (self.symbolInstanceSelection.symbolTypeName_property)
       view_0.appendView (view_0_5)
-      let view_0_6 = AutoLayoutStaticLabel (title: "Symbol Name", bold: true, small: true)
+      let view_0_6 = AutoLayoutStaticLabel (title: "Symbol Name", bold: true, size: .small)
         .set (alignment: .left)
         .expandableWidth ()
       view_0.appendView (view_0_6)
-      let view_0_7 = AutoLayoutTextField (width: 70, small: true)
+      let view_0_7 = AutoLayoutTextField (width: 70, size: .small)
         .expandableWidth ()
         .bind_value (self.symbolInstanceSelection.mInstanceName_property, sendContinously:true)
       view_0.appendView (view_0_7)
-      let view_0_8 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, small: true)
+      let view_0_8 = AutoLayoutStaticLabel (title: "Symbol Errors", bold: true, size: .small)
         .set (alignment: .left)
         .expandableWidth ()
       view_0.appendView (view_0_8)
@@ -530,7 +530,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutButton (title: "Add Package From File Library…", small: true)
+        let view_0_0_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
           .expandableWidth ()
           .bind_run (
             target: self,
@@ -541,7 +541,7 @@ import Cocoa
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+        let view_0_1_0 = AutoLayoutSwitch (title: "Horizontal Flip", size: .small)
           .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
         view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutFlexibleSpace ()
@@ -550,7 +550,7 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutHorizontalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutSwitch (title: "Horizontal Flip", small: true)
+        let view_0_2_0 = AutoLayoutSwitch (title: "Horizontal Flip", size: .small)
           .bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property)
         view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutFlexibleSpace ()
@@ -563,7 +563,7 @@ import Cocoa
         let view_0_3_0 = AutoLayoutColorWell ()
           .bind_color (preferences_packageColor_property, sendContinously:false)
         view_0_3.appendView (view_0_3_0)
-        let view_0_3_1 = AutoLayoutSwitch (title: "Display Packages", small: true)
+        let view_0_3_1 = AutoLayoutSwitch (title: "Display Packages", size: .small)
           .bind_value (self.rootObject.mShowPackages_property)
         view_0_3.appendView (view_0_3_1)
         let view_0_3_2 = AutoLayoutFlexibleSpace ()
@@ -576,7 +576,7 @@ import Cocoa
         let view_0_4_0 = AutoLayoutColorWell ()
           .bind_color (preferences_padNumberColor_property, sendContinously:false)
         view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutSwitch (title: "Display Pad Numbers", small: true)
+        let view_0_4_1 = AutoLayoutSwitch (title: "Display Pad Numbers", size: .small)
           .bind_value (self.rootObject.mShowPackagePadNumbers_property)
         view_0_4.appendView (view_0_4_1)
         let view_0_4_2 = AutoLayoutFlexibleSpace ()
@@ -589,7 +589,7 @@ import Cocoa
         let view_0_5_0 = AutoLayoutColorWell ()
           .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
         view_0_5.appendView (view_0_5_0)
-        let view_0_5_1 = AutoLayoutSwitch (title: "Display Front Side Pads", small: true)
+        let view_0_5_1 = AutoLayoutSwitch (title: "Display Front Side Pads", size: .small)
           .bind_value (self.rootObject.mShowPackageFrontPads_property)
         view_0_5.appendView (view_0_5_1)
         let view_0_5_2 = AutoLayoutFlexibleSpace ()
@@ -602,7 +602,7 @@ import Cocoa
         let view_0_6_0 = AutoLayoutColorWell ()
           .bind_color (preferences_backSidePadColor_property, sendContinously:false)
         view_0_6.appendView (view_0_6_0)
-        let view_0_6_1 = AutoLayoutSwitch (title: "Display Back Side Pads", small: true)
+        let view_0_6_1 = AutoLayoutSwitch (title: "Display Back Side Pads", size: .small)
           .bind_value (self.rootObject.mShowPackageBackPads_property)
         view_0_6.appendView (view_0_6_1)
         let view_0_6_2 = AutoLayoutFlexibleSpace ()
@@ -633,14 +633,14 @@ import Cocoa
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", small: true)
+      let view_0_0 = AutoLayoutButton (title: "Reset Symbols and Packages Version and Signature", size: .small)
         .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.resetSymbolsAndPackagesVersion (_:))
         )
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutButton (title: "Update Symbols and Packages", small: true)
+      let view_0_1 = AutoLayoutButton (title: "Update Symbols and Packages", size: .small)
         .bind_enabled (.boolcmp (.intcmp (.id (self.rootObject.mPackages_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.id (self.rootObject.mSymbolTypes_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
@@ -658,7 +658,7 @@ import Cocoa
       do{
         let view_1_0_0 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Embedded Symbols", bold: true, small: true)
+          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Embedded Symbols", bold: true, size: .small)
           view_1_0_0.appendView (view_1_0_0_0)
           let view_1_0_0_1 = AutoLayoutFlexibleSpace ()
           view_1_0_0.appendView (view_1_0_0_1)
@@ -666,12 +666,12 @@ import Cocoa
         view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_0_1_0 = AutoLayoutTableView (small: true, addControlButtons: false)
+          let view_1_0_1_0 = AutoLayoutTableView (size: .small, addControlButtons: false)
           self.symbolTypeController.bind_tableView (view_1_0_1_0)
           view_1_0_1.appendView (view_1_0_1_0)
           let view_1_0_1_1 = AutoLayoutVerticalStackView ()
           do{
-            let view_1_0_1_1_0 = AutoLayoutButton (title: "Reset Version", small: true)
+            let view_1_0_1_1_0 = AutoLayoutButton (title: "Reset Version", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -679,7 +679,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.resetSelectedSymbolVersion (_:))
               )
             view_1_0_1_1.appendView (view_1_0_1_1_0)
-            let view_1_0_1_1_1 = AutoLayoutButton (title: "Update", small: true)
+            let view_1_0_1_1_1 = AutoLayoutButton (title: "Update", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -687,7 +687,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.updateSelectedSymbols (_:))
               )
             view_1_0_1_1.appendView (view_1_0_1_1_1)
-            let view_1_0_1_1_2 = AutoLayoutButton (title: "Export…", small: true)
+            let view_1_0_1_1_2 = AutoLayoutButton (title: "Export…", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -695,7 +695,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.exportSelectedSymbols (_:))
               )
             view_1_0_1_1.appendView (view_1_0_1_1_2)
-            let view_1_0_1_1_3 = AutoLayoutButton (title: "Edit", small: true)
+            let view_1_0_1_1_3 = AutoLayoutButton (title: "Edit", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -703,7 +703,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.editSelectedSymbols (_:))
               )
             view_1_0_1_1.appendView (view_1_0_1_1_3)
-            let view_1_0_1_1_4 = AutoLayoutButton (title: "Remove", small: true)
+            let view_1_0_1_1_4 = AutoLayoutButton (title: "Remove", size: .small)
               .expandableWidth ()
               .bind_enabled (.boolcmp (.intcmp (.id (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.id (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))))
               .bind_run (
@@ -723,7 +723,7 @@ import Cocoa
       do{
         let view_1_1_0 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Embedded Packages", bold: true, small: true)
+          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Embedded Packages", bold: true, size: .small)
           view_1_1_0.appendView (view_1_1_0_0)
           let view_1_1_0_1 = AutoLayoutFlexibleSpace ()
           view_1_1_0.appendView (view_1_1_0_1)
@@ -731,12 +731,12 @@ import Cocoa
         view_1_1.appendView (view_1_1_0)
         let view_1_1_1 = AutoLayoutHorizontalStackView ()
         do{
-          let view_1_1_1_0 = AutoLayoutTableView (small: true, addControlButtons: false)
+          let view_1_1_1_0 = AutoLayoutTableView (size: .small, addControlButtons: false)
           self.packageController.bind_tableView (view_1_1_1_0)
           view_1_1_1.appendView (view_1_1_1_0)
           let view_1_1_1_1 = AutoLayoutVerticalStackView ()
           do{
-            let view_1_1_1_1_0 = AutoLayoutButton (title: "Reset Version", small: true)
+            let view_1_1_1_1_0 = AutoLayoutButton (title: "Reset Version", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -744,7 +744,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.resetSelectedPackageVersion (_:))
               )
             view_1_1_1_1.appendView (view_1_1_1_1_0)
-            let view_1_1_1_1_1 = AutoLayoutButton (title: "Update", small: true)
+            let view_1_1_1_1_1 = AutoLayoutButton (title: "Update", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -752,7 +752,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.updateSelectedPackages (_:))
               )
             view_1_1_1_1.appendView (view_1_1_1_1_1)
-            let view_1_1_1_1_2 = AutoLayoutButton (title: "Export…", small: true)
+            let view_1_1_1_1_2 = AutoLayoutButton (title: "Export…", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -760,7 +760,7 @@ import Cocoa
                 selector: #selector (AutoLayoutDeviceDocument.exportSelectedPackages (_:))
               )
             view_1_1_1_1.appendView (view_1_1_1_1_2)
-            let view_1_1_1_1_3 = AutoLayoutButton (title: "Edit", small: true)
+            let view_1_1_1_1_3 = AutoLayoutButton (title: "Edit", size: .small)
               .expandableWidth ()
               .bind_enabled (.intcmp (.id (self.packageController.selectedArray_property.count_property), .gt, .literalInt (0)))
               .bind_run (
@@ -794,7 +794,7 @@ import Cocoa
       let view_0_0 = AutoLayoutVerticalStackView ()
         .set (minWidth: 100)
       do{
-        let view_0_0_0 = AutoLayoutStaticLabel (title: "Unassigned Pads", bold: true, small: false)
+        let view_0_0_0 = AutoLayoutStaticLabel (title: "Unassigned Pads", bold: true, size: .regular)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_0.appendView (view_0_0_0)
@@ -808,7 +808,7 @@ import Cocoa
       let view_0_1 = AutoLayoutVerticalStackView ()
         .set (minWidth: 200)
       do{
-        let view_0_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, small: false)
+        let view_0_1_0 = AutoLayoutStaticLabel (title: "Unassigned Pins", bold: true, size: .regular)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_0)
@@ -821,12 +821,12 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutStaticLabel (title: " ", bold: true, small: false)
+        let view_0_2_0 = AutoLayoutStaticLabel (title: " ", bold: true, size: .regular)
           .expandableWidth ()
         view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutFlexibleSpace ()
         view_0_2.appendView (view_0_2_1)
-        let view_0_2_2 = AutoLayoutButton (title: "- Bind →", small: false)
+        let view_0_2_2 = AutoLayoutButton (title: "- Bind →", size: .regular)
           .expandableWidth ()
           .bind_enabled (.boolcmp (.id (self.hasUnconnectedPad_property), .and, .id (self.hasUnconnectedPin_property)))
           .bind_run (
@@ -834,7 +834,7 @@ import Cocoa
             selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
           )
         view_0_2.appendView (view_0_2_2)
-        let view_0_2_3 = AutoLayoutButton (title: "- NC →", small: false)
+        let view_0_2_3 = AutoLayoutButton (title: "- NC →", size: .regular)
           .expandableWidth ()
           .bind_enabled (.id (self.hasUnconnectedPad_property))
           .bind_run (
@@ -844,7 +844,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_3)
         let view_0_2_4 = AutoLayoutFlexibleSpace ()
         view_0_2.appendView (view_0_2_4)
-        let view_0_2_5 = AutoLayoutButton (title: "← Unbind -", small: false)
+        let view_0_2_5 = AutoLayoutButton (title: "← Unbind -", size: .regular)
           .expandableWidth ()
           .bind_enabled (.id (self.hasAssignedPadProxies_property))
           .bind_run (
@@ -852,7 +852,7 @@ import Cocoa
             selector: #selector (AutoLayoutDeviceDocument.performUnbindAction (_:))
           )
         view_0_2.appendView (view_0_2_5)
-        let view_0_2_6 = AutoLayoutButton (title: "← Unbind All -", small: false)
+        let view_0_2_6 = AutoLayoutButton (title: "← Unbind All -", size: .regular)
           .expandableWidth ()
           .bind_enabled (.id (self.hasAssignedPadProxies_property))
           .bind_run (
@@ -867,7 +867,7 @@ import Cocoa
       let view_0_3 = AutoLayoutVerticalStackView ()
         .set (minWidth: 300)
       do{
-        let view_0_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, small: false)
+        let view_0_3_0 = AutoLayoutStaticLabel (title: "Assignments", bold: true, size: .regular)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_3.appendView (view_0_3_0)
@@ -889,7 +889,7 @@ import Cocoa
       do{
         let view_1_1_0 = AutoLayoutFlexibleSpace ()
         view_1_1.appendView (view_1_1_0)
-        let view_1_1_1 = AutoLayoutLabel (bold: true, small: false)
+        let view_1_1_1 = AutoLayoutLabel (bold: true, size: .regular)
           .setRedTextColor ()
           .bind_title (self.assignmentInhibitionMessage_property)
         view_1_1.appendView (view_1_1_1)
@@ -917,17 +917,17 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Device Prefix", bold: false, small: true)
+      let view_0_0 = AutoLayoutStaticLabel (title: "Device Prefix", bold: false, size: .small)
         .set (width: 84)
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTextField (width: 56, small: true)
+      let view_0_1 = AutoLayoutTextField (width: 56, size: .small)
         .bind_value (self.rootObject.mPrefix_property, sendContinously:true)
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: false, small: true)
+      let view_0_2 = AutoLayoutStaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: false, size: .small)
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "Reset Version and Signature", small: true)
+      let view_0_4 = AutoLayoutButton (title: "Reset Version and Signature", size: .small)
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutDeviceDocument.resetVersionAction (_:))
@@ -943,7 +943,7 @@ import Cocoa
         let view_1_0_0 = AutoLayoutVerticalStackView ()
           .set (width: 84)
         do{
-          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+          let view_1_0_0_0 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small)
           view_1_0_0.appendView (view_1_0_0_0)
           let view_1_0_0_1 = AutoLayoutFlexibleSpace ()
           view_1_0_0.appendView (view_1_0_0_1)
@@ -959,7 +959,7 @@ import Cocoa
         let view_1_1_0 = AutoLayoutVerticalStackView ()
           .set (width: 84)
         do{
-          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, small: true)
+          let view_1_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, size: .small)
           view_1_1_0.appendView (view_1_1_0_0)
           let view_1_1_0_1 = AutoLayoutFlexibleSpace ()
           view_1_1_0.appendView (view_1_1_0_1)

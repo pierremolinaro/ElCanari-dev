@@ -1,32 +1,26 @@
 //
-//  AutoLayoutStaticLabels.swift
+//  enum-ControlSize-extension.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 06/02/2021.
+//  Created by Pierre Molinaro on 15/07/2021.
+//
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutStaticLabels
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticLabels : AutoLayoutHorizontalStackView {
+extension EBControlSize {
 
   //····················································································································
 
-  init (left inLeft : String, right inRight : String, bold inBold : Bool, size inSize : EBControlSize) {
-    super.init ()
-    self.appendView (AutoLayoutStaticLabel (title: inLeft, bold: inBold, size: inSize))
-    self.appendView (AutoLayoutFlexibleSpace ())
-    self.appendView (AutoLayoutStaticLabel (title: inRight, bold: inBold, size: inSize))
-  }
-
-  //····················································································································
-
-  required init? (coder inCoder : NSCoder) {
-    fatalError ("init(coder:) has not been implemented")
+  var cocoaControlSize : NSControl.ControlSize {
+    switch self {
+    case .mini : return .mini
+    case .small : return .small
+    case .regular : return .regular
+    }
   }
 
   //····················································································································

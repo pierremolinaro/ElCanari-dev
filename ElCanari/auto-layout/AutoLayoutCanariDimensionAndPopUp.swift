@@ -21,9 +21,9 @@ final class AutoLayoutCanariDimensionAndPopUp : AutoLayoutHorizontalStackView {
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    self.mDimensionField = AutoLayoutCanariDimensionField (small: inSmall)
-    self.mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (small: inSmall)
+  init (size inSize : EBControlSize) {
+    self.mDimensionField = AutoLayoutCanariDimensionField (size: .small)
+    self.mUnitPopUpButton =  AutoLayoutCanariUnitPopUpButton (size: .small)
     super.init ()
     self.appendView (self.mDimensionField)
     self.appendView (self.mUnitPopUpButton)

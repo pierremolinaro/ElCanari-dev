@@ -42,10 +42,11 @@ extension CustomizedProjectDocument {
   //--- Build Panel
     let panel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 250, height: 100),
-      styleMask: [.docModalWindow],
+      styleMask: [.titled],
       backing: .buffered,
       defer: false
     )
+    panel.hasShadow = true
     let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
     let leftColumn = AutoLayoutVerticalStackView ()
     leftColumn.appendFlexibleSpace ()
@@ -53,11 +54,11 @@ extension CustomizedProjectDocument {
     leftColumn.appendFlexibleSpace ()
     mainView.appendView (leftColumn)
     let rightColumn = AutoLayoutVerticalStackView ()
-    let title = AutoLayoutStaticLabel (title: "Importing SES File…", bold: true, small: false)
+    let title = AutoLayoutStaticLabel (title: "Importing SES File…", bold: true, size: .regular)
       .set (alignment: .left)
       .expandableWidth ()
     rightColumn.appendView (title)
-    let importSESTextField = AutoLayoutStaticLabel (title: "", bold: false, small: false)
+    let importSESTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular)
       .set (width: 250)
       .set (alignment: .left)
     rightColumn.appendView (importSESTextField)

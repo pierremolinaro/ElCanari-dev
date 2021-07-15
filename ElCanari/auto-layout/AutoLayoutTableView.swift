@@ -37,11 +37,11 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
-  init (small inSmall : Bool, addControlButtons inAddControlButtons : Bool) {
+  init (size inSize : EBControlSize, addControlButtons inAddControlButtons : Bool) {
     super.init ()
   //--- Configure table view
     self.mTableView.translatesAutoresizingMaskIntoConstraints = false
-    self.mTableView.controlSize = inSmall ? .small : .regular
+    self.mTableView.controlSize = inSize.cocoaControlSize
     self.mTableView.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.mTableView.controlSize))
     self.mTableView.focusRingType = .none
     self.mTableView.isEnabled = true
@@ -60,11 +60,11 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
     self.appendView (self.mScrollView)
     if inAddControlButtons {
       let hStack = AutoLayoutHorizontalStackView ()
-      let addButton = AutoLayoutButton (title: "+", small: inSmall)
+      let addButton = AutoLayoutButton (title: "+", size: inSize)
         .bind_run (target: self, selector: #selector (Self.addEntryAction (_:)))
       self.mAddButton = addButton
       hStack.appendView (addButton)
-      let removeButton = AutoLayoutButton (title: "-", small: inSmall)
+      let removeButton = AutoLayoutButton (title: "-", size: inSize)
         .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
       self.mRemoveButton = removeButton
       hStack.appendView (removeButton)

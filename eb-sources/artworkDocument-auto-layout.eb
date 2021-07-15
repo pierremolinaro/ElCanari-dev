@@ -13,27 +13,27 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mDocumentMainView vStack set (spacing: 0) {
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Minima", tooltip: "Minima Editor", pageView: stackView mMinimaPage)
           addPage (title: "Drill", tooltip: "Drill Editor", pageView: stackView mDrillPage)
           addPage (title: "Data", tooltip: "DataEditor", pageView: stackView mDataPage)
           addPage (title: "Infos", tooltip: "Artwork Informations", pageView: stackView mInfosPage)
           $selectedPage root.selectedTab
         }
-        hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
       }
       vStack {
-        SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  expandableWidth () }
+        SignatureField (size : .regular) { $signature signature }
+        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
       }
       vStack {
-        VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
+        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
-        hStack { space ImageObserverView (small: no) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
+        hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
+        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
       }
     }
     separator
@@ -61,13 +61,13 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       space
       vStack {
         space
-        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TP: Track to Pad Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TT: Track to Track Distance", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TW: Track Width", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, small: yes) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "TW: Track Width", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
         space
       }
       space
@@ -80,20 +80,20 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       TwoColumnsGridView {
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, small: no),
-          right: CanariDimensionAndPopUp(small: yes) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
+          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),
+          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PHD", bold: no, small: no),
-          right: CanariDimensionAndPopUp(small: yes) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
+          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular),
+          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for OAR", bold: no, small: no),
-          right: CanariDimensionAndPopUp(small: yes) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
+          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular),
+          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, small: no),
-          right: CanariDimensionAndPopUp(small: yes) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
+          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular),
+          right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
         )
       }
       space
@@ -108,8 +108,8 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mDrillPage vStack {
     hStack set (margins: 8) setFirstBaselineAlignment () {
       space
-      StaticLabel (title: "Drill File Extension", bold: no, small: no)
-      TextField (width: 56, small: no) { $value root.drillDataFileExtension (sendContinously: no) }
+      StaticLabel (title: "Drill File Extension", bold: no, size : .regular)
+      TextField (width: 56, size : .regular) { $value root.drillDataFileExtension (sendContinously: no) }
       space
     }
     space 
@@ -127,44 +127,44 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   stackView mDataPage hStack set (leftMargin: 8) set (rightMargin: 8) {
     vStack set (topMargin: 8) {
-      Label (bold: yes, small: yes) { $title self.generatedFileCountString }
-      TableView (small: yes, addControlButtons: yes) { $tableValue #mDataController }
+      Label (bold: yes, size : .small) { $title self.generatedFileCountString }
+      TableView (size : .small, addControlButtons: yes) { $tableValue #mDataController }
       space
     }
     separator
     vStack set (topMargin: 8) {
       hStack setFirstBaselineAlignment () {
-        StaticLabel (title: "File Extension", bold: yes, small: yes)
-        TextField (width: 150, small: yes) { $value #mDataSelection.fileExtension (sendContinously: no) }
+        StaticLabel (title: "File Extension", bold: yes, size : .small)
+        TextField (width: 150, size : .small) { $value #mDataSelection.fileExtension (sendContinously: no) }
         space
       }
-      hStack { StaticLabel (title: "Front Side Elements", bold: yes, small: yes) space }
-      hStack set (leftMargin: 20) { Switch (title: "Legend Front Side Texts", small: yes) { $value #mDataSelection.drawTextsLegendTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Layout Front Side Texts", small: yes) { $value #mDataSelection.drawTextsLayoutTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Tracks", small: yes) { $value #mDataSelection.drawTracksTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Pads", small: yes) { $value #mDataSelection.drawPadsTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Component Names", small: yes) { $value #mDataSelection.drawComponentNamesTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Component Values", small: yes) { $value #mDataSelection.drawComponentValuesTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Package Legends", small: yes) { $value #mDataSelection.drawPackageLegendTopSide } space }
-      hStack { StaticLabel (title: "Back Side Elements", bold: yes, small: yes) space }
-      hStack set (leftMargin: 20) { Switch (title: "Legend Back Side Texts", small: yes) { $value #mDataSelection.drawTextsLegendBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Layout Back Side Texts", small: yes) { $value #mDataSelection.drawTextsLayoutBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Tracks", small: yes) { $value #mDataSelection.drawTracksBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Pads", small: yes) { $value #mDataSelection.drawPadsBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Component Names", small: yes) { $value #mDataSelection.drawComponentNamesBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Component Values", small: yes) { $value #mDataSelection.drawComponentValuesBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Package Legends", small: yes) { $value #mDataSelection.drawPackageLegendBottomSide } space }
-      hStack { StaticLabel (title: "Back Side Elements", bold: yes, small: yes) space }
-      hStack set (leftMargin: 20) { Switch (title: "Vias", small: yes) { $value #mDataSelection.drawVias } space }
-      hStack set (leftMargin: 20) { Switch (title: "Internal Board Limits", small: yes) { $value #mDataSelection.drawInternalBoardLimits } space }
-      hStack set (leftMargin: 20) { Switch (title: "Board Limits", small: yes) { $value #mDataSelection.drawBoardLimits } space }
+      hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
+      hStack set (leftMargin: 20) { Switch (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+      hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+      hStack set (leftMargin: 20) { Switch (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
+      hStack set (leftMargin: 20) { Switch (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
+      hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+      hStack set (leftMargin: 20) { Switch (title: "Vias", size : .small) { $value #mDataSelection.drawVias } space }
+      hStack set (leftMargin: 20) { Switch (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits } space }
+      hStack set (leftMargin: 20) { Switch (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits } space }
       hStack set (leftMargin: 20) setFirstBaselineAlignment () {
-        Switch (title: "Pad Holes in PDF file, with diameter", small: yes) { $value #mDataSelection.drawPadHolesInPDF }
-        CanariDimensionAndPopUp (small: yes) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
+        Switch (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
+        CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
         space
       }
-      hStack { StaticLabel (title: "Option", bold: yes, small: yes) space }
-      hStack set (leftMargin: 20) { Switch (title: "Horizontal Mirror", small: yes) { $value #mDataSelection.horizontalMirror } space }
+      hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
+      hStack set (leftMargin: 20) { Switch (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
       space
     }
   }
@@ -179,11 +179,11 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
-      Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAndSignatureAction }
+      Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAndSignatureAction }
       space
     }
     hStack {
-      vStack { StaticLabel (title: "Comments", bold: no, small: no) space }
+      vStack { StaticLabel (title: "Comments", bold: no, size : .regular) space }
       TextView { $value root.comments }
     }
   }

@@ -10,7 +10,7 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
   // INIT
   //····················································································································
 
-  init (title inTitle : String, bold inBold : Bool, small inSmall : Bool) {
+  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
     self.isEditable = false
     self.alignment = .right
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     let size = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize:size) : NSFont.systemFont (ofSize: size)
     self.frame.size = self.intrinsicContentSize

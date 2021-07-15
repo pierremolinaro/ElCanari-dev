@@ -17,17 +17,7 @@ final class AutoLayoutCanariPadRenumberPullDownButton : InternalAutoLayoutPopUpB
    //····················································································································
 
   init () {
-    super.init (pullsDown: true, small: true)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//     if let cell = self.cell as? NSPopUpButtonCell {
-//      cell.arrowPosition = .arrowAtBottom
-//    }
-//
-//    self.controlSize = .small
-//    self.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+    super.init (pullsDown: true, size: .small)
 
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
   }

@@ -14,7 +14,7 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
 
   //····················································································································
 
-  private let mTableView = AutoLayoutTableView (small: false, addControlButtons: false)
+  private let mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
   private var mDataSource = [AssignedPadProxy] ()
 
   //····················································································································

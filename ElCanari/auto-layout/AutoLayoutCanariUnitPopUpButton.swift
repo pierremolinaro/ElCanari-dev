@@ -14,12 +14,12 @@ final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    super.init (pullsDown: false, small: inSmall)
+  init (size inSize : EBControlSize) {
+    super.init (pullsDown: false, size: inSize)
 //    noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false
 //
-//    self.controlSize = inSmall ? .small : .regular
+//    self.controlSize = inSize.cocoaControlSize
 //    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
 //
 //    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle

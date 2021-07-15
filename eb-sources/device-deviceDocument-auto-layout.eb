@@ -13,7 +13,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   stackView mDocumentMainView vStack set (spacing: 0) {
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, small: no) {
+        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
           addPage (title: "Description", tooltip: "Device Description", pageView: stackView mDescriptionPage)
           addPage (title: "Symbols", tooltip: "Device Symbols", pageView: stackView mSymbolsPage)
           addPage (title: "Packages", tooltip: "Device Available Packages", pageView: stackView mPackagesPage)
@@ -22,20 +22,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
           addPage (title: "Infos", tooltip: "Device Informations", pageView: stackView mInfosPage)
           $selectedPage root.mSelectedPageIndex
         }
-        hStack { space StaticLabel (title: "Page", bold: no, small: yes) space }
+        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
       }
       vStack {
-        SignatureField (small : no) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, small: yes) { set (alignment: .center)  expandableWidth () }
+        SignatureField (size : .regular) { $signature signature }
+        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
       }
       vStack {
-        VersionField (small : no) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, small: yes) { set (alignment: .center) expandableWidth () }
+        VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
+        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
       }
       space
       vStack {
-        hStack { space ImageObserverView (small: no) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
-        StaticLabel (title: "Status", bold: no, small: yes) { set (alignment: .center) }
+        hStack { space ImageObserverView (size : .regular) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
+        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
       }
     }
     separator
@@ -52,7 +52,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //······················································································································
 
   stackView mDescriptionPage vStack set (margins: 16) set (spacing: 12) {
-    TextField (width: 70, small: no) {
+    TextField (width: 70, size : .regular) {
       expandableWidth ()
       set (alignment: .left)
       $value root.mTitle (sendContinously: yes)
@@ -60,20 +60,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     hStack {
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
       vStack {
-        hStack { StaticLabel (title: "PDF Documentation", bold: no, small: no) space }
-        TableView (small: no, addControlButtons: no) [configurator documentationTableView] {
+        hStack { StaticLabel (title: "PDF Documentation", bold: no, size : .regular) space }
+        TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {
           $tableValue #documentationController
         }
         hStack {
-          Button (title: "-", small: yes) {
+          Button (title: "-", size : .small) {
             $run removeDocumentationAction
             $enabled #documentationController.selectedArray.count > 0
           }
-          Button (title: "Show Documentation", small: yes) {
+          Button (title: "Show Documentation", size : .small) {
             $run showDocAction
             $enabled #documentationController.selectedArray.count > 0
           }
-          Button (title: "Save as…", small: yes) {
+          Button (title: "Save as…", size : .small) {
             $run saveDocAction
             $enabled #documentationController.selectedArray.count > 0
           }
@@ -100,33 +100,33 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mSymbolsPage hStack {
     vStack set (width: 250) set (margins: 8) {
-      StaticLabel (title: "Add Symbol From", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
+      StaticLabel (title: "Add Symbol From", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
       hStack {
-        Button (title: "File Library…", small: yes) { $run addSymbolFromLibraryAction }
+        Button (title: "File Library…", size : .small) { $run addSymbolFromLibraryAction }
         CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
           $enabled root.mSymbolTypes.count > 0
           $symbolTypeNames root.symbolTypeNames
         }
         space
       }
-      StaticLabel (title: "Flip", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
+      StaticLabel (title: "Flip", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
       hStack {
-        Switch (title: "Horizontal Flip", small: yes) { $value root.mSymbolDisplayHorizontalFlip }
-        Switch (title: "Vertical Flip", small: yes) { $value root.mSymbolDisplayVerticalFlip }
+        Switch (title: "Horizontal Flip", size : .small) { $value root.mSymbolDisplayHorizontalFlip }
+        Switch (title: "Vertical Flip", size : .small) { $value root.mSymbolDisplayVerticalFlip }
         space
       }
-      StaticLabel (title: "Symbol Type", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
-      Label (bold: yes, small: yes) {
+      StaticLabel (title: "Symbol Type", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+      Label (bold: yes, size : .small) {
         set (alignment: .center)
         expandableWidth ()
         $title #symbolInstanceSelection.symbolTypeName
       }      
-      StaticLabel (title: "Symbol Name", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
-      TextField (width: 70, small: yes) {
+      StaticLabel (title: "Symbol Name", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+      TextField (width: 70, size : .small) {
         expandableWidth ()
         $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
       }
-      StaticLabel (title: "Symbol Errors", bold: yes, small: yes) { set (alignment: .left) expandableWidth () }
+      StaticLabel (title: "Symbol Errors", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
       TextObserverView { setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
       space
     }
@@ -151,37 +151,37 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   stackView mPackagesPage hStack {
     vStack set (width: 250) set (margins: 8) {
       hStack {
-        Button (title: "Add Package From File Library…", small: yes) {
+        Button (title: "Add Package From File Library…", size : .small) {
           expandableWidth ()
           $run addPackageFromLibraryAction
         }
       }
       hStack {
-        Switch (title: "Horizontal Flip", small: yes) { $value root.mPackageDisplayHorizontalFlip }
+        Switch (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
         space
       }
       hStack {
-        Switch (title: "Horizontal Flip", small: yes) { $value root.mPackageDisplayHorizontalFlip }
+        Switch (title: "Horizontal Flip", size : .small) { $value root.mPackageDisplayHorizontalFlip }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.packageColor (sendContinously: no) }
-        Switch (title: "Display Packages", small: yes) { $value root.mShowPackages }
+        Switch (title: "Display Packages", size : .small) { $value root.mShowPackages }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.padNumberColor (sendContinously: no) }
-        Switch (title: "Display Pad Numbers", small: yes) { $value root.mShowPackagePadNumbers }
+        Switch (title: "Display Pad Numbers", size : .small) { $value root.mShowPackagePadNumbers }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.frontSidePadColor (sendContinously: no) }
-        Switch (title: "Display Front Side Pads", small: yes) { $value root.mShowPackageFrontPads }
+        Switch (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
         space
       }
       hStack setCenterYAlignment () {
         ColorWell { $color prefs.backSidePadColor (sendContinously: no) }
-        Switch (title: "Display Back Side Pads", small: yes) { $value root.mShowPackageBackPads }
+        Switch (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
         space
       }
       space
@@ -225,11 +225,11 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mLibraryPage vStack set (margins: 20) {
     hStack {
-      Button (title: "Reset Symbols and Packages Version and Signature", small: yes) {
+      Button (title: "Reset Symbols and Packages Version and Signature", size : .small) {
         $run resetSymbolsAndPackagesVersion
         $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
-      Button (title: "Update Symbols and Packages", small: yes) {
+      Button (title: "Update Symbols and Packages", size : .small) {
         $run updateSymbolsAndPackagesAction
         $enabled (root.mPackages.count > 0) | (root.mSymbolTypes.count > 0)
       }
@@ -237,31 +237,31 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
     vStack equalHeight () {
       vStack {
-        hStack { StaticLabel (title: "Embedded Symbols", bold: yes, small: yes) space }
+        hStack { StaticLabel (title: "Embedded Symbols", bold: yes, size : .small) space }
         hStack {
-          TableView (small: yes, addControlButtons: no) { $tableValue #symbolTypeController }
+          TableView (size : .small, addControlButtons: no) { $tableValue #symbolTypeController }
           vStack {
-            Button (title: "Reset Version", small: yes) {
+            Button (title: "Reset Version", size : .small) {
               expandableWidth ()
               $run resetSelectedSymbolVersion
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-            Button (title: "Update", small: yes) {
+            Button (title: "Update", size : .small) {
               expandableWidth ()
               $run updateSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-            Button (title: "Export…", small: yes) {
+            Button (title: "Export…", size : .small) {
               expandableWidth ()
               $run exportSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-            Button (title: "Edit", small: yes) {
+            Button (title: "Edit", size : .small) {
               expandableWidth ()
               $run editSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-            Button (title: "Remove", small: yes) {
+            Button (title: "Remove", size : .small) {
               expandableWidth ()
               $run removeUselessSymbolTypeAction
               $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
@@ -271,26 +271,26 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
       }
       vStack {
-        hStack { StaticLabel (title: "Embedded Packages", bold: yes, small: yes) space }
+        hStack { StaticLabel (title: "Embedded Packages", bold: yes, size : .small) space }
         hStack { 
-          TableView (small: yes, addControlButtons: no) { $tableValue #packageController }
+          TableView (size : .small, addControlButtons: no) { $tableValue #packageController }
           vStack {
-            Button (title: "Reset Version", small: yes) {
+            Button (title: "Reset Version", size : .small) {
               expandableWidth ()
               $run resetSelectedPackageVersion         
               $enabled #packageController.selectedArray.count > 0
             }
-            Button (title: "Update", small: yes) {
+            Button (title: "Update", size : .small) {
               expandableWidth ()
               $run updateSelectedPackages
               $enabled #packageController.selectedArray.count > 0
             }
-            Button (title: "Export…", small: yes) {
+            Button (title: "Export…", size : .small) {
               expandableWidth ()
               $run exportSelectedPackages
               $enabled #packageController.selectedArray.count > 0
             }
-            Button (title: "Edit", small: yes) {
+            Button (title: "Edit", size : .small) {
               expandableWidth ()
               $run editSelectedPackages
               $enabled #packageController.selectedArray.count > 0
@@ -322,39 +322,39 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   stackView mAssignmentsPage hStack set (margins: 8) {
     hSplit $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
-        StaticLabel (title: "Unassigned Pads", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
         CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {
           expandableWidth ()
           $unconnectedPads root.unconnectedPads
         }
       }
       vStack set (minWidth: 200) {
-        StaticLabel (title: "Unassigned Pins", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Unassigned Pins", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
         CanariUnconnectedSymbolPinsInDeviceTableView [outlet mUnconnectedSymbolPinsInDeviceTableView] {
           expandableWidth ()
           $unconnectedPins root.unconnectedPins
         }
       }
       vStack {
-        StaticLabel (title: " ", bold: yes, small: no) { expandableWidth () }
+        StaticLabel (title: " ", bold: yes, size : .regular) { expandableWidth () }
         space
-        Button (title: "- Bind →", small: no) {
+        Button (title: "- Bind →", size : .regular) {
           expandableWidth ()
           $run performBindAction
           $enabled self.hasUnconnectedPad & self.hasUnconnectedPin
         }
-        Button (title: "- NC →", small: no) {
+        Button (title: "- NC →", size : .regular) {
           expandableWidth ()
           $run performNCAction
           $enabled self.hasUnconnectedPad
         }
         space
-        Button (title: "← Unbind -", small: no) {
+        Button (title: "← Unbind -", size : .regular) {
           expandableWidth ()
           $run performUnbindAction
           $enabled self.hasAssignedPadProxies
         }
-        Button (title: "← Unbind All -", small: no) {
+        Button (title: "← Unbind All -", size : .regular) {
           expandableWidth ()
           $run performUnbindAllAction
           $enabled self.hasAssignedPadProxies
@@ -362,7 +362,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         space
       }
       vStack set (minWidth: 300) {
-        StaticLabel (title: "Assignments", bold: yes, small: no) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Assignments", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
         CanariAssignedPadProxysInDeviceTableView [outlet mAssignedPadProxyTableView] {
           expandableWidth ()
           $assignedPadProxies root.assignedPadProxies
@@ -373,7 +373,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       space
       vStack {
         space
-        Label (bold: yes, small: no) { setRedTextColor () $title self.assignmentInhibitionMessage }
+        Label (bold: yes, size : .regular) { setRedTextColor () $title self.assignmentInhibitionMessage }
         space
       }
       space
@@ -398,19 +398,19 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack setFirstBaselineAlignment () {
-      StaticLabel (title: "Device Prefix", bold: no, small: yes) { set (width: 84) }
-      TextField (width: 56, small: yes) { $value root.mPrefix (sendContinously : yes) }
-      StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, small: yes)
+      StaticLabel (title: "Device Prefix", bold: no, size : .small) { set (width: 84) }
+      TextField (width: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }
+      StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small)
       space
-      Button (title: "Reset Version and Signature", small: yes) { $run resetVersionAction }
+      Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAction }
     }
     vStack equalHeight () {
       hStack {
-        vStack set (width: 84) { StaticLabel (title: "Status", bold: no, small: yes) space }
+        vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small) space }
         TextObserverView { $observedValue self.mStatusMessage }
       }
       hStack {
-        vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, small: yes) space }
+        vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, size : .small) space }
         TextView { $value root.mComments }
       }
     }

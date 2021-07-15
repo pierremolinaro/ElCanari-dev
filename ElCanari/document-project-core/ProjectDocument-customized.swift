@@ -448,10 +448,11 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     if errorList.count > 0, let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),
-        styleMask: [.docModalWindow],
+        styleMask: [.titled],
         backing: .buffered,
         defer: false
       )
+      panel.hasShadow = true
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
       let leftColumn = AutoLayoutVerticalStackView ()
       leftColumn.appendFlexibleSpace ()
@@ -459,14 +460,14 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       leftColumn.appendFlexibleSpace ()
       mainView.appendView (leftColumn)
       let rightColumn = AutoLayoutVerticalStackView ()
-      let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, small: false)
+      let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular)
         .set (alignment: .left)
         .setTextColor (.red)
         .expandableWidth ()
       rightColumn.appendView (title)
       let text = AutoLayoutTextObserverView ().expandableWidth ()
       rightColumn.appendView (text)
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Perform Undo to restore consistent state", small: false, sheet: panel)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Perform Undo to restore consistent state", size: .regular, sheet: panel)
       rightColumn.appendFlexibleSpace (followedByView: okButton)
       mainView.appendView (rightColumn)
       panel.contentView = mainView

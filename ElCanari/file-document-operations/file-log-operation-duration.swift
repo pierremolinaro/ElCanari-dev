@@ -61,7 +61,7 @@ fileprivate final class LogFileOperation : EBObject { // SHOULD INHERIT FROM NSO
   //--- Build window contents
     let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
     vStack.appendView (self.mTextView)
-    let button = AutoLayoutButton (title: "Clear", small: true)
+    let button = AutoLayoutButton (title: "Clear", size: .small)
       .bind_run (target: self, selector: #selector (Self.clearTextAction(_:)))
     vStack.appendView (button)
   //--- Assign main view to window

@@ -163,7 +163,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, small: false)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
           .addPage (title: "Minima", tooltip: "Minima Editor", pageView: self.mMinimaPage)
           .addPage (title: "Drill", tooltip: "Drill Editor", pageView: self.mDrillPage)
           .addPage (title: "Data", tooltip: "DataEditor", pageView: self.mDataPage)
@@ -174,7 +174,7 @@ import Cocoa
         do{
           let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
           view_0_0_1.appendView (view_0_0_1_0)
-          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, small: true)
+          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small)
           view_0_0_1.appendView (view_0_0_1_1)
           let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
           view_0_0_1.appendView (view_0_0_1_2)
@@ -184,10 +184,10 @@ import Cocoa
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_1_0 = AutoLayoutSignatureField (small: false)
+        let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
           .bind_signature (self.signatureObserver_property)
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, small: true)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_1)
@@ -195,11 +195,11 @@ import Cocoa
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_2_0 = AutoLayoutVersionField (small: false)
+        let view_0_2_0 = AutoLayoutVersionField (size: .regular)
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
         view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, small: true)
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small)
           .set (alignment: .center)
           .expandableWidth ()
         view_0_2.appendView (view_0_2_1)
@@ -213,7 +213,7 @@ import Cocoa
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
           view_0_4_0.appendView (view_0_4_0_0)
-          let view_0_4_0_1 = AutoLayoutImageObserverView (small: false)
+          let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
             .bind_image (self.statusImage_property)
             .bind_tooltip (self.statusMessage_property)
           view_0_4_0.appendView (view_0_4_0_1)
@@ -221,7 +221,7 @@ import Cocoa
           view_0_4_0.appendView (view_0_4_0_2)
         }
         view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, small: true)
+        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small)
           .set (alignment: .center)
         view_0_4.appendView (view_0_4_1)
       }
@@ -250,31 +250,31 @@ import Cocoa
       do{
         let view_0_1_0 = AutoLayoutFlexibleSpace ()
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, small: true)
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_1)
-        let view_0_1_2 = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, small: true)
+        let view_0_1_2 = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_2)
-        let view_0_1_3 = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, small: true)
+        let view_0_1_3 = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_3)
-        let view_0_1_4 = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, small: true)
+        let view_0_1_4 = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_4)
-        let view_0_1_5 = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, small: true)
+        let view_0_1_5 = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_5)
-        let view_0_1_6 = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, small: true)
+        let view_0_1_6 = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_6)
-        let view_0_1_7 = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, small: true)
+        let view_0_1_7 = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small)
           .set (alignment: .left)
           .expandableWidth ()
         view_0_1.appendView (view_0_1_7)
@@ -326,9 +326,9 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, small: false)
+      let view_0_1 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .regular)
       view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutTextField (width: 56, small: false)
+      let view_0_2 = AutoLayoutTextField (width: 56, size: .regular)
         .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:false)
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
@@ -351,10 +351,10 @@ import Cocoa
     let view_0 = AutoLayoutVerticalStackView ()
       .set (topMargin: 8)
     do{
-      let view_0_0 = AutoLayoutLabel (bold: true, small: true)
+      let view_0_0 = AutoLayoutLabel (bold: true, size: .small)
         .bind_title (self.generatedFileCountString_property)
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTableView (small: true, addControlButtons: true)
+      let view_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
       self.mDataController.bind_tableView (view_0_1)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
@@ -369,9 +369,9 @@ import Cocoa
       let view_2_0 = AutoLayoutHorizontalStackView ()
         .setFirstBaselineAlignment ()
       do{
-        let view_2_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, small: true)
+        let view_2_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small)
         view_2_0.appendView (view_2_0_0)
-        let view_2_0_1 = AutoLayoutTextField (width: 150, small: true)
+        let view_2_0_1 = AutoLayoutTextField (width: 150, size: .small)
           .bind_value (self.mDataSelection.fileExtension_property, sendContinously:false)
         view_2_0.appendView (view_2_0_1)
         let view_2_0_2 = AutoLayoutFlexibleSpace ()
@@ -380,7 +380,7 @@ import Cocoa
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutHorizontalStackView ()
       do{
-        let view_2_1_0 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, small: true)
+        let view_2_1_0 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small)
         view_2_1.appendView (view_2_1_0)
         let view_2_1_1 = AutoLayoutFlexibleSpace ()
         view_2_1.appendView (view_2_1_1)
@@ -389,7 +389,7 @@ import Cocoa
       let view_2_2 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_2_0 = AutoLayoutSwitch (title: "Legend Front Side Texts", small: true)
+        let view_2_2_0 = AutoLayoutSwitch (title: "Legend Front Side Texts", size: .small)
           .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
         view_2_2.appendView (view_2_2_0)
         let view_2_2_1 = AutoLayoutFlexibleSpace ()
@@ -399,7 +399,7 @@ import Cocoa
       let view_2_3 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_3_0 = AutoLayoutSwitch (title: "Layout Front Side Texts", small: true)
+        let view_2_3_0 = AutoLayoutSwitch (title: "Layout Front Side Texts", size: .small)
           .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
         view_2_3.appendView (view_2_3_0)
         let view_2_3_1 = AutoLayoutFlexibleSpace ()
@@ -409,7 +409,7 @@ import Cocoa
       let view_2_4 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_4_0 = AutoLayoutSwitch (title: "Front Side Tracks", small: true)
+        let view_2_4_0 = AutoLayoutSwitch (title: "Front Side Tracks", size: .small)
           .bind_value (self.mDataSelection.drawTracksTopSide_property)
         view_2_4.appendView (view_2_4_0)
         let view_2_4_1 = AutoLayoutFlexibleSpace ()
@@ -419,7 +419,7 @@ import Cocoa
       let view_2_5 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_5_0 = AutoLayoutSwitch (title: "Front Side Pads", small: true)
+        let view_2_5_0 = AutoLayoutSwitch (title: "Front Side Pads", size: .small)
           .bind_value (self.mDataSelection.drawPadsTopSide_property)
         view_2_5.appendView (view_2_5_0)
         let view_2_5_1 = AutoLayoutFlexibleSpace ()
@@ -429,7 +429,7 @@ import Cocoa
       let view_2_6 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_6_0 = AutoLayoutSwitch (title: "Front Side Component Names", small: true)
+        let view_2_6_0 = AutoLayoutSwitch (title: "Front Side Component Names", size: .small)
           .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
         view_2_6.appendView (view_2_6_0)
         let view_2_6_1 = AutoLayoutFlexibleSpace ()
@@ -439,7 +439,7 @@ import Cocoa
       let view_2_7 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_7_0 = AutoLayoutSwitch (title: "Front Side Component Values", small: true)
+        let view_2_7_0 = AutoLayoutSwitch (title: "Front Side Component Values", size: .small)
           .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
         view_2_7.appendView (view_2_7_0)
         let view_2_7_1 = AutoLayoutFlexibleSpace ()
@@ -449,7 +449,7 @@ import Cocoa
       let view_2_8 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_8_0 = AutoLayoutSwitch (title: "Front Side Package Legends", small: true)
+        let view_2_8_0 = AutoLayoutSwitch (title: "Front Side Package Legends", size: .small)
           .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
         view_2_8.appendView (view_2_8_0)
         let view_2_8_1 = AutoLayoutFlexibleSpace ()
@@ -458,7 +458,7 @@ import Cocoa
       view_2.appendView (view_2_8)
       let view_2_9 = AutoLayoutHorizontalStackView ()
       do{
-        let view_2_9_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, small: true)
+        let view_2_9_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small)
         view_2_9.appendView (view_2_9_0)
         let view_2_9_1 = AutoLayoutFlexibleSpace ()
         view_2_9.appendView (view_2_9_1)
@@ -467,7 +467,7 @@ import Cocoa
       let view_2_10 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_10_0 = AutoLayoutSwitch (title: "Legend Back Side Texts", small: true)
+        let view_2_10_0 = AutoLayoutSwitch (title: "Legend Back Side Texts", size: .small)
           .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
         view_2_10.appendView (view_2_10_0)
         let view_2_10_1 = AutoLayoutFlexibleSpace ()
@@ -477,7 +477,7 @@ import Cocoa
       let view_2_11 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_11_0 = AutoLayoutSwitch (title: "Layout Back Side Texts", small: true)
+        let view_2_11_0 = AutoLayoutSwitch (title: "Layout Back Side Texts", size: .small)
           .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
         view_2_11.appendView (view_2_11_0)
         let view_2_11_1 = AutoLayoutFlexibleSpace ()
@@ -487,7 +487,7 @@ import Cocoa
       let view_2_12 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_12_0 = AutoLayoutSwitch (title: "Back Side Tracks", small: true)
+        let view_2_12_0 = AutoLayoutSwitch (title: "Back Side Tracks", size: .small)
           .bind_value (self.mDataSelection.drawTracksBottomSide_property)
         view_2_12.appendView (view_2_12_0)
         let view_2_12_1 = AutoLayoutFlexibleSpace ()
@@ -497,7 +497,7 @@ import Cocoa
       let view_2_13 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_13_0 = AutoLayoutSwitch (title: "Back Side Pads", small: true)
+        let view_2_13_0 = AutoLayoutSwitch (title: "Back Side Pads", size: .small)
           .bind_value (self.mDataSelection.drawPadsBottomSide_property)
         view_2_13.appendView (view_2_13_0)
         let view_2_13_1 = AutoLayoutFlexibleSpace ()
@@ -507,7 +507,7 @@ import Cocoa
       let view_2_14 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_14_0 = AutoLayoutSwitch (title: "Back Side Component Names", small: true)
+        let view_2_14_0 = AutoLayoutSwitch (title: "Back Side Component Names", size: .small)
           .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
         view_2_14.appendView (view_2_14_0)
         let view_2_14_1 = AutoLayoutFlexibleSpace ()
@@ -517,7 +517,7 @@ import Cocoa
       let view_2_15 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_15_0 = AutoLayoutSwitch (title: "Back Side Component Values", small: true)
+        let view_2_15_0 = AutoLayoutSwitch (title: "Back Side Component Values", size: .small)
           .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
         view_2_15.appendView (view_2_15_0)
         let view_2_15_1 = AutoLayoutFlexibleSpace ()
@@ -527,7 +527,7 @@ import Cocoa
       let view_2_16 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_16_0 = AutoLayoutSwitch (title: "Back Side Package Legends", small: true)
+        let view_2_16_0 = AutoLayoutSwitch (title: "Back Side Package Legends", size: .small)
           .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
         view_2_16.appendView (view_2_16_0)
         let view_2_16_1 = AutoLayoutFlexibleSpace ()
@@ -536,7 +536,7 @@ import Cocoa
       view_2.appendView (view_2_16)
       let view_2_17 = AutoLayoutHorizontalStackView ()
       do{
-        let view_2_17_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, small: true)
+        let view_2_17_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small)
         view_2_17.appendView (view_2_17_0)
         let view_2_17_1 = AutoLayoutFlexibleSpace ()
         view_2_17.appendView (view_2_17_1)
@@ -545,7 +545,7 @@ import Cocoa
       let view_2_18 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_18_0 = AutoLayoutSwitch (title: "Vias", small: true)
+        let view_2_18_0 = AutoLayoutSwitch (title: "Vias", size: .small)
           .bind_value (self.mDataSelection.drawVias_property)
         view_2_18.appendView (view_2_18_0)
         let view_2_18_1 = AutoLayoutFlexibleSpace ()
@@ -555,7 +555,7 @@ import Cocoa
       let view_2_19 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_19_0 = AutoLayoutSwitch (title: "Internal Board Limits", small: true)
+        let view_2_19_0 = AutoLayoutSwitch (title: "Internal Board Limits", size: .small)
           .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
         view_2_19.appendView (view_2_19_0)
         let view_2_19_1 = AutoLayoutFlexibleSpace ()
@@ -565,7 +565,7 @@ import Cocoa
       let view_2_20 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_20_0 = AutoLayoutSwitch (title: "Board Limits", small: true)
+        let view_2_20_0 = AutoLayoutSwitch (title: "Board Limits", size: .small)
           .bind_value (self.mDataSelection.drawBoardLimits_property)
         view_2_20.appendView (view_2_20_0)
         let view_2_20_1 = AutoLayoutFlexibleSpace ()
@@ -576,10 +576,10 @@ import Cocoa
         .set (leftMargin: 20)
         .setFirstBaselineAlignment ()
       do{
-        let view_2_21_0 = AutoLayoutSwitch (title: "Pad Holes in PDF file, with diameter", small: true)
+        let view_2_21_0 = AutoLayoutSwitch (title: "Pad Holes in PDF file, with diameter", size: .small)
           .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
         view_2_21.appendView (view_2_21_0)
-        let view_2_21_1 = AutoLayoutCanariDimensionAndPopUp (small: true)
+        let view_2_21_1 = AutoLayoutCanariDimensionAndPopUp (size: .small)
           .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
           .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
         view_2_21.appendView (view_2_21_1)
@@ -589,7 +589,7 @@ import Cocoa
       view_2.appendView (view_2_21)
       let view_2_22 = AutoLayoutHorizontalStackView ()
       do{
-        let view_2_22_0 = AutoLayoutStaticLabel (title: "Option", bold: true, small: true)
+        let view_2_22_0 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small)
         view_2_22.appendView (view_2_22_0)
         let view_2_22_1 = AutoLayoutFlexibleSpace ()
         view_2_22.appendView (view_2_22_1)
@@ -598,7 +598,7 @@ import Cocoa
       let view_2_23 = AutoLayoutHorizontalStackView ()
         .set (leftMargin: 20)
       do{
-        let view_2_23_0 = AutoLayoutSwitch (title: "Horizontal Mirror", small: true)
+        let view_2_23_0 = AutoLayoutSwitch (title: "Horizontal Mirror", size: .small)
           .bind_value (self.mDataSelection.horizontalMirror_property)
         view_2_23.appendView (view_2_23_0)
         let view_2_23_1 = AutoLayoutFlexibleSpace ()
@@ -624,7 +624,7 @@ import Cocoa
       .set (topMargin: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutButton (title: "Reset Version and Signature", small: true)
+      let view_0_0 = AutoLayoutButton (title: "Reset Version and Signature", size: .small)
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutArtworkDocument.resetVersionAndSignatureAction (_:))
@@ -638,7 +638,7 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, small: false)
+        let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, size: .regular)
         view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutFlexibleSpace ()
         view_1_0.appendView (view_1_0_1)
@@ -657,7 +657,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, small: false)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
     return view
   }
 
@@ -666,7 +666,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
     return view
   }
@@ -676,7 +676,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, small: false)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
     return view
   }
 
@@ -685,7 +685,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
     return view
   }
@@ -695,7 +695,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, small: false)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
     return view
   }
 
@@ -704,7 +704,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_5 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
     return view
   }
@@ -714,7 +714,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, small: false)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
     return view
   }
 
@@ -723,7 +723,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_7 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (small: true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
       .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
     return view
   }

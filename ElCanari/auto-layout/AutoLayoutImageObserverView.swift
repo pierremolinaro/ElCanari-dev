@@ -17,18 +17,18 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private let mSmall : Bool
+  private let mSize : EBControlSize
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    self.mSmall = inSmall
+  init (size inSize : EBControlSize) {
+    self.mSize = inSize
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.imageScaling = .scaleProportionallyUpOrDown
     self.imageFrameStyle = .none
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.frame.size = self.intrinsicContentSize
   }
@@ -58,7 +58,12 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    let s = self.mSmall ? 17.0 : 24.0
+    let s : CGFloat
+    switch self.mSize {
+    case .mini : s = 15.0 // ???
+    case .small : s = 17.0
+    case .regular : s =  24.0
+    }
     return NSSize (width: s, height: s)
   }
 

@@ -17,9 +17,9 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
   //····················································································································
 
   private let mImageView : AutoLayoutDroppableImageView
-  private let mRemoveButton = AutoLayoutButton (title: "-", small: true)
-  private let mPasteImageButton = AutoLayoutButton (title: "Paste Image", small: true)
-  private let mCopyImageButton = AutoLayoutButton (title: "Copy Image", small: true)
+  private let mRemoveButton = AutoLayoutButton (title: "-", size: .small)
+  private let mPasteImageButton = AutoLayoutButton (title: "Paste Image", size: .small)
+  private let mCopyImageButton = AutoLayoutButton (title: "Copy Image", size: .small)
 
   //····················································································································
 

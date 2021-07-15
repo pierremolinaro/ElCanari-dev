@@ -38,7 +38,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   //····················································································································
 
   override init () {
-    self.mHideIssueButton = AutoLayoutButton (title: "Hide Issue", small: true).expandableWidth ()
+    self.mHideIssueButton = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
     super.init ()
     self.translatesAutoresizingMaskIntoConstraints = false
     self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)

@@ -51,7 +51,7 @@ extension AutoLayoutPackageDocument {
       let errorMessage_property = EBGenericStoredProperty <String> (defaultValue: "", undoManager: nil)
     //-------------------------- Build Panel
       let panel = NSPanel ()
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", small: false, sheet: panel)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel)
       let intField = AutoLayoutIntField (width: 48)
         .bind_value (newFordiddenPadNumber_property, sendContinously: true)
         .set (min: 1)
@@ -68,7 +68,7 @@ extension AutoLayoutPackageDocument {
       do{
         let hStack = AutoLayoutHorizontalStackView ()
         hStack.appendFlexibleSpace ()
-        let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, small: false)
+        let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, size: .regular)
         hStack.appendView (label)
         hStack.appendFlexibleSpace ()
         mainVStack.appendView (hStack)
@@ -83,7 +83,7 @@ extension AutoLayoutPackageDocument {
       //--- Forbidden Pad Number
         do {
           let hStack = AutoLayoutHorizontalStackView ()
-          let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, small: false)
+          let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, size: .regular)
           hStack.appendView (label)
           panel.initialFirstResponder = intField
           hStack.appendView (intField)
@@ -91,7 +91,7 @@ extension AutoLayoutPackageDocument {
         }
       //--- Error message
         do{
-          let errorMessage = AutoLayoutLabel (bold: false, small: false)
+          let errorMessage = AutoLayoutLabel (bold: false, size: .regular)
             .bind_title (errorMessage_property)
             .setRedTextColor ()
           contentsVStack.appendView (errorMessage)
@@ -101,7 +101,7 @@ extension AutoLayoutPackageDocument {
         do {
           let hStack = AutoLayoutHorizontalStackView ()
           hStack.appendFlexibleSpace()
-          let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", small: false, sheet: panel)
+          let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel)
           hStack.appendView (cancelButton)
           hStack.appendView (okButton)
           contentsVStack.appendView (hStack)

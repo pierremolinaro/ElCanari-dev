@@ -9,7 +9,7 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
   //····················································································································
 
   init () {
-    super.init (pullsDown: false, small: true)
+    super.init (pullsDown: false, size: .small)
   }
 
   //····················································································································

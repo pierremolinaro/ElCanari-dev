@@ -15,7 +15,7 @@ class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
   //····················································································································
 
   init (pullsDown inPullsDown : Bool,
-        small inSmall : Bool) {
+        size inSize : EBControlSize) {
     super.init (frame: NSRect (), pullsDown: inPullsDown)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class InternalAutoLayoutPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
       cell.arrowPosition = .arrowAtBottom
     }
 
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }

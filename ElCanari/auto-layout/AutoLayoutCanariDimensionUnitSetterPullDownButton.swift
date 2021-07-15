@@ -14,12 +14,12 @@ final class AutoLayoutCanariDimensionUnitSetterPullDownButton : NSPopUpButton, E
 
   //····················································································································
 
-  init (small inSmall : Bool) {
+  init (size inSize : EBControlSize) {
     super.init (frame: NSRect (), pullsDown: true)
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
     if let cell = self.cell as? NSPopUpButtonCell {

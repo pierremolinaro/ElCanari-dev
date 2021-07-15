@@ -79,7 +79,7 @@ class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
   //    self.mTransientEventExplorerWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
       let mainVStack = AutoLayoutVerticalStackView ()
       let hStack = AutoLayoutHorizontalStackView ()
-      let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", small: false)
+      let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
         .bind_run (target: self, selector: #selector (Self.clearTransientEventLogWindow (_:)))
       hStack.appendView (clearTransientEventLogButton)
       hStack.appendFlexibleSpace ()

@@ -14,8 +14,8 @@ final class AutoLayoutPullDownButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  init (title inTitle : String, small inSmall : Bool) {
-    super.init (pullsDown: true, small: inSmall)
+  init (title inTitle : String, size inSize : EBControlSize) {
+    super.init (pullsDown: true, size: inSize)
 
     self.addItem (withTitle: inTitle)
   }

@@ -18,7 +18,7 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
 
   //····················································································································
 
-  init (equalWidth inEqualWidth : Bool, small inSmall : Bool) {
+  init (equalWidth inEqualWidth : Bool, size inSize : EBControlSize) {
     self.mEqualWidth = inEqualWidth
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
@@ -26,7 +26,7 @@ class InternalAutoLayoutSegmentedControl : NSSegmentedControl, EBUserClassNamePr
     self.translatesAutoresizingMaskIntoConstraints = false
     self.segmentStyle = autoLayoutCurrentStyle ().segmentedControlStyle
 
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
 
     if #available (OSX 10.13, *) {

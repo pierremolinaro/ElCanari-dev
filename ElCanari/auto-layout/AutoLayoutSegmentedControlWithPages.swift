@@ -15,9 +15,9 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
 
   init (documentView inDocumentView : AutoLayoutAbstractStackView,
         equalWidth inEqualWidth : Bool,
-        small inSmall : Bool) {
+        size inSize : EBControlSize) {
     self.mDocumentView = inDocumentView
-    super.init (equalWidth: inEqualWidth, small: inSmall)
+    super.init (equalWidth: inEqualWidth, size: inSize)
 
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))

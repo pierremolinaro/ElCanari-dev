@@ -14,8 +14,8 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : InternalAutoLa
 
   //····················································································································
 
-  init (small inSmall : Bool) {
-    super.init (equalWidth: true, small: inSmall)
+  init (size inSize : EBControlSize) {
+    super.init (equalWidth: true, size: inSize)
 
     self.target = self
     self.action = #selector (Self.selectedSegmentDidChange (_:))

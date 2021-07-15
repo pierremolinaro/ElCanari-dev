@@ -10,7 +10,7 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
   // INIT
   //····················································································································
 
-  init (bold inBold : Bool, small inSmall : Bool) {
+  init (bold inBold : Bool, size inSize : EBControlSize) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ final class AutoLayoutLabel : NSTextField, EBUserClassNameProtocol {
     self.drawsBackground = false
     self.isEnabled = true
     self.isEditable = false
-    self.controlSize = inSmall ? .small : .regular
+    self.controlSize = inSize.cocoaControlSize
     let fontSize = NSFont.systemFontSize (for: self.controlSize)
     self.font = inBold ? NSFont.boldSystemFont (ofSize: fontSize) : NSFont.systemFont (ofSize: fontSize)
   }

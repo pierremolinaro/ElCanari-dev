@@ -49,23 +49,23 @@ extern autolayout class StaticMiniLabel (title : String) $enabled $hidden {
   func expandableWidth ()
 }
 
-extern autolayout class StaticLabel (title : String, bold: Bool, small: Bool) $enabled $hidden {
+extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
   func set (width: Int)
   func expandableWidth ()
 }
 
-extern autolayout class StaticLabels (left : String, right : String, bold: Bool, small: Bool) $hidden {
+extern autolayout class StaticLabels (left : String, right : String, bold: Bool, size: EBControlSize) $hidden {
 }
 
-extern autolayout class Label (bold: Bool, small: Bool) $enabled {
+extern autolayout class Label (bold: Bool, size: EBControlSize) $enabled {
   $title transient String
   func setRedTextColor ()
   func expandableWidth ()
   func set (alignment: TextAlignment)
 }
 
-extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, small : Bool) {
+extern autolayout class SegmentedControlWithPages (documentView: view, equalWidth: Bool, size: EBControlSize) {
   func expandableWidth ()
   func addPage (title: String, tooltip: String, pageView : view)
   $selectedPage property Int
@@ -73,16 +73,16 @@ extern autolayout class SegmentedControlWithPages (documentView: view, equalWidt
   $segmentTitle transient String (segmentIndex : Int)
 }
 
-extern autolayout class SignatureField (small : Bool) {
+extern autolayout class SignatureField (size: EBControlSize) {
   $signature transient Int
 }
 
-extern autolayout class VersionField (small : Bool) {
+extern autolayout class VersionField (size: EBControlSize) {
   $version transient Int
   $versionShouldChange transient Bool
 }
 
-extern autolayout class ImageObserverView (small: Bool) $hidden {
+extern autolayout class ImageObserverView (size: EBControlSize) $hidden {
   $image transient NSImage
   $tooltip transient String
 }
@@ -99,23 +99,23 @@ extern autolayout class TaggedPopUpButton {
   func add (title: String, withTag: Int)
 }
 
-extern autolayout class CanariUnitPopUpButton (small: Bool) {
+extern autolayout class CanariUnitPopUpButton (size: EBControlSize) {
   $unit property Int
 }
 
-extern autolayout class CanariDimensionField (small: Bool) {
+extern autolayout class CanariDimensionField (size: EBControlSize) {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariDimensionAndPopUp (small: Bool) $enabled $hidden {
+extern autolayout class CanariDimensionAndPopUp (size: EBControlSize) $enabled $hidden {
   $dimensionAndUnit property Int, property Int
 }
 
-extern autolayout class CanariObservedDimensionAndPopUp (small: Bool) $hidden {
+extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $hidden {
   $dimensionAndUnit transient Int, property Int
 }
 
-extern autolayout class Switch (title: String, small: Bool) {
+extern autolayout class Switch (title: String, size: EBControlSize) {
   $value property Bool
 }
 
@@ -124,22 +124,22 @@ extern autolayout class LinearSlider (min: Int, max: Int, ticks: Int) $enabled $
   $doubleValue property Double (sendContinously : Bool)
 }
 
-extern autolayout class Button (title: String, small: Bool) $enabled $run $hidden {
+extern autolayout class Button (title: String, size: EBControlSize) $enabled $run $hidden {
   func expandableWidth ()
   func set (width: Int)
   func set (height: Int)
 }
 
-extern autolayout class TextField (width: Int, small: Bool) $enabled {
+extern autolayout class TextField (width: Int, size: EBControlSize) $enabled {
   func set (alignment: TextAlignment)
   func expandableWidth ()
   $value property String (sendContinously : Bool)
 }
 
-extern autolayout class HelpButton (small: Bool) $enabled $run {
+extern autolayout class HelpButton (size: EBControlSize) $enabled $run {
 }
 
-extern autolayout class PullDownButton (title: String, small: Bool) {
+extern autolayout class PullDownButton (title: String, size: EBControlSize) {
   func add (item: menuItem)
 }
 
@@ -177,7 +177,7 @@ extern autolayout class IntField (width: Int) $enabled $hidden {
   func set (format: String)
 }
 
-extern autolayout class IntObserverField (small: Bool) $enabled {
+extern autolayout class IntObserverField (size: EBControlSize) $enabled {
   $observedValue transient Int
 }
 
@@ -185,7 +185,7 @@ extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
 
-extern autolayout class FontButton (small: Bool) {
+extern autolayout class FontButton (size: EBControlSize) {
   $fontValue property NSFont
 }
 
@@ -228,7 +228,7 @@ extern autolayout class OneStringArrayTableView {
   $array transient StringArray
 }
 
-extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $hidden {
+extern autolayout class CanariDimensionUnitSetterPullDownButton (size: EBControlSize) $hidden {
   func expandableWidth ()
   $setter4 property Int, property Int, property Int, property Int
   $setter5 property Int, property Int, property Int, property Int, property Int
@@ -237,7 +237,7 @@ extern autolayout class CanariDimensionUnitSetterPullDownButton (small: Bool) $h
   $setter8 property Int, property Int, property Int, property Int, property Int, property Int, property Int, property Int
 }
 
-extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) {
+extern autolayout class CanariHorizontalAlignmentSegmentedControl (size: EBControlSize) {
   func expandableWidth ()
   $alignment property HorizontalAlignment
 }
@@ -245,7 +245,7 @@ extern autolayout class CanariHorizontalAlignmentSegmentedControl (small: Bool) 
 extern autolayout class StaticImageView (name: String) {
 }
 
-extern autolayout class TableView (small: Bool, addControlButtons: Bool) $tableValue {
+extern autolayout class TableView (size: EBControlSize, addControlButtons: Bool) $tableValue {
 }
 
 extern autolayout class CanariAddSymbolInstancePullDownButton $enabled {
