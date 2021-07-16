@@ -44,11 +44,6 @@ extern autolayout class TwoColumnsGridView {
   func addSeparator ()
 }
 
-extern autolayout class StaticMiniLabel (title : String) $enabled $hidden {
-  func set (alignment: TextAlignment)
-  func expandableWidth ()
-}
-
 extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
   func set (alignment: TextAlignment)
   func set (width: Int)

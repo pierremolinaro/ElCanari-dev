@@ -51,7 +51,7 @@ extension AutoLayoutPackageDocument {
       let errorMessage_property = EBGenericStoredProperty <String> (defaultValue: "", undoManager: nil)
     //-------------------------- Build Panel
       let panel = NSPanel ()
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel)
+      let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel, isInitialFirstResponder: true)
       let intField = AutoLayoutIntField (width: 48)
         .bind_value (newFordiddenPadNumber_property, sendContinously: true)
         .set (min: 1)
@@ -101,7 +101,7 @@ extension AutoLayoutPackageDocument {
         do {
           let hStack = AutoLayoutHorizontalStackView ()
           hStack.appendFlexibleSpace()
-          let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel)
+          let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular, sheet: panel, isInitialFirstResponder: false)
           hStack.appendView (cancelButton)
           hStack.appendView (okButton)
           contentsVStack.appendView (hStack)

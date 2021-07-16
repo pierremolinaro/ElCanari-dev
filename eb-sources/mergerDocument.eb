@@ -242,7 +242,7 @@ xibdocument MergerDocument root MergerRoot {
 //--- Help
   action showBoardHelpAction ;
   outlet EBButton showBoardHelpButton $run showBoardHelpAction ;
-  outlet NSPanel boardHelpPanel ;
+//  outlet NSPanel boardHelpPanel ;
 
 //--- Table view, source of model drag
   outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;

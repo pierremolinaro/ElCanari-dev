@@ -627,7 +627,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Document Preferences)")
+      let view_0_1 = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)
@@ -657,7 +657,7 @@ import Cocoa
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticMiniLabel (title: "(Stored in Application Preferences)")
+      let view_0_1 = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini)
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_2)

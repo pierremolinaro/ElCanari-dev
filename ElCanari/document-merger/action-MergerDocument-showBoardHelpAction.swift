@@ -13,9 +13,31 @@ import Cocoa
 extension MergerDocument {
   @objc func showBoardHelpAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let panel = self.boardHelpPanel {
-      self.windowForSheet?.beginSheet (panel, completionHandler: nil)
-    }
+    let panel = NSPanel (
+      contentRect: NSRect (x: 0, y: 0, width: 460, height: 180),
+      styleMask: [.titled],
+      backing: .buffered,
+      defer: false
+    )
+    panel.hasShadow = true
+    let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
+    mainView.appendViewSurroundedByFlexibleSpaces(AutoLayoutApplicationImage ())
+    let rightColumn = AutoLayoutVerticalStackView ()
+    let text = AutoLayoutStaticTextView (string:
+      """
+        For inserting a board model:
+          • either drag and drop from the board model list on the board view;
+          • either perform a contextual click on the board view.
+
+        The contextual click enables to insert an array of models.
+      """
+    )
+    rightColumn.appendViewPreceededByFlexibleSpace (text)
+    let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel, isInitialFirstResponder: true)
+    rightColumn.appendViewPreceededByFlexibleSpace (okButton)
+    mainView.appendViewPreceededByFlexibleSpace (rightColumn)
+    panel.contentView = mainView
+    self.windowForSheet?.beginSheet (panel, completionHandler: nil)
 //--- END OF USER ZONE 2
   }
 }

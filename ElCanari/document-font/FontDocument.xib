@@ -59,7 +59,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <rect key="contentRect" x="73" y="851" width="700" height="500"/>
-            <rect key="screenRect" x="-1004" y="900" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="900" width="1920" height="1057"/>
             <value key="minSize" type="size" width="600" height="400"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
@@ -660,7 +660,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Z8P-ja-716">
                             <rect key="frame" x="1" y="1" width="363" height="298"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggH-gl-Jr4" customClass="NewCharacterView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="202" width="163" height="96"/>
@@ -727,7 +727,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="FcB-bo-IsW">
                         <rect key="frame" x="1" y="1" width="189" height="381"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="4ds-6U-hSp" customClass="IssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="189" height="381"/>

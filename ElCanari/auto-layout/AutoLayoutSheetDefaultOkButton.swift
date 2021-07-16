@@ -5,6 +5,7 @@
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -13,7 +14,10 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, size inSize : EBControlSize, sheet inPanel : NSPanel) {
+  init (title inTitle : String,
+        size inSize : EBControlSize,
+        sheet inPanel : NSPanel,
+        isInitialFirstResponder inInitialFirstResponder : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +30,9 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
     if let buttonCell = self.cell as? NSButtonCell {
       inPanel.defaultButtonCell = buttonCell
     }
-    inPanel.initialFirstResponder = self
+    if inInitialFirstResponder {
+      inPanel.initialFirstResponder = self
+    }
     self.target = self
     self.action = #selector (Self.dismissSheetAction (_:))
   }

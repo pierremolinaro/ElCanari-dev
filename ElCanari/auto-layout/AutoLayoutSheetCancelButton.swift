@@ -15,7 +15,10 @@ final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init (title inTitle : String, size inSize : EBControlSize, sheet inPanel : NSPanel) {
+  init (title inTitle : String,
+        size inSize : EBControlSize,
+        sheet inPanel : NSPanel,
+        isInitialFirstResponder inInitialFirstResponder : Bool) {
     super.init (frame: NSRect ())
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +28,11 @@ final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
     self.title = inTitle
     self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
+
+    if inInitialFirstResponder {
+      inPanel.initialFirstResponder = self
+    }
+
     self.target = self
     self.action = #selector (Self.dismissSheetAction (_:))
     self.keyEquivalent = "\u{1b}"

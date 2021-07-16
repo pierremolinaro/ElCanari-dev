@@ -186,7 +186,6 @@ import Cocoa
   //····················································································································
 
   @IBOutlet final var addBoardModelButton : EBButton? = nil
-  @IBOutlet final var boardHelpPanel : NSPanel? = nil
   @IBOutlet final var dismissPrefsForSettingMergerDisplayButton : EBButton? = nil
   @IBOutlet final var mArrowMagnitudeTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mArrowMagnitudeUnitPopUp : EBPopUpButton? = nil
@@ -458,7 +457,6 @@ import Cocoa
   private func checkOutletConnections () {
     let start = Date ()
     checkOutletConnection (self.addBoardModelButton, "addBoardModelButton", EBButton.self, #file, #line)
-    checkOutletConnection (self.boardHelpPanel, "boardHelpPanel", NSPanel.self, #file, #line)
     checkOutletConnection (self.dismissPrefsForSettingMergerDisplayButton, "dismissPrefsForSettingMergerDisplayButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mArrowMagnitudeTextField, "mArrowMagnitudeTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mArrowMagnitudeUnitPopUp, "mArrowMagnitudeUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -1381,7 +1379,6 @@ import Cocoa
     self.mImportArtworkButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
-    self.boardHelpPanel?.ebCleanUp ()
     self.dismissPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.mArrowMagnitudeTextField?.ebCleanUp ()
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
@@ -1557,7 +1554,6 @@ import Cocoa
     self.updateBoardModelButton?.ebCleanUp ()
   //--------------------------- Detach outlets
     self.addBoardModelButton = nil
-    self.boardHelpPanel = nil
     self.dismissPrefsForSettingMergerDisplayButton = nil
     self.mArrowMagnitudeTextField = nil
     self.mArrowMagnitudeUnitPopUp = nil

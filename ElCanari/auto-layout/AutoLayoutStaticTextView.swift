@@ -1,8 +1,8 @@
 //
-//  AutoLayoutTextObserverView.swift
+//  AutoLayoutStaticTextView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 28/06/2021.
+//  Created by Pierre Molinaro on 16/07/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutStaticTextView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -18,7 +18,7 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  init () {
+  init (string inString : String) {
     super.init (frame: NSRect (x: 0, y: 0, width: 100, height: 100))
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
@@ -30,6 +30,8 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     self.mTextView.isRichText = false
     self.mTextView.importsGraphics = false
     self.mTextView.allowsImageEditing = false
+    self.mTextView.drawsBackground = false
+    self.mTextView.string = inString
 
     let MAX_SIZE : CGFloat = 1_000_000.0 // CGFloat.greatestFiniteMagnitude
     self.mTextView.minSize = NSSize (width: 0.0, height: contentSize.height)
@@ -39,8 +41,8 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
     self.drawsBackground = false
     self.documentView = self.mTextView
-    self.hasHorizontalScroller = true
-    self.hasVerticalScroller = true
+    self.hasHorizontalScroller = false
+    self.hasVerticalScroller = false
     self.automaticallyAdjustsContentInsets = true
   }
 
@@ -48,14 +50,6 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
 
   required init? (coder inCoder : NSCoder) {
     fatalError ("init(coder:) has not been implemented")
-  }
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-    super.ebCleanUp ()
   }
 
   //····················································································································
@@ -81,37 +75,6 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
   }
 
   var textStorage : NSTextStorage? { self.mTextView.textStorage }
-
-  //····················································································································
-  //  value binding
-  //····················································································································
-
-  fileprivate func update (from inObject : EBReadOnlyProperty_String) {
-    switch inObject.selection {
-    case .empty, .multiple :
-      self.mTextView.string = ""
-      self.mTextView.invalidateIntrinsicContentSize ()
-    case .single (let propertyValue) :
-      let currentSelectedRangeValues = self.mTextView.selectedRanges
-      self.mTextView.string = propertyValue
-      self.mTextView.selectedRanges = currentSelectedRangeValues
-      self.mTextView.invalidateIntrinsicContentSize ()
-    }
-  }
-
-  //····················································································································
-
-  private var mValueController : EBReadOnlyPropertyController? = nil
-
-  //····················································································································
-
-  final func bind_observedValue (_ inObject : EBReadOnlyProperty_String) -> Self {
-    self.mValueController = EBReadOnlyPropertyController (
-      observedObjects: [inObject],
-      callBack: { [weak self] in self?.update (from: inObject) }
-    )
-    return self
-  }
 
   //····················································································································
 
@@ -162,26 +125,26 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
       NSAttributedString.Key.font : font,
       NSAttributedString.Key.foregroundColor : color
     ]
-    let str = NSAttributedString (string:inString, attributes: attributes)
+    let str = NSAttributedString (string: inString, attributes: attributes)
     self.appendAttributedString (str)
   }
 
   //····················································································································
 
   func appendErrorString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.red)
+    self.appendMessageString (inString, color: .red)
   }
 
   //····················································································································
 
   func appendWarningString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.orange)
+    self.appendMessageString (inString, color: .orange)
   }
 
   //····················································································································
 
   func appendSuccessString (_ inString : String) {
-    self.appendMessageString (inString, color: NSColor.blue)
+    self.appendMessageString (inString, color: .blue)
   }
 
   //····················································································································

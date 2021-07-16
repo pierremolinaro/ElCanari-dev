@@ -50,6 +50,39 @@ class AutoLayoutHorizontalStackView : AutoLayoutAbstractStackView {
   }
 
   //····················································································································
+  //   Facilities
+  //····················································································································
+
+  @discardableResult final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutVerticalStackView ()
+    hStack.appendFlexibleSpace ()
+    hStack.appendView (inView)
+    self.addView (hStack, in: .leading)
+    return self
+  }
+
+  //····················································································································
+
+  @discardableResult final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutVerticalStackView ()
+    hStack.appendView (inView)
+    hStack.appendFlexibleSpace ()
+    self.addView (hStack, in: .leading)
+    return self
+  }
+
+  //····················································································································
+
+  @discardableResult final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
+    let hStack = AutoLayoutVerticalStackView ()
+    hStack.appendFlexibleSpace ()
+    hStack.appendView (inView)
+    hStack.appendFlexibleSpace ()
+    self.addView (hStack, in: .leading)
+    return self
+  }
+
+  //····················································································································
 
   private var mConstraints = [NSLayoutConstraint] ()
 

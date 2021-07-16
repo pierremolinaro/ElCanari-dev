@@ -175,7 +175,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
-    hStack { space StaticMiniLabel (title: "(Stored in Document Preferences)") space }
+    hStack { space StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini) space }
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, size: .small),
@@ -222,7 +222,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mDisplayInspectorView vStack {
-    hStack { space StaticMiniLabel (title: "(Stored in Application Preferences)") space }
+    hStack { space StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini) space }
     TwoColumnsGridView {
       addCenterYAligned (
         left: StaticLabel (title: "Symbol", bold: no, size: .small),

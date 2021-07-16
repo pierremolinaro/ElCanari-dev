@@ -454,11 +454,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       )
       panel.hasShadow = true
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-      let leftColumn = AutoLayoutVerticalStackView ()
-      leftColumn.appendFlexibleSpace ()
-      leftColumn.appendView (AutoLayoutApplicationImage ())
-      leftColumn.appendFlexibleSpace ()
-      mainView.appendView (leftColumn)
+      mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
       let rightColumn = AutoLayoutVerticalStackView ()
       let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular)
         .set (alignment: .left)
@@ -467,8 +463,13 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       rightColumn.appendView (title)
       let text = AutoLayoutTextObserverView ().expandableWidth ()
       rightColumn.appendView (text)
-      let okButton = AutoLayoutSheetDefaultOkButton (title: "Perform Undo to restore consistent state", size: .regular, sheet: panel)
-      rightColumn.appendFlexibleSpace (followedByView: okButton)
+      let okButton = AutoLayoutSheetDefaultOkButton (
+        title: "Perform Undo to restore consistent state",
+        size: .regular,
+        sheet: panel,
+        isInitialFirstResponder : true
+      )
+      rightColumn.appendViewPreceededByFlexibleSpace (okButton)
       mainView.appendView (rightColumn)
       panel.contentView = mainView
       let message = errorList.joined (separator: "\n")
