@@ -39,20 +39,20 @@ extension CustomizedProjectDocument {
     let connectorsFrontSide = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: .front)
     let connectorsBackSide  = self.rootObject.connectors (at: inUnalignedMouseDownPoint, trackSide: .back)
     if connectorsFrontSide.count > 1 {
-      let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (title: "Connect in Front Side", action: #selector (Self.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = connectorsFrontSide
       menu.addItem (menuItem)
     }
     if connectorsBackSide.count > 1 {
-      let menuItem = NSMenuItem (title: "Connect in Back Side", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (title: "Connect in Back Side", action: #selector (Self.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = connectorsBackSide
       menu.addItem (menuItem)
     }
     let connectorsBothSides = Array (Set (connectorsBackSide + connectorsFrontSide))
     if connectorsBothSides.count > 1 {
-      let menuItem = NSMenuItem (title: "Connect in both Sides", action: #selector (CustomizedProjectDocument.connectInBoardAction (_:)), keyEquivalent: "")
+      let menuItem = NSMenuItem (title: "Connect in both Sides", action: #selector (Self.connectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = connectorsBothSides
       menu.addItem (menuItem)

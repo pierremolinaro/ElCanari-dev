@@ -1,8 +1,8 @@
 //
-//  AutoLayoutCanariUnitPopUpButton.swift
+//  AutoLayoutCanariOrientationSegmentedControl.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 06/02/2021.
+//  Created by Pierre Molinaro on 16/07/2021.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,31 +10,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
+final class AutoLayoutCanariOrientationSegmentedControl : InternalAutoLayoutSegmentedControl {
 
   //····················································································································
 
   init (size inSize : EBControlSize) {
-    super.init (pullsDown: false, size: inSize)
-//    noteObjectAllocation (self)
-//    self.translatesAutoresizingMaskIntoConstraints = false
-//
-//    self.controlSize = inSize.cocoaControlSize
-//    self.font = NSFont.systemFont (ofSize: inSmall ? NSFont.smallSystemFontSize : NSFont.systemFontSize)
-//
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//    if let cell = self.cell as? NSPopUpButtonCell {
-//      cell.arrowPosition = .arrowAtBottom
-//    }
+    super.init (equalWidth: true, size: inSize)
 
-    self.add (title: "inch", withTag: 2_286_000)
-    self.add (title: "mil", withTag: 2_286)
-    self.add (title: "pt", withTag: 31_750)
-    self.add (title: "cm", withTag: 900_000)
-    self.add (title: "mm", withTag: 90_000)
-    self.add (title: "µm", withTag: 90)
-    self.add (title: "pc", withTag: 381_000)
-    self.add (title: "m", withTag: 90_000_000)
+    self.segmentCount = 4
+    self.setLabel ("0°",   forSegment: 0)
+    self.setLabel ("90°",  forSegment: 1)
+    self.setLabel ("180°", forSegment: 2)
+    self.setLabel ("270°", forSegment: 3)
+    self.trackingMode = .selectOne
+    self.selectedSegment = 0
   }
 
   //····················································································································
@@ -45,39 +34,11 @@ final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-//  deinit {
-//    noteObjectDeallocation (self)
-//  }
-  
-  //····················································································································
-
-  override func ebCleanUp () {
-    self.mSelectedUnitController?.unregister ()
-    self.mSelectedUnitController = nil
-    super.ebCleanUp ()
-  }
-
-  //····················································································································
-
-//  override func updateAutoLayoutUserInterfaceStyle () {
-//    super.updateAutoLayoutUserInterfaceStyle ()
-//    self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
-//  }
-
-  //····················································································································
-
-  fileprivate func add (title inTitle : String, withTag inTag : Int) {
-    self.addItem (withTitle: inTitle)
-    self.lastItem?.tag = inTag
-  }
-
-  //····················································································································
-
-  func updateTag (from inObject : EBGenericReadWriteProperty <Int>) {
+  func updateTag (from inObject : EBGenericReadWriteProperty <QuadrantRotation>) {
     switch inObject.selection {
     case .single (let v) :
       self.enable (fromValueBinding: true)
-      self.selectItem (withTag: v)
+      self.selectedSegment = v.rawValue
     case .empty :
       self.enable (fromValueBinding: false)
     case .multiple :
@@ -88,20 +49,21 @@ final class AutoLayoutCanariUnitPopUpButton : InternalAutoLayoutPopUpButton {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    _ = self.mSelectedUnitController?.updateModel (withCandidateValue: self.selectedTag (), windowForSheet: self.window)
+    let orientation = QuadrantRotation (rawValue: self.selectedSegment)!
+    _ = self.mSelectedOrientationController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
     return super.sendAction (action, to: to)
   }
 
   //····················································································································
-  //  $selectedUnit binding
+  //  $orientation binding
   //····················································································································
 
-  private var mSelectedUnitController : EBGenericReadWritePropertyController <Int>? = nil
+  private var mSelectedOrientationController : EBGenericReadWritePropertyController <QuadrantRotation>? = nil
 
   //····················································································································
 
-  final func bind_unit (_ inObject : EBGenericReadWriteProperty <Int>) -> Self {
-    self.mSelectedUnitController = EBGenericReadWritePropertyController <Int> (
+  final func bind_orientation (_ inObject : EBGenericReadWriteProperty <QuadrantRotation>) -> Self {
+    self.mSelectedOrientationController = EBGenericReadWritePropertyController <QuadrantRotation> (
       observedObject: inObject,
       callBack: { [weak self] in self?.updateTag (from: inObject) }
     )

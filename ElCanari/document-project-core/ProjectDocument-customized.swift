@@ -284,7 +284,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.boardObjectsController.register (inspectorView: self.mBoardLineInspectorView, for: BoardLine.self)
     self.boardObjectsController.register (inspectorView: self.mBoardTrackInspectorView, for: BoardTrack.self)
     self.boardObjectsController.register (inspectorView: self.mBoardConnectorInspectorView, for: BoardConnector.self)
-    self.mBoardView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnBoard
+    self.mBoardView?.mGraphicView.mContextualMenuBuilder = self.populateContextualClickOnBoard
   //--- Set Board limits inspector segmented control
     let boardLimitsInspectors = [
       self.mSelectedObjectsBoardLimitsInspectorView,
@@ -292,7 +292,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
       self.mOperationBoardLimitsInspectorView
     ]
     self.mBoardLimitsInspectorSegmentedControl?.register (masterView: self.mBaseBoardLimitsInspectorView, boardLimitsInspectors)
-    self.mBoardLimitsView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnBoardLimits
+    self.mBoardLimitsView?.mGraphicView.mContextualMenuBuilder = self.populateContextualClickOnBoardLimits
   //--- Set schematics inspector segmented control
     let schematicsInspectors = [
       self.mSelectedObjectsSchematicsInspectorView,
@@ -337,7 +337,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.mSchematicsView?.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)
     self.mSchematicsView?.mGraphicView.set (arrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT)
     self.mSchematicsView?.mGraphicView.set (shiftArrowKeyMagnitude : SCHEMATIC_GRID_IN_CANARI_UNIT * 4)
-    self.mSchematicsView?.mGraphicView.mPopulateContextualMenuClosure = self.populateContextualClickOnSchematics
+    self.mSchematicsView?.mGraphicView.mContextualMenuBuilder = self.populateContextualClickOnSchematics
     self.mSchematicsView?.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
   //--- Set document to scroll view for enabling drag and drop for schematics symbols
     self.mSchematicsView?.mScrollView?.register (document: self, draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
@@ -417,9 +417,9 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.mSheetController.unregister ()
     self.mPackageCountToInsertController?.unregister ()
     self.mPackageCountToInsertController = nil
-    self.mSchematicsView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mBoardLimitsView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
-    self.mBoardView?.mGraphicView.mPopulateContextualMenuClosure = nil // Required for breaking strong reference cycle
+    self.mSchematicsView?.mGraphicView.mContextualMenuBuilder = nil // Required for breaking strong reference cycle
+    self.mBoardLimitsView?.mGraphicView.mContextualMenuBuilder = nil // Required for breaking strong reference cycle
+    self.mBoardView?.mGraphicView.mContextualMenuBuilder = nil // Required for breaking strong reference cycle
     self.schematicObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
     self.boardObjectsController.mAfterObjectRemovingCallback = nil // Required for breaking strong reference cycle
   //--- Pop up button controllers

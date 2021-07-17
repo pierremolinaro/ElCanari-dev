@@ -69,12 +69,12 @@ class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBGenericReadWrit
     var result = true
     let validationResult = validationFunction (propval, candidateValue)
     switch validationResult {
-    case EBValidationResult.ok (let validatedValue) :
-      setProp (validatedValue)
-    case EBValidationResult.rejectWithBeep :
+    case .ok (let validatedValue) :
+      self.setProp (validatedValue)
+    case .rejectWithBeep :
       result = false
-      __NSBeep ()
-    case EBValidationResult.rejectWithAlert (let informativeText) :
+      NSSound.beep ()
+    case .rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
       alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."

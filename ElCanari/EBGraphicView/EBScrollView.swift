@@ -63,16 +63,32 @@ final class EBScrollView : NSScrollView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+
+  private var mContextualMenuBuilder : Optional < (CanariPoint) -> NSMenu > = nil
+
+  //····················································································································
+
+  func registerContextualMenuBuilder (_ inBuilder : @escaping (CanariPoint) -> NSMenu) {
+    self.mContextualMenuBuilder = inBuilder
+    if let graphicView = self.documentView as? EBGraphicView {
+      graphicView.mContextualMenuBuilder = inBuilder
+    }
+  }
+
+  //····················································································································
   // MARK: -
   //  Mouse down
   //  Strangely, a NSScrollView does not respond to ctrl-click for displaying a contextual menu
   //····················································································································
 
-  override func mouseDown (with inEvent: NSEvent) {
+  override func mouseDown (with inEvent : NSEvent) {
     let modifierFlags = inEvent.modifierFlags
-    if modifierFlags.contains (.control) && !(modifierFlags.contains (.shift) || modifierFlags.contains (.option)) { // Ctrl Key On, no shift
+    if modifierFlags.contains (.control),
+       !(modifierFlags.contains (.shift) || modifierFlags.contains (.option)), // Ctrl Key On, no shift
+       let graphicView = self.documentView as? EBGraphicView {
     //  NSLog ("\(self.menu)")
-      if let theMenu = self.menu {
+      let mouseDownLocationInGraphicView = graphicView.convert (inEvent.locationInWindow, from: nil)
+      if let theMenu = self.mContextualMenuBuilder? (mouseDownLocationInGraphicView.canariPoint) {
         NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
       }
     }else{

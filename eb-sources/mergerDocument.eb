@@ -188,8 +188,9 @@ xibdocument MergerDocument root MergerRoot {
 //------------------------------------- Board Page
   outlet CanariViewWithKeyView mBoardPageView ;
 
-  outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
-  action insertBoardAction ; // Called directly by selecting an item of mBoardInsertMenu
+//  outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
+//  action insertBoardAction ; // Called directly by selecting an item of mBoardInsertMenu
+
   outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
 
 //--- Board model name
@@ -242,7 +243,6 @@ xibdocument MergerDocument root MergerRoot {
 //--- Help
   action showBoardHelpAction ;
   outlet EBButton showBoardHelpButton $run showBoardHelpAction ;
-//  outlet NSPanel boardHelpPanel ;
 
 //--- Table view, source of model drag
   outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
@@ -254,11 +254,11 @@ xibdocument MergerDocument root MergerRoot {
   ;
 
 //--- "Insert array of boards" panel
-  outlet NSPanel mInsertArrayOfBoardsPanel ;
-  outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
-  outlet NSSegmentedControl mInsertArrayOfBoardsOrientation ;
-  outlet NSTextField mInsertArrayOfBoardsXCountField ;
-  outlet NSTextField mInsertArrayOfBoardsYCountField ;
+//  outlet NSPanel mInsertArrayOfBoardsPanel ;
+//  outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
+//  outlet NSSegmentedControl mInsertArrayOfBoardsOrientation ;
+//  outlet NSTextField mInsertArrayOfBoardsXCountField ;
+//  outlet NSTextField mInsertArrayOfBoardsYCountField ;
 
 //--- "Empty Board" message
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;

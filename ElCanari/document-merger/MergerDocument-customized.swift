@@ -17,6 +17,14 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
 @objc(CustomizedMergerDocument) final class CustomizedMergerDocument : MergerDocument {
 
   //····················································································································
+  //    Properties for insert array of boards dialog
+  //····················································································································
+
+    let mInsertArrayOfBoardsXCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
+    let mInsertArrayOfBoardsYCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
+    let mInsertArrayOfBoardsOrientation = EBGenericStoredProperty <QuadrantRotation> (defaultValue: .rotation0, undoManager: nil)
+
+  //····················································································································
   //    buildUserInterface: customization of interface
   //····················································································································
 
@@ -31,6 +39,9 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   //--- Set document to scroll view for enabling drag and drop
     self.mComposedBoardView?.mScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
     self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)
+    self.mComposedBoardView?.mScrollView?.registerContextualMenuBuilder { [weak self] (inMouseDownLocation : CanariPoint) in
+      return self?.buildInsertModelInBoardMenuBuilder (inMouseDownLocation) ?? NSMenu ()
+    }
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView?.mGraphicView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)

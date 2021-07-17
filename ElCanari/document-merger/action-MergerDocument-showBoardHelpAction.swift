@@ -21,7 +21,7 @@ extension MergerDocument {
     )
     panel.hasShadow = true
     let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-    mainView.appendViewSurroundedByFlexibleSpaces(AutoLayoutApplicationImage ())
+    mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
     let rightColumn = AutoLayoutVerticalStackView ()
     let text = AutoLayoutStaticTextView (string:
       """

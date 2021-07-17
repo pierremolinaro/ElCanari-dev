@@ -169,7 +169,7 @@ extension EBGraphicView {
     case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
       helperString = "CONTROL + SHIFT: mouse down starts a zoom region"
     case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
-      if let _ = self.mPopulateContextualMenuClosure? (inUnalignedMouseLocationInView.canariPoint) {
+      if let _ = self.mContextualMenuBuilder? (inUnalignedMouseLocationInView.canariPoint) {
         helperString = "CONTROL: mouse down shows a contextual menu"
       }
     case (false, true, false) : // Shift Key

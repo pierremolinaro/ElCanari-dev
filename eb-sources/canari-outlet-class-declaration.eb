@@ -173,7 +173,7 @@ binding CanariDragSourceTableView $models : transient StringTagArray ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariBoardInsertMenu ;
-binding CanariBoardInsertMenu $names : transient StringTagArray ;
+//extern outlet class CanariBoardInsertMenu ;
+//binding CanariBoardInsertMenu $names : transient StringTagArray ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

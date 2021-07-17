@@ -22,7 +22,7 @@ final class EBGenericReadWritePropertyController <T> : EBReadOnlyPropertyControl
   //····················································································································
 
   func updateModel (withCandidateValue inValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
-    return mObject.validateAndSetProp (inValue, windowForSheet: inWindow)
+    return self.mObject.validateAndSetProp (inValue, windowForSheet: inWindow)
   }
 
   //····················································································································

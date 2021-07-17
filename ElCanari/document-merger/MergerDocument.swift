@@ -198,7 +198,6 @@ import Cocoa
   @IBOutlet final var mBoardBoardLimitTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mBoardHeightTextField : CanariDimensionObserverTextField? = nil
   @IBOutlet final var mBoardHeightUnitPopUp : EBPopUpButton? = nil
-  @IBOutlet final var mBoardInsertMenu : CanariBoardInsertMenu? = nil
   @IBOutlet final var mBoardInspectorMasterView : NSView? = nil
   @IBOutlet final var mBoardInspectorSegmentedControl : CanariSegmentedControl? = nil
   @IBOutlet final var mBoardIssueInspectorView : CanariViewWithKeyView? = nil
@@ -260,11 +259,6 @@ import Cocoa
   @IBOutlet final var mHorizontalMirrorSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mImportArtworkButton : EBButton? = nil
   @IBOutlet final var mIncorrectDocumentNameTextField : EBTextObserverField? = nil
-  @IBOutlet final var mInsertArrayOfBoardsOrientation : NSSegmentedControl? = nil
-  @IBOutlet final var mInsertArrayOfBoardsPanel : NSPanel? = nil
-  @IBOutlet final var mInsertArrayOfBoardsPopUpButton : NSPopUpButton? = nil
-  @IBOutlet final var mInsertArrayOfBoardsXCountField : NSTextField? = nil
-  @IBOutlet final var mInsertArrayOfBoardsYCountField : NSTextField? = nil
   @IBOutlet final var mInsertedInstanceDefaultOrientation : NSPopUpButton? = nil
   @IBOutlet final var mInstanceCountTextField : EBIntObserverField? = nil
   @IBOutlet final var mInstanceModelNameTextField : EBTextObserverField? = nil
@@ -469,7 +463,6 @@ import Cocoa
     checkOutletConnection (self.mBoardBoardLimitTextField, "mBoardBoardLimitTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mBoardHeightTextField, "mBoardHeightTextField", CanariDimensionObserverTextField.self, #file, #line)
     checkOutletConnection (self.mBoardHeightUnitPopUp, "mBoardHeightUnitPopUp", EBPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mBoardInsertMenu, "mBoardInsertMenu", CanariBoardInsertMenu.self, #file, #line)
     checkOutletConnection (self.mBoardInspectorMasterView, "mBoardInspectorMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mBoardInspectorSegmentedControl, "mBoardInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mBoardIssueInspectorView, "mBoardIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
@@ -531,11 +524,6 @@ import Cocoa
     checkOutletConnection (self.mHorizontalMirrorSwitch, "mHorizontalMirrorSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mImportArtworkButton, "mImportArtworkButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mIncorrectDocumentNameTextField, "mIncorrectDocumentNameTextField", EBTextObserverField.self, #file, #line)
-    checkOutletConnection (self.mInsertArrayOfBoardsOrientation, "mInsertArrayOfBoardsOrientation", NSSegmentedControl.self, #file, #line)
-    checkOutletConnection (self.mInsertArrayOfBoardsPanel, "mInsertArrayOfBoardsPanel", NSPanel.self, #file, #line)
-    checkOutletConnection (self.mInsertArrayOfBoardsPopUpButton, "mInsertArrayOfBoardsPopUpButton", NSPopUpButton.self, #file, #line)
-    checkOutletConnection (self.mInsertArrayOfBoardsXCountField, "mInsertArrayOfBoardsXCountField", NSTextField.self, #file, #line)
-    checkOutletConnection (self.mInsertArrayOfBoardsYCountField, "mInsertArrayOfBoardsYCountField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mInsertedInstanceDefaultOrientation, "mInsertedInstanceDefaultOrientation", NSPopUpButton.self, #file, #line)
     checkOutletConnection (self.mInstanceCountTextField, "mInstanceCountTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mInstanceModelNameTextField, "mInstanceModelNameTextField", EBTextObserverField.self, #file, #line)
@@ -923,7 +911,6 @@ import Cocoa
     self.mModelHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property)
     self.mModelLimitWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelLimitWidthUnit_property)
     self.mModelBoardLimitTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property)
-    self.mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property)
     self.mInstanceModelNameTextField?.bind_valueObserver (self.mBoardInstanceSelection.modelName_property)
     self.mAutomaticBoardSizeSwitch?.bind_value (self.rootObject.automaticBoardSize_property)
     self.mArrowMagnitudeUnitPopUp?.bind_selectedTag (self.rootObject.arrowMagnitudeUnit_property)
@@ -1256,7 +1243,6 @@ import Cocoa
     self.mModelHeightTextField?.unbind_dimensionAndUnit ()
     self.mModelLimitWidthUnitPopUp?.unbind_selectedTag ()
     self.mModelBoardLimitTextField?.unbind_dimensionAndUnit ()
-    self.mBoardInsertMenu?.unbind_names ()
     self.mInstanceModelNameTextField?.unbind_valueObserver ()
     self.mAutomaticBoardSizeSwitch?.unbind_value ()
     self.mArrowMagnitudeUnitPopUp?.unbind_selectedTag ()
@@ -1391,7 +1377,6 @@ import Cocoa
     self.mBoardBoardLimitTextField?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
-    self.mBoardInsertMenu?.ebCleanUp ()
     self.mBoardInspectorMasterView?.ebCleanUp ()
     self.mBoardInspectorSegmentedControl?.ebCleanUp ()
     self.mBoardIssueInspectorView?.ebCleanUp ()
@@ -1453,11 +1438,6 @@ import Cocoa
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
     self.mIncorrectDocumentNameTextField?.ebCleanUp ()
-    self.mInsertArrayOfBoardsOrientation?.ebCleanUp ()
-    self.mInsertArrayOfBoardsPanel?.ebCleanUp ()
-    self.mInsertArrayOfBoardsPopUpButton?.ebCleanUp ()
-    self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
-    self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInsertedInstanceDefaultOrientation?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mInstanceModelNameTextField?.ebCleanUp ()
@@ -1566,7 +1546,6 @@ import Cocoa
     self.mBoardBoardLimitTextField = nil
     self.mBoardHeightTextField = nil
     self.mBoardHeightUnitPopUp = nil
-    self.mBoardInsertMenu = nil
     self.mBoardInspectorMasterView = nil
     self.mBoardInspectorSegmentedControl = nil
     self.mBoardIssueInspectorView = nil
@@ -1628,11 +1607,6 @@ import Cocoa
     self.mHorizontalMirrorSwitch = nil
     self.mImportArtworkButton = nil
     self.mIncorrectDocumentNameTextField = nil
-    self.mInsertArrayOfBoardsOrientation = nil
-    self.mInsertArrayOfBoardsPanel = nil
-    self.mInsertArrayOfBoardsPopUpButton = nil
-    self.mInsertArrayOfBoardsXCountField = nil
-    self.mInsertArrayOfBoardsYCountField = nil
     self.mInsertedInstanceDefaultOrientation = nil
     self.mInstanceCountTextField = nil
     self.mInstanceModelNameTextField = nil

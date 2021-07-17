@@ -753,7 +753,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // MARK: -
   //····················································································································
 
-  final var mPopulateContextualMenuClosure : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
+  final var mContextualMenuBuilder : Optional < (_ inPoint : CanariPoint) -> NSMenu > = nil
 
   //····················································································································
   // MARK: -

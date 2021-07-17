@@ -23,7 +23,7 @@ extension EBGraphicView {
       case (true, true, false) : // Ctrl Key On, shift, no option -> Zoom region
         self.mMouseDownBehaviour = ZoomRegionBehaviour (unalignedMouseDownLocationInView, viewController)
       case (true, false, false) : // Ctrl Key On, no shift -> Contextual click
-        if let theMenu = self.mPopulateContextualMenuClosure? (unalignedMouseDownLocationInView.canariPoint) {
+        if let theMenu = self.mContextualMenuBuilder? (unalignedMouseDownLocationInView.canariPoint) {
           NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
         }
       case (false, true, false) : // Shift Key
