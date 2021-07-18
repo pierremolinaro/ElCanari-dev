@@ -252,7 +252,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
             left: space,
             right: hStack {
                StaticLabel (title: "From", bold: no, size : .small) { $hidden !root.counterClockNumbering}
-               IntField (width: 45) {
+               IntField (width: 45, size : .small) {
                  set (min: 0)
                  set (max: 360)
                  set (format: "##0°")

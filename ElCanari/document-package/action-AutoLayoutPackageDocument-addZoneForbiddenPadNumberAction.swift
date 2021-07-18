@@ -52,7 +52,7 @@ extension AutoLayoutPackageDocument {
     //-------------------------- Build Panel
       let panel = NSPanel ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel, isInitialFirstResponder: true)
-      let intField = AutoLayoutIntField (width: 48)
+      let intField = AutoLayoutIntField (width: 48, size: .small)
         .bind_value (newFordiddenPadNumber_property, sendContinously: true)
         .set (min: 1)
    //-------------------------- Add Observer for new forbidden pad number

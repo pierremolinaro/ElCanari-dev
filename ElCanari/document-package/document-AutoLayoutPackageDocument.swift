@@ -1701,7 +1701,7 @@ import Cocoa
       let view_0 = AutoLayoutStaticLabel (title: "From", bold: false, size: .small)
         .bind_hidden (.not (.id (self.rootObject.counterClockNumbering_property)))
       view.appendView (view_0)
-      let view_1 = AutoLayoutIntField (width: 45)
+      let view_1 = AutoLayoutIntField (width: 45, size: .small)
         .set (min: 0)
         .set (max: 360)
         .set (format: "##0°")

@@ -152,9 +152,6 @@ binding CanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
 extern outlet class CanariDateObserverField : NSTextField ;
 binding CanariDateObserverField $dateObserver : transient Date ;
 
-extern outlet class DeviceDroppableImageView ;
-binding DeviceDroppableImageView $imageData : property Data ;
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class NSBox : NSView ;
@@ -170,10 +167,5 @@ binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
 
 extern outlet class CanariDragSourceTableView ;
 binding CanariDragSourceTableView $models : transient StringTagArray ;
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//extern outlet class CanariBoardInsertMenu ;
-//binding CanariBoardInsertMenu $names : transient StringTagArray ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

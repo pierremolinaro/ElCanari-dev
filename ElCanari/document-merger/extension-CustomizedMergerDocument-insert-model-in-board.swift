@@ -59,8 +59,8 @@ extension CustomizedMergerDocument {
         lastItem?.representedObject = model
       }
     //--- X and Y Count
-      let xCountTextField = AutoLayoutIntField (width: 56).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: false)
-      let yCountTextField = AutoLayoutIntField (width: 56).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: false)
+      let xCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsXCount, sendContinously: true)
+      let yCountTextField = AutoLayoutIntField (width: 56, size: .small).bind_value (self.mInsertArrayOfBoardsYCount, sendContinously: true)
     //--- Orientation
       let orientationSegmentedControl = AutoLayoutCanariOrientationSegmentedControl (size: .small)
         .bind_orientation (self.mInsertArrayOfBoardsOrientation)

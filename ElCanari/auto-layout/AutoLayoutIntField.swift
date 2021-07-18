@@ -19,14 +19,14 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  init (width inWidth : Int) {
+  init (width inWidth : Int, size inSize : EBControlSize) {
     self.mWidth = CGFloat (inWidth)
     super.init (frame: NSRect ())
     self.delegate = self
     noteObjectAllocation (self)
     self.translatesAutoresizingMaskIntoConstraints = false
 
-    self.controlSize = .small
+    self.controlSize = inSize.cocoaControlSize
     self.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.alignment = .center
   //--- Target

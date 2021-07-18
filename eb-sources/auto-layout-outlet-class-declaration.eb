@@ -165,7 +165,7 @@ extern autolayout class DragSourceButton (tooltip: String) $enabled {
   $image transient NSImage
 }
 
-extern autolayout class IntField (width: Int) $enabled $hidden {
+extern autolayout class IntField (width: Int, size: EBControlSize) $enabled $hidden {
   $value property Int (sendContinously: Bool)
   func set (min: Int)
   func set (max: Int)
