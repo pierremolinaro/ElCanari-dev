@@ -57,7 +57,8 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //····················································································································
 
   override var intrinsicContentSize : NSSize {
-    return NSSize (width: self.mWidth, height: 19.0)
+    let s = super.intrinsicContentSize
+    return NSSize (width: self.mWidth, height: s.height)
   }
 
   //····················································································································
@@ -130,7 +131,7 @@ final class AutoLayoutIntField : NSTextField, EBUserClassNameProtocol, NSTextFie
       alert.beginSheetModal (
         for: window,
         completionHandler: { (response : NSApplication.ModalResponse) -> Void in
-          if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
+          if response == .alertSecondButtonReturn { // Discard Change
  //         self.integerValue = self.myIntegerValue.0
           }
         }

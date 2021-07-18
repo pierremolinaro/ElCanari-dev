@@ -30,7 +30,7 @@ final class AutoLayoutTextField : NSTextField, EBUserClassNameProtocol, NSTextFi
     self.alignment = .center
 
     self.target = self
-    self.action = #selector (AutoLayoutTextField.ebAction(_:))
+    self.action = #selector (Self.ebAction(_:))
   }
 
   //····················································································································
