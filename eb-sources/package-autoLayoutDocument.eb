@@ -178,7 +178,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
     }
     separator
-    GraphicView (minZoom: 10, maxZoom: 4000) {
+    GraphicView (minZoom: 10, maxZoom: 12_000) {
       $backgroundImageData root.mModelImageData
       $underObjectsDisplay root.backgroundImagePageBackgroundDisplay
       $horizontalFlip root.mModelImagePageHorizontalFlip
@@ -282,7 +282,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
     }
     separator
-    GraphicView (minZoom: 10, maxZoom: 4000) [outlet mPackageGraphicView configurator packageGraphicView]{
+    GraphicView (minZoom: 10, maxZoom: 12_000) [outlet mPackageGraphicView configurator packageGraphicView]{
       $foregroundImageData root.mModelImageData
       $foregroundImageOpacity root.mModelImageOpacity
       $horizontalFlip root.horizontalFlip
