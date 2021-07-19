@@ -11,29 +11,37 @@ extension EBGraphicView {
   //····················································································································
 
   final override func mouseMoved (with inEvent : NSEvent) {
-    super.mouseMoved (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    self.setHelperTextField (self.defaultHelperString (with: locationInView, inEvent.modifierFlags))
-    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
-    self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
-    if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
-      self.mMouseMovedOrFlagsChangedCallback? (locationInView)
+    if self.visibleRect.contains(locationInView) {
+      self.setHelperTextField (self.defaultHelperString (with: locationInView, inEvent.modifierFlags))
+      let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
+      self.updateXYHelperWindow (mouseLocationInView: locationOnGridInView)
+      if self.window?.firstResponder == self, self.visibleRect.contains (locationInView) {
+        self.mMouseMovedOrFlagsChangedCallback? (locationInView)
+      }else{
+        self.mMouseExitCallback? ()
+      }
+    //--- Set cursor
+      self.setCursor (forLocationInView: locationInView)
     }else{
+      self.removeXYHelperWindow ()
+      self.setHelperTextField (DEFAULT_HELPER_TEXT)
       self.mMouseExitCallback? ()
+      self.mOptionalFrontShape = nil
+      NSCursor.arrow.set ()
     }
-  //--- Set cursor
-    self.setCursor (forLocationInView: locationInView)
+    super.mouseMoved (with: inEvent)
   }
 
   //····················································································································
 
   final override func mouseExited (with inEvent : NSEvent) {
-    super.mouseExited (with: inEvent)
     self.removeXYHelperWindow ()
     self.setHelperTextField (DEFAULT_HELPER_TEXT)
     self.mMouseExitCallback? ()
     self.mOptionalFrontShape = nil
     NSCursor.arrow.set ()
+    super.mouseExited (with: inEvent)
   }
 
   //····················································································································

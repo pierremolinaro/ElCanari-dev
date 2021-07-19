@@ -9,7 +9,7 @@ import Cocoa
 private let XY_WINDOW_MARGIN : CGFloat = 5.0
 private let XY_WINDOW_BACKGROUND_COLOR = NSColor.black
 private let XY_WINDOW_TEXT_COLOR = NSColor.white
-let DEFAULT_HELPER_TEXT = "SHIFT, CONTROL, OPTION and COMMAND modifier keys helper text"
+let DEFAULT_HELPER_TEXT = "" // SHIFT, CONTROL, OPTION and COMMAND modifier keys helper text"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -18,16 +18,6 @@ extension EBGraphicView {
   //····················································································································
 
   final func performZoomToFit () {
-//    if let scrollView = self.enclosingScrollView {
-//      let box = self.objectsAndIssueBoundingBox
-//      if !box.isEmpty {
-//        scrollView.magnify (toFit: box)
-//        self.applyZoom ()
-//      }
-//    }
-//    let actualZoom = 0 // Means zoom to fit
-//    self.mZoomPropertyCache = actualZoom
-//    self.applyZoom ()
     self.mZoomPropertyCache = 0 // Means zoom to fit
     self.applyZoom ()
   }
@@ -192,7 +182,10 @@ extension EBGraphicView {
       }
     }
     if inModifierFlags.contains (.command) {
-      helperString += ", COMMAND: displays XY location"
+      if !helperString.isEmpty {
+        helperString += ", "
+      }
+      helperString += "COMMAND: displays XY location"
     }
     return helperString
   }

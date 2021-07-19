@@ -428,6 +428,16 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     r = r.union (self.mUnderObjectsDisplay.boundingBox)
     r = r.union (self.mOverObjectsDisplay.boundingBox)
     r = r.union (self.selectionShapeBoundingBox)
+    if let ciImage = self.mBackgroundImage {
+      let rImage = ciImage.extent
+      let bp = self.mBackgroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
+      r = r.union (bp.bounds)
+    }
+    if let ciImage = self.mForegroundImage {
+      let rImage = ciImage.extent
+      let bp = self.mForegroundImageAffineTransform.transform (NSBezierPath (rect: rImage))
+      r = r.union (bp.bounds)
+    }
     return r
   }
 
