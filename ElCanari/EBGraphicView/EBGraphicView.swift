@@ -17,14 +17,6 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
-//    self.wantsLayer = true
-//    self.postsFrameChangedNotifications = true
-//    NotificationCenter.default.addObserver (
-//      self,
-//      selector: #selector (self.ebFrameChanged (_:)),
-//      name: NSView.frameDidChangeNotification,
-//      object: self
-//    )
     DispatchQueue.main.async { self.configureGraphicView () }
   }
 
@@ -33,13 +25,6 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   override init (frame : NSRect) {
     super.init (frame: frame)
     noteObjectAllocation (self)
-//    self.postsFrameChangedNotifications = true
-//    NotificationCenter.default.addObserver (
-//      self,
-//      selector: #selector (self.ebFrameChanged (_:)),
-//      name: NSView.frameDidChangeNotification,
-//      object: self
-//    )
     DispatchQueue.main.async { self.configureGraphicView () }
  }
 
@@ -67,7 +52,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     }
     self.installLiveScrollingNotification ()
     self.addEndLiveMagnificationObserver ()
-    self.updateViewFrameAndBounds ()
+    self.setNeedsDisplayAndUpdateViewBounds ()
   //--- Track flags changed events, event if view is not first responder
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { [weak self] inEvent in
       if let me = self {
@@ -297,7 +282,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     didSet {
       self.noteInvalidRectangles (old: oldValue, new: self.mUnderObjectsDisplay)
       if self.mUnderObjectsDisplay != oldValue {
-        self.updateViewFrameAndBounds ()
+        self.setNeedsDisplayAndUpdateViewBounds ()
       }
     }
   }
@@ -314,7 +299,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     didSet {
       self.noteInvalidRectangles (old: oldValue, new: self.mOverObjectsDisplay)
       if self.mOverObjectsDisplay != oldValue {
-        self.updateViewFrameAndBounds ()
+        self.setNeedsDisplayAndUpdateViewBounds ()
       }
     }
   }
@@ -401,7 +386,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     didSet {
       if self.mObjectDisplayArray != oldValue {
         self.noteInvalidRectangles (old: oldValue, new: self.mObjectDisplayArray)
-        self.updateViewFrameAndBounds ()
+        self.setNeedsDisplayAndUpdateViewBounds ()
         self.defineToolTips ()
       }
     }
@@ -419,7 +404,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
-  final var objectsAndIssueBoundingBox : NSRect {
+  final var contentsBoundingBox : NSRect {
     var r = NSRect ()
     for shape in self.mObjectDisplayArray {
       r = r.union (shape.boundingBox)
@@ -506,20 +491,20 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   final func updateSelectionShape (_ inShapes : [EBShape]) {
     if self.mSelectionShapes != inShapes {
 //      Swift.print ("updateSelectionShape Change")
-      for shape in self.mSelectionShapes {
-        if !shape.boundingBox.isEmpty {
-          // Swift.print ("  old \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
-        }
-      }
+//      for shape in self.mSelectionShapes {
+//        if !shape.boundingBox.isEmpty {
+//          // Swift.print ("  old \(shape.boundingBox)")
+//          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+//        }
+//      }
       self.mSelectionShapes = inShapes
-      for shape in self.mSelectionShapes {
-        if !shape.boundingBox.isEmpty {
-           //Swift.print ("  new \(shape.boundingBox)")
-          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
-        }
-      }
-      self.updateViewFrameAndBounds ()
+//      for shape in self.mSelectionShapes {
+//        if !shape.boundingBox.isEmpty {
+//           //Swift.print ("  new \(shape.boundingBox)")
+//          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+//        }
+//      }
+      self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
 
@@ -528,41 +513,35 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   final private var mDeferredUpdateViewFrameAndBoundsRegistered = false
+  final private var mReferenceBounds : NSRect? = nil
 
-  final internal func updateViewFrameAndBounds () {
-    if !self.mDeferredUpdateViewFrameAndBoundsRegistered && (NSEvent.pressedMouseButtons == 0) {
-      var candidateBounds = NSRect () // For including point (0, 0)
-      candidateBounds = candidateBounds.union (self.objectsAndIssueBoundingBox)
-      if let ciImage = self.mBackgroundImage {
-        let bp = NSBezierPath (rect: ciImage.extent)
-        let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
-        candidateBounds = candidateBounds.union (transformedBP.bounds)
+  final func setNeedsDisplayAndUpdateViewBounds () {
+    self.needsDisplay = true
+    if NSEvent.pressedMouseButtons == 0 { // No pressed button
+      // Swift.print ("setNeedsDisplayAndUpdateViewBounds")
+      var candidateBounds = self.contentsBoundingBox
+      if let visibleRect = self.enclosingScrollView?.documentVisibleRect {
+        // Swift.print ("candidateBounds \(candidateBounds), visibleRect \(visibleRect)")
+        if visibleRect.maxX > candidateBounds.maxX {
+          candidateBounds.size.width = visibleRect.maxX - candidateBounds.origin.x
+        }
+        if visibleRect.maxY > candidateBounds.maxY {
+          candidateBounds.size.height = visibleRect.maxY - candidateBounds.origin.y
+        }
       }
-      if let ciImage = self.mForegroundImage {
-        let bp = NSBezierPath (rect: ciImage.extent)
-        let transformedBP = self.mForegroundImageAffineTransform.transform (bp)
-        candidateBounds = candidateBounds.union (transformedBP.bounds)
-      }
-      if self.bounds != candidateBounds {
-        self.mDeferredUpdateViewFrameAndBoundsRegistered = true
-        DispatchQueue.main.async {
-          self.mDeferredUpdateViewFrameAndBoundsRegistered = false
-          var newBounds = NSRect () // For including point (0, 0)
-          newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
-          if let ciImage = self.mBackgroundImage {
-            let bp = NSBezierPath (rect: ciImage.extent)
-            let transformedBP = self.mBackgroundImageAffineTransform.transform (bp)
-            newBounds = newBounds.union (transformedBP.bounds)
+      if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
+      }else{
+        self.mReferenceBounds = candidateBounds
+        let newBounds = candidateBounds
+        self.frame.size = newBounds.size
+        self.bounds = newBounds
+        self.needsDisplay = true
+        if !self.mDeferredUpdateViewFrameAndBoundsRegistered {
+          self.mDeferredUpdateViewFrameAndBoundsRegistered = true
+          DispatchQueue.main.async {
+            self.mDeferredUpdateViewFrameAndBoundsRegistered = false
+            self.applyZoom ()
           }
-          if let ciImage = self.mForegroundImage {
-            let bp = NSBezierPath (rect: ciImage.extent)
-            let transformedBP = self.mForegroundImageAffineTransform.transform (bp)
-            newBounds = newBounds.union (transformedBP.bounds)
-          }
-          self.frame.size = newBounds.size
-          self.bounds = newBounds
-          self.needsDisplay = true
-          self.applyZoom ()
         }
       }
     }
@@ -801,8 +780,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   final var mBackgroundImage : CIImage? = nil {
     didSet {
-      self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
+      self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
 
@@ -813,8 +791,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   final var mBackgroundImageAffineTransform = NSAffineTransform () {
     didSet {
-      self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
+      self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
 
@@ -824,8 +801,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   final var mForegroundImage : CIImage? = nil {
     didSet {
-      self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
+      self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
 
@@ -836,8 +812,7 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   final var mForegroundImageAffineTransform = NSAffineTransform () {
     didSet {
-      self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
+      self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
 

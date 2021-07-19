@@ -91,17 +91,16 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   fileprivate func buildScrollView (_ inEnclosingBounds : NSRect) -> EBScrollView {
-    let view = EBScrollView (frame: inEnclosingBounds.insetBy(dx: FOCUS_RING_MARGIN, dy: FOCUS_RING_MARGIN))
-    view.autoresizingMask = [.height, .width]
-    view.minMagnification = CGFloat (self.minZoom) / 100.0
-    view.maxMagnification = CGFloat (self.maxZoom) / 100.0
-    view.allowsMagnification = true
-    view.hasHorizontalScroller = true
-    view.hasVerticalScroller = true
-    view.autohidesScrollers = false
-    view.contentView = NSClipView (frame: NSRect ())
-    view.documentView = self.mGraphicView
-    return view
+    let scrollView = EBScrollView (frame: inEnclosingBounds.insetBy (dx: FOCUS_RING_MARGIN, dy: FOCUS_RING_MARGIN))
+    scrollView.autoresizingMask = [.height, .width]
+    scrollView.minMagnification = CGFloat (self.minZoom) / 100.0
+    scrollView.maxMagnification = CGFloat (self.maxZoom) / 100.0
+    scrollView.allowsMagnification = true
+    scrollView.hasHorizontalScroller = true
+    scrollView.hasVerticalScroller = true
+    scrollView.autohidesScrollers = false
+    scrollView.documentView = self.mGraphicView
+    return scrollView
   }
 
   //····················································································································

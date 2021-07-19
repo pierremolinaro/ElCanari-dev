@@ -17,10 +17,10 @@ extension EBGraphicView {
       }
       self.mIssueBezierPathes = inBezierPathes
       self.mIssueKind = issueKind
-      self.updateViewFrameAndBounds ()
+      self.setNeedsDisplayAndUpdateViewBounds ()
       if !self.issueBoundingBox.isEmpty {
         self.scrollToVisible (self.issueBoundingBox)
-        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
+//        self.setNeedsDisplay (self.issueBoundingBox.insetBy (dx: -1.0, dy: -1.0))
       }
     }
   }

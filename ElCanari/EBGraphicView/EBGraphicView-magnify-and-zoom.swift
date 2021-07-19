@@ -13,7 +13,7 @@ extension EBGraphicView {
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
       if self.mZoomPropertyCache == 0 {
-        let box = self.objectsAndIssueBoundingBox
+        let box = self.contentsBoundingBox
         if !box.isEmpty {
           scrollView.magnify (toFit: box)
         }
@@ -64,7 +64,7 @@ extension EBGraphicView {
   final internal func scrollViewIsLiveResizing () {
 //    NSLog ("scrollViewIsLiveResizing \(self.mZoomPropertyCache) \(self)")
     if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
-      let box = self.objectsAndIssueBoundingBox
+      let box = self.contentsBoundingBox
       if !box.isEmpty {
         scrollView.magnify (toFit: box)
       }

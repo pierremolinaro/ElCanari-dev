@@ -78,7 +78,7 @@ extension EBGraphicView {
     //--- Set cursor
       self.setCursor (forLocationInView: unalignedLocationInView)
     //--- Update frame and bounds
-      self.updateViewFrameAndBounds ()
+ //     self.setNeedsDisplayAndUpdateViewBounds ()
     }
 
   //····················································································································

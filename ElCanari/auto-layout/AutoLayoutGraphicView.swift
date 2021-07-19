@@ -148,6 +148,7 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     self.addPopupButtonItemForZoom (5_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
     self.addPopupButtonItemForZoom (8_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
     self.addPopupButtonItemForZoom (10_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
+    self.addPopupButtonItemForZoom (12_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
     self.addPopupButtonItemForZoom (15_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
     self.addPopupButtonItemForZoom (20_000, zoomPopUpButton, minZoom: inMinZoom, maxZoom: inMaxZoom)
     return zoomPopUpButton

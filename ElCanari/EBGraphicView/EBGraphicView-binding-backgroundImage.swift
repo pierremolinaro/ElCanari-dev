@@ -31,8 +31,8 @@ extension EBGraphicView {
   final private func updateBackgroundImageData (from model : EBReadOnlyProperty_Data) {
     if self.mBackgroundImage != nil {
       self.mBackgroundImage = nil
-      self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
+      self.setNeedsDisplayAndUpdateViewBounds ()
+//      self.needsDisplay = true
     }
     switch model.selection {
     case .empty :
@@ -40,8 +40,8 @@ extension EBGraphicView {
     case .single (let v) :
       if let ciImage = CIImage (data: v) {
         self.mBackgroundImage = ciImage
-        self.updateViewFrameAndBounds ()
-        self.needsDisplay = true
+        self.setNeedsDisplayAndUpdateViewBounds ()
+//        self.needsDisplay = true
       }
     case .multiple :
       break
