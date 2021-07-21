@@ -398,6 +398,16 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
 
   //····················································································································
 
+  final var objectDisplayBounds : NSRect {
+    var r = NSZeroRect
+    for shape in self.mObjectDisplayArray {
+      r = r.union (shape.boundingBox)
+    }
+    return r
+  }
+
+  //····················································································································
+
   final func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
     self.mObjectDisplayArray = inObjectDisplayArray
   }
@@ -405,10 +415,8 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   final var contentsBoundingBox : NSRect {
-    var r = NSRect ()
-    for shape in self.mObjectDisplayArray {
-      r = r.union (shape.boundingBox)
-    }
+    var r = NSRect () // For including (0, 0)
+    r = r.union (self.objectDisplayBounds)
     r = r.union (self.issueBoundingBox)
     r = r.union (self.mUnderObjectsDisplay.boundingBox)
     r = r.union (self.mOverObjectsDisplay.boundingBox)
@@ -491,19 +499,19 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   final func updateSelectionShape (_ inShapes : [EBShape]) {
     if self.mSelectionShapes != inShapes {
 //      Swift.print ("updateSelectionShape Change")
-//      for shape in self.mSelectionShapes {
-//        if !shape.boundingBox.isEmpty {
-//          // Swift.print ("  old \(shape.boundingBox)")
-//          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
-//        }
-//      }
+      for shape in self.mSelectionShapes {
+        if !shape.boundingBox.isEmpty {
+          // Swift.print ("  old \(shape.boundingBox)")
+          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+        }
+      }
       self.mSelectionShapes = inShapes
-//      for shape in self.mSelectionShapes {
-//        if !shape.boundingBox.isEmpty {
-//           //Swift.print ("  new \(shape.boundingBox)")
-//          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
-//        }
-//      }
+      for shape in self.mSelectionShapes {
+        if !shape.boundingBox.isEmpty {
+           //Swift.print ("  new \(shape.boundingBox)")
+          self.setNeedsDisplay (shape.boundingBox.insetBy(dx: -1.0, dy: -1.0))
+        }
+      }
       self.setNeedsDisplayAndUpdateViewBounds ()
     }
   }
@@ -513,37 +521,39 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   final private var mDeferredUpdateViewFrameAndBoundsRegistered = false
-  final private var mReferenceBounds : NSRect? = nil
+  final var mReferenceBounds : NSRect? = nil
 
   final func setNeedsDisplayAndUpdateViewBounds () {
     self.needsDisplay = true
+    let candidateBounds = self.contentsBoundingBox
+    if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
+    }else if self.enclosingScrollView != nil, !self.mDeferredUpdateViewFrameAndBoundsRegistered {
+      self.mDeferredUpdateViewFrameAndBoundsRegistered = true
+      self.deferredApplyZoom ()
+    }
+  }
+
+//  override func viewDidMoveToWindow () {
+//    Swift.print ("viewDidMoveToWindow \(self.enclosingScrollView != nil)")
+//    self.setNeedsDisplayAndUpdateViewBounds ()
+//    super.viewDidMoveToWindow ()
+//  }
+
+
+//  override func viewDidMoveToSuperview () {
+//    Swift.print ("viewDidMoveToSuperview \(self.enclosingScrollView != nil)")
+//    self.setNeedsDisplayAndUpdateViewBounds ()
+//    super.viewDidMoveToSuperview ()
+//  }
+
+  //····················································································································
+
+  private func deferredApplyZoom () {
     if NSEvent.pressedMouseButtons == 0 { // No pressed button
-      // Swift.print ("setNeedsDisplayAndUpdateViewBounds")
-      var candidateBounds = self.contentsBoundingBox
-      if let visibleRect = self.enclosingScrollView?.documentVisibleRect {
-        // Swift.print ("candidateBounds \(candidateBounds), visibleRect \(visibleRect)")
-        if visibleRect.maxX > candidateBounds.maxX {
-          candidateBounds.size.width = visibleRect.maxX - candidateBounds.origin.x
-        }
-        if visibleRect.maxY > candidateBounds.maxY {
-          candidateBounds.size.height = visibleRect.maxY - candidateBounds.origin.y
-        }
-      }
-      if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
-      }else{
-        self.mReferenceBounds = candidateBounds
-        let newBounds = candidateBounds
-        self.frame.size = newBounds.size
-        self.bounds = newBounds
-        self.needsDisplay = true
-        if !self.mDeferredUpdateViewFrameAndBoundsRegistered {
-          self.mDeferredUpdateViewFrameAndBoundsRegistered = true
-          DispatchQueue.main.async {
-            self.mDeferredUpdateViewFrameAndBoundsRegistered = false
-            self.applyZoom ()
-          }
-        }
-      }
+      self.mDeferredUpdateViewFrameAndBoundsRegistered = false
+      self.applyZoom ()
+    }else{
+      DispatchQueue.main.async { self.deferredApplyZoom () }
     }
   }
 

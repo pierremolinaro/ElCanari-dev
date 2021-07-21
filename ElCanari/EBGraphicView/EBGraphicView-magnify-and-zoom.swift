@@ -12,14 +12,35 @@ extension EBGraphicView {
 
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
+      let box = self.contentsBoundingBox
       if self.mZoomPropertyCache == 0 {
-        let box = self.contentsBoundingBox
         if !box.isEmpty {
           scrollView.magnify (toFit: box)
         }
       }else{
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
+     }
+      var newBounds = box
+      let visibleRect = scrollView.documentVisibleRect
+      if visibleRect.maxX > newBounds.maxX {
+        newBounds.size.width = visibleRect.maxX - newBounds.origin.x
       }
+      if visibleRect.maxY > newBounds.maxY {
+        newBounds.size.height = visibleRect.maxY - newBounds.origin.y
+      }
+      self.mReferenceBounds = newBounds
+      self.frame.size = newBounds.size
+      self.bounds = newBounds
+      let selectionBounds = self.selectionShapeBoundingBox
+      if !selectionBounds.isEmpty {
+        scrollView.scrollToVisible (selectionBounds)
+      }else{
+        let objectBounds = self.objectDisplayBounds
+        if !objectBounds.isEmpty {
+          scrollView.scrollToVisible (objectBounds)
+        }
+      }
+      self.needsDisplay = true
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
       self.mZoomDidChangeCallback? (newZoom)
     }
@@ -63,14 +84,15 @@ extension EBGraphicView {
 
   final internal func scrollViewIsLiveResizing () {
 //    NSLog ("scrollViewIsLiveResizing \(self.mZoomPropertyCache) \(self)")
-    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
-      let box = self.contentsBoundingBox
-      if !box.isEmpty {
-        scrollView.magnify (toFit: box)
-      }
-      let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-      self.mZoomDidChangeCallback? (newZoom)
-    }
+      self.applyZoom ()
+//    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
+//      let box = self.contentsBoundingBox
+//      if !box.isEmpty {
+//        scrollView.magnify (toFit: box)
+//      }
+//      let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
+//      self.mZoomDidChangeCallback? (newZoom)
+//    }
   }
 
   //····················································································································
