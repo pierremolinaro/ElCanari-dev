@@ -49,7 +49,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func printSchematics () {
-    if let schematicsView = self.mSchematicsView {
+    if let schematicsView = self.mSchematicsView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
@@ -91,7 +91,7 @@ extension CustomizedProjectDocument {
       for sheet in sheets {
         self.rootObject.mSelectedSheet = sheet
         flushOutletEvents ()
-        let data = schematicsView.dataWithPDF (inside:r)
+        let data = schematicsView.dataWithPDF (inside: r)
         let imageView = NSImageView (frame: r)
         imageView.image = NSImage (data: data)
         imageView.frame.origin.y += yOffset
@@ -135,7 +135,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   internal func printBoard () {
-    if let boardView = self.mBoardView {
+    if let boardView = self.mBoardView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
