@@ -27,8 +27,7 @@ extension CustomizedProjectDocument {
 
   @objc override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
-    let action = inMenuItem.action
-    if action == #selector (ProjectDocument.printDocument(_:)) {
+    if inMenuItem.action == #selector (Self.printDocument(_:)) {
       validate = (self.rootObject.mSelectedPageIndex == 2) || (self.rootObject.mSelectedPageIndex == 6) // Schematics, Board
     }else{
       validate = super.validateMenuItem (inMenuItem)
@@ -126,7 +125,7 @@ extension CustomizedProjectDocument {
       self.runModalPrintOperation (
         printOperation,
         delegate: self,
-        didRun: #selector (CustomizedProjectDocument.documentDidRunModalPrintOperation (_:success:contextInfo:)),
+        didRun: #selector (Self.documentDidRunModalPrintOperation (_:success:contextInfo:)),
         contextInfo: nil
       )
     }
