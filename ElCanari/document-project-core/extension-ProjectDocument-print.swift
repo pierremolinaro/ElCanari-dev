@@ -48,7 +48,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func printSchematics () {
+  private func printSchematics () {
     if let schematicsView = self.mSchematicsView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
@@ -134,7 +134,7 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  internal func printBoard () {
+  private func printBoard () {
     if let boardView = self.mBoardView?.mGraphicView {
       let orientation : NSPrintInfo.PaperOrientation
       let pageWidth  : CGFloat
@@ -201,9 +201,9 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
-  @objc func documentDidRunModalPrintOperation (_ inDocument : NSDocument,
-                                                success inSuccess : Bool,
-                                                contextInfo inUnusedContextInfo : Any?) {
+  @objc private func documentDidRunModalPrintOperation (_ inDocument : NSDocument,
+                                                        success inSuccess : Bool,
+                                                        contextInfo inUnusedContextInfo : Any?) {
      //    self.mPrintOperation = nil // Crash !
     DispatchQueue.main.async { self.mPrintOperation = nil }
   }
