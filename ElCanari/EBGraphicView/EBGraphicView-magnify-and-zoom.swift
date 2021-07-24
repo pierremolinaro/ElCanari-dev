@@ -19,8 +19,8 @@ extension EBGraphicView {
      //--- Set New Zoom
        let newZoom = Int ((newScale * 100.0).rounded (.toNearestOrEven))
        _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
-      //---
-       scrollView.scrollToVisible (inRect)
+     //---
+       DispatchQueue.main.async { self.scrollToVisible (inRect) }
     }
   }
 
@@ -49,11 +49,11 @@ extension EBGraphicView {
       self.bounds = newBounds
       let selectionBounds = self.selectionShapeBoundingBox
       if !selectionBounds.isEmpty {
-        scrollView.scrollToVisible (selectionBounds)
+        self.scrollToVisible (selectionBounds)
       }else{
         let objectBounds = self.objectDisplayBounds
         if !objectBounds.isEmpty {
-          scrollView.scrollToVisible (objectBounds)
+          self.scrollToVisible (objectBounds)
         }
       }
       self.needsDisplay = true
