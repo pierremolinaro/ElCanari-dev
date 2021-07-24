@@ -194,7 +194,7 @@ final class EBEnclosingGraphicView : NSView, EBUserClassNameProtocol {
 
   final fileprivate func addPopupButtonItemForZoom (_ inZoom : Int, _ inPopUp : NSPopUpButton) {
     if (inZoom >= self.minZoom) && (inZoom <= self.maxZoom) {
-      inPopUp.addItem (withTitle: "\(inZoom) %")
+      inPopUp.addItem (withTitle: "\(inZoom.stringWithSeparators) %")
       inPopUp.lastItem?.target = self
       inPopUp.lastItem?.action = #selector (Self.setZoomFromPopUpButton(_:))
       inPopUp.lastItem?.tag = inZoom

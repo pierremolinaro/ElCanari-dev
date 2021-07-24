@@ -533,19 +533,6 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
     }
   }
 
-//  override func viewDidMoveToWindow () {
-//    Swift.print ("viewDidMoveToWindow \(self.enclosingScrollView != nil)")
-//    self.setNeedsDisplayAndUpdateViewBounds ()
-//    super.viewDidMoveToWindow ()
-//  }
-
-
-//  override func viewDidMoveToSuperview () {
-//    Swift.print ("viewDidMoveToSuperview \(self.enclosingScrollView != nil)")
-//    self.setNeedsDisplayAndUpdateViewBounds ()
-//    super.viewDidMoveToSuperview ()
-//  }
-
   //····················································································································
 
   private func deferredApplyZoom () {

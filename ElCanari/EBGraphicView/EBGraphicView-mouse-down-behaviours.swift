@@ -339,16 +339,8 @@ final class ZoomRegionBehaviour : DefaultBehaviourOnMouseDown { // Mouse down wi
 
   override func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
                            _ inGraphicView : EBGraphicView) {
-    if self.mOperationInProgress,
-          let scrollView = inGraphicView.enclosingScrollView,
-          let r = inGraphicView.mSelectionRectangle {
-    //--- Set mZoomPropertyCache property: if zoomToFit has been selected, mZoomPropertyCache is equal to 0,
-    //    preventing magnify action
-      inGraphicView.mZoomPropertyCache = Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))
-    //--- Perform magnify action
-      scrollView.magnify (toFit: r)
-    //--- Update zoom value
-      inGraphicView.mZoomPropertyCache = Int ((inGraphicView.actualScale * 100.0).rounded (.toNearestOrEven))
+    if self.mOperationInProgress, let r = inGraphicView.mSelectionRectangle {
+      inGraphicView.applyZoomToFit (rect: r)
     }
   }
 

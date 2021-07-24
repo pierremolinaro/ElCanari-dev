@@ -10,6 +10,22 @@ extension EBGraphicView {
 
   //····················································································································
 
+   final func applyZoomToFit (rect inRect : NSRect) {
+     if let scrollView = self.enclosingScrollView, !inRect.isEmpty {
+     //--- Compute new scale
+       let horizontalScale = scrollView.documentVisibleRect.size.width / inRect.size.width
+       let verticalScale = scrollView.documentVisibleRect.size.height / inRect.size.height
+       let newScale = min (horizontalScale, verticalScale) * self.actualScale
+     //--- Set New Zoom
+       let newZoom = Int ((newScale * 100.0).rounded (.toNearestOrEven))
+       _ = self.mZoomController?.updateModel (withCandidateValue: newZoom, windowForSheet: self.window)
+      //---
+       scrollView.scrollToVisible (inRect)
+    }
+  }
+
+  //····················································································································
+
   final func applyZoom () {
     if let scrollView = self.enclosingScrollView {
       let box = self.contentsBoundingBox
@@ -62,7 +78,7 @@ extension EBGraphicView {
       let nc = NotificationCenter.default
       nc.addObserver (
         self,
-        selector: #selector (EBGraphicView.didEndLiveMagnification (_:)),
+        selector: #selector (Self.didEndLiveMagnification (_:)),
         name: NSScrollView.didEndLiveMagnifyNotification,
         object: scrollView
       )
@@ -83,16 +99,7 @@ extension EBGraphicView {
   //····················································································································
 
   final internal func scrollViewIsLiveResizing () {
-//    NSLog ("scrollViewIsLiveResizing \(self.mZoomPropertyCache) \(self)")
       self.applyZoom ()
-//    if self.mZoomPropertyCache == 0, let scrollView = self.enclosingScrollView {
-//      let box = self.contentsBoundingBox
-//      if !box.isEmpty {
-//        scrollView.magnify (toFit: box)
-//      }
-//      let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
-//      self.mZoomDidChangeCallback? (newZoom)
-//    }
   }
 
   //····················································································································
