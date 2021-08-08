@@ -30,6 +30,7 @@ let BUILD_KIND = ProductKind.release
 
 let VERSION_CANARI = "1.4.4"
 let NOTES : [String] = [
+  "Correction divers bugs"
 ]
 let BUGFIXES : [String] = [
 ]
