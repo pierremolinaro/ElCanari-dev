@@ -28,9 +28,10 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.4"
+let VERSION_CANARI = "1.5.0"
 let NOTES : [String] = [
-  "Correction divers bugs"
+  "Correction divers bugs",
+  "Mise à jour impossible à partir de la version 1.4.3"
 ]
 let BUGFIXES : [String] = [
 ]
