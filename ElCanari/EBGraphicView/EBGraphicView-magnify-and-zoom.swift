@@ -35,7 +35,7 @@ extension EBGraphicView {
         }
       }else{
         scrollView.magnification = CGFloat (self.mZoomPropertyCache) / 100.0
-     }
+      }
       var newBounds = box
       let visibleRect = scrollView.documentVisibleRect
       if visibleRect.maxX > newBounds.maxX {
