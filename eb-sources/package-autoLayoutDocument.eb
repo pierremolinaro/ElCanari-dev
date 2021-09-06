@@ -986,20 +986,32 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addSeparator ()
       addCenterYAligned (
-        left: Switch (title: "Pad Numbering", size : .small) { $value prefs.showPadNumber },
-        right: hStack { ColorWell { $color prefs.padNumberColor (sendContinously:no) } space }
+        left: StaticLabel (title: "Pad Numbering", bold: no, size : .small),
+        right: hStack setCenterYAlignment () {
+          ColorWell { $color prefs.padNumberColor (sendContinously:no) }
+          Switch (title: "Show", size : .small) { $value prefs.showPadNumber }
+          space
+        }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Pad Font", bold: no, size : .small),
         right: FontButton (size : .small) {$fontValue prefs.padNumberFont}
       )
       addCenterYAligned (
-        left: Switch (title: "Top Side Pads", size : .small) { $value prefs.displayPackageFrontSidePads },
-        right: hStack { ColorWell { $color prefs.frontSidePadColor (sendContinously:no) } space }
+        left: StaticLabel (title: "Top Side Pads", bold: no, size : .small),
+        right: hStack setCenterYAlignment () {
+          ColorWell { $color prefs.frontSidePadColor (sendContinously:no) }
+          Switch (title: "Show", size : .small) { $value prefs.displayPackageFrontSidePads }
+          space
+        }
       )
       addCenterYAligned (
-        left: Switch (title: "Back Side Pads", size : .small) { $value prefs.displayPackageBackSidePads },
-        right: hStack { ColorWell { $color prefs.backSidePadColor (sendContinously:no) } space }
+        left: StaticLabel (title: "Back Side Pads", bold: no, size : .small),
+        right: hStack setCenterYAlignment () {
+          ColorWell { $color prefs.backSidePadColor (sendContinously:no) }
+          Switch (title: "Show", size : .small) { $value prefs.displayPackageBackSidePads }
+          space
+        }
       )
       addSeparator ()
       addCenterYAligned (

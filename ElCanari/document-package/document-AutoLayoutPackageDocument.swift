@@ -3366,8 +3366,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_205 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Pad Numbering", size: .small)
-      .bind_value (preferences_showPadNumber_property)
+    let view = AutoLayoutStaticLabel (title: "Pad Numbering", bold: false, size: .small)
     return view
   }
 
@@ -3377,12 +3376,16 @@ import Cocoa
 
   fileprivate final func computeImplicitView_206 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_padNumberColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
+      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+        .bind_value (preferences_showPadNumber_property)
       view.appendView (view_1)
+      let view_2 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_2)
     }
     return view
   }
@@ -3411,8 +3414,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_209 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Top Side Pads", size: .small)
-      .bind_value (preferences_displayPackageFrontSidePads_property)
+    let view = AutoLayoutStaticLabel (title: "Top Side Pads", bold: false, size: .small)
     return view
   }
 
@@ -3422,12 +3424,16 @@ import Cocoa
 
   fileprivate final func computeImplicitView_210 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_frontSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
+      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+        .bind_value (preferences_displayPackageFrontSidePads_property)
       view.appendView (view_1)
+      let view_2 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_2)
     }
     return view
   }
@@ -3437,8 +3443,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_211 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Back Side Pads", size: .small)
-      .bind_value (preferences_displayPackageBackSidePads_property)
+    let view = AutoLayoutStaticLabel (title: "Back Side Pads", bold: false, size: .small)
     return view
   }
 
@@ -3448,12 +3453,16 @@ import Cocoa
 
   fileprivate final func computeImplicitView_212 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
+      .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutColorWell ()
         .bind_color (preferences_backSidePadColor_property, sendContinously:false)
       view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
+      let view_1 = AutoLayoutSwitch (title: "Show", size: .small)
+        .bind_value (preferences_displayPackageBackSidePads_property)
       view.appendView (view_1)
+      let view_2 = AutoLayoutFlexibleSpace ()
+      view.appendView (view_2)
     }
     return view
   }
