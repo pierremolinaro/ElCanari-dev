@@ -32,7 +32,6 @@ extension EBGraphicView {
     if self.mForegroundImage != nil {
       self.mForegroundImage = nil
       self.setNeedsDisplayAndUpdateViewBounds ()
-//      self.needsDisplay = true
     }
     switch model.selection {
     case .empty :
@@ -41,7 +40,6 @@ extension EBGraphicView {
       if let ciImage = CIImage (data: v) {
         self.mForegroundImage = ciImage
         self.setNeedsDisplayAndUpdateViewBounds ()
-//        self.needsDisplay = true
       }
     case .multiple :
       break

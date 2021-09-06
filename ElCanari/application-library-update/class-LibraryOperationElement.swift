@@ -19,9 +19,9 @@ enum LibraryOperation {
   case update
   case delete
   case deleteRegistered
-  case downloadError (Int32)
-  case downloading (Int)
-  case downloaded (Data)
+  case downloadError (Int32) // Error code
+  case downloading (Int) // 0 ... 100, download progress, in %
+  case downloaded (Data) // Downloaded data
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -190,7 +190,7 @@ final class LibraryOperationElement : EBObject { // SHOULD INHERIT FROM NSObject
     case .download, .update, .downloadError, .downloading, .delete :
       ()
     case .deleteRegistered :
-      let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
+      let fullFilePath = systemLibraryPath () + "/" + self.mRelativePath
       let fm = FileManager ()
       self.mLogTextView.appendMessageString ("  Delete file '\(fullFilePath)'\n")
       try fm.removeItem (atPath: fullFilePath)
