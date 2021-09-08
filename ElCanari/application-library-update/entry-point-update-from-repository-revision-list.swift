@@ -22,7 +22,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
   let proxy = getSystemProxy (inLogTextView)
 //-------- ① We start by getting the list of all commits
   inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
-  var possibleAlert : NSAlert? = nil // If not nil, smoething goes wrong
+  var possibleAlert : NSAlert? = nil // If not nil, something goes wrong
   let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
   let possibleStoredCurrentCommit = getStoredCurrentCommit ()
   let possibleRemoteCurrentCommit : Int?
@@ -134,7 +134,7 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryRevisionDescriptor : BaseObject {
+final class LibraryRevisionDescriptor : EBObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //   Properties
@@ -149,9 +149,9 @@ final class LibraryRevisionDescriptor : BaseObject {
   //····················································································································
 
   init (_ date : Date, _ commitIndex : Int, _ message : String) {
-    mDate = date
-    mCommitIndex = commitIndex
-    mMessage = message
+    self.mDate = date
+    self.mCommitIndex = commitIndex
+    self.mMessage = message
   }
 
   //····················································································································
@@ -192,8 +192,8 @@ final class LibraryCommitListController : EBObject {  // SHOULD INHERIT FROM NSO
   //····················································································································
 
   init (_ revisions : [LibraryRevisionDescriptor], _ inTableView : NSTableView?) {
-    mRevisions = revisions
-    mTableView = inTableView
+    self.mRevisions = revisions
+    self.mTableView = inTableView
     super.init ()
     if let tableView = inTableView {
       tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "commit"))?.bind (
