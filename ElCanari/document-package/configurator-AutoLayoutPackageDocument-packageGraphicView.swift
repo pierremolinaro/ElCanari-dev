@@ -21,6 +21,7 @@ extension AutoLayoutPackageDocument {
   final func configure_packageGraphicView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
           inOutlet.mScrollView?.register (document: self)
+          inOutlet.mGraphicView.register (pasteboardType: packagePasteboardType)
 //--- END OF USER ZONE 2
   }
 }

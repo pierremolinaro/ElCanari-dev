@@ -49,6 +49,7 @@ APP_VERSION = "1.4.4-pm"
 os.chdir (FREEROUTING_DIR)
 #--- Compile for distribution
 runCommand (["bash", "gradlew", "dist"])
+print (BLUE + BOLD + "DONE" + ENDC)
 #--- Download and install JDK
 # https://jdk.java.net/14/
 JPACKAGE_JVM="https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_osx-x64_bin.tar.gz"

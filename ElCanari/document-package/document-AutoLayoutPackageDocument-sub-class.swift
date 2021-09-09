@@ -118,6 +118,9 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
                 userSet: userSet
               )
               newObjectArray.append (newObject)
+              if let grid = self.mPackageGraphicView?.grid {
+                newObject.snapToGrid (grid)
+              }
             }
           }
         }
