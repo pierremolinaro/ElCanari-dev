@@ -34,6 +34,8 @@ let NOTES : [String] = [
   "Mise à jour impossible à partir de la version 1.4.3"
 ]
 let BUGFIXES : [String] = [
+  "Alignment correct lors d'un drag-and-drop pour placer un symbole sur le schéma",
+  "Alignment correct lors d'un drag-and-drop pour placer un composant sur la carte"
 ]
 let CHANGES : [String] = [
 ]

@@ -556,18 +556,15 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
            }
         }
       }
-      if let symbol = self.mPossibleDraggedSymbol,
-         let symbolInfo = symbol.symbolInfo,
-         let strokeBP = symbol.symbolInfo?.strokeBezierPath,
-         let filledBP = symbol.symbolInfo?.filledBezierPath {
+      if let symbolInfo = self.mPossibleDraggedSymbol?.symbolInfo {
         let scale : CGFloat = schematicsView.actualScale
         let horizontalFlip : CGFloat = schematicsView.horizontalFlip ? -scale : scale
         let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         var symbolShape = EBShape ()
-        symbolShape.add (filled: [EBBezierPath (filledBP)], preferences_symbolColorForSchematic)
-        symbolShape.add (stroke: [EBBezierPath (strokeBP)], preferences_symbolColorForSchematic)
+        symbolShape.add (filled: [EBBezierPath (symbolInfo.filledBezierPath)], preferences_symbolColorForSchematic)
+        symbolShape.add (stroke: [EBBezierPath (symbolInfo.strokeBezierPath)], preferences_symbolColorForSchematic)
         let scaledSymbolShape = symbolShape.transformed (by: af)
         resultImage = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
       //--- Move image rect origin to mouse click location
@@ -582,13 +579,14 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
           minY = min (minY, p.y)
           maxY = max (maxY, p.y)
         }
-        let scaledMidX = scale * (minX + maxX) / 2.0
-        let scaledMidY = scale * (minY + maxY) / 2.0
-        var p = NSPoint (
-          x: scaledSymbolShape.boundingBox.midX - scaledMidX,
-          y: scaledSymbolShape.boundingBox.midY - scaledMidY
+        let pinCenterX = (minX + maxX) / 2.0
+        let pinCenterY = (minY + maxY) / 2.0
+        let p = NSPoint (
+          x: symbolShape.boundingBox.midX - pinCenterX,
+          y: symbolShape.boundingBox.midY - pinCenterY
         )
-        dragImageOffset.initialize (from: &p, count: 1)
+        var scaledP = af.transform (p)
+        dragImageOffset.initialize (from: &scaledP, count: 1)
       }
     }else if inSourceTableView == self.mUnplacedPackageTableView,
            let boardView = self.mBoardView?.mGraphicView,
@@ -614,22 +612,23 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
         var maxX = CGFloat.leastNormalMagnitude
         var minY = CGFloat.greatestFiniteMagnitude
         var maxY = CGFloat.leastNormalMagnitude
-        for pad in component.mSelectedPackage!.mMasterPads {
-          let x = canariUnitToCocoa (pad.mCenterX)
-          let y = canariUnitToCocoa (pad.mCenterY)
-          minX = min (minX, x)
-          maxX = max (maxX, x)
-          minY = min (minY, y)
-          maxY = max (maxY, y)
+        for padDescriptor in component.componentPadDictionary!.values {
+          for pad in padDescriptor.pads {
+          let padCenter = pad.location
+          minX = min (minX, padCenter.x)
+          maxX = max (maxX, padCenter.x)
+          minY = min (minY, padCenter.y)
+          maxY = max (maxY, padCenter.y)
+          }
         }
-        let scaledMidX = scale * (minX + maxX) / 2.0
-        let scaledMidY = scale * (minY + maxY) / 2.0
-        Swift.print ("scaledMidX \(scaledMidX), scaledMidY \(scaledMidY)")
-        var p = NSPoint (
-          x: scaledPackageShape.boundingBox.midX - scaledMidX,
-          y: scaledPackageShape.boundingBox.midY - scaledMidY
+        let centerX = (minX + maxX) / 2.0
+        let centerY = (minY + maxY) / 2.0
+        let p = NSPoint (
+          x: packageShape.boundingBox.midX - centerX,
+          y: packageShape.boundingBox.midY - centerY
         )
-        dragImageOffset.initialize (from: &p, count: 1)
+        var scaledP = af.transform (p)
+        dragImageOffset.initialize (from: &scaledP, count: 1)
       }
     }
     return resultImage
