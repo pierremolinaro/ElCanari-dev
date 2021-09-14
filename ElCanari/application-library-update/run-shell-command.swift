@@ -23,8 +23,12 @@ func getRemoteFileData (_ inRelativeFilePath : String,
   switch responseCode {
   case .error (let errorCode) :
     ioPossibleAlert = NSAlert ()
-    ioPossibleAlert?.messageText = "Cannot get file from repository"
-    ioPossibleAlert?.informativeText = "The server returns error \(errorCode) on reading '\(inRelativeFilePath)' file"
+    ioPossibleAlert?.messageText = "Cannot get file from repository."
+    if errorCode == 6 { // See man curl --> Couldn't resolve host. The given remote host was not resolved.
+      ioPossibleAlert?.informativeText = "Cannot connect to server."
+    }else{
+      ioPossibleAlert?.informativeText = "The server returns error \(errorCode) on reading '\(inRelativeFilePath)' file."
+    }
     return nil
   case .ok (let data) :
     return data

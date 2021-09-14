@@ -195,11 +195,12 @@ final class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NS
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
+      self.selectRowIndexes (rowIndexes, byExtendingSelection: false)
       let cellName : String = self.mModelArray [rowIndexes.first!].string
       pboard.declareTypes ([draggedType], owner:self)
     //--- Associated data is cell name
       let data = cellName.data (using: .ascii)
-      pboard.setData (data, forType:draggedType)
+      pboard.setData (data, forType: draggedType)
       return true
     }else{
       return false

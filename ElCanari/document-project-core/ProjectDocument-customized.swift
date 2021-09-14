@@ -541,7 +541,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
-    var result = NSImage (named: NSImage.Name ("exclamation"))!
+    var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
     if inSourceTableView == self.mUnplacedSymbolsTableView,
       let schematicsView = self.mSchematicsView?.mGraphicView,
       dragRows.count == 1,
@@ -557,6 +557,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
         }
       }
       if let symbol = self.mPossibleDraggedSymbol,
+         let symbolInfo = symbol.symbolInfo,
          let strokeBP = symbol.symbolInfo?.strokeBezierPath,
          let filledBP = symbol.symbolInfo?.filledBezierPath {
         let scale : CGFloat = schematicsView.actualScale
@@ -568,7 +569,26 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
         symbolShape.add (filled: [EBBezierPath (filledBP)], preferences_symbolColorForSchematic)
         symbolShape.add (stroke: [EBBezierPath (strokeBP)], preferences_symbolColorForSchematic)
         let scaledSymbolShape = symbolShape.transformed (by: af)
-        result = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
+        resultImage = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
+      //--- Move image rect origin to mouse click location
+        var minX = CGFloat.greatestFiniteMagnitude
+        var maxX = CGFloat.leastNormalMagnitude
+        var minY = CGFloat.greatestFiniteMagnitude
+        var maxY = CGFloat.leastNormalMagnitude
+        for pin in symbolInfo.pins {
+          let p = pin.pinLocation.cocoaPoint
+          minX = min (minX, p.x)
+          maxX = max (maxX, p.x)
+          minY = min (minY, p.y)
+          maxY = max (maxY, p.y)
+        }
+        let scaledMidX = scale * (minX + maxX) / 2.0
+        let scaledMidY = scale * (minY + maxY) / 2.0
+        var p = NSPoint (
+          x: scaledSymbolShape.boundingBox.midX - scaledMidX,
+          y: scaledSymbolShape.boundingBox.midY - scaledMidY
+        )
+        dragImageOffset.initialize (from: &p, count: 1)
       }
     }else if inSourceTableView == self.mUnplacedPackageTableView,
            let boardView = self.mBoardView?.mGraphicView,
@@ -588,10 +608,31 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
         var af = AffineTransform ()
         af.scale (x: horizontalFlip, y: verticalFlip)
         let scaledPackageShape = packageShape.transformed (by: af)
-        result = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
+        resultImage = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
+      //--- Move image rect origin to mouse click location
+        var minX = CGFloat.greatestFiniteMagnitude
+        var maxX = CGFloat.leastNormalMagnitude
+        var minY = CGFloat.greatestFiniteMagnitude
+        var maxY = CGFloat.leastNormalMagnitude
+        for pad in component.mSelectedPackage!.mMasterPads {
+          let x = canariUnitToCocoa (pad.mCenterX)
+          let y = canariUnitToCocoa (pad.mCenterY)
+          minX = min (minX, x)
+          maxX = max (maxX, x)
+          minY = min (minY, y)
+          maxY = max (maxY, y)
+        }
+        let scaledMidX = scale * (minX + maxX) / 2.0
+        let scaledMidY = scale * (minY + maxY) / 2.0
+        Swift.print ("scaledMidX \(scaledMidX), scaledMidY \(scaledMidY)")
+        var p = NSPoint (
+          x: scaledPackageShape.boundingBox.midX - scaledMidX,
+          y: scaledPackageShape.boundingBox.midY - scaledMidY
+        )
+        dragImageOffset.initialize (from: &p, count: 1)
       }
     }
-    return result
+    return resultImage
   }
 
   //····················································································································

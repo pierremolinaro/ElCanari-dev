@@ -103,7 +103,7 @@ final class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggi
         let rect = displayShape.boundingBox
         let image = buildPDFimage (frame: rect, shape: displayShape)
       //--- Move image rect origin to mouse click location
-        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+        let mouseDownLocation = self.convert (inEvent.locationInWindow, from: nil)
         var r = rect
         r.origin.x += mouseDownLocation.x
         r.origin.y += mouseDownLocation.y
