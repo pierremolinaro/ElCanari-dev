@@ -562,6 +562,7 @@ import Cocoa
   @IBOutlet final var mAutorouterInterfaceModeTabVView : CanariTabView? = nil
   @IBOutlet final var mAutorouterSnapAnglePopUp : EBPopUpButton? = nil
   @IBOutlet final var mBackRestrictRectangleSwitch : EBSwitch? = nil
+  @IBOutlet final var mBackSideTrackCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mBaseBoardInspectorView : NSView? = nil
   @IBOutlet final var mBaseBoardLimitsInspectorView : NSView? = nil
   @IBOutlet final var mBaseSchematicsInspectorView : NSView? = nil
@@ -782,9 +783,14 @@ import Cocoa
   @IBOutlet final var mHotKeysSchematicInspectorView : CanariViewWithKeyView? = nil
   @IBOutlet final var mImportSESFromBasicTabButton : EBButton? = nil
   @IBOutlet final var mIncorrectFileNameMessageView : NSView? = nil
+  @IBOutlet final var mInner1LayerTrackCountTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInner2LayerTrackCountTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInner3LayerTrackCountTextField : EBTextObserverField? = nil
+  @IBOutlet final var mInner4LayerTrackCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mIsPreservedByAutoRouterSwitch : EBSwitch? = nil
   @IBOutlet final var mLaunchFreeRouterWithDocumentButton : EBButton? = nil
   @IBOutlet final var mLaunchFreeRouterWithoutDocumentButton : EBButton? = nil
+  @IBOutlet final var mLayerConfigurationPopUp : CanariLayerPopUpButton? = nil
   @IBOutlet final var mLayerForNewLineMenu : CanariChoiceMenu? = nil
   @IBOutlet final var mLayerForNewTextMenu : CanariChoiceMenu? = nil
   @IBOutlet final var mLayoutClearancePopUp : EBPopUpButton? = nil
@@ -921,6 +927,7 @@ import Cocoa
   @IBOutlet final var mSlavePadsShouldBeRoutedPopUpButton : CanariBoolPopUpButton? = nil
   @IBOutlet final var mSymbolMirrorSwitch : EBSwitch? = nil
   @IBOutlet final var mSymbolRotationSegmentedControl : CanariQuadrantSegmentedControl? = nil
+  @IBOutlet final var mTopSideTrackCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mTrackCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mTrackCustomWidthTextField : CanariDimensionTextField? = nil
   @IBOutlet final var mTrackCustomWidthUnitPopUp : EBPopUpButton? = nil
@@ -1167,6 +1174,7 @@ import Cocoa
     checkOutletConnection (self.mAutorouterInterfaceModeTabVView, "mAutorouterInterfaceModeTabVView", CanariTabView.self, #file, #line)
     checkOutletConnection (self.mAutorouterSnapAnglePopUp, "mAutorouterSnapAnglePopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mBackRestrictRectangleSwitch, "mBackRestrictRectangleSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBackSideTrackCountTextField, "mBackSideTrackCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mBaseBoardInspectorView, "mBaseBoardInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseBoardLimitsInspectorView, "mBaseBoardLimitsInspectorView", NSView.self, #file, #line)
     checkOutletConnection (self.mBaseSchematicsInspectorView, "mBaseSchematicsInspectorView", NSView.self, #file, #line)
@@ -1387,9 +1395,14 @@ import Cocoa
     checkOutletConnection (self.mHotKeysSchematicInspectorView, "mHotKeysSchematicInspectorView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mImportSESFromBasicTabButton, "mImportSESFromBasicTabButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mIncorrectFileNameMessageView, "mIncorrectFileNameMessageView", NSView.self, #file, #line)
+    checkOutletConnection (self.mInner1LayerTrackCountTextField, "mInner1LayerTrackCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mInner2LayerTrackCountTextField, "mInner2LayerTrackCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mInner3LayerTrackCountTextField, "mInner3LayerTrackCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mInner4LayerTrackCountTextField, "mInner4LayerTrackCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mIsPreservedByAutoRouterSwitch, "mIsPreservedByAutoRouterSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterWithDocumentButton, "mLaunchFreeRouterWithDocumentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mLaunchFreeRouterWithoutDocumentButton, "mLaunchFreeRouterWithoutDocumentButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mLayerConfigurationPopUp, "mLayerConfigurationPopUp", CanariLayerPopUpButton.self, #file, #line)
     checkOutletConnection (self.mLayerForNewLineMenu, "mLayerForNewLineMenu", CanariChoiceMenu.self, #file, #line)
     checkOutletConnection (self.mLayerForNewTextMenu, "mLayerForNewTextMenu", CanariChoiceMenu.self, #file, #line)
     checkOutletConnection (self.mLayoutClearancePopUp, "mLayoutClearancePopUp", EBPopUpButton.self, #file, #line)
@@ -1526,6 +1539,7 @@ import Cocoa
     checkOutletConnection (self.mSlavePadsShouldBeRoutedPopUpButton, "mSlavePadsShouldBeRoutedPopUpButton", CanariBoolPopUpButton.self, #file, #line)
     checkOutletConnection (self.mSymbolMirrorSwitch, "mSymbolMirrorSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mSymbolRotationSegmentedControl, "mSymbolRotationSegmentedControl", CanariQuadrantSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mTopSideTrackCountTextField, "mTopSideTrackCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackCountTextField, "mTrackCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mTrackCustomWidthTextField, "mTrackCustomWidthTextField", CanariDimensionTextField.self, #file, #line)
     checkOutletConnection (self.mTrackCustomWidthUnitPopUp, "mTrackCustomWidthUnitPopUp", EBPopUpButton.self, #file, #line)
@@ -2321,6 +2335,7 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.mBoardGridDisplayFactor_property)
     self.mBoardGridUnitPopUp?.bind_selectedTag (self.rootObject.mBoardGridStepUnit_property)
     self.mBoardGridTextField?.bind_dimensionAndUnit (self.rootObject.mBoardGridStep_property, self.rootObject.mBoardGridStepUnit_property)
+    self.mLayerConfigurationPopUp?.bind_layerConfiguration (self.rootObject.mLayerConfiguration_property)
     self.mLayoutClearancePopUp?.bind_selectedTag (self.rootObject.mLayoutClearanceUnit_property)
     self.mLayoutClearanceTextField?.bind_dimensionAndUnit (self.rootObject.mLayoutClearance_property, self.rootObject.mLayoutClearanceUnit_property)
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.bind_value (self.rootObject.mCheckClearanceBetweenPadsOfSameNet_property)
@@ -2328,8 +2343,14 @@ import Cocoa
     self.mAutorouterSnapAnglePopUp?.bind_selectedIndex (self.rootObject.mAutorouterSnapAngle_property)
     self.mAutoRouterRouteDirectionPopUp?.bind_selectedIndex (self.rootObject.mRouteDirection_property)
     self.mAutoRouterRouteOriginPopUp?.bind_selectedIndex (self.rootObject.mRouteOrigin_property)
-    self.mViaCountTextField?.bind_valueObserver (self.rootObject.viaCountString_property)
+    self.mTopSideTrackCountTextField?.bind_valueObserver (self.rootObject.topSideTrackCountString_property)
+    self.mInner1LayerTrackCountTextField?.bind_valueObserver (self.rootObject.inner1LayerTrackCountString_property)
+    self.mInner2LayerTrackCountTextField?.bind_valueObserver (self.rootObject.inner2LayerTrackCountString_property)
+    self.mInner3LayerTrackCountTextField?.bind_valueObserver (self.rootObject.inner3LayerTrackCountString_property)
+    self.mInner4LayerTrackCountTextField?.bind_valueObserver (self.rootObject.inner4LayerTrackCountString_property)
+    self.mBackSideTrackCountTextField?.bind_valueObserver (self.rootObject.backSideTrackCountString_property)
     self.mTrackCountTextField?.bind_valueObserver (self.rootObject.trackCountString_property)
+    self.mViaCountTextField?.bind_valueObserver (self.rootObject.viaCountString_property)
     self.mTrackLengthTextField?.bind_valueObserver (self.rootObject.trackLengthString_property)
     self.mTrackLengthUnitPopUp?.bind_selectedTag (self.rootObject.mTrackLengthUnit_property)
     self.mAutorouterInterfaceModeTabVView?.bind_selectedTabIndex (self.rootObject.mAutorouterInterfaceMode_property)
@@ -2986,6 +3007,8 @@ import Cocoa
     self.mSetDateToNowButton?.action = #selector (ProjectDocument.setDateToNowAction (_:))
     self.mOpenSetDateDialogButton?.target = self
     self.mOpenSetDateDialogButton?.action = #selector (ProjectDocument.openSetDateDialogAction (_:))
+    self.mLayerConfigurationPopUp?.target = self
+    self.mLayerConfigurationPopUp?.action = #selector (ProjectDocument.changeLayerConfigurationAction (_:))
     self.mLaunchFreeRouterWithoutDocumentButton?.target = self
     self.mLaunchFreeRouterWithoutDocumentButton?.action = #selector (ProjectDocument.launchFreeRouterWithoutAnyDocument (_:))
     self.mLaunchFreeRouterWithDocumentButton?.target = self
@@ -3176,6 +3199,7 @@ import Cocoa
     self.mBoardGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mBoardGridUnitPopUp?.unbind_selectedTag ()
     self.mBoardGridTextField?.unbind_dimensionAndUnit ()
+    self.mLayerConfigurationPopUp?.unbind_layerConfiguration ()
     self.mLayoutClearancePopUp?.unbind_selectedTag ()
     self.mLayoutClearanceTextField?.unbind_dimensionAndUnit ()
     self.mCheckClearanceBetweenPadsOfSameNetSwitch?.unbind_value ()
@@ -3183,8 +3207,14 @@ import Cocoa
     self.mAutorouterSnapAnglePopUp?.unbind_selectedIndex ()
     self.mAutoRouterRouteDirectionPopUp?.unbind_selectedIndex ()
     self.mAutoRouterRouteOriginPopUp?.unbind_selectedIndex ()
-    self.mViaCountTextField?.unbind_valueObserver ()
+    self.mTopSideTrackCountTextField?.unbind_valueObserver ()
+    self.mInner1LayerTrackCountTextField?.unbind_valueObserver ()
+    self.mInner2LayerTrackCountTextField?.unbind_valueObserver ()
+    self.mInner3LayerTrackCountTextField?.unbind_valueObserver ()
+    self.mInner4LayerTrackCountTextField?.unbind_valueObserver ()
+    self.mBackSideTrackCountTextField?.unbind_valueObserver ()
     self.mTrackCountTextField?.unbind_valueObserver ()
+    self.mViaCountTextField?.unbind_valueObserver ()
     self.mTrackLengthTextField?.unbind_valueObserver ()
     self.mTrackLengthUnitPopUp?.unbind_selectedTag ()
     self.mAutorouterInterfaceModeTabVView?.unbind_selectedTabIndex ()
@@ -3500,6 +3530,7 @@ import Cocoa
     self.mRemoveSheetButton?.target = nil
     self.mSetDateToNowButton?.target = nil
     self.mOpenSetDateDialogButton?.target = nil
+    self.mLayerConfigurationPopUp?.target = nil
     self.mLaunchFreeRouterWithoutDocumentButton?.target = nil
     self.mLaunchFreeRouterWithDocumentButton?.target = nil
     self.mImportSESFromBasicTabButton?.target = nil
@@ -3538,6 +3569,7 @@ import Cocoa
     self.mAutorouterInterfaceModeTabVView?.ebCleanUp ()
     self.mAutorouterSnapAnglePopUp?.ebCleanUp ()
     self.mBackRestrictRectangleSwitch?.ebCleanUp ()
+    self.mBackSideTrackCountTextField?.ebCleanUp ()
     self.mBaseBoardInspectorView?.ebCleanUp ()
     self.mBaseBoardLimitsInspectorView?.ebCleanUp ()
     self.mBaseSchematicsInspectorView?.ebCleanUp ()
@@ -3758,9 +3790,14 @@ import Cocoa
     self.mHotKeysSchematicInspectorView?.ebCleanUp ()
     self.mImportSESFromBasicTabButton?.ebCleanUp ()
     self.mIncorrectFileNameMessageView?.ebCleanUp ()
+    self.mInner1LayerTrackCountTextField?.ebCleanUp ()
+    self.mInner2LayerTrackCountTextField?.ebCleanUp ()
+    self.mInner3LayerTrackCountTextField?.ebCleanUp ()
+    self.mInner4LayerTrackCountTextField?.ebCleanUp ()
     self.mIsPreservedByAutoRouterSwitch?.ebCleanUp ()
     self.mLaunchFreeRouterWithDocumentButton?.ebCleanUp ()
     self.mLaunchFreeRouterWithoutDocumentButton?.ebCleanUp ()
+    self.mLayerConfigurationPopUp?.ebCleanUp ()
     self.mLayerForNewLineMenu?.ebCleanUp ()
     self.mLayerForNewTextMenu?.ebCleanUp ()
     self.mLayoutClearancePopUp?.ebCleanUp ()
@@ -3897,6 +3934,7 @@ import Cocoa
     self.mSlavePadsShouldBeRoutedPopUpButton?.ebCleanUp ()
     self.mSymbolMirrorSwitch?.ebCleanUp ()
     self.mSymbolRotationSegmentedControl?.ebCleanUp ()
+    self.mTopSideTrackCountTextField?.ebCleanUp ()
     self.mTrackCountTextField?.ebCleanUp ()
     self.mTrackCustomWidthTextField?.ebCleanUp ()
     self.mTrackCustomWidthUnitPopUp?.ebCleanUp ()
@@ -3970,6 +4008,7 @@ import Cocoa
     self.mAutorouterInterfaceModeTabVView = nil
     self.mAutorouterSnapAnglePopUp = nil
     self.mBackRestrictRectangleSwitch = nil
+    self.mBackSideTrackCountTextField = nil
     self.mBaseBoardInspectorView = nil
     self.mBaseBoardLimitsInspectorView = nil
     self.mBaseSchematicsInspectorView = nil
@@ -4190,9 +4229,14 @@ import Cocoa
     self.mHotKeysSchematicInspectorView = nil
     self.mImportSESFromBasicTabButton = nil
     self.mIncorrectFileNameMessageView = nil
+    self.mInner1LayerTrackCountTextField = nil
+    self.mInner2LayerTrackCountTextField = nil
+    self.mInner3LayerTrackCountTextField = nil
+    self.mInner4LayerTrackCountTextField = nil
     self.mIsPreservedByAutoRouterSwitch = nil
     self.mLaunchFreeRouterWithDocumentButton = nil
     self.mLaunchFreeRouterWithoutDocumentButton = nil
+    self.mLayerConfigurationPopUp = nil
     self.mLayerForNewLineMenu = nil
     self.mLayerForNewTextMenu = nil
     self.mLayoutClearancePopUp = nil
@@ -4329,6 +4373,7 @@ import Cocoa
     self.mSlavePadsShouldBeRoutedPopUpButton = nil
     self.mSymbolMirrorSwitch = nil
     self.mSymbolRotationSegmentedControl = nil
+    self.mTopSideTrackCountTextField = nil
     self.mTrackCountTextField = nil
     self.mTrackCustomWidthTextField = nil
     self.mTrackCustomWidthUnitPopUp = nil

@@ -17,9 +17,17 @@ func transient_BoardTrack_objectDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP2_location : CanariPoint?,
        _ prefs_displayFrontLayoutForBoard : Bool,
-       _ prefs_displayBackLayoutForBoard : Bool,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
+       _ prefs_displayBackLayoutForBoard : Bool,
        _ prefs_backSideLayoutColorForBoard : NSColor,
+       _ prefs_displayInner1LayoutForBoard : Bool,
+       _ prefs_inner1LayoutColorForBoard : NSColor,
+       _ prefs_displayInner2LayoutForBoard : Bool,
+       _ prefs_inner2LayoutColorForBoard : NSColor,
+       _ prefs_displayInner3LayoutForBoard : Bool,
+       _ prefs_inner3LayoutColorForBoard : NSColor,
+       _ prefs_displayInner4LayoutForBoard : Bool,
+       _ prefs_inner4LayoutColorForBoard : NSColor,
        _ self_actualTrackWidth : Int,    
        _ self_mSide : TrackSide
 ) -> EBShape {
@@ -35,6 +43,18 @@ func transient_BoardTrack_objectDisplay (
          case .back :
            display = prefs_displayBackLayoutForBoard
            color = prefs_backSideLayoutColorForBoard
+         case .inner1 :
+           display = prefs_displayInner1LayoutForBoard
+           color = prefs_inner1LayoutColorForBoard
+         case .inner2 :
+           display = prefs_displayInner2LayoutForBoard
+           color = prefs_inner2LayoutColorForBoard
+         case .inner3 :
+           display = prefs_displayInner3LayoutForBoard
+           color = prefs_inner3LayoutColorForBoard
+         case .inner4 :
+           display = prefs_displayInner4LayoutForBoard
+           color = prefs_inner4LayoutColorForBoard
          }
          if display {
            let w = canariUnitToCocoa ((self_actualTrackWidth == 0) ? milsToCanariUnit (fromInt: 10) : self_actualTrackWidth)

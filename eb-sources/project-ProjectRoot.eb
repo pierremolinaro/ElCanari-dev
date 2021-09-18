@@ -1,12 +1,6 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 //     P R O J E C T    R O O T
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum TrackCreationDirection {
-  anyAngle, octolinear, rectilinear
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
 //--- Artwork
@@ -50,6 +44,8 @@ entity ProjectRoot {
 
 //--- Board
   toMany BoardObject mBoardObjects inverse toOne mRoot ;
+  
+  property LayerConfiguration mLayerConfiguration default twoLayers ;
 
   property TrackSide mBoardSideForNewTrack default front ;
   property TrackCreationDirection mDirectionForNewTrack default anyAngle ;
@@ -90,6 +86,12 @@ entity ProjectRoot {
   ;
 
   transient String viaCountString dependsFrom self.mBoardObjects.all.isVia ;
+  transient String topSideTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
+  transient String backSideTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
+  transient String inner1LayerTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
+  transient String inner2LayerTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
+  transient String inner3LayerTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
+  transient String inner4LayerTrackCountString dependsFrom self.mBoardObjects.all.trackSide ;
   transient String trackCountString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit ;
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit, self.mTrackLengthUnit ;
   

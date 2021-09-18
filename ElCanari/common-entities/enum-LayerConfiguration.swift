@@ -6,25 +6,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case front = 0
-  case back = 1
-  case inner1 = 2
-  case inner2 = 3
-  case inner3 = 4
-  case inner4 = 5
+enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case oneLayer = 0
+  case twoLayers = 1
+  case fourLayers = 2
+  case sixLayers = 3
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "front" : self = .front // 0
-      case "back" : self = .back // 1
-      case "inner1" : self = .inner1 // 2
-      case "inner2" : self = .inner2 // 3
-      case "inner3" : self = .inner3 // 4
-      case "inner4" : self = .inner4 // 5
+      case "oneLayer" : self = .oneLayer // 0
+      case "twoLayers" : self = .twoLayers // 1
+      case "fourLayers" : self = .fourLayers // 2
+      case "sixLayers" : self = .sixLayers // 3
       case _ : return nil
     }
   }
@@ -33,12 +29,10 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .front : return "front" // 0
-      case .back : return "back" // 1
-      case .inner1 : return "inner1" // 2
-      case .inner2 : return "inner2" // 3
-      case .inner3 : return "inner3" // 4
-      case .inner4 : return "inner4" // 5
+      case .oneLayer : return "oneLayer" // 0
+      case .twoLayers : return "twoLayers" // 1
+      case .fourLayers : return "fourLayers" // 2
+      case .sixLayers : return "sixLayers" // 3
     }
   }
 
@@ -46,8 +40,8 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> TrackSide? {
-    if let v = TrackSide (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> LayerConfiguration? {
+    if let v = LayerConfiguration (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -56,9 +50,9 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> TrackSide {
+  func enumfromRawValue (rawValue : Int) -> LayerConfiguration {
     var result = self
-    let v : TrackSide? = TrackSide (rawValue:rawValue) ;
+    let v : LayerConfiguration? = LayerConfiguration (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -81,9 +75,9 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> TrackSide {
-    var result = TrackSide.front
-    if let number = object as? NSNumber, let v = TrackSide (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> LayerConfiguration {
+    var result = LayerConfiguration.oneLayer
+    if let number = object as? NSNumber, let v = LayerConfiguration (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -91,8 +85,8 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackSide? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> LayerConfiguration? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = LayerConfiguration (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -111,11 +105,11 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TrackSide = EBReadOnlyEnumProperty <TrackSide>
-typealias EBTransientProperty_TrackSide = EBTransientEnumProperty <TrackSide>
-typealias EBReadWriteProperty_TrackSide = EBReadWriteEnumProperty <TrackSide>
-typealias EBStoredProperty_TrackSide = EBStoredEnumProperty <TrackSide>
-typealias EBPropertyProxy_TrackSide = EBPropertyEnumProxy <TrackSide>
-typealias EBPreferencesProperty_TrackSide = EBStoredEnumProperty <TrackSide>
+typealias EBReadOnlyProperty_LayerConfiguration = EBReadOnlyEnumProperty <LayerConfiguration>
+typealias EBTransientProperty_LayerConfiguration = EBTransientEnumProperty <LayerConfiguration>
+typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration>
+typealias EBStoredProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
+typealias EBPropertyProxy_LayerConfiguration = EBPropertyEnumProxy <LayerConfiguration>
+typealias EBPreferencesProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

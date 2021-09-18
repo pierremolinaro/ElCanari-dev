@@ -12,6 +12,10 @@ import Cocoa
 
 let COMPONENT_SIDE = "ComponentSide"
 let SOLDER_SIDE    = "SolderSide"
+let INNER1_SIDE    = "Inner1Side"
+let INNER2_SIDE    = "Inner2Side"
+let INNER3_SIDE    = "Inner3Side"
+let INNER4_SIDE    = "Inner4Side"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -91,6 +95,8 @@ extension CustomizedProjectDocument {
     let boardLimitExtend = -self.rootObject.mBoardLimitsWidth / 2
     let boardBoundBox = self.rootObject.interiorBoundBox!.insetBy (dx: boardLimitExtend, dy: boardLimitExtend)
     let signalPolygonVertices = self.buildSignalPolygon (converter)
+  //--- Layer configuration
+    let layerConfiguration = self.rootObject.mLayerConfiguration
   //--- Restrict rectangles
     var restrictRectangles = [RestrictRectangleForDSNExport] ()
     for object in self.rootObject.mBoardObjects {
@@ -122,7 +128,11 @@ extension CustomizedProjectDocument {
         viaPadDiameterInDSNUnit: converter.dsnUnitFromCanariUnit (netClass.mViaPadDiameter),
         netNames: netNames,
         allowTracksOnFrontSide: netClass.mAllowTracksOnFrontSide,
-        allowTracksOnBackSide: netClass.mAllowTracksOnBackSide
+        allowTracksOnBackSide: netClass.mAllowTracksOnBackSide,
+        allowTracksOnInner1Layer: netClass.mAllowTracksOnInner1Layer,
+        allowTracksOnInner2Layer: netClass.mAllowTracksOnInner2Layer,
+        allowTracksOnInner3Layer: netClass.mAllowTracksOnInner3Layer,
+        allowTracksOnInner4Layer: netClass.mAllowTracksOnInner4Layer
       )
       netClasses.append (nc)
     }
@@ -178,7 +188,7 @@ extension CustomizedProjectDocument {
     s += "  (resolution \(converter.unitString) \(converter.resolution))\n"
     s += "  (structure\n"
     addBoardBoundary (&s, boardBoundBox, signalPolygonVertices, converter)
-    autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections)
+    autorouteSettings (&s, self.rootObject.mAutoRouterPreferredDirections, layerConfiguration)
     addSnapAngle (&s, self.rootObject.mAutorouterSnapAngle)
     addViaClasses (&s, netClasses)
     s += "    (control (via_at_smd off))\n"
@@ -196,13 +206,13 @@ extension CustomizedProjectDocument {
     )
     s += "  (library\n"
     addDeviceLibrary (&s, packageArrayForRouting)
-    addViaPadStackLibrary (&s, netClasses)
-    addComponentPadStackLibrary (&s, padTypeArrayForRouting, converter)
+    addViaPadStackLibrary (&s, netClasses, layerConfiguration)
+    addComponentPadStackLibrary (&s, padTypeArrayForRouting, converter, layerConfiguration)
     s += "  )\n"
     s += "  (network\n"
     addNetwork (&s, componentArrayForRouting)
     addViaRules (&s, netClasses)
-    addNetClasses (&s, netClasses)
+    addNetClasses (&s, netClasses, layerConfiguration)
     s += "  )\n"
     if inExportTracks {
       self.exportTracksAndVias (&s, converter)
@@ -263,6 +273,10 @@ extension CustomizedProjectDocument {
         switch track.mSide {
         case .front : side = COMPONENT_SIDE
         case .back : side = SOLDER_SIDE
+        case .inner1 : side = INNER1_SIDE
+        case .inner2 : side = INNER2_SIDE
+        case .inner3 : side = INNER3_SIDE
+        case .inner4 : side = INNER4_SIDE
         }
         let optionalNetName = track.mNet?.mNetName
         let widthMM = inConverter.dsnUnitFromCanariUnit (track.actualTrackWidth!)
@@ -391,7 +405,7 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
         canariWidth: masterPad.padSize.width,
         canariHeight: masterPad.padSize.height,
         onComponentSide: true,
-        onOppositeSide: masterPad.style == .traversing,
+        onBackSide: masterPad.style == .traversing,
         shape: masterPad.shape,
         &ioPadTypeArrayForRouting
       )
@@ -405,17 +419,17 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
     //--- Enter slave pads
       for slavePad in masterPad.slavePads {
         let onComponentSide : Bool
-        let onOppositeSide : Bool
+        let onBackSide : Bool
         switch slavePad.style {
-        case .oppositeSide : onComponentSide = false ; onOppositeSide = true
-        case .componentSide : onComponentSide = true  ; onOppositeSide = false
-        case .traversing : onComponentSide = true  ; onOppositeSide = true
+        case .oppositeSide : onComponentSide = false ; onBackSide = true
+        case .componentSide : onComponentSide = true  ; onBackSide = false
+        case .traversing : onComponentSide = true  ; onBackSide = true
         }
         let slavePadForRouting = findOrAddPadType (
           canariWidth: slavePad.padSize.width,
           canariHeight: slavePad.padSize.height,
           onComponentSide: onComponentSide,
-          onOppositeSide: onOppositeSide,
+          onBackSide: onBackSide,
           shape: slavePad.shape,
           &ioPadTypeArrayForRouting
         )
@@ -444,12 +458,12 @@ fileprivate func indexForPackage (_ inDevice : DeviceInProject,
 fileprivate func findOrAddPadType (canariWidth inWidth : Int,
                                    canariHeight inHeight : Int,
                                    onComponentSide inComponentSide : Bool,
-                                   onOppositeSide  inOppositeSide : Bool,
+                                   onBackSide  inBackSide : Bool,
                                    shape inShape : PadShape,
                                    _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport]) -> PadTypeForDSNExport {
 //--- Search in existing pads
   for mp in ioPadTypeArrayForRouting {
-    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onComponentSide == inComponentSide)  && (mp.onOppositeSide == inOppositeSide) && (mp.shape == inShape)) {
+    if ((mp.canariWidth == inWidth) && (mp.canariHeight == inHeight) && (mp.onComponentSide == inComponentSide)  && (mp.onBackSide == inBackSide) && (mp.shape == inShape)) {
       return mp
     }
   }
@@ -460,7 +474,7 @@ fileprivate func findOrAddPadType (canariWidth inWidth : Int,
     canariHeight: inHeight,
     shape: inShape,
     onComponentSide: inComponentSide,
-    onOppositeSide: inOppositeSide
+    onBackSide: inBackSide
   )
   ioPadTypeArrayForRouting.append (newPad)
   return newPad
@@ -490,6 +504,10 @@ fileprivate struct NetClassForDSNExport {
   let netNames : [String]
   let allowTracksOnFrontSide : Bool
   let allowTracksOnBackSide : Bool
+  let allowTracksOnInner1Layer : Bool
+  let allowTracksOnInner2Layer : Bool
+  let allowTracksOnInner3Layer : Bool
+  let allowTracksOnInner4Layer : Bool
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -537,7 +555,7 @@ fileprivate struct PadTypeForDSNExport {
   let canariHeight : Int
   let shape : PadShape
   let onComponentSide : Bool
-  let onOppositeSide  : Bool
+  let onBackSide  : Bool
 
   //····················································································································
 
@@ -635,11 +653,29 @@ fileprivate func addNetwork (_ ioString : inout String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func addViaPadStackLibrary (_ ioString : inout String,
-                                        _ inNetClasses : [NetClassForDSNExport]) {
+                                        _ inNetClasses : [NetClassForDSNExport],
+                                        _ inLayerConfiguration : LayerConfiguration) {
   for netClass in inNetClasses {
     ioString += "    (padstack \"viaForClass\(netClass.name)\"\n"
-    ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
-    ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    switch inLayerConfiguration {
+    case .oneLayer :
+      ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    case .twoLayers :
+      ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    case .fourLayers :
+      ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER1_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER2_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    case .sixLayers :
+      ioString += "      (shape (circle \(COMPONENT_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER1_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER2_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER3_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(INNER4_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+      ioString += "      (shape (circle \(SOLDER_SIDE) \(netClass.viaPadDiameterInDSNUnit)))\n"
+    }
     ioString += "    )\n"
   }
 }
@@ -648,14 +684,25 @@ fileprivate func addViaPadStackLibrary (_ ioString : inout String,
 
 fileprivate func addComponentPadStackLibrary (_ ioString : inout String,
                                               _ inPadTypeArrayForRouting : [PadTypeForDSNExport],
-                                              _ inConverter : CanariUnitToDSNUnitConverter) {
+                                              _ inConverter : CanariUnitToDSNUnitConverter,
+                                              _ inLayerConfiguration : LayerConfiguration) {
   for pad in inPadTypeArrayForRouting {
     ioString += "    (padstack \"\(pad.name)\"\n"
-    if pad.onComponentSide {
+    if pad.onBackSide {
+      ioString += "      (shape \(pad.padStringFor (side: SOLDER_SIDE, inConverter)))\n"
+    }
+    if pad.onComponentSide && (inLayerConfiguration != .oneLayer) {
       ioString += "      (shape \(pad.padStringFor (side: COMPONENT_SIDE, inConverter)))\n"
     }
-    if pad.onOppositeSide {
-      ioString += "      (shape \(pad.padStringFor (side: SOLDER_SIDE, inConverter)))\n"
+    if pad.onComponentSide && pad.onBackSide && (inLayerConfiguration == .fourLayers) {
+      ioString += "      (shape \(pad.padStringFor (side: INNER1_SIDE, inConverter)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: INNER2_SIDE, inConverter)))\n"
+    }
+    if pad.onComponentSide && pad.onBackSide && (inLayerConfiguration == .sixLayers) {
+      ioString += "      (shape \(pad.padStringFor (side: INNER1_SIDE, inConverter)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: INNER2_SIDE, inConverter)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: INNER3_SIDE, inConverter)))\n"
+      ioString += "      (shape \(pad.padStringFor (side: INNER4_SIDE, inConverter)))\n"
     }
     ioString += "    )\n"
   }
@@ -712,7 +759,8 @@ fileprivate func addSnapAngle (_ ioString : inout String, _ inSnapAngle : Autoro
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func autorouteSettings (_ ioString : inout String,
-                                    _ inRouterPreferredDirection : AutorouterPreferredDirections) {
+                                    _ inRouterPreferredDirection : AutorouterPreferredDirections,
+                                    _ inLayerConfiguration : LayerConfiguration) {
   let frontPreferredDir : String
   let backPreferredDir : String
   switch inRouterPreferredDirection {
@@ -723,26 +771,71 @@ fileprivate func autorouteSettings (_ ioString : inout String,
     frontPreferredDir = "vertical"
     backPreferredDir = "horizontal"
   }
-  ioString += "    (layer \(COMPONENT_SIDE) (type signal))\n"
   ioString += "    (layer \(SOLDER_SIDE) (type signal))\n"
+  switch inLayerConfiguration {
+  case .oneLayer :
+    ()
+  case .twoLayers :
+    ioString += "    (layer \(COMPONENT_SIDE) (type signal))\n"
+  case .fourLayers :
+    ioString += "    (layer \(COMPONENT_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER1_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER2_SIDE) (type signal))\n"
+  case .sixLayers :
+    ioString += "    (layer \(COMPONENT_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER1_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER2_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER3_SIDE) (type signal))\n"
+    ioString += "    (layer \(INNER4_SIDE) (type signal))\n"
+  }
   ioString += "    (autoroute_settings\n"
   ioString += "      (vias on)\n"
   ioString += "      (via_costs 50)\n"
   ioString += "      (plane_via_costs 5)\n"
   ioString += "      (start_ripup_costs 100)\n"
   ioString += "      (start_pass_no 1)\n"
-  ioString += "      (layer_rule \(COMPONENT_SIDE)\n"
-  ioString += "        (active on)\n"
-  ioString += "        (prefered_direction \(frontPreferredDir))\n"
-  ioString += "        (prefered_direction_trace_costs 1.0)\n"
-  ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
-  ioString += "      )\n"
   ioString += "      (layer_rule \(SOLDER_SIDE)\n"
   ioString += "        (active on)\n"
   ioString += "        (prefered_direction \(backPreferredDir))\n"
   ioString += "        (prefered_direction_trace_costs 1.0)\n"
   ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
   ioString += "      )\n"
+  if inLayerConfiguration != .oneLayer {
+    ioString += "      (layer_rule \(COMPONENT_SIDE)\n"
+    ioString += "        (active on)\n"
+    ioString += "        (prefered_direction \(frontPreferredDir))\n"
+    ioString += "        (prefered_direction_trace_costs 1.0)\n"
+    ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
+    ioString += "      )\n"
+  }
+  if (inLayerConfiguration == .fourLayers) || (inLayerConfiguration == .sixLayers) {
+    ioString += "      (layer_rule \(INNER1_SIDE)\n"
+    ioString += "        (active on)\n"
+    ioString += "        (prefered_direction \(frontPreferredDir))\n"
+    ioString += "        (prefered_direction_trace_costs 1.0)\n"
+    ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
+    ioString += "      )\n"
+    ioString += "      (layer_rule \(INNER2_SIDE)\n"
+    ioString += "        (active on)\n"
+    ioString += "        (prefered_direction \(backPreferredDir))\n"
+    ioString += "        (prefered_direction_trace_costs 1.0)\n"
+    ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
+    ioString += "      )\n"
+  }
+  if inLayerConfiguration == .sixLayers {
+    ioString += "      (layer_rule \(INNER3_SIDE)\n"
+    ioString += "        (active on)\n"
+    ioString += "        (prefered_direction \(frontPreferredDir))\n"
+    ioString += "        (prefered_direction_trace_costs 1.0)\n"
+    ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
+    ioString += "      )\n"
+    ioString += "      (layer_rule \(INNER4_SIDE)\n"
+    ioString += "        (active on)\n"
+    ioString += "        (prefered_direction \(backPreferredDir))\n"
+    ioString += "        (prefered_direction_trace_costs 1.0)\n"
+    ioString += "        (against_prefered_direction_trace_costs 2.5)\n"
+    ioString += "      )\n"
+  }
   ioString += "    )\n"
 }
 
@@ -768,7 +861,9 @@ fileprivate func addViaRules (_ ioString : inout String, _ inNetClasses : [NetCl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [NetClassForDSNExport]) {
+fileprivate func addNetClasses (_ ioString : inout String,
+                                _ inNetClasses : [NetClassForDSNExport],
+                                _ inLayerConfiguration : LayerConfiguration) {
   for netClass in inNetClasses {
     ioString += "    (class \"class_\(netClass.name)\"\n"
     for netName in netClass.netNames {
@@ -781,11 +876,23 @@ fileprivate func addNetClasses (_ ioString : inout String, _ inNetClasses : [Net
     ioString += "      )\n"
     ioString += "      (circuit\n"
     ioString += "        (use_layer"
-    if netClass.allowTracksOnFrontSide {
-      ioString += " \(COMPONENT_SIDE)"
-    }
     if netClass.allowTracksOnBackSide {
       ioString += " \(SOLDER_SIDE)"
+    }
+    if netClass.allowTracksOnFrontSide && (inLayerConfiguration != .oneLayer) {
+      ioString += " \(COMPONENT_SIDE)"
+    }
+    if netClass.allowTracksOnInner1Layer && ((inLayerConfiguration == .fourLayers) || (inLayerConfiguration == .sixLayers)) {
+      ioString += " \(INNER1_SIDE)"
+    }
+    if netClass.allowTracksOnInner2Layer && ((inLayerConfiguration == .fourLayers) || (inLayerConfiguration == .sixLayers)) {
+      ioString += " \(INNER2_SIDE)"
+    }
+    if netClass.allowTracksOnInner3Layer && (inLayerConfiguration == .sixLayers) {
+      ioString += " \(INNER3_SIDE)"
+    }
+    if netClass.allowTracksOnInner4Layer && (inLayerConfiguration == .sixLayers) {
+      ioString += " \(INNER4_SIDE)"
     }
     ioString += ")\n"
     ioString += "      )\n"

@@ -65,6 +65,12 @@ protocol BoardObject_errorOrWarningIssueSize : AnyObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardObject_trackSide : AnyObject {
+  var trackSide : TrackSide? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +84,8 @@ class BoardObject : EBGraphicManagedObject,
          BoardObject_componentName,
          BoardObject_selectionDisplay,
          BoardObject_objectDisplay,
-         BoardObject_errorOrWarningIssueSize {
+         BoardObject_errorOrWarningIssueSize,
+         BoardObject_trackSide {
 
   //····················································································································
   //   To one property: mRoot
@@ -243,6 +250,23 @@ class BoardObject : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: trackSide
+  //····················································································································
+
+  final let trackSide_property = EBTransientProperty_TrackSide ()
+
+  //····················································································································
+
+  final var trackSide : TrackSide? {
+    switch self.trackSide_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -399,6 +423,14 @@ class BoardObject : EBGraphicManagedObject,
       view: view,
       observerExplorer: &self.errorOrWarningIssueSize_property.mObserverExplorer,
       valueExplorer: &self.errorOrWarningIssueSize_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackSide",
+      idx: self.trackSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackSide_property.mObserverExplorer,
+      valueExplorer: &self.trackSide_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)

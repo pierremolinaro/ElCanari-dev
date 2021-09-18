@@ -21,6 +21,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingIsSuccess_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mLastERCCheckingSignature_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mLayerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardSideForNewTrack_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mDirectionForNewTrack_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mBoardLayerForNewText_fromElementsOfSet (inRemovedSet) // Stored property
@@ -100,6 +101,12 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.removeEBObserversOf_ercStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_ercStatusMessage_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_topSideTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_backSideTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner1LayerTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner2LayerTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner3LayerTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_inner4LayerTrackCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackCountString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLengthString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_boardStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
@@ -139,6 +146,7 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_mCheckClearanceBetweenPadsOfSameNet_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingIsSuccess_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mLastERCCheckingSignature_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mLayerConfiguration_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardSideForNewTrack_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mDirectionForNewTrack_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mBoardLayerForNewText_toElementsOfSet (inAddedSet) // Stored property
@@ -218,6 +226,12 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
     self.addEBObserversOf_ercStatusImage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_ercStatusMessage_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_topSideTrackCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_backSideTrackCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner1LayerTrackCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner2LayerTrackCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner3LayerTrackCountString_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_inner4LayerTrackCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackCountString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLengthString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_boardStatusImage_toElementsOfSet (inAddedSet) // Transient property
@@ -602,6 +616,65 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mLastERCCheckingSignature_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mLayerConfiguration' stored property
+  //····················································································································
+
+  private final var mObserversOf_mLayerConfiguration = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mLayerConfiguration (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mLayerConfiguration.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLayerConfiguration_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLayerConfiguration (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mLayerConfiguration.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLayerConfiguration_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mLayerConfiguration_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    if !self.mObserversOf_mLayerConfiguration.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBEvent) in
+          managedObject.mLayerConfiguration_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mLayerConfiguration_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    self.mObserversOf_mLayerConfiguration.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mLayerConfiguration_property.removeEBObserver (observer)
       }
     }
   }
@@ -5967,6 +6040,342 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
+  //   Observers of 'topSideTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_topSideTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_topSideTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_topSideTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.topSideTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_topSideTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_topSideTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.topSideTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_topSideTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.topSideTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_topSideTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_topSideTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.topSideTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backSideTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_backSideTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backSideTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_backSideTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backSideTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backSideTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_backSideTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backSideTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backSideTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.backSideTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backSideTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_backSideTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.backSideTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner1LayerTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner1LayerTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner1LayerTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner1LayerTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1LayerTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner1LayerTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner1LayerTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner1LayerTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner1LayerTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner1LayerTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner1LayerTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner1LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner1LayerTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner2LayerTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner2LayerTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner2LayerTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner2LayerTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2LayerTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner2LayerTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner2LayerTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner2LayerTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner2LayerTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner2LayerTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner2LayerTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner2LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner2LayerTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner3LayerTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner3LayerTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner3LayerTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner3LayerTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3LayerTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner3LayerTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner3LayerTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner3LayerTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner3LayerTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner3LayerTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner3LayerTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner3LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner3LayerTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inner4LayerTrackCountString' transient property
+  //····················································································································
+
+  private final var mObserversOf_inner4LayerTrackCountString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inner4LayerTrackCountString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inner4LayerTrackCountString.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4LayerTrackCountString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inner4LayerTrackCountString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inner4LayerTrackCountString.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inner4LayerTrackCountString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inner4LayerTrackCountString_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner4LayerTrackCountString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inner4LayerTrackCountString_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inner4LayerTrackCountString.apply { (_ observer : EBEvent) in
+        managedObject.inner4LayerTrackCountString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'trackCountString' transient property
   //····················································································································
 
@@ -8227,6 +8636,7 @@ final class PreferencesArrayOf_ProjectRoot : StoredArrayOf_ProjectRoot {
     self.addEBObserverOf_mCheckClearanceBetweenPadsOfSameNet (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingIsSuccess (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLastERCCheckingSignature (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mLayerConfiguration (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardSideForNewTrack (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDirectionForNewTrack (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mBoardLayerForNewText (self.mObserverForWritingPreferences)

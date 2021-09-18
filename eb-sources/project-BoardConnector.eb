@@ -1,12 +1,12 @@
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 //   BoardConnector
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 enum ConnectorSide {
   front, back, both
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardConnector : BoardObject {
   toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad
@@ -88,16 +88,14 @@ graphic entity BoardConnector : BoardObject {
   ;
   
   override transient EBShape objectDisplay dependsFrom
-    self.connectedToComponent,
-    self.side,
+    self.isVia,
     self.location,
     self.actualHoleDiameter, self.actualPadDiameter,
     prefs.frontSidePadColorForBoard
   ;
   
   override transient EBShape selectionDisplay dependsFrom
-    self.connectedToComponent,
-    self.side,
+    self.isVia,
     self.location
   ;
 
@@ -105,4 +103,4 @@ graphic entity BoardConnector : BoardObject {
     self.location, self.isVia, self.actualPadDiameter ;
 }
 
-//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

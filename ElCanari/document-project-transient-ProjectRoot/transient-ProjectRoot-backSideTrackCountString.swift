@@ -13,16 +13,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_selectionDisplay (
-       _ self_isVia : Bool,                     
-       _ self_location : CanariPoint
-) -> EBShape {
+func transient_ProjectRoot_backSideTrackCountString (
+       _ self_mBoardObjects_trackSide : [BoardObject_trackSide]
+) -> String {
 //--- START OF USER ZONE 2
-        var shape = EBShape ()
-        if self_isVia {
-          shape.add (knobAt: self_location.cocoaPoint, knobIndex: BOARD_CONNECTOR_KNOB, .rect, 2.0)
+        var n = 0
+        for track in self_mBoardObjects_trackSide {
+          if let side = track.trackSide, side == .back {
+            n += 1
+          }
         }
-        return shape
+        return "\(n)"
 //--- END OF USER ZONE 2
 }
 

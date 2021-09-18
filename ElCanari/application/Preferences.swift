@@ -81,6 +81,14 @@ let Preferences_displayFrontLayoutForBoard = "Preferences:displayFrontLayoutForB
 let Preferences_frontSideLayoutColorForBoard = "Preferences:frontSideLayoutColorForBoard"
 let Preferences_displayBackLayoutForBoard = "Preferences:displayBackLayoutForBoard"
 let Preferences_backSideLayoutColorForBoard = "Preferences:backSideLayoutColorForBoard"
+let Preferences_displayInner1LayoutForBoard = "Preferences:displayInner1LayoutForBoard"
+let Preferences_inner1LayoutColorForBoard = "Preferences:inner1LayoutColorForBoard"
+let Preferences_displayInner2LayoutForBoard = "Preferences:displayInner2LayoutForBoard"
+let Preferences_inner2LayoutColorForBoard = "Preferences:inner2LayoutColorForBoard"
+let Preferences_displayInner3LayoutForBoard = "Preferences:displayInner3LayoutForBoard"
+let Preferences_inner3LayoutColorForBoard = "Preferences:inner3LayoutColorForBoard"
+let Preferences_displayInner4LayoutForBoard = "Preferences:displayInner4LayoutForBoard"
+let Preferences_inner4LayoutColorForBoard = "Preferences:inner4LayoutColorForBoard"
 let Preferences_displayBackLegendForBoard = "Preferences:displayBackLegendForBoard"
 let Preferences_backSideLegendColorForBoard = "Preferences:backSideLegendColorForBoard"
 let Preferences_displayFrontPadsForBoard = "Preferences:displayFrontPadsForBoard"
@@ -1093,6 +1101,110 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var preferences_backSideLayoutColorForBoard : NSColor {
     get { return preferences_backSideLayoutColorForBoard_property.propval }
     set { preferences_backSideLayoutColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner1LayoutForBoard
+//····················································································································
+
+  let preferences_displayInner1LayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner1LayoutForBoard)
+
+//····················································································································
+
+  var preferences_displayInner1LayoutForBoard : Bool {
+    get { return preferences_displayInner1LayoutForBoard_property.propval }
+    set { preferences_displayInner1LayoutForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner1LayoutColorForBoard
+//····················································································································
+
+  let preferences_inner1LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner1LayoutColorForBoard)
+
+//····················································································································
+
+  var preferences_inner1LayoutColorForBoard : NSColor {
+    get { return preferences_inner1LayoutColorForBoard_property.propval }
+    set { preferences_inner1LayoutColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner2LayoutForBoard
+//····················································································································
+
+  let preferences_displayInner2LayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner2LayoutForBoard)
+
+//····················································································································
+
+  var preferences_displayInner2LayoutForBoard : Bool {
+    get { return preferences_displayInner2LayoutForBoard_property.propval }
+    set { preferences_displayInner2LayoutForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner2LayoutColorForBoard
+//····················································································································
+
+  let preferences_inner2LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner2LayoutColorForBoard)
+
+//····················································································································
+
+  var preferences_inner2LayoutColorForBoard : NSColor {
+    get { return preferences_inner2LayoutColorForBoard_property.propval }
+    set { preferences_inner2LayoutColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner3LayoutForBoard
+//····················································································································
+
+  let preferences_displayInner3LayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner3LayoutForBoard)
+
+//····················································································································
+
+  var preferences_displayInner3LayoutForBoard : Bool {
+    get { return preferences_displayInner3LayoutForBoard_property.propval }
+    set { preferences_displayInner3LayoutForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner3LayoutColorForBoard
+//····················································································································
+
+  let preferences_inner3LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner3LayoutColorForBoard)
+
+//····················································································································
+
+  var preferences_inner3LayoutColorForBoard : NSColor {
+    get { return preferences_inner3LayoutColorForBoard_property.propval }
+    set { preferences_inner3LayoutColorForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: displayInner4LayoutForBoard
+//····················································································································
+
+  let preferences_displayInner4LayoutForBoard_property = EBPreferencesProperty_Bool (defaultValue: true, prefKey: Preferences_displayInner4LayoutForBoard)
+
+//····················································································································
+
+  var preferences_displayInner4LayoutForBoard : Bool {
+    get { return preferences_displayInner4LayoutForBoard_property.propval }
+    set { preferences_displayInner4LayoutForBoard_property.setProp (newValue) }
+  }
+
+//····················································································································
+//   Atomic property: inner4LayoutColorForBoard
+//····················································································································
+
+  let preferences_inner4LayoutColorForBoard_property = EBPreferencesProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_inner4LayoutColorForBoard)
+
+//····················································································································
+
+  var preferences_inner4LayoutColorForBoard : NSColor {
+    get { return preferences_inner4LayoutColorForBoard_property.propval }
+    set { preferences_inner4LayoutColorForBoard_property.setProp (newValue) }
   }
 
 //····················································································································
@@ -2378,6 +2490,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mBoardDrawErrorBackgroundCheckbox : EBSwitch? = nil
   @IBOutlet var mBoardDrawWarningBackgroundCheckbox : EBSwitch? = nil
   @IBOutlet var mBoardErrorBackgroundColorWell : EBColorWell? = nil
+  @IBOutlet var mBoardInner1LayoutColorWell : EBColorWell? = nil
+  @IBOutlet var mBoardInner2LayoutColorWell : EBColorWell? = nil
+  @IBOutlet var mBoardInner3LayoutColorWell : EBColorWell? = nil
+  @IBOutlet var mBoardInner4LayoutColorWell : EBColorWell? = nil
   @IBOutlet var mBoardLimitsColorWell : EBColorWell? = nil
   @IBOutlet var mBoardLineColorGridColorWell : EBColorWell? = nil
   @IBOutlet var mBoardPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
@@ -2619,6 +2735,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     checkOutletConnection (self.mBoardDrawErrorBackgroundCheckbox, "mBoardDrawErrorBackgroundCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardDrawWarningBackgroundCheckbox, "mBoardDrawWarningBackgroundCheckbox", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mBoardErrorBackgroundColorWell, "mBoardErrorBackgroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardInner1LayoutColorWell, "mBoardInner1LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardInner2LayoutColorWell, "mBoardInner2LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardInner3LayoutColorWell, "mBoardInner3LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardInner4LayoutColorWell, "mBoardInner4LayoutColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardLimitsColorWell, "mBoardLimitsColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardLineColorGridColorWell, "mBoardLineColorGridColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mBoardPackageDrawingWidthMultipliedByTenPopupButton, "mBoardPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
@@ -2794,6 +2914,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mBoardTopSideLegendColorWell?.bind_color (preferences_frontSideLegendColorForBoard_property, sendContinously:false)
     mBoardTopSideLayoutColorWell?.bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:false)
     mBoardBottomSideLayoutColorWell?.bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:false)
+    mBoardInner1LayoutColorWell?.bind_color (preferences_inner1LayoutColorForBoard_property, sendContinously:false)
+    mBoardInner2LayoutColorWell?.bind_color (preferences_inner2LayoutColorForBoard_property, sendContinously:false)
+    mBoardInner3LayoutColorWell?.bind_color (preferences_inner3LayoutColorForBoard_property, sendContinously:false)
+    mBoardInner4LayoutColorWell?.bind_color (preferences_inner4LayoutColorForBoard_property, sendContinously:false)
     mBoardBottomSideLegendColorWell?.bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:false)
     mBoardTopSidePadColorWell?.bind_color (preferences_frontSidePadColorForBoard_property, sendContinously:false)
     mBoardBottomSidePadColorWell?.bind_color (preferences_backSidePadColorForBoard_property, sendContinously:false)

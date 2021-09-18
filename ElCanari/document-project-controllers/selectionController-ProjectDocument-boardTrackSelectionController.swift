@@ -118,6 +118,12 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   let trackLengthInCanariUnit_property = EBTransientProperty_Double ()
 
   //····················································································································
+  //   Selection observable property: trackSide
+  //····················································································································
+
+  let trackSide_property = EBTransientProperty_TrackSide ()
+
+  //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
@@ -231,6 +237,7 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
     self.bind_property_netClassViaHoleDiameter ()
     self.bind_property_netClassViaPadDiameter ()
     self.bind_property_trackLengthInCanariUnit ()
+    self.bind_property_trackSide ()
     self.bind_property_signatureForERCChecking ()
     self.bind_property_trackDirectionInDegrees ()
     self.bind_property_p1ConnectedToSomePad ()
@@ -338,6 +345,9 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
   //--- trackLengthInCanariUnit
     self.trackLengthInCanariUnit_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthInCanariUnit_property)
+  //--- trackSide
+    self.trackSide_property.mReadModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackSide (self.trackSide_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
@@ -1728,6 +1738,45 @@ final class SelectionController_ProjectDocument_boardTrackSelectionController : 
           var isMultipleSelection = false
           for object in v {
             switch object.trackLengthInCanariUnit_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_trackSide () {
+    self.selectedArray_property.addEBObserverOf_trackSide (self.trackSide_property)
+    self.trackSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <TrackSide> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackSide_property.selection {
             case .empty :
               return .empty
             case .multiple :

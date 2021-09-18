@@ -26,6 +26,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
       oldValue.errorOrWarningIssueSize_property.removeEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+      oldValue.trackSide_property.removeEBObserver (self.trackSide_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
@@ -39,6 +40,7 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
       newValue.errorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property) // Transient property
+      newValue.trackSide_property.addEBObserver (self.trackSide_property) // Transient property
     }
   }
 
@@ -101,6 +103,12 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
   //····················································································································
 
   final let errorOrWarningIssueSize_property = EBGenericTransientProperty <Double?> ()
+
+  //····················································································································
+  //   Observers of 'trackSide' transient property
+  //····················································································································
+
+  final let trackSide_property = EBGenericTransientProperty <TrackSide?> ()
 
   //····················································································································
   //   INIT
@@ -247,6 +255,21 @@ class ReadOnlyObject_BoardObject : ReadOnlyAbstractObjectProperty <BoardObject> 
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.errorOrWarningIssueSize_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure trackSide transient property
+    self.trackSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.trackSide_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -19,6 +19,10 @@ func transient_BoardTrack_selectionDisplay (
        _ self_mConnectorP2_location : CanariPoint?,
        _ self_p2CanMove : Bool,             
        _ prefs_frontSideLayoutColorForBoard : NSColor,
+       _ prefs_inner1LayoutColorForBoard : NSColor,
+       _ prefs_inner2LayoutColorForBoard : NSColor,
+       _ prefs_inner3LayoutColorForBoard : NSColor,
+       _ prefs_inner4LayoutColorForBoard : NSColor,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_mSide : TrackSide,            
        _ self_actualTrackWidth : Int
@@ -33,6 +37,14 @@ func transient_BoardTrack_selectionDisplay (
           color = prefs_frontSideLayoutColorForBoard
         case .back :
           color = prefs_backSideLayoutColorForBoard
+        case .inner1 :
+          color = prefs_inner1LayoutColorForBoard
+        case .inner2 :
+          color = prefs_inner2LayoutColorForBoard
+        case .inner3 :
+          color = prefs_inner3LayoutColorForBoard
+        case .inner4 :
+          color = prefs_inner4LayoutColorForBoard
         }
         var bp = EBBezierPath ()
         bp.lineWidth = canariUnitToCocoa (self_actualTrackWidth) + 1.0

@@ -36,6 +36,7 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
       oldValue.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property) // Transient property
       oldValue.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property) // Transient property
       oldValue.trackLengthInCanariUnit_property.removeEBObserver (self.trackLengthInCanariUnit_property) // Transient property
+      oldValue.trackSide_property.removeEBObserver (self.trackSide_property) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
       oldValue.p1ConnectedToSomePad_property.removeEBObserver (self.p1ConnectedToSomePad_property) // Transient property
       oldValue.p2ConnectedToSomePad_property.removeEBObserver (self.p2ConnectedToSomePad_property) // Transient property
@@ -72,6 +73,7 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
       newValue.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property) // Transient property
       newValue.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property) // Transient property
       newValue.trackLengthInCanariUnit_property.addEBObserver (self.trackLengthInCanariUnit_property) // Transient property
+      newValue.trackSide_property.addEBObserver (self.trackSide_property) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
       newValue.p1ConnectedToSomePad_property.addEBObserver (self.p1ConnectedToSomePad_property) // Transient property
       newValue.p2ConnectedToSomePad_property.addEBObserver (self.p2ConnectedToSomePad_property) // Transient property
@@ -207,6 +209,12 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
   //····················································································································
 
   final let trackLengthInCanariUnit_property = EBGenericTransientProperty <Double?> ()
+
+  //····················································································································
+  //   Observers of 'trackSide' transient property
+  //····················································································································
+
+  final let trackSide_property = EBGenericTransientProperty <TrackSide?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
@@ -581,6 +589,21 @@ class ReadOnlyObject_BoardTrack : ReadOnlyAbstractObjectProperty <BoardTrack> {
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.trackLengthInCanariUnit_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure trackSide transient property
+    self.trackSide_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.trackSide_property.selection {
         case .empty :
           return .empty
         case .multiple :

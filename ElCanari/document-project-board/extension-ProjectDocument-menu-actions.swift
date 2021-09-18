@@ -56,6 +56,10 @@ extension CustomizedProjectDocument {
     var backComponents = [BoardObject] ()
     var others = [BoardObject] ()
     var frontComponents = [BoardObject] ()
+    var inner1Tracks = [BoardObject] ()
+    var inner2Tracks = [BoardObject] ()
+    var inner3Tracks = [BoardObject] ()
+    var inner4Tracks = [BoardObject] ()
     var frontTracks = [BoardObject] ()
     var restrictRectangles = [BoardObject] ()
     var connectors = [BoardObject] ()
@@ -70,6 +74,14 @@ extension CustomizedProjectDocument {
           frontTracks.append (track)
         case .back :
           backTracks.append (track)
+        case .inner1 :
+          inner1Tracks.append (track)
+        case .inner2 :
+          inner2Tracks.append (track)
+        case .inner3 :
+          inner3Tracks.append (track)
+        case .inner4 :
+          inner4Tracks.append (track)
         }
       }else if let component = object as? ComponentInProject {
         switch component.mSide {
@@ -82,7 +94,7 @@ extension CustomizedProjectDocument {
         others.append (object)
       }
     }
-    self.rootObject.mBoardObjects = backTracks + backComponents + others + frontTracks + frontComponents + restrictRectangles + connectors
+    self.rootObject.mBoardObjects = backComponents + backTracks + inner4Tracks + inner3Tracks + inner2Tracks + inner1Tracks + others + frontTracks + frontComponents + restrictRectangles + connectors
   }
 
   //····················································································································

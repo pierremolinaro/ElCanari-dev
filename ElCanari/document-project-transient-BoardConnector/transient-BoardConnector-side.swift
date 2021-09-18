@@ -25,21 +25,35 @@ func transient_BoardConnector_side (
         var backSide = false
         for track in self_mTracksP1_mSide {
           switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
+          case .back  :
+            backSide  = true
+          case .front :
+            frontSide = true
+          case .inner1, .inner2, .inner3, .inner4 :
+            frontSide = true
+            backSide  = true
           }
         }
         for track in self_mTracksP2_mSide {
           switch track.mSide {
-          case .back  : backSide  = true
-          case .front : frontSide = true
+          case .back  :
+             backSide  = true
+          case .front :
+            frontSide = true
+          case .inner1, .inner2, .inner3, .inner4 :
+            frontSide = true
+            backSide  = true
           }
         }
         if let descriptor = self_mComponent_componentPadDictionary? [self_mComponentPadName] {
           switch descriptor.pads [self_mPadIndex].side {
-          case .back  : backSide  = true
-          case .front : frontSide = true
-          case .both  : backSide  = true ; frontSide = true
+          case .back  :
+            backSide  = true
+          case .front :
+            frontSide = true
+          case .both  :
+            backSide  = true ;
+            frontSide = true
           }
         }
         if backSide && frontSide {

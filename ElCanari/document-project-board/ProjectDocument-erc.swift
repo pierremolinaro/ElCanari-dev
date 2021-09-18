@@ -56,6 +56,7 @@ extension ProjectDocument {
     if let artwork = self.rootObject.mArtwork {
       var padNetDictionary = [SideAndNetName : [PadGeometryForERC]] ()
       var padID = 0
+      self.checkTracksLayer (&issues, artworkClearance: artwork.minPPTPTTTW)
       self.buildPadNetDictionary (&issues, &padID, &padNetDictionary, artworkClearance: artwork.minPPTPTTTW)
       var netConnectorsDictionary = [String : [(BoardConnector, EBBezierPath)]] ()
       self.checkPadConnectivity (&issues, &netConnectorsDictionary, artworkClearance: artwork.minPPTPTTTW)
@@ -101,6 +102,66 @@ extension ProjectDocument {
       self.mERCLogTextView?.appendWarningString ("No checking: artwork is not set.\n")
       let issue = CanariIssue (kind: .warning, message: "No checking: artwork is not set.", pathes: [])
       ioIssues.append (issue)
+    }
+  }
+
+  //····················································································································
+
+  private func checkTracksLayer (_ ioIssues : inout [CanariIssue],
+                                 artworkClearance inArtworkClearance : Int) {
+    self.mERCLogTextView?.appendMessageString ("Check tracks layer… ")
+    var errorCount = 0
+    let layerConfiguration = self.rootObject.mLayerConfiguration
+    for object in self.rootObject.mBoardObjects {
+      if let track = object as? BoardTrack {
+        switch track.mSide {
+        case .back :
+          () // Always accepted
+        case .front :
+          if layerConfiguration == .oneLayer {
+            let bp = track.bezierPath (extraWidth: inArtworkClearance)
+            let issue = CanariIssue (kind: .error, message: "track in front layer", pathes: [bp])
+            ioIssues.append (issue)
+            errorCount += 1
+          }
+        case .inner1 :
+          if (layerConfiguration == .oneLayer) || (layerConfiguration == .twoLayers) {
+            let bp = track.bezierPath (extraWidth: inArtworkClearance)
+            let issue = CanariIssue (kind: .error, message: "track in inner 1 layer", pathes: [bp])
+            ioIssues.append (issue)
+            errorCount += 1
+          }
+        case .inner2 :
+          if (layerConfiguration == .oneLayer) || (layerConfiguration == .twoLayers) {
+            let bp = track.bezierPath (extraWidth: inArtworkClearance)
+            let issue = CanariIssue (kind: .error, message: "track in inner 2 layer", pathes: [bp])
+            ioIssues.append (issue)
+            errorCount += 1
+          }
+        case .inner3 :
+          if layerConfiguration != .sixLayers {
+            let bp = track.bezierPath (extraWidth: inArtworkClearance)
+            let issue = CanariIssue (kind: .error, message: "track in inner 3 layer", pathes: [bp])
+            ioIssues.append (issue)
+            errorCount += 1
+          }
+        case .inner4 :
+          if layerConfiguration != .sixLayers {
+            let bp = track.bezierPath (extraWidth: inArtworkClearance)
+            let issue = CanariIssue (kind: .error, message: "track in inner 4 layer", pathes: [bp])
+            ioIssues.append (issue)
+            errorCount += 1
+          }
+        }
+      }
+    }
+  //---
+    if errorCount == 0 {
+      self.mERCLogTextView?.appendSuccessString ("ok\n")
+    }else if errorCount == 1 {
+      self.mERCLogTextView?.appendErrorString ("1 error\n")
+    }else{
+      self.mERCLogTextView?.appendErrorString ("\(errorCount) errors\n")
     }
   }
 
@@ -500,7 +561,15 @@ extension ProjectDocument {
         }
         for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
           switch track.mSide {
-          case .front :
+          case .inner1, .inner2, .inner3, .inner4 :
+             if !connectorOnFrontSide || !connectorOnBackSide {
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "Pad not in both side, track in inner layer", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
+         case .front :
             if !connectorOnFrontSide {
               let bp = padDescriptor.bezierPath (index: 0, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
               let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
@@ -543,6 +612,14 @@ extension ProjectDocument {
         }
         for track in inConnector.mTracksP1 + inConnector.mTracksP2 {
           switch track.mSide {
+          case .inner1, .inner2, .inner3, .inner4 :
+             if !connectorOnFrontSide || !connectorOnBackSide {
+              let bp = padDescriptor.bezierPath (index: 0, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)
+              let bp2 = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "Pad not in both side, track in inner layer", pathes: [bp, bp2])
+              ioIssues.append (issue)
+              ioConnectionErrorCount += 1
+            }
           case .front :
             if !connectorOnFrontSide {
               let bp = padDescriptor.bezierPath (index: inConnector.mPadIndex, extraWidth: inArtworkClearance).transformed (by: inAffineTransform)

@@ -18,6 +18,10 @@ entity NetClassInProject {
 
   property Bool mAllowTracksOnFrontSide default yes ;
   property Bool mAllowTracksOnBackSide default yes ;
+  property Bool mAllowTracksOnInner1Layer default yes ;
+  property Bool mAllowTracksOnInner2Layer default yes ;
+  property Bool mAllowTracksOnInner3Layer default yes ;
+  property Bool mAllowTracksOnInner4Layer default yes ;
   
   transient Bool canRemove dependsFrom self.mNets.count ;
   transient String netUsage dependsFrom self.mNets.count ;

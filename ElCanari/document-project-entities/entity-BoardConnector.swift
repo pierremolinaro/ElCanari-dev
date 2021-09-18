@@ -985,10 +985,10 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.connectedToComponent_property.selection, unwSelf.side_property.selection, unwSelf.location_property.selection, unwSelf.actualHoleDiameter_property.selection, unwSelf.actualPadDiameter_property.selection, preferences_frontSidePadColorForBoard_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-          return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.isVia_property.selection, unwSelf.location_property.selection, unwSelf.actualHoleDiameter_property.selection, unwSelf.actualPadDiameter_property.selection, preferences_frontSidePadColorForBoard_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_BoardConnector_objectDisplay (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -997,8 +997,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.connectedToComponent_property.addEBObserver (self.objectDisplay_property)
-    self.side_property.addEBObserver (self.objectDisplay_property)
+    self.isVia_property.addEBObserver (self.objectDisplay_property)
     self.location_property.addEBObserver (self.objectDisplay_property)
     self.actualHoleDiameter_property.addEBObserver (self.objectDisplay_property)
     self.actualPadDiameter_property.addEBObserver (self.objectDisplay_property)
@@ -1006,10 +1005,10 @@ final class BoardConnector : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.connectedToComponent_property.selection, unwSelf.side_property.selection, unwSelf.location_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_BoardConnector_selectionDisplay (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        switch (unwSelf.isVia_property.selection, unwSelf.location_property.selection) {
+        case (.single (let v0), .single (let v1)) :
+          return .single (transient_BoardConnector_selectionDisplay (v0, v1))
+        case (.multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -1018,8 +1017,7 @@ final class BoardConnector : BoardObject,
         return .empty
       }
     }
-    self.connectedToComponent_property.addEBObserver (self.selectionDisplay_property)
-    self.side_property.addEBObserver (self.selectionDisplay_property)
+    self.isVia_property.addEBObserver (self.selectionDisplay_property)
     self.location_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
@@ -1100,14 +1098,12 @@ final class BoardConnector : BoardObject,
     // self.viaDefaultPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
     // self.mUsesCustomPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
     // self.mCustomPadDiameter_property.removeEBObserver (self.actualPadDiameter_property)
-    // self.connectedToComponent_property.removeEBObserver (self.objectDisplay_property)
-    // self.side_property.removeEBObserver (self.objectDisplay_property)
+    // self.isVia_property.removeEBObserver (self.objectDisplay_property)
     // self.location_property.removeEBObserver (self.objectDisplay_property)
     // self.actualHoleDiameter_property.removeEBObserver (self.objectDisplay_property)
     // self.actualPadDiameter_property.removeEBObserver (self.objectDisplay_property)
     // preferences_frontSidePadColorForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // self.connectedToComponent_property.removeEBObserver (self.selectionDisplay_property)
-    // self.side_property.removeEBObserver (self.selectionDisplay_property)
+    // self.isVia_property.removeEBObserver (self.selectionDisplay_property)
     // self.location_property.removeEBObserver (self.selectionDisplay_property)
     // self.location_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.isVia_property.removeEBObserver (self.signatureForERCChecking_property)

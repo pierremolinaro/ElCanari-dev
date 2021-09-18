@@ -25,6 +25,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_trackSide_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_isPlacedInBoard_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
@@ -36,6 +37,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_trackSide_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -594,6 +596,62 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
     for managedObject in inSet {
       self.mObserversOf_errorOrWarningIssueSize.apply { (_ observer : EBEvent) in
         managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'trackSide' transient property
+  //····················································································································
+
+  private final var mObserversOf_trackSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_trackSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_trackSide.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackSide_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_trackSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_trackSide.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackSide_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : Set <BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+        managedObject.trackSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : Set <BoardObject>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+        managedObject.trackSide_property.removeEBObserver (observer)
       }
     }
   }

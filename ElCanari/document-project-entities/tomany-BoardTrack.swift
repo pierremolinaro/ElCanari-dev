@@ -35,6 +35,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_trackSide_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p1ConnectedToSomePad_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_p2ConnectedToSomePad_fromElementsOfSet (inRemovedSet) // Transient property
@@ -69,6 +70,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_trackSide_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p1ConnectedToSomePad_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_p2ConnectedToSomePad_toElementsOfSet (inAddedSet) // Transient property
@@ -1239,6 +1241,62 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
     for managedObject in inSet {
       self.mObserversOf_trackLengthInCanariUnit.apply { (_ observer : EBEvent) in
         managedObject.trackLengthInCanariUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'trackSide' transient property
+  //····················································································································
+
+  private final var mObserversOf_trackSide = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_trackSide (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_trackSide.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackSide_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_trackSide (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_trackSide.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.trackSide_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : Set <BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+        managedObject.trackSide_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : Set <BoardTrack>) {
+    for managedObject in inSet {
+      self.mObserversOf_trackSide.apply { (_ observer : EBEvent) in
+        managedObject.trackSide_property.removeEBObserver (observer)
       }
     }
   }

@@ -22,6 +22,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.mCheckClearanceBetweenPadsOfSameNet_property.removeEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       oldValue.mLastERCCheckingIsSuccess_property.removeEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
       oldValue.mLastERCCheckingSignature_property.removeEBObserver (self.mLastERCCheckingSignature_property) // Stored property
+      oldValue.mLayerConfiguration_property.removeEBObserver (self.mLayerConfiguration_property) // Stored property
       oldValue.mBoardSideForNewTrack_property.removeEBObserver (self.mBoardSideForNewTrack_property) // Stored property
       oldValue.mDirectionForNewTrack_property.removeEBObserver (self.mDirectionForNewTrack_property) // Stored property
       oldValue.mBoardLayerForNewText_property.removeEBObserver (self.mBoardLayerForNewText_property) // Stored property
@@ -101,6 +102,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.ercStatusImage_property.removeEBObserver (self.ercStatusImage_property) // Transient property
       oldValue.ercStatusMessage_property.removeEBObserver (self.ercStatusMessage_property) // Transient property
       oldValue.viaCountString_property.removeEBObserver (self.viaCountString_property) // Transient property
+      oldValue.topSideTrackCountString_property.removeEBObserver (self.topSideTrackCountString_property) // Transient property
+      oldValue.backSideTrackCountString_property.removeEBObserver (self.backSideTrackCountString_property) // Transient property
+      oldValue.inner1LayerTrackCountString_property.removeEBObserver (self.inner1LayerTrackCountString_property) // Transient property
+      oldValue.inner2LayerTrackCountString_property.removeEBObserver (self.inner2LayerTrackCountString_property) // Transient property
+      oldValue.inner3LayerTrackCountString_property.removeEBObserver (self.inner3LayerTrackCountString_property) // Transient property
+      oldValue.inner4LayerTrackCountString_property.removeEBObserver (self.inner4LayerTrackCountString_property) // Transient property
       oldValue.trackCountString_property.removeEBObserver (self.trackCountString_property) // Transient property
       oldValue.trackLengthString_property.removeEBObserver (self.trackLengthString_property) // Transient property
       oldValue.boardStatusImage_property.removeEBObserver (self.boardStatusImage_property) // Transient property
@@ -140,6 +147,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.mCheckClearanceBetweenPadsOfSameNet_property.addEBObserver (self.mCheckClearanceBetweenPadsOfSameNet_property) // Stored property
       newValue.mLastERCCheckingIsSuccess_property.addEBObserver (self.mLastERCCheckingIsSuccess_property) // Stored property
       newValue.mLastERCCheckingSignature_property.addEBObserver (self.mLastERCCheckingSignature_property) // Stored property
+      newValue.mLayerConfiguration_property.addEBObserver (self.mLayerConfiguration_property) // Stored property
       newValue.mBoardSideForNewTrack_property.addEBObserver (self.mBoardSideForNewTrack_property) // Stored property
       newValue.mDirectionForNewTrack_property.addEBObserver (self.mDirectionForNewTrack_property) // Stored property
       newValue.mBoardLayerForNewText_property.addEBObserver (self.mBoardLayerForNewText_property) // Stored property
@@ -219,6 +227,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.ercStatusImage_property.addEBObserver (self.ercStatusImage_property) // Transient property
       newValue.ercStatusMessage_property.addEBObserver (self.ercStatusMessage_property) // Transient property
       newValue.viaCountString_property.addEBObserver (self.viaCountString_property) // Transient property
+      newValue.topSideTrackCountString_property.addEBObserver (self.topSideTrackCountString_property) // Transient property
+      newValue.backSideTrackCountString_property.addEBObserver (self.backSideTrackCountString_property) // Transient property
+      newValue.inner1LayerTrackCountString_property.addEBObserver (self.inner1LayerTrackCountString_property) // Transient property
+      newValue.inner2LayerTrackCountString_property.addEBObserver (self.inner2LayerTrackCountString_property) // Transient property
+      newValue.inner3LayerTrackCountString_property.addEBObserver (self.inner3LayerTrackCountString_property) // Transient property
+      newValue.inner4LayerTrackCountString_property.addEBObserver (self.inner4LayerTrackCountString_property) // Transient property
       newValue.trackCountString_property.addEBObserver (self.trackCountString_property) // Transient property
       newValue.trackLengthString_property.addEBObserver (self.trackLengthString_property) // Transient property
       newValue.boardStatusImage_property.addEBObserver (self.boardStatusImage_property) // Transient property
@@ -287,6 +301,12 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let mLastERCCheckingSignature_property = EBGenericTransientProperty <UInt32?> ()
+
+  //····················································································································
+  //   Observers of 'mLayerConfiguration' stored property
+  //····················································································································
+
+  final let mLayerConfiguration_property = EBGenericTransientProperty <LayerConfiguration?> ()
 
   //····················································································································
   //   Observers of 'mBoardSideForNewTrack' stored property
@@ -763,6 +783,42 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let viaCountString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
+  //   Observers of 'topSideTrackCountString' transient property
+  //····················································································································
+
+  final let topSideTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'backSideTrackCountString' transient property
+  //····················································································································
+
+  final let backSideTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'inner1LayerTrackCountString' transient property
+  //····················································································································
+
+  final let inner1LayerTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'inner2LayerTrackCountString' transient property
+  //····················································································································
+
+  final let inner2LayerTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'inner3LayerTrackCountString' transient property
+  //····················································································································
+
+  final let inner3LayerTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'inner4LayerTrackCountString' transient property
+  //····················································································································
+
+  final let inner4LayerTrackCountString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
   //   Observers of 'trackCountString' transient property
   //····················································································································
 
@@ -1195,6 +1251,21 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.mLastERCCheckingSignature_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.mLastERCCheckingSignature_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure mLayerConfiguration simple stored property
+    self.mLayerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.mLayerConfiguration_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -2380,6 +2451,96 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.viaCountString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.viaCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure topSideTrackCountString transient property
+    self.topSideTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.topSideTrackCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure backSideTrackCountString transient property
+    self.backSideTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.backSideTrackCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner1LayerTrackCountString transient property
+    self.inner1LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner1LayerTrackCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner2LayerTrackCountString transient property
+    self.inner2LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner2LayerTrackCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner3LayerTrackCountString transient property
+    self.inner3LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner3LayerTrackCountString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure inner4LayerTrackCountString transient property
+    self.inner4LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.inner4LayerTrackCountString_property.selection {
         case .empty :
           return .empty
         case .multiple :

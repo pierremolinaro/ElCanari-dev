@@ -126,6 +126,12 @@ protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardTrack_trackSide : AnyObject {
+  var trackSide : TrackSide? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardTrack_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -197,6 +203,7 @@ final class BoardTrack : BoardObject,
          BoardTrack_netClassViaHoleDiameter,
          BoardTrack_netClassViaPadDiameter,
          BoardTrack_trackLengthInCanariUnit,
+         BoardTrack_trackSide,
          BoardTrack_signatureForERCChecking,
          BoardTrack_p1ConnectedToSomePad,
          BoardTrack_p2ConnectedToSomePad,
@@ -979,6 +986,22 @@ final class BoardTrack : BoardObject,
     }
     self.mConnectorP1_property.location_property.addEBObserver (self.trackLengthInCanariUnit_property)
     self.mConnectorP2_property.location_property.addEBObserver (self.trackLengthInCanariUnit_property)
+  //--- Atomic property: trackSide
+    self.trackSide_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mSide_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_BoardTrack_trackSide (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSide_property.addEBObserver (self.trackSide_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1117,10 +1140,10 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mConnectorP1_property.location_property.selection, unwSelf.mConnectorP2_property.location_property.selection, preferences_displayFrontLayoutForBoard_property.selection, preferences_displayBackLayoutForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, unwSelf.actualTrackWidth_property.selection, unwSelf.mSide_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-          return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mConnectorP1_property.location_property.selection, unwSelf.mConnectorP2_property.location_property.selection, preferences_displayFrontLayoutForBoard_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_displayBackLayoutForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, preferences_displayInner1LayoutForBoard_property.selection, preferences_inner1LayoutColorForBoard_property.selection, preferences_displayInner2LayoutForBoard_property.selection, preferences_inner2LayoutColorForBoard_property.selection, preferences_displayInner3LayoutForBoard_property.selection, preferences_inner3LayoutColorForBoard_property.selection, preferences_displayInner4LayoutForBoard_property.selection, preferences_inner4LayoutColorForBoard_property.selection, unwSelf.actualTrackWidth_property.selection, unwSelf.mSide_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
+          return .single (transient_BoardTrack_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -1132,9 +1155,17 @@ final class BoardTrack : BoardObject,
     self.mConnectorP1_property.location_property.addEBObserver (self.objectDisplay_property)
     self.mConnectorP2_property.location_property.addEBObserver (self.objectDisplay_property)
     preferences_displayFrontLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayBackLayoutForBoard_property.addEBObserver (self.objectDisplay_property)
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayInner1LayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_inner1LayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayInner2LayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_inner2LayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayInner3LayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_inner3LayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_displayInner4LayoutForBoard_property.addEBObserver (self.objectDisplay_property)
+    preferences_inner4LayoutColorForBoard_property.addEBObserver (self.objectDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.objectDisplay_property)
     self.mSide_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: p1CanMove
@@ -1191,10 +1222,10 @@ final class BoardTrack : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mConnectorP1_property.location_property.selection, unwSelf.p1CanMove_property.selection, unwSelf.mConnectorP2_property.location_property.selection, unwSelf.p2CanMove_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, unwSelf.mSide_property.selection, unwSelf.actualTrackWidth_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mConnectorP1_property.location_property.selection, unwSelf.p1CanMove_property.selection, unwSelf.mConnectorP2_property.location_property.selection, unwSelf.p2CanMove_property.selection, preferences_frontSideLayoutColorForBoard_property.selection, preferences_inner1LayoutColorForBoard_property.selection, preferences_inner2LayoutColorForBoard_property.selection, preferences_inner3LayoutColorForBoard_property.selection, preferences_inner4LayoutColorForBoard_property.selection, preferences_backSideLayoutColorForBoard_property.selection, unwSelf.mSide_property.selection, unwSelf.actualTrackWidth_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+          return .single (transient_BoardTrack_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -1208,6 +1239,10 @@ final class BoardTrack : BoardObject,
     self.mConnectorP2_property.location_property.addEBObserver (self.selectionDisplay_property)
     self.p2CanMove_property.addEBObserver (self.selectionDisplay_property)
     preferences_frontSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_inner1LayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_inner2LayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_inner3LayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
+    preferences_inner4LayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
@@ -1230,6 +1265,7 @@ final class BoardTrack : BoardObject,
     // self.mNet_property.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.trackLengthInCanariUnit_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.trackLengthInCanariUnit_property)
+    // self.mSide_property.removeEBObserver (self.trackSide_property)
     // self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
@@ -1243,9 +1279,17 @@ final class BoardTrack : BoardObject,
     // self.mConnectorP1_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.objectDisplay_property)
     // preferences_displayFrontLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
-    // preferences_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
     // preferences_frontSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayBackLayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
     // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayInner1LayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_inner1LayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayInner2LayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_inner2LayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayInner3LayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_inner3LayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_displayInner4LayoutForBoard_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_inner4LayoutColorForBoard_property.removeEBObserver (self.objectDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.objectDisplay_property)
     // self.mSide_property.removeEBObserver (self.objectDisplay_property)
     // self.mManualLockP1_property.removeEBObserver (self.p1CanMove_property)
@@ -1259,6 +1303,10 @@ final class BoardTrack : BoardObject,
     // self.mConnectorP2_property.location_property.removeEBObserver (self.selectionDisplay_property)
     // self.p2CanMove_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_frontSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_inner1LayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_inner2LayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_inner3LayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
+    // preferences_inner4LayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_backSideLayoutColorForBoard_property.removeEBObserver (self.selectionDisplay_property)
     // self.mSide_property.removeEBObserver (self.selectionDisplay_property)
     // self.actualTrackWidth_property.removeEBObserver (self.selectionDisplay_property)
@@ -1436,6 +1484,14 @@ final class BoardTrack : BoardObject,
       view: view,
       observerExplorer: &self.trackLengthInCanariUnit_property.mObserverExplorer,
       valueExplorer: &self.trackLengthInCanariUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "trackSide",
+      idx: self.trackSide_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.trackSide_property.mObserverExplorer,
+      valueExplorer: &self.trackSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "signatureForERCChecking",

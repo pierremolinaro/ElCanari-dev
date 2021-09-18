@@ -66,6 +66,30 @@ protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetClassInProject_mAllowTracksOnInner1Layer : AnyObject {
+  var mAllowTracksOnInner1Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mAllowTracksOnInner2Layer : AnyObject {
+  var mAllowTracksOnInner2Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mAllowTracksOnInner3Layer : AnyObject {
+  var mAllowTracksOnInner3Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_mAllowTracksOnInner4Layer : AnyObject {
+  var mAllowTracksOnInner4Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetClassInProject_trackWidthString : AnyObject {
   var trackWidthString : String? { get }
 }
@@ -133,6 +157,10 @@ final class NetClassInProject : EBManagedObject,
          NetClassInProject_mViaPadDiameterUnit,
          NetClassInProject_mAllowTracksOnFrontSide,
          NetClassInProject_mAllowTracksOnBackSide,
+         NetClassInProject_mAllowTracksOnInner1Layer,
+         NetClassInProject_mAllowTracksOnInner2Layer,
+         NetClassInProject_mAllowTracksOnInner3Layer,
+         NetClassInProject_mAllowTracksOnInner4Layer,
          NetClassInProject_trackWidthString,
          NetClassInProject_viaHoleDiameter,
          NetClassInProject_viaPadDiameter,
@@ -334,6 +362,82 @@ final class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mAllowTracksOnInner1Layer
+  //····················································································································
+
+  final let mAllowTracksOnInner1Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mAllowTracksOnInner1Layer_toDefaultValue () {
+    self.mAllowTracksOnInner1Layer = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnInner1Layer : Bool {
+    get { return self.mAllowTracksOnInner1Layer_property.propval }
+    set { self.mAllowTracksOnInner1Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mAllowTracksOnInner2Layer
+  //····················································································································
+
+  final let mAllowTracksOnInner2Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mAllowTracksOnInner2Layer_toDefaultValue () {
+    self.mAllowTracksOnInner2Layer = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnInner2Layer : Bool {
+    get { return self.mAllowTracksOnInner2Layer_property.propval }
+    set { self.mAllowTracksOnInner2Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mAllowTracksOnInner3Layer
+  //····················································································································
+
+  final let mAllowTracksOnInner3Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mAllowTracksOnInner3Layer_toDefaultValue () {
+    self.mAllowTracksOnInner3Layer = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnInner3Layer : Bool {
+    get { return self.mAllowTracksOnInner3Layer_property.propval }
+    set { self.mAllowTracksOnInner3Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mAllowTracksOnInner4Layer
+  //····················································································································
+
+  final let mAllowTracksOnInner4Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_mAllowTracksOnInner4Layer_toDefaultValue () {
+    self.mAllowTracksOnInner4Layer = true
+  }
+
+  //····················································································································
+
+  final var mAllowTracksOnInner4Layer : Bool {
+    get { return self.mAllowTracksOnInner4Layer_property.propval }
+    set { self.mAllowTracksOnInner4Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: mNets
   //····················································································································
 
@@ -516,6 +620,10 @@ final class NetClassInProject : EBManagedObject,
     self.mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mAllowTracksOnInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mAllowTracksOnInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
+    self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
@@ -797,6 +905,38 @@ final class NetClassInProject : EBManagedObject,
       observerExplorer: &self.mAllowTracksOnBackSide_property.mObserverExplorer,
       valueExplorer: &self.mAllowTracksOnBackSide_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnInner1Layer",
+      idx: self.mAllowTracksOnInner1Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnInner1Layer_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnInner1Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnInner2Layer",
+      idx: self.mAllowTracksOnInner2Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnInner2Layer_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnInner2Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnInner3Layer",
+      idx: self.mAllowTracksOnInner3Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnInner3Layer_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnInner3Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mAllowTracksOnInner4Layer",
+      idx: self.mAllowTracksOnInner4Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mAllowTracksOnInner4Layer_property.mObserverExplorer,
+      valueExplorer: &self.mAllowTracksOnInner4Layer_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
       "trackWidthString",
@@ -917,6 +1057,18 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: mAllowTracksOnBackSide
     self.mAllowTracksOnBackSide_property.mObserverExplorer = nil
     self.mAllowTracksOnBackSide_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnInner1Layer
+    self.mAllowTracksOnInner1Layer_property.mObserverExplorer = nil
+    self.mAllowTracksOnInner1Layer_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnInner2Layer
+    self.mAllowTracksOnInner2Layer_property.mObserverExplorer = nil
+    self.mAllowTracksOnInner2Layer_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnInner3Layer
+    self.mAllowTracksOnInner3Layer_property.mObserverExplorer = nil
+    self.mAllowTracksOnInner3Layer_property.mValueExplorer = nil
+  //--- Atomic property: mAllowTracksOnInner4Layer
+    self.mAllowTracksOnInner4Layer_property.mObserverExplorer = nil
+    self.mAllowTracksOnInner4Layer_property.mValueExplorer = nil
   //--- To many property: mNets
     self.mNets_property.mValueExplorer = nil
   //---
@@ -968,6 +1120,14 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnFrontSide")
   //--- Atomic property: mAllowTracksOnBackSide
     self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnBackSide")
+  //--- Atomic property: mAllowTracksOnInner1Layer
+    self.mAllowTracksOnInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner1Layer")
+  //--- Atomic property: mAllowTracksOnInner2Layer
+    self.mAllowTracksOnInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner2Layer")
+  //--- Atomic property: mAllowTracksOnInner3Layer
+    self.mAllowTracksOnInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner3Layer")
+  //--- Atomic property: mAllowTracksOnInner4Layer
+    self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner4Layer")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval,
@@ -1017,6 +1177,14 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnFrontSide_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnFrontSide")
   //--- Atomic property: mAllowTracksOnBackSide
     self.mAllowTracksOnBackSide_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnBackSide")
+  //--- Atomic property: mAllowTracksOnInner1Layer
+    self.mAllowTracksOnInner1Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner1Layer")
+  //--- Atomic property: mAllowTracksOnInner2Layer
+    self.mAllowTracksOnInner2Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner2Layer")
+  //--- Atomic property: mAllowTracksOnInner3Layer
+    self.mAllowTracksOnInner3Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner3Layer")
+  //--- Atomic property: mAllowTracksOnInner4Layer
+    self.mAllowTracksOnInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner4Layer")
   }
 
 
@@ -1037,6 +1205,10 @@ final class NetClassInProject : EBManagedObject,
     ioString += "mViaPadDiameterUnit\n"
     ioString += "mAllowTracksOnFrontSide\n"
     ioString += "mAllowTracksOnBackSide\n"
+    ioString += "mAllowTracksOnInner1Layer\n"
+    ioString += "mAllowTracksOnInner2Layer\n"
+    ioString += "mAllowTracksOnInner3Layer\n"
+    ioString += "mAllowTracksOnInner4Layer\n"
   //--- To one relationships
   //--- To many relationships
     ioString += "mNets\n"
@@ -1068,6 +1240,14 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnFrontSide.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mAllowTracksOnBackSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnInner1Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnInner2Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnInner3Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mAllowTracksOnInner4Layer.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
@@ -1144,6 +1324,18 @@ final class NetClassInProject : EBManagedObject,
       }
       if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mAllowTracksOnBackSide = value
+      }
+      if let range = inDictionary ["mAllowTracksOnInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mAllowTracksOnInner1Layer = value
+      }
+      if let range = inDictionary ["mAllowTracksOnInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mAllowTracksOnInner2Layer = value
+      }
+      if let range = inDictionary ["mAllowTracksOnInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mAllowTracksOnInner3Layer = value
+      }
+      if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.mAllowTracksOnInner4Layer = value
       }
     //--- To one relationships
     //--- To many relationships

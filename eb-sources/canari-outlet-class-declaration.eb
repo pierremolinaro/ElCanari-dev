@@ -1,6 +1,6 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 //   Canari Outlets
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariBoolPopUpButton $enabled ;
 binding CanariBoolPopUpButton $value : property Bool {item0 : String, item1 : String} ;
@@ -152,20 +152,23 @@ binding CanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
 extern outlet class CanariDateObserverField : NSTextField ;
 binding CanariDateObserverField $dateObserver : transient Date ;
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+extern outlet class CanariLayerPopUpButton $run ;
+binding CanariLayerPopUpButton $layerConfiguration : transient LayerConfiguration ;
+
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class NSBox : NSView ;
 extern outlet class NSTextView  : NSView ;
 extern outlet class NSPopUpButton  : NSView ;
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariNetInfoTableView ;
 binding CanariNetInfoTableView $netInfo : transient NetInfoArray ;
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariDragSourceTableView ;
 binding CanariDragSourceTableView $models : transient StringTagArray ;
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

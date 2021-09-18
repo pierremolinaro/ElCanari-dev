@@ -100,6 +100,10 @@ extension CustomizedProjectDocument {
     switch (side) {
     case .back : s = "Track Creation on back layer"
     case .front : s = "Track Creation on front layer"
+    case .inner1 : s = "Track Creation on inner 1 layer"
+    case .inner2 : s = "Track Creation on inner 2 layer"
+    case .inner3 : s = "Track Creation on inner 3 layer"
+    case .inner4 : s = "Track Creation on inner 4 layer"
     }
     return s
   }

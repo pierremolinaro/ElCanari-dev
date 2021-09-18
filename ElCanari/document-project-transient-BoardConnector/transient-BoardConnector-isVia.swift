@@ -21,15 +21,11 @@ func transient_BoardConnector_isVia (
 //--- START OF USER ZONE 2
         var isVia = self_mComponent_none
         if isVia {
-          var hasFrontTrack = false
-          var hasBackTrack = false
+          var trackLayerSet = Set <TrackSide> ()
           for track in self_mTracksP1_mSide + self_mTracksP2_mSide {
-            switch track.mSide {
-            case .back : hasBackTrack = true
-            case .front : hasFrontTrack = true
-            }
+            trackLayerSet.insert (track.mSide)
           }
-          isVia = hasFrontTrack && hasBackTrack
+          isVia = trackLayerSet.count > 1
         }
         return isVia
 //--- END OF USER ZONE 2

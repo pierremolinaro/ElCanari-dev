@@ -709,6 +709,12 @@ xibdocument ProjectDocument root ProjectRoot {
   ;
 
 //--- Router inspector
+  action changeLayerConfigurationAction ;
+  outlet CanariLayerPopUpButton mLayerConfigurationPopUp
+    $layerConfiguration root.mLayerConfiguration
+    $run changeLayerConfigurationAction
+  ;
+
   outlet EBPopUpButton mLayoutClearancePopUp $selectedTag root.mLayoutClearanceUnit ;
   outlet CanariDimensionTextField mLayoutClearanceTextField
      $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit
@@ -730,8 +736,14 @@ xibdocument ProjectDocument root ProjectRoot {
   action launchFreeRouterWithoutAnyDocument ;
   outlet EBButton mLaunchFreeRouterWithoutDocumentButton $run launchFreeRouterWithoutAnyDocument ;
 
-  outlet EBTextObserverField mViaCountTextField $valueObserver root.viaCountString ;
+  outlet EBTextObserverField mTopSideTrackCountTextField $valueObserver root.topSideTrackCountString ;
+  outlet EBTextObserverField mInner1LayerTrackCountTextField $valueObserver root.inner1LayerTrackCountString ;
+  outlet EBTextObserverField mInner2LayerTrackCountTextField $valueObserver root.inner2LayerTrackCountString ;
+  outlet EBTextObserverField mInner3LayerTrackCountTextField $valueObserver root.inner3LayerTrackCountString ;
+  outlet EBTextObserverField mInner4LayerTrackCountTextField $valueObserver root.inner4LayerTrackCountString ;
+  outlet EBTextObserverField mBackSideTrackCountTextField $valueObserver root.backSideTrackCountString ;
   outlet EBTextObserverField mTrackCountTextField $valueObserver root.trackCountString ;
+  outlet EBTextObserverField mViaCountTextField $valueObserver root.viaCountString ;
   outlet EBTextObserverField mTrackLengthTextField $valueObserver root.trackLengthString ;
   outlet EBPopUpButton mTrackLengthUnitPopUp $selectedTag root.mTrackLengthUnit ;
 

@@ -117,20 +117,23 @@ extension CustomizedProjectDocument {
         let scanner = Scanner (string: trackDescription)
         var ok = scanner.scanString ("(path", into: nil)
         if ok {
-          let scanLocation = scanner.scanLocation
-          ok = scanner.scanString (COMPONENT_SIDE, into: nil)
-          if ok {
-            _ = enterSegments (scanner, .front, &routedTracks, resolution, &errorMessage)
-          }else{
-            scanner.scanLocation = scanLocation
-            ok = scanner.scanString (SOLDER_SIDE, into: nil)
-            if ok {
-              _ = enterSegments (scanner, .back, &routedTracks, resolution, &errorMessage)
+          let startScanLocation = scanner.scanLocation
+          let layerNames = [COMPONENT_SIDE, SOLDER_SIDE, INNER1_SIDE, INNER2_SIDE, INNER3_SIDE, INNER4_SIDE]
+          var idx = 0
+          var found = false
+          while !found && (idx < layerNames.count) {
+            scanner.scanLocation = startScanLocation
+            found = scanner.scanString (layerNames [idx], into: nil)
+            if found {
+              let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
+              _ = enterSegments (scanner, layer [idx], &routedTracks, resolution, &errorMessage)
             }
+            idx += 1
           }
-        }
-        if !ok {
-          errorMessage += "\n  - invalid track descriptor"
+          if !found {
+            errorMessage += "\n  - invalid track descriptor"
+            ok = false
+          }
         }
       }
     //--- Extract vias

@@ -4,7 +4,7 @@ prefs {
   outlet CanariToolbar mToolbar ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! General
 
@@ -25,7 +25,7 @@ prefs {
   outlet NSTextField mSULastCheckTimeTextField ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Selection hilite
 prefs {
@@ -35,7 +35,7 @@ prefs {
   outlet EBPopUpButton selectionHilitePopupButton $selectedTag self.hiliteWidthMultipliedByTen ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! File Menu
 prefs {
@@ -76,7 +76,7 @@ prefs {
   outlet CanariMenu mMenuRevealInFinder_artworks $populateSubmenus self.mValueRevealInFinder_artworks ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Symbol Pane
 prefs {
@@ -99,7 +99,7 @@ prefs {
   outlet EBFontButton mPinNameFontButton $fontValue self.pinNameFont ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Package Pane
 
@@ -149,7 +149,7 @@ prefs {
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultipliedByTen ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Device pane
 
@@ -196,7 +196,7 @@ prefs {
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenForDevicePopupButton $selectedTag self.packageDrawingWidthForDeviceMultipliedByTen ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Schematic pane
 
@@ -235,7 +235,7 @@ prefs {
 //--- 
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Board
 
@@ -284,6 +284,22 @@ prefs {
   property Bool displayBackLayoutForBoard default yes ;
   property NSColor backSideLayoutColorForBoard default green;
   outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.backSideLayoutColorForBoard (sendContinously:no) ;
+//--- Inner 1 Layout Color
+  property Bool displayInner1LayoutForBoard default yes ;
+  property NSColor inner1LayoutColorForBoard default green;
+  outlet EBColorWell mBoardInner1LayoutColorWell $color self.inner1LayoutColorForBoard (sendContinously:no) ;
+//--- Inner 2 Layout Color
+  property Bool displayInner2LayoutForBoard default yes ;
+  property NSColor inner2LayoutColorForBoard default green;
+  outlet EBColorWell mBoardInner2LayoutColorWell $color self.inner2LayoutColorForBoard (sendContinously:no) ;
+//--- Inner 3 Layout Color
+  property Bool displayInner3LayoutForBoard default yes ;
+  property NSColor inner3LayoutColorForBoard default green;
+  outlet EBColorWell mBoardInner3LayoutColorWell $color self.inner3LayoutColorForBoard (sendContinously:no) ;
+//--- Inner 4 Layout Color
+  property Bool displayInner4LayoutForBoard default yes ;
+  property NSColor inner4LayoutColorForBoard default green;
+  outlet EBColorWell mBoardInner4LayoutColorWell $color self.inner4LayoutColorForBoard (sendContinously:no) ;
 //--- Back Side Legend Color
   property Bool displayBackLegendForBoard default yes ;
   property NSColor backSideLegendColorForBoard default white;
@@ -312,7 +328,7 @@ prefs {
   property String mFreeRouterGuiDefaultFileContents default "" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Font
 
@@ -335,7 +351,7 @@ prefs {
   outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency (sendContinously:no, autoFormatter:no) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Library
 
@@ -395,7 +411,7 @@ prefs {
   outlet NSTextView mCheckLibraryResultTextView ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Library update
 
@@ -430,7 +446,7 @@ prefs {
   outlet NSTextView mLibraryRepositoryLogTextView ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 //! Merger
 
@@ -505,7 +521,7 @@ prefs {
   property NSColor mergerColorBackground default lightGray ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————
 
 entity CanariLibraryEntry {
   externDelegate CanariLibraryEntryDelegate ;
@@ -520,4 +536,4 @@ entity CanariLibraryEntry {
   property String mUserAndPasswordTag default "" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————

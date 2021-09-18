@@ -1,18 +1,18 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 //   BoardTrack
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 enum TrackSide {
-  front, back
+  front, back, inner1, inner2, inner3, inner4
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 enum TrackLockDirection {
   unlocked, locked, octolinear, rectilinear
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardTrack : BoardObject {
   toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
@@ -40,9 +40,17 @@ graphic entity BoardTrack : BoardObject {
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location,
     prefs.displayFrontLayoutForBoard,
-    prefs.displayBackLayoutForBoard,
     prefs.frontSideLayoutColorForBoard,
+    prefs.displayBackLayoutForBoard,
     prefs.backSideLayoutColorForBoard,
+    prefs.displayInner1LayoutForBoard,
+    prefs.inner1LayoutColorForBoard,
+    prefs.displayInner2LayoutForBoard,
+    prefs.inner2LayoutColorForBoard,
+    prefs.displayInner3LayoutForBoard,
+    prefs.inner3LayoutColorForBoard,
+    prefs.displayInner4LayoutForBoard,
+    prefs.inner4LayoutColorForBoard,
     self.actualTrackWidth, self.mSide
   ;
 
@@ -50,6 +58,10 @@ graphic entity BoardTrack : BoardObject {
     self.mConnectorP1.one.location, self.p1CanMove,
     self.mConnectorP2.one.location, self.p2CanMove,
     prefs.frontSideLayoutColorForBoard,
+    prefs.inner1LayoutColorForBoard,
+    prefs.inner2LayoutColorForBoard,
+    prefs.inner3LayoutColorForBoard,
+    prefs.inner4LayoutColorForBoard,
     prefs.backSideLayoutColorForBoard,
     self.mSide,
     self.actualTrackWidth
@@ -68,6 +80,8 @@ graphic entity BoardTrack : BoardObject {
   
   override transient Double trackLengthInCanariUnit
     dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
+
+  override transient TrackSide trackSide dependsFrom self.mSide ;
 
   override transient UInt32 signatureForERCChecking dependsFrom self.mSide, self.actualTrackWidth ;
 
@@ -99,4 +113,4 @@ graphic entity BoardTrack : BoardObject {
   computed Int computedP2Y dependsFrom self.mConnectorP2.one.location ; 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————

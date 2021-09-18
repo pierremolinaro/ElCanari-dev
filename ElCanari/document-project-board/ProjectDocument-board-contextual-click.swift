@@ -197,6 +197,10 @@ extension CustomizedProjectDocument {
       switch inSide {
       case .front : title = "Disconnect in Front Layer"
       case .back  : title = "Disconnect in Back Layer"
+      case .inner1  : title = "Disconnect in Inner 1 Layer"
+      case .inner2  : title = "Disconnect in Inner 2 Layer"
+      case .inner3  : title = "Disconnect in Inner 3 Layer"
+      case .inner4  : title = "Disconnect in Inner 4 Layer"
       }
       let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.disconnectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
@@ -252,6 +256,10 @@ extension CustomizedProjectDocument {
         switch inSide {
         case .front : title = "Merge Tracks in Front Layer"
         case .back  : title = "Merge Tracks in Back Layer"
+        case .inner1  : title = "Merge Tracks in Inner 1 Layer"
+        case .inner2  : title = "Merge Tracks in Inner 2 Layer"
+        case .inner3  : title = "Merge Tracks in Inner 3 Layer"
+        case .inner4  : title = "Merge Tracks in Inner 4 Layer"
         }
         let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.mergeTracksInBoardAction), keyEquivalent: "")
         menuItem.target = self
@@ -311,6 +319,10 @@ extension CustomizedProjectDocument {
       switch inSide {
       case .front : title = "Split Track in Front Layer"
       case .back  : title = "Split Track in Back Layer"
+      case .inner1  : title = "Split Track in Inner 1 Layer"
+      case .inner2  : title = "Split Track in Inner 2 Layer"
+      case .inner3  : title = "Split Track in Inner 3 Layer"
+      case .inner4  : title = "Split Track in Inner 4 Layer"
       }
       let menuItem = NSMenuItem (title: title, action: #selector (CustomizedProjectDocument.splitTrackInBoardAction), keyEquivalent: "")
       menuItem.target = self

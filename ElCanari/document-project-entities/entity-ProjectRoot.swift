@@ -42,6 +42,12 @@ protocol ProjectRoot_mLastERCCheckingSignature : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_mLayerConfiguration : AnyObject {
+  var mLayerConfiguration : LayerConfiguration { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_mBoardSideForNewTrack : AnyObject {
   var mBoardSideForNewTrack : TrackSide { get }
 }
@@ -582,6 +588,42 @@ protocol ProjectRoot_viaCountString : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectRoot_topSideTrackCountString : AnyObject {
+  var topSideTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_backSideTrackCountString : AnyObject {
+  var backSideTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_inner1LayerTrackCountString : AnyObject {
+  var inner1LayerTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_inner2LayerTrackCountString : AnyObject {
+  var inner2LayerTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_inner3LayerTrackCountString : AnyObject {
+  var inner3LayerTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_inner4LayerTrackCountString : AnyObject {
+  var inner4LayerTrackCountString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectRoot_trackCountString : AnyObject {
   var trackCountString : String? { get }
 }
@@ -771,6 +813,7 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_mCheckClearanceBetweenPadsOfSameNet,
          ProjectRoot_mLastERCCheckingIsSuccess,
          ProjectRoot_mLastERCCheckingSignature,
+         ProjectRoot_mLayerConfiguration,
          ProjectRoot_mBoardSideForNewTrack,
          ProjectRoot_mDirectionForNewTrack,
          ProjectRoot_mBoardLayerForNewText,
@@ -861,6 +904,12 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_ercStatusImage,
          ProjectRoot_ercStatusMessage,
          ProjectRoot_viaCountString,
+         ProjectRoot_topSideTrackCountString,
+         ProjectRoot_backSideTrackCountString,
+         ProjectRoot_inner1LayerTrackCountString,
+         ProjectRoot_inner2LayerTrackCountString,
+         ProjectRoot_inner3LayerTrackCountString,
+         ProjectRoot_inner4LayerTrackCountString,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
          ProjectRoot_boardStatusImage,
@@ -1004,6 +1053,25 @@ final class ProjectRoot : EBManagedObject,
   final var mLastERCCheckingSignature : UInt32 {
     get { return self.mLastERCCheckingSignature_property.propval }
     set { self.mLastERCCheckingSignature_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: mLayerConfiguration
+  //····················································································································
+
+  final let mLayerConfiguration_property : EBStoredProperty_LayerConfiguration
+
+  //····················································································································
+
+  final func reset_mLayerConfiguration_toDefaultValue () {
+    self.mLayerConfiguration = LayerConfiguration.twoLayers
+  }
+
+  //····················································································································
+
+  final var mLayerConfiguration : LayerConfiguration {
+    get { return self.mLayerConfiguration_property.propval }
+    set { self.mLayerConfiguration_property.setProp (newValue) }
   }
 
   //····················································································································
@@ -2949,6 +3017,108 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: topSideTrackCountString
+  //····················································································································
+
+  final let topSideTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var topSideTrackCountString : String? {
+    switch self.topSideTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backSideTrackCountString
+  //····················································································································
+
+  final let backSideTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var backSideTrackCountString : String? {
+    switch self.backSideTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner1LayerTrackCountString
+  //····················································································································
+
+  final let inner1LayerTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var inner1LayerTrackCountString : String? {
+    switch self.inner1LayerTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner2LayerTrackCountString
+  //····················································································································
+
+  final let inner2LayerTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var inner2LayerTrackCountString : String? {
+    switch self.inner2LayerTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner3LayerTrackCountString
+  //····················································································································
+
+  final let inner3LayerTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var inner3LayerTrackCountString : String? {
+    switch self.inner3LayerTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inner4LayerTrackCountString
+  //····················································································································
+
+  final let inner4LayerTrackCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var inner4LayerTrackCountString : String? {
+    switch self.inner4LayerTrackCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: trackCountString
   //····················································································································
 
@@ -3469,6 +3639,7 @@ final class ProjectRoot : EBManagedObject,
     self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: ebUndoManager)
+    self.mLayerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
     self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
     self.mDirectionForNewTrack_property = EBStoredProperty_TrackCreationDirection (defaultValue: TrackCreationDirection.anyAngle, undoManager: ebUndoManager)
     self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
@@ -4125,6 +4296,102 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mBoardObjects_property.addEBObserverOf_isVia (self.viaCountString_property)
+  //--- Atomic property: topSideTrackCountString
+    self.topSideTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_topSideTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.topSideTrackCountString_property)
+  //--- Atomic property: backSideTrackCountString
+    self.backSideTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_backSideTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.backSideTrackCountString_property)
+  //--- Atomic property: inner1LayerTrackCountString
+    self.inner1LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_inner1LayerTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.inner1LayerTrackCountString_property)
+  //--- Atomic property: inner2LayerTrackCountString
+    self.inner2LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_inner2LayerTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.inner2LayerTrackCountString_property)
+  //--- Atomic property: inner3LayerTrackCountString
+    self.inner3LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_inner3LayerTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.inner3LayerTrackCountString_property)
+  //--- Atomic property: inner4LayerTrackCountString
+    self.inner4LayerTrackCountString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectRoot_inner4LayerTrackCountString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mBoardObjects_property.addEBObserverOf_trackSide (self.inner4LayerTrackCountString_property)
   //--- Atomic property: trackCountString
     self.trackCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4759,6 +5026,12 @@ final class ProjectRoot : EBManagedObject,
     // self.mLastERCCheckingSignature_property.removeEBObserver (self.ercStatusMessage_property)
     // self.signatureForERCChecking_property.removeEBObserver (self.ercStatusMessage_property)
     // self.mBoardObjects_property.removeEBObserverOf_isVia (self.viaCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.topSideTrackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.backSideTrackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.inner1LayerTrackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.inner2LayerTrackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.inner3LayerTrackCountString_property)
+    // self.mBoardObjects_property.removeEBObserverOf_trackSide (self.inner4LayerTrackCountString_property)
     // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackCountString_property)
     // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthString_property)
     // self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
@@ -4898,6 +5171,14 @@ final class ProjectRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.mLastERCCheckingSignature_property.mObserverExplorer,
       valueExplorer: &self.mLastERCCheckingSignature_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mLayerConfiguration",
+      idx: self.mLayerConfiguration_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.mLayerConfiguration_property.mObserverExplorer,
+      valueExplorer: &self.mLayerConfiguration_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mBoardSideForNewTrack",
@@ -5533,6 +5814,54 @@ final class ProjectRoot : EBManagedObject,
       valueExplorer: &self.viaCountString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "topSideTrackCountString",
+      idx: self.topSideTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.topSideTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.topSideTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backSideTrackCountString",
+      idx: self.backSideTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.backSideTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.backSideTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "inner1LayerTrackCountString",
+      idx: self.inner1LayerTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inner1LayerTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.inner1LayerTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "inner2LayerTrackCountString",
+      idx: self.inner2LayerTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inner2LayerTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.inner2LayerTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "inner3LayerTrackCountString",
+      idx: self.inner3LayerTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inner3LayerTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.inner3LayerTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "inner4LayerTrackCountString",
+      idx: self.inner4LayerTrackCountString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.inner4LayerTrackCountString_property.mObserverExplorer,
+      valueExplorer: &self.inner4LayerTrackCountString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "trackCountString",
       idx: self.trackCountString_property.ebObjectIndex,
       y: &y,
@@ -5863,6 +6192,9 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.mObserverExplorer = nil
     self.mLastERCCheckingSignature_property.mValueExplorer = nil
+  //--- Atomic property: mLayerConfiguration
+    self.mLayerConfiguration_property.mObserverExplorer = nil
+    self.mLayerConfiguration_property.mValueExplorer = nil
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.mObserverExplorer = nil
     self.mBoardSideForNewTrack_property.mValueExplorer = nil
@@ -6164,6 +6496,8 @@ final class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
+  //--- Atomic property: mLayerConfiguration
+    self.mLayerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "mLayerConfiguration")
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
   //--- Atomic property: mDirectionForNewTrack
@@ -6437,6 +6771,8 @@ final class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingIsSuccess")
   //--- Atomic property: mLastERCCheckingSignature
     self.mLastERCCheckingSignature_property.readFrom (dictionary: inDictionary, forKey: "mLastERCCheckingSignature")
+  //--- Atomic property: mLayerConfiguration
+    self.mLayerConfiguration_property.readFrom (dictionary: inDictionary, forKey: "mLayerConfiguration")
   //--- Atomic property: mBoardSideForNewTrack
     self.mBoardSideForNewTrack_property.readFrom (dictionary: inDictionary, forKey: "mBoardSideForNewTrack")
   //--- Atomic property: mDirectionForNewTrack
@@ -6583,6 +6919,7 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mCheckClearanceBetweenPadsOfSameNet\n"
     ioString += "mLastERCCheckingIsSuccess\n"
     ioString += "mLastERCCheckingSignature\n"
+    ioString += "mLayerConfiguration\n"
     ioString += "mBoardSideForNewTrack\n"
     ioString += "mDirectionForNewTrack\n"
     ioString += "mBoardLayerForNewText\n"
@@ -6679,6 +7016,8 @@ final class ProjectRoot : EBManagedObject,
     self.mLastERCCheckingIsSuccess.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mLastERCCheckingSignature.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.mLayerConfiguration.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.mBoardSideForNewTrack.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -7067,6 +7406,9 @@ final class ProjectRoot : EBManagedObject,
       }
       if let range = inDictionary ["mLastERCCheckingSignature"], let value = UInt32.unarchiveFromDataRange (inData, range) {
         self.mLastERCCheckingSignature = value
+      }
+      if let range = inDictionary ["mLayerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
+        self.mLayerConfiguration = value
       }
       if let range = inDictionary ["mBoardSideForNewTrack"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
         self.mBoardSideForNewTrack = value

@@ -25,6 +25,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     self.removeEBObserversOf_mViaPadDiameterUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAllowTracksOnFrontSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_mAllowTracksOnBackSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnInner1Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnInner2Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnInner3Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_mAllowTracksOnInner4Layer_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_trackWidthString_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_viaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
@@ -45,6 +49,10 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     self.addEBObserversOf_mViaPadDiameterUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAllowTracksOnFrontSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_mAllowTracksOnBackSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnInner1Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnInner2Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnInner3Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_mAllowTracksOnInner4Layer_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_trackWidthString_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_viaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
@@ -642,6 +650,242 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mAllowTracksOnBackSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAllowTracksOnInner1Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mAllowTracksOnInner1Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnInner1Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner1Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner1Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnInner1Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner1Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner1Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnInner1Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    if !self.mObserversOf_mAllowTracksOnInner1Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mAllowTracksOnInner1Layer.apply { (_ observer : EBEvent) in
+          managedObject.mAllowTracksOnInner1Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnInner1Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnInner1Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnInner1Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAllowTracksOnInner2Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mAllowTracksOnInner2Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnInner2Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner2Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner2Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnInner2Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner2Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner2Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnInner2Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    if !self.mObserversOf_mAllowTracksOnInner2Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mAllowTracksOnInner2Layer.apply { (_ observer : EBEvent) in
+          managedObject.mAllowTracksOnInner2Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnInner2Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnInner2Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnInner2Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAllowTracksOnInner3Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mAllowTracksOnInner3Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnInner3Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner3Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner3Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnInner3Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner3Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner3Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnInner3Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    if !self.mObserversOf_mAllowTracksOnInner3Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mAllowTracksOnInner3Layer.apply { (_ observer : EBEvent) in
+          managedObject.mAllowTracksOnInner3Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnInner3Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnInner3Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnInner3Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'mAllowTracksOnInner4Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_mAllowTracksOnInner4Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mAllowTracksOnInner4Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner4Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner4Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mAllowTracksOnInner4Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mAllowTracksOnInner4Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mAllowTracksOnInner4Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mAllowTracksOnInner4Layer_toElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    if !self.mObserversOf_mAllowTracksOnInner4Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_mAllowTracksOnInner4Layer.apply { (_ observer : EBEvent) in
+          managedObject.mAllowTracksOnInner4Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mAllowTracksOnInner4Layer_fromElementsOfSet (_ inSet : Set <NetClassInProject>) {
+    self.mObserversOf_mAllowTracksOnInner4Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mAllowTracksOnInner4Layer_property.removeEBObserver (observer)
       }
     }
   }
@@ -1735,6 +1979,10 @@ final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProje
     self.addEBObserverOf_mViaPadDiameterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnFrontSide (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnBackSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnInner1Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnInner2Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnInner3Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_mAllowTracksOnInner4Layer (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }
 
