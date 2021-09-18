@@ -18,7 +18,7 @@ final class CanariLayerPopUpButton : EBPopUpButton {
     while (self.numberOfItems > 0) {
       self.removeItem (at: 0)
     }
-    self.addItems (withTitles: ["1", "2", "4", "6"])
+    self.addItems (withTitles: ["2", "4", "6"])
   }
 
   //····················································································································

@@ -115,24 +115,17 @@ extension ProjectDocument {
     for object in self.rootObject.mBoardObjects {
       if let track = object as? BoardTrack {
         switch track.mSide {
-        case .back :
+        case .back, .front :
           () // Always accepted
-        case .front :
-          if layerConfiguration == .oneLayer {
-            let bp = track.bezierPath (extraWidth: inArtworkClearance)
-            let issue = CanariIssue (kind: .error, message: "track in front layer", pathes: [bp])
-            ioIssues.append (issue)
-            errorCount += 1
-          }
         case .inner1 :
-          if (layerConfiguration == .oneLayer) || (layerConfiguration == .twoLayers) {
+          if layerConfiguration == .twoLayers {
             let bp = track.bezierPath (extraWidth: inArtworkClearance)
             let issue = CanariIssue (kind: .error, message: "track in inner 1 layer", pathes: [bp])
             ioIssues.append (issue)
             errorCount += 1
           }
         case .inner2 :
-          if (layerConfiguration == .oneLayer) || (layerConfiguration == .twoLayers) {
+          if layerConfiguration == .twoLayers {
             let bp = track.bezierPath (extraWidth: inArtworkClearance)
             let issue = CanariIssue (kind: .error, message: "track in inner 2 layer", pathes: [bp])
             ioIssues.append (issue)

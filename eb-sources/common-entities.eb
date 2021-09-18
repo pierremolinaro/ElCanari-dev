@@ -23,7 +23,7 @@ enum EBControlSize {
 
 
 enum LayerConfiguration {
-  oneLayer, twoLayers, fourLayers, sixLayers
+  twoLayers, fourLayers, sixLayers
 }
 
 enum TrackCreationDirection {

@@ -118,7 +118,7 @@ extension CustomizedProjectDocument {
         var ok = scanner.scanString ("(path", into: nil)
         if ok {
           let startScanLocation = scanner.scanLocation
-          let layerNames = [COMPONENT_SIDE, SOLDER_SIDE, INNER1_SIDE, INNER2_SIDE, INNER3_SIDE, INNER4_SIDE]
+          let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
           var idx = 0
           var found = false
           while !found && (idx < layerNames.count) {

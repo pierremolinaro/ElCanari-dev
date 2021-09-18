@@ -7,20 +7,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case oneLayer = 0
-  case twoLayers = 1
-  case fourLayers = 2
-  case sixLayers = 3
+  case twoLayers = 0
+  case fourLayers = 1
+  case sixLayers = 2
 
 
   //····················································································································
 
   init? (string : String) {
     switch string {
-      case "oneLayer" : self = .oneLayer // 0
-      case "twoLayers" : self = .twoLayers // 1
-      case "fourLayers" : self = .fourLayers // 2
-      case "sixLayers" : self = .sixLayers // 3
+      case "twoLayers" : self = .twoLayers // 0
+      case "fourLayers" : self = .fourLayers // 1
+      case "sixLayers" : self = .sixLayers // 2
       case _ : return nil
     }
   }
@@ -29,10 +27,9 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .oneLayer : return "oneLayer" // 0
-      case .twoLayers : return "twoLayers" // 1
-      case .fourLayers : return "fourLayers" // 2
-      case .sixLayers : return "sixLayers" // 3
+      case .twoLayers : return "twoLayers" // 0
+      case .fourLayers : return "fourLayers" // 1
+      case .sixLayers : return "sixLayers" // 2
     }
   }
 
@@ -76,7 +73,7 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> LayerConfiguration {
-    var result = LayerConfiguration.oneLayer
+    var result = LayerConfiguration.twoLayers
     if let number = object as? NSNumber, let v = LayerConfiguration (rawValue: number.intValue) {
       result = v
     }
