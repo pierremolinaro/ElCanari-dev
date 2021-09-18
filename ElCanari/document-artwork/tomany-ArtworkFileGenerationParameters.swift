@@ -31,6 +31,10 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drawTracksInner1Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drawTracksInner2Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drawTracksInner3Layer_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drawTracksInner4Layer_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawVias_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_fileExtension_fromElementsOfSet (inRemovedSet) // Stored property
@@ -55,6 +59,10 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawTracksTopSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drawTracksInner1Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drawTracksInner2Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drawTracksInner3Layer_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drawTracksInner4Layer_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawVias_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_fileExtension_toElementsOfSet (inAddedSet) // Stored property
@@ -1004,6 +1012,242 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTracksTopSide_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksInner1Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawTracksInner1Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksInner1Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner1Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner1Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksInner1Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner1Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner1Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksInner1Layer_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    if !self.mObserversOf_drawTracksInner1Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_drawTracksInner1Layer.apply { (_ observer : EBEvent) in
+          managedObject.drawTracksInner1Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksInner1Layer_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksInner1Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksInner1Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksInner2Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawTracksInner2Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksInner2Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner2Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner2Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksInner2Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner2Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner2Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksInner2Layer_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    if !self.mObserversOf_drawTracksInner2Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_drawTracksInner2Layer.apply { (_ observer : EBEvent) in
+          managedObject.drawTracksInner2Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksInner2Layer_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksInner2Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksInner2Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksInner3Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawTracksInner3Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksInner3Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner3Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner3Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksInner3Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner3Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner3Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksInner3Layer_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    if !self.mObserversOf_drawTracksInner3Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_drawTracksInner3Layer.apply { (_ observer : EBEvent) in
+          managedObject.drawTracksInner3Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksInner3Layer_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksInner3Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksInner3Layer_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawTracksInner4Layer' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawTracksInner4Layer = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTracksInner4Layer (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner4Layer.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner4Layer_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTracksInner4Layer (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTracksInner4Layer.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTracksInner4Layer_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTracksInner4Layer_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    if !self.mObserversOf_drawTracksInner4Layer.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_drawTracksInner4Layer.apply { (_ observer : EBEvent) in
+          managedObject.drawTracksInner4Layer_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTracksInner4Layer_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTracksInner4Layer.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTracksInner4Layer_property.removeEBObserver (observer)
       }
     }
   }
@@ -2012,6 +2256,10 @@ final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_A
     self.addEBObserverOf_drawTextsLegendTopSide (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawTextsLegendBottomSide (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawTracksTopSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawTracksInner1Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawTracksInner2Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawTracksInner3Layer (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawTracksInner4Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawTracksBottomSide (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawVias (self.mObserverForWritingPreferences)
     self.addEBObserverOf_fileExtension (self.mObserverForWritingPreferences)

@@ -30,11 +30,6 @@ final class AutoLayoutTaggedPopUpButton : InternalAutoLayoutPopUpButton {
 
   final func add (title inTitle : String, withTag inTag : Int) -> Self {
     self.addItem (withTitle: inTitle)
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-//    ]
-//    let attributedTitle = NSAttributedString (string: inTitle, attributes: textAttributes)
-//    self.lastItem?.attributedTitle = attributedTitle
     self.lastItem?.tag = inTag
     return self
   }

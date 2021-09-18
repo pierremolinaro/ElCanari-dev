@@ -1,12 +1,12 @@
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //     A R T W O R K    D O C U M E N T
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumentMainView {
 
-//······················································································································
+//------------------------------------------------------------------------------
 //   MAIN VIEW
-//······················································································································
+//------------------------------------------------------------------------------
 
   stackView mPageMasterView vStack { }
  
@@ -52,9 +52,9 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     self.documentFileName
   ;
 
-//······················································································································
+//------------------------------------------------------------------------------
 //  Minima Page
-//······················································································································
+//------------------------------------------------------------------------------
 
   stackView mMinimaPage vStack set (margins: 8) {
     hStack {
@@ -101,9 +101,9 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     space
   }
 
-//······················································································································
+//------------------------------------------------------------------------------
 //  Drill Page
-//······················································································································
+//------------------------------------------------------------------------------
 
   stackView mDrillPage vStack {
     hStack set (margins: 8) setFirstBaselineAlignment () {
@@ -115,9 +115,9 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     space 
   }
 
-//······················································································································
+//------------------------------------------------------------------------------
 //  Data Page
-//······················································································································
+//------------------------------------------------------------------------------
 
   autolayout tableViewController #mDataController (allowsEmptySelection:no, allowsMultipleSelection:no) root.fileGenerationParameterArray {
      editableColumn name (title: "Name", minWidth: 60, maxWidth: 200, headerAlignment: .left, contentAlignment: .left) sortkey name
@@ -146,6 +146,11 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       hStack set (leftMargin: 20) { Switch (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
+      hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) { $hidden !root.hasInnerElements} space }
+      hStack set (leftMargin: 20) { Switch (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements } space }
+      hStack set (leftMargin: 20) { Switch (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements } space }
+      hStack set (leftMargin: 20) { Switch (title: "Inner 3 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner3Layer $hidden !root.hasSixLayers } space }
+      hStack set (leftMargin: 20) { Switch (title: "Inner 4 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner4Layer $hidden !root.hasSixLayers } space }
       hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
       hStack set (leftMargin: 20) { Switch (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide } space }
@@ -154,7 +159,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       hStack set (leftMargin: 20) { Switch (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
-      hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+      hStack { StaticLabel (title: "Other Elements", bold: yes, size : .small) space }
       hStack set (leftMargin: 20) { Switch (title: "Vias", size : .small) { $value #mDataSelection.drawVias } space }
       hStack set (leftMargin: 20) { Switch (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits } space }
       hStack set (leftMargin: 20) { Switch (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits } space }
@@ -171,13 +176,18 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
 
-//······················································································································
+//------------------------------------------------------------------------------
 //  Info Tab
-//······················································································································
+//------------------------------------------------------------------------------
 
   action resetVersionAndSignatureAction ;
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+    hStack {
+      StaticLabel (title: "Layout", bold: no, size : .small)
+      EnumPopUpButton (titles : enum LayerConfiguration.popupTitles) { $selectedIndex root.layerConfiguration }
+      space
+    }
     hStack {
       Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAndSignatureAction }
       space
@@ -190,12 +200,15 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //     A R T W O R K    R O O T
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 entity ArtworkRoot {
   toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
+
+  property @signature LayerConfiguration layerConfiguration default twoLayers ;
+
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
 
@@ -213,13 +226,16 @@ entity ArtworkRoot {
 
 //--- Excellon drill data
   property @signature String drillDataFileExtension default "drf" ;
-  
+
 //--- For artwork embedded in document
   transient UInt32 signatureForERCChecking dependsFrom
      self.minPPTPTTTW, self.minValueForOARinEBUnit, self.minValueForBoardLimitWidth, self.minValueForPHDinEBUnit ;
+     
+  transient Bool hasInnerElements dependsFrom self.layerConfiguration ;
+  transient Bool hasSixLayers dependsFrom self.layerConfiguration ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 entity ArtworkFileGenerationParameters {
   property @signature Bool drawBoardLimits default no ;
@@ -238,6 +254,10 @@ entity ArtworkFileGenerationParameters {
   property @signature Bool drawTextsLegendTopSide default no ;
   property @signature Bool drawTextsLegendBottomSide default no ;
   property @signature Bool drawTracksTopSide default no ;
+  property @signature Bool drawTracksInner1Layer default no ;
+  property @signature Bool drawTracksInner2Layer default no ;
+  property @signature Bool drawTracksInner3Layer default no ;
+  property @signature Bool drawTracksInner4Layer default no ;
   property @signature Bool drawTracksBottomSide default no ;
   property @signature Bool drawVias default no ;
   property @signature String fileExtension default "?" ;
@@ -247,4 +267,4 @@ entity ArtworkFileGenerationParameters {
   property @signature Int padHoleDiameterInPDF default 90_000 ; // 1 mm
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------

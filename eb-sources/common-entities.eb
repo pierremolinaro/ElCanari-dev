@@ -26,6 +26,12 @@ enum LayerConfiguration {
   twoLayers, fourLayers, sixLayers
 }
 
+func enum LayerConfiguration.popupTitles {
+  twoLayers : "2 Layers" ;
+  fourLayers : "4 Layers" ;
+  sixLayers : "6 Layers" ;
+}
+
 enum TrackCreationDirection {
   anyAngle, octolinear, rectilinear
 }

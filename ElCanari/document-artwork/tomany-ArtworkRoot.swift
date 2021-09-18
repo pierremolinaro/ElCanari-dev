@@ -15,6 +15,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   internal override func updateObservers (removedSet inRemovedSet : Set <ArtworkRoot>, addedSet inAddedSet : Set <ArtworkRoot>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
+    self.removeEBObserversOf_layerConfiguration_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_selectedTab_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_comments_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
@@ -26,8 +27,11 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
+    self.addEBObserversOf_layerConfiguration_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_selectedTab_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_comments_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (inAddedSet) // Stored property
@@ -39,7 +43,68 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
+  }
+
+  //····················································································································
+  //   Observers of 'layerConfiguration' stored property
+  //····················································································································
+
+  private final var mObserversOf_layerConfiguration = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_layerConfiguration.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfiguration_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_layerConfiguration (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_layerConfiguration.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.layerConfiguration_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_layerConfiguration_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    if !self.mObserversOf_layerConfiguration.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
+          managedObject.layerConfiguration_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_layerConfiguration_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    self.mObserversOf_layerConfiguration.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.layerConfiguration_property.removeEBObserver (observer)
+      }
+    }
   }
 
   //····················································································································
@@ -692,6 +757,118 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   }
 
   //····················································································································
+  //   Observers of 'hasInnerElements' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasInnerElements = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasInnerElements.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasInnerElements_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasInnerElements (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasInnerElements.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasInnerElements_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasInnerElements_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+        managedObject.hasInnerElements_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasInnerElements_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasInnerElements.apply { (_ observer : EBEvent) in
+        managedObject.hasInnerElements_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasSixLayers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasSixLayers (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasSixLayers.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasSixLayers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasSixLayers_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+        managedObject.hasSixLayers_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasSixLayers_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
+        managedObject.hasSixLayers_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
@@ -1322,6 +1499,7 @@ final class PreferencesArrayOf_ArtworkRoot : StoredArrayOf_ArtworkRoot {
       }
       self.setProp (objectArray)
     }
+    self.addEBObserverOf_layerConfiguration (self.mObserverForWritingPreferences)
     self.addEBObserverOf_selectedTab (self.mObserverForWritingPreferences)
     self.addEBObserverOf_comments (self.mObserverForWritingPreferences)
     self.addEBObserverOf_minPPTPTTTWdisplayUnit (self.mObserverForWritingPreferences)

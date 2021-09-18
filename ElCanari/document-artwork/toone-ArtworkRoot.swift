@@ -16,6 +16,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
+      oldValue.layerConfiguration_property.removeEBObserver (self.layerConfiguration_property) // Stored property
       oldValue.selectedTab_property.removeEBObserver (self.selectedTab_property) // Stored property
       oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
       oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
@@ -27,10 +28,13 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
       oldValue.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
       oldValue.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property) // Stored property
+      oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
+      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
+      newValue.layerConfiguration_property.addEBObserver (self.layerConfiguration_property) // Stored property
       newValue.selectedTab_property.addEBObserver (self.selectedTab_property) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
       newValue.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
@@ -42,9 +46,17 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
       newValue.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
       newValue.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property) // Stored property
+      newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   }
+
+  //····················································································································
+  //   Observers of 'layerConfiguration' stored property
+  //····················································································································
+
+  final let layerConfiguration_property = EBGenericTransientProperty <LayerConfiguration?> ()
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
@@ -113,6 +125,18 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   final let drillDataFileExtension_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
+  //   Observers of 'hasInnerElements' transient property
+  //····················································································································
+
+  final let hasInnerElements_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'hasSixLayers' transient property
+  //····················································································································
+
+  final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
@@ -148,6 +172,21 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   override init () {
     super.init ()
+  //--- Configure layerConfiguration simple stored property
+    self.layerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.layerConfiguration_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
   //--- Configure selectedTab simple stored property
     self.selectedTab_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -302,6 +341,36 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.drillDataFileExtension_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasInnerElements transient property
+    self.hasInnerElements_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasInnerElements_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasSixLayers transient property
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -102,6 +102,30 @@ protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkFileGenerationParameters_drawTracksInner1Layer : AnyObject {
+  var drawTracksInner1Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTracksInner2Layer : AnyObject {
+  var drawTracksInner2Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTracksInner3Layer : AnyObject {
+  var drawTracksInner3Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTracksInner4Layer : AnyObject {
+  var drawTracksInner4Layer : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
   var drawTracksBottomSide : Bool { get }
 }
@@ -163,6 +187,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_drawTextsLegendTopSide,
          ArtworkFileGenerationParameters_drawTextsLegendBottomSide,
          ArtworkFileGenerationParameters_drawTracksTopSide,
+         ArtworkFileGenerationParameters_drawTracksInner1Layer,
+         ArtworkFileGenerationParameters_drawTracksInner2Layer,
+         ArtworkFileGenerationParameters_drawTracksInner3Layer,
+         ArtworkFileGenerationParameters_drawTracksInner4Layer,
          ArtworkFileGenerationParameters_drawTracksBottomSide,
          ArtworkFileGenerationParameters_drawVias,
          ArtworkFileGenerationParameters_fileExtension,
@@ -476,6 +504,82 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: drawTracksInner1Layer
+  //····················································································································
+
+  final let drawTracksInner1Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawTracksInner1Layer_toDefaultValue () {
+    self.drawTracksInner1Layer = false
+  }
+
+  //····················································································································
+
+  final var drawTracksInner1Layer : Bool {
+    get { return self.drawTracksInner1Layer_property.propval }
+    set { self.drawTracksInner1Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: drawTracksInner2Layer
+  //····················································································································
+
+  final let drawTracksInner2Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawTracksInner2Layer_toDefaultValue () {
+    self.drawTracksInner2Layer = false
+  }
+
+  //····················································································································
+
+  final var drawTracksInner2Layer : Bool {
+    get { return self.drawTracksInner2Layer_property.propval }
+    set { self.drawTracksInner2Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: drawTracksInner3Layer
+  //····················································································································
+
+  final let drawTracksInner3Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawTracksInner3Layer_toDefaultValue () {
+    self.drawTracksInner3Layer = false
+  }
+
+  //····················································································································
+
+  final var drawTracksInner3Layer : Bool {
+    get { return self.drawTracksInner3Layer_property.propval }
+    set { self.drawTracksInner3Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
+  //   Atomic property: drawTracksInner4Layer
+  //····················································································································
+
+  final let drawTracksInner4Layer_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawTracksInner4Layer_toDefaultValue () {
+    self.drawTracksInner4Layer = false
+  }
+
+  //····················································································································
+
+  final var drawTracksInner4Layer : Bool {
+    get { return self.drawTracksInner4Layer_property.propval }
+    set { self.drawTracksInner4Layer_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: drawTracksBottomSide
   //····················································································································
 
@@ -629,6 +733,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.fileExtension_property = EBStoredProperty_String (defaultValue: "?", undoManager: ebUndoManager)
@@ -655,6 +763,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendBottomSide_property.setSignatureObserver (observer: self)
     self.drawTextsLegendTopSide_property.setSignatureObserver (observer: self)
     self.drawTracksBottomSide_property.setSignatureObserver (observer: self)
+    self.drawTracksInner1Layer_property.setSignatureObserver (observer: self)
+    self.drawTracksInner2Layer_property.setSignatureObserver (observer: self)
+    self.drawTracksInner3Layer_property.setSignatureObserver (observer: self)
+    self.drawTracksInner4Layer_property.setSignatureObserver (observer: self)
     self.drawTracksTopSide_property.setSignatureObserver (observer: self)
     self.drawVias_property.setSignatureObserver (observer: self)
     self.fileExtension_property.setSignatureObserver (observer: self)
@@ -686,6 +798,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendBottomSide_property.setSignatureObserver (observer: nil)
     self.drawTextsLegendTopSide_property.setSignatureObserver (observer: nil)
     self.drawTracksBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawTracksInner1Layer_property.setSignatureObserver (observer: nil)
+    self.drawTracksInner2Layer_property.setSignatureObserver (observer: nil)
+    self.drawTracksInner3Layer_property.setSignatureObserver (observer: nil)
+    self.drawTracksInner4Layer_property.setSignatureObserver (observer: nil)
     self.drawTracksTopSide_property.setSignatureObserver (observer: nil)
     self.drawVias_property.setSignatureObserver (observer: nil)
     self.fileExtension_property.setSignatureObserver (observer: nil)
@@ -835,6 +951,38 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "drawTracksInner1Layer",
+      idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner2Layer",
+      idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner3Layer",
+      idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner4Layer",
+      idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "drawTracksBottomSide",
       idx: self.drawTracksBottomSide_property.ebObjectIndex,
       y: &y,
@@ -949,6 +1097,18 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: drawTracksTopSide
     self.drawTracksTopSide_property.mObserverExplorer = nil
     self.drawTracksTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksInner1Layer
+    self.drawTracksInner1Layer_property.mObserverExplorer = nil
+    self.drawTracksInner1Layer_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksInner2Layer
+    self.drawTracksInner2Layer_property.mObserverExplorer = nil
+    self.drawTracksInner2Layer_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksInner3Layer
+    self.drawTracksInner3Layer_property.mObserverExplorer = nil
+    self.drawTracksInner3Layer_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksInner4Layer
+    self.drawTracksInner4Layer_property.mObserverExplorer = nil
+    self.drawTracksInner4Layer_property.mValueExplorer = nil
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.mObserverExplorer = nil
     self.drawTracksBottomSide_property.mValueExplorer = nil
@@ -1030,6 +1190,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
   //--- Atomic property: drawTracksTopSide
     self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
+  //--- Atomic property: drawTracksInner1Layer
+    self.drawTracksInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner1Layer")
+  //--- Atomic property: drawTracksInner2Layer
+    self.drawTracksInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner2Layer")
+  //--- Atomic property: drawTracksInner3Layer
+    self.drawTracksInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner3Layer")
+  //--- Atomic property: drawTracksInner4Layer
+    self.drawTracksInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner4Layer")
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
   //--- Atomic property: drawVias
@@ -1093,6 +1261,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTextsLegendBottomSide")
   //--- Atomic property: drawTracksTopSide
     self.drawTracksTopSide_property.readFrom (dictionary: inDictionary, forKey: "drawTracksTopSide")
+  //--- Atomic property: drawTracksInner1Layer
+    self.drawTracksInner1Layer_property.readFrom (dictionary: inDictionary, forKey: "drawTracksInner1Layer")
+  //--- Atomic property: drawTracksInner2Layer
+    self.drawTracksInner2Layer_property.readFrom (dictionary: inDictionary, forKey: "drawTracksInner2Layer")
+  //--- Atomic property: drawTracksInner3Layer
+    self.drawTracksInner3Layer_property.readFrom (dictionary: inDictionary, forKey: "drawTracksInner3Layer")
+  //--- Atomic property: drawTracksInner4Layer
+    self.drawTracksInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "drawTracksInner4Layer")
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTracksBottomSide")
   //--- Atomic property: drawVias
@@ -1133,6 +1309,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     ioString += "drawTextsLegendTopSide\n"
     ioString += "drawTextsLegendBottomSide\n"
     ioString += "drawTracksTopSide\n"
+    ioString += "drawTracksInner1Layer\n"
+    ioString += "drawTracksInner2Layer\n"
+    ioString += "drawTracksInner3Layer\n"
+    ioString += "drawTracksInner4Layer\n"
     ioString += "drawTracksBottomSide\n"
     ioString += "drawVias\n"
     ioString += "fileExtension\n"
@@ -1182,6 +1362,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTextsLegendBottomSide.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.drawTracksTopSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawTracksInner1Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawTracksInner2Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawTracksInner3Layer.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawTracksInner4Layer.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.drawTracksBottomSide.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1260,6 +1448,18 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawTracksTopSide = value
       }
+      if let range = inDictionary ["drawTracksInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawTracksInner1Layer = value
+      }
+      if let range = inDictionary ["drawTracksInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawTracksInner2Layer = value
+      }
+      if let range = inDictionary ["drawTracksInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawTracksInner3Layer = value
+      }
+      if let range = inDictionary ["drawTracksInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawTracksInner4Layer = value
+      }
       if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawTracksBottomSide = value
       }
@@ -1325,6 +1525,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     crc.accumulateUInt32 (self.drawTextsLegendBottomSide_property.signature ())
     crc.accumulateUInt32 (self.drawTextsLegendTopSide_property.signature ())
     crc.accumulateUInt32 (self.drawTracksBottomSide_property.signature ())
+    crc.accumulateUInt32 (self.drawTracksInner1Layer_property.signature ())
+    crc.accumulateUInt32 (self.drawTracksInner2Layer_property.signature ())
+    crc.accumulateUInt32 (self.drawTracksInner3Layer_property.signature ())
+    crc.accumulateUInt32 (self.drawTracksInner4Layer_property.signature ())
     crc.accumulateUInt32 (self.drawTracksTopSide_property.signature ())
     crc.accumulateUInt32 (self.drawVias_property.signature ())
     crc.accumulateUInt32 (self.fileExtension_property.signature ())

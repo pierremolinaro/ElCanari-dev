@@ -110,7 +110,7 @@ extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $h
   $dimensionAndUnit transient Int, property Int
 }
 
-extern autolayout class Switch (title: String, size: EBControlSize) {
+extern autolayout class Switch (title: String, size: EBControlSize) $hidden {
   $value property Bool
 }
 

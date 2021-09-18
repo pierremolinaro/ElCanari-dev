@@ -32,6 +32,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       oldValue.drawTextsLegendTopSide_property.removeEBObserver (self.drawTextsLegendTopSide_property) // Stored property
       oldValue.drawTextsLegendBottomSide_property.removeEBObserver (self.drawTextsLegendBottomSide_property) // Stored property
       oldValue.drawTracksTopSide_property.removeEBObserver (self.drawTracksTopSide_property) // Stored property
+      oldValue.drawTracksInner1Layer_property.removeEBObserver (self.drawTracksInner1Layer_property) // Stored property
+      oldValue.drawTracksInner2Layer_property.removeEBObserver (self.drawTracksInner2Layer_property) // Stored property
+      oldValue.drawTracksInner3Layer_property.removeEBObserver (self.drawTracksInner3Layer_property) // Stored property
+      oldValue.drawTracksInner4Layer_property.removeEBObserver (self.drawTracksInner4Layer_property) // Stored property
       oldValue.drawTracksBottomSide_property.removeEBObserver (self.drawTracksBottomSide_property) // Stored property
       oldValue.drawVias_property.removeEBObserver (self.drawVias_property) // Stored property
       oldValue.fileExtension_property.removeEBObserver (self.fileExtension_property) // Stored property
@@ -58,6 +62,10 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       newValue.drawTextsLegendTopSide_property.addEBObserver (self.drawTextsLegendTopSide_property) // Stored property
       newValue.drawTextsLegendBottomSide_property.addEBObserver (self.drawTextsLegendBottomSide_property) // Stored property
       newValue.drawTracksTopSide_property.addEBObserver (self.drawTracksTopSide_property) // Stored property
+      newValue.drawTracksInner1Layer_property.addEBObserver (self.drawTracksInner1Layer_property) // Stored property
+      newValue.drawTracksInner2Layer_property.addEBObserver (self.drawTracksInner2Layer_property) // Stored property
+      newValue.drawTracksInner3Layer_property.addEBObserver (self.drawTracksInner3Layer_property) // Stored property
+      newValue.drawTracksInner4Layer_property.addEBObserver (self.drawTracksInner4Layer_property) // Stored property
       newValue.drawTracksBottomSide_property.addEBObserver (self.drawTracksBottomSide_property) // Stored property
       newValue.drawVias_property.addEBObserver (self.drawVias_property) // Stored property
       newValue.fileExtension_property.addEBObserver (self.fileExtension_property) // Stored property
@@ -163,6 +171,30 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTracksTopSide_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'drawTracksInner1Layer' stored property
+  //····················································································································
+
+  final let drawTracksInner1Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'drawTracksInner2Layer' stored property
+  //····················································································································
+
+  final let drawTracksInner2Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'drawTracksInner3Layer' stored property
+  //····················································································································
+
+  final let drawTracksInner3Layer_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'drawTracksInner4Layer' stored property
+  //····················································································································
+
+  final let drawTracksInner4Layer_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'drawTracksBottomSide' stored property
@@ -441,6 +473,66 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     self.drawTracksTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.drawTracksTopSide_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure drawTracksInner1Layer simple stored property
+    self.drawTracksInner1Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drawTracksInner1Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure drawTracksInner2Layer simple stored property
+    self.drawTracksInner2Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drawTracksInner2Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure drawTracksInner3Layer simple stored property
+    self.drawTracksInner3Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drawTracksInner3Layer_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure drawTracksInner4Layer simple stored property
+    self.drawTracksInner4Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drawTracksInner4Layer_property.selection {
         case .empty :
           return .empty
         case .multiple :

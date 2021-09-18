@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkRoot_layerConfiguration : AnyObject {
+  var layerConfiguration : LayerConfiguration { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkRoot_selectedTab : AnyObject {
   var selectedTab : Int { get }
 }
@@ -72,6 +78,18 @@ protocol ArtworkRoot_drillDataFileExtension : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkRoot_hasInnerElements : AnyObject {
+  var hasInnerElements : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_hasSixLayers : AnyObject {
+  var hasSixLayers : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -81,6 +99,7 @@ protocol ArtworkRoot_signatureForERCChecking : AnyObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArtworkRoot : EBManagedObject,
+         ArtworkRoot_layerConfiguration,
          ArtworkRoot_selectedTab,
          ArtworkRoot_comments,
          ArtworkRoot_minPPTPTTTWdisplayUnit,
@@ -92,7 +111,28 @@ final class ArtworkRoot : EBManagedObject,
          ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
          ArtworkRoot_minValueForBoardLimitWidth,
          ArtworkRoot_drillDataFileExtension,
+         ArtworkRoot_hasInnerElements,
+         ArtworkRoot_hasSixLayers,
          ArtworkRoot_signatureForERCChecking {
+
+  //····················································································································
+  //   Atomic property: layerConfiguration
+  //····················································································································
+
+  final let layerConfiguration_property : EBStoredProperty_LayerConfiguration
+
+  //····················································································································
+
+  final func reset_layerConfiguration_toDefaultValue () {
+    self.layerConfiguration = LayerConfiguration.twoLayers
+  }
+
+  //····················································································································
+
+  final var layerConfiguration : LayerConfiguration {
+    get { return self.layerConfiguration_property.propval }
+    set { self.layerConfiguration_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   Atomic property: selectedTab
@@ -319,6 +359,40 @@ final class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: hasInnerElements
+  //····················································································································
+
+  final let hasInnerElements_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasInnerElements : Bool? {
+    switch self.hasInnerElements_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasSixLayers
+  //····················································································································
+
+  final let hasSixLayers_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasSixLayers : Bool? {
+    switch self.hasSixLayers_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: signatureForERCChecking
   //····················································································································
 
@@ -340,6 +414,7 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
     self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: ebUndoManager)
@@ -354,6 +429,38 @@ final class ArtworkRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: hasInnerElements
+    self.hasInnerElements_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.layerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkRoot_hasInnerElements (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.layerConfiguration_property.addEBObserver (self.hasInnerElements_property)
+  //--- Atomic property: hasSixLayers
+    self.hasSixLayers_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.layerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkRoot_hasSixLayers (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.layerConfiguration_property.addEBObserver (self.hasSixLayers_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -378,6 +485,7 @@ final class ArtworkRoot : EBManagedObject,
     self.comments_property.setSignatureObserver (observer: self)
     self.drillDataFileExtension_property.setSignatureObserver (observer: self)
     self.fileGenerationParameterArray_property.setSignatureObserver (observer: self)
+    self.layerConfiguration_property.setSignatureObserver (observer: self)
     self.minPPTPTTTW_property.setSignatureObserver (observer: self)
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: self)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: self)
@@ -389,6 +497,8 @@ final class ArtworkRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    // self.layerConfiguration_property.removeEBObserver (self.hasInnerElements_property)
+    // self.layerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
     // self.minPPTPTTTW_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.minValueForOARinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.minValueForBoardLimitWidth_property.removeEBObserver (self.signatureForERCChecking_property)
@@ -397,6 +507,7 @@ final class ArtworkRoot : EBManagedObject,
     self.comments_property.setSignatureObserver (observer: nil)
     self.drillDataFileExtension_property.setSignatureObserver (observer: nil)
     self.fileGenerationParameterArray_property.setSignatureObserver (observer: nil)
+    self.layerConfiguration_property.setSignatureObserver (observer: nil)
     self.minPPTPTTTW_property.setSignatureObserver (observer: nil)
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: nil)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: nil)
@@ -414,6 +525,14 @@ final class ArtworkRoot : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "layerConfiguration",
+      idx: self.layerConfiguration_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.layerConfiguration_property.mObserverExplorer,
+      valueExplorer: &self.layerConfiguration_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "selectedTab",
       idx: self.selectedTab_property.ebObjectIndex,
@@ -504,6 +623,22 @@ final class ArtworkRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y: &y, view: view)
     createEntryForPropertyNamed (
+      "hasInnerElements",
+      idx: self.hasInnerElements_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasInnerElements_property.mObserverExplorer,
+      valueExplorer: &self.hasInnerElements_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "hasSixLayers",
+      idx: self.hasSixLayers_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasSixLayers_property.mObserverExplorer,
+      valueExplorer: &self.hasSixLayers_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "signatureForERCChecking",
       idx: self.signatureForERCChecking_property.ebObjectIndex,
       y: &y,
@@ -528,6 +663,9 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: layerConfiguration
+    self.layerConfiguration_property.mObserverExplorer = nil
+    self.layerConfiguration_property.mValueExplorer = nil
   //--- Atomic property: selectedTab
     self.selectedTab_property.mObserverExplorer = nil
     self.selectedTab_property.mValueExplorer = nil
@@ -592,6 +730,8 @@ final class ArtworkRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: layerConfiguration
+    self.layerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "layerConfiguration")
   //--- Atomic property: selectedTab
     self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
   //--- Atomic property: comments
@@ -643,6 +783,8 @@ final class ArtworkRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: layerConfiguration
+    self.layerConfiguration_property.readFrom (dictionary: inDictionary, forKey: "layerConfiguration")
   //--- Atomic property: selectedTab
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey: "selectedTab")
   //--- Atomic property: comments
@@ -675,6 +817,7 @@ final class ArtworkRoot : EBManagedObject,
   override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
+    ioString += "layerConfiguration\n"
     ioString += "selectedTab\n"
     ioString += "comments\n"
     ioString += "minPPTPTTTWdisplayUnit\n"
@@ -698,6 +841,8 @@ final class ArtworkRoot : EBManagedObject,
   override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
+    self.layerConfiguration.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
     self.selectedTab.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.comments.appendPropertyValueTo (&ioData)
@@ -766,6 +911,9 @@ final class ArtworkRoot : EBManagedObject,
     super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
     inParallelObjectSetupContext.addOperation {
     //--- Atomic properties
+      if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
+        self.layerConfiguration = value
+      }
       if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedTab = value
       }
@@ -846,6 +994,7 @@ final class ArtworkRoot : EBManagedObject,
     crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.drillDataFileExtension_property.signature ())
     crc.accumulateUInt32 (self.fileGenerationParameterArray_property.signature ())
+    crc.accumulateUInt32 (self.layerConfiguration_property.signature ())
     crc.accumulateUInt32 (self.minPPTPTTTW_property.signature ())
     crc.accumulateUInt32 (self.minValueForBoardLimitWidth_property.signature ())
     crc.accumulateUInt32 (self.minValueForOARinEBUnit_property.signature ())

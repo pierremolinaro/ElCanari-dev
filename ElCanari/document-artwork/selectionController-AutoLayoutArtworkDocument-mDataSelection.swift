@@ -107,6 +107,30 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
   var drawTracksBottomSide_property = EBPropertyProxy_Bool ()
 
   //····················································································································
+  //   Selection observable property: drawTracksInner1Layer
+  //····················································································································
+
+  var drawTracksInner1Layer_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
+  //   Selection observable property: drawTracksInner2Layer
+  //····················································································································
+
+  var drawTracksInner2Layer_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
+  //   Selection observable property: drawTracksInner3Layer
+  //····················································································································
+
+  var drawTracksInner3Layer_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
+  //   Selection observable property: drawTracksInner4Layer
+  //····················································································································
+
+  var drawTracksInner4Layer_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
   //   Selection observable property: drawTracksTopSide
   //····················································································································
 
@@ -174,6 +198,10 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
     self.bind_property_drawTextsLegendBottomSide (model: model)
     self.bind_property_drawTextsLegendTopSide (model: model)
     self.bind_property_drawTracksBottomSide (model: model)
+    self.bind_property_drawTracksInner1Layer (model: model)
+    self.bind_property_drawTracksInner2Layer (model: model)
+    self.bind_property_drawTracksInner3Layer (model: model)
+    self.bind_property_drawTracksInner4Layer (model: model)
     self.bind_property_drawTracksTopSide (model: model)
     self.bind_property_drawVias (model: model)
     self.bind_property_fileExtension (model: model)
@@ -268,6 +296,26 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
     self.drawTracksBottomSide_property.mWriteModelFunction = nil 
     self.drawTracksBottomSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
+  //--- drawTracksInner1Layer
+    self.drawTracksInner1Layer_property.mReadModelFunction = nil 
+    self.drawTracksInner1Layer_property.mWriteModelFunction = nil 
+    self.drawTracksInner1Layer_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksInner1Layer (self.drawTracksInner1Layer_property)
+  //--- drawTracksInner2Layer
+    self.drawTracksInner2Layer_property.mReadModelFunction = nil 
+    self.drawTracksInner2Layer_property.mWriteModelFunction = nil 
+    self.drawTracksInner2Layer_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksInner2Layer (self.drawTracksInner2Layer_property)
+  //--- drawTracksInner3Layer
+    self.drawTracksInner3Layer_property.mReadModelFunction = nil 
+    self.drawTracksInner3Layer_property.mWriteModelFunction = nil 
+    self.drawTracksInner3Layer_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksInner3Layer (self.drawTracksInner3Layer_property)
+  //--- drawTracksInner4Layer
+    self.drawTracksInner4Layer_property.mReadModelFunction = nil 
+    self.drawTracksInner4Layer_property.mWriteModelFunction = nil 
+    self.drawTracksInner4Layer_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksInner4Layer (self.drawTracksInner4Layer_property)
   //--- drawTracksTopSide
     self.drawTracksTopSide_property.mReadModelFunction = nil 
     self.drawTracksTopSide_property.mWriteModelFunction = nil 
@@ -470,6 +518,38 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
       view: view,
       observerExplorer: &self.drawTracksBottomSide_property.mObserverExplorer,
       valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner1Layer",
+      idx: self.drawTracksInner1Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner1Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner1Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner2Layer",
+      idx: self.drawTracksInner2Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner2Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner2Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner3Layer",
+      idx: self.drawTracksInner3Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner3Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner3Layer_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksInner4Layer",
+      idx: self.drawTracksInner4Layer_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTracksInner4Layer_property.mObserverExplorer,
+      valueExplorer: &self.drawTracksInner4Layer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTracksTopSide",
@@ -1686,6 +1766,286 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
         case .single (let v) :
           for object in v {
             let result = object.drawTracksBottomSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawTracksInner1Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawTracksInner1Layer (self.drawTracksInner1Layer_property)
+    self.drawTracksInner1Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawTracksInner1Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksInner1Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawTracksInner1Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawTracksInner1Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawTracksInner1Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawTracksInner2Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawTracksInner2Layer (self.drawTracksInner2Layer_property)
+    self.drawTracksInner2Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawTracksInner2Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksInner2Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawTracksInner2Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawTracksInner2Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawTracksInner2Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawTracksInner3Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawTracksInner3Layer (self.drawTracksInner3Layer_property)
+    self.drawTracksInner3Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawTracksInner3Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksInner3Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawTracksInner3Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawTracksInner3Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawTracksInner3Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawTracksInner4Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawTracksInner4Layer (self.drawTracksInner4Layer_property)
+    self.drawTracksInner4Layer_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawTracksInner4Layer_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawTracksInner4Layer_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawTracksInner4Layer_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawTracksInner4Layer_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawTracksInner4Layer_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
