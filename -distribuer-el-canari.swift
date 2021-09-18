@@ -28,15 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.4.4"
+let VERSION_CANARI = "1.4.5"
 let NOTES : [String] = [
-  "Correction divers bugs"
 ]
 let BUGFIXES : [String] = [
-  "Alignment correct lors d'un drag-and-drop pour placer un symbole sur le schéma",
-  "Alignment correct lors d'un drag-and-drop pour placer un composant sur la carte"
 ]
 let CHANGES : [String] = [
+  "Utilisation de Sparkle 1.27"
 ]
 let NEWS : [String] = []
 
