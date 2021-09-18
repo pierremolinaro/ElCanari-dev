@@ -1,6 +1,6 @@
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //     P R O J E C T    D O C U M E N T
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 xibdocument ProjectDocument root ProjectRoot {
 //--- Selected Page
@@ -101,6 +101,10 @@ xibdocument ProjectDocument root ProjectRoot {
     column "used" EBTextObserverField $valueObserver self.netUsage
     column "onFront" EBTextObserverField $valueObserver self.allowTracksOnFrontSideString
     column "onBack" EBTextObserverField $valueObserver self.allowTracksOnBackSideString
+    column "onInner1" EBTextObserverField $valueObserver self.allowTracksOnInner1LayerString
+    column "onInner2" EBTextObserverField $valueObserver self.allowTracksOnInner2LayerString
+    column "onInner3" EBTextObserverField $valueObserver self.allowTracksOnInner3LayerString
+    column "onInner4" EBTextObserverField $valueObserver self.allowTracksOnInner4LayerString
   }
   outlet EBTableView mNetClassTableView $tableValue #netClassController ;
 
@@ -112,6 +116,10 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariDimensionTextField mNetClassWidthDimensionTextField ;
   outlet EBPopUpButton mNetClassWidthUnitPopUpButton ;
   outlet EBSwitch mAllowTracksOnFrontSideSwitch ;
+  outlet EBSwitch mAllowTracksOnInner1LayerSwitch ;
+  outlet EBSwitch mAllowTracksOnInner2LayerSwitch ;
+  outlet EBSwitch mAllowTracksOnInner3LayerSwitch ;
+  outlet EBSwitch mAllowTracksOnInner4LayerSwitch ;
   outlet EBSwitch mAllowTracksOnBackSideSwitch ;
   outlet CanariDimensionTextField mNetClassHoleDiameterDimensionTextField ;
   outlet EBPopUpButton mNetClassHoleDiameterUnitPopUpButton ;
@@ -260,10 +268,6 @@ xibdocument ProjectDocument root ProjectRoot {
   
   outlet NSPanel mExchangeSymbolPanel ;
   outlet EBPopUpButton mExchangeSymbolPopUpButton ;
-  
-//--- Schematic inconsistent error
-//  outlet NSPanel mInconsistentSchematicErrorPanel ;
-//  outlet NSTextView mInconsistentSchematicErrorTextView ;
 
 //--- Hot keys inspector
   outlet NSTextField mConnectSchematicHotKeyTextField ;
@@ -547,12 +551,10 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariViewWithKeyView mSelectedBoardLimitInspectorView ;
   outlet EBPopUpButton mSelectedLimitDisplayUnitPopUp $selectedTag root.mBoardSelectedCurveDisplayUnit ;
 
-//  outlet EBTextObserverField mBoardCurveX1TextField $valueObserver #boardCurveSelectionController.p1Xstring ;
   outlet CanariDimensionTextField mBoardCurvePointX1TextField
      $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
   ;
 
- // outlet EBTextObserverField mBoardCurveY1TextField $valueObserver #boardCurveSelectionController.p1Ystring ;
   outlet CanariDimensionTextField mBoardCurvePointY1TextField
      $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
   ;
@@ -1182,18 +1184,8 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
   outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
 
-//  outlet EBPopUpButton mMeasurementUnitForPadHoleInPDFPopUp $selectedTag #mDataSelection.measurementUnitForPadHoleInPDF ;
-//  outlet CanariDimensionTextField mDimensionForPadHoleInPDFTextField
-//     $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF
-//  ;
-//  outlet NSView mPadHoleDefinitionView $hidden !#mDataSelection.drawPadHolesInPDF ;
-//  transient String mGeneratedFileCountString dependsFrom #mDataController.sortedArray.count ;
-//  outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
-
   outlet EBTextObserverView mCommentTextView $valueObserver root.comments ;
   outlet EBIntObserverField mArtworkVersionTextField $valueObserver root.mArtworkVersion (autoFormatter: no) ;
-//  outlet CanariSignatureField mArtworkSignatureTextField $signature root.artworkSignature ;
-
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------

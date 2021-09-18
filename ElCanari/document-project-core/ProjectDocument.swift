@@ -552,6 +552,10 @@ import Cocoa
   @IBOutlet final var mAddWirePointSchematicHotKeyTextField : NSTextField? = nil
   @IBOutlet final var mAllowTracksOnBackSideSwitch : EBSwitch? = nil
   @IBOutlet final var mAllowTracksOnFrontSideSwitch : EBSwitch? = nil
+  @IBOutlet final var mAllowTracksOnInner1LayerSwitch : EBSwitch? = nil
+  @IBOutlet final var mAllowTracksOnInner2LayerSwitch : EBSwitch? = nil
+  @IBOutlet final var mAllowTracksOnInner3LayerSwitch : EBSwitch? = nil
+  @IBOutlet final var mAllowTracksOnInner4LayerSwitch : EBSwitch? = nil
   @IBOutlet final var mArtworkNameTextField : EBTextObserverField? = nil
   @IBOutlet final var mArtworkSettingsTabView : NSTabView? = nil
   @IBOutlet final var mArtworkVersionTextField : EBIntObserverField? = nil
@@ -1164,6 +1168,10 @@ import Cocoa
     checkOutletConnection (self.mAddWirePointSchematicHotKeyTextField, "mAddWirePointSchematicHotKeyTextField", NSTextField.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnBackSideSwitch, "mAllowTracksOnBackSideSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnFrontSideSwitch, "mAllowTracksOnFrontSideSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnInner1LayerSwitch, "mAllowTracksOnInner1LayerSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnInner2LayerSwitch, "mAllowTracksOnInner2LayerSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnInner3LayerSwitch, "mAllowTracksOnInner3LayerSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mAllowTracksOnInner4LayerSwitch, "mAllowTracksOnInner4LayerSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkSettingsTabView, "mArtworkSettingsTabView", NSTabView.self, #file, #line)
     checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
@@ -3559,6 +3567,10 @@ import Cocoa
     self.mAddWirePointSchematicHotKeyTextField?.ebCleanUp ()
     self.mAllowTracksOnBackSideSwitch?.ebCleanUp ()
     self.mAllowTracksOnFrontSideSwitch?.ebCleanUp ()
+    self.mAllowTracksOnInner1LayerSwitch?.ebCleanUp ()
+    self.mAllowTracksOnInner2LayerSwitch?.ebCleanUp ()
+    self.mAllowTracksOnInner3LayerSwitch?.ebCleanUp ()
+    self.mAllowTracksOnInner4LayerSwitch?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkSettingsTabView?.ebCleanUp ()
     self.mArtworkVersionTextField?.ebCleanUp ()
@@ -3998,6 +4010,10 @@ import Cocoa
     self.mAddWirePointSchematicHotKeyTextField = nil
     self.mAllowTracksOnBackSideSwitch = nil
     self.mAllowTracksOnFrontSideSwitch = nil
+    self.mAllowTracksOnInner1LayerSwitch = nil
+    self.mAllowTracksOnInner2LayerSwitch = nil
+    self.mAllowTracksOnInner3LayerSwitch = nil
+    self.mAllowTracksOnInner4LayerSwitch = nil
     self.mArtworkNameTextField = nil
     self.mArtworkSettingsTabView = nil
     self.mArtworkVersionTextField = nil

@@ -26,6 +26,18 @@ extension ProjectDocument {
     //---  Allow Back track
       let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
       self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
+    //---  Allow Inner 1 Layer
+      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+      self.mAllowTracksOnInner1LayerSwitch?.bind_value (allowInner1Layer_property)
+    //---  Allow Inner 2 Layer
+      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+      self.mAllowTracksOnInner2LayerSwitch?.bind_value (allowInner2Layer_property)
+    //---  Allow Inner 3 Layer
+      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+      self.mAllowTracksOnInner3LayerSwitch?.bind_value (allowInner3Layer_property)
+    //---  Allow Inner 4 Layer
+      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
+      self.mAllowTracksOnInner4LayerSwitch?.bind_value (allowInner4Layer_property)
     //---  Allow front track
       let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: true, undoManager: nil)
       self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
@@ -69,6 +81,10 @@ extension ProjectDocument {
           netClass.mViaPadDiameter = viaPadDiameter_property.propval
           netClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
           netClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+          netClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+          netClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+          netClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+          netClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
           netClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
           self.rootObject.mNetClasses.append (netClass)
           self.netClassController.setSelection ([netClass])
@@ -81,6 +97,10 @@ extension ProjectDocument {
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassColorWell?.unbind_color ()
         self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
+        self.mAllowTracksOnInner1LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner2LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner3LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner4LayerSwitch?.unbind_value ()
         self.mAllowTracksOnBackSideSwitch?.unbind_value ()
       }
     }
@@ -123,6 +143,18 @@ extension ProjectDocument {
     //---  Allow Back track
       let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnBackSide, undoManager: nil)
       self.mAllowTracksOnBackSideSwitch?.bind_value (allowBackTrack_property)
+    //---  Allow Inner 1 Layer
+      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner1Layer, undoManager: nil)
+      self.mAllowTracksOnInner1LayerSwitch?.bind_value (allowInner1Layer_property)
+    //---  Allow Inner 2 Layer
+      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner2Layer, undoManager: nil)
+      self.mAllowTracksOnInner2LayerSwitch?.bind_value (allowInner2Layer_property)
+    //---  Allow Inner 3 Layer
+      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner3Layer, undoManager: nil)
+      self.mAllowTracksOnInner3LayerSwitch?.bind_value (allowInner3Layer_property)
+    //---  Allow Inner 4 Layer
+      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnInner4Layer, undoManager: nil)
+      self.mAllowTracksOnInner4LayerSwitch?.bind_value (allowInner4Layer_property)
     //---  Allow front track
       let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: editedNetClass.mAllowTracksOnFrontSide, undoManager: nil)
       self.mAllowTracksOnFrontSideSwitch?.bind_value (allowFrontTrack_property)
@@ -165,6 +197,10 @@ extension ProjectDocument {
           editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval
           editedNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
           editedNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+          editedNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+          editedNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+          editedNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+          editedNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
           editedNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
         }
         self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
@@ -175,6 +211,10 @@ extension ProjectDocument {
         self.mNetClassPadDiameterUnitPopUpButton?.unbind_selectedTag ()
         self.mNetClassColorWell?.unbind_color ()
         self.mAllowTracksOnFrontSideSwitch?.unbind_value ()
+        self.mAllowTracksOnInner1LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner2LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner3LayerSwitch?.unbind_value ()
+        self.mAllowTracksOnInner4LayerSwitch?.unbind_value ()
         self.mAllowTracksOnBackSideSwitch?.unbind_value ()
       }
     }

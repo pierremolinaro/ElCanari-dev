@@ -35,6 +35,10 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       oldValue.viaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property) // Transient property
       oldValue.allowTracksOnFrontSideString_property.removeEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
       oldValue.allowTracksOnBackSideString_property.removeEBObserver (self.allowTracksOnBackSideString_property) // Transient property
+      oldValue.allowTracksOnInner1LayerString_property.removeEBObserver (self.allowTracksOnInner1LayerString_property) // Transient property
+      oldValue.allowTracksOnInner2LayerString_property.removeEBObserver (self.allowTracksOnInner2LayerString_property) // Transient property
+      oldValue.allowTracksOnInner3LayerString_property.removeEBObserver (self.allowTracksOnInner3LayerString_property) // Transient property
+      oldValue.allowTracksOnInner4LayerString_property.removeEBObserver (self.allowTracksOnInner4LayerString_property) // Transient property
       oldValue.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
       oldValue.netUsage_property.removeEBObserver (self.netUsage_property) // Transient property
       oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
@@ -61,6 +65,10 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       newValue.viaPadDiameter_property.addEBObserver (self.viaPadDiameter_property) // Transient property
       newValue.allowTracksOnFrontSideString_property.addEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
       newValue.allowTracksOnBackSideString_property.addEBObserver (self.allowTracksOnBackSideString_property) // Transient property
+      newValue.allowTracksOnInner1LayerString_property.addEBObserver (self.allowTracksOnInner1LayerString_property) // Transient property
+      newValue.allowTracksOnInner2LayerString_property.addEBObserver (self.allowTracksOnInner2LayerString_property) // Transient property
+      newValue.allowTracksOnInner3LayerString_property.addEBObserver (self.allowTracksOnInner3LayerString_property) // Transient property
+      newValue.allowTracksOnInner4LayerString_property.addEBObserver (self.allowTracksOnInner4LayerString_property) // Transient property
       newValue.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
       newValue.netUsage_property.addEBObserver (self.netUsage_property) // Transient property
       newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
@@ -181,6 +189,30 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //····················································································································
 
   final let allowTracksOnBackSideString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'allowTracksOnInner1LayerString' transient property
+  //····················································································································
+
+  final let allowTracksOnInner1LayerString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'allowTracksOnInner2LayerString' transient property
+  //····················································································································
+
+  final let allowTracksOnInner2LayerString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'allowTracksOnInner3LayerString' transient property
+  //····················································································································
+
+  final let allowTracksOnInner3LayerString_property = EBGenericTransientProperty <String?> ()
+
+  //····················································································································
+  //   Observers of 'allowTracksOnInner4LayerString' transient property
+  //····················································································································
+
+  final let allowTracksOnInner4LayerString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'canRemove' transient property
@@ -510,6 +542,66 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.allowTracksOnBackSideString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure allowTracksOnInner1LayerString transient property
+    self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.allowTracksOnInner1LayerString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure allowTracksOnInner2LayerString transient property
+    self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.allowTracksOnInner2LayerString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure allowTracksOnInner3LayerString transient property
+    self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.allowTracksOnInner3LayerString_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure allowTracksOnInner4LayerString transient property
+    self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.allowTracksOnInner4LayerString_property.selection {
         case .empty :
           return .empty
         case .multiple :

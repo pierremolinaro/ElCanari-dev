@@ -120,6 +120,30 @@ protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol NetClassInProject_allowTracksOnInner1LayerString : AnyObject {
+  var allowTracksOnInner1LayerString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_allowTracksOnInner2LayerString : AnyObject {
+  var allowTracksOnInner2LayerString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_allowTracksOnInner3LayerString : AnyObject {
+  var allowTracksOnInner3LayerString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol NetClassInProject_allowTracksOnInner4LayerString : AnyObject {
+  var allowTracksOnInner4LayerString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol NetClassInProject_canRemove : AnyObject {
   var canRemove : Bool? { get }
 }
@@ -166,6 +190,10 @@ final class NetClassInProject : EBManagedObject,
          NetClassInProject_viaPadDiameter,
          NetClassInProject_allowTracksOnFrontSideString,
          NetClassInProject_allowTracksOnBackSideString,
+         NetClassInProject_allowTracksOnInner1LayerString,
+         NetClassInProject_allowTracksOnInner2LayerString,
+         NetClassInProject_allowTracksOnInner3LayerString,
+         NetClassInProject_allowTracksOnInner4LayerString,
          NetClassInProject_canRemove,
          NetClassInProject_netUsage,
          NetClassInProject_netsDescription,
@@ -538,6 +566,74 @@ final class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: allowTracksOnInner1LayerString
+  //····················································································································
+
+  final let allowTracksOnInner1LayerString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var allowTracksOnInner1LayerString : String? {
+    switch self.allowTracksOnInner1LayerString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: allowTracksOnInner2LayerString
+  //····················································································································
+
+  final let allowTracksOnInner2LayerString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var allowTracksOnInner2LayerString : String? {
+    switch self.allowTracksOnInner2LayerString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: allowTracksOnInner3LayerString
+  //····················································································································
+
+  final let allowTracksOnInner3LayerString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var allowTracksOnInner3LayerString : String? {
+    switch self.allowTracksOnInner3LayerString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: allowTracksOnInner4LayerString
+  //····················································································································
+
+  final let allowTracksOnInner4LayerString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var allowTracksOnInner4LayerString : String? {
+    switch self.allowTracksOnInner4LayerString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemove
   //····················································································································
 
@@ -714,6 +810,70 @@ final class NetClassInProject : EBManagedObject,
       }
     }
     self.mAllowTracksOnBackSide_property.addEBObserver (self.allowTracksOnBackSideString_property)
+  //--- Atomic property: allowTracksOnInner1LayerString
+    self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mAllowTracksOnInner1Layer_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnInner1LayerString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnInner1Layer_property.addEBObserver (self.allowTracksOnInner1LayerString_property)
+  //--- Atomic property: allowTracksOnInner2LayerString
+    self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mAllowTracksOnInner2Layer_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnInner2LayerString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnInner2Layer_property.addEBObserver (self.allowTracksOnInner2LayerString_property)
+  //--- Atomic property: allowTracksOnInner3LayerString
+    self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mAllowTracksOnInner3Layer_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnInner3LayerString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnInner3Layer_property.addEBObserver (self.allowTracksOnInner3LayerString_property)
+  //--- Atomic property: allowTracksOnInner4LayerString
+    self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mAllowTracksOnInner4Layer_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_NetClassInProject_allowTracksOnInner4LayerString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mAllowTracksOnInner4Layer_property.addEBObserver (self.allowTracksOnInner4LayerString_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -803,6 +963,10 @@ final class NetClassInProject : EBManagedObject,
     // self.mViaPadDiameterUnit_property.removeEBObserver (self.viaPadDiameter_property)
     // self.mAllowTracksOnFrontSide_property.removeEBObserver (self.allowTracksOnFrontSideString_property)
     // self.mAllowTracksOnBackSide_property.removeEBObserver (self.allowTracksOnBackSideString_property)
+    // self.mAllowTracksOnInner1Layer_property.removeEBObserver (self.allowTracksOnInner1LayerString_property)
+    // self.mAllowTracksOnInner2Layer_property.removeEBObserver (self.allowTracksOnInner2LayerString_property)
+    // self.mAllowTracksOnInner3Layer_property.removeEBObserver (self.allowTracksOnInner3LayerString_property)
+    // self.mAllowTracksOnInner4Layer_property.removeEBObserver (self.allowTracksOnInner4LayerString_property)
     // self.mNets_property.removeEBObserver (self.canRemove_property)
     // self.mNets_property.removeEBObserver (self.netUsage_property)
     // self.mNets_property.removeEBObserver (self.netsDescription_property)
@@ -977,6 +1141,38 @@ final class NetClassInProject : EBManagedObject,
       view: view,
       observerExplorer: &self.allowTracksOnBackSideString_property.mObserverExplorer,
       valueExplorer: &self.allowTracksOnBackSideString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnInner1LayerString",
+      idx: self.allowTracksOnInner1LayerString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnInner1LayerString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnInner1LayerString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnInner2LayerString",
+      idx: self.allowTracksOnInner2LayerString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnInner2LayerString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnInner2LayerString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnInner3LayerString",
+      idx: self.allowTracksOnInner3LayerString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnInner3LayerString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnInner3LayerString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "allowTracksOnInner4LayerString",
+      idx: self.allowTracksOnInner4LayerString_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.allowTracksOnInner4LayerString_property.mObserverExplorer,
+      valueExplorer: &self.allowTracksOnInner4LayerString_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "canRemove",

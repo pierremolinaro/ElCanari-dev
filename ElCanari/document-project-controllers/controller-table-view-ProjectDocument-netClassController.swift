@@ -241,6 +241,30 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
       }else{
         presentErrorWindow (#file, #line, "\"onBack\" column view unknown")
       }
+    //--- Check 'onInner1' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onInner1")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (#file, #line, "\"onInner1\" column view unknown")
+      }
+    //--- Check 'onInner2' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onInner2")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (#file, #line, "\"onInner2\" column view unknown")
+      }
+    //--- Check 'onInner3' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onInner3")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (#file, #line, "\"onInner3\" column view unknown")
+      }
+    //--- Check 'onInner4' column
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "onInner4")) {
+        column.sortDescriptorPrototype = nil
+      }else{
+        presentErrorWindow (#file, #line, "\"onInner4\" column view unknown")
+      }
     //--- Set table view sort descriptors
       for sortDescriptor in self.mSortDescriptorArray {
         if let key = sortDescriptor.key, let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
@@ -405,6 +429,34 @@ final class Controller_ProjectDocument_netClassController : ReadOnlyAbstractGene
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnBackSideString_property)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onInner1", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner1LayerString_property)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onInner2", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner2LayerString_property)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onInner3", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner3LayerString_property)
+          cell.update ()
+        }else if tableColumnIdentifier.rawValue == "onInner4", let cell = result as? EBTextObserverField_TableViewCell {
+          cell.mUnbindFunction = { [weak cell] in
+            cell?.mCellOutlet?.unbind_valueObserver ()
+          }
+          cell.mUnbindFunction? ()
+          cell.mCellOutlet?.bind_valueObserver (object.allowTracksOnInner4LayerString_property)
           cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")

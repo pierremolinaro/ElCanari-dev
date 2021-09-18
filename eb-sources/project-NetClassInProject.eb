@@ -31,6 +31,10 @@ entity NetClassInProject {
   
   transient String allowTracksOnFrontSideString dependsFrom self.mAllowTracksOnFrontSide ;
   transient String allowTracksOnBackSideString dependsFrom self.mAllowTracksOnBackSide ;
+  transient String allowTracksOnInner1LayerString dependsFrom self.mAllowTracksOnInner1Layer ;
+  transient String allowTracksOnInner2LayerString dependsFrom self.mAllowTracksOnInner2Layer ;
+  transient String allowTracksOnInner3LayerString dependsFrom self.mAllowTracksOnInner3Layer ;
+  transient String allowTracksOnInner4LayerString dependsFrom self.mAllowTracksOnInner4Layer ;
   
   transient NetInfoArray netsDescription dependsFrom
     self.mNets,
