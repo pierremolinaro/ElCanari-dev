@@ -146,6 +146,53 @@ extension ProjectDocument {
             errorCount += 1
           }
         }
+      //--- Check if net class allow track on this layer
+        if let netClass = track.mNet?.mNetClass {
+          switch track.mSide {
+          case .front :
+            if !netClass.mAllowTracksOnFrontSide {
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in front side", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          case .back :
+            if !netClass.mAllowTracksOnBackSide {
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in back side", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          case .inner1 :
+            if !netClass.mAllowTracksOnInner1Layer {
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in inner 1 layer", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          case .inner2 :
+            if !netClass.mAllowTracksOnInner2Layer {
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in inner 2 layer", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          case .inner3 :
+            if !netClass.mAllowTracksOnInner3Layer {
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in inner 3 layer", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          case .inner4 :
+            if !netClass.mAllowTracksOnInner4Layer{
+              let bp = track.bezierPath (extraWidth: inArtworkClearance)
+              let issue = CanariIssue (kind: .error, message: "net class forbids track in inner 4 layer", pathes: [bp])
+              ioIssues.append (issue)
+              errorCount += 1
+            }
+          }
+        }
       }
     }
   //---
