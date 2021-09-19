@@ -48,6 +48,8 @@ extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControl
   func set (alignment: TextAlignment)
   func set (width: Int)
   func expandableWidth ()
+  func setOrangeTextColor ()
+  func setRedTextColor ()
 }
 
 extern autolayout class StaticLabels (left : String, right : String, bold: Bool, size: EBControlSize) $hidden {

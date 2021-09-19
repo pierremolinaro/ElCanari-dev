@@ -129,7 +129,7 @@ final class AutoLayoutSegmentedControlWithPages : InternalAutoLayoutSegmentedCon
     case .empty, .multiple :
       self.setImage (nil, forSegment: self.mSegmentImageIndex)
     case .single (let v) :
-      self.setImage (v, forSegment: self.mSegmentImageIndex)
+      self.setImage (v.isValid ? v : nil, forSegment: self.mSegmentImageIndex)
     }
   }
 

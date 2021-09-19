@@ -166,6 +166,37 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
 
   //····················································································································
 
+  final func addColumn_NSImage (valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?,
+                                valueSetterDelegate inSetterDelegate : Optional < (_ inRow : Int, _ inNewValue : NSImage) -> Void >,
+                                sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+                                title inTitle : String,
+                                minWidth inMinWidth : Int,
+                                maxWidth inMaxWidth : Int,
+                                headerAlignment inHeaderAlignment : TextAlignment,
+                                contentAlignment inContentAlignment : TextAlignment) {
+    let column = InternalNSImageTableColumn (
+      withIdentifierNamed: String (self.mTableView.tableColumns.count),
+      sortDelegate: inSortDelegate,
+      contentAlignment: inContentAlignment.cocoaAlignment,
+      valueGetterDelegate: inGetterDelegate
+    )
+    column.title = inTitle
+    column.headerCell.controlSize = self.mTableView.controlSize
+    column.headerCell.font = self.mTableView.font
+    column.headerCell.alignment = inHeaderAlignment.cocoaAlignment
+    column.minWidth = CGFloat (inMinWidth)
+    column.maxWidth = CGFloat (inMaxWidth)
+    column.width = (column.minWidth + column.maxWidth) / 2.0
+  //--- Add Column
+    self.mTableView.addTableColumn (column)
+  //--- Update table view sort descriptors
+    if let s = column.sortDescriptorPrototype {
+      self.mTableView.sortDescriptors.append (s)
+    }
+  }
+
+  //····················································································································
+
   func sortAndReloadData () {
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
@@ -225,32 +256,14 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
   func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn : NSTableColumn?,
                   row inRowIndex : Int) -> NSView? {
-    let result = NSTableCellView ()
-    result.translatesAutoresizingMaskIntoConstraints = false
-    let textField = NSTextField (frame: NSRect ())
-    textField.translatesAutoresizingMaskIntoConstraints = false
-
-    textField.tag = inRowIndex
-    textField.isBezeled = false
-    textField.isBordered = false
-    textField.drawsBackground = false
-    textField.isEnabled = true
-//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
-//    textField.controlSize = self.mTableView.controlSize
-//    textField.font = self.mTableView.font
-
     if let tableColumn = inTableColumn as? InternalTableColumn {
-      tableColumn.configureTextField (textField, inRowIndex)
+      let tableCellView = NSTableCellView ()
+      tableCellView.translatesAutoresizingMaskIntoConstraints = false
+      tableColumn.configureTableCellWiew (tableCellView, forRowIndex: inRowIndex)
+      return tableCellView
     }else{
-      textField.stringValue = "?col?"
+      return nil
     }
-
-    result.addSubview (textField)
-    result.textField = textField
-    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: result, attribute: .width, multiplier: 1.0, constant: 0.0)
-    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: result, attribute: .height, multiplier: 1.0, constant: 0.0)
-    result.addConstraints ([c1, c2])
-    return result
   }
 
   //····················································································································
@@ -427,7 +440,7 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func configureTextField (_ inTextField : NSTextField, _ inRow : Int) { // Abstract method
+  func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRow : Int) { // Abstract method
   }
 
   //····················································································································
@@ -468,26 +481,34 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func configureTextField (_ inTextField : NSTextField, _ inRow : Int) {
-    inTextField.alignment = self.mContentAlignment
-    inTextField.stringValue = self.mValueGetterDelegate (inRow) ?? ""
+  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+    let textField = NSTextField (frame: NSRect ())
+    textField.translatesAutoresizingMaskIntoConstraints = false
+
+    textField.tag = inRowIndex
+    textField.isBezeled = false
+    textField.isBordered = false
+    textField.drawsBackground = false
+    textField.isEnabled = true
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+//    textField.controlSize = self.mTableView.controlSize
+//    textField.font = self.mTableView.font
+
+    textField.alignment = self.mContentAlignment
+    textField.stringValue = self.mValueGetterDelegate (inRowIndex) ?? ""
 
     let editable = self.mValueSetterDelegate != nil
-    inTextField.isEditable = editable
+    textField.isEditable = editable
     if editable {
-//    inTextField.delegate = self
-      inTextField.target = self
-      inTextField.action = #selector (Self.ebAction (_:))
+      textField.target = self
+      textField.action = #selector (Self.ebAction (_:))
     }
+    inTableCellView.addSubview (textField)
+    inTableCellView.textField = textField
+    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+    inTableCellView.addConstraints ([c1, c2])
   }
-
-  //····················································································································
-  // IMPLEMENTATION OF NSTextFieldDelegate
-  //····················································································································
-
-//  @objc func controlTextDidChange (_ inNotification : Notification) {
-//    NSSound.beep ()
-//  }
 
   //····················································································································
 
@@ -545,27 +566,35 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func configureTextField (_ inTextField : NSTextField, _ inRow : Int) {
-    inTextField.formatter = self.mNumberFormatter
-    inTextField.alignment = self.mContentAlignment
-    inTextField.integerValue = self.mValueGetterDelegate (inRow) ?? -1
+  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+    let textField = NSTextField (frame: NSRect ())
+    textField.translatesAutoresizingMaskIntoConstraints = false
+
+    textField.tag = inRowIndex
+    textField.isBezeled = false
+    textField.isBordered = false
+    textField.drawsBackground = false
+    textField.isEnabled = true
+//-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
+//    textField.controlSize = self.mTableView.controlSize
+//    textField.font = self.mTableView.font
+
+    textField.formatter = self.mNumberFormatter
+    textField.alignment = self.mContentAlignment
+    textField.integerValue = self.mValueGetterDelegate (inRowIndex) ?? -1
 
     let editable = self.mValueSetterDelegate != nil
-    inTextField.isEditable = editable
+    textField.isEditable = editable
     if editable {
-//    inTextField.delegate = self
-      inTextField.target = self
-      inTextField.action = #selector (Self.ebAction(_:))
+      textField.target = self
+      textField.action = #selector (Self.ebAction(_:))
     }
+    inTableCellView.addSubview (textField)
+    inTableCellView.textField = textField
+    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+    inTableCellView.addConstraints ([c1, c2])
   }
-
-  //····················································································································
-  // IMPLEMENTATION OF NSTextFieldDelegate
-  //····················································································································
-
-//  @objc func controlTextDidChange (_ inNotification : Notification) {
-//    NSSound.beep ()
-//  }
 
   //····················································································································
 
@@ -577,6 +606,56 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
       let rowIndex = textField.tag
       self.mValueSetterDelegate? (rowIndex, newValue)
     }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// InternalNSImageTableColumn
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate class InternalNSImageTableColumn : InternalTableColumn {
+
+  //····················································································································
+
+  private let mValueGetterDelegate : (_ inRow : Int) -> NSImage?
+
+  //····················································································································
+  // INIT
+  //····················································································································
+
+  init (withIdentifierNamed inName : String,
+        sortDelegate inSortDelegate : Optional < (_ inAscending : Bool) -> Void>,
+        contentAlignment inContentAlignment : NSTextAlignment,
+        valueGetterDelegate inGetterDelegate : @escaping (_ inRow : Int) -> NSImage?) {
+    self.mValueGetterDelegate = inGetterDelegate
+    super.init (withIdentifierNamed: inName, sortDelegate: inSortDelegate, contentAlignment: inContentAlignment)
+    self.isEditable = false
+  }
+
+  //····················································································································
+
+  required init (coder inCoder : NSCoder) {
+    fatalError ("init(coder:) has not been implemented")
+  }
+
+  //····················································································································
+
+  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+    let imageView = NSImageView ()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+
+    imageView.tag = inRowIndex
+    imageView.isEditable = false
+    imageView.image = self.mValueGetterDelegate (inRowIndex)
+
+    inTableCellView.addSubview (imageView)
+    inTableCellView.imageView = imageView
+    let c1 = NSLayoutConstraint (item: imageView, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+    let c2 = NSLayoutConstraint (item: imageView, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································

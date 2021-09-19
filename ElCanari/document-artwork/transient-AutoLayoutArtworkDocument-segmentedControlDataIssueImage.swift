@@ -13,61 +13,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_statusImage (
+func transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
-       _ root_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData],
-       _ root_emptyDrillFileExtension : Bool,         
-       _ self_documentFileName : String
+       _ root_hasDataWarning : Bool,                                     
+       _ root_emptyDrillFileExtension : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2
-        let n = root_fileGenerationParameterArray_fileExtension.count
-        var error = false
-        var warning = (n == 0)
-        var fileExtensionSet = Set <String> ()
-        var nameSet = Set <String> ()
-        for i in 0 ..< n {
-          let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
-          let name = root_fileGenerationParameterArray_name [i].name
-          if fileExtension == "" {
-            error = true
-          }else if fileExtensionSet.contains (fileExtension) {
-            error = true
-          }else{
-            fileExtensionSet.insert (fileExtension)
-          }
-          if name == "" {
-            error = true
-          }else if nameSet.contains (name) {
-            error = true
-          }else{
-            nameSet.insert (name)
-          }
-        }
-        if let issue = libraryDocumentFileNameIssue (self_documentFileName) {
-          switch issue.kind {
-          case .error :
-            error = true
-          case .warning :
-            warning = true
-          }
-        }
-        for parameter in root_fileGenerationParameterArray_hasNoData {
-          if let hasNoData = parameter.hasNoData, hasNoData {
-            warning = true
-          }
-        }
-        if root_emptyDrillFileExtension {
-          error = true
-        }
-     //---
-        var result = NSImage (named: okStatusImageName)!
-        if error {
-          result = NSImage (named: errorStatusImageName)!
-        }else if warning {
-          result = NSImage (named: warningStatusImageName)!
-        }
-        return result
+  var hasError = root_emptyDrillFileExtension
+  var idx = 0
+  while !hasError && (idx < root_fileGenerationParameterArray_fileExtension.count) {
+    if root_fileGenerationParameterArray_fileExtension [idx].fileExtension.isEmpty {
+      hasError = true
+    }
+    idx += 1
+  }
+  idx = 0
+  while !hasError && (idx < root_fileGenerationParameterArray_name.count) {
+    if root_fileGenerationParameterArray_name [idx].name.isEmpty {
+      hasError = true
+    }
+    idx += 1
+  }
+  return hasError
+   ? NSImage.statusError
+   : (root_hasDataWarning ? NSImage.statusWarning : NSImage (size: NSSize ()))
 //--- END OF USER ZONE 2
 }
 

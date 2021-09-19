@@ -55,6 +55,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: emptyDrillFileExtensionImage
+  //····················································································································
+
+  final let emptyDrillFileExtensionImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var emptyDrillFileExtensionImage : NSImage? {
+    switch self.emptyDrillFileExtensionImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: generatedFileCountString
   //····················································································································
 
@@ -64,6 +81,23 @@ import Cocoa
 
   final var generatedFileCountString : String? {
     switch self.generatedFileCountString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: segmentedControlDataIssueImage
+  //····················································································································
+
+  final let segmentedControlDataIssueImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var segmentedControlDataIssueImage : NSImage? {
+    switch self.segmentedControlDataIssueImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -168,6 +202,7 @@ import Cocoa
           .addPage (title: "Minima", tooltip: "Minima Editor", pageView: self.mMinimaPage)
           .addPage (title: "Data", tooltip: "DataEditor", pageView: self.mDataPage)
           .bind_selectedPage (self.rootObject.selectedTab_property)
+          .bind_segmentImage (self.segmentedControlDataIssueImage_property, segmentIndex:2)
         view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutHorizontalStackView ()
         do{
@@ -250,12 +285,13 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutTwoColumnsGridView ()
-        .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
+      let view_1_1 = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .regular)
       view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
+      let view_1_2 = AutoLayoutEnumPopUpButton (titles: LayerConfiguration.popupTitles (), size: .regular)
+        .bind_selectedIndex (self.rootObject.layerConfiguration_property)
       view_1.appendView (view_1_2)
+      let view_1_3 = AutoLayoutFlexibleSpace ()
+      view_1.appendView (view_1_3)
     }
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutTextView ()
@@ -343,10 +379,10 @@ import Cocoa
         .set (leftMargin: 20)
         .set (rightMargin: 20)
         .set (topMargin: 8)
+        .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
       view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutFlexibleSpace ()
       view_3.appendView (view_3_2)
@@ -361,223 +397,265 @@ import Cocoa
   //    VIEW mDataPage
   //····················································································································
 
-  lazy var mDataPage : AutoLayoutHorizontalStackView = {
-    let hStackView = AutoLayoutHorizontalStackView ()
-      .set (leftMargin: 8)
-      .set (rightMargin: 8)
-    let view_0 = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
+  lazy var mDataPage : AutoLayoutVerticalStackView = {
+    let vStackView = AutoLayoutVerticalStackView ()
+      .set (spacing: 0)
+    let view_0 = AutoLayoutHorizontalStackView ()
+      .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutLabel (bold: true, size: .small)
-        .bind_title (self.generatedFileCountString_property)
+      let view_0_0 = AutoLayoutFlexibleSpace ()
       view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
-      self.mDataController.bind_tableView (view_0_1)
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
-    }
-    hStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    hStackView.appendView (view_1)
-    let view_2 = AutoLayoutVerticalStackView ()
-      .set (topMargin: 8)
-    do{
-      let view_2_0 = AutoLayoutHorizontalStackView ()
+      let view_0_1 = AutoLayoutHorizontalStackView ()
         .setFirstBaselineAlignment ()
       do{
-        let view_2_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small)
+        let view_0_1_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small)
+        view_0_1.appendView (view_0_1_0)
+        let view_0_1_1 = AutoLayoutTextField (width: 56, size: .small)
+          .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
+        view_0_1.appendView (view_0_1_1)
+      }
+      view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutImageObserverView (size: .small)
+        .bind_image (self.emptyDrillFileExtensionImage_property)
+      view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      view_0.appendView (view_0_3)
+    }
+    vStackView.appendView (view_0)
+    let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
+    vStackView.appendView (view_1)
+    let view_2 = AutoLayoutHorizontalStackView ()
+      .set (leftMargin: 8)
+      .set (rightMargin: 8)
+    do{
+      let view_2_0 = AutoLayoutVerticalStackView ()
+        .set (topMargin: 8)
+      do{
+        let view_2_0_0 = AutoLayoutLabel (bold: true, size: .small)
+          .bind_title (self.generatedFileCountString_property)
         view_2_0.appendView (view_2_0_0)
-        let view_2_0_1 = AutoLayoutTextField (width: 150, size: .small)
-          .bind_value (self.mDataSelection.fileExtension_property, sendContinously:false)
+        let view_2_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
+        self.mDataController.bind_tableView (view_2_0_1)
         view_2_0.appendView (view_2_0_1)
         let view_2_0_2 = AutoLayoutFlexibleSpace ()
         view_2_0.appendView (view_2_0_2)
       }
       view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutFlexibleSpace ()
+      let view_2_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
       view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutHorizontalStackView ()
+      let view_2_2 = AutoLayoutVerticalStackView ()
+        .set (topMargin: 8)
       do{
-        let view_2_2_0 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small)
+        let view_2_2_0 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_0_0 = AutoLayoutHorizontalStackView ()
+            .setFirstBaselineAlignment ()
+          do{
+            let view_2_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small)
+            view_2_2_0_0.appendView (view_2_2_0_0_0)
+            let view_2_2_0_0_1 = AutoLayoutTextField (width: 56, size: .small)
+              .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
+            view_2_2_0_0.appendView (view_2_2_0_0_1)
+          }
+          view_2_2_0.appendView (view_2_2_0_0)
+          let view_2_2_0_1 = AutoLayoutImageObserverView (size: .small)
+            .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
+          view_2_2_0.appendView (view_2_2_0_1)
+          let view_2_2_0_2 = AutoLayoutFlexibleSpace ()
+          view_2_2_0.appendView (view_2_2_0_2)
+          let view_2_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small)
+            .setOrangeTextColor ()
+            .bind_hidden (.not (.id (self.mDataSelection.hasNoData_property)))
+          view_2_2_0.appendView (view_2_2_0_3)
+        }
         view_2_2.appendView (view_2_2_0)
         let view_2_2_1 = AutoLayoutFlexibleSpace ()
         view_2_2.appendView (view_2_2_1)
+        let view_2_2_2 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_2_0 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small)
+          view_2_2_2.appendView (view_2_2_2_0)
+          let view_2_2_2_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_2.appendView (view_2_2_2_1)
+        }
+        view_2_2.appendView (view_2_2_2)
+        let view_2_2_3 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_3_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_10 (), right: self.computeImplicitView_11 ())
+          view_2_2_3.appendView (view_2_2_3_0)
+          let view_2_2_3_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_3.appendView (view_2_2_3_1)
+        }
+        view_2_2.appendView (view_2_2_3)
+        let view_2_2_4 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_4_0 = AutoLayoutSwitch (title: "Front Side Component Names", size: .small)
+            .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
+          view_2_2_4.appendView (view_2_2_4_0)
+          let view_2_2_4_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_4.appendView (view_2_2_4_1)
+        }
+        view_2_2.appendView (view_2_2_4)
+        let view_2_2_5 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_5_0 = AutoLayoutSwitch (title: "Front Side Component Values", size: .small)
+            .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
+          view_2_2_5.appendView (view_2_2_5_0)
+          let view_2_2_5_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_5.appendView (view_2_2_5_1)
+        }
+        view_2_2.appendView (view_2_2_5)
+        let view_2_2_6 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_6_0 = AutoLayoutSwitch (title: "Front Side Package Legends", size: .small)
+            .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
+          view_2_2_6.appendView (view_2_2_6_0)
+          let view_2_2_6_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_6.appendView (view_2_2_6_1)
+        }
+        view_2_2.appendView (view_2_2_6)
+        let view_2_2_7 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_7_0 = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small)
+          view_2_2_7.appendView (view_2_2_7_0)
+          let view_2_2_7_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_7.appendView (view_2_2_7_1)
+        }
+        view_2_2.appendView (view_2_2_7)
+        let view_2_2_8 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_8_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
+          view_2_2_8.appendView (view_2_2_8_0)
+          let view_2_2_8_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_8.appendView (view_2_2_8_1)
+        }
+        view_2_2.appendView (view_2_2_8)
+        let view_2_2_9 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_9_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small)
+          view_2_2_9.appendView (view_2_2_9_0)
+          let view_2_2_9_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_9.appendView (view_2_2_9_1)
+        }
+        view_2_2.appendView (view_2_2_9)
+        let view_2_2_10 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_10_0 = AutoLayoutTwoColumnsGridView ()
+            .set (leftMargin: 20)
+            .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
+          view_2_2_10.appendView (view_2_2_10_0)
+          let view_2_2_10_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_10.appendView (view_2_2_10_1)
+        }
+        view_2_2.appendView (view_2_2_10)
+        let view_2_2_11 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_11_0 = AutoLayoutSwitch (title: "Back Side Component Names", size: .small)
+            .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
+          view_2_2_11.appendView (view_2_2_11_0)
+          let view_2_2_11_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_11.appendView (view_2_2_11_1)
+        }
+        view_2_2.appendView (view_2_2_11)
+        let view_2_2_12 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_12_0 = AutoLayoutSwitch (title: "Back Side Component Values", size: .small)
+            .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
+          view_2_2_12.appendView (view_2_2_12_0)
+          let view_2_2_12_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_12.appendView (view_2_2_12_1)
+        }
+        view_2_2.appendView (view_2_2_12)
+        let view_2_2_13 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_13_0 = AutoLayoutSwitch (title: "Back Side Package Legends", size: .small)
+            .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
+          view_2_2_13.appendView (view_2_2_13_0)
+          let view_2_2_13_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_13.appendView (view_2_2_13_1)
+        }
+        view_2_2.appendView (view_2_2_13)
+        let view_2_2_14 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_14_0 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small)
+          view_2_2_14.appendView (view_2_2_14_0)
+          let view_2_2_14_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_14.appendView (view_2_2_14_1)
+        }
+        view_2_2.appendView (view_2_2_14)
+        let view_2_2_15 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_15_0 = AutoLayoutSwitch (title: "Vias", size: .small)
+            .bind_value (self.mDataSelection.drawVias_property)
+          view_2_2_15.appendView (view_2_2_15_0)
+          let view_2_2_15_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_15.appendView (view_2_2_15_1)
+          let view_2_2_15_2 = AutoLayoutSwitch (title: "Internal Board Limits", size: .small)
+            .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
+          view_2_2_15.appendView (view_2_2_15_2)
+          let view_2_2_15_3 = AutoLayoutFlexibleSpace ()
+          view_2_2_15.appendView (view_2_2_15_3)
+          let view_2_2_15_4 = AutoLayoutSwitch (title: "Board Limits", size: .small)
+            .bind_value (self.mDataSelection.drawBoardLimits_property)
+          view_2_2_15.appendView (view_2_2_15_4)
+        }
+        view_2_2.appendView (view_2_2_15)
+        let view_2_2_16 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+          .setFirstBaselineAlignment ()
+        do{
+          let view_2_2_16_0 = AutoLayoutSwitch (title: "Pad Holes in PDF file, with diameter", size: .small)
+            .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
+          view_2_2_16.appendView (view_2_2_16_0)
+          let view_2_2_16_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_16.appendView (view_2_2_16_1)
+          let view_2_2_16_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
+            .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
+            .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
+          view_2_2_16.appendView (view_2_2_16_2)
+        }
+        view_2_2.appendView (view_2_2_16)
+        let view_2_2_17 = AutoLayoutHorizontalStackView ()
+        do{
+          let view_2_2_17_0 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small)
+          view_2_2_17.appendView (view_2_2_17_0)
+          let view_2_2_17_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_17.appendView (view_2_2_17_1)
+        }
+        view_2_2.appendView (view_2_2_17)
+        let view_2_2_18 = AutoLayoutHorizontalStackView ()
+          .set (leftMargin: 20)
+        do{
+          let view_2_2_18_0 = AutoLayoutSwitch (title: "Horizontal Mirror", size: .small)
+            .bind_value (self.mDataSelection.horizontalMirror_property)
+          view_2_2_18.appendView (view_2_2_18_0)
+          let view_2_2_18_1 = AutoLayoutFlexibleSpace ()
+          view_2_2_18.appendView (view_2_2_18_1)
+        }
+        view_2_2.appendView (view_2_2_18)
+        let view_2_2_19 = AutoLayoutFlexibleSpace ()
+        view_2_2.appendView (view_2_2_19)
       }
       view_2.appendView (view_2_2)
-      let view_2_3 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_3_0 = AutoLayoutTwoColumnsGridView ()
-          .set (leftMargin: 20)
-          .addFirstBaseLineAligned (left: self.computeImplicitView_12 (), right: self.computeImplicitView_13 ())
-          .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
-        view_2_3.appendView (view_2_3_0)
-        let view_2_3_1 = AutoLayoutFlexibleSpace ()
-        view_2_3.appendView (view_2_3_1)
-      }
-      view_2.appendView (view_2_3)
-      let view_2_4 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_4_0 = AutoLayoutSwitch (title: "Front Side Component Names", size: .small)
-          .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
-        view_2_4.appendView (view_2_4_0)
-        let view_2_4_1 = AutoLayoutFlexibleSpace ()
-        view_2_4.appendView (view_2_4_1)
-      }
-      view_2.appendView (view_2_4)
-      let view_2_5 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_5_0 = AutoLayoutSwitch (title: "Front Side Component Values", size: .small)
-          .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
-        view_2_5.appendView (view_2_5_0)
-        let view_2_5_1 = AutoLayoutFlexibleSpace ()
-        view_2_5.appendView (view_2_5_1)
-      }
-      view_2.appendView (view_2_5)
-      let view_2_6 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_6_0 = AutoLayoutSwitch (title: "Front Side Package Legends", size: .small)
-          .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
-        view_2_6.appendView (view_2_6_0)
-        let view_2_6_1 = AutoLayoutFlexibleSpace ()
-        view_2_6.appendView (view_2_6_1)
-      }
-      view_2.appendView (view_2_6)
-      let view_2_7 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_7_0 = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small)
-        view_2_7.appendView (view_2_7_0)
-        let view_2_7_1 = AutoLayoutFlexibleSpace ()
-        view_2_7.appendView (view_2_7_1)
-      }
-      view_2.appendView (view_2_7)
-      let view_2_8 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_8_0 = AutoLayoutTwoColumnsGridView ()
-          .set (leftMargin: 20)
-          .addFirstBaseLineAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
-          .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
-        view_2_8.appendView (view_2_8_0)
-        let view_2_8_1 = AutoLayoutFlexibleSpace ()
-        view_2_8.appendView (view_2_8_1)
-      }
-      view_2.appendView (view_2_8)
-      let view_2_9 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_9_0 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small)
-        view_2_9.appendView (view_2_9_0)
-        let view_2_9_1 = AutoLayoutFlexibleSpace ()
-        view_2_9.appendView (view_2_9_1)
-      }
-      view_2.appendView (view_2_9)
-      let view_2_10 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_10_0 = AutoLayoutTwoColumnsGridView ()
-          .set (leftMargin: 20)
-          .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
-          .addFirstBaseLineAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
-        view_2_10.appendView (view_2_10_0)
-        let view_2_10_1 = AutoLayoutFlexibleSpace ()
-        view_2_10.appendView (view_2_10_1)
-      }
-      view_2.appendView (view_2_10)
-      let view_2_11 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_11_0 = AutoLayoutSwitch (title: "Back Side Component Names", size: .small)
-          .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
-        view_2_11.appendView (view_2_11_0)
-        let view_2_11_1 = AutoLayoutFlexibleSpace ()
-        view_2_11.appendView (view_2_11_1)
-      }
-      view_2.appendView (view_2_11)
-      let view_2_12 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_12_0 = AutoLayoutSwitch (title: "Back Side Component Values", size: .small)
-          .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
-        view_2_12.appendView (view_2_12_0)
-        let view_2_12_1 = AutoLayoutFlexibleSpace ()
-        view_2_12.appendView (view_2_12_1)
-      }
-      view_2.appendView (view_2_12)
-      let view_2_13 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_13_0 = AutoLayoutSwitch (title: "Back Side Package Legends", size: .small)
-          .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
-        view_2_13.appendView (view_2_13_0)
-        let view_2_13_1 = AutoLayoutFlexibleSpace ()
-        view_2_13.appendView (view_2_13_1)
-      }
-      view_2.appendView (view_2_13)
-      let view_2_14 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_14_0 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small)
-        view_2_14.appendView (view_2_14_0)
-        let view_2_14_1 = AutoLayoutFlexibleSpace ()
-        view_2_14.appendView (view_2_14_1)
-      }
-      view_2.appendView (view_2_14)
-      let view_2_15 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_15_0 = AutoLayoutSwitch (title: "Vias", size: .small)
-          .bind_value (self.mDataSelection.drawVias_property)
-        view_2_15.appendView (view_2_15_0)
-        let view_2_15_1 = AutoLayoutFlexibleSpace ()
-        view_2_15.appendView (view_2_15_1)
-        let view_2_15_2 = AutoLayoutSwitch (title: "Internal Board Limits", size: .small)
-          .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
-        view_2_15.appendView (view_2_15_2)
-        let view_2_15_3 = AutoLayoutFlexibleSpace ()
-        view_2_15.appendView (view_2_15_3)
-        let view_2_15_4 = AutoLayoutSwitch (title: "Board Limits", size: .small)
-          .bind_value (self.mDataSelection.drawBoardLimits_property)
-        view_2_15.appendView (view_2_15_4)
-      }
-      view_2.appendView (view_2_15)
-      let view_2_16 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-        .setFirstBaselineAlignment ()
-      do{
-        let view_2_16_0 = AutoLayoutSwitch (title: "Pad Holes in PDF file, with diameter", size: .small)
-          .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
-        view_2_16.appendView (view_2_16_0)
-        let view_2_16_1 = AutoLayoutFlexibleSpace ()
-        view_2_16.appendView (view_2_16_1)
-        let view_2_16_2 = AutoLayoutCanariDimensionAndPopUp (size: .small)
-          .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
-          .bind_enabled (.id (self.mDataSelection.drawPadHolesInPDF_property))
-        view_2_16.appendView (view_2_16_2)
-      }
-      view_2.appendView (view_2_16)
-      let view_2_17 = AutoLayoutHorizontalStackView ()
-      do{
-        let view_2_17_0 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small)
-        view_2_17.appendView (view_2_17_0)
-        let view_2_17_1 = AutoLayoutFlexibleSpace ()
-        view_2_17.appendView (view_2_17_1)
-      }
-      view_2.appendView (view_2_17)
-      let view_2_18 = AutoLayoutHorizontalStackView ()
-        .set (leftMargin: 20)
-      do{
-        let view_2_18_0 = AutoLayoutSwitch (title: "Horizontal Mirror", size: .small)
-          .bind_value (self.mDataSelection.horizontalMirror_property)
-        view_2_18.appendView (view_2_18_0)
-        let view_2_18_1 = AutoLayoutFlexibleSpace ()
-        view_2_18.appendView (view_2_18_1)
-      }
-      view_2.appendView (view_2_18)
-      let view_2_19 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_19)
     }
-    hStackView.appendView (view_2)
-    return hStackView
+    vStackView.appendView (view_2)
+    return vStackView
   } ()
 
   //····················································································································
@@ -585,7 +663,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Layout", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
     return view
   }
 
@@ -594,8 +672,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: LayerConfiguration.popupTitles (), size: .regular)
-      .bind_selectedIndex (self.rootObject.layerConfiguration_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
     return view
   }
 
@@ -604,7 +682,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
     return view
   }
 
@@ -613,8 +691,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_3 () -> NSView {
-    let view = AutoLayoutTextField (width: 56, size: .regular)
-      .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:false)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
     return view
   }
 
@@ -623,7 +701,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
     return view
   }
 
@@ -633,7 +711,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
     return view
   }
 
@@ -642,7 +720,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for PHD", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
     return view
   }
 
@@ -652,7 +730,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_7 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
     return view
   }
 
@@ -661,7 +739,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_8 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for OAR", bold: false, size: .regular)
+    let view = AutoLayoutSwitch (title: "Legend Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
     return view
   }
 
@@ -670,8 +749,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_9 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property)
+    let view = AutoLayoutSwitch (title: "Layout Front Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
     return view
   }
 
@@ -680,7 +759,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_10 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Minimum Value for Board Limit Width", bold: false, size: .regular)
+    let view = AutoLayoutSwitch (title: "Front Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksTopSide_property)
     return view
   }
 
@@ -689,8 +769,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_11 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property)
+    let view = AutoLayoutSwitch (title: "Front Side Pads", size: .small)
+      .bind_value (self.mDataSelection.drawPadsTopSide_property)
     return view
   }
 
@@ -699,8 +779,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_12 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Legend Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendTopSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -709,8 +790,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_13 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Layout Front Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutTopSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -719,8 +801,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Front Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksTopSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -729,8 +812,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Front Side Pads", size: .small)
-      .bind_value (self.mDataSelection.drawPadsTopSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -739,9 +823,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -750,9 +834,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -762,8 +846,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_18 () -> NSView {
     let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -773,8 +857,8 @@ import Cocoa
 
   fileprivate final func computeImplicitView_19 () -> NSView {
     let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
       .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -890,10 +974,10 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_AutoLayoutArtworkDocument_statusMessage (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusMessage (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -904,7 +988,29 @@ import Cocoa
     }
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusMessage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusMessage_property)
+    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusMessage_property)
     self.documentFileName_property.addEBObserver (self.statusMessage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
+  //--- Atomic property: emptyDrillFileExtensionImage
+    self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
@@ -929,13 +1035,36 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: segmentedControlDataIssueImage
+    self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.hasDataWarning_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+          return .single (transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (v0, v1, v2, v3))
+        case (.multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.segmentedControlDataIssueImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.segmentedControlDataIssueImage_property)
+    self.rootObject.hasDataWarning_property.addEBObserver (self.segmentedControlDataIssueImage_property)
+    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.segmentedControlDataIssueImage_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
-          return .single (transient_AutoLayoutArtworkDocument_statusImage (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection, unwSelf.documentFileName_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+          return .single (transient_AutoLayoutArtworkDocument_statusImage (v0, v1, v2, v3, v4))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -946,6 +1075,8 @@ import Cocoa
     }
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusImage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusImage_property)
+    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusImage_property)
     self.documentFileName_property.addEBObserver (self.statusImage_property)
     if LOG_OPERATION_DURATION {
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
@@ -1007,10 +1138,19 @@ import Cocoa
     self.mDataSelection.unbind_selection ()
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusMessage_property)
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusMessage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_hasNoData (self.statusMessage_property)
+    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.statusMessage_property)
     // self.documentFileName_property.removeEBObserver (self.statusMessage_property)
+    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtensionImage_property)
     // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.segmentedControlDataIssueImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.segmentedControlDataIssueImage_property)
+    // self.rootObject.hasDataWarning_property.removeEBObserver (self.segmentedControlDataIssueImage_property)
+    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.segmentedControlDataIssueImage_property)
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusImage_property)
     // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusImage_property)
+    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_hasNoData (self.statusImage_property)
+    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.statusImage_property)
     // self.documentFileName_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets

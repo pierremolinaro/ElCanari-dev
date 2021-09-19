@@ -43,6 +43,9 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       oldValue.name_property.removeEBObserver (self.name_property) // Stored property
       oldValue.measurementUnitForPadHoleInPDF_property.removeEBObserver (self.measurementUnitForPadHoleInPDF_property) // Stored property
       oldValue.padHoleDiameterInPDF_property.removeEBObserver (self.padHoleDiameterInPDF_property) // Stored property
+      oldValue.hasNoData_property.removeEBObserver (self.hasNoData_property) // Transient property
+      oldValue.parameterStatusImage_property.removeEBObserver (self.parameterStatusImage_property) // Transient property
+      oldValue.emptyFileExtensionImage_property.removeEBObserver (self.emptyFileExtensionImage_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mInternalValue {
@@ -73,6 +76,9 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       newValue.name_property.addEBObserver (self.name_property) // Stored property
       newValue.measurementUnitForPadHoleInPDF_property.addEBObserver (self.measurementUnitForPadHoleInPDF_property) // Stored property
       newValue.padHoleDiameterInPDF_property.addEBObserver (self.padHoleDiameterInPDF_property) // Stored property
+      newValue.hasNoData_property.addEBObserver (self.hasNoData_property) // Transient property
+      newValue.parameterStatusImage_property.addEBObserver (self.parameterStatusImage_property) // Transient property
+      newValue.emptyFileExtensionImage_property.addEBObserver (self.emptyFileExtensionImage_property) // Transient property
     }
   }
 
@@ -237,6 +243,24 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let padHoleDiameterInPDF_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'hasNoData' transient property
+  //····················································································································
+
+  final let hasNoData_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'parameterStatusImage' transient property
+  //····················································································································
+
+  final let parameterStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+
+  //····················································································································
+  //   Observers of 'emptyFileExtensionImage' transient property
+  //····················································································································
+
+  final let emptyFileExtensionImage_property = EBGenericTransientProperty <NSImage?> ()
 
   //····················································································································
   //   INIT
@@ -638,6 +662,51 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.padHoleDiameterInPDF_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasNoData transient property
+    self.hasNoData_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasNoData_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure parameterStatusImage transient property
+    self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.parameterStatusImage_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure emptyFileExtensionImage transient property
+    self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.emptyFileExtensionImage_property.selection {
         case .empty :
           return .empty
         case .multiple :

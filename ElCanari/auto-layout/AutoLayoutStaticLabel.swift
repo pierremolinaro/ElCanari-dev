@@ -84,6 +84,20 @@ final class AutoLayoutStaticLabel : NSTextField, EBUserClassNameProtocol {
 
   //····················································································································
 
+  final func setOrangeTextColor () -> Self {
+    self.textColor = .orange
+    return self
+  }
+
+  //····················································································································
+
+  final func setRedTextColor () -> Self {
+    self.textColor = .red
+    return self
+  }
+
+  //····················································································································
+
   override var intrinsicContentSize : NSSize {
     var s = super.intrinsicContentSize
     if let w = self.mWidth {

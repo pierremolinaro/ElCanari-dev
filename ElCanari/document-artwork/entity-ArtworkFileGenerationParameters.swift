@@ -167,6 +167,24 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_hasNoData : AnyObject {
+  var hasNoData : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_parameterStatusImage : AnyObject {
+  var parameterStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_emptyFileExtensionImage : AnyObject {
+  var emptyFileExtensionImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -197,7 +215,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_horizontalMirror,
          ArtworkFileGenerationParameters_name,
          ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
-         ArtworkFileGenerationParameters_padHoleDiameterInPDF {
+         ArtworkFileGenerationParameters_padHoleDiameterInPDF,
+         ArtworkFileGenerationParameters_hasNoData,
+         ArtworkFileGenerationParameters_parameterStatusImage,
+         ArtworkFileGenerationParameters_emptyFileExtensionImage {
 
   //····················································································································
   //   Atomic property: drawBoardLimits
@@ -626,7 +647,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   final func reset_fileExtension_toDefaultValue () {
-    self.fileExtension = "?"
+    self.fileExtension = ""
   }
 
   //····················································································································
@@ -713,6 +734,83 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: mArtwork
+  //····················································································································
+
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+
+  //····················································································································
+
+  final var mArtwork : ArtworkRoot? {
+    get {
+      return self.mArtwork_property.propval
+    }
+    set {
+      if self.mArtwork_property.propval != nil {
+        self.mArtwork_property.setProp (nil)
+      }
+      if newValue != nil {
+        self.mArtwork_property.setProp (newValue)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final let mArtwork_none = EBGenericTransientProperty <Bool> ()
+
+  //····················································································································
+  //   Transient property: hasNoData
+  //····················································································································
+
+  final let hasNoData_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasNoData : Bool? {
+    switch self.hasNoData_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: parameterStatusImage
+  //····················································································································
+
+  final let parameterStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var parameterStatusImage : NSImage? {
+    switch self.parameterStatusImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: emptyFileExtensionImage
+  //····················································································································
+
+  final let emptyFileExtensionImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var emptyFileExtensionImage : NSImage? {
+    switch self.emptyFileExtensionImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -739,12 +837,98 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.fileExtension_property = EBStoredProperty_String (defaultValue: "?", undoManager: ebUndoManager)
+    self.fileExtension_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.name_property = EBStoredProperty_String (defaultValue: "Unnamed", undoManager: ebUndoManager)
     self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    self.mArtwork_none.mReadModelFunction = { [weak self] in // §
+      if let uwSelf = self {
+        return .single (uwSelf.mArtwork_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.addEBObserver (self.mArtwork_none)
+  //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
+    self.mArtwork_property.ebUndoManager = self.ebUndoManager
+    self.mArtwork_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.fileGenerationParameterArray_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.fileGenerationParameterArray_property.remove (me) } }
+    )
+  //--- Atomic property: hasNoData
+    self.hasNoData_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.drawBoardLimits_property.selection, unwSelf.drawInternalBoardLimits_property.selection, unwSelf.drawComponentNamesTopSide_property.selection, unwSelf.drawComponentNamesBottomSide_property.selection, unwSelf.drawComponentValuesTopSide_property.selection, unwSelf.drawComponentValuesBottomSide_property.selection, unwSelf.drawPackageLegendTopSide_property.selection, unwSelf.drawPackageLegendBottomSide_property.selection, unwSelf.drawPadHolesInPDF_property.selection, unwSelf.drawPadsTopSide_property.selection, unwSelf.drawPadsBottomSide_property.selection, unwSelf.drawTextsLayoutTopSide_property.selection, unwSelf.drawTextsLayoutBottomSide_property.selection, unwSelf.drawTextsLegendTopSide_property.selection, unwSelf.drawTextsLegendBottomSide_property.selection, unwSelf.drawTracksTopSide_property.selection, unwSelf.drawTracksInner1Layer_property.selection, unwSelf.drawTracksInner2Layer_property.selection, unwSelf.drawTracksInner3Layer_property.selection, unwSelf.drawTracksInner4Layer_property.selection, unwSelf.drawTracksBottomSide_property.selection, unwSelf.drawVias_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22)) :
+          return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.hasNoData_property)
+    self.drawBoardLimits_property.addEBObserver (self.hasNoData_property)
+    self.drawInternalBoardLimits_property.addEBObserver (self.hasNoData_property)
+    self.drawComponentNamesTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawComponentNamesBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawComponentValuesTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawComponentValuesBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawPackageLegendTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawPackageLegendBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawPadHolesInPDF_property.addEBObserver (self.hasNoData_property)
+    self.drawPadsTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawPadsBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTextsLayoutTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTextsLayoutBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTextsLegendTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTextsLegendBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksTopSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksInner1Layer_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksInner2Layer_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksInner3Layer_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksInner4Layer_property.addEBObserver (self.hasNoData_property)
+    self.drawTracksBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawVias_property.addEBObserver (self.hasNoData_property)
+  //--- Atomic property: parameterStatusImage
+    self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.name_property.selection, unwSelf.fileExtension_property.selection, unwSelf.hasNoData_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2)) :
+          return .single (transient_ArtworkFileGenerationParameters_parameterStatusImage (v0, v1, v2))
+        case (.multiple, .multiple, .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.name_property.addEBObserver (self.parameterStatusImage_property)
+    self.fileExtension_property.addEBObserver (self.parameterStatusImage_property)
+    self.hasNoData_property.addEBObserver (self.parameterStatusImage_property)
+  //--- Atomic property: emptyFileExtensionImage
+    self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.fileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkFileGenerationParameters_emptyFileExtensionImage (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.fileExtension_property.addEBObserver (self.emptyFileExtensionImage_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
@@ -781,6 +965,33 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    // self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.hasNoData_property)
+    // self.drawBoardLimits_property.removeEBObserver (self.hasNoData_property)
+    // self.drawInternalBoardLimits_property.removeEBObserver (self.hasNoData_property)
+    // self.drawComponentNamesTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawComponentNamesBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawComponentValuesTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawComponentValuesBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawPackageLegendTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawPackageLegendBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawPadHolesInPDF_property.removeEBObserver (self.hasNoData_property)
+    // self.drawPadsTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawPadsBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTextsLayoutTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTextsLayoutBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTextsLegendTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTextsLegendBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksTopSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksInner1Layer_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksInner2Layer_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksInner3Layer_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksInner4Layer_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTracksBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawVias_property.removeEBObserver (self.hasNoData_property)
+    // self.name_property.removeEBObserver (self.parameterStatusImage_property)
+    // self.fileExtension_property.removeEBObserver (self.parameterStatusImage_property)
+    // self.hasNoData_property.removeEBObserver (self.parameterStatusImage_property)
+    // self.fileExtension_property.removeEBObserver (self.emptyFileExtensionImage_property)
   //--- Unregister properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: nil)
     self.drawComponentNamesBottomSide_property.setSignatureObserver (observer: nil)
@@ -1039,8 +1250,39 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       valueExplorer: &self.padHoleDiameterInPDF_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y: &y, view: view)
+    createEntryForPropertyNamed (
+      "hasNoData",
+      idx: self.hasNoData_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasNoData_property.mObserverExplorer,
+      valueExplorer: &self.hasNoData_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "parameterStatusImage",
+      idx: self.parameterStatusImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.parameterStatusImage_property.mObserverExplorer,
+      valueExplorer: &self.parameterStatusImage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "emptyFileExtensionImage",
+      idx: self.emptyFileExtensionImage_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.emptyFileExtensionImage_property.mObserverExplorer,
+      valueExplorer: &self.emptyFileExtensionImage_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y: &y, view: view)
     createEntryForTitle ("ToMany Relationships", y: &y, view: view)
+    createEntryForToOneRelationshipNamed (
+      "mArtwork",
+      idx:self.mArtwork_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mArtwork_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y: &y, view: view)
   }
 
@@ -1130,6 +1372,9 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mObserverExplorer = nil
     self.padHoleDiameterInPDF_property.mValueExplorer = nil
+  //--- To one property: mArtwork
+    self.mArtwork_property.mObserverExplorer = nil
+    self.mArtwork_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -1148,6 +1393,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mArtwork = nil
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1221,6 +1467,17 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+  //--- To one property: mArtwork
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mArtwork",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ArtworkRoot {
+        self.mArtwork_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -1321,6 +1578,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     ioString += "measurementUnitForPadHoleInPDF\n"
     ioString += "padHoleDiameterInPDF\n"
   //--- To one relationships
+    ioString += "mArtwork\n"
   //--- To many relationships
   }
 
@@ -1386,6 +1644,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.padHoleDiameterInPDF.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
+    if let object = self.mArtwork {
+      ioData.append (base62Encoded: object.savingIndex)
+    }
+    ioData.append (ascii: .lineFeed)
   //--- To many relationships
   }
 
@@ -1482,6 +1744,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         self.padHoleDiameterInPDF = value
       }
     //--- To one relationships
+      if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
+        let object = inObjectArray [objectIndex] as! ArtworkRoot
+        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mArtwork = object }
+      }
     //--- To many relationships
     }
   //--- End of addOperation
@@ -1493,6 +1759,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
+      objects.append (object)
+    }
   }
 
   //····················································································································
@@ -1501,6 +1771,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mArtwork
+    if let object = self.mArtwork {
+      objects.append (object)
+    }
   }
 
   //····················································································································

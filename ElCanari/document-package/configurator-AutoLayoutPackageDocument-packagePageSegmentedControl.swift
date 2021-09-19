@@ -34,7 +34,7 @@ extension AutoLayoutPackageDocument {
 
 //         inOutlet.setLabel ("⚙️", forSegment: 2)
 
-         inOutlet.setImage (NSImage (named: "NSStatusAvailable"), forSegment: 3)
+         inOutlet.setImage (NSImage.statusSuccess, forSegment: 3)
          inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
          inOutlet.setLabel ("", forSegment: 3)
 //--- END OF USER ZONE 2

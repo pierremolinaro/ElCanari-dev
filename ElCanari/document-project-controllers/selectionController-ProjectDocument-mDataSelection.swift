@@ -143,16 +143,32 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
   var drawVias_property = EBPropertyProxy_Bool ()
 
   //····················································································································
+  //   Selection observable property: emptyFileExtensionImage
+  //····················································································································
+
+  var emptyFileExtensionImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
   //   Selection observable property: fileExtension
   //····················································································································
 
   var fileExtension_property = EBPropertyProxy_String ()
 
   //····················································································································
+  //   Selection observable property: hasNoData
+  //····················································································································
+
+  var hasNoData_property = EBTransientProperty_Bool ()
+
+  //····················································································································
   //   Selection observable property: horizontalMirror
   //····················································································································
 
   var horizontalMirror_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
+  //   Selection observable property: mArtwork
+  //····················································································································
 
   //····················································································································
   //   Selection observable property: measurementUnitForPadHoleInPDF
@@ -171,6 +187,12 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
   //····················································································································
 
   var padHoleDiameterInPDF_property = EBPropertyProxy_Int ()
+
+  //····················································································································
+  //   Selection observable property: parameterStatusImage
+  //····················································································································
+
+  var parameterStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
   //   BIND SELECTION
@@ -204,11 +226,14 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
     self.bind_property_drawTracksInner4Layer (model: model)
     self.bind_property_drawTracksTopSide (model: model)
     self.bind_property_drawVias (model: model)
+    self.bind_property_emptyFileExtensionImage (model: model)
     self.bind_property_fileExtension (model: model)
+    self.bind_property_hasNoData (model: model)
     self.bind_property_horizontalMirror (model: model)
     self.bind_property_measurementUnitForPadHoleInPDF (model: model)
     self.bind_property_name (model: model)
     self.bind_property_padHoleDiameterInPDF (model: model)
+    self.bind_property_parameterStatusImage (model: model)
   }
 
   //····················································································································
@@ -326,11 +351,17 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
     self.drawVias_property.mWriteModelFunction = nil 
     self.drawVias_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawVias (self.drawVias_property)
+  //--- emptyFileExtensionImage
+    self.emptyFileExtensionImage_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_emptyFileExtensionImage (self.emptyFileExtensionImage_property)
   //--- fileExtension
     self.fileExtension_property.mReadModelFunction = nil 
     self.fileExtension_property.mWriteModelFunction = nil 
     self.fileExtension_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_fileExtension (self.fileExtension_property)
+  //--- hasNoData
+    self.hasNoData_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_hasNoData (self.hasNoData_property)
   //--- horizontalMirror
     self.horizontalMirror_property.mReadModelFunction = nil 
     self.horizontalMirror_property.mWriteModelFunction = nil 
@@ -351,6 +382,9 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
     self.padHoleDiameterInPDF_property.mWriteModelFunction = nil 
     self.padHoleDiameterInPDF_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
+  //--- parameterStatusImage
+    self.parameterStatusImage_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_parameterStatusImage (self.parameterStatusImage_property)
   //---
     self.mModel = nil
   }
@@ -2200,6 +2234,46 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
 
   //···················································································································*
 
+  private final func bind_property_emptyFileExtensionImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_emptyFileExtensionImage (self.emptyFileExtensionImage_property)
+    self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSImage> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.emptyFileExtensionImage_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_fileExtension (self.fileExtension_property)
     self.fileExtension_property.mReadModelFunction = { [weak self] in
@@ -2264,6 +2338,46 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_hasNoData (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_hasNoData (self.hasNoData_property)
+    self.hasNoData_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.hasNoData_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }
@@ -2544,6 +2658,46 @@ final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_parameterStatusImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_parameterStatusImage (self.parameterStatusImage_property)
+    self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSImage> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.parameterStatusImage_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

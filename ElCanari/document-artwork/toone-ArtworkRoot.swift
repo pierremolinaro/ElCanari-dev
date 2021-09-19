@@ -31,6 +31,8 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property) // Stored property
       oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
+      oldValue.hasDataWarning_property.removeEBObserver (self.hasDataWarning_property) // Transient property
+      oldValue.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property) // Transient property
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
@@ -50,6 +52,8 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       newValue.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property) // Stored property
       newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
+      newValue.hasDataWarning_property.addEBObserver (self.hasDataWarning_property) // Transient property
+      newValue.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property) // Transient property
       newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   }
@@ -143,6 +147,18 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let hasSixLayers_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'hasDataWarning' transient property
+  //····················································································································
+
+  final let hasDataWarning_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'emptyDrillFileExtension' transient property
+  //····················································································································
+
+  final let emptyDrillFileExtension_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
@@ -394,6 +410,36 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.hasSixLayers_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure hasDataWarning transient property
+    self.hasDataWarning_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.hasDataWarning_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure emptyDrillFileExtension transient property
+    self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.emptyDrillFileExtension_property.selection {
         case .empty :
           return .empty
         case .multiple :

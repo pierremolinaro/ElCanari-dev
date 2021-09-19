@@ -13,30 +13,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension AutoLayoutSymbolDocument {
-  final func configure_symbolPageSegmentedControl (_ inOutlet : AutoLayoutSegmentedControlWithPages) {
+func transient_ArtworkRoot_emptyDrillFileExtension (
+       _ self_drillDataFileExtension : String
+) -> Bool {
 //--- START OF USER ZONE 2
-         inOutlet.setImage (NSImage (named: "editorInspector"), forSegment: 0)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 0)
-         inOutlet.setLabel ("", forSegment: 0)
-
-         inOutlet.setImage (NSImage (named: "magnifyingGlass"), forSegment: 1)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 1)
-         inOutlet.setLabel ("", forSegment: 1)
-
-         inOutlet.setImage (NSImage (named: "magnifyingGlass"), forSegment: 2)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 2)
-         inOutlet.setLabel ("P", forSegment: 2)
-
-         inOutlet.setImage (NSImage.statusSuccess, forSegment: 3)
-         inOutlet.setImageScaling (.scaleProportionallyUpOrDown, forSegment: 3)
-         inOutlet.setLabel ("", forSegment: 3)
+         return self_drillDataFileExtension.isEmpty
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

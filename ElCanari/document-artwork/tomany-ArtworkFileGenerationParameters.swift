@@ -42,6 +42,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserversOf_name_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_hasNoData_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_parameterStatusImage_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_emptyFileExtensionImage_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_drawBoardLimits_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (inAddedSet) // Stored property
@@ -70,6 +73,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserversOf_name_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_hasNoData_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_parameterStatusImage_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_emptyFileExtensionImage_toElementsOfSet (inAddedSet) // Transient property
   }
 
   //····················································································································
@@ -1661,6 +1667,174 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasNoData' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasNoData = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasNoData (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasNoData.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasNoData_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasNoData (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasNoData.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasNoData_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasNoData_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasNoData.apply { (_ observer : EBEvent) in
+        managedObject.hasNoData_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasNoData_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasNoData.apply { (_ observer : EBEvent) in
+        managedObject.hasNoData_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'parameterStatusImage' transient property
+  //····················································································································
+
+  private final var mObserversOf_parameterStatusImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_parameterStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_parameterStatusImage.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.parameterStatusImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_parameterStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_parameterStatusImage.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.parameterStatusImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_parameterStatusImage_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_parameterStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.parameterStatusImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_parameterStatusImage_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_parameterStatusImage.apply { (_ observer : EBEvent) in
+        managedObject.parameterStatusImage_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'emptyFileExtensionImage' transient property
+  //····················································································································
+
+  private final var mObserversOf_emptyFileExtensionImage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_emptyFileExtensionImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_emptyFileExtensionImage.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.emptyFileExtensionImage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_emptyFileExtensionImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_emptyFileExtensionImage.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.emptyFileExtensionImage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_emptyFileExtensionImage_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_emptyFileExtensionImage.apply { (_ observer : EBEvent) in
+        managedObject.emptyFileExtensionImage_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_emptyFileExtensionImage_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      self.mObserversOf_emptyFileExtensionImage.apply { (_ observer : EBEvent) in
+        managedObject.emptyFileExtensionImage_property.removeEBObserver (observer)
       }
     }
   }

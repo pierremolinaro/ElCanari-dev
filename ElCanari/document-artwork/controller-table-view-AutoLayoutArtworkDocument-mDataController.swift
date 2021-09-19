@@ -137,6 +137,8 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
     self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
   //--- Observe 'name' column
     self.sortedArray_property.addEBObserverOf_name (self.mSortedArrayValuesObserver)
+  //--- Observe 'parameterStatusImage' column
+    self.sortedArray_property.addEBObserverOf_parameterStatusImage (self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {
@@ -172,23 +174,20 @@ final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, A
       headerAlignment: .left,
       contentAlignment: .left
     )
+  //--- Configure 'parameterStatusImage' column
+    inTableView.addColumn_NSImage (
+      valueGetterDelegate: { [weak self] in return self?.sortedArray_property.propval [$0].parameterStatusImage },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "",
+      minWidth: 30,
+      maxWidth: 30,
+      headerAlignment: .center,
+      contentAlignment: .center
+    )
   //---
     self.mTableViewArray.append (inTableView)
-  //---
-//    inTableView.sortAndReloadData ()
   }
-
-  //····················································································································
-
-/*  final func unbind_tableView (_ inTableView : EBTableView?) {
-    if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
-      self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
-      self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
-      self.mTableViewArray.remove (at: idx)
-      self.mTableViewDataSourceControllerArray.remove (at: idx)
-      self.mTableViewSelectionControllerArray.remove (at: idx)
-    }
-  } */
 
   //····················································································································
   //   Select a single object

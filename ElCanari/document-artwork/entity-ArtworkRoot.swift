@@ -96,6 +96,18 @@ protocol ArtworkRoot_hasSixLayers : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkRoot_hasDataWarning : AnyObject {
+  var hasDataWarning : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_emptyDrillFileExtension : AnyObject {
+  var emptyDrillFileExtension : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
@@ -120,6 +132,8 @@ final class ArtworkRoot : EBManagedObject,
          ArtworkRoot_drillDataFileExtension,
          ArtworkRoot_hasInnerElements,
          ArtworkRoot_hasSixLayers,
+         ArtworkRoot_hasDataWarning,
+         ArtworkRoot_emptyDrillFileExtension,
          ArtworkRoot_signatureForERCChecking {
 
   //····················································································································
@@ -359,7 +373,7 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final func reset_drillDataFileExtension_toDefaultValue () {
-    self.drillDataFileExtension = "drf"
+    self.drillDataFileExtension = "DRF"
   }
 
   //····················································································································
@@ -419,6 +433,40 @@ final class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: hasDataWarning
+  //····················································································································
+
+  final let hasDataWarning_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var hasDataWarning : Bool? {
+    switch self.hasDataWarning_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: emptyDrillFileExtension
+  //····················································································································
+
+  final let emptyDrillFileExtension_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  final var emptyDrillFileExtension : Bool? {
+    switch self.emptyDrillFileExtension_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: signatureForERCChecking
   //····················································································································
 
@@ -452,10 +500,14 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf", undoManager: ebUndoManager)
+    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-  //--- To many property: fileGenerationParameterArray (no option)
+  //--- To many property: fileGenerationParameterArray (has opposite relationship)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
+    self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
+      resetter: { inObject in inObject.mArtwork_property.setProp (nil) }
+    )
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -488,6 +540,38 @@ final class ArtworkRoot : EBManagedObject,
       }
     }
     self.layerConfiguration_property.addEBObserver (self.hasSixLayers_property)
+  //--- Atomic property: hasDataWarning
+    self.hasDataWarning_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.fileGenerationParameterArray_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkRoot_hasDataWarning (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.hasDataWarning_property)
+  //--- Atomic property: emptyDrillFileExtension
+    self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.drillDataFileExtension_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ArtworkRoot_emptyDrillFileExtension (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -508,6 +592,10 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
   //--- Install undoers and opposite setter for relationships
+    self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
+      resetter: { inObject in inObject.mArtwork_property.setProp (nil) }
+    )
   //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.drillDataFileExtension_property.setSignatureObserver (observer: self)
@@ -527,6 +615,8 @@ final class ArtworkRoot : EBManagedObject,
     super.removeAllObservers ()
     // self.layerConfiguration_property.removeEBObserver (self.hasInnerElements_property)
     // self.layerConfiguration_property.removeEBObserver (self.hasSixLayers_property)
+    // self.fileGenerationParameterArray_property.removeEBObserverOf_hasNoData (self.hasDataWarning_property)
+    // self.drillDataFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property)
     // self.minPPTPTTTW_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.minValueForOARinEBUnit_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.minValueForBoardLimitWidth_property.removeEBObserver (self.signatureForERCChecking_property)
@@ -674,6 +764,22 @@ final class ArtworkRoot : EBManagedObject,
       view: view,
       observerExplorer: &self.hasSixLayers_property.mObserverExplorer,
       valueExplorer: &self.hasSixLayers_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "hasDataWarning",
+      idx: self.hasDataWarning_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.hasDataWarning_property.mObserverExplorer,
+      valueExplorer: &self.hasDataWarning_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "emptyDrillFileExtension",
+      idx: self.emptyDrillFileExtension_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.emptyDrillFileExtension_property.mObserverExplorer,
+      valueExplorer: &self.emptyDrillFileExtension_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "signatureForERCChecking",

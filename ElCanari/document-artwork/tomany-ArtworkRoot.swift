@@ -30,6 +30,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_hasDataWarning_fromElementsOfSet (inRemovedSet) // Transient property
+    self.removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
   //--- Add observers to added objects
     self.addEBObserversOf_layerConfiguration_toElementsOfSet (inAddedSet) // Stored property
@@ -47,6 +49,8 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_hasDataWarning_toElementsOfSet (inAddedSet) // Transient property
+    self.addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
   }
 
@@ -925,6 +929,118 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     for managedObject in inSet {
       self.mObserversOf_hasSixLayers.apply { (_ observer : EBEvent) in
         managedObject.hasSixLayers_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'hasDataWarning' transient property
+  //····················································································································
+
+  private final var mObserversOf_hasDataWarning = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_hasDataWarning (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_hasDataWarning.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasDataWarning_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_hasDataWarning (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_hasDataWarning.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.hasDataWarning_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_hasDataWarning_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasDataWarning.apply { (_ observer : EBEvent) in
+        managedObject.hasDataWarning_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_hasDataWarning_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_hasDataWarning.apply { (_ observer : EBEvent) in
+        managedObject.hasDataWarning_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'emptyDrillFileExtension' transient property
+  //····················································································································
+
+  private final var mObserversOf_emptyDrillFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_emptyDrillFileExtension (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_emptyDrillFileExtension.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.emptyDrillFileExtension_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_emptyDrillFileExtension (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_emptyDrillFileExtension.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.emptyDrillFileExtension_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_emptyDrillFileExtension_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_emptyDrillFileExtension.apply { (_ observer : EBEvent) in
+        managedObject.emptyDrillFileExtension_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_emptyDrillFileExtension_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_emptyDrillFileExtension.apply { (_ observer : EBEvent) in
+        managedObject.emptyDrillFileExtension_property.removeEBObserver (observer)
       }
     }
   }

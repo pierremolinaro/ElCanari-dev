@@ -208,21 +208,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : BaseObject, 
     )
   //---
     self.mTableViewArray.append (inTableView)
-  //---
-//    inTableView.sortAndReloadData ()
   }
-
-  //····················································································································
-
-/*  final func unbind_tableView (_ inTableView : EBTableView?) {
-    if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
-      self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
-      self.mInternalSelectedArrayProperty.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
-      self.mTableViewArray.remove (at: idx)
-      self.mTableViewDataSourceControllerArray.remove (at: idx)
-      self.mTableViewSelectionControllerArray.remove (at: idx)
-    }
-  } */
 
   //····················································································································
   //   Select a single object

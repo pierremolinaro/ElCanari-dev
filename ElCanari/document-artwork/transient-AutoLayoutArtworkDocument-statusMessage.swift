@@ -16,6 +16,8 @@ import Cocoa
 func transient_AutoLayoutArtworkDocument_statusMessage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
+       _ root_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData],
+       _ root_emptyDrillFileExtension : Bool,           
        _ self_documentFileName : String
 ) -> String {
 //--- START OF USER ZONE 2
@@ -55,9 +57,24 @@ func transient_AutoLayoutArtworkDocument_statusMessage (
           switch issue.kind {
           case .error :
             result += "Error: " + issue.message + "\n"
+            errorCount += 1
           case .warning :
             result += "Warning: " + issue.message + "\n"
+            warningCount += 1
           }
+        }
+        var idx = 0
+        for parameter in root_fileGenerationParameterArray_hasNoData {
+          if let hasNoData = parameter.hasNoData, hasNoData {
+            let name = root_fileGenerationParameterArray_name [idx].name
+            result += "Warning: empty data for '\(name)'\n"
+            warningCount += 1
+          }
+          idx += 1
+        }
+        if root_emptyDrillFileExtension {
+          result += "Error: empty drill file extension\n"
+          errorCount += 1
         }
         if result == "" {
           result = "Ok."

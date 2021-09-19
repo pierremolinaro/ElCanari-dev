@@ -408,18 +408,18 @@ fileprivate final class OpenInLibraryDialogItem : BaseObject {
     if self.mFullPath == "" {
       return nil
     }else if self.mIsDuplicated || self.mIsAlreadyLoaded {
-      return NSImage (named: NSImage.Name ("NSStatusUnavailable"))
+      return NSImage.statusError
     }else{
       do{
       switch try self.partStatus () {
         case .unknown :
-          return NSImage (named: NSImage.Name ("NSStatusNone"))
+          return NSImage.statusNone
         case .ok :
-          return NSImage (named: NSImage.Name ("NSStatusAvailable"))
+          return NSImage.statusSuccess
         case .error :
-          return NSImage (named: NSImage.Name ("NSStatusUnavailable"))
+          return NSImage.statusError
         case .warning :
-          return NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))
+          return NSImage.statusWarning
         }
       }catch _ {
         return NSImage (named: NSImage.Name ("exclamation"))
