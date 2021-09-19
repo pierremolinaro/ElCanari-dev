@@ -55,6 +55,7 @@ extension ProjectDocument {
 
   internal func writeGerberProductFile (atPath inPath : String,
                                         _ inDescriptor : ArtworkFileGenerationParameters,
+                                        _ inLayerConfiguration : LayerConfiguration,
                                         _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
@@ -109,6 +110,18 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTracksTopSide {
       apertureDictionary.append (tracks: inProductData.tracks [.front], af)
+    }
+    if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
+      apertureDictionary.append (tracks: inProductData.tracks [.inner1], af)
+    }
+    if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
+      apertureDictionary.append (tracks: inProductData.tracks [.inner2], af)
+    }
+    if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
+      apertureDictionary.append (tracks: inProductData.tracks [.inner3], af)
+    }
+    if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
+      apertureDictionary.append (tracks: inProductData.tracks [.inner4], af)
     }
     if inDescriptor.drawTracksBottomSide {
       apertureDictionary.append (tracks: inProductData.tracks [.back], af)

@@ -492,14 +492,26 @@ protocol ProjectRoot_drillDataFileExtension : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_comments : AnyObject {
-  var comments : String? { get }
+protocol ProjectRoot_artworkComments : AnyObject {
+  var artworkComments : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_artworkTitle : AnyObject {
+  var artworkTitle : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ProjectRoot_selectedSheetTitle : AnyObject {
   var selectedSheetTitle : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
+  var artworkLayerConfiguration : LayerConfiguration? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -888,8 +900,10 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_minValueForBoardLimitWidth,
          ProjectRoot_minValueForBoardLimitWidthDisplayUnit,
          ProjectRoot_drillDataFileExtension,
-         ProjectRoot_comments,
+         ProjectRoot_artworkComments,
+         ProjectRoot_artworkTitle,
          ProjectRoot_selectedSheetTitle,
+         ProjectRoot_artworkLayerConfiguration,
          ProjectRoot_boardGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor,
          ProjectRoot_boardShapeIsRectangular,
@@ -2631,16 +2645,16 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic proxy property: comments
+  //   Atomic proxy property: artworkComments
   //····················································································································
 
-  let comments_property = EBPropertyProxy_String ()
+  let artworkComments_property = EBPropertyProxy_String ()
 
   //····················································································································
 
-  var comments : String? {
+  var artworkComments : String? {
     get {
-      switch self.comments_property.selection {
+      switch self.artworkComments_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
@@ -2649,7 +2663,31 @@ final class ProjectRoot : EBManagedObject,
     }
     set {
       if let unwrappedNewValue = newValue {
-        self.comments_property.setProp (unwrappedNewValue)
+        self.artworkComments_property.setProp (unwrappedNewValue)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Atomic proxy property: artworkTitle
+  //····················································································································
+
+  let artworkTitle_property = EBPropertyProxy_String ()
+
+  //····················································································································
+
+  var artworkTitle : String? {
+    get {
+      switch self.artworkTitle_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.artworkTitle_property.setProp (unwrappedNewValue)
       }
     }
   }
@@ -2723,6 +2761,30 @@ final class ProjectRoot : EBManagedObject,
     }
     set {
       self.fileGenerationParameterArray_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+  //   Atomic proxy property: artworkLayerConfiguration
+  //····················································································································
+
+  let artworkLayerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
+
+  //····················································································································
+
+  var artworkLayerConfiguration : LayerConfiguration? {
+    get {
+      switch self.artworkLayerConfiguration_property.selection {
+      case .empty, .multiple :
+        return nil
+      case .single (let v) :
+        return v
+      }
+    }
+    set {
+      if let unwrappedNewValue = newValue {
+        self.artworkLayerConfiguration_property.setProp (unwrappedNewValue)
+      }
     }
   }
 
@@ -3982,8 +4044,8 @@ final class ProjectRoot : EBManagedObject,
       return self?.mArtwork?.drillDataFileExtension_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
     self.mArtwork_property.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property)
-  //--- Atomic proxy property: comments
-    self.comments_property.mReadModelFunction = { [weak self] in
+  //--- Atomic proxy property: artworkComments
+    self.artworkComments_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
         switch object.comments_property.selection {
         case .empty :
@@ -4001,13 +4063,39 @@ final class ProjectRoot : EBManagedObject,
         return .empty
       }
     }
-    self.comments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+    self.artworkComments_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
       self?.mArtwork?.comments = inValue
     }
-    self.comments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+    self.artworkComments_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
       return self?.mArtwork?.comments_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
     }
-    self.mArtwork_property.comments_property.addEBObserver (self.comments_property)
+    self.mArtwork_property.comments_property.addEBObserver (self.artworkComments_property)
+  //--- Atomic proxy property: artworkTitle
+    self.artworkTitle_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork_property {
+        switch object.title_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkTitle_property.mWriteModelFunction = { [weak self] (_ inValue : String) in
+      self?.mArtwork?.title = inValue
+    }
+    self.artworkTitle_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : String, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.title_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.title_property.addEBObserver (self.artworkTitle_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = { [weak self] in
       if let object = self?.mSelectedSheet_property {
@@ -4060,6 +4148,32 @@ final class ProjectRoot : EBManagedObject,
       self.mArtwork_property.addEBObserverOf_fileGenerationParameterArray (controller)
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = { [weak self] in
+      if let object = self?.mArtwork_property {
+        switch object.layerConfiguration_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let optionalV) :
+          if let v = optionalV {
+            return .single (v)
+          }else{
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkLayerConfiguration_property.mWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration) in
+      self?.mArtwork?.layerConfiguration = inValue
+    }
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = { [weak self] (_ inValue : LayerConfiguration, _ inWindow : NSWindow?) -> Bool in
+      return self?.mArtwork?.layerConfiguration_property.validateAndSetProp (inValue, windowForSheet: inWindow) ?? false
+    }
+    self.mArtwork_property.layerConfiguration_property.addEBObserver (self.artworkLayerConfiguration_property)
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4986,11 +5100,16 @@ final class ProjectRoot : EBManagedObject,
     self.drillDataFileExtension_property.mWriteModelFunction = nil
     self.drillDataFileExtension_property.mValidateAndWriteModelFunction = nil
     self.mArtwork_property.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property)
-  //--- Atomic proxy property: comments
-    self.comments_property.mReadModelFunction = nil
-    self.comments_property.mWriteModelFunction = nil
-    self.comments_property.mValidateAndWriteModelFunction = nil
-    self.mArtwork_property.comments_property.removeEBObserver (self.comments_property)
+  //--- Atomic proxy property: artworkComments
+    self.artworkComments_property.mReadModelFunction = nil
+    self.artworkComments_property.mWriteModelFunction = nil
+    self.artworkComments_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.comments_property.removeEBObserver (self.artworkComments_property)
+  //--- Atomic proxy property: artworkTitle
+    self.artworkTitle_property.mReadModelFunction = nil
+    self.artworkTitle_property.mWriteModelFunction = nil
+    self.artworkTitle_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.title_property.removeEBObserver (self.artworkTitle_property)
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mReadModelFunction = nil
     self.selectedSheetTitle_property.mWriteModelFunction = nil
@@ -5004,6 +5123,11 @@ final class ProjectRoot : EBManagedObject,
     self.fileGenerationParameterArray_property.setModel (nil)
     self.fileGenerationParameterArray_modelDidChangeController?.unregister ()
     self.fileGenerationParameterArray_modelDidChangeController = nil
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mReadModelFunction = nil
+    self.artworkLayerConfiguration_property.mWriteModelFunction = nil
+    self.artworkLayerConfiguration_property.mValidateAndWriteModelFunction = nil
+    self.mArtwork_property.layerConfiguration_property.removeEBObserver (self.artworkLayerConfiguration_property)
     // self.mBoardGridStep_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     // self.mBoardGridDisplayFactor_property.removeEBObserver (self.boardGridStepMultipliedByDisplayFactor_property)
     // self.mBoardLimitsGridStep_property.removeEBObserver (self.boardLimitsGridStepMultipliedByDisplayFactor_property)
@@ -6431,9 +6555,12 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic proxy property: drillDataFileExtension
     self.drillDataFileExtension_property.mObserverExplorer = nil
     self.drillDataFileExtension_property.mValueExplorer = nil
-  //--- Atomic proxy property: comments
-    self.comments_property.mObserverExplorer = nil
-    self.comments_property.mValueExplorer = nil
+  //--- Atomic proxy property: artworkComments
+    self.artworkComments_property.mObserverExplorer = nil
+    self.artworkComments_property.mValueExplorer = nil
+  //--- Atomic proxy property: artworkTitle
+    self.artworkTitle_property.mObserverExplorer = nil
+    self.artworkTitle_property.mValueExplorer = nil
   //--- Atomic proxy property: selectedSheetTitle
     self.selectedSheetTitle_property.mObserverExplorer = nil
     self.selectedSheetTitle_property.mValueExplorer = nil
@@ -6441,6 +6568,9 @@ final class ProjectRoot : EBManagedObject,
     self.selectedSheetObjects_property.mObserverExplorer = nil
   //--- ToMany proxy: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.mObserverExplorer = nil
+  //--- Atomic proxy property: artworkLayerConfiguration
+    self.artworkLayerConfiguration_property.mObserverExplorer = nil
+    self.artworkLayerConfiguration_property.mValueExplorer = nil
   //--- To one property: mSelectedSheet
     self.mSelectedSheet_property.mObserverExplorer = nil
     self.mSelectedSheet_property.mValueExplorer = nil

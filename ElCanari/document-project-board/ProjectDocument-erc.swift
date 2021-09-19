@@ -48,6 +48,12 @@ extension ProjectDocument {
 
   //····················································································································
 
+  func invalidateERC () {
+    self.rootObject.mLastERCCheckingSignature = 0 
+  }
+
+  //····················································································································
+
   internal func performERCChecking () -> Bool {
     self.mERCLogTextView?.clear ()
     var issues = [CanariIssue] ()
@@ -76,23 +82,32 @@ extension ProjectDocument {
 
   fileprivate func checkVersusArtwork (_ ioIssues : inout [CanariIssue]) {
     if let artwork = self.rootObject.mArtwork {
-    //--- Clearance
-      self.mERCLogTextView?.appendMessageString ("Check artwork clearance… ")
-      if artwork.minPPTPTTTW <= self.rootObject.mLayoutClearance {
-        self.mERCLogTextView?.appendSuccessString ("ok\n")
-      }else{
-        self.mERCLogTextView?.appendErrorString ("error\n")
-        let issue = CanariIssue (kind: .error, message: "Artwork clearance should be lower or equal than router clearance", pathes: [])
+      self.mERCLogTextView?.appendMessageString ("Check artwork… ")
+      var errorCount = 0
+    //--- Layer configuration
+      if artwork.layerConfiguration != self.rootObject.mLayerConfiguration {
+        let issue = CanariIssue (kind: .error, message: "Layer configuration should be equal to Artwork layer configuration", pathes: [])
         ioIssues.append (issue)
+        errorCount += 1
+      }
+    //--- Clearance
+      if artwork.minPPTPTTTW > self.rootObject.mLayoutClearance {
+        let issue = CanariIssue (kind: .error, message: "Router clearance should be greater or equal to Artwork clearance", pathes: [])
+        ioIssues.append (issue)
+        errorCount += 1
       }
     //--- Board limit width
-      self.mERCLogTextView?.appendMessageString ("Check board limits width… ")
-      if artwork.minValueForBoardLimitWidth <= self.rootObject.mBoardLimitsWidth {
-        self.mERCLogTextView?.appendSuccessString ("ok\n")
-      }else{
-        self.mERCLogTextView?.appendErrorString ("error\n")
-        let issue = CanariIssue (kind: .error, message: "Artwork board limits width should be lower or equal than board limits width", pathes: [])
+      if artwork.minValueForBoardLimitWidth > self.rootObject.mBoardLimitsWidth {
+        let issue = CanariIssue (kind: .error, message: "Board limits width should be greater or equal to Artwork board limits", pathes: [])
         ioIssues.append (issue)
+        errorCount += 1
+      }
+      if errorCount == 0 {
+        self.mERCLogTextView?.appendSuccessString ("ok\n")
+      }else if errorCount == 1 {
+        self.mERCLogTextView?.appendErrorString ("1 error\n")
+      }else{
+        self.mERCLogTextView?.appendErrorString ("\(errorCount) errors\n")
       }
     //--- Board OAR and PHD of vias
       self.checkViasOARAndPHD (&ioIssues, OAR: artwork.minValueForOARinEBUnit, PHD: artwork.minValueForPHDinEBUnit, artworkClearance: artwork.minPPTPTTTW)

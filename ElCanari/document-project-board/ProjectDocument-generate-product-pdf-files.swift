@@ -37,6 +37,7 @@ extension ProjectDocument {
 
   internal func writePDFProductFile (atPath inPath : String,
                                      _ inDescriptor : ArtworkFileGenerationParameters,
+                                     _ inLayerConfiguration : LayerConfiguration,
                                      _ inProductData : ProductData) throws {
     let path = inPath + inDescriptor.fileExtension + ".pdf"
     self.mProductFileGenerationLogTextView?.appendMessageString ("Generating \(path.lastPathComponent)…")
@@ -89,7 +90,19 @@ extension ProjectDocument {
     }
     if inDescriptor.drawTracksTopSide {
       strokePathes.append (oblongs: inProductData.tracks [.front] ?? [], af)
-     }
+    }
+    if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
+      strokePathes.append (oblongs: inProductData.tracks [.inner1] ?? [], af)
+    }
+    if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
+      strokePathes.append (oblongs: inProductData.tracks [.inner2] ?? [], af)
+    }
+    if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
+      strokePathes.append (oblongs: inProductData.tracks [.inner3] ?? [], af)
+    }
+    if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
+      strokePathes.append (oblongs: inProductData.tracks [.inner4] ?? [], af)
+    }
     if inDescriptor.drawTracksBottomSide {
       strokePathes.append (oblongs: inProductData.tracks [.back] ?? [], af)
     }

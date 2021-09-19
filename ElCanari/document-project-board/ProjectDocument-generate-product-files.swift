@@ -89,7 +89,7 @@ extension ProjectDocument {
 
   private func performProductFilesGeneration () {
     self.mProductFileGenerationLogTextView?.clear ()
-    self.mProductGenerationTabView?.selectTabViewItem (at: 2)
+    self.mProductGenerationTabView?.selectTabViewItem (at: 4)
     do{
       try self.performProductFilesGeneration (atPath: self.fileURL!.path.deletingPathExtension, self.rootObject.mArtwork!)
     }catch let error {
@@ -110,7 +110,10 @@ extension ProjectDocument {
   //--- Write gerber files
     try self.writeGerberDrillFile (atPath: generatedGerberFilePath + inArtwork.drillDataFileExtension, productData)
     for productDescriptor in inArtwork.fileGenerationParameterArray {
-      try self.writeGerberProductFile (atPath: generatedGerberFilePath, productDescriptor, productData)
+      try self.writeGerberProductFile (atPath: generatedGerberFilePath,
+                                       productDescriptor,
+                                       inArtwork.layerConfiguration,
+                                       productData)
     }
   //--- Create PDF directory (first, delete existing dir)
     let pdfDirPath = inDocumentFilePathWithoutExtension + "-pdf"
@@ -119,7 +122,7 @@ extension ProjectDocument {
   //--- Write PDF files
     try self.writePDFDrillFile (atPath: generatedPDFFilePath + inArtwork.drillDataFileExtension + ".pdf", productData)
     for productDescriptor in inArtwork.fileGenerationParameterArray {
-      try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, productData)
+      try self.writePDFProductFile (atPath: generatedPDFFilePath, productDescriptor, inArtwork.layerConfiguration, productData)
     }
   //--- Write board archive
     let boardArchiveFilePath = inDocumentFilePathWithoutExtension + "." + EL_CANARI_MERGER_ARCHIVE
@@ -136,11 +139,11 @@ extension ProjectDocument {
     self.mProductFileGenerationLogTextView?.appendMessageString ("Directory \(inDirectoryPath)\n")
     var isDir : ObjCBool = false
     if fm.fileExists (atPath: inDirectoryPath, isDirectory: &isDir) {
-      self.mProductFileGenerationLogTextView?.appendMessageString (" Remove recursively...")
+      self.mProductFileGenerationLogTextView?.appendMessageString ("Remove recursively...")
       try fm.removeItem (atPath: inDirectoryPath) // Remove dir recursively
       self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
     }
-    self.mProductFileGenerationLogTextView?.appendMessageString (" Creation...")
+    self.mProductFileGenerationLogTextView?.appendMessageString ("Creation...")
     try fm.createDirectory (atPath: inDirectoryPath, withIntermediateDirectories: true, attributes: nil)
     self.mProductFileGenerationLogTextView?.appendSuccessString (" ok.\n")
   }

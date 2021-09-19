@@ -23,6 +23,7 @@ extension ProjectDocument {
                 if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: self.ebUndoManager),
                    let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
                   ok = true
+                  self.invalidateERC ()
                   self.rootObject.mArtwork = artworkRoot
                   self.rootObject.mArtworkName = inName
                   if let version = documentData.documentMetadataDictionary [PMArtworkVersion] as? Int {
@@ -31,12 +32,13 @@ extension ProjectDocument {
                 }
                 return ok
               },
-              postAction: {}
+              postAction: { }
             )
           }else{ // Detach artwork
             self.rootObject.mArtwork = nil
             self.rootObject.mArtworkName = ""
             self.rootObject.mArtworkVersion = 0
+            self.invalidateERC ()
           }
         }
 //--- END OF USER ZONE 2

@@ -188,20 +188,64 @@ extension ProjectDocument {
     //---  Dialog
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in
         if inResponse == .stop, let newNetClassName = self.mAddNetClassTextField?.stringValue {
+          var shouldInvalidateERC = false
           editedNetClass.mNetClassName = newNetClassName
           editedNetClass.mNetClassColor = netColor_property.propval
+
+          if editedNetClass.mTrackWidth > width_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mTrackWidth = width_property.propval
+
           editedNetClass.mTrackWidthUnit = widthUnit_property.propval
+
+          if editedNetClass.mViaHoleDiameter > viaHoleDiameter_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mViaHoleDiameter = viaHoleDiameter_property.propval
+
           editedNetClass.mViaHoleDiameterUnit = viaHoleDiameterUnit_property.propval
+
+          if editedNetClass.mViaPadDiameter > viaPadDiameter_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mViaPadDiameter = viaPadDiameter_property.propval
+
           editedNetClass.mViaPadDiameterUnit = viaPadDiameterUnit_property.propval
+
+          if editedNetClass.mAllowTracksOnFrontSide && !allowFrontTrack_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnFrontSide = allowFrontTrack_property.propval
+
+          if editedNetClass.mAllowTracksOnInner1Layer && !allowInner1Layer_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnInner1Layer = allowInner1Layer_property.propval
+
+          if editedNetClass.mAllowTracksOnInner2Layer && !allowInner2Layer_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnInner2Layer = allowInner2Layer_property.propval
+
+          if editedNetClass.mAllowTracksOnInner3Layer && !allowInner3Layer_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnInner3Layer = allowInner3Layer_property.propval
+
+          if editedNetClass.mAllowTracksOnInner4Layer && !allowInner4Layer_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnInner4Layer = allowInner4Layer_property.propval
+
+          if editedNetClass.mAllowTracksOnBackSide && !allowBackTrack_property.propval {
+            shouldInvalidateERC = true
+          }
           editedNetClass.mAllowTracksOnBackSide = allowBackTrack_property.propval
+
+          if shouldInvalidateERC {
+            self.invalidateERC ()
+          }
         }
         self.mNetClassWidthDimensionTextField?.unbind_dimensionAndUnit ()
         self.mNetClassWidthUnitPopUpButton?.unbind_selectedTag ()

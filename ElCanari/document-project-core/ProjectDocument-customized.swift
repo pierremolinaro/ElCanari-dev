@@ -445,7 +445,7 @@ let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
     self.removeUnusedWires (&errorList)
     self.removeUnusedNets ()
     self.updateSelectedNetForRastnetDisplay ()
-    self.rootObject.mLastERCCheckingSignature = 0 // For invalidating ERC
+    self.invalidateERC ()
     if errorList.count > 0, let window = self.windowForSheet {
       let panel = NSPanel (
         contentRect: NSRect (x: 0, y: 0, width: 600, height: 300),

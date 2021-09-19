@@ -5142,58 +5142,115 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
   }
 
   //····················································································································
-  //   Observers of 'comments' proxy property
+  //   Observers of 'artworkComments' proxy property
   //····················································································································
 
-  private final var mObserversOf_comments = EBWeakEventSet ()
+  private final var mObserversOf_artworkComments = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_artworkComments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_artworkComments.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
+        managedObject.artworkComments_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_artworkComments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_artworkComments.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.removeEBObserver (inObserver)
+        managedObject.artworkComments_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+  final func addEBObserversOf_artworkComments_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_comments.apply { (_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
+      self.mObserversOf_artworkComments.apply { (_ observer : EBEvent) in
+        managedObject.artworkComments_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
-    self.mObserversOf_comments.apply { (_ observer : EBEvent) in
+  final func removeEBObserversOf_artworkComments_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    self.mObserversOf_artworkComments.apply { (_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
+        managedObject.artworkComments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'artworkTitle' proxy property
+  //····················································································································
+
+  private final var mObserversOf_artworkTitle = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_artworkTitle (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_artworkTitle.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkTitle_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_artworkTitle (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_artworkTitle.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkTitle_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_artworkTitle_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_artworkTitle.apply { (_ observer : EBEvent) in
+        managedObject.artworkTitle_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_artworkTitle_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    self.mObserversOf_artworkTitle.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.artworkTitle_property.removeEBObserver (observer)
       }
     }
   }
@@ -5251,6 +5308,63 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedSheetTitle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'artworkLayerConfiguration' proxy property
+  //····················································································································
+
+  private final var mObserversOf_artworkLayerConfiguration = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_artworkLayerConfiguration (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_artworkLayerConfiguration.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkLayerConfiguration_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_artworkLayerConfiguration (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_artworkLayerConfiguration.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkLayerConfiguration_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_artworkLayerConfiguration_toElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBEvent) in
+        managedObject.artworkLayerConfiguration_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_artworkLayerConfiguration_fromElementsOfSet (_ inSet : Set <ProjectRoot>) {
+    self.mObserversOf_artworkLayerConfiguration.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.artworkLayerConfiguration_property.removeEBObserver (observer)
       }
     }
   }

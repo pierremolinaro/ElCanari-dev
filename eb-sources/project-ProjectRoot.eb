@@ -24,8 +24,10 @@ entity ProjectRoot {
 
   toMany proxy ArtworkFileGenerationParameters fileGenerationParameterArray : mArtwork.fileGenerationParameterArray ;
 
-  property proxy String comments : mArtwork.comments ;
-
+  property proxy String artworkComments : mArtwork.comments ;
+  property proxy String artworkTitle : mArtwork.title ;
+  property proxy LayerConfiguration artworkLayerConfiguration : mArtwork.layerConfiguration ;
+ 
 //--- PDF Generation
   property NSColor mPDFBoardBackgroundColor default lightGray ;
   

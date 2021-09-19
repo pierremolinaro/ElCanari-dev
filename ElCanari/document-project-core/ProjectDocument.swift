@@ -390,6 +390,23 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: layerConfigurationString
+  //····················································································································
+
+  final let layerConfigurationString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var layerConfigurationString : String? {
+    switch self.layerConfigurationString_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedFonts
   //····················································································································
 
@@ -556,8 +573,11 @@ import Cocoa
   @IBOutlet final var mAllowTracksOnInner2LayerSwitch : EBSwitch? = nil
   @IBOutlet final var mAllowTracksOnInner3LayerSwitch : EBSwitch? = nil
   @IBOutlet final var mAllowTracksOnInner4LayerSwitch : EBSwitch? = nil
+  @IBOutlet final var mArtworkCommentTextView : EBTextObserverView? = nil
+  @IBOutlet final var mArtworkLayerConfigurationTextField : EBTextObserverField? = nil
   @IBOutlet final var mArtworkNameTextField : EBTextObserverField? = nil
   @IBOutlet final var mArtworkSettingsTabView : NSTabView? = nil
+  @IBOutlet final var mArtworkTitleTextField : EBTextObserverField? = nil
   @IBOutlet final var mArtworkVersionTextField : EBIntObserverField? = nil
   @IBOutlet final var mArtworlImportButton : EBButton? = nil
   @IBOutlet final var mAutoRouterPreferredDirectionPopUp : EBPopUpButton? = nil
@@ -681,7 +701,6 @@ import Cocoa
   @IBOutlet final var mCommentInSchematicsVerticalAlignmentSegmentedControl : CanariEnumSegmentedControl? = nil
   @IBOutlet final var mCommentSizeInSchematicsSlider : EBSlider? = nil
   @IBOutlet final var mCommentSizeInSchematicsTextField : EBDoubleField? = nil
-  @IBOutlet final var mCommentTextView : EBTextObserverView? = nil
   @IBOutlet final var mComponentCountTextField : EBTextObserverField? = nil
   @IBOutlet final var mComponentInBoardCenterXPopUp : EBPopUpButton? = nil
   @IBOutlet final var mComponentInBoardCenterXTextField : CanariDimensionTextField? = nil
@@ -757,6 +776,10 @@ import Cocoa
   @IBOutlet final var mDrawTextsLegendBottomSideSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawTextsLegendTopSideSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawTracksBottomSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksInner1LayerSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksInner2LayerSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksInner3LayerSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTracksInner4LayerSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawViasSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
@@ -1172,8 +1195,11 @@ import Cocoa
     checkOutletConnection (self.mAllowTracksOnInner2LayerSwitch, "mAllowTracksOnInner2LayerSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnInner3LayerSwitch, "mAllowTracksOnInner3LayerSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mAllowTracksOnInner4LayerSwitch, "mAllowTracksOnInner4LayerSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mArtworkCommentTextView, "mArtworkCommentTextView", EBTextObserverView.self, #file, #line)
+    checkOutletConnection (self.mArtworkLayerConfigurationTextField, "mArtworkLayerConfigurationTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkNameTextField, "mArtworkNameTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkSettingsTabView, "mArtworkSettingsTabView", NSTabView.self, #file, #line)
+    checkOutletConnection (self.mArtworkTitleTextField, "mArtworkTitleTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworkVersionTextField, "mArtworkVersionTextField", EBIntObserverField.self, #file, #line)
     checkOutletConnection (self.mArtworlImportButton, "mArtworlImportButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAutoRouterPreferredDirectionPopUp, "mAutoRouterPreferredDirectionPopUp", EBPopUpButton.self, #file, #line)
@@ -1297,7 +1323,6 @@ import Cocoa
     checkOutletConnection (self.mCommentInSchematicsVerticalAlignmentSegmentedControl, "mCommentInSchematicsVerticalAlignmentSegmentedControl", CanariEnumSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mCommentSizeInSchematicsSlider, "mCommentSizeInSchematicsSlider", EBSlider.self, #file, #line)
     checkOutletConnection (self.mCommentSizeInSchematicsTextField, "mCommentSizeInSchematicsTextField", EBDoubleField.self, #file, #line)
-    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextObserverView.self, #file, #line)
     checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterXPopUp, "mComponentInBoardCenterXPopUp", EBPopUpButton.self, #file, #line)
     checkOutletConnection (self.mComponentInBoardCenterXTextField, "mComponentInBoardCenterXTextField", CanariDimensionTextField.self, #file, #line)
@@ -1373,6 +1398,10 @@ import Cocoa
     checkOutletConnection (self.mDrawTextsLegendBottomSideSwitch, "mDrawTextsLegendBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawTextsLegendTopSideSwitch, "mDrawTextsLegendTopSideSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawTracksBottomSideSwitch, "mDrawTracksBottomSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksInner1LayerSwitch, "mDrawTracksInner1LayerSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksInner2LayerSwitch, "mDrawTracksInner2LayerSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksInner3LayerSwitch, "mDrawTracksInner3LayerSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTracksInner4LayerSwitch, "mDrawTracksInner4LayerSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawTracksTopSideSwitch, "mDrawTracksTopSideSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawViasSwitch, "mDrawViasSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrillDataFileExtensionTextField, "mDrillDataFileExtensionTextField", EBTextObserverField.self, #file, #line)
@@ -2014,6 +2043,26 @@ import Cocoa
       Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
       opIdx += 1
     }
+  //--- Atomic property: layerConfigurationString
+    self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch (unwSelf.rootObject.artworkLayerConfiguration_property.selection) {
+        case (.single (let v0)) :
+          return .single (transient_ProjectDocument_layerConfigurationString (v0))
+        case (.multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.artworkLayerConfiguration_property.addEBObserver (self.layerConfigurationString_property)
+    if LOG_OPERATION_DURATION {
+      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
+      opIdx += 1
+    }
   //--- Atomic property: canRemoveSelectedFonts
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2499,10 +2548,16 @@ import Cocoa
     self.mDrawTextsLegendBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTextsLegendBottomSide_property)
     self.mDrawTracksTopSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksTopSide_property)
     self.mDrawTracksBottomSideSwitch?.bind_valueObserver (self.mDataSelection.drawTracksBottomSide_property)
+    self.mDrawTracksInner1LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner1Layer_property)
+    self.mDrawTracksInner2LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner2Layer_property)
+    self.mDrawTracksInner3LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner3Layer_property)
+    self.mDrawTracksInner4LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner4Layer_property)
     self.mDrawViasSwitch?.bind_valueObserver (self.mDataSelection.drawVias_property)
     self.mHorizontalMirrorSwitch?.bind_valueObserver (self.mDataSelection.horizontalMirror_property)
-    self.mCommentTextView?.bind_valueObserver (self.rootObject.comments_property)
+    self.mArtworkCommentTextView?.bind_valueObserver (self.rootObject.artworkComments_property)
     self.mArtworkVersionTextField?.bind_valueObserver (self.rootObject.mArtworkVersion_property, autoFormatter:false)
+    self.mArtworkTitleTextField?.bind_valueObserver (self.rootObject.artworkTitle_property)
+    self.mArtworkLayerConfigurationTextField?.bind_valueObserver (self.layerConfigurationString_property)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -3363,10 +3418,16 @@ import Cocoa
     self.mDrawTextsLegendBottomSideSwitch?.unbind_valueObserver ()
     self.mDrawTracksTopSideSwitch?.unbind_valueObserver ()
     self.mDrawTracksBottomSideSwitch?.unbind_valueObserver ()
+    self.mDrawTracksInner1LayerSwitch?.unbind_valueObserver ()
+    self.mDrawTracksInner2LayerSwitch?.unbind_valueObserver ()
+    self.mDrawTracksInner3LayerSwitch?.unbind_valueObserver ()
+    self.mDrawTracksInner4LayerSwitch?.unbind_valueObserver ()
     self.mDrawViasSwitch?.unbind_valueObserver ()
     self.mHorizontalMirrorSwitch?.unbind_valueObserver ()
-    self.mCommentTextView?.unbind_valueObserver ()
+    self.mArtworkCommentTextView?.unbind_valueObserver ()
     self.mArtworkVersionTextField?.unbind_valueObserver ()
+    self.mArtworkTitleTextField?.unbind_valueObserver ()
+    self.mArtworkLayerConfigurationTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.mController_mDuplicateSelectedComponentsActionButton_enabled = nil
     self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
@@ -3502,6 +3563,7 @@ import Cocoa
     // self.rootObject.mRastnetDisplay_property.removeEBObserver (self.rastnetDisplayOneNet_property)
     // self.rootObject.mArtwork_property.removeEBObserver (self.artworlImportButtonTitle_property)
     // self.documentFileName_property.removeEBObserver (self.documentFilePathOk_property)
+    // self.rootObject.artworkLayerConfiguration_property.removeEBObserver (self.layerConfigurationString_property)
     // self.projectFontController.selectedArray_property.removeEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
     // self.projectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     // self.rootObject.unplacedSymbols_property.removeEBObserver (self.unplacedSymbolsCount_property)
@@ -3571,8 +3633,11 @@ import Cocoa
     self.mAllowTracksOnInner2LayerSwitch?.ebCleanUp ()
     self.mAllowTracksOnInner3LayerSwitch?.ebCleanUp ()
     self.mAllowTracksOnInner4LayerSwitch?.ebCleanUp ()
+    self.mArtworkCommentTextView?.ebCleanUp ()
+    self.mArtworkLayerConfigurationTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkSettingsTabView?.ebCleanUp ()
+    self.mArtworkTitleTextField?.ebCleanUp ()
     self.mArtworkVersionTextField?.ebCleanUp ()
     self.mArtworlImportButton?.ebCleanUp ()
     self.mAutoRouterPreferredDirectionPopUp?.ebCleanUp ()
@@ -3696,7 +3761,6 @@ import Cocoa
     self.mCommentInSchematicsVerticalAlignmentSegmentedControl?.ebCleanUp ()
     self.mCommentSizeInSchematicsSlider?.ebCleanUp ()
     self.mCommentSizeInSchematicsTextField?.ebCleanUp ()
-    self.mCommentTextView?.ebCleanUp ()
     self.mComponentCountTextField?.ebCleanUp ()
     self.mComponentInBoardCenterXPopUp?.ebCleanUp ()
     self.mComponentInBoardCenterXTextField?.ebCleanUp ()
@@ -3772,6 +3836,10 @@ import Cocoa
     self.mDrawTextsLegendBottomSideSwitch?.ebCleanUp ()
     self.mDrawTextsLegendTopSideSwitch?.ebCleanUp ()
     self.mDrawTracksBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTracksInner1LayerSwitch?.ebCleanUp ()
+    self.mDrawTracksInner2LayerSwitch?.ebCleanUp ()
+    self.mDrawTracksInner3LayerSwitch?.ebCleanUp ()
+    self.mDrawTracksInner4LayerSwitch?.ebCleanUp ()
     self.mDrawTracksTopSideSwitch?.ebCleanUp ()
     self.mDrawViasSwitch?.ebCleanUp ()
     self.mDrillDataFileExtensionTextField?.ebCleanUp ()
@@ -4014,8 +4082,11 @@ import Cocoa
     self.mAllowTracksOnInner2LayerSwitch = nil
     self.mAllowTracksOnInner3LayerSwitch = nil
     self.mAllowTracksOnInner4LayerSwitch = nil
+    self.mArtworkCommentTextView = nil
+    self.mArtworkLayerConfigurationTextField = nil
     self.mArtworkNameTextField = nil
     self.mArtworkSettingsTabView = nil
+    self.mArtworkTitleTextField = nil
     self.mArtworkVersionTextField = nil
     self.mArtworlImportButton = nil
     self.mAutoRouterPreferredDirectionPopUp = nil
@@ -4139,7 +4210,6 @@ import Cocoa
     self.mCommentInSchematicsVerticalAlignmentSegmentedControl = nil
     self.mCommentSizeInSchematicsSlider = nil
     self.mCommentSizeInSchematicsTextField = nil
-    self.mCommentTextView = nil
     self.mComponentCountTextField = nil
     self.mComponentInBoardCenterXPopUp = nil
     self.mComponentInBoardCenterXTextField = nil
@@ -4215,6 +4285,10 @@ import Cocoa
     self.mDrawTextsLegendBottomSideSwitch = nil
     self.mDrawTextsLegendTopSideSwitch = nil
     self.mDrawTracksBottomSideSwitch = nil
+    self.mDrawTracksInner1LayerSwitch = nil
+    self.mDrawTracksInner2LayerSwitch = nil
+    self.mDrawTracksInner3LayerSwitch = nil
+    self.mDrawTracksInner4LayerSwitch = nil
     self.mDrawTracksTopSideSwitch = nil
     self.mDrawViasSwitch = nil
     self.mDrillDataFileExtensionTextField = nil
