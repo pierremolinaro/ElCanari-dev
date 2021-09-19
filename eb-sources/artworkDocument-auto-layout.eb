@@ -200,6 +200,14 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
           TwoColumnsGridView {
             set (leftMargin: 20)
             addFirstBaseLineAligned (
+              left:  Switch (title: "Traversing Pads", size : .small) { $value #mDataSelection.drawTraversingPads $hidden !root.hasInnerElements },
+              right: space
+            )
+            addFirstBaseLineAligned (  // Always disabled items
+              left:  Switch (title: "Traversing Pads", size : .small) { $enabled root.hasInnerElements $hidden root.hasInnerElements },
+              right: space
+            )
+           addFirstBaseLineAligned (
               left:  Switch (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements },
               right: Switch (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements }
             )
@@ -325,6 +333,7 @@ entity ArtworkFileGenerationParameters {
   property @signature Bool drawTracksInner3Layer default no ;
   property @signature Bool drawTracksInner4Layer default no ;
   property @signature Bool drawTracksBottomSide default no ;
+  property @signature Bool drawTraversingPads default no ;
   property @signature Bool drawVias default no ;
   property @signature String fileExtension default "" ;
   property @signature Bool horizontalMirror default no ;
@@ -355,6 +364,7 @@ entity ArtworkFileGenerationParameters {
     self.drawTracksInner3Layer,
     self.drawTracksInner4Layer,
     self.drawTracksBottomSide,
+    self.drawTraversingPads,
     self.drawVias
   ;
   

@@ -37,6 +37,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       oldValue.drawTracksInner3Layer_property.removeEBObserver (self.drawTracksInner3Layer_property) // Stored property
       oldValue.drawTracksInner4Layer_property.removeEBObserver (self.drawTracksInner4Layer_property) // Stored property
       oldValue.drawTracksBottomSide_property.removeEBObserver (self.drawTracksBottomSide_property) // Stored property
+      oldValue.drawTraversingPads_property.removeEBObserver (self.drawTraversingPads_property) // Stored property
       oldValue.drawVias_property.removeEBObserver (self.drawVias_property) // Stored property
       oldValue.fileExtension_property.removeEBObserver (self.fileExtension_property) // Stored property
       oldValue.horizontalMirror_property.removeEBObserver (self.horizontalMirror_property) // Stored property
@@ -70,6 +71,7 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
       newValue.drawTracksInner3Layer_property.addEBObserver (self.drawTracksInner3Layer_property) // Stored property
       newValue.drawTracksInner4Layer_property.addEBObserver (self.drawTracksInner4Layer_property) // Stored property
       newValue.drawTracksBottomSide_property.addEBObserver (self.drawTracksBottomSide_property) // Stored property
+      newValue.drawTraversingPads_property.addEBObserver (self.drawTraversingPads_property) // Stored property
       newValue.drawVias_property.addEBObserver (self.drawVias_property) // Stored property
       newValue.fileExtension_property.addEBObserver (self.fileExtension_property) // Stored property
       newValue.horizontalMirror_property.addEBObserver (self.horizontalMirror_property) // Stored property
@@ -207,6 +209,12 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
   //····················································································································
 
   final let drawTracksBottomSide_property = EBGenericTransientProperty <Bool?> ()
+
+  //····················································································································
+  //   Observers of 'drawTraversingPads' stored property
+  //····················································································································
+
+  final let drawTraversingPads_property = EBGenericTransientProperty <Bool?> ()
 
   //····················································································································
   //   Observers of 'drawVias' stored property
@@ -572,6 +580,21 @@ class ReadOnlyObject_ArtworkFileGenerationParameters : ReadOnlyAbstractObjectPro
     self.drawTracksBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.drawTracksBottomSide_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure drawTraversingPads simple stored property
+    self.drawTraversingPads_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.drawTraversingPads_property.selection {
         case .empty :
           return .empty
         case .multiple :

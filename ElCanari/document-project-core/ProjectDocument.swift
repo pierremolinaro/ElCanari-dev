@@ -781,6 +781,7 @@ import Cocoa
   @IBOutlet final var mDrawTracksInner3LayerSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawTracksInner4LayerSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawTracksTopSideSwitch : CanariObserverSwitch? = nil
+  @IBOutlet final var mDrawTraversingPadsSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrawViasSwitch : CanariObserverSwitch? = nil
   @IBOutlet final var mDrillDataFileExtensionTextField : EBTextObserverField? = nil
   @IBOutlet final var mDuplicateSelectedComponentsActionButton : EBButton? = nil
@@ -1403,6 +1404,7 @@ import Cocoa
     checkOutletConnection (self.mDrawTracksInner3LayerSwitch, "mDrawTracksInner3LayerSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawTracksInner4LayerSwitch, "mDrawTracksInner4LayerSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawTracksTopSideSwitch, "mDrawTracksTopSideSwitch", CanariObserverSwitch.self, #file, #line)
+    checkOutletConnection (self.mDrawTraversingPadsSwitch, "mDrawTraversingPadsSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrawViasSwitch, "mDrawViasSwitch", CanariObserverSwitch.self, #file, #line)
     checkOutletConnection (self.mDrillDataFileExtensionTextField, "mDrillDataFileExtensionTextField", EBTextObserverField.self, #file, #line)
     checkOutletConnection (self.mDuplicateSelectedComponentsActionButton, "mDuplicateSelectedComponentsActionButton", EBButton.self, #file, #line)
@@ -2552,6 +2554,7 @@ import Cocoa
     self.mDrawTracksInner2LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner2Layer_property)
     self.mDrawTracksInner3LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner3Layer_property)
     self.mDrawTracksInner4LayerSwitch?.bind_valueObserver (self.mDataSelection.drawTracksInner4Layer_property)
+    self.mDrawTraversingPadsSwitch?.bind_valueObserver (self.mDataSelection.drawTraversingPads_property)
     self.mDrawViasSwitch?.bind_valueObserver (self.mDataSelection.drawVias_property)
     self.mHorizontalMirrorSwitch?.bind_valueObserver (self.mDataSelection.horizontalMirror_property)
     self.mArtworkCommentTextView?.bind_valueObserver (self.rootObject.artworkComments_property)
@@ -3422,6 +3425,7 @@ import Cocoa
     self.mDrawTracksInner2LayerSwitch?.unbind_valueObserver ()
     self.mDrawTracksInner3LayerSwitch?.unbind_valueObserver ()
     self.mDrawTracksInner4LayerSwitch?.unbind_valueObserver ()
+    self.mDrawTraversingPadsSwitch?.unbind_valueObserver ()
     self.mDrawViasSwitch?.unbind_valueObserver ()
     self.mHorizontalMirrorSwitch?.unbind_valueObserver ()
     self.mArtworkCommentTextView?.unbind_valueObserver ()
@@ -3841,6 +3845,7 @@ import Cocoa
     self.mDrawTracksInner3LayerSwitch?.ebCleanUp ()
     self.mDrawTracksInner4LayerSwitch?.ebCleanUp ()
     self.mDrawTracksTopSideSwitch?.ebCleanUp ()
+    self.mDrawTraversingPadsSwitch?.ebCleanUp ()
     self.mDrawViasSwitch?.ebCleanUp ()
     self.mDrillDataFileExtensionTextField?.ebCleanUp ()
     self.mDuplicateSelectedComponentsActionButton?.ebCleanUp ()
@@ -4290,6 +4295,7 @@ import Cocoa
     self.mDrawTracksInner3LayerSwitch = nil
     self.mDrawTracksInner4LayerSwitch = nil
     self.mDrawTracksTopSideSwitch = nil
+    self.mDrawTraversingPadsSwitch = nil
     self.mDrawViasSwitch = nil
     self.mDrillDataFileExtensionTextField = nil
     self.mDuplicateSelectedComponentsActionButton = nil

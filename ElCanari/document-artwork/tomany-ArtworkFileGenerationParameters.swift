@@ -36,6 +36,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserversOf_drawTracksInner3Layer_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawTracksInner4Layer_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_drawTraversingPads_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drawVias_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_fileExtension_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_horizontalMirror_fromElementsOfSet (inRemovedSet) // Stored property
@@ -67,6 +68,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserversOf_drawTracksInner3Layer_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawTracksInner4Layer_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_drawTraversingPads_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drawVias_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_fileExtension_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_horizontalMirror_toElementsOfSet (inAddedSet) // Stored property
@@ -1318,6 +1320,65 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   }
 
   //····················································································································
+  //   Observers of 'drawTraversingPads' stored property
+  //····················································································································
+
+  private final var mObserversOf_drawTraversingPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawTraversingPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_drawTraversingPads.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTraversingPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawTraversingPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_drawTraversingPads.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawTraversingPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawTraversingPads_toElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    if !self.mObserversOf_drawTraversingPads.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_drawTraversingPads.apply { (_ observer : EBEvent) in
+          managedObject.drawTraversingPads_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawTraversingPads_fromElementsOfSet (_ inSet : Set <ArtworkFileGenerationParameters>) {
+    self.mObserversOf_drawTraversingPads.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawTraversingPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'drawVias' stored property
   //····················································································································
 
@@ -2435,6 +2496,7 @@ final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_A
     self.addEBObserverOf_drawTracksInner3Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawTracksInner4Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawTracksBottomSide (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_drawTraversingPads (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drawVias (self.mObserverForWritingPreferences)
     self.addEBObserverOf_fileExtension (self.mObserverForWritingPreferences)
     self.addEBObserverOf_horizontalMirror (self.mObserverForWritingPreferences)

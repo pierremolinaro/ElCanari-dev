@@ -392,8 +392,8 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func buildCircularPads () -> [TrackSide : [ProductCircle]] {
-    var circularPads = [TrackSide : [ProductCircle]] ()
+  fileprivate func buildCircularPads () -> [PadLayer : [ProductCircle]] {
+    var circularPads = [PadLayer : [ProductCircle]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -401,14 +401,15 @@ extension ProjectDocument {
           if let circle = productCircle (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              circularPads [.front] = (circularPads [.front] ?? []) + [circle]
-              circularPads [.back] = (circularPads [.back] ?? []) + [circle]
+              circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
+              circularPads [.innerLayer] = (circularPads [.innerLayer] ?? []) + [circle]
+              circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
             case .surface :
               switch component.mSide {
               case .back :
-                circularPads [.back] = (circularPads [.back] ?? []) + [circle]
+                circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
               case .front :
-                circularPads [.front] = (circularPads [.front] ?? []) + [circle]
+                circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
               }
             }
           }
@@ -416,21 +417,22 @@ extension ProjectDocument {
             if let circle = productCircle (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                circularPads [.front] = (circularPads [.front] ?? []) + [circle]
-                circularPads [.back] = (circularPads [.back] ?? []) + [circle]
+                circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
+                circularPads [.innerLayer] = (circularPads [.innerLayer] ?? []) + [circle]
+                circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  circularPads [.back] = (circularPads [.back] ?? []) + [circle]
+                  circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
                 case .back :
-                  circularPads [.front] = (circularPads [.front] ?? []) + [circle]
+                  circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  circularPads [.back] = (circularPads [.back] ?? []) + [circle]
+                  circularPads [.backLayer] = (circularPads [.backLayer] ?? []) + [circle]
                 case .front :
-                  circularPads [.front] = (circularPads [.front] ?? []) + [circle]
+                  circularPads [.frontLayer] = (circularPads [.frontLayer] ?? []) + [circle]
                 }
               }
             }
@@ -443,8 +445,8 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func buildOblongPads () -> [TrackSide : [ProductOblong]] {
-    var oblongPads = [TrackSide : [ProductOblong]] ()
+  fileprivate func buildOblongPads () -> [PadLayer : [ProductOblong]] {
+    var oblongPads = [PadLayer : [ProductOblong]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -452,14 +454,15 @@ extension ProjectDocument {
           if let oblong = oblong (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
-              oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
+              oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
+              oblongPads [.innerLayer] = (oblongPads [.innerLayer] ?? []) + [oblong]
+              oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
             case .surface :
               switch component.mSide {
               case .back :
-                oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
+                oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
               case .front :
-                oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
+                oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
               }
             }
           }
@@ -467,21 +470,22 @@ extension ProjectDocument {
             if let oblong = oblong (slavePad.center, slavePad.padSize, slavePad.shape, af) {
               switch slavePad.style {
               case .traversing :
-                oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
-                oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
+                oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
+                oblongPads [.innerLayer] = (oblongPads [.innerLayer] ?? []) + [oblong]
+                oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
+                  oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
                 case .back :
-                  oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
+                  oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  oblongPads [.back] = (oblongPads [.back] ?? []) + [oblong]
+                  oblongPads [.backLayer] = (oblongPads [.backLayer] ?? []) + [oblong]
                 case .front :
-                  oblongPads [.front] = (oblongPads [.front] ?? []) + [oblong]
+                  oblongPads [.frontLayer] = (oblongPads [.frontLayer] ?? []) + [oblong]
                 }
               }
             }
@@ -494,8 +498,8 @@ extension ProjectDocument {
 
   //····················································································································
 
-  fileprivate func buildPolygonPads () -> [TrackSide : [ProductPolygon]] {
-    var polygonPads = [TrackSide : [ProductPolygon]] ()
+  fileprivate func buildPolygonPads () -> [PadLayer : [ProductPolygon]] {
+    var polygonPads = [PadLayer : [ProductPolygon]] ()
     for object in self.rootObject.mBoardObjects {
       if let component = object as? ComponentInProject {
         let af = component.packageToComponentAffineTransform ()
@@ -503,14 +507,15 @@ extension ProjectDocument {
           if let polygon = buildPolygon (masterPad.center, masterPad.padSize, masterPad.shape, af) {
             switch masterPad.style {
             case .traversing :
-              polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
-              polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
+              polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
+              polygonPads [.innerLayer] = (polygonPads [.innerLayer] ?? []) + [polygon]
+              polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
             case .surface :
               switch component.mSide {
               case .back :
-                polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
+                polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
               case .front :
-                polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
+                polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
               }
             }
           }
@@ -518,21 +523,22 @@ extension ProjectDocument {
            if let polygon = buildPolygon (slavePad.center, slavePad.padSize, slavePad.shape, af) {
              switch slavePad.style {
               case .traversing :
-                polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
-                polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
+                polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
+                polygonPads [.innerLayer] = (polygonPads [.innerLayer] ?? []) + [polygon]
+                polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
               case .oppositeSide :
                 switch component.mSide {
                 case .front :
-                  polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
+                  polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
                 case .back :
-                  polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
+                  polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
                 }
               case .componentSide :
                 switch component.mSide {
                 case .back :
-                  polygonPads [.back] = (polygonPads [.back] ?? []) + [polygon]
+                  polygonPads [.backLayer] = (polygonPads [.backLayer] ?? []) + [polygon]
                 case .front :
-                  polygonPads [.front] = (polygonPads [.front] ?? []) + [polygon]
+                  polygonPads [.frontLayer] = (polygonPads [.frontLayer] ?? []) + [polygon]
                 }
               }
             }
@@ -670,6 +676,14 @@ struct ProductPolygon { // All in Cocoa Unit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum PadLayer {
+  case frontLayer
+  case innerLayer
+  case backLayer
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct ProductData { // All in Cocoa Unit
   let boardBoundBox : NSRect
   let boardLimitPath : EBLinePath
@@ -689,9 +703,9 @@ struct ProductData { // All in Cocoa Unit
   let tracks : [TrackSide : [ProductOblong]]
   let frontLines : [ProductOblong]
   let backLines : [ProductOblong]
-  let circularPads : [TrackSide : [ProductCircle]]
-  let oblongPads : [TrackSide : [ProductOblong]]
-  let polygonPads : [TrackSide : [ProductPolygon]]
+  let circularPads : [PadLayer : [ProductCircle]]
+  let oblongPads : [PadLayer : [ProductOblong]]
+  let polygonPads : [PadLayer : [ProductPolygon]]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -536,6 +536,8 @@ import Cocoa
             .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_16 (), right: self.computeImplicitView_17 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_18 (), right: self.computeImplicitView_19 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
           view_2_2_8.appendView (view_2_2_8_0)
           let view_2_2_8_1 = AutoLayoutFlexibleSpace ()
           view_2_2_8.appendView (view_2_2_8_1)
@@ -553,8 +555,8 @@ import Cocoa
         do{
           let view_2_2_10_0 = AutoLayoutTwoColumnsGridView ()
             .set (leftMargin: 20)
-            .addFirstBaseLineAligned (left: self.computeImplicitView_20 (), right: self.computeImplicitView_21 ())
-            .addFirstBaseLineAligned (left: self.computeImplicitView_22 (), right: self.computeImplicitView_23 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_24 (), right: self.computeImplicitView_25 ())
+            .addFirstBaseLineAligned (left: self.computeImplicitView_26 (), right: self.computeImplicitView_27 ())
           view_2_2_10.appendView (view_2_2_10_0)
           let view_2_2_10_1 = AutoLayoutFlexibleSpace ()
           view_2_2_10.appendView (view_2_2_10_1)
@@ -779,8 +781,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_12 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+    let view = AutoLayoutSwitch (title: "Traversing Pads", size: .small)
+      .bind_value (self.mDataSelection.drawTraversingPads_property)
       .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
   }
@@ -790,9 +792,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_13 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -801,7 +801,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+    let view = AutoLayoutSwitch (title: "Traversing Pads", size: .small)
       .bind_enabled (.id (self.rootObject.hasInnerElements_property))
       .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
@@ -812,9 +812,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
-      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -823,9 +821,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner1Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -834,9 +832,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
-      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
+    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner2Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasInnerElements_property)))
     return view
   }
 
@@ -845,9 +843,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_18 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+    let view = AutoLayoutSwitch (title: "Inner 1 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -856,9 +854,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_19 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
-      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
-      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+    let view = AutoLayoutSwitch (title: "Inner 2 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasInnerElements_property))
+      .bind_hidden (.id (self.rootObject.hasInnerElements_property))
     return view
   }
 
@@ -867,8 +865,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_20 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Legend Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner3Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -877,8 +876,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_21 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Layout Back Side Texts", size: .small)
-      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksInner4Layer_property)
+      .bind_hidden (.not (.id (self.rootObject.hasSixLayers_property)))
     return view
   }
 
@@ -887,8 +887,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutSwitch (title: "Back Side Tracks", size: .small)
-      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+    let view = AutoLayoutSwitch (title: "Inner 3 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
     return view
   }
 
@@ -897,6 +898,47 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_23 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Inner 4 Layer Tracks", size: .small)
+      .bind_enabled (.id (self.rootObject.hasSixLayers_property))
+      .bind_hidden (.id (self.rootObject.hasSixLayers_property))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 24
+  //····················································································································
+
+  fileprivate final func computeImplicitView_24 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Legend Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLegendBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 25
+  //····················································································································
+
+  fileprivate final func computeImplicitView_25 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Layout Back Side Texts", size: .small)
+      .bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 26
+  //····················································································································
+
+  fileprivate final func computeImplicitView_26 () -> NSView {
+    let view = AutoLayoutSwitch (title: "Back Side Tracks", size: .small)
+      .bind_value (self.mDataSelection.drawTracksBottomSide_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 27
+  //····················································································································
+
+  fileprivate final func computeImplicitView_27 () -> NSView {
     let view = AutoLayoutSwitch (title: "Back Side Pads", size: .small)
       .bind_value (self.mDataSelection.drawPadsBottomSide_property)
     return view

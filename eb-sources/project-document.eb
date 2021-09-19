@@ -1185,6 +1185,7 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet CanariObserverSwitch mDrawTracksInner2LayerSwitch $valueObserver #mDataSelection.drawTracksInner2Layer ;
   outlet CanariObserverSwitch mDrawTracksInner3LayerSwitch $valueObserver #mDataSelection.drawTracksInner3Layer ;
   outlet CanariObserverSwitch mDrawTracksInner4LayerSwitch $valueObserver #mDataSelection.drawTracksInner4Layer ;
+  outlet CanariObserverSwitch mDrawTraversingPadsSwitch $valueObserver #mDataSelection.drawTraversingPads ;
   outlet CanariObserverSwitch mDrawViasSwitch $valueObserver #mDataSelection.drawVias ;
   outlet CanariObserverSwitch mHorizontalMirrorSwitch $valueObserver #mDataSelection.horizontalMirror ;
 

@@ -36,6 +36,7 @@ func transient_ArtworkFileGenerationParameters_hasNoData (
        _ self_drawTracksInner3Layer : Bool,               
        _ self_drawTracksInner4Layer : Bool,               
        _ self_drawTracksBottomSide : Bool,                
+       _ self_drawTraversingPads : Bool,                  
        _ self_drawVias : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2
@@ -45,9 +46,11 @@ func transient_ArtworkFileGenerationParameters_hasNoData (
           case .twoLayers :
             ()
           case .fourLayers :
-            hasNoData = !self_drawTracksInner1Layer && !self_drawTracksInner2Layer
+            hasNoData = !self_drawTraversingPads
+                     && !self_drawTracksInner1Layer && !self_drawTracksInner2Layer
           case .sixLayers :
-            hasNoData = !self_drawTracksInner1Layer && !self_drawTracksInner2Layer
+            hasNoData = !self_drawTraversingPads
+                     && !self_drawTracksInner1Layer && !self_drawTracksInner2Layer
                      && !self_drawTracksInner3Layer && !self_drawTracksInner4Layer
           }
         }

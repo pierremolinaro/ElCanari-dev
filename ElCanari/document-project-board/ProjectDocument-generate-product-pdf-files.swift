@@ -107,14 +107,19 @@ extension ProjectDocument {
       strokePathes.append (oblongs: inProductData.tracks [.back] ?? [], af)
     }
     if inDescriptor.drawPadsTopSide {
-      strokePathes.append (circles: inProductData.circularPads [.front], af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.front], af)
-      filledPathes.append (polygons: inProductData.polygonPads [.front], af)
+      strokePathes.append (circles: inProductData.circularPads [.frontLayer], af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], af)
+      filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], af)
     }
     if inDescriptor.drawPadsBottomSide {
-      strokePathes.append (circles: inProductData.circularPads [.back], af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.back], af)
-      filledPathes.append (polygons: inProductData.polygonPads [.back], af)
+      strokePathes.append (circles: inProductData.circularPads [.backLayer], af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], af)
+      filledPathes.append (polygons: inProductData.polygonPads [.backLayer], af)
+    }
+    if inDescriptor.drawTraversingPads {
+      strokePathes.append (circles: inProductData.circularPads [.innerLayer], af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], af)
+      filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], af)
     }
     var shape = EBShape (stroke: strokePathes, .black)
     shape.add (filled: filledPathes, .black)

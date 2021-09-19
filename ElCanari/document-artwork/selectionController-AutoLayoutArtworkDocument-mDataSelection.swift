@@ -137,6 +137,12 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
   var drawTracksTopSide_property = EBPropertyProxy_Bool ()
 
   //····················································································································
+  //   Selection observable property: drawTraversingPads
+  //····················································································································
+
+  var drawTraversingPads_property = EBPropertyProxy_Bool ()
+
+  //····················································································································
   //   Selection observable property: drawVias
   //····················································································································
 
@@ -225,6 +231,7 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
     self.bind_property_drawTracksInner3Layer (model: model)
     self.bind_property_drawTracksInner4Layer (model: model)
     self.bind_property_drawTracksTopSide (model: model)
+    self.bind_property_drawTraversingPads (model: model)
     self.bind_property_drawVias (model: model)
     self.bind_property_emptyFileExtensionImage (model: model)
     self.bind_property_fileExtension (model: model)
@@ -346,6 +353,11 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
     self.drawTracksTopSide_property.mWriteModelFunction = nil 
     self.drawTracksTopSide_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
+  //--- drawTraversingPads
+    self.drawTraversingPads_property.mReadModelFunction = nil 
+    self.drawTraversingPads_property.mWriteModelFunction = nil 
+    self.drawTraversingPads_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTraversingPads (self.drawTraversingPads_property)
   //--- drawVias
     self.drawVias_property.mReadModelFunction = nil 
     self.drawVias_property.mWriteModelFunction = nil 
@@ -592,6 +604,14 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
       view: view,
       observerExplorer: &self.drawTracksTopSide_property.mObserverExplorer,
       valueExplorer: &self.drawTracksTopSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTraversingPads",
+      idx: self.drawTraversingPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
+      valueExplorer: &self.drawTraversingPads_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawVias",
@@ -2150,6 +2170,76 @@ final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseO
         case .single (let v) :
           for object in v {
             let result = object.drawTracksTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawTraversingPads (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawTraversingPads (self.drawTraversingPads_property)
+    self.drawTraversingPads_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawTraversingPads_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawTraversingPads_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawTraversingPads_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawTraversingPads_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.selection {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawTraversingPads_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

@@ -127,16 +127,23 @@ extension ProjectDocument {
       apertureDictionary.append (tracks: inProductData.tracks [.back], af)
     }
     if inDescriptor.drawPadsTopSide {
-      apertureDictionary.append (circles: inProductData.circularPads [.front], af)
-      apertureDictionary.append (oblongs: inProductData.oblongPads [.front], af)
-      if let pp = inProductData.polygonPads [.front] {
+      apertureDictionary.append (circles: inProductData.circularPads [.frontLayer], af)
+      apertureDictionary.append (oblongs: inProductData.oblongPads [.frontLayer], af)
+      if let pp = inProductData.polygonPads [.frontLayer] {
         polygons += pp.transformed (by: af)
       }
     }
     if inDescriptor.drawPadsBottomSide {
-      apertureDictionary.append (circles: inProductData.circularPads [.back], af)
-      apertureDictionary.append (oblongs: inProductData.oblongPads [.back], af)
-      if let pp = inProductData.polygonPads [.back] {
+      apertureDictionary.append (circles: inProductData.circularPads [.backLayer], af)
+      apertureDictionary.append (oblongs: inProductData.oblongPads [.backLayer], af)
+      if let pp = inProductData.polygonPads [.backLayer] {
+        polygons += pp.transformed (by: af)
+      }
+    }
+    if inDescriptor.drawTraversingPads {
+      apertureDictionary.append (circles: inProductData.circularPads [.innerLayer], af)
+      apertureDictionary.append (oblongs: inProductData.oblongPads [.innerLayer], af)
+      if let pp = inProductData.polygonPads [.innerLayer] {
         polygons += pp.transformed (by: af)
       }
     }

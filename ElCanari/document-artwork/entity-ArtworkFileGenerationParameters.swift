@@ -132,6 +132,12 @@ protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkFileGenerationParameters_drawTraversingPads : AnyObject {
+  var drawTraversingPads : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
   var drawVias : Bool { get }
 }
@@ -210,6 +216,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
          ArtworkFileGenerationParameters_drawTracksInner3Layer,
          ArtworkFileGenerationParameters_drawTracksInner4Layer,
          ArtworkFileGenerationParameters_drawTracksBottomSide,
+         ArtworkFileGenerationParameters_drawTraversingPads,
          ArtworkFileGenerationParameters_drawVias,
          ArtworkFileGenerationParameters_fileExtension,
          ArtworkFileGenerationParameters_horizontalMirror,
@@ -620,6 +627,25 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: drawTraversingPads
+  //····················································································································
+
+  final let drawTraversingPads_property : EBStoredProperty_Bool
+
+  //····················································································································
+
+  final func reset_drawTraversingPads_toDefaultValue () {
+    self.drawTraversingPads = false
+  }
+
+  //····················································································································
+
+  final var drawTraversingPads : Bool {
+    get { return self.drawTraversingPads_property.propval }
+    set { self.drawTraversingPads_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: drawVias
   //····················································································································
 
@@ -836,6 +862,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
+    self.drawTraversingPads_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.fileExtension_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
@@ -860,10 +887,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: hasNoData
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.drawBoardLimits_property.selection, unwSelf.drawInternalBoardLimits_property.selection, unwSelf.drawComponentNamesTopSide_property.selection, unwSelf.drawComponentNamesBottomSide_property.selection, unwSelf.drawComponentValuesTopSide_property.selection, unwSelf.drawComponentValuesBottomSide_property.selection, unwSelf.drawPackageLegendTopSide_property.selection, unwSelf.drawPackageLegendBottomSide_property.selection, unwSelf.drawPadHolesInPDF_property.selection, unwSelf.drawPadsTopSide_property.selection, unwSelf.drawPadsBottomSide_property.selection, unwSelf.drawTextsLayoutTopSide_property.selection, unwSelf.drawTextsLayoutBottomSide_property.selection, unwSelf.drawTextsLegendTopSide_property.selection, unwSelf.drawTextsLegendBottomSide_property.selection, unwSelf.drawTracksTopSide_property.selection, unwSelf.drawTracksInner1Layer_property.selection, unwSelf.drawTracksInner2Layer_property.selection, unwSelf.drawTracksInner3Layer_property.selection, unwSelf.drawTracksInner4Layer_property.selection, unwSelf.drawTracksBottomSide_property.selection, unwSelf.drawVias_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22)) :
-          return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.drawBoardLimits_property.selection, unwSelf.drawInternalBoardLimits_property.selection, unwSelf.drawComponentNamesTopSide_property.selection, unwSelf.drawComponentNamesBottomSide_property.selection, unwSelf.drawComponentValuesTopSide_property.selection, unwSelf.drawComponentValuesBottomSide_property.selection, unwSelf.drawPackageLegendTopSide_property.selection, unwSelf.drawPackageLegendBottomSide_property.selection, unwSelf.drawPadHolesInPDF_property.selection, unwSelf.drawPadsTopSide_property.selection, unwSelf.drawPadsBottomSide_property.selection, unwSelf.drawTextsLayoutTopSide_property.selection, unwSelf.drawTextsLayoutBottomSide_property.selection, unwSelf.drawTextsLegendTopSide_property.selection, unwSelf.drawTextsLegendBottomSide_property.selection, unwSelf.drawTracksTopSide_property.selection, unwSelf.drawTracksInner1Layer_property.selection, unwSelf.drawTracksInner2Layer_property.selection, unwSelf.drawTracksInner3Layer_property.selection, unwSelf.drawTracksInner4Layer_property.selection, unwSelf.drawTracksBottomSide_property.selection, unwSelf.drawTraversingPads_property.selection, unwSelf.drawVias_property.selection) {
+        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23)) :
+          return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23))
+        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
           return .multiple
         default :
           return .empty
@@ -894,6 +921,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner3Layer_property.addEBObserver (self.hasNoData_property)
     self.drawTracksInner4Layer_property.addEBObserver (self.hasNoData_property)
     self.drawTracksBottomSide_property.addEBObserver (self.hasNoData_property)
+    self.drawTraversingPads_property.addEBObserver (self.hasNoData_property)
     self.drawVias_property.addEBObserver (self.hasNoData_property)
   //--- Atomic property: parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
@@ -952,6 +980,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner3Layer_property.setSignatureObserver (observer: self)
     self.drawTracksInner4Layer_property.setSignatureObserver (observer: self)
     self.drawTracksTopSide_property.setSignatureObserver (observer: self)
+    self.drawTraversingPads_property.setSignatureObserver (observer: self)
     self.drawVias_property.setSignatureObserver (observer: self)
     self.fileExtension_property.setSignatureObserver (observer: self)
     self.horizontalMirror_property.setSignatureObserver (observer: self)
@@ -987,6 +1016,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     // self.drawTracksInner3Layer_property.removeEBObserver (self.hasNoData_property)
     // self.drawTracksInner4Layer_property.removeEBObserver (self.hasNoData_property)
     // self.drawTracksBottomSide_property.removeEBObserver (self.hasNoData_property)
+    // self.drawTraversingPads_property.removeEBObserver (self.hasNoData_property)
     // self.drawVias_property.removeEBObserver (self.hasNoData_property)
     // self.name_property.removeEBObserver (self.parameterStatusImage_property)
     // self.fileExtension_property.removeEBObserver (self.parameterStatusImage_property)
@@ -1014,6 +1044,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner3Layer_property.setSignatureObserver (observer: nil)
     self.drawTracksInner4Layer_property.setSignatureObserver (observer: nil)
     self.drawTracksTopSide_property.setSignatureObserver (observer: nil)
+    self.drawTraversingPads_property.setSignatureObserver (observer: nil)
     self.drawVias_property.setSignatureObserver (observer: nil)
     self.fileExtension_property.setSignatureObserver (observer: nil)
     self.horizontalMirror_property.setSignatureObserver (observer: nil)
@@ -1202,6 +1233,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       valueExplorer: &self.drawTracksBottomSide_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "drawTraversingPads",
+      idx: self.drawTraversingPads_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.drawTraversingPads_property.mObserverExplorer,
+      valueExplorer: &self.drawTraversingPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "drawVias",
       idx: self.drawVias_property.ebObjectIndex,
       y: &y,
@@ -1354,6 +1393,9 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.mObserverExplorer = nil
     self.drawTracksBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTraversingPads
+    self.drawTraversingPads_property.mObserverExplorer = nil
+    self.drawTraversingPads_property.mValueExplorer = nil
   //--- Atomic property: drawVias
     self.drawVias_property.mObserverExplorer = nil
     self.drawVias_property.mValueExplorer = nil
@@ -1446,6 +1488,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner4Layer")
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
+  //--- Atomic property: drawTraversingPads
+    self.drawTraversingPads_property.storeIn (dictionary: ioDictionary, forKey: "drawTraversingPads")
   //--- Atomic property: drawVias
     self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
   //--- Atomic property: fileExtension
@@ -1528,6 +1572,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "drawTracksInner4Layer")
   //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey: "drawTracksBottomSide")
+  //--- Atomic property: drawTraversingPads
+    self.drawTraversingPads_property.readFrom (dictionary: inDictionary, forKey: "drawTraversingPads")
   //--- Atomic property: drawVias
     self.drawVias_property.readFrom (dictionary: inDictionary, forKey: "drawVias")
   //--- Atomic property: fileExtension
@@ -1571,6 +1617,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     ioString += "drawTracksInner3Layer\n"
     ioString += "drawTracksInner4Layer\n"
     ioString += "drawTracksBottomSide\n"
+    ioString += "drawTraversingPads\n"
     ioString += "drawVias\n"
     ioString += "fileExtension\n"
     ioString += "horizontalMirror\n"
@@ -1630,6 +1677,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawTracksInner4Layer.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.drawTracksBottomSide.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.drawTraversingPads.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.drawVias.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -1725,6 +1774,9 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawTracksBottomSide = value
       }
+      if let range = inDictionary ["drawTraversingPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
+        self.drawTraversingPads = value
+      }
       if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawVias = value
       }
@@ -1804,6 +1856,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     crc.accumulateUInt32 (self.drawTracksInner3Layer_property.signature ())
     crc.accumulateUInt32 (self.drawTracksInner4Layer_property.signature ())
     crc.accumulateUInt32 (self.drawTracksTopSide_property.signature ())
+    crc.accumulateUInt32 (self.drawTraversingPads_property.signature ())
     crc.accumulateUInt32 (self.drawVias_property.signature ())
     crc.accumulateUInt32 (self.fileExtension_property.signature ())
     crc.accumulateUInt32 (self.horizontalMirror_property.signature ())
