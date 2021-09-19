@@ -257,10 +257,8 @@ final class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSo
                   viewFor inTableColumn : NSTableColumn?,
                   row inRowIndex : Int) -> NSView? {
     if let tableColumn = inTableColumn as? InternalTableColumn {
-      let tableCellView = NSTableCellView ()
-      tableCellView.translatesAutoresizingMaskIntoConstraints = false
-      tableColumn.configureTableCellWiew (tableCellView, forRowIndex: inRowIndex)
-      return tableCellView
+      let view = tableColumn.configureTableCellView (forRowIndex: inRowIndex)
+      return view
     }else{
       return nil
     }
@@ -440,7 +438,8 @@ fileprivate class InternalTableColumn : NSTableColumn, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRow : Int) { // Abstract method
+  func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? { // Abstract method
+    return nil
   }
 
   //····················································································································
@@ -481,7 +480,7 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let textField = NSTextField (frame: NSRect ())
     textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -503,11 +502,13 @@ fileprivate class InternalTextTableColumn : InternalTableColumn {
       textField.target = self
       textField.action = #selector (Self.ebAction (_:))
     }
-    inTableCellView.addSubview (textField)
-    inTableCellView.textField = textField
-    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-    inTableCellView.addConstraints ([c1, c2])
+    return textField
+
+//    inTableCellView.addSubview (textField)
+//    inTableCellView.textField = textField
+//    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································
@@ -566,7 +567,7 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let textField = NSTextField (frame: NSRect ())
     textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -589,11 +590,13 @@ fileprivate class InternalIntTableColumn : InternalTableColumn {
       textField.target = self
       textField.action = #selector (Self.ebAction(_:))
     }
-    inTableCellView.addSubview (textField)
-    inTableCellView.textField = textField
-    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-    inTableCellView.addConstraints ([c1, c2])
+    return textField
+
+//    inTableCellView.addSubview (textField)
+//    inTableCellView.textField = textField
+//    let c1 = NSLayoutConstraint (item: textField, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: textField, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································
@@ -643,19 +646,20 @@ fileprivate class InternalNSImageTableColumn : InternalTableColumn {
 
   //····················································································································
 
-  override func configureTableCellWiew (_ inTableCellView : NSTableCellView, forRowIndex inRowIndex : Int) {
+  override func configureTableCellView (forRowIndex inRowIndex : Int) -> NSView? {
     let imageView = NSImageView ()
     imageView.translatesAutoresizingMaskIntoConstraints = false
 
     imageView.tag = inRowIndex
     imageView.isEditable = false
     imageView.image = self.mValueGetterDelegate (inRowIndex)
+    return imageView
 
-    inTableCellView.addSubview (imageView)
-    inTableCellView.imageView = imageView
-    let c1 = NSLayoutConstraint (item: imageView, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
-    let c2 = NSLayoutConstraint (item: imageView, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
-    inTableCellView.addConstraints ([c1, c2])
+//    inTableCellView.addSubview (imageView)
+//    inTableCellView.imageView = imageView
+//    let c1 = NSLayoutConstraint (item: imageView, attribute: .width, relatedBy: .equal, toItem: inTableCellView, attribute: .width, multiplier: 1.0, constant: 0.0)
+//    let c2 = NSLayoutConstraint (item: imageView, attribute: .height, relatedBy: .equal, toItem: inTableCellView, attribute: .height, multiplier: 1.0, constant: 0.0)
+//    inTableCellView.addConstraints ([c1, c2])
   }
 
   //····················································································································
