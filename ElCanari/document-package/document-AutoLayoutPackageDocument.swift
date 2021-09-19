@@ -1304,7 +1304,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.mModelImagePageGridStyle_property)
     return view
   }
@@ -1677,7 +1677,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_35 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.padNumbering_property)
     return view
   }
@@ -2610,7 +2610,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_131 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
       .bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property)
     return view
   }
@@ -2715,7 +2715,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_142 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
       .bind_selectedIndex (self.mPackagePadSelectionController.padShape_property)
     return view
   }
@@ -2734,7 +2734,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_144 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadStyle.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: PadStyle.popupTitles (), size: .small)
       .bind_selectedIndex (self.mPackagePadSelectionController.padStyle_property)
     return view
   }
@@ -2972,7 +2972,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_168 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
       .bind_selectedIndex (self.mPackageSlavePadSelectionController.padShape_property)
     return view
   }
@@ -2991,7 +2991,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_170 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: SlavePadStyle.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: SlavePadStyle.popupTitles (), size: .small)
       .bind_selectedIndex (self.mPackageSlavePadSelectionController.padStyle_property)
     return view
   }
@@ -3094,7 +3094,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_180 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.gridStyle_property)
     return view
   }

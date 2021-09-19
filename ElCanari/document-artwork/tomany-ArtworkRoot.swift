@@ -26,6 +26,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (inRemovedSet) // Stored property
+    self.removeEBObserversOf_title_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (inRemovedSet) // Stored property
     self.removeEBObserversOf_hasInnerElements_fromElementsOfSet (inRemovedSet) // Transient property
     self.removeEBObserversOf_hasSixLayers_fromElementsOfSet (inRemovedSet) // Transient property
@@ -42,6 +43,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
     self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (inAddedSet) // Stored property
+    self.addEBObserversOf_title_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (inAddedSet) // Stored property
     self.addEBObserversOf_hasInnerElements_toElementsOfSet (inAddedSet) // Transient property
     self.addEBObserversOf_hasSixLayers_toElementsOfSet (inAddedSet) // Transient property
@@ -693,6 +695,65 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'title' stored property
+  //····················································································································
+
+  private final var mObserversOf_title = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_title (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_title.insert (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.title_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_title.remove (inObserver)
+    switch self.selection {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.title_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_title_toElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    if !self.mObserversOf_title.isEmpty {
+      for managedObject in inSet {
+        self.mObserversOf_title.apply { (_ observer : EBEvent) in
+          managedObject.title_property.addEBObserver (observer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : Set <ArtworkRoot>) {
+    self.mObserversOf_title.apply { (_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.title_property.removeEBObserver (observer)
       }
     }
   }
@@ -1510,6 +1571,7 @@ final class PreferencesArrayOf_ArtworkRoot : StoredArrayOf_ArtworkRoot {
     self.addEBObserverOf_minValueForPHDinEBUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_minValueForBoardLimitWidth (self.mObserverForWritingPreferences)
+    self.addEBObserverOf_title (self.mObserverForWritingPreferences)
     self.addEBObserverOf_drillDataFileExtension (self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
  }

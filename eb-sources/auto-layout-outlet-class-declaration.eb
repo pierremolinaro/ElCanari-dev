@@ -85,7 +85,7 @@ extern autolayout class ImageObserverView (size: EBControlSize) $hidden {
 extern autolayout class FlexibleSpace {
 }
 
-extern autolayout class EnumPopUpButton (titles: StringArray) {
+extern autolayout class EnumPopUpButton (titles: StringArray, size: EBControlSize) {
   $selectedIndex property enum
 }
 
@@ -110,7 +110,7 @@ extern autolayout class CanariObservedDimensionAndPopUp (size: EBControlSize) $h
   $dimensionAndUnit transient Int, property Int
 }
 
-extern autolayout class Switch (title: String, size: EBControlSize) $hidden {
+extern autolayout class Switch (title: String, size: EBControlSize) $enabled $hidden {
   $value property Bool
 }
 

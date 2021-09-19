@@ -72,6 +72,12 @@ protocol ArtworkRoot_minValueForBoardLimitWidth : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ArtworkRoot_title : AnyObject {
+  var title : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ArtworkRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String { get }
 }
@@ -110,6 +116,7 @@ final class ArtworkRoot : EBManagedObject,
          ArtworkRoot_minValueForPHDinEBUnit,
          ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
          ArtworkRoot_minValueForBoardLimitWidth,
+         ArtworkRoot_title,
          ArtworkRoot_drillDataFileExtension,
          ArtworkRoot_hasInnerElements,
          ArtworkRoot_hasSixLayers,
@@ -325,6 +332,25 @@ final class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: title
+  //····················································································································
+
+  final let title_property : EBStoredProperty_String
+
+  //····················································································································
+
+  final func reset_title_toDefaultValue () {
+    self.title = ""
+  }
+
+  //····················································································································
+
+  final var title : String {
+    get { return self.title_property.propval }
+    set { self.title_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   Atomic property: drillDataFileExtension
   //····················································································································
 
@@ -425,6 +451,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: ebUndoManager)
     self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
+    self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "drf", undoManager: ebUndoManager)
     super.init (ebUndoManager)
   //--- To many property: fileGenerationParameterArray (no option)
@@ -490,6 +517,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: self)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: self)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: self)
+    self.title_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -512,6 +540,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: nil)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer: nil)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: nil)
+    self.title_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -614,6 +643,14 @@ final class ArtworkRoot : EBManagedObject,
       valueExplorer: &self.minValueForBoardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "title",
+      idx: self.title_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      observerExplorer: &self.title_property.mObserverExplorer,
+      valueExplorer: &self.title_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "drillDataFileExtension",
       idx: self.drillDataFileExtension_property.ebObjectIndex,
       y: &y,
@@ -696,6 +733,9 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
     self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+  //--- Atomic property: title
+    self.title_property.mObserverExplorer = nil
+    self.title_property.mValueExplorer = nil
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.mObserverExplorer = nil
     self.drillDataFileExtension_property.mValueExplorer = nil
@@ -752,6 +792,8 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
   //--- Atomic property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
+  //--- Atomic property: title
+    self.title_property.storeIn (dictionary: ioDictionary, forKey: "title")
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
   //--- To many property: fileGenerationParameterArray
@@ -805,6 +847,8 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
   //--- Atomic property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey: "minValueForBoardLimitWidth")
+  //--- Atomic property: title
+    self.title_property.readFrom (dictionary: inDictionary, forKey: "title")
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey: "drillDataFileExtension")
   }
@@ -828,6 +872,7 @@ final class ArtworkRoot : EBManagedObject,
     ioString += "minValueForPHDinEBUnit\n"
     ioString += "minValueForBoardLimitWidthDisplayUnit\n"
     ioString += "minValueForBoardLimitWidth\n"
+    ioString += "title\n"
     ioString += "drillDataFileExtension\n"
   //--- To one relationships
   //--- To many relationships
@@ -862,6 +907,8 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.minValueForBoardLimitWidth.appendPropertyValueTo (&ioData)
+    ioData.append (ascii: .lineFeed)
+    self.title.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
     self.drillDataFileExtension.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
@@ -944,6 +991,9 @@ final class ArtworkRoot : EBManagedObject,
       if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.minValueForBoardLimitWidth = value
       }
+      if let range = inDictionary ["title"], let value = String.unarchiveFromDataRange (inData, range) {
+        self.title = value
+      }
       if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
         self.drillDataFileExtension = value
       }
@@ -999,6 +1049,7 @@ final class ArtworkRoot : EBManagedObject,
     crc.accumulateUInt32 (self.minValueForBoardLimitWidth_property.signature ())
     crc.accumulateUInt32 (self.minValueForOARinEBUnit_property.signature ())
     crc.accumulateUInt32 (self.minValueForPHDinEBUnit_property.signature ())
+    crc.accumulateUInt32 (self.title_property.signature ())
     return crc
   }
 

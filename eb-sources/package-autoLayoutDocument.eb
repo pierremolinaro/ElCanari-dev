@@ -64,7 +64,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Grid Style", bold: no, size : .small),
-          right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.mModelImagePageGridStyle}
+          right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mModelImagePageGridStyle}
         )
         addFirstBaseLineAligned (
           left: StaticLabel (title: "Grid Display", bold: no, size : .small),
@@ -246,7 +246,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           )
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Auto Numbering", bold: no, size : .small),
-            right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {$selectedIndex root.padNumbering}
+            right: EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {$selectedIndex root.padNumbering}
           ) 
           addFirstBaseLineAligned (
             left: space,
@@ -700,7 +700,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Auto Numbering", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum PadNumbering.popupTitles) {
+        right: EnumPopUpButton (titles: enum PadNumbering.popupTitles, size: .small) {
           $selectedIndex #mPackageZoneSelectionController.zoneNumbering
         }
       )
@@ -762,13 +762,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Shape", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum PadShape.popupTitles) {
+        right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
           $selectedIndex #mPackagePadSelectionController.padShape
         }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Style", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum PadStyle.popupTitles) {
+        right: EnumPopUpButton (titles: enum PadStyle.popupTitles, size: .small) {
           $selectedIndex #mPackagePadSelectionController.padStyle
         }
       )
@@ -857,13 +857,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Shape", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum PadShape.popupTitles) {
+        right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
           $selectedIndex #mPackageSlavePadSelectionController.padShape
         }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Style", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum SlavePadStyle.popupTitles) {
+        right: EnumPopUpButton (titles: enum SlavePadStyle.popupTitles, size: .small) {
           $selectedIndex #mPackageSlavePadSelectionController.padStyle
         }
       )
@@ -908,7 +908,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
     TwoColumnsGridView {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Style", bold: no, size : .small),
-        right: EnumPopUpButton (titles: enum GridStyle.popupTitles) { $selectedIndex root.gridStyle}
+        right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Grid Display", bold: no, size : .small),

@@ -870,7 +870,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_12 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles ())
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
       .bind_selectedIndex (self.rootObject.gridStyle_property)
     return view
   }

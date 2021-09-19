@@ -14,8 +14,8 @@ final class AutoLayoutEnumPopUpButton : InternalAutoLayoutPopUpButton {
 
   //····················································································································
 
-  init (titles inTitles : [String]) {
-    super.init (pullsDown: false, size: .small)
+  init (titles inTitles : [String], size inSize : EBControlSize) {
+    super.init (pullsDown: false, size: inSize)
     for title in inTitles {
       self.addItem (withTitle: title)
     }

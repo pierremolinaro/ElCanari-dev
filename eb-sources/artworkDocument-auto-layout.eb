@@ -14,10 +14,9 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     hStack set (margins: 8) {
       vStack {
         SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Description", tooltip: "Artwork Description", pageView: stackView mDescriptionPage)
           addPage (title: "Minima", tooltip: "Minima Editor", pageView: stackView mMinimaPage)
-          addPage (title: "Drill", tooltip: "Drill Editor", pageView: stackView mDrillPage)
           addPage (title: "Data", tooltip: "DataEditor", pageView: stackView mDataPage)
-          addPage (title: "Infos", tooltip: "Artwork Informations", pageView: stackView mInfosPage)
           $selectedPage root.selectedTab
         }
         hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
@@ -53,10 +52,40 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   ;
 
 //------------------------------------------------------------------------------
+//  Description Page
+//------------------------------------------------------------------------------
+
+  action resetVersionAndSignatureAction ;
+
+  stackView mDescriptionPage vStack set (margins: 8) {
+    TextField (width: 56, size : .regular) { expandableWidth () set (alignment: .left) $value root.title (sendContinously: yes) }
+    hStack {
+      space
+      TwoColumnsGridView {
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Layout", bold: no, size : .regular),
+          right: EnumPopUpButton (titles : enum LayerConfiguration.popupTitles, size: .regular) { $selectedIndex root.layerConfiguration }
+        )
+        addFirstBaseLineAligned (
+          left: StaticLabel (title: "Drill File Extension", bold: no, size : .regular),
+          right: TextField (width: 56, size : .regular) { $value root.drillDataFileExtension (sendContinously: no) }
+        )
+      }
+      space
+    }
+    TextView { $value root.comments }
+    hStack {
+      space
+      Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAndSignatureAction }
+    }
+  }
+
+//------------------------------------------------------------------------------
 //  Minima Page
 //------------------------------------------------------------------------------
 
   stackView mMinimaPage vStack set (margins: 8) {
+    space
     hStack {
       space
       vStack {
@@ -102,20 +131,6 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   }
 
 //------------------------------------------------------------------------------
-//  Drill Page
-//------------------------------------------------------------------------------
-
-  stackView mDrillPage vStack {
-    hStack set (margins: 8) setFirstBaselineAlignment () {
-      space
-      StaticLabel (title: "Drill File Extension", bold: no, size : .regular)
-      TextField (width: 56, size : .regular) { $value root.drillDataFileExtension (sendContinously: no) }
-      space
-    }
-    space 
-  }
-
-//------------------------------------------------------------------------------
 //  Data Page
 //------------------------------------------------------------------------------
 
@@ -138,35 +153,70 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         TextField (width: 150, size : .small) { $value #mDataSelection.fileExtension (sendContinously: no) }
         space
       }
+      space
       hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
-      hStack set (leftMargin: 20) { Switch (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide } space }
+      hStack {
+        TwoColumnsGridView {
+          set (leftMargin: 20)
+          addFirstBaseLineAligned (
+            left: Switch (title: "Legend Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendTopSide },
+            right: Switch (title: "Layout Front Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutTopSide }
+          )
+          addFirstBaseLineAligned (
+            left: Switch (title: "Front Side Tracks", size : .small) { $value #mDataSelection.drawTracksTopSide },
+            right: Switch (title: "Front Side Pads", size : .small) { $value #mDataSelection.drawPadsTopSide }
+          )
+        }
+        space
+      }
       hStack set (leftMargin: 20) { Switch (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
-      hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) { $hidden !root.hasInnerElements} space }
-      hStack set (leftMargin: 20) { Switch (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $hidden !root.hasInnerElements } space }
-      hStack set (leftMargin: 20) { Switch (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $hidden !root.hasInnerElements } space }
-      hStack set (leftMargin: 20) { Switch (title: "Inner 3 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner3Layer $hidden !root.hasSixLayers } space }
-      hStack set (leftMargin: 20) { Switch (title: "Inner 4 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner4Layer $hidden !root.hasSixLayers } space }
+      hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
+      hStack {
+        TwoColumnsGridView {
+          set (leftMargin: 20)
+          addFirstBaseLineAligned (
+            left: Switch (title: "Inner 1 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner1Layer $enabled root.hasInnerElements },
+            right: Switch (title: "Inner 2 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner2Layer $enabled root.hasInnerElements }
+          )
+          addFirstBaseLineAligned (
+            left: Switch (title: "Inner 3 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner3Layer $enabled root.hasInnerElements },
+            right: Switch (title: "Inner 4 Layer Tracks", size : .small) { $value #mDataSelection.drawTracksInner4Layer $enabled root.hasSixLayers }
+          )
+        }
+        space
+      }
       hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
-      hStack set (leftMargin: 20) { Switch (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide } space }
-      hStack set (leftMargin: 20) { Switch (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide } space }
+      hStack {
+        TwoColumnsGridView {
+          set (leftMargin: 20)
+          addFirstBaseLineAligned (
+            left: Switch (title: "Legend Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLegendBottomSide },
+            right: Switch (title: "Layout Back Side Texts", size : .small) { $value #mDataSelection.drawTextsLayoutBottomSide }
+          )
+          addFirstBaseLineAligned (
+            left: Switch (title: "Back Side Tracks", size : .small) { $value #mDataSelection.drawTracksBottomSide },
+            right: Switch (title: "Back Side Pads", size : .small) { $value #mDataSelection.drawPadsBottomSide }
+          )
+        }
+        space
+      }
       hStack set (leftMargin: 20) { Switch (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
       hStack set (leftMargin: 20) { Switch (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
       hStack { StaticLabel (title: "Other Elements", bold: yes, size : .small) space }
-      hStack set (leftMargin: 20) { Switch (title: "Vias", size : .small) { $value #mDataSelection.drawVias } space }
-      hStack set (leftMargin: 20) { Switch (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits } space }
-      hStack set (leftMargin: 20) { Switch (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits } space }
+      hStack set (leftMargin: 20) {
+        Switch (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
+        space
+        Switch (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
+        space
+        Switch (title: "Board Limits", size : .small) { $value #mDataSelection.drawBoardLimits }
+      }
       hStack set (leftMargin: 20) setFirstBaselineAlignment () {
         Switch (title: "Pad Holes in PDF file, with diameter", size : .small) { $value #mDataSelection.drawPadHolesInPDF }
-        CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
         space
+        CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
       }
       hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
       hStack set (leftMargin: 20) { Switch (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
@@ -175,28 +225,6 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   }
 
   transient String generatedFileCountString dependsFrom #mDataController.sortedArray.count ;
-
-//------------------------------------------------------------------------------
-//  Info Tab
-//------------------------------------------------------------------------------
-
-  action resetVersionAndSignatureAction ;
-
-  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
-    hStack {
-      StaticLabel (title: "Layout", bold: no, size : .small)
-      EnumPopUpButton (titles : enum LayerConfiguration.popupTitles) { $selectedIndex root.layerConfiguration }
-      space
-    }
-    hStack {
-      Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAndSignatureAction }
-      space
-    }
-    hStack {
-      vStack { StaticLabel (title: "Comments", bold: no, size : .regular) space }
-      TextView { $value root.comments }
-    }
-  }
 
 }
 
@@ -223,6 +251,8 @@ entity ArtworkRoot {
 
   property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; // 1mm
   property @signature Int minValueForBoardLimitWidth default 90_000 ; // 1mm
+
+  property @signature String title default "" ;
 
 //--- Excellon drill data
   property @signature String drillDataFileExtension default "drf" ;

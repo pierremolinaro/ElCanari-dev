@@ -27,6 +27,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
       oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
       oldValue.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
+      oldValue.title_property.removeEBObserver (self.title_property) // Stored property
       oldValue.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property) // Stored property
       oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
@@ -45,6 +46,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       newValue.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
       newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
       newValue.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
+      newValue.title_property.addEBObserver (self.title_property) // Stored property
       newValue.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property) // Stored property
       newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
@@ -117,6 +119,12 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //····················································································································
 
   final let minValueForBoardLimitWidth_property = EBGenericTransientProperty <Int?> ()
+
+  //····················································································································
+  //   Observers of 'title' stored property
+  //····················································································································
+
+  final let title_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'drillDataFileExtension' stored property
@@ -326,6 +334,21 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.minValueForBoardLimitWidth_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure title simple stored property
+    self.title_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.title_property.selection {
         case .empty :
           return .empty
         case .multiple :
