@@ -1074,6 +1074,18 @@ xibdocument ProjectDocument root ProjectRoot {
   outlet EBSwitch mDisplayFrontLayoutSwitch $value prefs.displayFrontLayoutForBoard ;
   outlet EBColorWell mDisplayFrontLayoutColorWell $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) ;
 
+  outlet EBSwitch mDisplayInner1LayoutSwitch $value prefs.displayInner1LayoutForBoard ;
+  outlet EBColorWell mDisplayInner1LayoutColorWell $color prefs.inner1LayoutColorForBoard (sendContinously:yes) ;
+
+  outlet EBSwitch mDisplayInner2LayoutSwitch $value prefs.displayInner2LayoutForBoard ;
+  outlet EBColorWell mDisplayInner2LayoutColorWell $color prefs.inner2LayoutColorForBoard (sendContinously:yes) ;
+
+  outlet EBSwitch mDisplayInner3LayoutSwitch $value prefs.displayInner3LayoutForBoard ;
+  outlet EBColorWell mDisplayInner3LayoutColorWell $color prefs.inner3LayoutColorForBoard (sendContinously:yes) ;
+
+  outlet EBSwitch mDisplayInner4LayoutSwitch $value prefs.displayInner4LayoutForBoard ;
+  outlet EBColorWell mDisplayInner4LayoutColorWell $color prefs.inner4LayoutColorForBoard (sendContinously:yes) ;
+
   outlet EBSwitch mDisplayBackLayoutSwitch $value prefs.displayBackLayoutForBoard ;
   outlet EBColorWell mDisplayBackLayoutColorWell $color prefs.backSideLayoutColorForBoard (sendContinously:yes) ;
 

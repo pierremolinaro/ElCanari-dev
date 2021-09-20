@@ -46,6 +46,7 @@ extension CustomizedProjectDocument {
     let s = self.dsnContents (exportTracks)
   //---------- Write DSN file
     let dsnFilePath = freerouterTemporaryBaseFilePath + "design.dsn"
+    // Swift.print ("freerouterTemporaryBaseFilePath \(freerouterTemporaryBaseFilePath)")
     do{
       try s.write (to: URL (fileURLWithPath: dsnFilePath), atomically: true, encoding: .utf8)
     //--- Launch free router with document

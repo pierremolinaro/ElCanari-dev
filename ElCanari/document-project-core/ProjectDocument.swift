@@ -759,6 +759,14 @@ import Cocoa
   @IBOutlet final var mDisplayFrontPadsSwitch : EBSwitch? = nil
   @IBOutlet final var mDisplayFrontRestrictRectanglesColorWell : EBColorWell? = nil
   @IBOutlet final var mDisplayFrontRestrictRectanglesSwitch : EBSwitch? = nil
+  @IBOutlet final var mDisplayInner1LayoutColorWell : EBColorWell? = nil
+  @IBOutlet final var mDisplayInner1LayoutSwitch : EBSwitch? = nil
+  @IBOutlet final var mDisplayInner2LayoutColorWell : EBColorWell? = nil
+  @IBOutlet final var mDisplayInner2LayoutSwitch : EBSwitch? = nil
+  @IBOutlet final var mDisplayInner3LayoutColorWell : EBColorWell? = nil
+  @IBOutlet final var mDisplayInner3LayoutSwitch : EBSwitch? = nil
+  @IBOutlet final var mDisplayInner4LayoutColorWell : EBColorWell? = nil
+  @IBOutlet final var mDisplayInner4LayoutSwitch : EBSwitch? = nil
   @IBOutlet final var mDisplayLegendSwitch : EBSwitch? = nil
   @IBOutlet final var mDisplayPadNumbersColorWell : EBColorWell? = nil
   @IBOutlet final var mDisplayPadNumbersSwitch : EBSwitch? = nil
@@ -1382,6 +1390,14 @@ import Cocoa
     checkOutletConnection (self.mDisplayFrontPadsSwitch, "mDisplayFrontPadsSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontRestrictRectanglesColorWell, "mDisplayFrontRestrictRectanglesColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayFrontRestrictRectanglesSwitch, "mDisplayFrontRestrictRectanglesSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner1LayoutColorWell, "mDisplayInner1LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner1LayoutSwitch, "mDisplayInner1LayoutSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner2LayoutColorWell, "mDisplayInner2LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner2LayoutSwitch, "mDisplayInner2LayoutSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner3LayoutColorWell, "mDisplayInner3LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner3LayoutSwitch, "mDisplayInner3LayoutSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner4LayoutColorWell, "mDisplayInner4LayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDisplayInner4LayoutSwitch, "mDisplayInner4LayoutSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayLegendSwitch, "mDisplayLegendSwitch", EBSwitch.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersColorWell, "mDisplayPadNumbersColorWell", EBColorWell.self, #file, #line)
     checkOutletConnection (self.mDisplayPadNumbersSwitch, "mDisplayPadNumbersSwitch", EBSwitch.self, #file, #line)
@@ -2508,6 +2524,14 @@ import Cocoa
     self.mDisplayBackLegendColorWell?.bind_color (preferences_backSideLegendColorForBoard_property, sendContinously:true)
     self.mDisplayFrontLayoutSwitch?.bind_value (preferences_displayFrontLayoutForBoard_property)
     self.mDisplayFrontLayoutColorWell?.bind_color (preferences_frontSideLayoutColorForBoard_property, sendContinously:true)
+    self.mDisplayInner1LayoutSwitch?.bind_value (preferences_displayInner1LayoutForBoard_property)
+    self.mDisplayInner1LayoutColorWell?.bind_color (preferences_inner1LayoutColorForBoard_property, sendContinously:true)
+    self.mDisplayInner2LayoutSwitch?.bind_value (preferences_displayInner2LayoutForBoard_property)
+    self.mDisplayInner2LayoutColorWell?.bind_color (preferences_inner2LayoutColorForBoard_property, sendContinously:true)
+    self.mDisplayInner3LayoutSwitch?.bind_value (preferences_displayInner3LayoutForBoard_property)
+    self.mDisplayInner3LayoutColorWell?.bind_color (preferences_inner3LayoutColorForBoard_property, sendContinously:true)
+    self.mDisplayInner4LayoutSwitch?.bind_value (preferences_displayInner4LayoutForBoard_property)
+    self.mDisplayInner4LayoutColorWell?.bind_color (preferences_inner4LayoutColorForBoard_property, sendContinously:true)
     self.mDisplayBackLayoutSwitch?.bind_value (preferences_displayBackLayoutForBoard_property)
     self.mDisplayBackLayoutColorWell?.bind_color (preferences_backSideLayoutColorForBoard_property, sendContinously:true)
     self.mDisplayFrontRestrictRectanglesSwitch?.bind_value (preferences_displayFrontRestrictRectangles_property)
@@ -3379,6 +3403,14 @@ import Cocoa
     self.mDisplayBackLegendColorWell?.unbind_color ()
     self.mDisplayFrontLayoutSwitch?.unbind_value ()
     self.mDisplayFrontLayoutColorWell?.unbind_color ()
+    self.mDisplayInner1LayoutSwitch?.unbind_value ()
+    self.mDisplayInner1LayoutColorWell?.unbind_color ()
+    self.mDisplayInner2LayoutSwitch?.unbind_value ()
+    self.mDisplayInner2LayoutColorWell?.unbind_color ()
+    self.mDisplayInner3LayoutSwitch?.unbind_value ()
+    self.mDisplayInner3LayoutColorWell?.unbind_color ()
+    self.mDisplayInner4LayoutSwitch?.unbind_value ()
+    self.mDisplayInner4LayoutColorWell?.unbind_color ()
     self.mDisplayBackLayoutSwitch?.unbind_value ()
     self.mDisplayBackLayoutColorWell?.unbind_color ()
     self.mDisplayFrontRestrictRectanglesSwitch?.unbind_value ()
@@ -3823,6 +3855,14 @@ import Cocoa
     self.mDisplayFrontPadsSwitch?.ebCleanUp ()
     self.mDisplayFrontRestrictRectanglesColorWell?.ebCleanUp ()
     self.mDisplayFrontRestrictRectanglesSwitch?.ebCleanUp ()
+    self.mDisplayInner1LayoutColorWell?.ebCleanUp ()
+    self.mDisplayInner1LayoutSwitch?.ebCleanUp ()
+    self.mDisplayInner2LayoutColorWell?.ebCleanUp ()
+    self.mDisplayInner2LayoutSwitch?.ebCleanUp ()
+    self.mDisplayInner3LayoutColorWell?.ebCleanUp ()
+    self.mDisplayInner3LayoutSwitch?.ebCleanUp ()
+    self.mDisplayInner4LayoutColorWell?.ebCleanUp ()
+    self.mDisplayInner4LayoutSwitch?.ebCleanUp ()
     self.mDisplayLegendSwitch?.ebCleanUp ()
     self.mDisplayPadNumbersColorWell?.ebCleanUp ()
     self.mDisplayPadNumbersSwitch?.ebCleanUp ()
@@ -4273,6 +4313,14 @@ import Cocoa
     self.mDisplayFrontPadsSwitch = nil
     self.mDisplayFrontRestrictRectanglesColorWell = nil
     self.mDisplayFrontRestrictRectanglesSwitch = nil
+    self.mDisplayInner1LayoutColorWell = nil
+    self.mDisplayInner1LayoutSwitch = nil
+    self.mDisplayInner2LayoutColorWell = nil
+    self.mDisplayInner2LayoutSwitch = nil
+    self.mDisplayInner3LayoutColorWell = nil
+    self.mDisplayInner3LayoutSwitch = nil
+    self.mDisplayInner4LayoutColorWell = nil
+    self.mDisplayInner4LayoutSwitch = nil
     self.mDisplayLegendSwitch = nil
     self.mDisplayPadNumbersColorWell = nil
     self.mDisplayPadNumbersSwitch = nil

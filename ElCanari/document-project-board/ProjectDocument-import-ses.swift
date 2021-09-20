@@ -70,7 +70,7 @@ extension CustomizedProjectDocument {
     importSESTextField.stringValue = "Extracting Tracks…"
     importSESProgressIndicator.minValue = 0.0
     importSESProgressIndicator.doubleValue = 0.0
-    importSESProgressIndicator.maxValue = 5.0
+    importSESProgressIndicator.maxValue = 4.0
     self.windowForSheet?.beginSheet (panel)
   //--- Build net class array
     var netClassArray = [NetClassSESImporting] ()
@@ -87,22 +87,22 @@ extension CustomizedProjectDocument {
     var errorMessage = ""
   //---
     var routedTracks = [RoutedTrackForSESImporting] ()
-    var routedVias = [BoardConnector] ()
-  //--- Extract wires
-    let components = inFileContents.components (separatedBy: "(wire")
+    var routedVias = [(BoardConnector, NetInProject)] ()
+  //--- Extract nets
+    let netComponents = inFileContents.components (separatedBy: "(net ")
   //--- Extract resolution
     var resolution = 0
-    let resolutionUM = components [0].components (separatedBy: "(resolution um ")
+    let resolutionUM = netComponents [0].components (separatedBy: "(resolution um ")
     if resolutionUM.count >= 2 {
       let res = resolutionUM [1].components (separatedBy: ")")
       resolution = 90 / Int (res [0])!
     }else{
-      let resolutionMIL = components [0].components (separatedBy: "(resolution mil ")
+      let resolutionMIL = netComponents [0].components (separatedBy: "(resolution mil ")
       if resolutionMIL.count >= 2 {
         let res = resolutionMIL [1].components (separatedBy: ")")
         resolution = (90 * 2286) / Int (res [0])!
       }else{
-        let resolutionMM = components [0].components (separatedBy: "(resolution mm ")
+        let resolutionMM = netComponents [0].components (separatedBy: "(resolution mm ")
         if resolutionMM.count >= 2 {
           let res = resolutionMM [1].components (separatedBy: ")")
           resolution = (90 * 1000) / Int (res [0])!
@@ -112,70 +112,7 @@ extension CustomizedProjectDocument {
     if 0 == resolution {
       errorMessage += "\n  - cannot extract resolution from input file"
     }else{
-    //--- Extract tracks (components [0] is not a valid track description
-      for trackDescription in Array (components [1 ..< components.count]) {
-        let scanner = Scanner (string: trackDescription)
-        var ok = scanner.scanString ("(path", into: nil)
-        if ok {
-          let startScanLocation = scanner.scanLocation
-          let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
-          var idx = 0
-          var found = false
-          while !found && (idx < layerNames.count) {
-            scanner.scanLocation = startScanLocation
-            found = scanner.scanString (layerNames [idx], into: nil)
-            if found {
-              let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
-              _ = enterSegments (scanner, layer [idx], &routedTracks, resolution, &errorMessage)
-            }
-            idx += 1
-          }
-          if !found {
-            errorMessage += "\n  - invalid track descriptor"
-            ok = false
-          }
-        }
-      }
-    //--- Extract vias
-      importSESTextField.stringValue = "Extracting Vias…"
-      importSESProgressIndicator.doubleValue += 1.0
-      _ = RunLoop.main.run (mode: .default, before: Date ())
-      if components.count > 0 {
-        let stopSet = CharacterSet (charactersIn: " ")
-        var viaComponents = inFileContents.components (separatedBy: "(via viaForClass")
-      //--- Remove first via component (it is invalid)
-        viaComponents = Array (viaComponents [1 ..< viaComponents.count])
-        for viaDescription in viaComponents {
-          let scanner = Scanner (string: viaDescription)
-          var nsNetClassName : NSString? = "" // NSString required for scanUpToCharacters
-          var x = 0.0
-          var y = 0.0
-          let ok = scanner.scanUpToCharacters (from: stopSet, into: &nsNetClassName) && scanner.scanDouble (&x) && scanner.scanDouble (&y)
-          if ok, let netClassName = nsNetClassName as String? {
-            var foundNetClass : NetClassSESImporting? = nil
-            for netClass in netClassArray {
-              if netClassName == netClass.name {
-                foundNetClass = netClass
-                break
-              }
-            }
-            if let netClass = foundNetClass {
-              let via = BoardConnector (self.ebUndoManager)
-              via.mX = Int (x * Double (resolution))
-              via.mY = Int (y * Double (resolution))
-              via.mUsesCustomHoleDiameter = true
-              via.mCustomHoleDiameter = netClass.viaHoleDiameter
-              via.mUsesCustomPadDiameter = true
-              via.mCustomPadDiameter = netClass.viaPadDiameter
-              routedVias.append (via)
-            }else{
-              errorMessage += "\n  - cannot find a net class named '\(netClassName)'"
-            }
-          }else{
-            errorMessage += "\n  - invalid via description"
-          }
-        }
-      }
+      extractTracksAndVias (netComponents, resolution, &routedTracks, &routedVias, &errorMessage)
     //--- Send to canari
       if errorMessage == "" {
         self.enterResults (routedTracks, routedVias, importSESTextField, importSESProgressIndicator)
@@ -196,15 +133,103 @@ extension CustomizedProjectDocument {
 
   //····················································································································
 
+  private func extractTracksAndVias (_ inNetComponents : [String],
+                                     _ inResolution : Int,
+                                     _ ioRoutedTracks : inout [RoutedTrackForSESImporting],
+                                     _ ioRoutedVias : inout [(BoardConnector, NetInProject)],
+                                     _ ioErrorMessage : inout String) {
+  //--- Extract wires (netComponents [0] is not a valid track description
+    for netDescription in Array (inNetComponents [1 ..< inNetComponents.count]) {
+      let wireComponents = netDescription.components (separatedBy: "(wire")
+    //--- Find net
+      var s = wireComponents [0].replacingOccurrences (of: "\n", with: " ")
+      while (s.starts (with: " ")) {
+        s.removeFirst ()
+      }
+      let netName : String
+      if s.starts (with: "\"") {
+        s.removeFirst ()
+        netName = s.components (separatedBy: "\"") [0]
+      }else{
+        netName = s.components (separatedBy: " ") [0]
+      }
+      var possibleNet : NetInProject? = nil
+      for netClass in self.rootObject.mNetClasses {
+         for net in netClass.mNets {
+           if net.mNetName == netName {
+             possibleNet = net
+             break
+           }
+         }
+      }
+      // Swift.print ("Net: \"\(netName)\" \((possibleNet == nil) ? "" : "found")")
+      if let net = possibleNet {
+      //--- Extract tracks (wireComponents [0] is not a valid wire description
+        for netDescription in Array (wireComponents [1 ..< wireComponents.count]) {
+          let scanner = Scanner (string: netDescription)
+          var ok = scanner.scanString ("(path", into: nil)
+          if ok {
+            let startScanLocation = scanner.scanLocation
+            let layerNames = [FRONT_SIDE_LAYOUT, BACK_SIDE_LAYOUT, INNER1_LAYOUT, INNER2_LAYOUT, INNER3_LAYOUT, INNER4_LAYOUT]
+            var idx = 0
+            var found = false
+            while !found && (idx < layerNames.count) {
+              scanner.scanLocation = startScanLocation
+              found = scanner.scanString (layerNames [idx], into: nil)
+              if found {
+                let layer : [TrackSide] = [.front, .back, .inner1, .inner2, .inner3, .inner4]
+                enterSegments (scanner, layer [idx], &ioRoutedTracks, inResolution, net, &ioErrorMessage)
+              }
+              idx += 1
+            }
+            if !found {
+              ioErrorMessage += "\n  - invalid track descriptor"
+              ok = false
+            }
+          }
+        }
+      //--- Extracts vias
+        var viaComponents = netDescription.components (separatedBy: "(via viaForClass")
+        viaComponents.removeFirst () // First component is not a valid via
+        for viaDescription in viaComponents {
+          let scanner = Scanner (string: viaDescription)
+          var x = 0.0
+          var y = 0.0
+          let stopSet = CharacterSet (charactersIn: " ")
+          let ok = scanner.scanUpToCharacters (from: stopSet, into: nil) && scanner.scanDouble (&x) && scanner.scanDouble (&y)
+          if ok {
+            if let netClass = net.mNetClass {
+              let via = BoardConnector (self.ebUndoManager)
+              via.mX = Int (x * Double (inResolution))
+              via.mY = Int (y * Double (inResolution))
+              via.mUsesCustomHoleDiameter = true
+              via.mCustomHoleDiameter = netClass.mViaHoleDiameter
+              via.mUsesCustomPadDiameter = true
+              via.mCustomPadDiameter = netClass.mViaPadDiameter
+              ioRoutedVias.append ((via, net))
+            }else{
+              ioErrorMessage += "\n  - cannot find a net class for '\(netName)' net"
+            }
+          }else{
+            ioErrorMessage += "\n  - invalid via description"
+          }
+        }
+      }else{
+        ioErrorMessage += "\n  - cannot solve \"\(netName)\" net name"
+      }
+    }
+  }
+
+  //····················································································································
+
   private func findOrAddConnector (at inP : CanariPoint,
                                    _ inSide : TrackSide,
                                    _ inTrackWidthInCanariUnit : Int,
-                                   _ inViaArray : [BoardConnector],
+                                   _ inViaArray : [(BoardConnector, NetInProject)],
                                    _ ioConnectorArray : inout [BoardConnector],
                                    _ ioAddedObjectArray : inout [BoardObject]) -> BoardConnector {
     let squareOfDistance = 90.0 * 90.0 * 16.0 // Distance: 4 µm
-//    let squareOfDistance = 2_286.0 * 2_286.0  // Distance: 1 mil
-    for via in inViaArray {
+    for (via, _) in inViaArray {
       let p = via.location!
       let dx = Double (inP.x - p.x)
       let dy = Double (inP.y - p.y)
@@ -244,7 +269,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func enterResults (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
-                             _ inRoutedViaArray : [BoardConnector],
+                             _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                              _ importSESTextField : AutoLayoutStaticLabel,
                              _ importSESProgressIndicator : AutoLayoutProgressIndicator) {
     importSESTextField.stringValue = "Remove Current Tracks and Vias…"
@@ -253,7 +278,10 @@ extension CustomizedProjectDocument {
     self.removeAllViasAndTracks ()
   //---
     var addedObjectArray = [BoardObject] ()
-    addedObjectArray += inRoutedViaArray as [BoardObject]
+    for (connector, _) in inRoutedViaArray {
+      addedObjectArray.append (connector)
+    }
+//    addedObjectArray += inRoutedViaArray as [BoardObject]
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
@@ -339,6 +367,7 @@ fileprivate struct RoutedTrackForSESImporting {
   let p2 : CanariPoint
   let side : TrackSide
   let width : Int
+  let net : NetInProject
   let preservedByRouter : Bool
 }
 
@@ -357,7 +386,8 @@ fileprivate func enterSegments (_ inScanner : Scanner,
                                 _ inSide : TrackSide,
                                 _ ioRoutedSegments : inout [RoutedTrackForSESImporting],
                                 _ inResolution : Int,
-                                _ ioErrorMessage : inout String) -> Bool {
+                                _ inNet : NetInProject,
+                                _ ioErrorMessage : inout String) {
   var wireWidth = 0
   var ok = inScanner.scanInt (&wireWidth)
   var routedSegments = [RoutedTrackForSESImporting] ()
@@ -381,6 +411,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
               p2: CanariPoint (x: x * inResolution, y: y * inResolution),
               side: inSide,
               width: wireWidth * inResolution,
+              net: inNet,
               preservedByRouter: false
             )
             currentX = x
@@ -403,6 +434,7 @@ fileprivate func enterSegments (_ inScanner : Scanner,
           p2: segment.p2,
           side: segment.side,
           width: segment.width,
+          net: inNet,
           preservedByRouter: true
         )
         newRoutedSegments.append (rt)
@@ -413,13 +445,19 @@ fileprivate func enterSegments (_ inScanner : Scanner,
   }else{
     ioErrorMessage += "\n  - invalid track width"
   }
-  return ok
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate struct PointAndNet : Hashable {
+  let point : CanariPoint
+  let netName : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
-                                                _ inRoutedViaArray : [BoardConnector],
+                                                _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                                                 _ inSide : TrackSide) -> Set <CanariPoint> {
   var pointSet = Set <CanariPoint> ()
   for t in inRoutedTracksArray {
@@ -428,7 +466,7 @@ fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedT
       pointSet.insert (t.p2)
     }
   }
-  for via in inRoutedViaArray {
+  for (via, _) in inRoutedViaArray {
     let p = via.location!
     pointSet.insert (p)
   }
@@ -438,7 +476,7 @@ fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
-                                                             _ inRoutedViaArray : [BoardConnector],
+                                                             _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                                                              _ inSide : TrackSide) -> [RoutedTrackForSESImporting] {
   var trackArray = inRoutedTracksArray
   let pointSet = buildPointSetFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray, inSide)
@@ -446,16 +484,16 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
     let trackArrayCopy = trackArray
     trackArray.removeAll ()
     for t in trackArrayCopy {
-      if t.side != inSide { // 0 : component side, 1 : solder side
+      if t.side != inSide {
         trackArray.append (t)
       }else{
         let contains = CanariPoint.segmentStrictlyContainsEBPoint (t.p1, t.p2, p)
         if !contains {
           trackArray.append (t)
         }else{
-          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p, side: inSide, width: t.width, preservedByRouter: t.preservedByRouter)
+          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
           trackArray.append (t1)
-          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p, side: inSide, width: t.width, preservedByRouter: t.preservedByRouter)
+          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
           trackArray.append (t2)
         }
       }
@@ -467,12 +505,17 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
-                                                       _ inRoutedViaArray : [BoardConnector]) -> [RoutedTrackForSESImporting] { // Array of PMClassForConnectorInBoardEntity
+                                                       _ inRoutedViaArray : [(BoardConnector, NetInProject)]) -> [RoutedTrackForSESImporting] { // Array of PMClassForConnectorInBoardEntity
+  var trackArray = inRoutedTracksArray
+  for layer in TrackSide.allCases {
+    trackArray = handleTeesAndCrossesFromRoutedTracksOnSide (trackArray, inRoutedViaArray, layer)
+  }
+  return trackArray
 //--- Handle Tees in component side
-  let trackArray1 = handleTeesAndCrossesFromRoutedTracksOnSide (inRoutedTracksArray, inRoutedViaArray, .front)
-//--- Handle Tees in solder side
-  let trackArray2 = handleTeesAndCrossesFromRoutedTracksOnSide (trackArray1, inRoutedViaArray, .back)
-  return trackArray2
+//  let trackArray1 = handleTeesAndCrossesFromRoutedTracksOnSide (inRoutedTracksArray, inRoutedViaArray, .front)
+////--- Handle Tees in solder side
+//  let trackArray2 = handleTeesAndCrossesFromRoutedTracksOnSide (trackArray1, inRoutedViaArray, .back)
+//  return trackArray2
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
