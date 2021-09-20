@@ -34,7 +34,7 @@ func transient_ComponentInProject_componentPadDictionary (
           let padSide : ConnectorSide
           switch descriptor.style {
           case .traversing :
-            padSide = .both
+            padSide = .traversing
           case .surface :
             switch self_mSide {
             case .back :
@@ -52,7 +52,7 @@ func transient_ComponentInProject_componentPadDictionary (
             let padSide : ConnectorSide
             switch slavePad.style {
             case .traversing :
-              padSide = .both
+              padSide = .traversing
             case .oppositeSide :
               switch self_mSide {
               case .back :

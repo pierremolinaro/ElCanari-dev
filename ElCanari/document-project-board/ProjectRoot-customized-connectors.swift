@@ -27,7 +27,15 @@ extension ProjectRoot {
             ok = inSide == .front
           case .back :
             ok = inSide == .back
-          case .both :
+          case .inner1 :
+            ok = inSide == .inner1
+          case .inner2 :
+            ok = inSide == .inner2
+          case .inner3 :
+            ok = inSide == .inner3
+          case .inner4 :
+            ok = inSide == .inner4
+          case .traversing :
             ()
           }
         }

@@ -9,7 +9,11 @@ import Cocoa
 enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case front = 0
   case back = 1
-  case both = 2
+  case inner1 = 2
+  case inner2 = 3
+  case inner3 = 4
+  case inner4 = 5
+  case traversing = 6
 
 
   //····················································································································
@@ -18,7 +22,11 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     switch string {
       case "front" : self = .front // 0
       case "back" : self = .back // 1
-      case "both" : self = .both // 2
+      case "inner1" : self = .inner1 // 2
+      case "inner2" : self = .inner2 // 3
+      case "inner3" : self = .inner3 // 4
+      case "inner4" : self = .inner4 // 5
+      case "traversing" : self = .traversing // 6
       case _ : return nil
     }
   }
@@ -29,7 +37,11 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
     switch self {
       case .front : return "front" // 0
       case .back : return "back" // 1
-      case .both : return "both" // 2
+      case .inner1 : return "inner1" // 2
+      case .inner2 : return "inner2" // 3
+      case .inner3 : return "inner3" // 4
+      case .inner4 : return "inner4" // 5
+      case .traversing : return "traversing" // 6
     }
   }
 

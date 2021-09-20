@@ -124,7 +124,15 @@ extension BoardConnector {
         accepts = inTrackSide == .front
       case .back :
         accepts = inTrackSide == .back
-      case .both :
+      case .inner1 :
+        accepts = inTrackSide == .inner1
+      case .inner2 :
+        accepts = inTrackSide == .inner2
+      case .inner3 :
+        accepts = inTrackSide == .inner3
+      case .inner4 :
+        accepts = inTrackSide == .inner4
+      case .traversing :
         accepts = true
       }
       if accepts {

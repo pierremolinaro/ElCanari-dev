@@ -70,7 +70,7 @@ extension CustomizedProjectDocument {
     importSESTextField.stringValue = "Extracting Tracks…"
     importSESProgressIndicator.minValue = 0.0
     importSESProgressIndicator.doubleValue = 0.0
-    importSESProgressIndicator.maxValue = 4.0
+    importSESProgressIndicator.maxValue = 3.0
     self.windowForSheet?.beginSheet (panel)
   //--- Build net class array
     var netClassArray = [NetClassSESImporting] ()
@@ -223,6 +223,7 @@ extension CustomizedProjectDocument {
   //····················································································································
 
   private func findOrAddConnector (at inP : CanariPoint,
+                                   _ inNet : NetInProject,
                                    _ inSide : TrackSide,
                                    _ inTrackWidthInCanariUnit : Int,
                                    _ inViaArray : [(BoardConnector, NetInProject)],
@@ -245,7 +246,11 @@ extension CustomizedProjectDocument {
       switch side {
       case .back  : ok = inSide == .back
       case .front : ok = inSide == .front
-      case .both  : ok = true
+      case .inner1 : ok = inSide == .inner1
+      case .inner2 : ok = inSide == .inner2
+      case .inner3 : ok = inSide == .inner3
+      case .inner4 : ok = inSide == .inner4
+      case .traversing  : ok = true
       }
       if ok {
         let p = connector.location!
@@ -281,7 +286,6 @@ extension CustomizedProjectDocument {
     for (connector, _) in inRoutedViaArray {
       addedObjectArray.append (connector)
     }
-//    addedObjectArray += inRoutedViaArray as [BoardObject]
   //--- Divide tracks for handling tees and crosses
     let routedTracksArray = handleTeesAndCrossesFromRoutedTracks (inRoutedTracksArray, inRoutedViaArray)
   //--- Build connectors attached to pad
@@ -297,11 +301,12 @@ extension CustomizedProjectDocument {
     _ = RunLoop.main.run (mode: .default, before: Date ())
     for t in routedTracksArray {
      let track = BoardTrack (self.ebUndoManager)
-      let p1 = findOrAddConnector (at: t.p1, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
-      let p2 = findOrAddConnector (at: t.p2, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
+      let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
       if p1 != p2 {
         track.mConnectorP1 = p1
         track.mConnectorP2 = p2
+        track.mNet = t.net
         track.mSide = t.side
         track.mUsesCustomTrackWidth = true
         track.mCustomTrackWidth = t.width
@@ -317,39 +322,6 @@ extension CustomizedProjectDocument {
     for netClass in self.rootObject.mNetClasses {
       for net in netClass.mNets {
         netDictionary [net.mNetName] = net
-      }
-    }
-  //--- Propagate net reference from pads to connected tracks
-    importSESTextField.stringValue = "Propagate Net References…"
-    importSESProgressIndicator.doubleValue += 1.0
-    _ = RunLoop.main.run (mode: .default, before: Date ())
-    for object in self.rootObject.mBoardObjects {
-      if let pad = object as? BoardConnector, let component = pad.mComponent {
-        let padNetDictionary = component.padNetDictionary!
-        if let netName = padNetDictionary [pad.mComponentPadName] {
-          let net = netDictionary [netName]!
-          var exploredTracks = Set <BoardTrack> (pad.mTracksP1 + pad.mTracksP2)
-          var tracksToExplore = Array (exploredTracks)
-          while let track = tracksToExplore.last {
-            tracksToExplore.removeLast ()
-            track.mNet = net
-            var t = [BoardTrack] ()
-            if let c = track.mConnectorP1 {
-              t += c.mTracksP1
-              t += c.mTracksP2
-            }
-            if let c = track.mConnectorP2 {
-              t += c.mTracksP1
-              t += c.mTracksP2
-            }
-            for aTrack in t {
-              if !exploredTracks.contains (aTrack) {
-                exploredTracks.insert (aTrack)
-                tracksToExplore.append (aTrack)
-              }
-            }
-          }
-        }
       }
     }
   //--- Arrange object display
@@ -458,17 +430,17 @@ fileprivate struct PointAndNet : Hashable {
 
 fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                 _ inRoutedViaArray : [(BoardConnector, NetInProject)],
-                                                _ inSide : TrackSide) -> Set <CanariPoint> {
-  var pointSet = Set <CanariPoint> ()
+                                                _ inSide : TrackSide) -> Set <PointAndNet> {
+  var pointSet = Set <PointAndNet> ()
   for t in inRoutedTracksArray {
     if t.side == inSide {
-      pointSet.insert (t.p1)
-      pointSet.insert (t.p2)
+      pointSet.insert (PointAndNet (point: t.p1, netName: t.net.mNetName))
+      pointSet.insert (PointAndNet (point: t.p2, netName: t.net.mNetName))
     }
   }
-  for (via, _) in inRoutedViaArray {
+  for (via, net) in inRoutedViaArray {
     let p = via.location!
-    pointSet.insert (p)
+    pointSet.insert (PointAndNet (point: p, netName: net.mNetName))
   }
   return pointSet
 }
@@ -484,16 +456,16 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
     let trackArrayCopy = trackArray
     trackArray.removeAll ()
     for t in trackArrayCopy {
-      if t.side != inSide {
+      if (t.side != inSide) || (t.net.mNetName != p.netName) {
         trackArray.append (t)
       }else{
-        let contains = CanariPoint.segmentStrictlyContainsEBPoint (t.p1, t.p2, p)
+        let contains = CanariPoint.segmentStrictlyContainsEBPoint (t.p1, t.p2, p.point)
         if !contains {
           trackArray.append (t)
         }else{
-          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
+          let t1 = RoutedTrackForSESImporting (p1: t.p1, p2: p.point, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
           trackArray.append (t1)
-          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
+          let t2 = RoutedTrackForSESImporting (p1: t.p2, p2: p.point, side: inSide, width: t.width, net: t.net, preservedByRouter: t.preservedByRouter)
           trackArray.append (t2)
         }
       }
