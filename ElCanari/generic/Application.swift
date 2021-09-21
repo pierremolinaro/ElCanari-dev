@@ -23,17 +23,13 @@ class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//fileprivate var gEventObjectIndex = 0
-//
-////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//
-//class EBEvent : Hashable, EBUserClassNameProtocol {
+//class EBEvent : EBUserClassNameProtocol {
 //
 //  let ebObjectIndex : Int
 //
 //  init () {
-//    self.ebObjectIndex = gEventObjectIndex
-//    gEventObjectIndex += 1
+//    self.ebObjectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
 //    noteObjectAllocation (self)
 //  }
 //
@@ -41,13 +37,13 @@ class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
 //    noteObjectDeallocation (self)
 //  }
 //
-//  public static func == (lhs: EBEvent, rhs: EBEvent) -> Bool {
-//    return lhs.ebObjectIndex == rhs.ebObjectIndex
-//  }
-//
-//  public func hash (into hasher: inout Hasher) {
-//    self.ebObjectIndex.hash (into: &hasher)
-//  }
+////  public static func == (lhs: EBEvent, rhs: EBEvent) -> Bool {
+////    return lhs.ebObjectIndex == rhs.ebObjectIndex
+////  }
+////
+////  public func hash (into hasher: inout Hasher) {
+////    self.ebObjectIndex.hash (into: &hasher)
+////  }
 //
 //  func postEvent () {} // Abstract method
 //}

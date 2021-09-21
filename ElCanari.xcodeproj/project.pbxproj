@@ -255,6 +255,9 @@
 		CF217C1525016A46003E322E /* file-format-binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1325016A46003E322E /* file-format-binary.swift */; };
 		CF217C1A25017D6B003E322E /* file-format-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1925017D6B003E322E /* file-format-utilities.swift */; };
 		CF217C1B25017D6B003E322E /* file-format-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF217C1925017D6B003E322E /* file-format-utilities.swift */; };
+		CF22891626FA58650015BCAC /* PointerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22891526FA58650015BCAC /* PointerSet.swift */; };
+		CF22891726FA58650015BCAC /* PointerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22891526FA58650015BCAC /* PointerSet.swift */; };
+		CF22891826FA58650015BCAC /* PointerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22891526FA58650015BCAC /* PointerSet.swift */; };
 		CF22990522C770CB00AFD6F7 /* CanariDragSourceImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22990422C770CB00AFD6F7 /* CanariDragSourceImageButton.swift */; };
 		CF22990622C770CB00AFD6F7 /* CanariDragSourceImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF22990422C770CB00AFD6F7 /* CanariDragSourceImageButton.swift */; };
 		CF23B1B121A48A4300DE1AD8 /* entity-SymbolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */; };
@@ -4497,6 +4500,7 @@
 		CF217C0F250165BD003E322E /* file-format-text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-text.swift"; sourceTree = "<group>"; };
 		CF217C1325016A46003E322E /* file-format-binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-binary.swift"; sourceTree = "<group>"; };
 		CF217C1925017D6B003E322E /* file-format-utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "file-format-utilities.swift"; sourceTree = "<group>"; };
+		CF22891526FA58650015BCAC /* PointerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerSet.swift; sourceTree = "<group>"; };
 		CF22990422C770CB00AFD6F7 /* CanariDragSourceImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariDragSourceImageButton.swift; sourceTree = "<group>"; };
 		CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolObject.swift"; sourceTree = "<group>"; };
 		CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariQuadrantSegmentedControl.swift; sourceTree = "<group>"; };
@@ -6375,6 +6379,7 @@
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
 				CF61915D26F7739B003B75FF /* NSImage-extension.swift */,
 				CFD2414C222C09D5000D6B65 /* StringSet.swift */,
+				CF22891526FA58650015BCAC /* PointerSet.swift */,
 			);
 			name = utilities;
 			path = ElCanari/utilities;
@@ -8828,6 +8833,7 @@
 				CFDB681A20E2AC66006D4E90 /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CF20958E22F3426800DC9A17 /* transient-BoardModel-holesBezierPaths.swift in Sources */,
 				CF4D083C21C2F18000380ACA /* transient-PackageSegment-objectDisplay.swift in Sources */,
+				CF22891626FA58650015BCAC /* PointerSet.swift in Sources */,
 				CFA42F8F229AEACF000AA8C8 /* toone-PackageInDevice.swift in Sources */,
 				CF0777FD23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */,
 				CF07781823521CB800F56EAB /* property-explorer.swift in Sources */,
@@ -10219,6 +10225,7 @@
 				CFE85A8A21A5BDFA00991A66 /* extension-SymbolOval.swift in Sources */,
 				CF0777FE23521A4E00F56EAB /* EBGenericReadWriteProperty.swift in Sources */,
 				CF07781923521CB800F56EAB /* property-explorer.swift in Sources */,
+				CF22891726FA58650015BCAC /* PointerSet.swift in Sources */,
 				CFA43012229AEB69000AA8C8 /* toone-PackageZone.swift in Sources */,
 				CF4B39D421D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
 				CFEB7AED233A247F0060A97A /* transient-BoardRestrictRectangle-signatureForERCChecking.swift in Sources */,
@@ -11610,6 +11617,7 @@
 				CFB7D8B22683A61D007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageBezierCurveSelectionController.swift in Sources */,
 				CF9C62EC25CABE5C00A00D5C /* transient-ProjectRoot-ercStatusMessage.swift in Sources */,
 				CF73BE1B25DAFF2A00090625 /* AutoLayoutFlexibleSpace.swift in Sources */,
+				CF22891826FA58650015BCAC /* PointerSet.swift in Sources */,
 				CF9C62EF25CABE5C00A00D5C /* transient-PackageSegment-objectDisplay.swift in Sources */,
 				CF9C62F025CABE5C00A00D5C /* toone-PackageInDevice.swift in Sources */,
 				CF9C62F125CABE5C00A00D5C /* EBGenericReadWriteProperty.swift in Sources */,

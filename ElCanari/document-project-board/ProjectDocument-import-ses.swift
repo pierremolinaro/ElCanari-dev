@@ -72,17 +72,6 @@ extension CustomizedProjectDocument {
     importSESProgressIndicator.doubleValue = 0.0
     importSESProgressIndicator.maxValue = 3.0
     self.windowForSheet?.beginSheet (panel)
-  //--- Build net class array
-    var netClassArray = [NetClassSESImporting] ()
-    for netClass in self.rootObject.mNetClasses {
-      let nc = NetClassSESImporting (
-        name: netClass.mNetClassName,
-        trackWidth: netClass.mTrackWidth,
-        viaHoleDiameter: netClass.mViaHoleDiameter,
-        viaPadDiameter: netClass.mViaPadDiameter
-      )
-      netClassArray.append (nc)
-    }
   //---
     var errorMessage = ""
   //---
@@ -277,10 +266,15 @@ extension CustomizedProjectDocument {
                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                              _ importSESTextField : AutoLayoutStaticLabel,
                              _ importSESProgressIndicator : AutoLayoutProgressIndicator) {
+  //----------------- Remove Current Tracks and Vias…
     importSESTextField.stringValue = "Remove Current Tracks and Vias…"
     importSESProgressIndicator.doubleValue += 1.0
     _ = RunLoop.main.run (mode: .default, before: Date ())
     self.removeAllViasAndTracks ()
+  //----------------- Add Tracks and vias
+    importSESTextField.stringValue = "Add Tracks and Vias…"
+    importSESProgressIndicator.doubleValue += 1.0
+    _ = RunLoop.main.run (mode: .default, before: Date ())
   //---
     var addedObjectArray = [BoardObject] ()
     for (connector, _) in inRoutedViaArray {
@@ -296,14 +290,11 @@ extension CustomizedProjectDocument {
       }
     }
   //--- Write tracks
-    importSESTextField.stringValue = "Add Tracks and Vias…"
-    importSESProgressIndicator.doubleValue += 1.0
-    _ = RunLoop.main.run (mode: .default, before: Date ())
     for t in routedTracksArray {
      let track = BoardTrack (self.ebUndoManager)
       let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
       let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
-      if p1 != p2 {
+      if p1 !== p2 {
         track.mConnectorP1 = p1
         track.mConnectorP2 = p2
         track.mNet = t.net
@@ -341,15 +332,6 @@ fileprivate struct RoutedTrackForSESImporting {
   let width : Int
   let net : NetInProject
   let preservedByRouter : Bool
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate struct NetClassSESImporting {
-  let name : String
-  let trackWidth : Int
-  let viaHoleDiameter : Int
-  let viaPadDiameter : Int
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

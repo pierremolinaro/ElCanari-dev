@@ -17,15 +17,15 @@ struct EBWeakEventSet {
   //····················································································································
 
   mutating func insert (_ inObserver : EBEvent) {
-    let idx : Int = inObserver.ebObjectIndex
-    self.mDictionary [idx] = EBWeakObserverSetElement (observer: inObserver)
+    let address : Int = unsafeBitCast (inObserver, to: Int.self)
+    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
   }
 
   //····················································································································
 
   mutating func remove (_ inObserver : EBEvent) {
-    let idx : Int = inObserver.ebObjectIndex
-    self.mDictionary [idx] = nil
+    let address : Int = unsafeBitCast (inObserver, to: Int.self)
+    self.mDictionary [address] = nil
   }
 
   //····················································································································

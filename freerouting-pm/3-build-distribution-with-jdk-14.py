@@ -2,6 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 #------------------------------------------------------------------------------
+# https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Procedures/Procedures.html
+#------------------------------------------------------------------------------
 
 import sys, os, subprocess
 
@@ -104,7 +106,6 @@ runCommand ([
 runCommand ([
   "/usr/bin/codesign",
   "--force",
-#  "--sign", "U399CP39LD",
   "--sign", "Apple Development: pierre@pcmolinaro.name",
   "--deep",
   FREE_ROUTING_NAME + ".app"
@@ -113,6 +114,14 @@ runCommand ([
   "/usr/bin/codesign",
   "-dv",
   "--verbose=4",
+  FREE_ROUTING_NAME + ".app"
+])
+runCommand ([
+  "/usr/bin/codesign",
+  "--verify",
+  "--deep",
+  "--strict",
+  "--verbose=2",
   FREE_ROUTING_NAME + ".app"
 ])
 # runCommand ([
@@ -126,28 +135,6 @@ runCommand ([
 #   "--verbose=4",
 #   "--type", "execute",
 #   FREE_ROUTING_NAME + ".app"
-# ])
-# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".dmg"])
-# runCommand ([
-#   JPKG_HOME + "/bin/jpackage",
-#   "--input", FREEROUTING_DIR + "/build/dist/",
-#   "--name", "Freerouting",
-#   "--main-jar", "freerouting-executable.jar",
-#   "--type", "dmg",
-#   "--runtime-image", "jdk14/runtime",
-#   "--app-version", APP_VERSION,
-#   "--license-file", "../LICENSE"
-# ])
-# runCommand (["rm", "-fr", FREE_ROUTING_NAME + ".pkg"])
-# runCommand ([
-#   JPKG_HOME + "/bin/jpackage",
-#   "--input", FREEROUTING_DIR + "/build/dist/",
-#   "--name", "Freerouting",
-#   "--main-jar", "freerouting-executable.jar",
-#   "--type", "pkg",
-#   "--runtime-image", "jdk14/runtime",
-#   "--app-version", APP_VERSION,
-#   "--license-file", "../LICENSE"
 # ])
 #--- Build DMG
 PACKAGE_FILE = FREE_ROUTING_NAME + ".pkg"
