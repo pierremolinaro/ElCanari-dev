@@ -18,6 +18,19 @@ struct PointerSet <T : AnyObject> : Sequence {
 
   //····················································································································
 
+  init () {
+  }
+
+  //····················································································································
+
+  init (_ inObjects : [T]) {
+    for object in inObjects {
+      self.insert (object)
+    }
+  }
+
+  //····················································································································
+
   mutating func insert (_ inObject : T) {
     let address : Int = unsafeBitCast (inObject, to: Int.self)
     self.mDictionary [address] = inObject
@@ -53,6 +66,33 @@ struct PointerSet <T : AnyObject> : Sequence {
       }
     }
   }
+
+  //····················································································································
+
+  func subtracting (_ inOtherSet : PointerSet <T>) -> PointerSet <T> {
+     var result = self
+     for (key, _) in inOtherSet.mDictionary {
+       result.mDictionary [key] = nil
+     }
+     return result
+  }
+
+  //····················································································································
+
+//  public static func == (lhs: PointerSet <T>, rhs: PointerSet <T>) -> Bool {
+//    var equal = lhs.mDictionary.count == rhs.mDictionary.count
+//    if equal {
+//      var idx = 0
+//      while idx < lhs.mPathes.count {
+//        if lhs.mPathes [idx] != rhs.mPathes [idx] {
+//          equal = false
+//          idx = lhs.mPathes.count // For exiting loop
+//        }
+//        idx += 1
+//      }
+//    }
+//    return equal
+//  }
 
   //····················································································································
 
