@@ -11,20 +11,9 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CharacterSegmentListClass : EBSwiftHashableBaseObject {
+struct CharacterSegmentList : Hashable {
 
-  //····················································································································
-
-  let code : [SegmentForFontCharacterClass]
-  
-  //····················································································································
-
-  init (elements : [SegmentForFontCharacterClass]) {
-    code = elements
-    super.init ()
-  }
-
-  //····················································································································
+  let code : [FontCharacterSegment]
 
 }
 

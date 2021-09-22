@@ -29,7 +29,7 @@ func transient_BoardModel_viaShapes (
     array.append (via)
     idx += 1
   }
-  return MergerViaShapeArray (array)
+  return MergerViaShapeArray (viaShapeArray: array)
 //--- END OF USER ZONE 2
 }
 

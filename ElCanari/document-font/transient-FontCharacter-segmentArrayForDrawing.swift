@@ -19,12 +19,12 @@ func transient_FontCharacter_segmentArrayForDrawing (
        _ self_segments_y1 : [SegmentForFontCharacter_y1],
        _ self_segments_x2 : [SegmentForFontCharacter_x2],
        _ self_segments_y2 : [SegmentForFontCharacter_y2]
-) -> CharacterSegmentListClass {
+) -> CharacterSegmentList {
 //--- START OF USER ZONE 2
-      var result = [SegmentForFontCharacterClass] ()
+      var result = [FontCharacterSegment] ()
       var idx = 0
       while idx < self_segments_x1.count {
-        let segment = SegmentForFontCharacterClass (
+        let segment = FontCharacterSegment (
           x1 : self_segments_x1 [idx].x1,
           y1 : self_segments_y1 [idx].y1,
           x2 : self_segments_x2 [idx].x2,
@@ -33,7 +33,7 @@ func transient_FontCharacter_segmentArrayForDrawing (
         idx += 1
         result.append (segment)
       }
-      return CharacterSegmentListClass (elements:result)
+      return CharacterSegmentList (code: result)
 //--- END OF USER ZONE 2
 }
 

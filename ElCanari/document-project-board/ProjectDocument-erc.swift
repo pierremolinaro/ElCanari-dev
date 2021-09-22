@@ -764,7 +764,7 @@ extension ProjectDocument {
         let p1 = track.mConnectorP1!.location!.cocoaPoint
         let p2 = track.mConnectorP2!.location!.cocoaPoint
         let w = canariUnitToCocoa (track.actualTrackWidth!) + clearance
-        let s = GeometricOblong (from: p1, to: p2, width: w)
+        let s = GeometricOblong (p1: p1, p2: p2, width: w)
         let key = SideAndNetName (side: track.mSide, netName: netName)
         trackSideNetDictionary [key] = (trackSideNetDictionary [key] ?? []) + [s]
       }else if let via = object as? BoardConnector {

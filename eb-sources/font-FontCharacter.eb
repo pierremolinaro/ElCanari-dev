@@ -7,10 +7,10 @@ entity FontCharacter {
   property @signature Bool mWarnsWhenNoSegment default yes ;
   property @signature Bool mWarnsWhenAdvanceIsZero default yes ;
 
-  transient CharacterSegmentListClass segmentArrayForDrawing dependsFrom
+  transient CharacterSegmentList segmentArrayForDrawing dependsFrom
      self.segments.all.x1, self.segments.all.y1, self.segments.all.x2, self.segments.all.y2 ;
 
-  transient CharacterGerberCodeClass gerberCode dependsFrom self.segmentArrayForDrawing ;
+  transient CharacterGerberCode gerberCode dependsFrom self.segmentArrayForDrawing ;
 
   transient String gerberCodeInstructionCountMessage dependsFrom self.gerberCode ;
 

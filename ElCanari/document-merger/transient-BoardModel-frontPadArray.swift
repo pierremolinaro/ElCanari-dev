@@ -34,7 +34,7 @@ func transient_BoardModel_frontPadArray (
     padArray.append (MergerPad (x:x, y:y, width:width, height:height, shape:shape, rotation:rotation))
     idx += 1
   }
-  return MergerPadArray (padArray)
+  return MergerPadArray (padArray: padArray)
 //--- END OF USER ZONE 2
 }
 

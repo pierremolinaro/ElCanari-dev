@@ -211,7 +211,7 @@ func boardText_displayInfos (
         let p2 = NSPoint (x: stringWidth + x2, y: y2)
         bp.move (to: p1)
         bp.line (to: p2)
-        oblongs.append (GeometricOblong (from: p1, to: p2, width: lineThickness))
+        oblongs.append (GeometricOblong (p1: p1, p2: p2, width: lineThickness))
       }
       stringWidth += CGFloat (characterDescriptor.advancement) * fontFactor
     }

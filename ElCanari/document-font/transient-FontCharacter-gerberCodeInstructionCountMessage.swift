@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontCharacter_gerberCodeInstructionCountMessage (
-       _ self_gerberCode : CharacterGerberCodeClass
+       _ self_gerberCode : CharacterGerberCode
 ) -> String {
 //--- START OF USER ZONE 2
    let result : String

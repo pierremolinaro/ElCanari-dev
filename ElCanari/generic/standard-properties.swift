@@ -488,15 +488,6 @@ typealias EBReadOnlyPropertyArray_EBShape  = EBGenericReadOnlyProperty <[EBShape
 typealias EBTransientPropertyArray_EBShape = EBGenericTransientProperty <[EBShape]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CanariMenuItemListClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariMenuItemListClass       = EBGenericReadOnlyProperty <CanariMenuItemListClass>
-typealias EBTransientProperty_CanariMenuItemListClass      = EBGenericTransientProperty <CanariMenuItemListClass>
-typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBGenericReadOnlyProperty <[CanariMenuItemListClass]>
-typealias EBTransientPropertyArray_CanariMenuItemListClass = EBGenericTransientProperty <[CanariMenuItemListClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -735,40 +726,32 @@ typealias EBReadOnlyProperty_PinQualifiedNameStruct    = EBGenericReadOnlyProper
 typealias EBTransientProperty_PinQualifiedNameStruct   = EBGenericTransientProperty <PinQualifiedNameStruct>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerViaShapeArray
+//   Scalar property MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerViaShapeArray       = EBGenericReadOnlyProperty <MergerViaShapeArray>
-typealias EBTransientProperty_MergerViaShapeArray      = EBGenericTransientProperty <MergerViaShapeArray>
-typealias EBReadOnlyPropertyArray_MergerViaShapeArray  = EBGenericReadOnlyProperty <[MergerViaShapeArray]>
-typealias EBTransientPropertyArray_MergerViaShapeArray = EBGenericTransientProperty <[MergerViaShapeArray]>
+typealias EBReadOnlyProperty_MergerViaShapeArray    = EBGenericReadOnlyProperty <MergerViaShapeArray>
+typealias EBTransientProperty_MergerViaShapeArray   = EBGenericTransientProperty <MergerViaShapeArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerSegmentArray
+//   Scalar property MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerSegmentArray       = EBGenericReadOnlyProperty <MergerSegmentArray>
-typealias EBTransientProperty_MergerSegmentArray      = EBGenericTransientProperty <MergerSegmentArray>
-typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBGenericReadOnlyProperty <[MergerSegmentArray]>
-typealias EBTransientPropertyArray_MergerSegmentArray = EBGenericTransientProperty <[MergerSegmentArray]>
+typealias EBReadOnlyProperty_MergerSegmentArray    = EBGenericReadOnlyProperty <MergerSegmentArray>
+typealias EBTransientProperty_MergerSegmentArray   = EBGenericTransientProperty <MergerSegmentArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerBoardLimits
+//   Scalar property MergerBoardLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerBoardLimits       = EBGenericReadOnlyProperty <MergerBoardLimits>
-typealias EBTransientProperty_MergerBoardLimits      = EBGenericTransientProperty <MergerBoardLimits>
-typealias EBReadOnlyPropertyArray_MergerBoardLimits  = EBGenericReadOnlyProperty <[MergerBoardLimits]>
-typealias EBTransientPropertyArray_MergerBoardLimits = EBGenericTransientProperty <[MergerBoardLimits]>
+typealias EBReadOnlyProperty_MergerBoardLimits    = EBGenericReadOnlyProperty <MergerBoardLimits>
+typealias EBTransientProperty_MergerBoardLimits   = EBGenericTransientProperty <MergerBoardLimits>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerPadArray
+//   Scalar property MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MergerPadArray       = EBGenericReadOnlyProperty <MergerPadArray>
-typealias EBTransientProperty_MergerPadArray      = EBGenericTransientProperty <MergerPadArray>
-typealias EBReadOnlyPropertyArray_MergerPadArray  = EBGenericReadOnlyProperty <[MergerPadArray]>
-typealias EBTransientPropertyArray_MergerPadArray = EBGenericTransientProperty <[MergerPadArray]>
+typealias EBReadOnlyProperty_MergerPadArray    = EBGenericReadOnlyProperty <MergerPadArray>
+typealias EBTransientProperty_MergerPadArray   = EBGenericTransientProperty <MergerPadArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property CanariIssueArray
@@ -813,22 +796,18 @@ typealias EBReadOnlyProperty_PadNetDictionary    = EBGenericReadOnlyProperty <Pa
 typealias EBTransientProperty_PadNetDictionary   = EBGenericTransientProperty <PadNetDictionary>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CharacterSegmentListClass
+//   Scalar property CharacterSegmentList
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CharacterSegmentListClass       = EBGenericReadOnlyProperty <CharacterSegmentListClass>
-typealias EBTransientProperty_CharacterSegmentListClass      = EBGenericTransientProperty <CharacterSegmentListClass>
-typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBGenericReadOnlyProperty <[CharacterSegmentListClass]>
-typealias EBTransientPropertyArray_CharacterSegmentListClass = EBGenericTransientProperty <[CharacterSegmentListClass]>
+typealias EBReadOnlyProperty_CharacterSegmentList    = EBGenericReadOnlyProperty <CharacterSegmentList>
+typealias EBTransientProperty_CharacterSegmentList   = EBGenericTransientProperty <CharacterSegmentList>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CharacterGerberCodeClass
+//   Scalar property CharacterGerberCode
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CharacterGerberCodeClass       = EBGenericReadOnlyProperty <CharacterGerberCodeClass>
-typealias EBTransientProperty_CharacterGerberCodeClass      = EBGenericTransientProperty <CharacterGerberCodeClass>
-typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBGenericReadOnlyProperty <[CharacterGerberCodeClass]>
-typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBGenericTransientProperty <[CharacterGerberCodeClass]>
+typealias EBReadOnlyProperty_CharacterGerberCode    = EBGenericReadOnlyProperty <CharacterGerberCode>
+typealias EBTransientProperty_CharacterGerberCode   = EBGenericTransientProperty <CharacterGerberCode>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property class NSBezierPath

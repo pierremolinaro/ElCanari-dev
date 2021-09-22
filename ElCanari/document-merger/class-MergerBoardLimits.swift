@@ -13,7 +13,7 @@ import Foundation
 //   MergerBoardLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerBoardLimits : EBSwiftHashableBaseObject {
+struct MergerBoardLimits : Hashable {
 
   //····················································································································
 
@@ -27,25 +27,15 @@ final class MergerBoardLimits : EBSwiftHashableBaseObject {
     self.boardWidth = inBoardWidth
     self.boardHeight = inBoardHeight
     self.lineWidth = inLineWidth
-    super.init ()
   }
 
   //····················································································································
 
-  override init () {
+  init () {
     self.boardWidth = 0
     self.boardHeight = 0
     self.lineWidth = 0
-    super.init ()
   }
-
-  //····················································································································
-
-//  override var description : String {
-//    get {
-//      return "MergerBoardLimits " + String (boardWidth) + " " + String (boardHeight) + " " + String (lineWidth)
-//    }
-//  }
 
   //····················································································································
 

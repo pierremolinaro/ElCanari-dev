@@ -17,9 +17,9 @@ func transient_Preferences_mValueRevealInFinder_devices (
        _ self_usesUserLibrary : Bool,                    
        _ self_additionnalLibraryArray_mUses : [CanariLibraryEntry_mUses],
        _ self_additionnalLibraryArray_mPath : [CanariLibraryEntry_mPath]
-) -> CanariMenuItemListClass {
+) -> StringArray {
 //--- START OF USER ZONE 2
-  var items = [String] ()
+  var items = StringArray ()
 //  if self_2E_usesSystemLibrary_0 {
 //    items.append (deviceLibraryPathForPath (systemLibraryPath ()))
 //  }
@@ -33,7 +33,7 @@ func transient_Preferences_mValueRevealInFinder_devices (
     }
     idx += 1
   }
-  return CanariMenuItemListClass (items: items)
+  return items
 
 //--- END OF USER ZONE 2
 }

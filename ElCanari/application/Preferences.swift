@@ -2387,11 +2387,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_packages
 //····················································································································
 
-  let preferences_mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_packages_property = EBTransientProperty_StringArray ()
 
 //····················································································································
 
-  var preferences_mValueRevealInFinder_packages : CanariMenuItemListClass? {
+  var preferences_mValueRevealInFinder_packages : StringArray? {
     switch preferences_mValueRevealInFinder_packages_property.selection {
     case .empty, .multiple :
       return nil
@@ -2404,11 +2404,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_devices
 //····················································································································
 
-  let preferences_mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_devices_property = EBTransientProperty_StringArray ()
 
 //····················································································································
 
-  var preferences_mValueRevealInFinder_devices : CanariMenuItemListClass? {
+  var preferences_mValueRevealInFinder_devices : StringArray? {
     switch preferences_mValueRevealInFinder_devices_property.selection {
     case .empty, .multiple :
       return nil
@@ -2421,11 +2421,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_fonts
 //····················································································································
 
-  let preferences_mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_fonts_property = EBTransientProperty_StringArray ()
 
 //····················································································································
 
-  var preferences_mValueRevealInFinder_fonts : CanariMenuItemListClass? {
+  var preferences_mValueRevealInFinder_fonts : StringArray? {
     switch preferences_mValueRevealInFinder_fonts_property.selection {
     case .empty, .multiple :
       return nil
@@ -2438,11 +2438,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_artworks
 //····················································································································
 
-  let preferences_mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_artworks_property = EBTransientProperty_StringArray ()
 
 //····················································································································
 
-  var preferences_mValueRevealInFinder_artworks : CanariMenuItemListClass? {
+  var preferences_mValueRevealInFinder_artworks : StringArray? {
     switch preferences_mValueRevealInFinder_artworks_property.selection {
     case .empty, .multiple :
       return nil
@@ -2455,11 +2455,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 //   Transient property: mValueRevealInFinder_symbols
 //····················································································································
 
-  let preferences_mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
+  let preferences_mValueRevealInFinder_symbols_property = EBTransientProperty_StringArray ()
 
 //····················································································································
 
-  var preferences_mValueRevealInFinder_symbols : CanariMenuItemListClass? {
+  var preferences_mValueRevealInFinder_symbols : StringArray? {
     switch preferences_mValueRevealInFinder_symbols_property.selection {
     case .empty, .multiple :
       return nil

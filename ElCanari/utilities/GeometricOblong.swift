@@ -19,16 +19,6 @@ struct GeometricOblong {
   let width : CGFloat
 
   //····················································································································
-  //   init
-  //····················································································································
-
-  init (from p1 : NSPoint, to p2 : NSPoint, width : CGFloat) {
-    self.p1 = p1
-    self.p2 = p2
-    self.width = width
-  }
-
-  //····················································································································
   //   Contains point
   //····················································································································
 
@@ -150,7 +140,7 @@ struct GeometricOblong {
   //····················································································································
 
   func transformed (by inAffineTransfrom : AffineTransform) -> GeometricOblong {
-    return GeometricOblong (from: inAffineTransfrom.transform (self.p1), to: inAffineTransfrom.transform (self.p2), width: self.width)
+    return GeometricOblong (p1: inAffineTransfrom.transform (self.p1), p2: inAffineTransfrom.transform (self.p2), width: self.width)
   }
 
   //····················································································································

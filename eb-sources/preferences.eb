@@ -40,35 +40,35 @@ prefs {
 //! File Menu
 prefs {
 //--- Symbols
-  transient CanariMenuItemListClass mValueRevealInFinder_symbols dependsFrom
+  transient StringArray mValueRevealInFinder_symbols dependsFrom
     self.usesUserLibrary,
     self.additionnalLibraryArray.all.mUses,
     self.additionnalLibraryArray.all.mPath
   ;
   outlet CanariMenu mMenuRevealInFinder_symbols $populateSubmenus self.mValueRevealInFinder_symbols ;
 //--- Packages
-  transient CanariMenuItemListClass mValueRevealInFinder_packages dependsFrom
+  transient StringArray mValueRevealInFinder_packages dependsFrom
     self.usesUserLibrary,
     self.additionnalLibraryArray.all.mUses,
     self.additionnalLibraryArray.all.mPath
   ;
   outlet CanariMenu mMenuRevealInFinder_packages $populateSubmenus self.mValueRevealInFinder_packages ;
 //--- Devices
-  transient CanariMenuItemListClass mValueRevealInFinder_devices dependsFrom
+  transient StringArray mValueRevealInFinder_devices dependsFrom
     self.usesUserLibrary,
     self.additionnalLibraryArray.all.mUses,
     self.additionnalLibraryArray.all.mPath
   ;
   outlet CanariMenu mMenuRevealInFinder_devices $populateSubmenus self.mValueRevealInFinder_devices ;
 //--- Fonts
-  transient CanariMenuItemListClass mValueRevealInFinder_fonts dependsFrom
+  transient StringArray mValueRevealInFinder_fonts dependsFrom
     self.usesUserLibrary,
     self.additionnalLibraryArray.all.mUses,
     self.additionnalLibraryArray.all.mPath
   ;
   outlet CanariMenu mMenuRevealInFinder_fonts $populateSubmenus self.mValueRevealInFinder_fonts ;
 //--- Artworks
-  transient CanariMenuItemListClass mValueRevealInFinder_artworks dependsFrom
+  transient StringArray mValueRevealInFinder_artworks dependsFrom
     self.usesUserLibrary,
     self.additionnalLibraryArray.all.mUses,
     self.additionnalLibraryArray.all.mPath

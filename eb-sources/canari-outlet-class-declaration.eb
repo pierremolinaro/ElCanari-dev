@@ -147,7 +147,7 @@ extern outlet class CanariViewWithKeyView : NSView ;
 extern outlet class NSSplitView : NSView ;
 
 extern outlet class CanariMenu ;
-binding CanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
+binding CanariMenu $populateSubmenus : transient StringArray ;
 
 extern outlet class CanariDateObserverField : NSTextField ;
 binding CanariDateObserverField $dateObserver : transient Date ;

@@ -3,7 +3,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SegmentForFontCharacterClass : EBSwiftHashableBaseObject {
+struct FontCharacterSegment : Hashable {
 
   let x1 : Int
   let y1 : Int
@@ -17,17 +17,15 @@ final class SegmentForFontCharacterClass : EBSwiftHashableBaseObject {
     y1 = inY1
     x2 = inX2
     y2 = inY2
-    super.init ()
   }
 
   //····················································································································
 
-  override init () {
+  init () {
     x1 = 0
     y1 = 0
     x2 = 0
     y2 = 0
-    super.init ()
   }
 
   //····················································································································

@@ -294,7 +294,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   private var mCharacterSegmentListController : EBReadOnlyPropertyController? = nil
 
-  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentListClass) {
+  final func bind_characterSegmentList (_ object : EBReadOnlyProperty_CharacterSegmentList) {
     self.mCharacterSegmentListController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { [weak self] in self?.updateSegmentDrawingsFromCharacterSegmentListController (object) }
@@ -310,7 +310,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentListClass) {
+  final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : EBReadOnlyProperty_CharacterSegmentList) {
     switch inSegments.selection {
     case .empty, .multiple :
       ()
@@ -462,7 +462,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   func appendSegment () {
     var newSegmentArray = self.mSegmentList
-    let newSegment = SegmentForFontCharacterClass (x1: 2, y1: 1, x2: 9, y2: 8)
+    let newSegment = FontCharacterSegment (x1: 2, y1: 1, x2: 9, y2: 8)
     newSegmentArray.append (newSegment)
     mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
   }
@@ -471,13 +471,13 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  selection
   //····················································································································
 
-  private var mSelection = Set <SegmentForFontCharacterClass> ()
+  private var mSelection = Set <FontCharacterSegment> ()
 
   //····················································································································
   //  Model
   //····················································································································
 
-  fileprivate var mSegmentList = [SegmentForFontCharacterClass] ()
+  fileprivate var mSegmentList = [FontCharacterSegment] ()
 
   //····················································································································
   //  Menu actions
@@ -662,7 +662,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func moveSelectionFrom (knob : Int, byX : Int, byY : Int) {
     if canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
-      var newSegmentArray = [SegmentForFontCharacterClass] ()
+      var newSegmentArray = [FontCharacterSegment] ()
       let oldSelection = self.mSelection
       self.mSelection = Set ()
       for segment in self.mSegmentList {
@@ -678,7 +678,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
             x2 += byX
             y2 += byY
           }
-          let newSegment = SegmentForFontCharacterClass (x1: x1, y1: y1, x2: x2, y2: y2)
+          let newSegment = FontCharacterSegment (x1: x1, y1: y1, x2: x2, y2: y2)
           newSegmentArray.append (newSegment)
           self.mSelection.insert (newSegment)
         }else{
@@ -695,12 +695,12 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func moveSelection (byX : Int, byY : Int) {
     if canMoveSelection (byX: byX, byY: byY) {
-      var newSegmentArray = [SegmentForFontCharacterClass] ()
+      var newSegmentArray = [FontCharacterSegment] ()
       let oldSelection = self.mSelection
       self.mSelection = Set ()
       for segment in self.mSegmentList {
         if oldSelection.contains (segment) {
-          let newSegment = SegmentForFontCharacterClass (
+          let newSegment = FontCharacterSegment (
             x1: segment.x1 + byX,
             y1: segment.y1 + byY,
             x2: segment.x2 + byX,
@@ -747,7 +747,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
           var newSegmentArray = self.mSegmentList
           self.mSelection.removeAll ()
           for archivedSegment : [NSNumber] in segmentListObject {
-            let newSegment = SegmentForFontCharacterClass (
+            let newSegment = FontCharacterSegment (
               x1: archivedSegment [0].intValue,
               y1: archivedSegment [1].intValue,
               x2: archivedSegment [2].intValue,
@@ -970,7 +970,7 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
         let r = NSRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangle = r
         let cr = GeometricRect (rect: r)
-        var selection = Set <SegmentForFontCharacterClass> ()
+        var selection = Set <FontCharacterSegment> ()
         for segment in self.mSegmentList {
           if segment.intersects (rect: cr) {
             selection.insert (segment)
@@ -986,14 +986,14 @@ final class CanariCharacterView : NSView, EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION SegmentForFontCharacter
+//   EXTENSION FontCharacterSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension SegmentForFontCharacterClass {
+extension FontCharacterSegment {
 
   //····················································································································
 
-  final func knobIndexFor (point p : NSPoint) -> Int? { // Return nil if point is outside a knob
+  func knobIndexFor (point p : NSPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
     do{
       let r = knobRect (self.x1, self.y1)
@@ -1012,10 +1012,10 @@ extension SegmentForFontCharacterClass {
 
   //····················································································································
 
-  final func contains (point p : NSPoint) -> Bool {
+  func contains (point p : NSPoint) -> Bool {
     let oblong = GeometricOblong (
-      from: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      to:   NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
       width: PLACEMENT_GRID * 2.0
     )
     return oblong.contains (point: p)
@@ -1023,10 +1023,10 @@ extension SegmentForFontCharacterClass {
 
   //····················································································································
 
-  final func intersects (rect r : GeometricRect) -> Bool {
+  func intersects (rect r : GeometricRect) -> Bool {
     let oblong = GeometricOblong (
-      from: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      to:   NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
+      p1: NSPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      p2: NSPoint (x: xForX (self.x2), y: yForY (self.y2)),
       width: PLACEMENT_GRID * 2.0
     )
     return oblong.intersects (rect: r)

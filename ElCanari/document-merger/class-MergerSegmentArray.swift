@@ -13,7 +13,7 @@ import Cocoa
 //   MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerSegmentArray : EBSwiftHashableBaseObject {
+struct MergerSegmentArray : Hashable {
 
   //····················································································································
 
@@ -23,14 +23,12 @@ final class MergerSegmentArray : EBSwiftHashableBaseObject {
 
   init (_ inArray : [CanariSegment]) {
     self.segmentArray = inArray
-    super.init ()
   }
 
   //····················································································································
 
-  override init () {
+  init () {
     self.segmentArray = []
-    super.init ()
   }
 
   //····················································································································
@@ -47,12 +45,6 @@ final class MergerSegmentArray : EBSwiftHashableBaseObject {
     }
     return result
   }
-
-  //····················································································································
-
-//  override var description : String {
-//    return "MergerSegmentArray " + String (self.segmentArray.count)
-//  }
 
   //····················································································································
 

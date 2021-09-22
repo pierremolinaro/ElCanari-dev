@@ -26,7 +26,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
   //   Selection observable property: gerberCode
   //····················································································································
 
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+  var gerberCode_property = EBTransientProperty_CharacterGerberCode ()
 
   //····················································································································
   //   Selection observable property: gerberCodeInstructionCountMessage
@@ -56,7 +56,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
   //   Selection observable property: segmentArrayForDrawing
   //····················································································································
 
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentList ()
 
   //····················································································································
   //   Selection observable property: segments
@@ -394,7 +394,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <CharacterGerberCodeClass> ()
+          var s = Set <CharacterGerberCode> ()
           var isMultipleSelection = false
           for object in v {
             switch object.gerberCode_property.selection {
@@ -654,7 +654,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseOb
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <CharacterSegmentListClass> ()
+          var s = Set <CharacterSegmentList> ()
           var isMultipleSelection = false
           for object in v {
             switch object.segmentArrayForDrawing_property.selection {

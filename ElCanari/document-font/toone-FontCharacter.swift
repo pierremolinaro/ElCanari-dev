@@ -66,13 +66,13 @@ class ReadOnlyObject_FontCharacter : ReadOnlyAbstractObjectProperty <FontCharact
   //   Observers of 'segmentArrayForDrawing' transient property
   //····················································································································
 
-  final let segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentListClass?> ()
+  final let segmentArrayForDrawing_property = EBGenericTransientProperty <CharacterSegmentList?> ()
 
   //····················································································································
   //   Observers of 'gerberCode' transient property
   //····················································································································
 
-  final let gerberCode_property = EBGenericTransientProperty <CharacterGerberCodeClass?> ()
+  final let gerberCode_property = EBGenericTransientProperty <CharacterGerberCode?> ()
 
   //····················································································································
   //   Observers of 'gerberCodeInstructionCountMessage' transient property

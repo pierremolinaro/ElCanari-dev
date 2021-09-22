@@ -20,11 +20,11 @@ final class SelectionController_FontRoot_mCharacterSelection : EBSwiftBaseObject
 
   var codePoint_property = EBPropertyProxy_Int ()
 
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+  var gerberCode_property = EBTransientProperty_CharacterGerberCode ()
 
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentList ()
 
   //····················································································································
   //   BIND SELECTION
@@ -294,7 +294,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBSwiftBaseObject
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CharacterGerberCodeClass> ()
+          var s = Set<CharacterGerberCode> ()
           var isMultipleSelection = false
           for object in v {
             switch object.gerberCode_property.selection {
@@ -374,7 +374,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBSwiftBaseObject
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CharacterSegmentListClass> ()
+          var s = Set <CharacterSegmentList> ()
           var isMultipleSelection = false
           for object in v {
             switch object.segmentArrayForDrawing_property.selection {

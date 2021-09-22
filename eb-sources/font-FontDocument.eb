@@ -2,8 +2,8 @@
 //     F O N T    D O C U M E N T
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-transient property class CharacterGerberCodeClass ;
-transient property class CharacterSegmentListClass ;
+transient property struct CharacterGerberCode ;
+transient property struct CharacterSegmentList ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -12,7 +12,7 @@ extern outlet class NewCharacterView ;
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariCharacterGerberCodeTableView ;
-binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCodeClass ;
+binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCode ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -24,7 +24,7 @@ binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
 extern outlet class CanariCharacterView ;
 binding CanariCharacterView $advance : transient Int ;
-binding CanariCharacterView $characterSegmentList : transient CharacterSegmentListClass ;
+binding CanariCharacterView $characterSegmentList : transient CharacterSegmentList ;
 binding CanariCharacterView $transparency : transient Double ;
 binding CanariCharacterView $displayFlow : transient Bool ;
 binding CanariCharacterView $displayDrawingIndexes : transient Bool ;

@@ -13,26 +13,11 @@ import Cocoa
 //   MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerViaShapeArray : EBSwiftHashableBaseObject {
+struct MergerViaShapeArray : Hashable {
 
   //····················································································································
 
   let viaShapeArray : [MergerViaShape]
-
-  //····················································································································
-
-  init (_ inArray : [MergerViaShape]) {
-    self.viaShapeArray = inArray
-    super.init ()
-  }
-
-  //····················································································································
-
-//  override var description : String {
-//    get {
-//      return "MergerViaShapeArray " + String (viaShapeArray.count)
-//    }
-//  }
 
   //····················································································································
 
@@ -170,7 +155,7 @@ final class MergerViaShapeArray : EBSwiftHashableBaseObject {
 //   MergerViaShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct MergerViaShape {
+struct MergerViaShape : Hashable {
 
   let x : Int
   let y : Int

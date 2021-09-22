@@ -34,7 +34,7 @@ let PMFontComment = "PMFontComment"
 //      newCharacter.codePoint = Int (key)
 //      newCharacter.advance = descriptor.advancement
 //      for segment in descriptor.segments {
-//        let newSegment = SegmentForFontCharacter (self.ebUndoManager)
+//        let newSegment = FontCharacterSegment (self.ebUndoManager)
 //        newSegment.x1 = segment.x1
 //        newSegment.y1 = -segment.y1 - 1
 //        newSegment.x2 = segment.x2
@@ -110,7 +110,7 @@ let PMFontComment = "PMFontComment"
   //   Method called by CanariCharacterView, when segments of currently selected characters change
   //····················································································································
 
-  func defineSegmentsForCurrentCharacter (_ inSegments : [SegmentForFontCharacterClass]) {
+  func defineSegmentsForCurrentCharacter (_ inSegments : [FontCharacterSegment]) {
   //--- Search character
     var possibleCurrentCharacter : FontCharacter? = nil
     let codePoint = self.rootObject.currentCharacterCodePoint

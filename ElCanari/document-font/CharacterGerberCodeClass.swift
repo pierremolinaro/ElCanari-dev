@@ -1,5 +1,5 @@
 //
-//  CharacterGerberCodeClass.swift
+//  CharacterGerberCode.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 23/11/2015.
@@ -11,7 +11,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum CharacterGerberCodeElement {
+enum CharacterGerberCodeElement : Hashable {
   case moveTo (x : Int, y : Int)
   case lineTo (x : Int, y : Int)
   
@@ -32,13 +32,8 @@ enum CharacterGerberCodeElement {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CharacterGerberCodeClass : EBSwiftHashableBaseObject {
+struct CharacterGerberCode : Hashable {
   let code : [CharacterGerberCodeElement]
-  
-  init (elements : [CharacterGerberCodeElement]) {
-    code = elements
-    super.init ()
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

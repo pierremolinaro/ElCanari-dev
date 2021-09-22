@@ -38,13 +38,13 @@ final class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private func updateOutlet (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
+  private func updateOutlet (_ object : EBReadOnlyProperty_StringArray) {
     switch object.selection {
     case .empty, .multiple :
       self.removeAllItems ()
     case .single (let itemList) :
       self.removeAllItems ()
-      for title in itemList.items {
+      for title in itemList {
         let item = self.addItem (withTitle: title, action: #selector (CanariMenu.revealInFinder(_:)), keyEquivalent: "")
         item.target = self
       }
@@ -57,7 +57,7 @@ final class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_populateSubmenus (_ object : EBReadOnlyProperty_CanariMenuItemListClass) {
+  final func bind_populateSubmenus (_ object : EBReadOnlyProperty_StringArray) {
     self.mValueController = EBReadOnlyPropertyController (
       observedObjects: [object],
       callBack: { self.updateOutlet (object) }

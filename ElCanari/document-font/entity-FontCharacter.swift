@@ -31,13 +31,13 @@ protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_segmentArrayForDrawing : AnyObject {
-  var segmentArrayForDrawing : CharacterSegmentListClass? { get }
+  var segmentArrayForDrawing : CharacterSegmentList? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_gerberCode : AnyObject {
-  var gerberCode : CharacterGerberCodeClass? { get }
+  var gerberCode : CharacterGerberCode? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -161,11 +161,11 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: segmentArrayForDrawing
   //····················································································································
 
-  final let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  final let segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentList ()
 
   //····················································································································
 
-  final var segmentArrayForDrawing : CharacterSegmentListClass? {
+  final var segmentArrayForDrawing : CharacterSegmentList? {
     switch self.segmentArrayForDrawing_property.selection {
     case .empty, .multiple :
       return nil
@@ -178,11 +178,11 @@ final class FontCharacter : EBManagedObject,
   //   Transient property: gerberCode
   //····················································································································
 
-  final let gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+  final let gerberCode_property = EBTransientProperty_CharacterGerberCode ()
 
   //····················································································································
 
-  final var gerberCode : CharacterGerberCodeClass? {
+  final var gerberCode : CharacterGerberCode? {
     switch self.gerberCode_property.selection {
     case .empty, .multiple :
       return nil

@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontCharacter_gerberCode (
-       _ self_segmentArrayForDrawing : CharacterSegmentListClass
-) -> CharacterGerberCodeClass {
+       _ self_segmentArrayForDrawing : CharacterSegmentList
+) -> CharacterGerberCode {
 //--- START OF USER ZONE 2
   var elements = [CharacterGerberCodeElement] ()
   if self_segmentArrayForDrawing.code.count > 0 {
@@ -36,7 +36,7 @@ func transient_FontCharacter_gerberCode (
       }
     }
   }
-  return CharacterGerberCodeClass (elements: elements)
+  return CharacterGerberCode (code: elements)
 //--- END OF USER ZONE 2
 }
 

@@ -40,7 +40,7 @@ private let DEBUG_EVENT = false
 
   private var mValueController : Controller_CanariCharacterGerberCodeTableView_characterGerberCode?
 
-  final func bind_characterGerberCode (_ object:EBReadOnlyProperty_CharacterGerberCodeClass) {
+  final func bind_characterGerberCode (_ object:EBReadOnlyProperty_CharacterGerberCode) {
     mValueController = Controller_CanariCharacterGerberCodeTableView_characterGerberCode (object:object, tableView:self)
   }
 
@@ -58,7 +58,7 @@ private let DEBUG_EVENT = false
 
 final class Controller_CanariCharacterGerberCodeTableView_characterGerberCode : EBReadOnlyPropertyController {
 
-  fileprivate let mObject : EBReadOnlyProperty_CharacterGerberCodeClass
+  fileprivate let mObject : EBReadOnlyProperty_CharacterGerberCode
   private let mTableView : CanariCharacterGerberCodeTableView
   private var mDelegate = Delegate_CanariCharacterGerberCodeTableView_characterGerberCode ()
 
@@ -66,7 +66,7 @@ final class Controller_CanariCharacterGerberCodeTableView_characterGerberCode : 
   //   When init is called, table view delegate and data source are set
   //····················································································································
   
-  init (object : EBReadOnlyProperty_CharacterGerberCodeClass, tableView : CanariCharacterGerberCodeTableView) {
+  init (object : EBReadOnlyProperty_CharacterGerberCode, tableView : CanariCharacterGerberCodeTableView) {
     self.mTableView = tableView
     self.mObject = object
     super.init (observedObjects:[object], callBack: { tableView.reloadData () })

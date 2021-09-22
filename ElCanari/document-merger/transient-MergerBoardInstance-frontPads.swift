@@ -23,7 +23,7 @@ func compute_MergerBoardInstanceEntity_frontPads (
       array.append (pad.translatedBy (x:self_x, y:self_y))
     }
   }
-  return MergerPadArray (array)
+  return MergerPadArray (padArray: array)
 //--- END OF USER ZONE 2
 }
 
