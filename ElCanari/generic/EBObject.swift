@@ -9,10 +9,10 @@ import Cocoa
 private var gEasyBindingsObjectIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBObject class
+//    EBObjcBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObject : NSObject, EBUserClassNameProtocol {
+class EBObjcBaseObject : NSObject, EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -38,10 +38,10 @@ class EBObject : NSObject, EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    BaseObject class
+//    EBSwiftBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BaseObject : EBUserClassNameProtocol {
+class EBSwiftBaseObject : EBUserClassNameProtocol {
 
   //····················································································································
 
@@ -66,16 +66,16 @@ class BaseObject : EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EquatableBaseObject class
+//    EBSwiftEquatableBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EquatableBaseObject : BaseObject, Equatable {
+class EBSwiftEquatableBaseObject : EBSwiftBaseObject, Equatable {
 
   //····················································································································
   //   Equatable Protocol
   //····················································································································
 
-  public static func == (lhs : EquatableBaseObject, rhs : EquatableBaseObject) -> Bool {
+  public static func == (lhs : EBSwiftEquatableBaseObject, rhs : EBSwiftEquatableBaseObject) -> Bool {
     return lhs.ebObjectIndex == rhs.ebObjectIndex
   }
 
@@ -84,10 +84,10 @@ class EquatableBaseObject : BaseObject, Equatable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    HashableBaseObject class
+//    EBSwiftHashableBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class HashableBaseObject : EquatableBaseObject, Hashable {
+class EBSwiftHashableBaseObject : EBSwiftEquatableBaseObject, Hashable {
 
   //····················································································································
   //   Hashable Protocol

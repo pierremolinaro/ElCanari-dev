@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : BaseObject {
+final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   private let mArrayController = NSArrayController ()
 

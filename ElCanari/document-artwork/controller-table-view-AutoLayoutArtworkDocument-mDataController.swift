@@ -8,7 +8,7 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutArtworkDocument mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutArtworkDocument_mDataController : BaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutArtworkDocument_mDataController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties

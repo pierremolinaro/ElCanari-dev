@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller MergerDocument mBoardModelSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_MergerDocument_mBoardModelSelection : BaseObject {
+final class SelectionController_MergerDocument_mBoardModelSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: artworkName

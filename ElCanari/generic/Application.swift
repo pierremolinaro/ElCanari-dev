@@ -17,7 +17,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 //    EBEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBEvent : EBObject { // SHOULD INHERIT FROM NSObject
+class EBEvent : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
   func postEvent () {} // Abstract method
 }
 

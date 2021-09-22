@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument commentInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_commentInSchematicSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_commentInSchematicSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mColor

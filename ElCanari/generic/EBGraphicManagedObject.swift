@@ -232,7 +232,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc final class ObjcCanariPoint : EBObject { // SHOULD INHERIT FROM NSObject
+@objc final class ObjcCanariPoint : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 
@@ -294,7 +294,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc final class ObjcCanariPointSet : EBObject { // SHOULD INHERIT FROM NSObject
+@objc final class ObjcCanariPointSet : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 
@@ -334,21 +334,21 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc final class ObjcObjectSet : EBObject { // SHOULD INHERIT FROM NSObject
+@objc final class ObjcObjectSet : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
 
-  private var mObjects = Set <EBObject> ()
+  private var mObjects = Set <EBObjcBaseObject> ()
 
   //····················································································································
 
-  func insert (_ inObject : EBObject) {
+  func insert (_ inObject : EBObjcBaseObject) {
     self.mObjects.insert (inObject)
   }
 
   //····················································································································
 
-  func contains (_ inObject : EBObject) -> Bool {
+  func contains (_ inObject : EBObjcBaseObject) -> Bool {
     return self.mObjects.contains (inObject)
   }
 

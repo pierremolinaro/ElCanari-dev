@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageArcSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: yCenter

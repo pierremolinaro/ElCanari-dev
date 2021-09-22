@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller AutoLayoutDeviceDocument symbolTypeSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : BaseObject {
+final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: documentSize

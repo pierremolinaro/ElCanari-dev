@@ -13,7 +13,7 @@ import Cocoa
 //   MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerSegmentArray : HashableBaseObject {
+final class MergerSegmentArray : EBSwiftHashableBaseObject {
 
   //····················································································································
 

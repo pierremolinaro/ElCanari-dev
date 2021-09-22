@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument componentSymbolSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_componentSymbolSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_componentSymbolSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mCenterX

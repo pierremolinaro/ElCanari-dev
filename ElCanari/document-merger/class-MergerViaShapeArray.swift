@@ -13,7 +13,7 @@ import Cocoa
 //   MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerViaShapeArray : HashableBaseObject {
+final class MergerViaShapeArray : EBSwiftHashableBaseObject {
 
   //····················································································································
 

@@ -6,7 +6,7 @@ import Cocoa
 //    SelectionController_FontRoot_mCharacterSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_FontRoot_mCharacterSelection : BaseObject {
+final class SelectionController_FontRoot_mCharacterSelection : EBSwiftBaseObject {
 
   //····················································································································
 

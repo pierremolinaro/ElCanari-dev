@@ -351,7 +351,7 @@ fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogIt
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class OpenInLibraryDialogItem : BaseObject {
+fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
 
   let mPartName : String
   let mIsDuplicated : Bool

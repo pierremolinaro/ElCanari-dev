@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariMenuItemListClass : EquatableBaseObject {
+final class CanariMenuItemListClass : EBSwiftEquatableBaseObject {
 
   //····················································································································
 

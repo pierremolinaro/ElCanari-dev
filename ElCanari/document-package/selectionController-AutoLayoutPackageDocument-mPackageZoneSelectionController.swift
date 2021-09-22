@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageZoneSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: x

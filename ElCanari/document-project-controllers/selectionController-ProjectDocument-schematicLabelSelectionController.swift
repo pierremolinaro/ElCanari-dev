@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument schematicLabelSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_schematicLabelSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_schematicLabelSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mOrientation

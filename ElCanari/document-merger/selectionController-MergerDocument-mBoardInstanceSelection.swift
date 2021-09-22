@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller MergerDocument mBoardInstanceSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_MergerDocument_mBoardInstanceSelection : BaseObject {
+final class SelectionController_MergerDocument_mBoardInstanceSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: boardLimitWidth

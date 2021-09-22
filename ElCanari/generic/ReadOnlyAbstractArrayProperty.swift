@@ -5,6 +5,60 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//fileprivate func update <T : Hashable> (currentSet ioCurrentSet : inout Set <T>,
+//                                        fromNewArray inNewArray : [T],
+//                                        oldArray inOldArray : [T]) -> (Bool, Set <T>, Set <T>) {
+//  let equalModels = inNewArray == inOldArray
+//  var addedSet = Set <T> ()
+//  var removedSet = Set <T> ()
+//  if !equalModels {
+//    let newSet = Set (inNewArray)
+//    if ioCurrentSet != newSet {
+//      let oldSet = ioCurrentSet
+//      ioCurrentSet = newSet
+//      removedSet = oldSet.subtracting (newSet)
+//      addedSet = newSet.subtracting (oldSet)
+//    }
+//  }
+//  return (equalModels, addedSet, removedSet)
+//}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func update <T : Hashable> (currentSet ioCurrentSet : inout Set <T>,
+                                        fromNewArray inNewArray : [T],
+                                        oldArray inOldArray : [T]) -> (Bool, Set <T>, Set <T>) {
+  var addedSet = Set <T> ()
+  var removedSet = Set <T> ()
+//--- Model did change ?
+  var modelsAreEqual = inNewArray.count == inOldArray.count
+  var idx = 0
+  while modelsAreEqual && (idx < inNewArray.count) {
+    modelsAreEqual = inNewArray [idx] == inOldArray [idx]
+    idx += 1
+  }
+//---
+  if !modelsAreEqual {
+    var setAreEqual = ioCurrentSet.count == inNewArray.count
+    var newSet = Set <T> (minimumCapacity: inNewArray.count)
+    for object in inNewArray {
+      newSet.insert (object)
+      if !ioCurrentSet.contains (object) {
+        setAreEqual = false
+        addedSet.insert (object)
+      }
+    }
+    if !setAreEqual {
+      let oldSet = ioCurrentSet
+      ioCurrentSet = newSet
+      removedSet = oldSet.subtracting (newSet)
+    }
+  }
+  return (modelsAreEqual, addedSet, removedSet)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -34,21 +88,26 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : ReadOnlyAbstractGenericRela
 
   internal final var mInternalArrayValue = [T] () {
     didSet {
-      if self.mInternalArrayValue != oldValue {
+      let (equalModels, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
+      if !equalModels {
         if self.mInternalArrayValue.count != oldValue.count {
           self.count_property.postEvent ()
         }
         self.postEvent ()
         self.notifyModelDidChangeFrom (oldValue: oldValue)
         self.notifyModelDidChange ()
-        let newSet = Set (self.mInternalArrayValue)
-        if self.mInternalSetValue != newSet {
-          let oldSet = self.mInternalSetValue
-          self.mInternalSetValue = newSet
-          let removedSet = oldSet.subtracting (newSet)
-          let addedSet = newSet.subtracting (oldSet)
+   //     let (modelDidChange, addedSet, removedSet) = update (currentSet: &self.mInternalSetValue, fromNewArray: self.mInternalArrayValue, oldArray: oldValue)
+        if !addedSet.isEmpty || !removedSet.isEmpty {
           self.updateObservers (removedSet: removedSet, addedSet: addedSet)
         }
+//        let newSet = Set (self.mInternalArrayValue)
+//        if self.mInternalSetValue != newSet {
+//          let oldSet = self.mInternalSetValue
+//          self.mInternalSetValue = newSet
+//          let removedSet = oldSet.subtracting (newSet)
+//          let addedSet = newSet.subtracting (oldSet)
+//          self.updateObservers (removedSet: removedSet, addedSet: addedSet)
+//        }
       }
     }
   }

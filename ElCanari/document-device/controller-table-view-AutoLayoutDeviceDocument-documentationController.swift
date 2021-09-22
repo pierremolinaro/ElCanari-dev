@@ -8,7 +8,7 @@ import Cocoa
 //    Auto Layout Table View Controller AutoLayoutDeviceDocument documentationController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_AutoLayoutDeviceDocument_documentationController : BaseObject, AutoLayoutTableViewDelegate {
+final class Controller_AutoLayoutDeviceDocument_documentationController : EBSwiftBaseObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //    Constant properties

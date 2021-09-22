@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument wireInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_wireInSchematicSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_wireInSchematicSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: objectDisplay

@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument restrictRectangleSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_restrictRectangleSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_restrictRectangleSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mY

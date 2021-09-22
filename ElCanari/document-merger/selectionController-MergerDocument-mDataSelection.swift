@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller MergerDocument mDataSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_MergerDocument_mDataSelection : BaseObject {
+final class SelectionController_MergerDocument_mDataSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: drawBoardLimits

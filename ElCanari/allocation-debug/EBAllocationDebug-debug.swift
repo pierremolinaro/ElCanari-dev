@@ -145,7 +145,7 @@ private var gDebugObject : EBAllocationDebug? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBAllocationDebug : EBObject, NSWindowDelegate, AutoLayoutTableViewDelegate {
+final class EBAllocationDebug : EBObjcBaseObject, NSWindowDelegate, AutoLayoutTableViewDelegate {
 
   //····················································································································
   //   Properties

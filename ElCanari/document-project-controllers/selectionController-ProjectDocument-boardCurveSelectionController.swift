@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller ProjectDocument boardCurveSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_boardCurveSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_boardCurveSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: descriptor

@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument ncInSchematicSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_ncInSchematicSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_ncInSchematicSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mOrientation

@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller FontDocument mCharacterSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_FontDocument_mCharacterSelection : BaseObject {
+final class SelectionController_FontDocument_mCharacterSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: advance

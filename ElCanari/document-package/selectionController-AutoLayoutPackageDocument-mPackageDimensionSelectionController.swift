@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageDimensionSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: y1

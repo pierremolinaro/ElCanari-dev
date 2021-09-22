@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument boardLineSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_boardLineSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_boardLineSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mWidthUnit

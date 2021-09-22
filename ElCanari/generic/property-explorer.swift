@@ -118,7 +118,7 @@ func createEntryForTitle (_ title : String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func createEntryForObjectNamed (_ name : String,
-                                object : EBObject,
+                                object : EBObjcBaseObject,
                                 y ioY : inout CGFloat,
                                 view : NSView) {
   let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)

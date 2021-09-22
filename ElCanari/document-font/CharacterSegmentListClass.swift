@@ -11,7 +11,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CharacterSegmentListClass : HashableBaseObject {
+final class CharacterSegmentListClass : EBSwiftHashableBaseObject {
 
   //····················································································································
 

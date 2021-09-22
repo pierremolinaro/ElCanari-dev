@@ -66,7 +66,7 @@ fileprivate var gPanel : OpenPanelDelegateForFilteringBoardModels?
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class OpenPanelDelegateForFilteringBoardModels : EBObject, NSOpenSavePanelDelegate {
+fileprivate class OpenPanelDelegateForFilteringBoardModels : EBObjcBaseObject, NSOpenSavePanelDelegate {
 
   //····················································································································
   //   PROPERTIES

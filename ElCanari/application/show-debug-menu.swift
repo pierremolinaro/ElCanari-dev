@@ -21,7 +21,7 @@ fileprivate var gDebugMenuVisibility : DebugMenuVisibility? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class DebugMenuVisibility : BaseObject {
+fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
 
   //····················································································································
   //  Property

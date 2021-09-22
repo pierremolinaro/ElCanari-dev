@@ -43,7 +43,7 @@ struct MergerPad {
 //   MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerPadArray : HashableBaseObject {
+final class MergerPadArray : EBSwiftHashableBaseObject {
 
   //····················································································································
 

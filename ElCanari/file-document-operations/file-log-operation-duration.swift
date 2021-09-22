@@ -34,7 +34,7 @@ fileprivate var gLogFileOperations = LogFileOperation ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class LogFileOperation : EBObject { // SHOULD INHERIT FROM NSObject
+fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //  Properties

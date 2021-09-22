@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller AutoLayoutArtworkDocument mDataSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : BaseObject {
+final class SelectionController_AutoLayoutArtworkDocument_mDataSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: drawBoardLimits

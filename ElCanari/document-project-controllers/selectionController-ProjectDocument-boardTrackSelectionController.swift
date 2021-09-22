@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument boardTrackSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_boardTrackSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_boardTrackSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mSide

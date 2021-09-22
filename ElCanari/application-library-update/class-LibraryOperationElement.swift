@@ -26,7 +26,7 @@ enum LibraryOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryOperationElement : EBObject { // SHOULD INHERIT FROM NSObject
+final class LibraryOperationElement : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //   Properties

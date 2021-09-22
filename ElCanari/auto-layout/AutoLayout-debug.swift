@@ -35,7 +35,7 @@ fileprivate var gDebugAutoLayout = DebugAutoLayout ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class DebugAutoLayout : BaseObject {
+fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
 
   //····················································································································
   //  Properties

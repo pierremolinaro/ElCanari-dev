@@ -134,7 +134,7 @@ private func iso8601StringToDate (_ inString : String?) -> Date? {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryRevisionDescriptor : EBObject { // SHOULD INHERIT FROM NSObject
+final class LibraryRevisionDescriptor : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //   Properties
@@ -177,7 +177,7 @@ final class LibraryRevisionDescriptor : EBObject { // SHOULD INHERIT FROM NSObje
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryCommitListController : EBObject {  // SHOULD INHERIT FROM NSObject
+final class LibraryCommitListController : EBObjcBaseObject {  // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //   Properties

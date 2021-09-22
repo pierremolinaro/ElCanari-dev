@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackagePadSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: xCenter

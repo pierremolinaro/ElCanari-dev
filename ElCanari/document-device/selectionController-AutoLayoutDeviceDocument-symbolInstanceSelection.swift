@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller AutoLayoutDeviceDocument symbolInstanceSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection : BaseObject {
+final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mInstanceName

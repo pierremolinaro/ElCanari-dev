@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageBezierCurveSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: y1

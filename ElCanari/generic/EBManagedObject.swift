@@ -41,7 +41,7 @@ protocol EBManagedObject_alloc_index_protocol : AnyObject {
 //  EBManagedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
+class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_alloc_index_protocol {
   private weak final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   final var savingIndex = 0
 

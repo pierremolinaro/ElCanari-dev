@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller ProjectDocument componentInBoardSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_componentInBoardSelectionController : BaseObject {
+final class SelectionController_ProjectDocument_componentInBoardSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: mSlavePadsShouldBeRouted

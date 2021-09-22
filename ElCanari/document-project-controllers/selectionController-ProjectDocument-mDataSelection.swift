@@ -8,7 +8,7 @@ import Cocoa
 //    Base Selection Controller ProjectDocument mDataSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_ProjectDocument_mDataSelection : BaseObject {
+final class SelectionController_ProjectDocument_mDataSelection : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: drawBoardLimits

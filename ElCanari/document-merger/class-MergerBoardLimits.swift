@@ -13,7 +13,7 @@ import Foundation
 //   MergerBoardLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class MergerBoardLimits : HashableBaseObject {
+final class MergerBoardLimits : EBSwiftHashableBaseObject {
 
   //····················································································································
 

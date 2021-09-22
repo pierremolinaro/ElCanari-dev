@@ -79,23 +79,6 @@ struct PointerSet <T : AnyObject> : Sequence {
 
   //····················································································································
 
-//  public static func == (lhs: PointerSet <T>, rhs: PointerSet <T>) -> Bool {
-//    var equal = lhs.mDictionary.count == rhs.mDictionary.count
-//    if equal {
-//      var idx = 0
-//      while idx < lhs.mPathes.count {
-//        if lhs.mPathes [idx] != rhs.mPathes [idx] {
-//          equal = false
-//          idx = lhs.mPathes.count // For exiting loop
-//        }
-//        idx += 1
-//      }
-//    }
-//    return equal
-//  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

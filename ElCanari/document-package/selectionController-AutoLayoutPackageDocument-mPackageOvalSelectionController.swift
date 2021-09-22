@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutPackageDocument mPackageOvalSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController : BaseObject {
+final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: y

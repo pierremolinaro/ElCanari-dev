@@ -8,7 +8,7 @@ import Cocoa
 //    Derived selection controller AutoLayoutSymbolDocument mSymbolTextSelectionController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController : BaseObject {
+final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController : EBSwiftBaseObject {
 
   //····················································································································
   //   Selection observable property: y
